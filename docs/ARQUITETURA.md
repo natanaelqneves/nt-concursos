@@ -64,7 +64,7 @@ ntconcursos/
 │   │   ├── cli.py                 # ntc collect --fonte X | ntc validate | ntc review
 │   │   ├── config.py
 │   │   ├── fetch/
-│   │   │   ├── http.py            # httpx, allowlist, URL final, robots.txt, rate limit, cache ETag
+│   │   │   ├── http.py            # requests, allowlist em cada salto, robots.txt, rate limit, cache ETag
 │   │   │   └── allowlist.py
 │   │   ├── sources/
 │   │   │   ├── base.py            # interface Fonte: descobrir() / documentos()
@@ -210,7 +210,23 @@ revisa uma vez por milestone** (o dono cola o diff no Codex e devolve a crítica
 | Milestone | Status |
 |---|---|
 | M0 | esqueleto, contrato, gate G1–G8, site, CI, publicação e Worker: entregue |
-| M1 | INLABS, Cebraspe e FGV, `fetch/http.py`, `pdf/extract.py`, `ntc collect`, escopo e porte: próximo |
+| M1 | contrato v2 (PR #1); `fetch/http.py`, `pdf/extract.py`, `ntc collect`, escopo, porte, FGV e Cebraspe de ponta a ponta, INLABS (descoberta) e medição de horário: entregue em 12/11/2026. INLABS em manutenção nesse dia: conector testado só com XML no formato documentado |
+| M2 | publicação automática: próximo |
+
+### Decisões tomadas no M1 (12/11/2026)
+
+- **`requests` no lugar de `httpx`**: já disponível em todo ambiente do projeto; o cliente segue
+  redirecionamentos manualmente para checar a allowlist em cada salto, antes de baixar.
+- **`www.in.gov.br` não é coletado**: o robots.txt do portal é `Disallow: /`. A descoberta federal
+  usa só o INLABS (`inlabs.in.gov.br`, sem robots), o canal oficial de dados abertos.
+- **G7 refinado**: retificação posterior só derruba o prazo se não tiver texto, trouxer outra data
+  para ele, falar de prorrogação/reabertura/suspensão do prazo ou for errata "onde se lê" que o cite.
+  A regra anterior (qualquer menção a "inscrição") derrubava quase toda retificação da Cebraspe.
+- **Datas de normas citadas** ("Lei nº 10.567, de 7 de novembro de 1997") são ignoradas na leitura
+  de prazos; antes elas criavam cláusulas falsas e mandavam o campo para revisão (G5).
+- **Concurso novo com inscrição já encerrada não é publicado**; os já publicados continuam sendo
+  atualizados (inclusive rebaixados para revisão se uma retificação mudar o prazo).
+- **Cartórios (outorga de delegações), juiz leigo, processos seletivos e exames** ficam fora do escopo.
 
 ## 11. Escopo e prioridade (decidido em 12/11/2026; Tribunais de Contas, Defensorias, Bombeiros e Polícias Legislativas incluídos no mesmo dia)
 

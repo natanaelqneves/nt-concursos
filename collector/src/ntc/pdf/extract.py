@@ -1,16 +1,18 @@
 """Texto de PDF por página, com detecção de PDF escaneado (G8).
 
-O texto sai exatamente como o pdfplumber o extrai: o gate compara trechos com esse
-mesmo texto (normalizando só espaços), então nenhuma limpeza extra é feita aqui.
+Usa o pdftotext (Poppler): cerca de 25 vezes mais rápido que o pdfplumber nos editais
+testados, com as mesmas cláusulas e o espaçamento entre palavras preservado (o PDFium juntava
+palavras: "Asinscrições"). O gate compara trechos com este mesmo texto, normalizando só espaços.
+Requer o pacote poppler-utils (os workflows instalam se faltar).
 """
 
 from __future__ import annotations
 
 import hashlib
-import io
-import logging
 
-import pdfplumber
+import shutil
+import subprocess
+import tempfile
 
 from ntc.gate.evidencia import TextoDocumento
 
@@ -20,7 +22,6 @@ MIN_CHARS_PAGINA = 40
 MIN_FRACAO_COM_TEXTO = 0.5
 MAX_PAGINAS = 400
 
-logging.getLogger("pdfminer").setLevel(logging.ERROR)
 
 
 class NaoEhPdf(ValueError):
@@ -36,13 +37,24 @@ def extrair(conteudo: bytes) -> TextoDocumento:
     if not eh_pdf(conteudo):
         raise NaoEhPdf("o conteúdo não começa com %PDF")
     sha = hashlib.sha256(conteudo).hexdigest()
-    paginas: dict[int, str] = {}
-    with pdfplumber.open(io.BytesIO(conteudo)) as pdf:
-        if len(pdf.pages) > MAX_PAGINAS:
-            raise ValueError(f"PDF com {len(pdf.pages)} páginas (limite {MAX_PAGINAS})")
-        for n, pagina in enumerate(pdf.pages, start=1):
-            paginas[n] = pagina.extract_text() or ""
-            pagina.flush_cache()
+    if shutil.which("pdftotext") is None:
+        raise RuntimeError("pdftotext não encontrado: instale poppler-utils")
+    with tempfile.TemporaryDirectory() as tmp:
+        entrada = f"{tmp}/doc.pdf"
+        with open(entrada, "wb") as f:
+            f.write(conteudo)
+        r = subprocess.run(
+            ["pdftotext", "-enc", "UTF-8", "-l", str(MAX_PAGINAS + 1), entrada, "-"],
+            capture_output=True, timeout=180,
+        )
+    if r.returncode != 0:
+        raise ValueError(f"pdftotext falhou: {r.stderr.decode(errors='replace')[:200]}")
+    partes = r.stdout.decode("utf-8", errors="replace").split("\f")
+    if partes and not partes[-1].strip():
+        partes = partes[:-1]  # o pdftotext termina cada página com \f
+    if len(partes) > MAX_PAGINAS:
+        raise ValueError(f"PDF com mais de {MAX_PAGINAS} páginas")
+    paginas = {n: texto for n, texto in enumerate(partes, start=1)}
     com_texto = sum(1 for t in paginas.values() if len(t.strip()) >= MIN_CHARS_PAGINA)
     tem_texto = bool(paginas) and com_texto / len(paginas) >= MIN_FRACAO_COM_TEXTO
     return TextoDocumento(sha256=sha, paginas=paginas, completo=True, tem_texto=tem_texto)

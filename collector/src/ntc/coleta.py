@@ -39,7 +39,7 @@ from ntc.sources.base import ConcursoFonte, DocFonte
 from ntc.store.json_store import JsonStore
 
 METODO = "regex:v1"
-MAX_MUDANCAS = 25
+MAX_MUDANCAS = 15
 _ONDE_SE_LE = re.compile(r"onde\s+se\s+l[êe]", re.IGNORECASE)
 
 
@@ -48,7 +48,7 @@ class Registro:
     fonte: str
     id: str
     titulo: str
-    situacao: str  # fora_do_escopo | sem_edital | erro | publicado | so_revisao | descoberto
+    situacao: str  # fora_do_escopo | sem_edital | erro | publicado | so_revisao | encerrado | descoberto
     detalhe: str = ""
     slug: str | None = None
     campos: dict[str, str] = field(default_factory=dict)
@@ -132,27 +132,6 @@ class Coletor:
             raise NaoEhPdf(f"edital não é PDF: {doc_edital.url_final}")
         documentos, textos = [doc_edital], {doc_edital.sha256: txt_edital}
 
-        mudancas = [
-            d for d in cf.documentos
-            if d.tipo == "retificacao"
-            and (d.publicado_em is None or edital_fonte.publicado_em is None or d.publicado_em >= edital_fonte.publicado_em)
-        ][-MAX_MUDANCAS:]
-        for i, d in enumerate(mudancas, start=2):
-            try:
-                doc, txt = self._baixar(d, f"doc-{i}")
-            except ErroColeta as e:
-                # sem o documento não dá para descartar impacto: G7 rebaixa o que ele poderia afetar
-                reg.violacoes.append(f"documento de mudança indisponível: {d.url} ({e})")
-                doc = Documento(id=f"doc-{i}", tipo="retificacao", url=d.url, url_final=d.url, sha256="0" * 64,
-                                coletado_em=self.agora(), fonte=cf.fonte, publicado_em=d.publicado_em,
-                                titulo=d.titulo[:300] or None)
-                txt = None
-            documentos.append(doc)
-            if txt is not None:
-                textos[doc.sha256] = txt
-            elif doc.sha256 != "0" * 64:
-                textos[doc.sha256] = TextoDocumento(doc.sha256, {}, completo=True, tem_texto=False)
-
         evidencias: list[Evidencia] = []
         prazos = Prazos()
         for tipo, campo in clausulas.CAMPO_POR_TIPO.items():
@@ -179,6 +158,35 @@ class Coletor:
             vagas_campo = Campo(status="revisao")
 
         existente = self._existentes.get(cf.url)
+        insc = prazos.inscricao
+        if not existente and insc.status == "verificado" and insc.fim and insc.fim < self.agora().date():
+            reg.situacao = "encerrado"  # concurso novo já encerrado: nem baixa as retificações
+            return reg
+        if not existente and all(p.status != "verificado" for p in (prazos.isencao, prazos.inscricao)):
+            mudancas_necessarias = False  # nada a proteger: o G7 não tem o que rebaixar
+        else:
+            mudancas_necessarias = True
+        mudancas = [] if not mudancas_necessarias else [
+            d for d in cf.documentos
+            if d.tipo == "retificacao"
+            and (d.publicado_em is None or edital_fonte.publicado_em is None or d.publicado_em >= edital_fonte.publicado_em)
+        ][-MAX_MUDANCAS:]
+        for i, d in enumerate(mudancas, start=2):
+            try:
+                doc, txt = self._baixar(d, f"doc-{i}")
+            except ErroColeta as e:
+                # sem o documento não dá para descartar impacto: G7 rebaixa o que ele poderia afetar
+                reg.violacoes.append(f"documento de mudança indisponível: {d.url} ({e})")
+                doc = Documento(id=f"doc-{i}", tipo="retificacao", url=d.url, url_final=d.url, sha256="0" * 64,
+                                coletado_em=self.agora(), fonte=cf.fonte, publicado_em=d.publicado_em,
+                                titulo=d.titulo[:300] or None)
+                txt = None
+            documentos.append(doc)
+            if txt is not None:
+                textos[doc.sha256] = txt
+            elif doc.sha256 != "0" * 64:
+                textos[doc.sha256] = TextoDocumento(doc.sha256, {}, completo=True, tem_texto=False)
+
         slug = existente[1].slug if existente else self._novo_slug(cf, cls)
         concurso = Concurso(
             slug=slug, orgao=cls.orgao, categoria=cls.categoria, esfera=cls.esfera, banca=cf.fonte, uf=cls.uf,
@@ -201,6 +209,13 @@ class Coletor:
         reg.slug = slug
         reg.campos = {caminho: c.status for caminho, c in final.campos_com_evidencia()}
         verificados = [p for p in (final.prazos.isencao, final.prazos.inscricao) if p.status == "verificado"]
+        hoje = self.agora().date()
+        insc = final.prazos.inscricao
+        ja_encerrado = insc.status == "verificado" and insc.fim is not None and insc.fim < hoje
+        if ja_encerrado and not existente:
+            # Concurso novo com inscrições já encerradas não entra: o site é sobre prazos abertos.
+            reg.situacao = "encerrado"
+            return reg
         if verificados or existente:
             self.store.salvar_concurso(final)
             for doc in final.documentos:

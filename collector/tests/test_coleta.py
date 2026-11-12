@@ -127,3 +127,12 @@ def test_slug_estavel_entre_coletas(dados, extrair_falso):
     r2 = coleta.Coletor(cliente, JsonStore(dados), al, agora=lambda: AGORA).processar(_cf())
     assert r1.slug == r2.slug == "tj-pb-2026"
     assert len(list((dados / "concursos").glob("*.json"))) == 1
+
+
+def test_concurso_novo_ja_encerrado_nao_entra(dados, extrair_falso):
+    depois = datetime(2026, 12, 1, 9, 0, tzinfo=BRT)
+    cliente = ClienteFalso({EDITAL: b"%PDF-edital"})
+    reg = coleta.Coletor(cliente, JsonStore(dados), Allowlist.carregar(dados / "fontes.yaml"),
+                         agora=lambda: depois).processar(_cf())
+    assert reg.situacao == "encerrado"
+    assert not (dados / "concursos").exists()

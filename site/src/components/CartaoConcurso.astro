@@ -1,6 +1,6 @@
 ---
 import type { Concurso } from "../lib/dados";
-import { isencaoAberta, inscricaoAberta, titulo } from "../lib/dados";
+import { NOME_CATEGORIA, isencaoAberta, inscricaoAberta, local, titulo } from "../lib/dados";
 import { diasEntre, formatarData, hojeBRT } from "../lib/tempo";
 
 interface Props {
@@ -15,7 +15,10 @@ const restam = isen?.fim ? diasEntre(hoje, isen.fim) : null;
 ---
 <li class="cartao">
   <h3><a href={`/concursos/${c.slug}/`}>{titulo(c)}</a></h3>
-  <p class="meta">{c.banca.toUpperCase()} · {c.uf}</p>
+  <p class="meta">
+    {NOME_CATEGORIA[c.categoria]} · {c.esfera === "federal" ? "Federal" : "Estadual"} · {local(c)} · banca {c.banca.toUpperCase()}
+    {c.porte === "grande" && <> · <span class="selo selo-porte">grande porte</span></>}
+  </p>
   {isen?.fim && (
     <p>
       <span class={`selo ${restam !== null && restam <= 2 ? "selo-urgente" : "selo-isencao"}`}>

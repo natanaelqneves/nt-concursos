@@ -2,10 +2,11 @@
 import Base from "../layouts/Base.astro";
 import AdSlot from "../components/AdSlot.astro";
 import CartaoConcurso from "../components/CartaoConcurso.astro";
-import { comIsencaoAberta, inscricoesAbertasSemIsencao } from "../lib/dados";
+import { comIsencaoAberta, emDestaque, inscricoesAbertasSemIsencao } from "../lib/dados";
 
 const isencoes = comIsencaoAberta();
 const abertas = inscricoesAbertasSemIsencao();
+const destaques = emDestaque();
 ---
 <Base
   titulo="Concursos abertos e prazos de isenção da taxa | NT Concursos"
@@ -16,6 +17,13 @@ const abertas = inscricoesAbertasSemIsencao();
     Primeiro, os concursos com pedido de <strong>isenção da taxa</strong> aberto, do prazo mais curto
     para o mais longo. Toda data mostrada tem link para o trecho do edital oficial.
   </p>
+
+  {destaques.length > 0 && (
+    <section aria-labelledby="destaque">
+      <h2 id="destaque">Em destaque: maiores concursos com inscrição aberta</h2>
+      <ul class="lista">{destaques.map((c) => <CartaoConcurso c={c} />)}</ul>
+    </section>
+  )}
 
   <AdSlot formato="topo" slot={import.meta.env.PUBLIC_ADSENSE_SLOT_TOPO} />
 

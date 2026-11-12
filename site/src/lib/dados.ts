@@ -27,7 +27,21 @@ export interface Documento {
   sha256: string;
   coletado_em: string;
   fonte: string;
+  publicado_em?: string | null;
+  titulo?: string | null;
 }
+
+export type Categoria = "tribunal" | "controle" | "mp" | "defensoria" | "seguranca";
+export type Esfera = "federal" | "estadual";
+export type Porte = "grande" | "medio" | "pequeno" | "indefinido";
+
+export const NOME_CATEGORIA: Record<Categoria, string> = {
+  tribunal: "Tribunais",
+  controle: "Controle e contas",
+  mp: "Ministério Público",
+  defensoria: "Defensoria Pública",
+  seguranca: "Segurança pública",
+};
 
 export interface Evidencia {
   id: string;
@@ -42,12 +56,16 @@ export interface Evidencia {
 }
 
 export interface Concurso {
-  schema_version: 1;
+  schema_version: 2;
   slug: string;
   orgao: string;
+  categoria: Categoria;
+  esfera: Esfera;
   banca: string;
   uf: string;
   cargos: { nome: string; vagas?: Campo | null; remuneracao?: Campo | null }[];
+  vagas_imediatas?: Campo | null;
+  porte: Porte;
   taxa?: Campo | null;
   prazos: { isencao: Prazo; inscricao: Prazo };
   isencao_publicos: string[];
@@ -98,6 +116,19 @@ export function inscricoesAbertasSemIsencao(hoje = hojeBRT()): Concurso[] {
   return todos()
     .filter((c) => inscricaoAberta(c, hoje) && !isencaoAberta(c, hoje))
     .sort(porFim((c) => c.prazos.inscricao.fim));
+}
+
+/** Maiores concursos com inscrição aberta: porte (vagas imediatas), depois esfera federal. */
+export function emDestaque(limite = 4, hoje = hojeBRT()): Concurso[] {
+  const vagas = (c: Concurso) => (verificado(c.vagas_imediatas) ? Number(c.vagas_imediatas!.valor) : 0);
+  return todos()
+    .filter((c) => inscricaoAberta(c, hoje) && c.porte === "grande")
+    .sort((a, b) => vagas(b) - vagas(a) || Number(b.esfera === "federal") - Number(a.esfera === "federal"))
+    .slice(0, limite);
+}
+
+export function local(c: Concurso): string {
+  return c.uf === "BR" ? "Nacional" : c.uf;
 }
 
 export function evidenciaDe(c: Concurso, campo?: Prazo | Campo | null) {

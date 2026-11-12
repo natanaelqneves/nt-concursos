@@ -111,6 +111,13 @@ def encontrar(paginas: dict[int, str], tipo: TipoPrazo) -> list[Candidato]:
     return candidatos
 
 
+_DEFINE_PRAZO = re.compile(
+    r"estar[ãa]o\s+abertas|ser[ãa]o\s+(?:realizadas|recebidas|efetuadas)|poder[áa]\s+ser\s+(?:solicitad|requerid|feit)|"
+    r"dever[áa]\s+ser\s+(?:solicitad|requerid|feit)|per[íi]odo\s+(?:de|das|entre)\s+(?:\d|inscri|solicita)",
+    re.IGNORECASE,
+)
+
+
 def intervalos_distintos(candidatos: list[Candidato]) -> set[tuple[date | None, date | None]]:
     """Intervalos diferentes entre si. "até 18/11" é compatível com "20/10 a 18/11"
     (mesmo fim, início omitido) e não conta como cláusula conflitante."""
@@ -125,8 +132,14 @@ def principal(candidatos: list[Candidato]) -> Candidato | None:
     if len(intervalos_distintos(candidatos)) != 1:
         return None
     validos = [c for c in candidatos if not c.ambiguo]
-    completos = [c for c in validos if c.inicio is not None]
-    return (completos or validos)[0]
+
+    def nota(c: Candidato) -> tuple[int, int, int]:
+        # 1) traz início e fim; 2) é a cláusula que define o prazo; 3) a âncora vem no começo
+        posicao = ANCORAS[c.tipo].search(c.trecho).start()
+        return (c.inicio is not None, bool(_DEFINE_PRAZO.search(c.trecho)), posicao < 120)
+
+    melhor = max(nota(c) for c in validos)
+    return next(c for c in validos if nota(c) == melhor)
 
 
 _MUDANCA_PRAZO = re.compile(

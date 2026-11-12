@@ -115,11 +115,14 @@ def cmd_collect(args: argparse.Namespace) -> int:
         fonte = {"fgv": FGV, "cebraspe": Cebraspe}[args.fonte](so)
         coletor = Coletor(cliente, store, allowlist)
         try:
+            import time
+
             for cf in fonte.descobrir(cliente):
+                t0 = time.monotonic()
                 reg = coletor.processar(cf)
                 registros.append(reg)
-                if reg.situacao not in ("fora_do_escopo",):
-                    print(f"{reg.situacao:14} {cf.fonte}:{cf.id} {reg.slug or ''} {reg.campos or ''} {reg.detalhe[:200]}")
+                print(f"{time.monotonic() - t0:6.1f}s {reg.situacao:14} {cf.fonte}:{cf.id} {reg.slug or ''} "
+                      f"{reg.campos or ''} {reg.detalhe[:200]}", flush=True)
         except ErroColeta as e:
             erro_fonte, codigo = f"{type(e).__name__}: {e}", 1
 
