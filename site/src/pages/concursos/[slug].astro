@@ -15,6 +15,8 @@ import {
   verificado,
 } from "../../lib/dados";
 import { formatarData, formatarDataHora } from "../../lib/tempo";
+import { SOBRE_CATEGORIA } from "../../lib/categorias";
+import { orgaoRevisado } from "../../lib/dados";
 
 export function getStaticPaths() {
   return todos().map((c) => ({ params: { slug: c.slug }, props: { c } }));
@@ -42,6 +44,27 @@ const situacao = encerrado(c)
 const evTaxa = c.taxa && verificado(c.taxa) ? evidenciaDe(c, c.taxa) : null;
 const evVagas = c.vagas_imediatas && verificado(c.vagas_imediatas) ? evidenciaDe(c, c.vagas_imediatas) : null;
 const nome = titulo(c);
+const sobreCategoria = SOBRE_CATEGORIA[c.categoria];
+const sobreOrgao = orgaoRevisado(c.orgao);
+
+// Resumo do concurso montado só com campos verificados.
+const partesResumo: string[] = [];
+partesResumo.push(`Concurso ${c.esfera === "federal" ? "federal" : "estadual"} ${/^(Polícia|Defensoria|Controladoria|Câmara|Assembleia)/.test(c.orgao) ? "da" : "do"} ${c.orgao}, organizado pela banca ${c.banca.toUpperCase()}.`);
+if (verificado(c.prazos.inscricao) && c.prazos.inscricao.fim) {
+  partesResumo.push(c.prazos.inscricao.inicio
+    ? `As inscrições vão de ${formatarData(c.prazos.inscricao.inicio)} a ${formatarData(c.prazos.inscricao.fim)}.`
+    : `As inscrições vão até ${formatarData(c.prazos.inscricao.fim)}.`);
+}
+if (verificado(c.prazos.isencao) && c.prazos.isencao.fim) {
+  partesResumo.push(isencaoAberta(c)
+    ? `O pedido de isenção da taxa está aberto até ${formatarData(c.prazos.isencao.fim)}.`
+    : `O prazo para pedir isenção da taxa terminou em ${formatarData(c.prazos.isencao.fim)}.`);
+}
+if (verificado(c.vagas_imediatas)) {
+  partesResumo.push(`O edital prevê ${Number(c.vagas_imediatas!.valor).toLocaleString("pt-BR")} vagas imediatas${c.porte === "grande" ? ", o que o coloca entre os concursos de grande porte" : ""}.`);
+}
+if (c.cargos.length === 1) partesResumo.push(`O cargo é ${c.cargos[0].nome}.`);
+else if (c.cargos.length > 1) partesResumo.push(`São ${c.cargos.length} cargos, listados abaixo.`);
 const descricao = verificado(c.prazos.isencao) && c.prazos.isencao.fim
   ? `${nome}: pedido de isenção da taxa até ${formatarData(c.prazos.isencao.fim)}. Datas conferidas no edital oficial.`
   : `${nome}: datas de inscrição e links do edital oficial.`;
@@ -56,6 +79,8 @@ const descricao = verificado(c.prazos.isencao) && c.prazos.isencao.fim
   </p>
   <h1>{nome}</h1>
   {situacao && <p><span class={`selo ${situacao.classe}`}>{situacao.texto}</span></p>}
+
+  <p class="resumo-concurso">{partesResumo.join(" ")}</p>
 
   <h2>Prazos</h2>
   <dl class="dados">
@@ -105,6 +130,7 @@ const descricao = verificado(c.prazos.isencao) && c.prazos.isencao.fim
   {c.cargos.length > 0 && (
     <>
       <h2>Cargos</h2>
+      <p class="meta">Conforme a página do concurso na banca. Vagas e salários de cada cargo só aparecem quando conferidos no edital.</p>
       <ul>
         {c.cargos.map((cargo) => {
           const vagas = verificado(cargo.vagas) ? `${cargo.vagas!.valor} vaga(s)` : null;
@@ -113,6 +139,18 @@ const descricao = verificado(c.prazos.isencao) && c.prazos.isencao.fim
       </ul>
     </>
   )}
+
+  <section aria-labelledby="sobre">
+    <h2 id="sobre">Sobre {c.orgao}</h2>
+    {sobreOrgao && (
+      <p>
+        {sobreOrgao.resumo}
+        {sobreOrgao.site && <> Site oficial: <a href={sobreOrgao.site} rel="nofollow noopener">{new URL(sobreOrgao.site).hostname}</a>.</>}
+      </p>
+    )}
+    <h3>{sobreCategoria.titulo}</h3>
+    {sobreCategoria.paragrafos.map((p) => <p>{p}</p>)}
+  </section>
 
   <h2>Documentos oficiais</h2>
   <ul>

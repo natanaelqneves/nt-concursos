@@ -19,7 +19,7 @@ from bs4 import BeautifulSoup
 
 from ntc.escopo import classificar
 from ntc.fetch.http import Cliente
-from ntc.sources.base import RE_MUDANCA, ConcursoFonte, DocFonte, Fonte, ano_de
+from ntc.sources.base import RE_MUDANCA, ConcursoFonte, DocFonte, Fonte, ano_de, nome_de_cargo
 
 BASE = "https://conhecimento.fgv.br"
 LISTA = f"{BASE}/concursos"
@@ -101,7 +101,14 @@ def parse_concurso(html: str, url: str) -> ConcursoFonte:
     if ano_id is not None and not 2015 <= ano_id <= 2035:
         ano_id = None
     ano = ano_id or ano_de(titulo) or (principal.publicado_em.year if principal and principal.publicado_em else None)
-    return ConcursoFonte("fgv", id_fonte, titulo, url, [id_fonte] + contexto, documentos, ano)
+    # A FGV só põe o cargo no título quando o concurso é de um cargo só ("... - Juiz Substituto").
+    cargos = []
+    if " - " in titulo:
+        qualif = re.sub(r"\(\s*\d{4}(?:\.\d)?\s*\)", "", titulo.rsplit(" - ", 1)[1]).strip()
+        if re.search(r"juiz|promotor|defensor|delegado|procurador|soldado|oficial|agente|escriv|perito|analista|t[ée]cnico|auditor",
+                     qualif, re.IGNORECASE):
+            cargos = [nome_de_cargo(qualif)]
+    return ConcursoFonte("fgv", id_fonte, titulo, url, [id_fonte] + contexto, documentos, ano, cargos=cargos)
 
 
 class FGV(Fonte):

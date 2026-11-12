@@ -41,6 +41,7 @@ class ConcursoFonte:
     documentos: list[DocFonte] = field(default_factory=list)
     ano: int | None = None
     data_dou: date | None = None
+    cargos: list[str] = field(default_factory=list)  # nomes como a banca publica
 
     @property
     def edital(self) -> DocFonte | None:
@@ -66,3 +67,26 @@ def ano_de(*textos: str | None) -> int | None:
         if m:
             return 2000 + int(m.group(1))
     return None
+
+
+_MINUSCULAS = {"de", "da", "do", "das", "dos", "e", "em", "a", "o", "para", "com", "na", "no", "ao", "à"}
+
+
+def nome_de_cargo(bruto: str) -> str:
+    """'CARGO 2: SOLDADO – QUALIFICAÇÃO: QPBM/1' -> 'Soldado – Qualificação: QPBM/1'."""
+    t = re.sub(r"^\s*cargo\s*(?:de\s+)?(?:\d+\s*)?[:–-]?\s*", "", bruto.strip(), flags=re.IGNORECASE)
+    t = re.sub(r"\s*[–-]\s*c[óo]digo\s*:.*$", "", t, flags=re.IGNORECASE)  # código interno da banca
+    t = re.sub(r"\s+", " ", t).strip(" .;")
+    letras = [c for c in t if c.isalpha()]
+    if letras and sum(c.isupper() for c in letras) / len(letras) > 0.8:
+        palavras = []
+        for i, p in enumerate(t.split(" ")):
+            if re.fullmatch(r"\([A-Z]{2,8}\)", p) or (re.fullmatch(r"[A-Z0-9/().-]{2,8}", p) and any(ch.isdigit() for ch in p)) \
+                    or p in {"TI", "QPBM", "QOBM", "QOPM"}:
+                palavras.append(p)
+            elif i > 0 and p.lower() in _MINUSCULAS:
+                palavras.append(p.lower())
+            else:
+                palavras.append(p[:1].upper() + p[1:].lower())
+        t = " ".join(palavras)
+    return t

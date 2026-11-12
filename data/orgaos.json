@@ -1,0 +1,23 @@
+{
+  "_leia": "Resumo de cada órgão para a página do concurso. A chave é o campo `orgao` do concurso. Só aparece no site com \"revisado\": true. Rascunhos escritos por IA: confira no site oficial antes de marcar como revisado.",
+  "Tribunal de Justiça do Estado da Paraíba": {
+    "resumo": "O Tribunal de Justiça da Paraíba (TJPB) é o órgão de cúpula do Poder Judiciário estadual da Paraíba, com sede em João Pessoa. Julga em segunda instância os recursos das varas e comarcas do estado e administra a Justiça comum estadual.",
+    "site": "https://www.tjpb.jus.br/",
+    "revisado": false
+  },
+  "Tribunal de Justiça do Estado de Santa Catarina": {
+    "resumo": "O Tribunal de Justiça de Santa Catarina (TJSC) é o órgão de cúpula do Poder Judiciário estadual catarinense, com sede em Florianópolis. Julga em segunda instância e administra as comarcas do estado.",
+    "site": "https://www.tjsc.jus.br/",
+    "revisado": false
+  },
+  "Tribunal de Justiça do Estado do Amapá": {
+    "resumo": "O Tribunal de Justiça do Amapá (TJAP) é o órgão de cúpula do Poder Judiciário estadual do Amapá, com sede em Macapá. Julga em segunda instância e administra as comarcas do estado.",
+    "site": "https://www.tjap.jus.br/",
+    "revisado": false
+  },
+  "Polícia Civil do Estado de Pernambuco": {
+    "resumo": "A Polícia Civil de Pernambuco (PCPE) exerce a polícia judiciária no estado: investiga infrações penais e conduz os inquéritos policiais. Integra o sistema de defesa social do governo estadual.",
+    "site": "https://www.policiacivil.pe.gov.br/",
+    "revisado": false
+  }
+}
