@@ -1,0 +1,19 @@
+HTTP/2 200 
+server: Apache
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+referrer-policy: strict-origin-when-cross-origin
+strict-transport-security: max-age=31536000; includeSubDomains; preload
+last-modified: Wed, 11 Nov 2026 20:40:16 GMT
+accept-ranges: bytes
+content-length: 858137
+content-type: application/pdf
+cache-control: public, max-age=86400
+expires: Fri, 13 Nov 2026 15:56:01 GMT
+date: Thu, 12 Nov 2026 15:56:01 GMT
+server-timing: cdn-cache; desc=MISS
+server-timing: edge; dur=354
+server-timing: origin; dur=1466
+set-cookie: BT-DT-TRK=ed1c1b4c1e434e688b317af3f2e7b877; path=/; domain=.conhecimento.fgv.br; Secure
+server-timing: ak_p; desc="1794498959513_386075722_2058866833_183019_14361_6_8_15";dur=1
+
