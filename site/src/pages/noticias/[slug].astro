@@ -15,7 +15,7 @@ const expirada = n.expira_em < hojeBRT();
 const sobre = SOBRE_CATEGORIA[n.categoria];
 ---
 <Base
-  titulo={`${n.titulo} | NT Concursos`}
+  titulo={n.titulo}
   descricao={n.resumo.slice(0, 155)}
   noindex={expirada}
 >
