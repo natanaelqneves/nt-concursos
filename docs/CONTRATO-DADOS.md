@@ -43,6 +43,23 @@ Classificação de escopo: `collector/src/ntc/escopo.py` (regras explícitas, co
 Classificação de escopo: `collector/src/ntc/escopo.py` (regras explícitas, com testes em
 `tests/test_escopo.py`). Concurso fora do escopo não gera arquivo, só uma linha no log da execução.
 
+## Evidência de tabela (12/11/2026, compatível com a versão 2)
+
+Cronogramas em tabela (padrão da Cebraspe) são lidos célula por célula no PDF. A evidência ganha:
+
+```json
+"tabela": {"atividade": "Período de solicitação de inscrição com isenção de taxa de inscrição",
+           "datas": "15/10 a 12/11/2026"},
+"trecho": "Período de solicitação de inscrição com isenção de taxa de inscrição — 15/10 a 12/11/2026",
+"metodo": "tabela:v1"
+```
+
+- `trecho` é sempre `atividade — datas` (o schema confere).
+- G3: cada célula precisa aparecer, literalmente (normalizando espaços), no texto da página.
+- G4: a âncora e as exclusões valem para a célula `atividade`; as datas declaradas saem só da célula `datas`.
+- O pareamento linha a linha (qual data é de qual atividade) é feito na coleta, pela geometria da
+  tabela no PDF identificado pelo `sha256`; texto corrido de cronograma continua não sustentando prazo.
+
 ## Regras do concurso
 
 - Todo campo factual (`prazos.*`, `taxa`, `cargos.N.vagas`, `cargos.N.remuneracao`) tem `status`

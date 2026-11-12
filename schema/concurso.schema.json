@@ -267,6 +267,17 @@
           ],
           "default": null,
           "title": "Aprovado Em"
+        },
+        "tabela": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/LinhaTabela"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
         }
       },
       "required": [
@@ -279,6 +290,30 @@
         "metodo"
       ],
       "title": "Evidencia",
+      "type": "object"
+    },
+    "LinhaTabela": {
+      "additionalProperties": false,
+      "description": "Linha de uma tabela do documento (ex.: cronograma), lida célula por célula no PDF.\nCada célula precisa aparecer, literalmente, no texto da página (G3).",
+      "properties": {
+        "atividade": {
+          "maxLength": 300,
+          "minLength": 5,
+          "title": "Atividade",
+          "type": "string"
+        },
+        "datas": {
+          "maxLength": 200,
+          "minLength": 4,
+          "title": "Datas",
+          "type": "string"
+        }
+      },
+      "required": [
+        "atividade",
+        "datas"
+      ],
+      "title": "LinhaTabela",
       "type": "object"
     },
     "Prazo": {
