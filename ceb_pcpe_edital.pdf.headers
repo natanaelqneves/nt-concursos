@@ -1,0 +1,14 @@
+HTTP/2 200 
+date: Thu, 12 Nov 2026 17:07:43 GMT
+content-type: application/pdf
+content-length: 1048977
+last-modified: Thu, 12 Nov 2026 14:13:40 GMT
+etag: "60aa714b072dd1:0"
+server: Microsoft-IIS/10.0
+x-powered-by: ASP.NET
+x-azion-request-id: 46109f217e583682aa843b5f46caa7cb
+x-azion-edge-location: SJC
+expires: Thu, 12 Nov 2026 17:12:43 GMT
+cache-control: max-age=300
+accept-ranges: bytes
+
