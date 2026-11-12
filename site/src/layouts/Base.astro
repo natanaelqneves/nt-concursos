@@ -9,10 +9,12 @@ interface Props {
   titulo: string;
   descricao?: string;
   noindex?: boolean;
+  semAnuncios?: boolean; // páginas internas (admin): sem AdSense nem aviso de cookies
   breadcrumbs?: { nome: string; url: string }[];
 }
 
-const { titulo, descricao = SITE.descricao, noindex = false, breadcrumbs = [] } = Astro.props;
+const { titulo, descricao = SITE.descricao, noindex = false, semAnuncios = false, breadcrumbs = [] } = Astro.props;
+const anuncios = Boolean(ADSENSE_CLIENT) && !semAnuncios;
 const canonical = new URL(Astro.url.pathname, SITE.url).href;
 const tituloCompleto = Astro.url.pathname === "/" ? titulo : `${titulo} | ${SITE.nome}`;
 
@@ -56,7 +58,7 @@ const MENU = [
     <meta property="og:url" content={canonical} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     {jsonLd.map((obj) => <script type="application/ld+json" set:html={JSON.stringify(obj)} />)}
-    {ADSENSE_CLIENT && (
+    {anuncios && (
       <>
         <script is:inline>
           window.dataLayer = window.dataLayer || [];
@@ -112,6 +114,6 @@ const MENU = [
         </p>
       </div>
     </footer>
-    {ADSENSE_CLIENT && <Consentimento />}
+    {anuncios && <Consentimento />}
   </body>
 </html>

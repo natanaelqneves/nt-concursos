@@ -23,6 +23,7 @@ from ntc.escopo import Classificacao, classificar, sem_acento
 from ntc.fetch.allowlist import Allowlist
 from ntc.fetch.http import BRT, Cliente, ErroColeta
 from ntc.gate.evidencia import Gate, TextoDocumento
+from ntc.model.decisao import APROVADO_POR, Decisao
 from ntc.model.schema import (
     Campo,
     Cargo,
@@ -42,6 +43,7 @@ from ntc.store.json_store import JsonStore
 
 METODO = "regex:v1"
 MAX_MUDANCAS = 15
+MAX_OPCOES = 8
 _ONDE_SE_LE = re.compile(r"onde\s+se\s+l[êe]", re.IGNORECASE)
 
 
@@ -50,7 +52,7 @@ class Registro:
     fonte: str
     id: str
     titulo: str
-    situacao: str  # fora_do_escopo | sem_edital | erro | publicado | so_revisao | encerrado | descoberto
+    situacao: str  # fora_do_escopo | sem_edital | erro | publicado | so_revisao | encerrado | descartado | descoberto
     detalhe: str = ""
     slug: str | None = None
     campos: dict[str, str] = field(default_factory=dict)
@@ -82,6 +84,35 @@ def _escolher(texto: list, tab: list):
     if texto:
         return None, f"{len(ints_texto)} cláusulas diferentes" if ints_texto else "só há cláusulas de cronograma em texto corrido"
     return None, None
+
+
+def _opcoes(texto: list, tab: list) -> list:
+    """Leituras do edital que o editor pode escolher: cláusulas de texto corrido com uma ou duas
+    datas (sem as de tabela lida como texto) e linhas de cronograma lidas célula por célula."""
+    vistos, saida = set(), []
+    for c in [*tab, *(c for c in texto if not c.de_tabela and not c.ambiguo and c.fim)]:
+        chave = (c.pagina, c.trecho)
+        if chave not in vistos:
+            vistos.add(chave)
+            saida.append(c)
+    return saida[:MAX_OPCOES]
+
+
+def _opcao_json(i: int, c) -> dict:
+    d = {"id": f"o-{i}", "origem": "tabela" if c.tabela else "texto", "pagina": c.pagina, "trecho": c.trecho,
+         "ancora": c.ancora, "inicio": c.inicio.isoformat() if c.inicio else None, "fim": c.fim.isoformat()}
+    if c.tabela:
+        d["tabela"] = {"atividade": c.tabela[0], "datas": c.tabela[1]}
+    return d
+
+
+def _motivo_decisao_invalida(dec: Decisao, sha_edital: str, cf: ConcursoFonte) -> str | None:
+    if dec.edital_sha256 != sha_edital:
+        return "o edital mudou depois da decisão do editor"
+    dia = dec.decidido_em.date()
+    if any(d.tipo == "retificacao" and d.publicado_em and d.publicado_em > dia for d in cf.documentos):
+        return "saiu retificação depois da decisão do editor"
+    return None
 
 
 def slugificar(texto: str) -> str:
@@ -155,6 +186,17 @@ class Coletor:
 
     def _processar(self, cf: ConcursoFonte, cls: Classificacao, reg: Registro) -> Registro:
         self._fonte_atual = cf.fonte
+        existente = self._existentes.get(cf.url)
+        slug = existente[1].slug if existente else self._novo_slug(cf, cls)
+        try:
+            decisao = self.store.decisao(slug)
+        except ValueError as e:  # arquivo de decisão malformado: ignora e mantém a pendência
+            decisao = None
+            reg.violacoes.append(f"decisão do editor ilegível, ignorada: {type(e).__name__}")
+        if decisao is not None and decisao.acao == "descartar":
+            reg.situacao, reg.slug = "descartado", slug
+            self.store.remover_revisao(slug)
+            return reg
         edital_fonte = cf.edital
         doc_edital, txt_edital, pdf_edital = self._baixar(edital_fonte, "doc-1")
         if txt_edital is None:
@@ -163,6 +205,11 @@ class Coletor:
 
         evidencias: list[Evidencia] = []
         prazos = Prazos()
+        opcoes: dict[str, list[dict]] = {}
+        invalida = _motivo_decisao_invalida(decisao, doc_edital.sha256, cf) if decisao else None
+        if invalida:
+            reg.violacoes.append(f"decisão anterior não vale mais: {invalida}")
+        decididos = {} if decisao is None or invalida else decisao.campos
         try:
             linhas_tabela = tabela.linhas(pdf_edital, txt_edital.paginas)
         except Exception as e:  # tabela ilegível não derruba o concurso: só não há candidato de tabela
@@ -171,12 +218,28 @@ class Coletor:
         for tipo, campo in clausulas.CAMPO_POR_TIPO.items():
             cands = clausulas.encontrar(txt_edital.paginas, tipo)
             tab = [c for c in tabela.candidatos(linhas_tabela, txt_edital.paginas, tipo) if not c.ambiguo]
-            escolhido, motivo = _escolher(cands, tab)
+            lista = _opcoes(cands, tab)
+            opcoes[campo] = [_opcao_json(i, c) for i, c in enumerate(lista, start=1)]
+            aprovado = False
+            d = decididos.get(campo)
+            if d is not None and d.acao == "ausente":
+                continue  # o editor decidiu que o campo fica sem data
+            if d is not None:
+                achado = next((c for c in lista if c.pagina == d.opcao.pagina and c.trecho == d.opcao.trecho), None)
+                if achado is None:
+                    reg.violacoes.append(f"{campo}: a opção escolhida pelo editor não aparece mais no edital")
+                    escolhido, motivo = _escolher(cands, tab)
+                else:
+                    escolhido, motivo, aprovado = achado, None, True
+            else:
+                escolhido, motivo = _escolher(cands, tab)
             if escolhido is not None:
                 linha = LinhaTabela(atividade=escolhido.tabela[0], datas=escolhido.tabela[1]) if escolhido.tabela else None
                 ev = Evidencia(id=f"ev-{len(evidencias) + 1}", campo=campo, documento="doc-1",
                                pagina=escolhido.pagina, trecho=escolhido.trecho, ancora=escolhido.ancora,
-                               metodo="tabela:v1" if linha else METODO, tabela=linha)
+                               metodo="tabela:v1" if linha else METODO, tabela=linha,
+                               aprovado_por=APROVADO_POR if aprovado else None,
+                               aprovado_em=decisao.decidido_em if aprovado else None)
                 evidencias.append(ev)
                 setattr(prazos, tipo, Prazo(inicio=escolhido.inicio, fim=escolhido.fim, status="verificado",
                                             evidencia=ev.id))
@@ -195,13 +258,19 @@ class Coletor:
         elif achados:
             vagas_campo = Campo(status="revisao")
 
-        existente = self._existentes.get(cf.url)
         hoje = self.agora().date()
         abertos = [p for p in (prazos.isencao, prazos.inscricao) if p.status == "verificado" and p.fim and p.fim >= hoje]
         verif = [p for p in (prazos.isencao, prazos.inscricao) if p.status == "verificado"]
-        if not existente and verif and not abertos:
+        em_revisao_aberta = any(
+            o["fim"] >= hoje.isoformat()
+            for tipo, campo in clausulas.CAMPO_POR_TIPO.items()
+            if getattr(prazos, tipo).status == "revisao"
+            for o in opcoes.get(campo, [])
+        )
+        if not existente and verif and not abertos and not em_revisao_aberta:
             # Concurso novo sem nenhum prazo verificado ainda aberto: o site é sobre prazos abertos.
             reg.situacao = "encerrado"
+            self.store.remover_revisao(slug)
             return reg
         if not existente and all(p.status != "verificado" for p in (prazos.isencao, prazos.inscricao)):
             mudancas_necessarias = False  # nada a proteger: o G7 não tem o que rebaixar
@@ -228,7 +297,6 @@ class Coletor:
             elif doc.sha256 != "0" * 64:
                 textos[doc.sha256] = TextoDocumento(doc.sha256, {}, completo=True, tem_texto=False)
 
-        slug = existente[1].slug if existente else self._novo_slug(cf, cls)
         concurso = Concurso(
             slug=slug, orgao=cls.orgao, categoria=cls.categoria, esfera=cls.esfera, banca=cf.fonte, uf=cls.uf,
             cargos=[Cargo(nome=n) for n in cf.cargos if len(n) >= 2],
@@ -264,11 +332,26 @@ class Coletor:
         else:
             reg.situacao = "so_revisao"
         pendentes = {k: s for k, s in reg.campos.items() if s == "revisao"}
-        if pendentes or reg.violacoes:
+        # Concurso fora do site cujas opções já venceram todas: não há o que decidir.
+        alguma_aberta = any(
+            o["fim"] >= hoje.isoformat() for k in pendentes for o in opcoes.get(k, [])
+        )
+        if (pendentes or reg.violacoes) and (existente or alguma_aberta):
             self.store.salvar_revisao(slug, {
-                "slug": slug, "orgao": final.orgao, "fonte": cf.fonte, "url": cf.url,
-                "edital": str(doc_edital.url_final), "campos_em_revisao": sorted(pendentes),
-                "motivos": reg.violacoes, "registrado_em": self.agora().isoformat(),
+                "schema_version": 2, "slug": slug, "orgao": final.orgao, "situacao": reg.situacao,
+                "categoria": final.categoria, "esfera": final.esfera, "uf": final.uf,
+                "cargos": [c.nome for c in final.cargos][:30],
+                "fonte": cf.fonte, "url": cf.url,
+                "edital": str(doc_edital.url_final), "edital_sha256": doc_edital.sha256,
+                "campos_em_revisao": sorted(pendentes),
+                "motivos": reg.violacoes,
+                "opcoes": {k: v for k, v in opcoes.items() if k in pendentes},
+                "mudancas": [
+                    {"titulo": d.titulo[:300], "url": str(d.url),
+                     "publicado_em": d.publicado_em.isoformat() if d.publicado_em else None}
+                    for d in cf.documentos if d.tipo == "retificacao"
+                ][-MAX_MUDANCAS:],
+                "registrado_em": self.agora().isoformat(),
             })
         else:
             self.store.remover_revisao(slug)

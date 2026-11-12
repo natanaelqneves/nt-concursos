@@ -56,6 +56,18 @@ O GitHub manda e-mail quando um workflow falha. Se chegar:
 - **Preflight falhou:** falta configuração (passo 1 ou 3).
 - **Deploy falhou:** confira o token da Cloudflare. O site continua no ar com a edição anterior.
 
+## Resolver pendências (página /admin/)
+
+1. Abra https://ntconcursos.com.br/admin/ (fora do menu e do Google; não exige senha porque só
+   mostra dados públicos dos editais e não grava nada sozinha).
+2. Em cada concurso, abra o PDF na página indicada e marque a leitura certa de cada prazo, ou
+   "Nenhuma está certa" para deixar o campo sem data. Concursos fora do site podem ser descartados.
+3. "Gerar decisão" abre o GitHub com o arquivo `data/decisoes/<slug>/<data>.json` pronto: confira e
+   clique em **Commit changes** (direto na `main`).
+4. A coleta seguinte aplica a decisão e publica o campo como "revisado manualmente". Para não
+   esperar, rode **Actions → Coletar bancas → Run workflow** e depois **Publicar**.
+5. Se o edital mudar ou sair retificação depois da decisão, a pendência volta para a página.
+
 ## Plano B: banca bloqueando o GitHub Actions
 
 Rode a coleta daquela fonte no seu PC (`ntc collect --fonte X`, a partir do M1) e faça push.

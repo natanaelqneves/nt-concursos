@@ -80,8 +80,27 @@ def cmd_validate(args: argparse.Namespace) -> int:
             print(f"ERRO {caminho.name}: {v.regra} {v.campo}: {v.mensagem}", file=sys.stderr)
     erros_noticias, n_noticias = _validar_noticias(data, {c.orgao for c in _concursos_validos(arquivos)})
     erros += erros_noticias
-    print(f"{len(arquivos)} concurso(s) verificados, {n_noticias} notícia(s), {erros} erro(s)")
+    n_decisoes = _avisar_decisoes(data)
+    print(f"{len(arquivos)} concurso(s) verificados, {n_noticias} notícia(s), {n_decisoes} decisão(ões), {erros} erro(s)")
     return 1 if erros else 0
+
+
+def _avisar_decisoes(data: Path) -> int:
+    """data/decisoes: arquivo inválido gera só aviso (não bloqueia a publicação); a coleta o ignora
+    e a pendência continua na página /admin/."""
+    from ntc.model.decisao import Decisao
+
+    pasta = data / "decisoes"
+    arquivos = sorted(pasta.glob("*/*.json")) if pasta.exists() else []
+    for caminho in arquivos:
+        try:
+            d = Decisao.model_validate_json(caminho.read_text(encoding="utf-8"))
+        except ValidationError as e:
+            print(f"AVISO decisoes/{caminho.parent.name}/{caminho.name}: inválida, ignorada\n{e}", file=sys.stderr)
+            continue
+        if d.slug != caminho.parent.name:
+            print(f"AVISO decisoes/{caminho.parent.name}/{caminho.name}: slug difere da pasta", file=sys.stderr)
+    return len(arquivos)
 
 
 def _concursos_validos(arquivos: list[Path]) -> list[Concurso]:
