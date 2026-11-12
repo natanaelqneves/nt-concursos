@@ -11,7 +11,8 @@ A fonte da verdade é o modelo Pydantic em `collector/src/ntc/model/schema.py`. 
 | `data/fontes.yaml` | allowlist: sufixos oficiais e domínios por banca |
 | `data/concursos/<slug>.json` | um concurso (o nome do arquivo deve ser igual ao `slug`) |
 | `data/documentos/<sha256>.json` | texto das páginas citadas por evidências, para auditoria e revalidação |
-| `data/revisao/<slug>.json` | campos em revisão e motivos (regra do gate, cláusulas conflitantes) |
+| `data/revisao/<slug>.json` | campos em revisão, motivos e as opções lidas no edital para cada campo |
+| `data/decisoes/<slug>/<AAAAMMDD-HHMMSS>.json` | decisão do editor sobre uma pendência (escolher opção, deixar sem data, descartar) |
 | `data/execucoes/<AAAA-MM-DD>.json` | log das coletas do dia, uma chave por fonte, com a situação de cada concurso visto |
 | `data/descobertas/<AAAA-MM-DD>.json` | editais de abertura do escopo achados no DOU (INLABS) naquele dia |
 
@@ -70,6 +71,41 @@ Cronogramas em tabela (padrão da Cebraspe) são lidos célula por célula no PD
 - G4: a âncora e as exclusões valem para a célula `atividade`; as datas declaradas saem só da célula `datas`.
 - O pareamento linha a linha (qual data é de qual atividade) é feito na coleta, pela geometria da
   tabela no PDF identificado pelo `sha256`; texto corrido de cronograma continua não sustentando prazo.
+
+## Revisão e decisões do editor (12/11/2026, compatível com a versão 2)
+
+`data/revisao/<slug>.json` (versão 2) passa a trazer, além de `campos_em_revisao` e `motivos`:
+
+| Campo | Regra |
+|---|---|
+| `schema_version` | `2` |
+| `situacao` | `publicado` (já está no site, com o campo rebaixado) ou `so_revisao` (ainda não está no site) |
+| `categoria`, `esfera`, `uf`, `cargos` | como no concurso, para o editor saber do que se trata |
+| `opcoes` | por campo (`prazos.isencao`, `prazos.inscricao`), as leituras do edital: `id` (`o-N`), `origem` (`texto` ou `tabela`), `pagina`, `trecho`, `ancora`, `inicio`, `fim` e, na tabela, `tabela` (`atividade`, `datas`). No máximo 8 por campo |
+| `mudancas` | documentos de mudança listados pela banca: `titulo`, `url`, `publicado_em` |
+
+A coleta **não grava** revisão de concurso que não está no site e cujas opções já terminaram todas
+(prazo vencido): não há o que decidir.
+
+Decisão do editor: um arquivo novo por decisão em `data/decisoes/<slug>/`, o mais recente vale:
+
+```json
+{"schema_version": 1, "slug": "pm-al-2026", "decidido_em": "2026-11-12T19:10:00-03:00",
+ "edital_sha256": "…", "acao": "decidir",
+ "campos": {"prazos.inscricao": {"acao": "usar", "opcao": {"origem": "tabela", "pagina": 41,
+            "trecho": "…", "inicio": "2026-11-03", "fim": "2026-12-02"}},
+            "prazos.isencao": {"acao": "ausente"}}}
+```
+
+- `acao` do arquivo: `decidir` (vale `campos`) ou `descartar` (o concurso deixa de ser coletado).
+- `acao` do campo: `usar` (a opção vira evidência com `aprovado_por: "editor"` e `aprovado_em` =
+  `decidido_em`) ou `ausente` (o campo fica sem data e sai da revisão).
+- A decisão só vale enquanto o edital for o mesmo (`edital_sha256`), a opção ainda aparecer igual
+  (mesma página e trecho) na leitura do edital e nenhuma retificação tiver sido publicada depois de
+  `decidido_em`. Se qualquer uma falhar, o campo volta para a revisão com o motivo.
+- A aprovação continua sujeita a G1–G3: uma decisão não publica nada que não esteja literalmente no edital.
+- A página `/admin/` do site (fora do sitemap, `noindex`) lista as revisões e gera o arquivo de decisão
+  como um "novo arquivo" no GitHub; o editor confirma o commit lá. Nenhuma chave fica no site.
 
 ## Regras do concurso
 
