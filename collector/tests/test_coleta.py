@@ -226,3 +226,14 @@ def test_decisao_ausente_e_descartar(dados, extrair_falso, paginas_tjpb):
     _decidir(dados, {"schema_version": 1, "slug": "tj-pb-2026", "decidido_em": "2026-11-12T19:30:00-03:00",
                      "acao": "descartar"}, nome="20261112-193000")
     assert _coletar(dados).situacao == "descartado"
+
+
+def test_opcao_com_ano_impossivel_fica_de_fora():
+    from datetime import date
+
+    from ntc.parse.clausulas import Candidato
+    ruim = Candidato("inscricao", 4, "As inscrições terminam em 04/02/8000 conforme o subitem.", "inscri",
+                     (date(8000, 2, 4),))
+    boa = Candidato("inscricao", 12, "As inscrições estarão abertas de 22/12/2025 a 22/01/2026.", "inscri",
+                    (date(2025, 12, 22), date(2026, 1, 22)))
+    assert [c.pagina for c in coleta._opcoes([ruim, boa], [])] == [12]
