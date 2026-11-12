@@ -1,0 +1,145 @@
+---
+// Guia geral sobre isenção da taxa de inscrição. Texto próprio; cada regra aponta para a norma
+// oficial (seção "Onde ler as leis"). Revisado em 12/11/2026: ao mudar uma lei, atualize a data.
+import Base from "../layouts/Base.astro";
+import AdSlot from "../components/AdSlot.astro";
+
+const REVISADO = "12/11/2026";
+
+const leis = [
+  { nome: "Lei nº 13.656/2018 (isenção em concursos da União)", url: "https://www2.camara.leg.br/legin/fed/lei/2018/lei-13656-30-abril-2018-786628-publicacaooriginal-155452-pl.html" },
+  { nome: "Decreto nº 6.593/2008 (isenção no Poder Executivo federal)", url: "https://www2.camara.leg.br/legin/fed/decret/2008/decreto-6593-2-outubro-2008-581467-publicacaooriginal-104271-pe.html" },
+  { nome: "Lei nº 14.965/2024 (normas gerais dos concursos)", url: "https://legis.senado.leg.br/norma/39581018/publicacao/39582256" },
+  { nome: "SP – Lei nº 12.147/2005 (doador de sangue)", url: "https://www.al.sp.gov.br/repositorio/legislacao/lei/2005/lei-12147-12.12.2005.html" },
+];
+---
+<Base
+  titulo="Como pedir isenção da taxa de inscrição em concurso público"
+  descricao="Quem pode pedir isenção da taxa de concurso (CadÚnico, doador de medula, doador de sangue, mesário e outros), como fazer o pedido e quais leis dão o direito."
+  breadcrumbs={[{ nome: "Início", url: "/" }, { nome: "Como pedir isenção", url: "/como-pedir-isencao/" }]}
+>
+  <article class="texto-longo">
+    <h1>Como pedir isenção da taxa de inscrição</h1>
+    <p class="text-secondary small">Guia geral, revisado em {REVISADO}. Não substitui o edital nem orientação jurídica.</p>
+
+    <p>
+      A taxa de inscrição pode passar de R$ 100 em concursos de nível superior, e muita gente deixa de
+      se inscrever por causa dela. Várias leis dispensam o pagamento para alguns grupos de candidatos.
+      O ponto mais importante é este: <strong>quem decide quais isenções valem num concurso é a lei do
+      ente que faz o concurso (União, estado ou DF), e o edital é que diz como pedir</strong>. Por isso,
+      uma isenção que vale num concurso estadual pode não valer num federal, e vice-versa.
+    </p>
+    <p>
+      O pedido quase sempre tem um <strong>prazo próprio, mais curto que o das inscrições</strong>, logo no
+      começo. Os concursos com esse prazo aberto hoje estão em <a href="/isencao-aberta/">Isenção aberta</a>.
+    </p>
+
+    <AdSlot formato="topo" slot={import.meta.env.PUBLIC_ADSENSE_SLOT_TOPO} />
+
+    <h2>Concursos federais</h2>
+    <p>
+      Nos concursos para cargo efetivo ou emprego permanente em órgãos e entidades da União, de qualquer
+      dos Poderes (inclusive tribunais federais, MPU e empresas públicas federais), a
+      <strong>Lei nº 13.656/2018</strong> garante a isenção a dois grupos:
+    </p>
+    <ul>
+      <li>
+        <strong>Família no CadÚnico com renda de até meio salário mínimo por pessoa.</strong> O
+        candidato informa o NIS (Número de Identificação Social) no pedido e a banca confere os dados
+        com o órgão gestor do Cadastro Único. Para os órgãos do Poder Executivo federal, o
+        <strong>Decreto nº 6.593/2008</strong> já exigia que os editais previssem essa isenção e que o
+        candidato fosse avisado do indeferimento antes do fim das inscrições.
+      </li>
+      <li>
+        <strong>Doador de medula óssea</strong> em entidade reconhecida pelo Ministério da Saúde. Atenção:
+        há decisões da Justiça Federal entendendo que estar apenas cadastrado no Redome não basta, e que é
+        preciso comprovar a doação efetiva. Siga o que o edital pede como comprovante.
+      </li>
+    </ul>
+    <p>
+      Quem presta informação falsa para conseguir a isenção pode ter a inscrição cancelada, sair da lista
+      de aprovados ou ter a nomeação anulada, além das sanções penais (art. 2º da mesma lei).
+    </p>
+    <p>
+      A <strong>Lei nº 14.965/2024</strong>, a lei geral dos concursos, obriga o edital a informar as
+      hipóteses e os procedimentos de isenção ou redução da taxa. Ela não cria novas isenções e só passa
+      a valer de forma obrigatória em 2028, embora os órgãos possam aplicá-la antes.
+    </p>
+
+    <h2>Concursos estaduais e do Distrito Federal</h2>
+    <p>
+      Cada estado tem suas próprias leis, e a lista muda bastante de um para outro. As isenções mais
+      comuns são estas:
+    </p>
+    <ul>
+      <li>
+        <strong>CadÚnico ou baixa renda:</strong> a maioria dos estados adota algum critério de renda,
+        quase sempre comprovado pelo NIS.
+      </li>
+      <li>
+        <strong>Doador de sangue:</strong> previsto em vários estados, com regras de regularidade
+        diferentes. São Paulo tem a Lei nº 12.147/2005; o Espírito Santo exige ao menos três doações em
+        12 meses (Lei nº 11.635/2022); Alagoas, doação nos seis meses anteriores (Lei nº 6.873/2007). A
+        prova é uma declaração do hemocentro ou banco de sangue.
+      </li>
+      <li>
+        <strong>Doador de medula óssea e, em alguns estados, de leite materno:</strong> Santa Catarina, por
+        exemplo, trata de sangue e medula na Lei nº 10.567/1997.
+      </li>
+      <li>
+        <strong>Mesário e outros convocados pela Justiça Eleitoral:</strong> o Rio de Janeiro (Lei nº
+        9.412/2021), o Espírito Santo (Lei nº 11.196/2020), o Paraná (Lei nº 19.196/2017), Santa Catarina
+        (Lei nº 17.988), o Rio Grande do Norte (Lei nº 9.643) e o Distrito Federal (Lei nº 5.818/2017)
+        têm isenção para quem trabalhou nas eleições; várias delas exigem pelo menos duas eleições, com
+        cada turno contando como uma. O comprovante é a Declaração de Trabalhos Eleitorais, emitida pelo
+        aplicativo do mesário ou pelo autoatendimento da Justiça Eleitoral.
+      </li>
+      <li>
+        <strong>Outros grupos</strong> aparecem em alguns estados: pessoas com deficiência, desempregados,
+        beneficiários de programas sociais estaduais, entre outros.
+      </li>
+    </ul>
+    <p>
+      Não existe hoje uma lei federal que dê isenção a mesários ou doadores de sangue em todos os
+      concursos do país. Há projetos em tramitação, mas, enquanto não forem aprovados, vale a lei de cada
+      estado. Concursos municipais seguem as leis do município, que não acompanhamos aqui.
+    </p>
+
+    <h2>Passo a passo do pedido</h2>
+    <ol>
+      <li>
+        <strong>Leia a parte do edital sobre isenção.</strong> Ela lista quem tem direito naquele concurso,
+        os documentos e o prazo. Se o seu caso não estiver lá, o pedido tende a ser negado, mesmo que uma lei
+        preveja o benefício; nesse caso, vale consultar a lei e, se for o caso, recorrer.
+      </li>
+      <li>
+        <strong>Prepare o comprovante antes de o prazo abrir.</strong> CadÚnico: tenha o NIS e confirme que o
+        cadastro está atualizado (a banca consulta a base oficial, e um cadastro recente pode ainda não
+        aparecer). Doador: peça a declaração ao hemocentro ou ao Redome. Mesário: emita a declaração de
+        trabalhos eleitorais.
+      </li>
+      <li>
+        <strong>Faça o pedido no site da banca, dentro do prazo de isenção.</strong> Normalmente é feito na
+        própria ficha de inscrição, marcando a opção de isenção e enviando os documentos digitalizados no
+        formato pedido.
+      </li>
+      <li>
+        <strong>Acompanhe o resultado e use o prazo de recurso</strong> se o pedido for negado. O edital traz
+        as datas do resultado preliminar, do recurso e do resultado final.
+      </li>
+      <li>
+        <strong>Se for negado no final, pague a taxa até o último dia de pagamento</strong> para não perder a
+        inscrição. Quem teve a isenção concedida não paga nada e já está inscrito.
+      </li>
+    </ol>
+
+    <h2>Onde ler as leis</h2>
+    <ul>
+      {leis.map((l) => <li><a href={l.url} rel="noopener" target="_blank">{l.nome}</a></li>)}
+    </ul>
+    <p class="small text-secondary">
+      Para as leis estaduais, consulte o site da assembleia legislativa do seu estado. Encontrou algo
+      desatualizado? Fale com a gente pela página de <a href="/contato/">contato</a>.
+    </p>
+  </article>
+</Base>

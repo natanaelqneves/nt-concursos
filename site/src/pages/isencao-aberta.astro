@@ -17,6 +17,7 @@ const isencoes = comIsencaoAberta();
     quem está inscrito no CadÚnico e outros públicos previstos em lei ou no edital; confira os
     requisitos na página de cada concurso.
   </p>
+  <p><a href="/como-pedir-isencao/">Quem tem direito à isenção e como pedir</a></p>
   <AdSlot formato="topo" slot={import.meta.env.PUBLIC_ADSENSE_SLOT_TOPO} />
   {isencoes.length ? (
     <ul class="lista row row-cols-1 row-cols-md-2 row-cols-xl-3 g-3 list-unstyled">{isencoes.map((c) => <CartaoConcurso c={c} />)}</ul>
