@@ -1,0 +1,33 @@
+# Allowlist de origens aceitas como evidência. O gate compara o host da URL final
+# (após redirecionamentos) com estes domínios; subdomínios são aceitos.
+# Para incluir uma banca nova: adicione a entrada em `fontes` e abra um PR.
+
+sufixos_oficiais:
+  - gov.br     # União, estados e municípios (inclui in.gov.br)
+  - jus.br     # Judiciário
+  - mp.br      # Ministério Público
+  - leg.br     # Legislativo
+  - def.br     # Defensorias
+  - mil.br     # Forças Armadas
+
+fontes:
+  inlabs:
+    nome: INLABS / Imprensa Nacional
+    papel: descoberta
+    dominios: [in.gov.br]
+  fgv:
+    nome: FGV Conhecimento
+    papel: banca
+    dominios: [conhecimento.fgv.br]
+  cebraspe:
+    nome: Cebraspe
+    papel: banca
+    dominios: [cebraspe.org.br]
+  fcc:
+    nome: Fundação Carlos Chagas
+    papel: banca
+    dominios: [concursosfcc.com.br]
+  vunesp:
+    nome: Vunesp
+    papel: banca
+    dominios: [vunesp.com.br]

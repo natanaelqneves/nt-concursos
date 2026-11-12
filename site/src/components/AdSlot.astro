@@ -1,0 +1,26 @@
+---
+// Bloco de anúncio com altura reservada (ver .anuncio-* em global.css).
+// Sem PUBLIC_ADSENSE_CLIENT/slot configurados, não renderiza nada.
+import { ADSENSE_CLIENT } from "../config";
+
+interface Props {
+  slot?: string;
+  formato: "topo" | "meio";
+}
+
+const { slot, formato } = Astro.props;
+const ativo = Boolean(ADSENSE_CLIENT && slot);
+---
+{ativo && (
+  <aside class={`anuncio anuncio-${formato}`} aria-label="Publicidade">
+    <ins
+      class="adsbygoogle"
+      style="display:block"
+      data-ad-client={ADSENSE_CLIENT}
+      data-ad-slot={slot}
+      data-ad-format="auto"
+      data-full-width-responsive="true"
+    ></ins>
+    <script is:inline>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </aside>
+)}

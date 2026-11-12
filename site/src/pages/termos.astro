@@ -1,0 +1,27 @@
+---
+import Base from "../layouts/Base.astro";
+import { SITE } from "../config";
+---
+<Base
+  titulo="Termos de uso"
+  breadcrumbs={[{ nome: "Início", url: "/" }, { nome: "Termos de uso", url: "/termos/" }]}
+>
+  <article class="prosa">
+    <h1>Termos de uso</h1>
+    <p class="meta">Revise este texto antes da publicação; ele é um modelo inicial, não parecer jurídico.</p>
+    <p>
+      O {SITE.nome} é um serviço informativo e gratuito. As informações são extraídas de documentos
+      oficiais e conferidas automaticamente, mas o documento que vale é sempre o edital publicado
+      pelo órgão ou pela banca.
+    </p>
+    <ul>
+      <li>Confira o edital oficial e suas retificações antes de pedir isenção ou se inscrever.</li>
+      <li>Prazos podem mudar depois da última conferência, que aparece em cada página.</li>
+      <li>
+        O {SITE.nome} não se responsabiliza por perda de prazos ou por decisões tomadas só com base
+        neste site.
+      </li>
+      <li>Links de parceiros são publicidade e estão identificados.</li>
+    </ul>
+  </article>
+</Base>

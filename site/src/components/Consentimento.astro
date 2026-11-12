@@ -1,0 +1,37 @@
+---
+// Banner LGPD. Sem escolha registrada, os anúncios rodam no modo não personalizado
+// (consent default "denied" em Base.astro). A escolha fica só no navegador.
+---
+<div class="consentimento" id="ntc-consentimento" hidden role="dialog" aria-label="Preferências de privacidade">
+  <div class="container">
+    <p>
+      Usamos cookies de publicidade do Google para exibir anúncios. Você pode aceitar anúncios
+      personalizados ou continuar só com anúncios não personalizados.
+      <a href="/privacidade/">Política de privacidade</a>.
+    </p>
+    <div>
+      <button type="button" class="recusar" data-escolha="recusado">Só não personalizados</button>
+      <button type="button" class="aceitar" data-escolha="aceito">Aceitar</button>
+    </div>
+  </div>
+</div>
+<script is:inline>
+  (function () {
+    var chave = "ntc-consentimento";
+    var banner = document.getElementById("ntc-consentimento");
+    var salvo = null;
+    try { salvo = localStorage.getItem(chave); } catch (_) {}
+    if (!salvo) banner.hidden = false;
+    banner.addEventListener("click", function (e) {
+      var escolha = e.target && e.target.getAttribute("data-escolha");
+      if (!escolha) return;
+      try { localStorage.setItem(chave, escolha); } catch (_) {}
+      if (escolha === "aceito" && typeof gtag === "function") {
+        gtag("consent", "update", {
+          ad_storage: "granted", ad_user_data: "granted", ad_personalization: "granted",
+        });
+      }
+      banner.hidden = true;
+    });
+  })();
+</script>

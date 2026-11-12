@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "slug": "orgao-exemplo-2026-analista",
+  "orgao": "Órgão Exemplo",
+  "banca": "fgv",
+  "uf": "PB",
+  "cargos": [
+    {
+      "nome": "Analista Administrativo",
+      "vagas": {"valor": 40, "status": "verificado", "evidencia": "ev-3"}
+    }
+  ],
+  "taxa": {"valor": 98.0, "status": "verificado", "evidencia": "ev-4"},
+  "prazos": {
+    "isencao": {"inicio": "2026-11-10", "fim": "2026-11-14", "status": "verificado", "evidencia": "ev-1"},
+    "inscricao": {"inicio": "2026-11-10", "fim": "2026-12-10", "status": "verificado", "evidencia": "ev-2"}
+  },
+  "isencao_publicos": ["CadÚnico", "doador de medula óssea"],
+  "documentos": [
+    {
+      "id": "doc-1",
+      "tipo": "edital",
+      "url": "https://exemplo.pb.gov.br/edital-1-2026.pdf",
+      "url_final": "https://exemplo.pb.gov.br/edital-1-2026.pdf",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "coletado_em": "2026-11-11T18:04:12-03:00",
+      "fonte": "fgv"
+    }
+  ],
+  "evidencias": [
+    {
+      "id": "ev-1",
+      "campo": "prazos.isencao",
+      "documento": "doc-1",
+      "pagina": 7,
+      "trecho": "6.1 A solicitação de isenção do pagamento da taxa de inscrição deverá ser feita de 10 a 14 de novembro de 2026, no endereço eletrônico da banca.",
+      "ancora": "isenção",
+      "metodo": "regex:v1"
+    },
+    {
+      "id": "ev-2",
+      "campo": "prazos.inscricao",
+      "documento": "doc-1",
+      "pagina": 3,
+      "trecho": "5.1 As inscrições serão realizadas exclusivamente via internet, no período de 10/11/2026 a 10/12/2026.",
+      "ancora": "inscrições",
+      "metodo": "regex:v1"
+    },
+    {
+      "id": "ev-3",
+      "campo": "cargos.0.vagas",
+      "documento": "doc-1",
+      "pagina": 1,
+      "trecho": "concurso público para provimento de 40 vagas no cargo de Analista Administrativo.",
+      "ancora": "vagas",
+      "metodo": "regex:v1"
+    },
+    {
+      "id": "ev-4",
+      "campo": "taxa",
+      "documento": "doc-1",
+      "pagina": 3,
+      "trecho": "4.1 O valor da taxa de inscrição será de R$ 98,00 (noventa e oito reais).",
+      "ancora": "taxa",
+      "metodo": "regex:v1"
+    }
+  ],
+  "descoberto_via": null,
+  "conferido_em": "2026-11-11T18:04:12-03:00"
+}

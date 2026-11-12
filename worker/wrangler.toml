@@ -1,0 +1,17 @@
+# Dispara o publish.yml às 04:00 BRT (07:00 UTC). Só tem handler `scheduled`:
+# não responde a requisições HTTP.
+name = "ntconcursos-disparo"
+main = "src/index.ts"
+compatibility_date = "2025-01-01"
+workers_dev = false
+
+[triggers]
+crons = ["0 7 * * *"]
+
+[vars]
+GITHUB_REPO = "natanaelqneves/nt-concursos"
+WORKFLOW_FILE = "publish.yml"
+REF = "main"
+
+# Segredo (não versionar): wrangler secret put GITHUB_TOKEN
+# Token fine-grained com acesso só a este repositório e permissão "Actions: Read and write".

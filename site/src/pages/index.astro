@@ -1,0 +1,37 @@
+---
+import Base from "../layouts/Base.astro";
+import AdSlot from "../components/AdSlot.astro";
+import CartaoConcurso from "../components/CartaoConcurso.astro";
+import { comIsencaoAberta, inscricoesAbertasSemIsencao } from "../lib/dados";
+
+const isencoes = comIsencaoAberta();
+const abertas = inscricoesAbertasSemIsencao();
+---
+<Base
+  titulo="Concursos abertos e prazos de isenção da taxa | NT Concursos"
+  descricao="Concursos públicos com inscrições abertas, ordenados pelo prazo de isenção da taxa. Cada data é conferida no edital oficial."
+>
+  <h1>Concursos com inscrições abertas</h1>
+  <p>
+    Primeiro, os concursos com pedido de <strong>isenção da taxa</strong> aberto, do prazo mais curto
+    para o mais longo. Toda data mostrada tem link para o trecho do edital oficial.
+  </p>
+
+  <AdSlot formato="topo" slot={import.meta.env.PUBLIC_ADSENSE_SLOT_TOPO} />
+
+  <h2>Isenção da taxa aberta ({isencoes.length})</h2>
+  {isencoes.length ? (
+    <ul class="lista">{isencoes.map((c) => <CartaoConcurso c={c} />)}</ul>
+  ) : (
+    <p class="vazio">Nenhum prazo de isenção aberto e verificado nesta edição.</p>
+  )}
+
+  <AdSlot formato="meio" slot={import.meta.env.PUBLIC_ADSENSE_SLOT_MEIO} />
+
+  <h2>Demais inscrições abertas ({abertas.length})</h2>
+  {abertas.length ? (
+    <ul class="lista">{abertas.map((c) => <CartaoConcurso c={c} />)}</ul>
+  ) : (
+    <p class="vazio">Nenhuma outra inscrição aberta e verificada nesta edição.</p>
+  )}
+</Base>

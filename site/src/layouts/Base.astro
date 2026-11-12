@@ -1,0 +1,108 @@
+---
+import "../styles/global.css";
+import Consentimento from "../components/Consentimento.astro";
+import { ADSENSE_CLIENT, SITE } from "../config";
+import { agoraBRT } from "../lib/tempo";
+
+interface Props {
+  titulo: string;
+  descricao?: string;
+  noindex?: boolean;
+  breadcrumbs?: { nome: string; url: string }[];
+}
+
+const { titulo, descricao = SITE.descricao, noindex = false, breadcrumbs = [] } = Astro.props;
+const canonical = new URL(Astro.url.pathname, SITE.url).href;
+const tituloCompleto = Astro.url.pathname === "/" ? titulo : `${titulo} | ${SITE.nome}`;
+
+const jsonLd = [
+  { "@context": "https://schema.org", "@type": "WebSite", name: SITE.nome, url: SITE.url },
+  breadcrumbs.length && {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: breadcrumbs.map((b, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: b.nome,
+      item: new URL(b.url, SITE.url).href,
+    })),
+  },
+].filter(Boolean);
+
+const publicadoEm = agoraBRT();
+---
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{tituloCompleto}</title>
+    <meta name="description" content={descricao} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content={SITE.nome} />
+    <meta property="og:title" content={tituloCompleto} />
+    <meta property="og:description" content={descricao} />
+    <meta property="og:url" content={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    {jsonLd.map((obj) => <script type="application/ld+json" set:html={JSON.stringify(obj)} />)}
+    {ADSENSE_CLIENT && (
+      <>
+        <script is:inline>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag("consent", "default", {
+            ad_storage: "denied", ad_user_data: "denied",
+            ad_personalization: "denied", analytics_storage: "denied",
+          });
+          try {
+            if (localStorage.getItem("ntc-consentimento") === "aceito") {
+              gtag("consent", "update", {
+                ad_storage: "granted", ad_user_data: "granted", ad_personalization: "granted",
+              });
+            }
+          } catch (_) {}
+        </script>
+        <script
+          is:inline
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`}
+          crossorigin="anonymous"
+        ></script>
+      </>
+    )}
+  </head>
+  <body>
+    <header class="topo">
+      <div class="container">
+        <a class="marca" href="/">{SITE.nome}</a>
+        <nav aria-label="Principal">
+          <a href="/isencao-aberta/">Isenção aberta</a>
+          <a href="/metodologia/">Como verificamos</a>
+          <a href="/sobre/">Sobre</a>
+        </nav>
+      </div>
+    </header>
+    <main class="container">
+      <slot />
+    </main>
+    <footer class="rodape">
+      <div class="container">
+        <nav aria-label="Institucional">
+          <a href="/sobre/">Sobre</a>
+          <a href="/metodologia/">Metodologia</a>
+          <a href="/privacidade/">Privacidade</a>
+          <a href="/termos/">Termos de uso</a>
+          <a href="/contato/">Contato</a>
+        </nav>
+        <p>
+          Edição publicada em {publicadoEm} (horário de Brasília). As informações são extraídas de
+          documentos oficiais; confira sempre o edital antes de se inscrever.
+        </p>
+      </div>
+    </footer>
+    {ADSENSE_CLIENT && <Consentimento />}
+  </body>
+</html>

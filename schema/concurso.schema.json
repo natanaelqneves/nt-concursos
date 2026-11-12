@@ -1,0 +1,455 @@
+{
+  "$defs": {
+    "Campo": {
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "default": "ausente",
+          "enum": [
+            "verificado",
+            "revisao",
+            "ausente"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "evidencia": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Evidencia"
+        },
+        "valor": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Valor"
+        }
+      },
+      "title": "Campo",
+      "type": "object"
+    },
+    "Cargo": {
+      "additionalProperties": false,
+      "properties": {
+        "nome": {
+          "minLength": 2,
+          "title": "Nome",
+          "type": "string"
+        },
+        "vagas": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Campo"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "remuneracao": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Campo"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "nome"
+      ],
+      "title": "Cargo",
+      "type": "object"
+    },
+    "Descoberta": {
+      "additionalProperties": false,
+      "properties": {
+        "fonte": {
+          "title": "Fonte",
+          "type": "string"
+        },
+        "url": {
+          "format": "uri",
+          "maxLength": 2083,
+          "minLength": 1,
+          "title": "Url",
+          "type": "string"
+        },
+        "data_dou": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Data Dou"
+        }
+      },
+      "required": [
+        "fonte",
+        "url"
+      ],
+      "title": "Descoberta",
+      "type": "object"
+    },
+    "Documento": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^doc-\\d+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "tipo": {
+          "enum": [
+            "edital",
+            "retificacao",
+            "aviso",
+            "dou"
+          ],
+          "title": "Tipo",
+          "type": "string"
+        },
+        "url": {
+          "format": "uri",
+          "maxLength": 2083,
+          "minLength": 1,
+          "title": "Url",
+          "type": "string"
+        },
+        "url_final": {
+          "format": "uri",
+          "maxLength": 2083,
+          "minLength": 1,
+          "title": "Url Final",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "coletado_em": {
+          "format": "date-time",
+          "title": "Coletado Em",
+          "type": "string"
+        },
+        "fonte": {
+          "minLength": 2,
+          "title": "Fonte",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "tipo",
+        "url",
+        "url_final",
+        "sha256",
+        "coletado_em",
+        "fonte"
+      ],
+      "title": "Documento",
+      "type": "object"
+    },
+    "Evidencia": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^ev-\\d+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "campo": {
+          "minLength": 3,
+          "title": "Campo",
+          "type": "string"
+        },
+        "documento": {
+          "title": "Documento",
+          "type": "string"
+        },
+        "pagina": {
+          "minimum": 1,
+          "title": "Pagina",
+          "type": "integer"
+        },
+        "trecho": {
+          "maxLength": 500,
+          "minLength": 15,
+          "title": "Trecho",
+          "type": "string"
+        },
+        "ancora": {
+          "minLength": 3,
+          "title": "Ancora",
+          "type": "string"
+        },
+        "metodo": {
+          "minLength": 3,
+          "title": "Metodo",
+          "type": "string"
+        },
+        "aprovado_por": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Aprovado Por"
+        },
+        "aprovado_em": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Aprovado Em"
+        }
+      },
+      "required": [
+        "id",
+        "campo",
+        "documento",
+        "pagina",
+        "trecho",
+        "ancora",
+        "metodo"
+      ],
+      "title": "Evidencia",
+      "type": "object"
+    },
+    "Prazo": {
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "default": "ausente",
+          "enum": [
+            "verificado",
+            "revisao",
+            "ausente"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "evidencia": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Evidencia"
+        },
+        "inicio": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Inicio"
+        },
+        "fim": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Fim"
+        }
+      },
+      "title": "Prazo",
+      "type": "object"
+    },
+    "Prazos": {
+      "additionalProperties": false,
+      "properties": {
+        "isencao": {
+          "$ref": "#/$defs/Prazo"
+        },
+        "inscricao": {
+          "$ref": "#/$defs/Prazo"
+        }
+      },
+      "title": "Prazos",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "slug": {
+      "maxLength": 120,
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "title": "Slug",
+      "type": "string"
+    },
+    "orgao": {
+      "minLength": 3,
+      "title": "Orgao",
+      "type": "string"
+    },
+    "banca": {
+      "minLength": 2,
+      "title": "Banca",
+      "type": "string"
+    },
+    "uf": {
+      "enum": [
+        "AC",
+        "AL",
+        "AP",
+        "AM",
+        "BA",
+        "CE",
+        "DF",
+        "ES",
+        "GO",
+        "MA",
+        "MT",
+        "MS",
+        "MG",
+        "PA",
+        "PB",
+        "PR",
+        "PE",
+        "PI",
+        "RJ",
+        "RN",
+        "RS",
+        "RO",
+        "RR",
+        "SC",
+        "SP",
+        "SE",
+        "TO",
+        "BR"
+      ],
+      "title": "Uf",
+      "type": "string"
+    },
+    "cargos": {
+      "items": {
+        "$ref": "#/$defs/Cargo"
+      },
+      "title": "Cargos",
+      "type": "array"
+    },
+    "taxa": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Campo"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "prazos": {
+      "$ref": "#/$defs/Prazos"
+    },
+    "isencao_publicos": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Isencao Publicos",
+      "type": "array"
+    },
+    "documentos": {
+      "items": {
+        "$ref": "#/$defs/Documento"
+      },
+      "minItems": 1,
+      "title": "Documentos",
+      "type": "array"
+    },
+    "evidencias": {
+      "items": {
+        "$ref": "#/$defs/Evidencia"
+      },
+      "title": "Evidencias",
+      "type": "array"
+    },
+    "descoberto_via": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Descoberta"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "conferido_em": {
+      "format": "date-time",
+      "title": "Conferido Em",
+      "type": "string"
+    }
+  },
+  "required": [
+    "slug",
+    "orgao",
+    "banca",
+    "uf",
+    "documentos",
+    "conferido_em"
+  ],
+  "title": "Concurso",
+  "type": "object"
+}

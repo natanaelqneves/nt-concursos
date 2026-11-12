@@ -1,0 +1,115 @@
+---
+import Base from "../../layouts/Base.astro";
+import AdSlot from "../../components/AdSlot.astro";
+import EvidenciaBox from "../../components/Evidencia.astro";
+import type { Campo, Concurso, Prazo } from "../../lib/dados";
+import {
+  encerrado,
+  evidenciaDe,
+  inscricaoAberta,
+  isencaoAberta,
+  titulo,
+  todos,
+  verificado,
+} from "../../lib/dados";
+import { formatarData, formatarDataHora } from "../../lib/tempo";
+
+export function getStaticPaths() {
+  return todos().map((c) => ({ params: { slug: c.slug }, props: { c } }));
+}
+
+const { c } = Astro.props as { c: Concurso };
+const doc = c.documentos.find((d) => d.tipo === "edital") ?? c.documentos[0];
+
+const periodo = (p: Prazo) =>
+  p.inicio ? `${formatarData(p.inicio)} a ${formatarData(p.fim!)}` : `até ${formatarData(p.fim!)}`;
+const moeda = (v: Campo) =>
+  Number(v.valor).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+
+const linhaPrazo = (rotulo: string, p: Prazo) => ({ rotulo, p, ok: verificado(p) && !!p.fim });
+const prazos = [linhaPrazo("Isenção da taxa", c.prazos.isencao), linhaPrazo("Inscrições", c.prazos.inscricao)];
+
+const situacao = encerrado(c)
+  ? { texto: "Inscrições encerradas", classe: "selo-encerrado" }
+  : isencaoAberta(c)
+    ? { texto: "Isenção aberta", classe: "selo-isencao" }
+    : inscricaoAberta(c)
+      ? { texto: "Inscrições abertas", classe: "selo-isencao" }
+      : null;
+
+const evTaxa = c.taxa && verificado(c.taxa) ? evidenciaDe(c, c.taxa) : null;
+const nome = titulo(c);
+const descricao = verificado(c.prazos.isencao) && c.prazos.isencao.fim
+  ? `${nome}: pedido de isenção da taxa até ${formatarData(c.prazos.isencao.fim)}. Datas conferidas no edital oficial.`
+  : `${nome}: datas de inscrição e links do edital oficial.`;
+---
+<Base
+  titulo={nome}
+  descricao={descricao}
+  breadcrumbs={[{ nome: "Início", url: "/" }, { nome, url: `/concursos/${c.slug}/` }]}
+>
+  <p class="meta">{c.banca.toUpperCase()} · {c.uf}</p>
+  <h1>{nome}</h1>
+  {situacao && <p><span class={`selo ${situacao.classe}`}>{situacao.texto}</span></p>}
+
+  <h2>Prazos</h2>
+  <dl class="dados">
+    {prazos.map(({ rotulo, p, ok }) => {
+      const e = ok ? evidenciaDe(c, p) : null;
+      return (
+        <>
+          <dt>{rotulo}</dt>
+          <dd>
+            {ok ? periodo(p) : <>Consulte o <a href={doc.url_final} rel="nofollow noopener">edital</a></>}
+            {e && <EvidenciaBox ev={e.ev} doc={e.doc} />}
+          </dd>
+        </>
+      );
+    })}
+    {c.taxa && (
+      <>
+        <dt>Taxa de inscrição</dt>
+        <dd>
+          {verificado(c.taxa) ? moeda(c.taxa) : "Consulte o edital"}
+          {evTaxa && <EvidenciaBox ev={evTaxa.ev} doc={evTaxa.doc} />}
+        </dd>
+      </>
+    )}
+  </dl>
+
+  {c.isencao_publicos.length > 0 && verificado(c.prazos.isencao) && (
+    <>
+      <h2>Quem pode pedir isenção</h2>
+      <ul>{c.isencao_publicos.map((p) => <li>{p}</li>)}</ul>
+      <p class="meta">Os requisitos completos e os documentos exigidos estão no edital.</p>
+    </>
+  )}
+
+  <AdSlot formato="meio" slot={import.meta.env.PUBLIC_ADSENSE_SLOT_MEIO} />
+
+  {c.cargos.length > 0 && (
+    <>
+      <h2>Cargos</h2>
+      <ul>
+        {c.cargos.map((cargo) => {
+          const vagas = verificado(cargo.vagas) ? `${cargo.vagas!.valor} vaga(s)` : null;
+          return <li>{cargo.nome}{vagas && ` – ${vagas}`}</li>;
+        })}
+      </ul>
+    </>
+  )}
+
+  <h2>Documentos oficiais</h2>
+  <ul>
+    {c.documentos.map((d) => (
+      <li>
+        <a href={d.url_final} rel="nofollow noopener">{d.tipo === "retificacao" ? "Retificação" : d.tipo === "edital" ? "Edital" : d.tipo.toUpperCase()}</a>
+        <span class="meta"> · conferido em {formatarDataHora(d.coletado_em)}</span>
+      </li>
+    ))}
+  </ul>
+  <p class="meta">
+    Dados extraídos automaticamente e conferidos contra o texto do documento oficial.
+    <a href="/metodologia/">Veja como verificamos</a>. Encontrou um erro? <a href="/contato/">Avise-nos</a>.
+  </p>
+</Base>

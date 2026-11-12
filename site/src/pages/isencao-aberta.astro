@@ -1,0 +1,26 @@
+---
+import Base from "../layouts/Base.astro";
+import AdSlot from "../components/AdSlot.astro";
+import CartaoConcurso from "../components/CartaoConcurso.astro";
+import { comIsencaoAberta } from "../lib/dados";
+
+const isencoes = comIsencaoAberta();
+---
+<Base
+  titulo="Isenção da taxa de inscrição aberta"
+  descricao="Concursos públicos com prazo aberto para pedir isenção da taxa de inscrição, ordenados pelo fim do prazo."
+  breadcrumbs={[{ nome: "Início", url: "/" }, { nome: "Isenção aberta", url: "/isencao-aberta/" }]}
+>
+  <h1>Isenção da taxa aberta</h1>
+  <p>
+    Prazos de isenção que estão abertos hoje, conferidos no edital. Quem tem direito costuma ser
+    quem está inscrito no CadÚnico e outros públicos previstos em lei ou no edital; confira os
+    requisitos na página de cada concurso.
+  </p>
+  <AdSlot formato="topo" slot={import.meta.env.PUBLIC_ADSENSE_SLOT_TOPO} />
+  {isencoes.length ? (
+    <ul class="lista">{isencoes.map((c) => <CartaoConcurso c={c} />)}</ul>
+  ) : (
+    <p class="vazio">Nenhum prazo de isenção aberto e verificado nesta edição.</p>
+  )}
+</Base>

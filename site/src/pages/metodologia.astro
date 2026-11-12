@@ -1,0 +1,52 @@
+---
+import Base from "../layouts/Base.astro";
+---
+<Base
+  titulo="Como verificamos as informações"
+  descricao="Como o NT Concursos coleta editais em fontes oficiais e confere cada prazo contra o texto do documento antes de publicar."
+  breadcrumbs={[{ nome: "Início", url: "/" }, { nome: "Metodologia", url: "/metodologia/" }]}
+>
+  <article class="prosa">
+    <h1>Como verificamos as informações</h1>
+    <p>
+      Nenhuma data é publicada aqui sem um documento oficial que a comprove. Não usamos
+      inteligência artificial para gerar prazos, e não copiamos informações de outros sites de concursos.
+    </p>
+
+    <h2>1. Só fontes oficiais</h2>
+    <p>
+      Descobrimos concursos no Diário Oficial da União, pelos arquivos abertos da Imprensa Nacional,
+      e nas páginas das bancas organizadoras. Só aceitamos documentos hospedados em domínios
+      oficiais (como <code>gov.br</code>, <code>jus.br</code>, <code>mp.br</code>,
+      <code>leg.br</code>) ou nos sites das próprias bancas.
+    </p>
+
+    <h2>2. Cada dado tem um trecho do edital</h2>
+    <p>
+      Para cada prazo guardamos o link do documento, a página e o trecho exato onde a data aparece,
+      além de uma impressão digital do arquivo (SHA-256), que mostra se o documento mudou depois.
+      Em todo concurso você pode abrir esse trecho em "Ver no edital".
+    </p>
+
+    <h2>3. Conferência automática antes de publicar</h2>
+    <ul>
+      <li>o trecho precisa existir, palavra por palavra, na página indicada;</li>
+      <li>a data precisa estar na mesma cláusula que fala daquele prazo (isenção ou inscrição);</li>
+      <li>se o edital trouxer duas datas diferentes para o mesmo prazo, não publicamos até revisar;</li>
+      <li>se sair uma retificação que mencione o prazo, ele volta para revisão.</li>
+    </ul>
+
+    <h2>4. Na dúvida, não publicamos</h2>
+    <p>
+      Quando a conferência automática não basta, o caso vai para revisão manual. Até lá, a página
+      do concurso mostra "Consulte o edital" no lugar da data.
+    </p>
+
+    <h2>5. Atualização diária</h2>
+    <p>
+      O site é atualizado uma vez por dia, de madrugada. O rodapé mostra o horário da edição, e
+      cada documento mostra quando foi conferido pela última vez. Retificações publicadas depois
+      desse horário só aparecem na edição seguinte: por isso, confira sempre o edital antes de se inscrever.
+    </p>
+  </article>
+</Base>

@@ -1,0 +1,76 @@
+# Edição diária. Disparo principal: Cloudflare Worker às 04h00 BRT (workflow_dispatch).
+# Reserva: cron do GitHub às 04h30 BRT, que só publica se ainda não houve edição hoje.
+name: Publicar edição
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "30 7 * * *" # 04:30 BRT (o Brasil não tem horário de verão)
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: publish
+  cancel-in-progress: false
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Já houve edição hoje? (só no cron reserva)
+        id: hoje
+        if: github.event_name == 'schedule'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          hoje=$(TZ=America/Sao_Paulo date +%F)
+          n=$(gh run list -R "$GITHUB_REPOSITORY" --workflow publish.yml --status success \
+                --limit 10 --json createdAt \
+              | jq --arg d "$hoje" '[.[] | select((.createdAt | fromdateiso8601 - 10800 | strftime("%Y-%m-%d")) == $d)] | length')
+          echo "ja_publicado=$([ "$n" -gt 0 ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/checkout@v4
+        if: steps.hoje.outputs.ja_publicado != 'true'
+
+      - uses: actions/setup-python@v5
+        if: steps.hoje.outputs.ja_publicado != 'true'
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: collector/pyproject.toml
+
+      - name: Validar dados (gate)
+        if: steps.hoje.outputs.ja_publicado != 'true'
+        working-directory: collector
+        run: |
+          pip install -e .
+          ntc validate
+
+      - uses: actions/setup-node@v4
+        if: steps.hoje.outputs.ja_publicado != 'true'
+        with:
+          node-version: "22"
+
+      - name: Build
+        if: steps.hoje.outputs.ja_publicado != 'true'
+        working-directory: site
+        env:
+          ADSENSE_PUB_ID: ${{ vars.ADSENSE_PUB_ID }}
+          PUBLIC_ADSENSE_CLIENT: ${{ vars.PUBLIC_ADSENSE_CLIENT }}
+          PUBLIC_ADSENSE_SLOT_TOPO: ${{ vars.PUBLIC_ADSENSE_SLOT_TOPO }}
+          PUBLIC_ADSENSE_SLOT_MEIO: ${{ vars.PUBLIC_ADSENSE_SLOT_MEIO }}
+        run: |
+          npm install --no-audit --no-fund
+          npm run preflight
+          npm run build
+
+      - name: Deploy no Cloudflare Pages
+        if: steps.hoje.outputs.ja_publicado != 'true'
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy site/dist --project-name=${{ vars.CF_PAGES_PROJECT || 'ntconcursos' }} --branch=main

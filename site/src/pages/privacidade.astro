@@ -1,0 +1,63 @@
+---
+import Base from "../layouts/Base.astro";
+import { SITE } from "../config";
+---
+<Base
+  titulo="Política de privacidade"
+  breadcrumbs={[{ nome: "Início", url: "/" }, { nome: "Privacidade", url: "/privacidade/" }]}
+>
+  <article class="prosa">
+    <h1>Política de privacidade</h1>
+    <p class="meta">Revise este texto antes da publicação; ele é um modelo inicial, não parecer jurídico.</p>
+
+    <h2>Quem é o controlador</h2>
+    <p>
+      {SITE.responsavel}, responsável pelo {SITE.nome} ({SITE.url}). Contato:
+      <a href={`mailto:${SITE.emailContato}`}>{SITE.emailContato}</a>.
+    </p>
+
+    <h2>Que dados tratamos</h2>
+    <p>
+      O site não tem cadastro nem formulários. Não pedimos nome, e-mail ou CPF. Os dados tratados
+      vêm da navegação:
+    </p>
+    <ul>
+      <li>
+        <strong>Hospedagem (Cloudflare):</strong> registros técnicos de acesso, como endereço IP,
+        navegador e data, usados para entregar as páginas e proteger o site contra abusos.
+      </li>
+      <li>
+        <strong>Publicidade (Google AdSense):</strong> o Google e seus parceiros podem usar cookies
+        e identificadores para exibir e medir anúncios. Sem o seu consentimento, exibimos apenas
+        anúncios não personalizados.
+      </li>
+    </ul>
+
+    <h2>Bases legais (LGPD, art. 7º)</h2>
+    <ul>
+      <li>Registros técnicos de hospedagem: legítimo interesse, para manter o site seguro e funcionando.</li>
+      <li>Anúncios personalizados: consentimento, que você dá ou recusa no aviso de privacidade.</li>
+    </ul>
+
+    <h2>Sua escolha sobre anúncios</h2>
+    <p>
+      A escolha fica guardada só no seu navegador. Para mudar, apague os dados do site no
+      navegador e o aviso aparecerá de novo. Você também pode gerenciar a personalização em
+      <a href="https://adssettings.google.com" rel="noopener">adssettings.google.com</a>. Saiba
+      como o Google usa dados em
+      <a href="https://policies.google.com/technologies/partner-sites" rel="noopener">policies.google.com/technologies/partner-sites</a>.
+    </p>
+
+    <h2>Seus direitos</h2>
+    <p>
+      Você pode pedir confirmação, acesso, correção ou eliminação de dados pessoais e revogar o
+      consentimento a qualquer momento, pelo e-mail acima.
+    </p>
+
+    <h2>Links externos</h2>
+    <p>
+      As páginas levam a sites oficiais e de parceiros, que têm políticas próprias. Links de
+      parceiros são marcados como publicidade.
+    </p>
+  </article>
+</Base>

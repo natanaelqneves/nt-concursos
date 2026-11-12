@@ -1,0 +1,21 @@
+---
+import Base from "../layouts/Base.astro";
+import { SITE } from "../config";
+---
+<Base
+  titulo="Contato"
+  breadcrumbs={[{ nome: "Início", url: "/" }, { nome: "Contato", url: "/contato/" }]}
+>
+  <article class="prosa">
+    <h1>Contato</h1>
+    <p>
+      Encontrou uma data errada, um edital retificado ou um concurso que deveria estar aqui?
+      Escreva para <a href={`mailto:${SITE.emailContato}`}>{SITE.emailContato}</a> com o link do
+      documento oficial. Correções com fonte oficial são priorizadas.
+    </p>
+    <p>
+      Pedidos sobre dados pessoais (LGPD) também podem ser enviados para esse endereço. Veja a
+      <a href="/privacidade/">política de privacidade</a>.
+    </p>
+  </article>
+</Base>

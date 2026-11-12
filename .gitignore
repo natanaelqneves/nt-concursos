@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.pytest_cache/
+build/
+
+# Node / Astro
+node_modules/
+site/dist/
+site/.astro/
+worker/.wrangler/
+
+# Segredos e locais
+.env
+.env.*
+.dev.vars
+*.pdf
+
+# Editores / SO
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

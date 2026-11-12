@@ -1,0 +1,28 @@
+---
+import type { Concurso } from "../lib/dados";
+import { isencaoAberta, inscricaoAberta, titulo } from "../lib/dados";
+import { diasEntre, formatarData, hojeBRT } from "../lib/tempo";
+
+interface Props {
+  c: Concurso;
+}
+
+const { c } = Astro.props;
+const hoje = hojeBRT();
+const isen = isencaoAberta(c, hoje) ? c.prazos.isencao : null;
+const insc = inscricaoAberta(c, hoje) ? c.prazos.inscricao : null;
+const restam = isen?.fim ? diasEntre(hoje, isen.fim) : null;
+---
+<li class="cartao">
+  <h3><a href={`/concursos/${c.slug}/`}>{titulo(c)}</a></h3>
+  <p class="meta">{c.banca.toUpperCase()} · {c.uf}</p>
+  {isen?.fim && (
+    <p>
+      <span class={`selo ${restam !== null && restam <= 2 ? "selo-urgente" : "selo-isencao"}`}>
+        Isenção até {formatarData(isen.fim)}
+        {restam === 0 ? " – último dia" : restam === 1 ? " – falta 1 dia" : ` – faltam ${restam} dias`}
+      </span>
+    </p>
+  )}
+  {insc?.fim && <p class="meta">Inscrições até {formatarData(insc.fim)}</p>}
+</li>

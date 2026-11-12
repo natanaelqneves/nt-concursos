@@ -1,0 +1,26 @@
+---
+import Base from "../layouts/Base.astro";
+import { SITE } from "../config";
+---
+<Base
+  titulo="Sobre"
+  breadcrumbs={[{ nome: "Início", url: "/" }, { nome: "Sobre", url: "/sobre/" }]}
+>
+  <article class="prosa">
+    <h1>Sobre o {SITE.nome}</h1>
+    <p>
+      O {SITE.nome} reúne concursos públicos com inscrições abertas e dá destaque aos prazos de
+      isenção da taxa de inscrição, que costumam ser curtos e fáceis de perder.
+    </p>
+    <p>
+      Cada informação vem de um documento oficial, com link para a página exata do edital.
+      Veja os detalhes em <a href="/metodologia/">Como verificamos</a>.
+    </p>
+    <p>
+      O site é mantido por {SITE.responsavel}, de {SITE.cidadeUf}, e se sustenta com anúncios e
+      links de parceiros, sempre identificados como publicidade. Anúncios não influenciam quais
+      concursos aparecem nem a ordem em que aparecem.
+    </p>
+    <p>O {SITE.nome} não tem vínculo com órgãos públicos nem com bancas organizadoras.</p>
+  </article>
+</Base>

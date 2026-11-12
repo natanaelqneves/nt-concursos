@@ -1,0 +1,12 @@
+---
+// Único caminho permitido para links de afiliados: sempre rotulados e com rel="sponsored".
+interface Props {
+  href: string;
+  parceiro: string;
+}
+
+const { href, parceiro } = Astro.props;
+---
+<a href={href} rel="sponsored noopener" target="_blank" data-parceiro={parceiro}>
+  <slot /> <small>(publicidade)</small>
+</a>

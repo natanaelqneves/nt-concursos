@@ -1,0 +1,83 @@
+/* Fontes do sistema: sem download de fonte, sem troca de fonte, sem CLS. */
+:root {
+  --fundo: #ffffff;
+  --texto: #1a1d21;
+  --suave: #5b6470;
+  --borda: #e3e6ea;
+  --destaque: #0b6e4f;
+  --destaque-fundo: #e7f5ef;
+  --alerta: #9a4b00;
+  --alerta-fundo: #fff3e3;
+  --raio: 10px;
+  --largura: 72rem;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: var(--texto);
+  background: var(--fundo);
+}
+
+a { color: var(--destaque); }
+
+.container { max-width: var(--largura); margin: 0 auto; padding: 0 1rem; }
+
+header.topo { border-bottom: 1px solid var(--borda); }
+header.topo .container { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 3.5rem; }
+header.topo .marca { font-weight: 700; text-decoration: none; color: var(--texto); }
+header.topo nav { display: flex; gap: 1rem; flex-wrap: wrap; font-size: .95rem; }
+
+main { padding: 1.5rem 0 3rem; }
+
+h1 { font-size: 1.6rem; line-height: 1.25; margin: 0 0 .5rem; }
+h2 { font-size: 1.25rem; margin: 2rem 0 .75rem; }
+
+.lista { list-style: none; padding: 0; margin: 0; display: grid; gap: .75rem; }
+.cartao { border: 1px solid var(--borda); border-radius: var(--raio); padding: 1rem; }
+.cartao h3 { margin: 0 0 .35rem; font-size: 1.05rem; }
+.cartao .meta { color: var(--suave); font-size: .9rem; }
+
+.selo { display: inline-block; padding: .15rem .55rem; border-radius: 999px; font-size: .82rem; font-weight: 600; }
+.selo-isencao { background: var(--destaque-fundo); color: var(--destaque); }
+.selo-urgente { background: var(--alerta-fundo); color: var(--alerta); }
+.selo-encerrado { background: #eef0f2; color: var(--suave); }
+
+.vazio { color: var(--suave); padding: 1rem 0; }
+
+dl.dados { display: grid; grid-template-columns: max-content 1fr; gap: .4rem 1rem; margin: 1rem 0; }
+dl.dados dt { color: var(--suave); }
+dl.dados dd { margin: 0; }
+
+details.evidencia { margin-top: .35rem; font-size: .9rem; }
+details.evidencia summary { cursor: pointer; color: var(--destaque); }
+details.evidencia blockquote { margin: .5rem 0; padding: .5rem .75rem; border-left: 3px solid var(--destaque); background: #f7f9fa; }
+
+/* Espaço de anúncio reservado antes do carregamento: altura fixa por breakpoint. */
+.anuncio { display: block; width: 100%; margin: 1.5rem 0; overflow: hidden; background: #f7f9fa; }
+.anuncio::before { content: "Publicidade"; display: block; font-size: .7rem; color: var(--suave); text-align: center; line-height: 1.2rem; }
+.anuncio-topo { min-height: calc(100px + 1.2rem); }
+.anuncio-meio { min-height: calc(250px + 1.2rem); }
+@media (min-width: 768px) {
+  .anuncio-topo { min-height: calc(90px + 1.2rem); }
+  .anuncio-meio { min-height: calc(280px + 1.2rem); }
+}
+
+footer.rodape { border-top: 1px solid var(--borda); padding: 1.5rem 0 5rem; color: var(--suave); font-size: .9rem; }
+footer.rodape nav { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: .5rem; }
+
+/* Banner fixo: fora do fluxo do documento, não desloca o conteúdo. */
+.consentimento { position: fixed; inset: auto 0 0 0; z-index: 50; background: #fff; border-top: 1px solid var(--borda); box-shadow: 0 -4px 16px rgba(0,0,0,.06); padding: .9rem 1rem; }
+.consentimento[hidden] { display: none; }
+.consentimento .container { display: flex; gap: 1rem; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+.consentimento p { margin: 0; font-size: .9rem; max-width: 46rem; }
+.consentimento button { font: inherit; padding: .45rem .9rem; border-radius: 8px; border: 1px solid var(--destaque); cursor: pointer; }
+.consentimento .aceitar { background: var(--destaque); color: #fff; }
+.consentimento .recusar { background: #fff; color: var(--destaque); }
+
+.prosa { max-width: 46rem; }

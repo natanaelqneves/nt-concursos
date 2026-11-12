@@ -1,0 +1,17 @@
+{
+  "name": "ntconcursos-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "preflight": "node scripts/preflight.mjs"
+  },
+  "dependencies": {
+    "astro": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
