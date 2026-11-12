@@ -29,11 +29,12 @@ from ntc.model.schema import (
     Descoberta,
     Documento,
     Evidencia,
+    LinhaTabela,
     Prazo,
     Prazos,
     classificar_porte,
 )
-from ntc.parse import clausulas, vagas
+from ntc.parse import clausulas, tabela, vagas
 from ntc.pdf.extract import NaoEhPdf, extrair
 from ntc.sources.base import ConcursoFonte, DocFonte
 from ntc.store.json_store import JsonStore
@@ -53,6 +54,33 @@ class Registro:
     slug: str | None = None
     campos: dict[str, str] = field(default_factory=dict)
     violacoes: list[str] = field(default_factory=list)
+
+
+def _compativeis(a: tuple, b: tuple) -> bool:
+    return a[1] == b[1] and (a[0] is None or b[0] is None or a[0] == b[0])
+
+
+def _escolher(texto: list, tab: list):
+    """Cláusula em texto corrido e linha de cronograma precisam concordar.
+    Devolve (candidato, None), (None, motivo) para revisão ou (None, None) se não há nada."""
+    principal = clausulas.principal(texto)
+    ints_texto = clausulas.intervalos_distintos(texto)
+    ints_tab = {(c.inicio, c.fim) for c in tab}
+    if principal is not None:
+        alvo = (principal.inicio, principal.fim)
+        if any(not _compativeis(alvo, i) for i in ints_tab):
+            return None, "cláusula do edital e cronograma em tabela divergem"
+        return principal, None
+    if len(ints_tab) == 1:
+        alvo = next(iter(ints_tab))
+        if all(_compativeis(alvo, i) for i in ints_texto):
+            return tab[0], None
+        return None, "cronograma em tabela diverge do texto corrido"
+    if len(ints_tab) > 1:
+        return None, f"{len(ints_tab)} linhas de cronograma com datas diferentes"
+    if texto:
+        return None, f"{len(ints_texto)} cláusulas diferentes" if ints_texto else "só há cláusulas de cronograma em texto corrido"
+    return None, None
 
 
 def slugificar(texto: str) -> str:
@@ -111,7 +139,7 @@ class Coletor:
 
     # ---- etapas -------------------------------------------------------------------
 
-    def _baixar(self, doc: DocFonte, doc_id: str) -> tuple[Documento, TextoDocumento | None]:
+    def _baixar(self, doc: DocFonte, doc_id: str) -> tuple[Documento, TextoDocumento | None, bytes]:
         r = self.cliente.get(doc.url)
         try:
             texto = extrair(r.conteudo)
@@ -122,29 +150,38 @@ class Coletor:
             coletado_em=r.coletado_em, fonte=self._fonte_atual, publicado_em=doc.publicado_em,
             titulo=doc.titulo[:300] or None,
         )
-        return documento, texto
+        return documento, texto, r.conteudo
 
     def _processar(self, cf: ConcursoFonte, cls: Classificacao, reg: Registro) -> Registro:
         self._fonte_atual = cf.fonte
         edital_fonte = cf.edital
-        doc_edital, txt_edital = self._baixar(edital_fonte, "doc-1")
+        doc_edital, txt_edital, pdf_edital = self._baixar(edital_fonte, "doc-1")
         if txt_edital is None:
             raise NaoEhPdf(f"edital não é PDF: {doc_edital.url_final}")
         documentos, textos = [doc_edital], {doc_edital.sha256: txt_edital}
 
         evidencias: list[Evidencia] = []
         prazos = Prazos()
+        try:
+            linhas_tabela = tabela.linhas(pdf_edital, txt_edital.paginas)
+        except Exception as e:  # tabela ilegível não derruba o concurso: só não há candidato de tabela
+            linhas_tabela = []
+            reg.violacoes.append(f"cronograma em tabela ilegível: {type(e).__name__}")
         for tipo, campo in clausulas.CAMPO_POR_TIPO.items():
             cands = clausulas.encontrar(txt_edital.paginas, tipo)
-            p = clausulas.principal(cands)
-            if p is not None:
-                ev = Evidencia(id=f"ev-{len(evidencias) + 1}", campo=campo, documento="doc-1", pagina=p.pagina,
-                               trecho=p.trecho, ancora=p.ancora, metodo=METODO)
+            tab = [c for c in tabela.candidatos(linhas_tabela, txt_edital.paginas, tipo) if not c.ambiguo]
+            escolhido, motivo = _escolher(cands, tab)
+            if escolhido is not None:
+                linha = LinhaTabela(atividade=escolhido.tabela[0], datas=escolhido.tabela[1]) if escolhido.tabela else None
+                ev = Evidencia(id=f"ev-{len(evidencias) + 1}", campo=campo, documento="doc-1",
+                               pagina=escolhido.pagina, trecho=escolhido.trecho, ancora=escolhido.ancora,
+                               metodo="tabela:v1" if linha else METODO, tabela=linha)
                 evidencias.append(ev)
-                setattr(prazos, tipo, Prazo(inicio=p.inicio, fim=p.fim, status="verificado", evidencia=ev.id))
-            elif cands:
+                setattr(prazos, tipo, Prazo(inicio=escolhido.inicio, fim=escolhido.fim, status="verificado",
+                                            evidencia=ev.id))
+            elif motivo:
                 setattr(prazos, tipo, Prazo(status="revisao"))
-                reg.violacoes.append(f"{campo}: {len(clausulas.intervalos_distintos(cands))} cláusulas diferentes")
+                reg.violacoes.append(f"{campo}: {motivo}")
 
         vagas_campo = None
         achados = vagas.encontrar(txt_edital.paginas)
@@ -176,7 +213,7 @@ class Coletor:
         ][-MAX_MUDANCAS:]
         for i, d in enumerate(mudancas, start=2):
             try:
-                doc, txt = self._baixar(d, f"doc-{i}")
+                doc, txt, _ = self._baixar(d, f"doc-{i}")
             except ErroColeta as e:
                 # sem o documento não dá para descartar impacto: G7 rebaixa o que ele poderia afetar
                 reg.violacoes.append(f"documento de mudança indisponível: {d.url} ({e})")

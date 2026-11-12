@@ -136,3 +136,26 @@ def test_concurso_novo_ja_encerrado_nao_entra(dados, extrair_falso):
                          agora=lambda: depois).processar(_cf())
     assert reg.situacao == "encerrado"
     assert not (dados / "concursos").exists()
+
+
+def test_cebraspe_pelo_cronograma_em_tabela(dados, monkeypatch):
+    """PC-PE 2026: os prazos só existem no Anexo I (tabela)."""
+    from ntc.parse import tabela
+    from ntc.sources import cebraspe
+
+    bruto = json.loads((F / "editais" / "pcpe26_cronograma.json").read_text(encoding="utf-8"))
+    det = json.loads((F / "cebraspe" / "PC_PE_26.json").read_text(encoding="utf-8"))
+    cf = cebraspe.parse_evento(det)
+    cf.documentos = [cf.edital]  # retificações ficam para o teste de G7
+    monkeypatch.setattr(coleta, "extrair", lambda b: TextoDocumento(
+        __import__("hashlib").sha256(b).hexdigest(), {92: bruto["texto"]}, completo=True))
+    monkeypatch.setattr(tabela, "linhas", lambda pdf, pags: [tabela.Linha(92, a, d) for a, d in bruto["linhas"]])
+    reg = coleta.Coletor(ClienteFalso({cf.edital.url: b"%PDF-pcpe"}), JsonStore(dados),
+                         Allowlist.carregar(dados / "fontes.yaml"), agora=lambda: AGORA).processar(cf)
+    assert reg.situacao == "publicado", reg
+    c = json.loads((dados / "concursos" / f"{reg.slug}.json").read_text(encoding="utf-8"))
+    assert reg.slug == "pc-pe-2026"
+    assert (c["prazos"]["isencao"]["inicio"], c["prazos"]["isencao"]["fim"]) == ("2026-10-15", "2026-11-12")
+    assert c["prazos"]["inscricao"]["fim"] == "2026-12-16"
+    assert c["evidencias"][0]["metodo"] == "tabela:v1"
+    assert main(["validate", "--data", str(dados)]) == 0

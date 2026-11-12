@@ -115,8 +115,16 @@ class Gate:
             return falha("G8", "documento sem camada de texto")
         pagina = texto.paginas.get(ev.pagina)
         trecho = normalizar(ev.trecho)
-        if pagina is None or trecho not in normalizar(pagina):
-            return falha("G3", f"trecho não encontrado na página {ev.pagina}")
+        if ev.tabela is not None:
+            # linha de tabela: cada célula precisa estar, literalmente, na página
+            celulas = (normalizar(ev.tabela.atividade), normalizar(ev.tabela.datas))
+            if pagina is None or any(c not in normalizar(pagina) for c in celulas):
+                return falha("G3", f"célula da tabela não encontrada na página {ev.pagina}")
+            texto_ancora, texto_datas = celulas
+        else:
+            if pagina is None or trecho not in normalizar(pagina):
+                return falha("G3", f"trecho não encontrado na página {ev.pagina}")
+            texto_ancora = texto_datas = trecho
 
         if ev.aprovado_por:
             return []
@@ -125,13 +133,13 @@ class Gate:
             tipo = TIPO_POR_CAMPO.get(caminho)
             if tipo is None:
                 return falha("G4", "prazo sem tipo conhecido")
-            if not clausulas.ANCORAS[tipo].search(trecho):
+            if not clausulas.ANCORAS[tipo].search(texto_ancora):
                 return falha("G4", f"trecho sem âncora de {tipo}")
-            if clausulas.EXCLUSOES[tipo].search(trecho):
+            if clausulas.EXCLUSOES[tipo].search(texto_ancora):
                 return falha("G4", "trecho descreve outro evento do cronograma")
             esperado = [d for d in (campo.inicio, campo.fim) if d is not None]
-            if clausulas.datas_de_prazo(trecho) != esperado:
-                return falha("G4", f"datas do trecho {clausulas.datas_de_prazo(trecho)} ≠ declaradas {esperado}")
+            if clausulas.datas_de_prazo(texto_datas) != esperado:
+                return falha("G4", f"datas do trecho {clausulas.datas_de_prazo(texto_datas)} ≠ declaradas {esperado}")
             if texto.completo:
                 distintos = clausulas.intervalos_distintos(clausulas.encontrar(texto.paginas, tipo))
                 if len(distintos) > 1:

@@ -72,7 +72,7 @@ class LinhaTabela(_Base):
     """Linha de uma tabela do documento (ex.: cronograma), lida célula por célula no PDF.
     Cada célula precisa aparecer, literalmente, no texto da página (G3)."""
 
-    atividade: str = Field(min_length=5, max_length=300)
+    atividade: str = Field(min_length=5, max_length=290)
     datas: str = Field(min_length=4, max_length=200)
 
 

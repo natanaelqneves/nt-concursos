@@ -66,7 +66,8 @@ class Candidato:
     def ambiguo(self) -> bool:
         return len(self.datas) > 2
 
-    de_tabela: bool = False
+    de_tabela: bool = False  # texto corrido de tabela: nunca sustenta prazo, mas conta no G5
+    tabela: tuple[str, str] | None = None  # (atividade, datas) lidas célula por célula
 
 
 _DATA_EXTENSO = r"\d{1,2}(?:º|°)?\s+de\s+[a-zç]+\s+de\s+\d{4}|\d{1,2}/\d{1,2}/\d{4}"
@@ -85,7 +86,7 @@ _CARIMBO = re.compile(r"\b\d{1,2}/\d{1,2}/\d{4},?\s+\d{1,2}:\d{2}\b")
 # Linhas de cronograma em tabela: o texto extraído separa as colunas e a data pode cair ao
 # lado do rótulo de outra linha. Esses trechos contam para detectar conflito (G5), mas nunca
 # sustentam um prazo sozinhos.
-_TABELA = re.compile(
+TABELA_CABECALHO = re.compile(
     r"cronograma\s+(?:previsto|de\s+atividades|do\s+concurso|de\s+eventos)|datas?\s+previstas?|"
     r"anexo\s+[ivx\d]+\s*[-–—]?\s*cronograma",
     re.IGNORECASE,
@@ -115,7 +116,7 @@ def encontrar(paginas: dict[int, str], tipo: TipoPrazo) -> list[Candidato]:
     candidatos: list[Candidato] = []
     for pagina in sorted(paginas):
         # Tudo o que vem depois de um cabeçalho de cronograma na página é tratado como tabela.
-        cab = _TABELA.search(normalizar(paginas[pagina]))
+        cab = TABELA_CABECALHO.search(normalizar(paginas[pagina]))
         inicio_tabela = cab.start() if cab else None
         pos = 0
         texto_norm = normalizar(paginas[pagina])
