@@ -1,0 +1,5 @@
+https://www.concursosfcc.com.br/robots.txt fcc_robots.txt
+https://www.concursosfcc.com.br/ fcc_home.html
+https://www.concursosfcc.com.br/concursos/ fcc_concursos.html
+https://www.concursosfcc.com.br/concursoAndamento.html fcc_andamento.html
+https://www.concursosfcc.com.br/inscricoesAbertas.html fcc_abertas.html
