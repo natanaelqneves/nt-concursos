@@ -25,6 +25,10 @@ Categoria = Literal[
     "tribunal", "controle", "mp", "defensoria", "seguranca",
     "estatal",   # empresas públicas e sociedades de economia mista federais e estaduais
     "conselho",  # conselhos profissionais (autarquias federais, com sede regional)
+    "fiscal",       # Receita Federal e secretarias estaduais de Fazenda (auditoria fiscal)
+    "advocacia",    # advocacia pública: AGU, PGFN, procuradorias-gerais dos estados e do DF
+    "executivo",    # executivo federal: ministérios, autarquias, agências reguladoras, INSS, IBGE, CNU
+    "legislativo",  # Câmara dos Deputados, Senado Federal e assembleias legislativas
     "outro",     # demais órgãos federais/estaduais: só entram com cargo de TI (areas contém "ti")
 ]
 Area = Literal["ti"]
@@ -218,6 +222,8 @@ class Concurso(_Base):
             raise ValueError("categoria 'outro' só entra com cargo de TI (areas: ['ti'])")
         if len(set(self.areas)) != len(self.areas):
             raise ValueError("areas repetidas")
+        if self.categoria == "executivo" and self.esfera != "federal":
+            raise ValueError("categoria 'executivo' cobre só o executivo federal")
         if self.esfera == "estadual" and self.uf == "BR":
             raise ValueError("órgão estadual precisa de UF")
         if self.vagas_imediatas is not None and self.vagas_imediatas.valor is not None:

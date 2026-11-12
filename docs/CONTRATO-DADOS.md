@@ -55,6 +55,17 @@ Classificação de escopo: `collector/src/ntc/escopo.py` (regras explícitas, co
 
 Municipais continuam fora, inclusive TI municipal e empresas municipais. O mesmo vale para `data/noticias`.
 
+Ainda em 12/11/2026, `categoria` ganha mais quatro valores (compatível com a versão 2):
+
+| Valor | O que cobre |
+|---|---|
+| `fiscal` | Receita Federal (`BR`) e secretarias estaduais de Fazenda / receitas estaduais |
+| `advocacia` | AGU e PGFN (`BR`), procuradorias-gerais dos estados e do DF |
+| `executivo` | só federal (`BR`): ministérios, autarquias e fundações, agências reguladoras, INSS, IBGE, Banco Central, CNU |
+| `legislativo` | Câmara dos Deputados e Senado (`BR`), assembleias legislativas e Câmara Legislativa do DF |
+
+Polícia legislativa continua em `seguranca`. Procuradorias municipais e câmaras municipais ficam fora.
+
 ## Evidência de tabela (12/11/2026, compatível com a versão 2)
 
 Cronogramas em tabela (padrão da Cebraspe) são lidos célula por célula no PDF. A evidência ganha:
