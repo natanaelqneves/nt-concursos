@@ -2,11 +2,13 @@
 import Base from "../layouts/Base.astro";
 import AdSlot from "../components/AdSlot.astro";
 import CartaoConcurso from "../components/CartaoConcurso.astro";
-import { comIsencaoAberta, emDestaque, inscricoesAbertasSemIsencao } from "../lib/dados";
+import CartaoNoticia from "../components/CartaoNoticia.astro";
+import { comIsencaoAberta, emDestaque, inscricoesAbertasSemIsencao, noticiasAtivas } from "../lib/dados";
 
 const isencoes = comIsencaoAberta();
 const abertas = inscricoesAbertasSemIsencao();
 const destaques = emDestaque();
+const noticias = noticiasAtivas();
 ---
 <Base
   titulo="Concursos abertos e prazos de isenção da taxa | NT Concursos"
@@ -41,5 +43,16 @@ const destaques = emDestaque();
     <ul class="lista">{abertas.map((c) => <CartaoConcurso c={c} />)}</ul>
   ) : (
     <p class="vazio">Nenhuma outra inscrição aberta e verificada nesta edição.</p>
+  )}
+
+  {noticias.length > 0 && (
+    <section aria-labelledby="apuracao">
+      <h2 id="apuracao">Também com inscrições abertas: apuração na imprensa ({noticias.length})</h2>
+      <p class="meta">
+        Ainda não conferidos por nós no edital. Cada informação foi cruzada em pelo menos duas fontes;
+        confira o edital antes de se inscrever. <a href="/noticias/">Ver todos</a>
+      </p>
+      <ul class="lista">{noticias.map((n) => <CartaoNoticia n={n} />)}</ul>
+    </section>
   )}
 </Base>

@@ -1,0 +1,96 @@
+{
+  "slug": "dpdf-2026-analista",
+  "titulo": "Defensoria Pública do DF abre concurso para analista",
+  "orgao": "Defensoria Pública do Distrito Federal",
+  "categoria": "defensoria",
+  "esfera": "estadual",
+  "uf": "DF",
+  "banca": "Instituto Access",
+  "resumo": "A Defensoria Pública do Distrito Federal publicou edital para analista de apoio à assistência judiciária, cargo de nível superior com várias especialidades. São poucas vagas imediatas e um cadastro de reserva grande. As inscrições só abrem em dezembro, mas o pedido de isenção da taxa acontece antes, em novembro. A organização é do Instituto Access.",
+  "cargos": [
+    "Analista de Apoio à Assistência Judiciária"
+  ],
+  "fatos": [
+    {
+      "campo": "inscricao",
+      "texto": "De 3/12/2026 a 7/1/2027, no site do Instituto Access",
+      "inicio": "2026-12-03",
+      "fim": "2027-01-07",
+      "fontes": [
+        "f-1",
+        "f-2",
+        "f-3"
+      ]
+    },
+    {
+      "campo": "isencao",
+      "texto": "Pedido de isenção de 10/11 a 12/11/2026",
+      "inicio": "2026-11-10",
+      "fim": "2026-11-12",
+      "fontes": [
+        "f-2",
+        "f-3",
+        "f-4"
+      ]
+    },
+    {
+      "campo": "vagas",
+      "texto": "7 vagas imediatas e 700 em cadastro de reserva",
+      "fontes": [
+        "f-1",
+        "f-2"
+      ]
+    },
+    {
+      "campo": "taxa",
+      "texto": "R$ 110",
+      "fontes": [
+        "f-1",
+        "f-2",
+        "f-3"
+      ]
+    },
+    {
+      "campo": "prova",
+      "texto": "Provas em 21/2/2027",
+      "inicio": "2027-02-21",
+      "fim": "2027-02-21",
+      "fontes": [
+        "f-1",
+        "f-2"
+      ]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "f-1",
+      "nome": "Direção Concursos",
+      "url": "https://www.direcaoconcursos.com.br/noticias/edital-concurso-dpdf-publicado",
+      "oficial": false,
+      "consultado_em": "2026-11-12"
+    },
+    {
+      "id": "f-2",
+      "nome": "Sou Brasília",
+      "url": "https://soubrasilia.com/concurso-defensoria-publica-df-2026-analista-edital-inscricoes-3-dezembro/",
+      "oficial": false,
+      "consultado_em": "2026-11-12"
+    },
+    {
+      "id": "f-3",
+      "nome": "Ache Concursos",
+      "url": "https://www.acheconcursos.com.br/concursos-distrito-federal/concurso-dp-df-2026-edital-707-vagas-para-analista-94193",
+      "oficial": false,
+      "consultado_em": "2026-11-12"
+    },
+    {
+      "id": "f-4",
+      "nome": "Aprova Concursos",
+      "url": "https://www.aprovaconcursos.com.br/noticias/?p=168186",
+      "oficial": false,
+      "consultado_em": "2026-11-12"
+    }
+  ],
+  "apurado_em": "2026-11-12T17:45:00-03:00",
+  "expira_em": "2027-01-07"
+}

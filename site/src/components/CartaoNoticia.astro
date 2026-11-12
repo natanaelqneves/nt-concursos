@@ -1,0 +1,16 @@
+---
+import { NOME_CATEGORIA, fatoInscricao, type Noticia } from "../lib/dados";
+import { formatarData } from "../lib/tempo";
+
+interface Props { n: Noticia }
+const { n } = Astro.props;
+const insc = fatoInscricao(n);
+---
+<li class="cartao cartao-noticia">
+  <h3><a href={`/noticias/${n.slug}/`}>{n.titulo}</a></h3>
+  <p class="meta">
+    {NOME_CATEGORIA[n.categoria]} · {n.esfera === "federal" ? "Federal" : "Estadual"} · {n.uf === "BR" ? "Nacional" : n.uf} · banca {n.banca}
+  </p>
+  {insc?.fim && <p>Inscrições até {formatarData(insc.fim)}</p>}
+  <p class="meta"><span class="selo selo-apuracao">apuração em {n.fontes.length} fontes</span></p>
+</li>

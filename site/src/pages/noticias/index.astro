@@ -1,0 +1,25 @@
+---
+import Base from "../../layouts/Base.astro";
+import CartaoNoticia from "../../components/CartaoNoticia.astro";
+import { noticiasAtivas } from "../../lib/dados";
+
+const lista = noticiasAtivas();
+---
+<Base
+  titulo="Concursos abertos apurados na imprensa | NT Concursos"
+  descricao="Concursos de tribunais, controle, Ministério Público, Defensoria e segurança pública com inscrições abertas, apurados e cruzados em mais de uma fonte."
+>
+  <h1>Concursos abertos: apuração na imprensa</h1>
+  <p>
+    Estes concursos ainda não passaram pela nossa conferência automática no edital, porque a banca ou o
+    diário oficial ainda não estão ao alcance do nosso coletor. Cada informação abaixo foi conferida em
+    pelo menos duas fontes independentes, ou numa fonte oficial, e todas as fontes estão listadas.
+    <strong>Antes de se inscrever, confira o edital no site da banca.</strong>
+  </p>
+  <p><a href="/metodologia/#noticias">Como fazemos esta apuração</a></p>
+  {lista.length ? (
+    <ul class="lista">{lista.map((n) => <CartaoNoticia n={n} />)}</ul>
+  ) : (
+    <p class="vazio">Nenhum concurso apurado com inscrições abertas nesta edição.</p>
+  )}
+</Base>

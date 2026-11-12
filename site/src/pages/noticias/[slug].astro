@@ -1,0 +1,78 @@
+---
+import Base from "../../layouts/Base.astro";
+import { NOME_CATEGORIA, NOME_FATO, todasNoticias, type Noticia } from "../../lib/dados";
+import { SOBRE_CATEGORIA } from "../../lib/categorias";
+import { formatarData, formatarDataHora, hojeBRT } from "../../lib/tempo";
+
+export function getStaticPaths() {
+  return todasNoticias().map((n) => ({ params: { slug: n.slug }, props: { n } }));
+}
+
+interface Props { n: Noticia }
+const { n } = Astro.props;
+const porId = new Map(n.fontes.map((f) => [f.id, f]));
+const expirada = n.expira_em < hojeBRT();
+const sobre = SOBRE_CATEGORIA[n.categoria];
+---
+<Base
+  titulo={`${n.titulo} | NT Concursos`}
+  descricao={n.resumo.slice(0, 155)}
+  noindex={expirada}
+>
+  <p class="meta">
+    {NOME_CATEGORIA[n.categoria]} · {n.esfera === "federal" ? "Federal" : "Estadual"} · {n.uf === "BR" ? "Nacional" : n.uf} · banca {n.banca}
+  </p>
+  <h1>{n.titulo}</h1>
+  <p class="aviso-apuracao">
+    {expirada
+      ? "As inscrições deste concurso já terminaram."
+      : "Informação apurada em fontes de imprensa e cruzada entre elas, ainda não conferida por nós no edital. Confira o edital no site da banca antes de se inscrever."}
+  </p>
+
+  <p class="resumo-concurso">{n.resumo}</p>
+
+  <h2>O que as fontes confirmam</h2>
+  <dl class="dados">
+    {n.fatos.map((f) => (
+      <>
+        <dt>{NOME_FATO[f.campo]}</dt>
+        <dd>
+          {f.texto}
+          <span class="meta fontes-fato">
+            {" "}(fontes: {f.fontes.map((id, i) => {
+              const fo = porId.get(id)!;
+              return <>{i > 0 && ", "}<a href={fo.url} rel="nofollow noopener">{fo.nome}</a>{fo.oficial && " (oficial)"}</>;
+            })})
+          </span>
+        </dd>
+      </>
+    ))}
+  </dl>
+
+  {n.cargos.length > 0 && (
+    <>
+      <h2>Cargos</h2>
+      <ul>{n.cargos.map((c) => <li>{c}</li>)}</ul>
+    </>
+  )}
+
+  <section aria-labelledby="sobre">
+    <h2 id="sobre">Sobre a instituição</h2>
+    <h3>{sobre.titulo}</h3>
+    {sobre.paragrafos.map((p) => <p>{p}</p>)}
+  </section>
+
+  <h2>Fontes consultadas</h2>
+  <ul>
+    {n.fontes.map((f) => (
+      <li>
+        <a href={f.url} rel="nofollow noopener">{f.nome}</a>
+        {f.oficial && <span class="selo">oficial</span>}
+        <span class="meta"> · consultada em {formatarData(f.consultado_em)}</span>
+      </li>
+    ))}
+  </ul>
+  <p class="meta">
+    Apuração de {formatarDataHora(n.apurado_em)}. Encontrou um erro? <a href="/contato/">Avise-nos</a>.
+  </p>
+</Base>

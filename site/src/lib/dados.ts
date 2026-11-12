@@ -162,3 +162,72 @@ export function orgaoRevisado(nome: string): Orgao | null {
   const o = orgaos![nome];
   return o && o.revisado === true && typeof o.resumo === "string" ? o : null;
 }
+
+// ---- Notícias apuradas em fontes de imprensa (seção separada, nunca misturada às listas verificadas)
+
+export interface FonteNoticia {
+  id: string;
+  nome: string;
+  url: string;
+  oficial: boolean;
+  consultado_em: string;
+}
+
+export interface FatoNoticia {
+  campo: "inscricao" | "isencao" | "vagas" | "taxa" | "prova" | "remuneracao" | "banca" | "cargos";
+  texto: string;
+  inicio?: string | null;
+  fim?: string | null;
+  fontes: string[];
+}
+
+export interface Noticia {
+  slug: string;
+  titulo: string;
+  orgao: string;
+  categoria: Categoria;
+  esfera: Esfera;
+  uf: string;
+  banca: string;
+  resumo: string;
+  cargos: string[];
+  fatos: FatoNoticia[];
+  fontes: FonteNoticia[];
+  apurado_em: string;
+  expira_em: string;
+}
+
+export const NOME_FATO: Record<FatoNoticia["campo"], string> = {
+  inscricao: "Inscrições",
+  isencao: "Isenção da taxa",
+  vagas: "Vagas",
+  taxa: "Taxa",
+  prova: "Provas",
+  remuneracao: "Remuneração",
+  banca: "Banca",
+  cargos: "Cargos",
+};
+
+let cacheNoticias: Noticia[] | null = null;
+
+export function todasNoticias(): Noticia[] {
+  if (cacheNoticias) return cacheNoticias;
+  const dir = path.join(DIR_DADOS, "noticias");
+  cacheNoticias = fs.existsSync(dir)
+    ? fs.readdirSync(dir).filter((f) => f.endsWith(".json")).sort()
+        .map((f) => JSON.parse(fs.readFileSync(path.join(dir, f), "utf-8")) as Noticia)
+    : [];
+  return cacheNoticias;
+}
+
+/** Notícias com inscrição ainda não encerrada, de órgãos que não têm concurso verificado aberto. */
+export function noticiasAtivas(hoje = hojeBRT()): Noticia[] {
+  const verificados = new Set(todos().filter((c) => !encerrado(c, hoje)).map((c) => c.orgao));
+  return todasNoticias()
+    .filter((n) => n.expira_em >= hoje && !verificados.has(n.orgao))
+    .sort((a, b) => a.expira_em.localeCompare(b.expira_em));
+}
+
+export function fatoInscricao(n: Noticia): FatoNoticia | undefined {
+  return n.fatos.find((f) => f.campo === "inscricao");
+}

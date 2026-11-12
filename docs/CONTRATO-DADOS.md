@@ -95,3 +95,17 @@ Aprovação humana (`aprovado_por` + `aprovado_em`) dispensa G4–G7, nunca G1�
 - Do edital: só as páginas citadas por evidências.
 - Dos documentos de mudança: as páginas que o G7 lê (citam isenção/inscrição ou trazem "onde se lê"),
   e um registro mesmo quando nenhuma página cita prazo, para o `ntc validate` saber que o texto existiu.
+
+## Notícias apuradas (`data/noticias/<slug>.json`, desde 12/11/2026)
+
+Arquivo separado do contrato do concurso, com schema próprio (`schema/noticia.schema.json`,
+gerado de `collector/src/ntc/model/noticia.py`). Serve para concursos do escopo que o coletor
+ainda não consegue conferir no edital (banca bloqueada, INLABS fora do ar).
+
+| Regra | Conferida por |
+|---|---|
+| Cada fato cita fontes: 2 de veículos diferentes (subdomínios do mesmo site contam como um) ou 1 oficial consultada | schema |
+| Toda fonte listada sustenta algum fato | schema |
+| `expira_em` = fim das inscrições; a página sai das listas depois dessa data e ganha `noindex` | schema e site |
+| Texto próprio (`resumo`, `fatos[].texto`), nada copiado das fontes | revisão |
+| Órgão que já tem concurso verificado aberto: a notícia some das listas do site e o `ntc validate` avisa | site e validate |

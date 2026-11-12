@@ -1,0 +1,93 @@
+{
+  "slug": "trf3-2026-servidores",
+  "titulo": "TRF3 abre concurso para analista, técnico e oficial de justiça",
+  "orgao": "Tribunal Regional Federal da 3ª Região",
+  "categoria": "tribunal",
+  "esfera": "federal",
+  "uf": "SP",
+  "banca": "Vunesp",
+  "resumo": "O Tribunal Regional Federal da 3ª Região, que reúne a Justiça Federal de São Paulo e de Mato Grosso do Sul, abriu concurso para servidores organizado pela Vunesp. Há cargos de analista judiciário, oficial de justiça avaliador federal e técnico judiciário, com poucas vagas imediatas e formação de cadastro de reserva. As inscrições são feitas só pela internet, no site da banca.",
+  "cargos": [
+    "Analista Judiciário",
+    "Oficial de Justiça Avaliador Federal",
+    "Técnico Judiciário"
+  ],
+  "fatos": [
+    {
+      "campo": "inscricao",
+      "texto": "Das 10h de 4/11/2026 às 23h59 de 23/11/2026, no site da Vunesp",
+      "inicio": "2026-11-04",
+      "fim": "2026-11-23",
+      "fontes": [
+        "f-1",
+        "f-2",
+        "f-3"
+      ]
+    },
+    {
+      "campo": "vagas",
+      "texto": "11 vagas imediatas, além de cadastro de reserva",
+      "fontes": [
+        "f-2",
+        "f-3",
+        "f-4"
+      ]
+    },
+    {
+      "campo": "taxa",
+      "texto": "R$ 160 (analista) e R$ 100 (técnico)",
+      "fontes": [
+        "f-1",
+        "f-3"
+      ]
+    },
+    {
+      "campo": "prova",
+      "texto": "Provas objetiva e discursiva em 31/1/2027",
+      "inicio": "2027-01-31",
+      "fim": "2027-01-31",
+      "fontes": [
+        "f-1"
+      ]
+    },
+    {
+      "campo": "cargos",
+      "texto": "Analista judiciário, oficial de justiça avaliador federal e técnico judiciário",
+      "fontes": [
+        "f-1"
+      ]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "f-1",
+      "nome": "TRF3 (notícia oficial)",
+      "url": "https://web.trf3.jus.br/noticias/Noticiar/ExibirNoticia/447699-inscricoes-abertas-para-concurso-de-servidores-da",
+      "oficial": true,
+      "consultado_em": "2026-11-12"
+    },
+    {
+      "id": "f-2",
+      "nome": "Diário do Pará",
+      "url": "https://diariodopara.com.br/concursos-e-empregos/concurso-trf-3-vagas-analista-tecnico-sp-ms/",
+      "oficial": false,
+      "consultado_em": "2026-11-12"
+    },
+    {
+      "id": "f-3",
+      "nome": "BP Money",
+      "url": "https://bpmoney.com.br/brasil/edital-trf-3-concurso-vagas-salarios-ate-20-mil/",
+      "oficial": false,
+      "consultado_em": "2026-11-12"
+    },
+    {
+      "id": "f-4",
+      "nome": "Concursos no Brasil",
+      "url": "https://concursosnobrasil.com/concursos/2026/10/26/concurso-trf-3a-regiao-abre-11-vagas-com-remuneracoes-de-ate-r-20-mil/",
+      "oficial": false,
+      "consultado_em": "2026-11-12"
+    }
+  ],
+  "apurado_em": "2026-11-12T17:45:00-03:00",
+  "expira_em": "2026-11-23"
+}
