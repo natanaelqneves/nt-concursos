@@ -212,16 +212,17 @@ revisa uma vez por milestone** (o dono cola o diff no Codex e devolve a crítica
 | M0 | esqueleto, contrato, gate G1–G8, site, CI, publicação e Worker: entregue |
 | M1 | INLABS, Cebraspe e FGV, `fetch/http.py`, `pdf/extract.py`, `ntc collect`, escopo e porte: próximo |
 
-## 11. Escopo e prioridade (decidido em 12/11/2026)
+## 11. Escopo e prioridade (decidido em 12/11/2026; Tribunais de Contas, Defensorias, Bombeiros e Polícias Legislativas incluídos no mesmo dia)
 
 **Escopo:** concursos de órgãos **federais e estaduais** destas áreas. Municipais ficam fora.
 
 | Categoria | Exemplos |
 |---|---|
 | `tribunal` | STF, STJ, TST, TSE, STM, TRFs, TRTs, TREs, TJs, TJMs |
-| `controle` | CGU, controladorias e auditorias-gerais dos estados |
+| `controle` | CGU, controladorias e auditorias-gerais dos estados, TCU, TCEs e TCMs estaduais |
 | `mp` | MPU (MPF, MPT, MPM, MPDFT) e MPs estaduais |
-| `policia` | PF, PRF, Polícia Penal Federal, polícias civis, militares, penais e científicas |
+| `defensoria` | DPU e Defensorias Públicas estaduais |
+| `seguranca` | PF, PRF, Polícia Penal Federal, polícias civis, militares, penais e científicas, corpos de bombeiros militares, polícias legislativas (Câmara, Senado e assembleias) |
 
 A organização é **por órgão, não por banca**: a banca é só o lugar onde o edital é publicado.
 Cada concurso ganha `categoria` e `esfera` (`federal`/`estadual`); concurso fora do escopo é descartado na coleta.
