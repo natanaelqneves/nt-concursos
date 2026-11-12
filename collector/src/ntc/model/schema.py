@@ -12,7 +12,7 @@ from typing import Literal
 
 from pydantic import AwareDatetime, BaseModel, ConfigDict, Field, HttpUrl, model_validator
 
-SCHEMA_VERSION = 1
+SCHEMA_VERSION = 2
 
 Status = Literal["verificado", "revisao", "ausente"]
 TipoDocumento = Literal["edital", "retificacao", "aviso", "dou"]
@@ -21,7 +21,24 @@ UF = Literal[
     "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO", "BR",
 ]
 
+Categoria = Literal["tribunal", "controle", "mp", "defensoria", "seguranca"]
+Esfera = Literal["federal", "estadual"]
+Porte = Literal["grande", "medio", "pequeno", "indefinido"]
+
 TRECHO_MAX = 500
+
+# porte = vagas imediatas verificadas (cadastro reserva não conta)
+PORTE_GRANDE = 100
+PORTE_MEDIO = 20
+
+
+def classificar_porte(vagas_imediatas: Campo | None) -> str:
+    if vagas_imediatas is None or vagas_imediatas.status != "verificado":
+        return "indefinido"
+    n = int(vagas_imediatas.valor)
+    if n >= PORTE_GRANDE:
+        return "grande"
+    return "medio" if n >= PORTE_MEDIO else "pequeno"
 
 
 class _Base(BaseModel):
@@ -36,6 +53,16 @@ class Documento(_Base):
     sha256: str = Field(pattern=r"^[0-9a-f]{64}$")
     coletado_em: AwareDatetime
     fonte: str = Field(min_length=2)
+    # Data em que a banca/órgão publicou o documento. Ordena edital e retificações (G7);
+    # sem ela, vale `coletado_em`.
+    publicado_em: date | None = None
+    titulo: str | None = Field(default=None, max_length=300)
+
+    def posterior_a(self, outro: Documento) -> bool:
+        """Ordem de publicação; se algum dos dois não tiver `publicado_em`, usa `coletado_em`."""
+        if self.publicado_em and outro.publicado_em:
+            return self.publicado_em > outro.publicado_em
+        return self.coletado_em > outro.coletado_em
 
 
 class Evidencia(_Base):
@@ -108,12 +135,16 @@ class Descoberta(_Base):
 
 
 class Concurso(_Base):
-    schema_version: Literal[1] = SCHEMA_VERSION
+    schema_version: Literal[2] = SCHEMA_VERSION
     slug: str = Field(pattern=r"^[a-z0-9]+(?:-[a-z0-9]+)*$", max_length=120)
     orgao: str = Field(min_length=3)
+    categoria: Categoria
+    esfera: Esfera
     banca: str = Field(min_length=2)
     uf: UF
     cargos: list[Cargo] = Field(default_factory=list)
+    vagas_imediatas: Campo | None = None
+    porte: Porte = "indefinido"
     taxa: Campo | None = None
     prazos: Prazos = Field(default_factory=Prazos)
     isencao_publicos: list[str] = Field(default_factory=list)
@@ -128,6 +159,8 @@ class Concurso(_Base):
             ("prazos.isencao", self.prazos.isencao),
             ("prazos.inscricao", self.prazos.inscricao),
         ]
+        if self.vagas_imediatas is not None:
+            pares.append(("vagas_imediatas", self.vagas_imediatas))
         if self.taxa is not None:
             pares.append(("taxa", self.taxa))
         for i, cargo in enumerate(self.cargos):
@@ -154,6 +187,16 @@ class Concurso(_Base):
         for ev in self.evidencias:
             if ev.documento not in doc_ids:
                 raise ValueError(f"{ev.id} aponta para documento inexistente {ev.documento}")
+        if self.esfera == "federal" and self.uf != "BR" and self.categoria != "tribunal":
+            # Tribunais federais regionais (TRF, TRT, TRE) têm UF/sede; os demais órgãos federais são BR.
+            raise ValueError("órgão federal fora do Judiciário deve ter uf BR")
+        if self.esfera == "estadual" and self.uf == "BR":
+            raise ValueError("órgão estadual precisa de UF")
+        if self.vagas_imediatas is not None and self.vagas_imediatas.valor is not None:
+            if not isinstance(self.vagas_imediatas.valor, int) or self.vagas_imediatas.valor < 0:
+                raise ValueError("vagas_imediatas deve ser inteiro não negativo")
+        if self.porte != classificar_porte(self.vagas_imediatas):
+            raise ValueError(f"porte {self.porte!r} incoerente com vagas_imediatas")
         for caminho, campo in self.campos_com_evidencia():
             if campo.evidencia is None:
                 continue

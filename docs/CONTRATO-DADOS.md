@@ -14,6 +14,20 @@ A fonte da verdade é o modelo Pydantic em `collector/src/ntc/model/schema.py`. 
 | `data/revisao/<id>.json` | casos pendentes de revisão humana (M3) |
 | `data/execucoes/<AAAA-MM-DD>.json` | log das coletas do dia (M1) |
 
+## Versão 2 (M1, 12/11/2026)
+
+| Campo | Regra |
+|---|---|
+| `categoria` | `tribunal`, `controle`, `mp`, `defensoria` ou `seguranca` (obrigatório) |
+| `esfera` | `federal` ou `estadual` (obrigatório). Federal fora do Judiciário usa `uf: "BR"`; TRF/TRT/TRE usam a UF da sede; estadual nunca usa `BR` |
+| `vagas_imediatas` | campo factual (`valor` inteiro + `status` + `evidencia`): total de vagas imediatas declarado numa frase do edital ("destina-se ao provimento de N vagas"); cadastro reserva não conta |
+| `porte` | derivado e conferido pelo schema: `grande` (≥ 100 vagas imediatas verificadas), `medio` (≥ 20), `pequeno`, `indefinido` (sem vagas verificadas) |
+| `documentos[].publicado_em` | data de publicação informada pela banca; ordena edital e retificações no G7 |
+| `documentos[].titulo` | rótulo do documento na página da banca |
+
+Classificação de escopo: `collector/src/ntc/escopo.py` (regras explícitas, com testes em
+`tests/test_escopo.py`). Concurso fora do escopo não gera arquivo, só uma linha no log da execução.
+
 ## Regras do concurso
 
 - Todo campo factual (`prazos.*`, `taxa`, `cargos.N.vagas`, `cargos.N.remuneracao`) tem `status`

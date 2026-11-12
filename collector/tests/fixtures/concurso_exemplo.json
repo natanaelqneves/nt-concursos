@@ -1,21 +1,44 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "slug": "orgao-exemplo-2026-analista",
   "orgao": "Órgão Exemplo",
+  "categoria": "tribunal",
+  "esfera": "estadual",
   "banca": "fgv",
   "uf": "PB",
   "cargos": [
     {
       "nome": "Analista Administrativo",
-      "vagas": {"valor": 40, "status": "verificado", "evidencia": "ev-3"}
+      "vagas": {
+        "valor": 40,
+        "status": "verificado",
+        "evidencia": "ev-3"
+      }
     }
   ],
-  "taxa": {"valor": 98.0, "status": "verificado", "evidencia": "ev-4"},
-  "prazos": {
-    "isencao": {"inicio": "2026-11-10", "fim": "2026-11-14", "status": "verificado", "evidencia": "ev-1"},
-    "inscricao": {"inicio": "2026-11-10", "fim": "2026-12-10", "status": "verificado", "evidencia": "ev-2"}
+  "taxa": {
+    "valor": 98.0,
+    "status": "verificado",
+    "evidencia": "ev-4"
   },
-  "isencao_publicos": ["CadÚnico", "doador de medula óssea"],
+  "prazos": {
+    "isencao": {
+      "inicio": "2026-11-10",
+      "fim": "2026-11-14",
+      "status": "verificado",
+      "evidencia": "ev-1"
+    },
+    "inscricao": {
+      "inicio": "2026-11-10",
+      "fim": "2026-12-10",
+      "status": "verificado",
+      "evidencia": "ev-2"
+    }
+  },
+  "isencao_publicos": [
+    "CadÚnico",
+    "doador de medula óssea"
+  ],
   "documentos": [
     {
       "id": "doc-1",
