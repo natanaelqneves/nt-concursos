@@ -1,0 +1,16 @@
+{
+  "slug": "trf2-2025",
+  "orgao": "Tribunal Regional Federal da 2ª Região",
+  "fonte": "fgv",
+  "url": "https://conhecimento.fgv.br/concursos/trf2juiz",
+  "edital": "https://conhecimento.fgv.br/sites/default/files/concursos/sei_1438979_edital_154_retificado.pdf",
+  "campos_em_revisao": [
+    "prazos.inscricao",
+    "prazos.isencao"
+  ],
+  "motivos": [
+    "prazos.isencao: 2 cláusulas diferentes",
+    "prazos.inscricao: 5 cláusulas diferentes"
+  ],
+  "registrado_em": "2026-11-12T14:04:32-03:00"
+}

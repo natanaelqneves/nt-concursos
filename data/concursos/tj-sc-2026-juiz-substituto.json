@@ -1,0 +1,97 @@
+{
+  "schema_version": 2,
+  "slug": "tj-sc-2026-juiz-substituto",
+  "orgao": "Tribunal de Justiça do Estado de Santa Catarina",
+  "categoria": "tribunal",
+  "esfera": "estadual",
+  "banca": "fgv",
+  "uf": "SC",
+  "cargos": [],
+  "vagas_imediatas": {
+    "status": "verificado",
+    "evidencia": "ev-3",
+    "valor": 15
+  },
+  "porte": "pequeno",
+  "taxa": null,
+  "prazos": {
+    "isencao": {
+      "status": "verificado",
+      "evidencia": "ev-1",
+      "inicio": "2026-10-19",
+      "fim": "2026-10-21"
+    },
+    "inscricao": {
+      "status": "verificado",
+      "evidencia": "ev-2",
+      "inicio": "2026-10-19",
+      "fim": "2026-11-26"
+    }
+  },
+  "isencao_publicos": [],
+  "documentos": [
+    {
+      "id": "doc-1",
+      "tipo": "edital",
+      "url": "https://conhecimento.fgv.br/sites/default/files/concursos/edital-n-33-2026-edital-de-abertura-retificado.pdf",
+      "url_final": "https://conhecimento.fgv.br/sites/default/files/concursos/edital-n-33-2026-edital-de-abertura-retificado.pdf",
+      "sha256": "e461a1d24b4523a4264ac4741937b935873abf69f0456897a532c2187b847859",
+      "coletado_em": "2026-11-12T14:03:32-03:00",
+      "fonte": "fgv",
+      "publicado_em": "2026-10-19",
+      "titulo": "Edital (retificado em 19/10/2026)"
+    },
+    {
+      "id": "doc-2",
+      "tipo": "retificacao",
+      "url": "https://conhecimento.fgv.br/sites/default/files/concursos/sei_11350910_edital.pdf",
+      "url_final": "https://conhecimento.fgv.br/sites/default/files/concursos/sei_11350910_edital.pdf",
+      "sha256": "c32a37c3eaeffe5195e60071484ccde507689e559fddcce3f5f8d34ba41bd7df",
+      "coletado_em": "2026-11-12T14:03:34-03:00",
+      "fonte": "fgv",
+      "publicado_em": "2026-10-19",
+      "titulo": "1ª Retificação"
+    }
+  ],
+  "evidencias": [
+    {
+      "id": "ev-1",
+      "campo": "prazos.isencao",
+      "documento": "doc-1",
+      "pagina": 17,
+      "trecho": "10.2 A isenção mencionada no subitem 10.1 poderá ser solicitada no período das 16h do dia 19 de outubro de 2026 às 16h do dia 21 de outubro de 2026, horário oficial de Brasília/DF, por meio de inscrição no sítio eletrônico https://conhecimento.fgv.br/concursos/tjscjuiz26, devendo o candidato fazer o upload (imagem original) dos documentos comprobatórios para a obtenção da isenção.",
+      "ancora": "isenção",
+      "metodo": "regex:v1",
+      "aprovado_por": null,
+      "aprovado_em": null
+    },
+    {
+      "id": "ev-2",
+      "campo": "prazos.inscricao",
+      "documento": "doc-1",
+      "pagina": 12,
+      "trecho": "9.1.2 As inscrições para o Concurso Público estarão abertas no período de 19 de outubro de 2026 a 26 de novembro de 2026.",
+      "ancora": "inscrições",
+      "metodo": "regex:v1",
+      "aprovado_por": null,
+      "aprovado_em": null
+    },
+    {
+      "id": "ev-3",
+      "campo": "vagas_imediatas",
+      "documento": "doc-1",
+      "pagina": 1,
+      "trecho": "1.2 O presente Concurso Público destina-se ao provimento de 15 (quinze) vagas para o cargo de Juiz Substituto do Tribunal de Justiça do Estado de Santa Catarina e formação de cadastro de reserva, observado o prazo de validade do concurso.",
+      "ancora": "vagas",
+      "metodo": "regex:v1",
+      "aprovado_por": null,
+      "aprovado_em": null
+    }
+  ],
+  "descoberto_via": {
+    "fonte": "fgv",
+    "url": "https://conhecimento.fgv.br/concursos/tjscjuiz26",
+    "data_dou": null
+  },
+  "conferido_em": "2026-11-12T14:03:34-03:00"
+}
