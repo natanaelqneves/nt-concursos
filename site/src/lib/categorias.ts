@@ -52,10 +52,38 @@ export const SOBRE_CATEGORIA: Record<Categoria, { titulo: string; paragrafos: st
       "Para contratar, os conselhos precisam fazer concurso público. Os cargos mais comuns são de fiscal, agente administrativo, analista e advogado, e os empregados costumam ser contratados pela CLT.",
     ],
   },
+  fiscal: {
+    titulo: "O que fazem os órgãos fazendários",
+    paragrafos: [
+      "A Receita Federal, na União, e as secretarias de Fazenda (ou receitas estaduais), nos estados, cobram e fiscalizam os tributos: na esfera federal, impostos como o de renda e o IPI; nos estados, principalmente o ICMS e o IPVA. Também cuidam da arrecadação, do controle aduaneiro e, nos estados, de parte da gestão financeira.",
+      "Os cargos mais disputados são de auditor fiscal, de nível superior, com provas longas que cobram direito tributário, contabilidade, auditoria, direito constitucional e administrativo e, em muitos editais, tecnologia da informação e legislação tributária do próprio estado. Há também cargos de analista e técnico fazendário.",
+    ],
+  },
+  advocacia: {
+    titulo: "O que faz a advocacia pública",
+    paragrafos: [
+      "A advocacia pública defende a União, os estados e o Distrito Federal na Justiça e dá consultoria jurídica à administração. Na União, a Advocacia-Geral da União (AGU) reúne carreiras como advogado da União e procurador federal, e a Procuradoria-Geral da Fazenda Nacional (PGFN) cuida da cobrança da dívida ativa federal. Nos estados, esse papel é das procuradorias-gerais (PGEs).",
+      "O cargo de procurador exige bacharelado em Direito e, em geral, inscrição na OAB; o concurso costuma ter provas objetivas, discursivas e orais, além de títulos. As procuradorias também fazem concursos para cargos de apoio, como analista e técnico.",
+    ],
+  },
+  executivo: {
+    titulo: "O que é o executivo federal",
+    paragrafos: [
+      "É a parte do governo federal que executa as políticas públicas: ministérios, autarquias e fundações como o INSS e o IBGE, o Banco Central e as agências reguladoras, que fiscalizam setores como energia, telecomunicações, transportes e saúde suplementar. Desde 2024, parte desses órgãos seleciona servidores pelo Concurso Público Nacional Unificado (CNU).",
+      "Os servidores são estatutários, regidos pela Lei 8.112/1990. Os cargos vão de técnico, de nível médio, a analista e especialista, de nível superior, e cada edital traz as áreas de formação aceitas e o conteúdo das provas.",
+    ],
+  },
+  legislativo: {
+    titulo: "O que faz o Poder Legislativo",
+    paragrafos: [
+      "O Legislativo faz as leis e fiscaliza o Executivo. Na União, é formado pela Câmara dos Deputados e pelo Senado Federal; nos estados, pelas assembleias legislativas; no Distrito Federal, pela Câmara Legislativa.",
+      "Os concursos são para analistas e técnicos legislativos, consultores legislativos e de orçamento e, em algumas casas, policiais legislativos (que aparecem aqui em segurança pública). Os salários costumam estar entre os mais altos do serviço público, e as provas cobram o regimento interno da casa, além das matérias da especialidade.",
+    ],
+  },
   outro: {
     titulo: "Por que este concurso aparece aqui",
     paragrafos: [
-      "Além dos tribunais, órgãos de controle, Ministério Público, Defensoria, segurança pública, empresas públicas e conselhos, acompanhamos concursos de outros órgãos federais e estaduais quando eles têm vagas na área de tecnologia da informação.",
+      "Além das categorias que acompanhamos sempre, acompanhamos concursos de outros órgãos federais e estaduais quando eles têm vagas na área de tecnologia da informação.",
       "Cargos de TI aparecem com nomes diferentes de um órgão para outro: analista de tecnologia da informação, analista de sistemas, especialista em infraestrutura, técnico de informática. O edital traz os requisitos de formação e o conteúdo da prova de cada um.",
     ],
   },

@@ -31,7 +31,7 @@ export interface Documento {
   titulo?: string | null;
 }
 
-export type Categoria = "tribunal" | "controle" | "mp" | "defensoria" | "seguranca" | "estatal" | "conselho" | "outro";
+export type Categoria = "tribunal" | "controle" | "mp" | "defensoria" | "seguranca" | "estatal" | "conselho" | "fiscal" | "advocacia" | "executivo" | "legislativo" | "outro";
 export type Esfera = "federal" | "estadual";
 export type Porte = "grande" | "medio" | "pequeno" | "indefinido";
 
@@ -43,6 +43,10 @@ export const NOME_CATEGORIA: Record<Categoria, string> = {
   seguranca: "Segurança pública",
   estatal: "Empresas públicas",
   conselho: "Conselhos profissionais",
+  fiscal: "Fiscal e Receita",
+  advocacia: "Advocacia pública",
+  executivo: "Executivo federal",
+  legislativo: "Legislativo",
   outro: "Outros órgãos",
 };
 

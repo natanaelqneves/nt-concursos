@@ -47,18 +47,19 @@ FORA = [
     ["Exame Nacional da Magistratura - ENAM (2026.2)"],
     ["Concurso Público de Provas e Títulos para Outorga de Delegações de Notas e de Registro do Estado do RS"],
     ["Processo Seletivo para Juiz Leigo do Tribunal de Justiça"],
-    ["Concurso Público para a Procuradoria-Geral do Estado do Acre"],
-    ["Concurso Público para a Assembleia Legislativa do Estado do Rio de Janeiro (ALERJ)"],
-    ["CÂMARA DOS DEPUTADOS 26 ANALISTA", "CÂMARA DOS DEPUTADOS 26 ANALISTA"],
     ["Concurso Público para a Controladoria Geral do Município do Rio de Janeiro"],
     ["TJ CE 25 NOTÁRIOS"],
     ["SEAP MA 26 ESPECIALISTA E ASSISTENTE", "SEAP MA 26", "Especialista Penitenciário"],
-    ["SEFAZ AL 26"],
-    ["SEFAZ AL 26", "SEFAZ AL 26", "Cargo 1: Auditor Fiscal da Receita Estadual", "Conhecimentos: noções de informática"],
     ["Concurso Público para a Prefeitura de Macaé", "Cargo: Analista de Tecnologia da Informação"],
     ["Processo Seletivo Simplificado para a Secretaria da Educação do Estado de São Paulo - Ensino Médio Técnico"],
     ["SEDUC PI 25 PROFESSOR", "SEDUC PI 25", "Professor de Informática"],
     ["PREF PORTO ALEGRE RS 26"],
+    ["PREF PORTO VELHO 26 PROCURADOR"],
+    ["Concurso Público para a Procuradoria-Geral do Município do Rio de Janeiro"],
+    ["CAMARA MUNICIPAL BOAVISTA 25"],
+    ["Ana Maria 26"],
+    ["ARSAL 26"],
+    ["DETRAN AL 26"],
     ["Concurso Público para a Prefeitura Municipal do Salvador 2026 - Guarda Municipal"],
 ]
 
@@ -95,9 +96,9 @@ NOVAS = [
      "conselho", "federal", "BR", "conselho-regional-de-psicologia-da-5a-regiao", False),
     (["Concurso Público para o Conselho Regional de Medicina do Estado de São Paulo (CREMESP)"],
      "conselho", "federal", "SP", "conselho-regional-de-medicina-do-estado-de-sao-paulo", False),
-    (["SEFAZ AL 26", "SEFAZ AL 26", "Cargo 4: Analista de Tecnologia da Informação"], "outro", "estadual", "AL", "sefaz-al", True),
+    (["SEFAZ AL 26", "SEFAZ AL 26", "Cargo 4: Analista de Tecnologia da Informação"], "fiscal", "estadual", "AL", "sefaz-al", True),
     (["CÂMARA DOS DEPUTADOS 26 ANALISTA", "CÂMARA DOS DEPUTADOS 26 ANALISTA",
-      "Analista Legislativo – Atribuição: Informática Legislativa"], "outro", "federal", "BR", "camara-dos-deputados", True),
+      "Analista Legislativo – Atribuição: Informática Legislativa"], "legislativo", "federal", "BR", "camara-dos-deputados", True),
     (["Concurso Público para Secretaria de Planejamento e Gestão do Estado do Rio de Janeiro – SEPLAG/RJ",
       "Analista de Planejamento e Orçamento – Tecnologia da Informação"], "outro", "estadual", "RJ", "seplag-rj", True),
     # TI marcada também nas categorias de sempre
@@ -111,3 +112,36 @@ def test_estatais_conselhos_e_ti(textos, categoria, esfera, uf, sigla, ti):
     r = classificar(*textos)
     assert r is not None, textos
     assert (r.categoria, r.esfera, r.uf, r.sigla, "ti" in r.areas) == (categoria, esfera, uf, sigla, ti)
+
+
+PUBLICO = [
+    # (textos, categoria, esfera, uf, sigla) — títulos reais vistos na coleta de 12/11/2026
+    (["SEFAZ AL 26"], "fiscal", "estadual", "AL", "sefaz-al"),
+    (["SEFAZ AL 26", "SEFAZ AL 26", "Cargo 1: Auditor Fiscal da Receita Estadual"], "fiscal", "estadual", "AL", "sefaz-al"),
+    (["SEFAZ RJ 25 AUDITOR"], "fiscal", "estadual", "RJ", "sefaz-rj"),
+    (["Concurso Público Receita Federal do Brasil 2026"], "fiscal", "federal", "BR", "receita-federal"),
+    (["Concurso Público para a Secretaria de Estado da Fazenda de Santa Catarina"], "fiscal", "estadual", "SC", "sefaz-sc"),
+    (["PGE AL 26"], "advocacia", "estadual", "AL", "pge-al"),
+    (["pgeac", "pgeac"], "advocacia", "estadual", "AC", "pge-ac"),
+    (["Concurso Público para a Procuradoria-Geral do Estado do Acre"], "advocacia", "estadual", "AC", "pge-ac"),
+    (["AGU 26"], "advocacia", "federal", "BR", "agu"),
+    (["CÂMARA DOS DEPUTADOS 26 ANALISTA", "CÂMARA DOS DEPUTADOS 26 ANALISTA"], "legislativo", "federal", "BR", "camara-dos-deputados"),
+    (["Concurso Público para a Assembleia Legislativa do Estado do Rio de Janeiro (ALERJ)"], "legislativo", "estadual", "RJ", "ale-rj"),
+    (["alero25", "alero25"], "legislativo", "estadual", "RO", "ale-ro"),
+    (["ALEPE 26 ANALISTA"], "legislativo", "estadual", "PE", "ale-pe"),
+    (["ANTAQ 25 CF"], "executivo", "federal", "BR", "antaq"),
+    (["IBGE 26"], "executivo", "federal", "BR", "ibge"),
+    (["MRE 23"], "executivo", "federal", "BR", "mre"),
+    (["Concurso Público para o Ministério da Gestão e da Inovação em Serviços Públicos"], "executivo", "federal", "BR",
+     "ministerio-gestao-inovacao"),
+    (["INB 26", "Indústrias Nucleares do Brasil", "empresa vinculada ao Ministério de Minas e Energia"], "estatal", "federal", "BR", "inb"),
+    # polícia legislativa continua em segurança
+    (["CD 26 PL", "CÂMARA DOS DEPUTADOS 26 POLICIAL LEGISLATIVO FEDERAL"], "seguranca", "federal", "BR", "camara-dos-deputados"),
+]
+
+
+@pytest.mark.parametrize("textos,categoria,esfera,uf,sigla", PUBLICO)
+def test_fiscal_advocacia_executivo_legislativo(textos, categoria, esfera, uf, sigla):
+    r = classificar(*textos)
+    assert r is not None, textos
+    assert (r.categoria, r.esfera, r.uf, r.sigla) == (categoria, esfera, uf, sigla)

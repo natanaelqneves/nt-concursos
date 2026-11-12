@@ -1,8 +1,9 @@
 """Filtro de escopo: decide se um concurso é de um órgão coberto pelo site.
 
 Escopo (docs/ARQUITETURA.md, seção 11): órgãos federais e estaduais das categorias
-tribunal, controle, mp, defensoria e seguranca. Municipais, conselhos profissionais,
-estatais, outorgas de cartório, exames e processos seletivos ficam fora.
+tribunal, controle, mp, defensoria, seguranca, fiscal, advocacia, executivo (só federal),
+legislativo, estatal e conselho; outros órgãos só com cargo de TI. Municipais, outorgas de
+cartório, exames e processos seletivos ficam fora.
 
 A classificação usa só texto que a fonte publica sobre o concurso (título, nome
 abreviado da banca, cargos, hierarquia do DOU). Regras explícitas e testadas, sem
@@ -304,6 +305,8 @@ def classificar(*textos: str | None) -> Classificacao | None:
 
     r = _nucleo(partes, t)
     if r is None:
+        r = _publico(partes, curtos_lista)
+    if r is None:
         r = _conselho(partes) or _estatal(partes, t)
     if r is None and tem_ti(*curtos_lista):
         # Demais órgãos federais/estaduais só entram com cargo de TI nomeado (título ou cargo).
@@ -332,6 +335,166 @@ def _confirmar(r: Classificacao, t: str) -> Classificacao | None:
         if not _POLICIA_LEGISLATIVA.search(t):
             return None
     return r
+
+
+# ---------------------------------------------------------------- fiscal, advocacia, executivo, legislativo
+
+# Assembleias por sigla (Cebraspe/FGV usam "ALEAM 25", "alerj2025", "ALEPE")
+_SIGLAS_ALE = {
+    "aleac": "AC", "aleal": "AL", "alea": "AL", "aleap": "AP", "aleam": "AM", "alba": "BA", "alece": "CE",
+    "cldf": "DF", "ales": "ES", "alego": "GO", "alema": "MA", "almt": "MT", "alems": "MS", "almg": "MG",
+    "alepa": "PA", "alpb": "PB", "alep": "PR", "alepe": "PE", "alepi": "PI", "alerj": "RJ", "alrn": "RN",
+    "alrs": "RS", "alero": "RO", "alerr": "RR", "alesc": "SC", "alesp": "SP", "alese": "SE", "aleto": "TO",
+}
+
+# Executivo federal: nome por extenso (em textos curtos) -> (órgão, sigla do slug)
+_EXECUTIVO_NOMES = {
+    r"instituto nacional do seguro social": ("Instituto Nacional do Seguro Social (INSS)", "inss"),
+    r"instituto brasileiro de geografia e estatistica": ("Instituto Brasileiro de Geografia e Estatística (IBGE)", "ibge"),
+    r"concurso (?:publico )?nacional unificado": ("Concurso Público Nacional Unificado (CNU)", "cnu"),
+    r"banco central do brasil": ("Banco Central do Brasil", "bacen"),
+    r"agencia brasileira de inteligencia": ("Agência Brasileira de Inteligência (Abin)", "abin"),
+    r"conselho administrativo de defesa economica": ("Conselho Administrativo de Defesa Econômica (Cade)", "cade"),
+    r"comissao de valores mobiliarios": ("Comissão de Valores Mobiliários (CVM)", "cvm"),
+    r"superintendencia de seguros privados": ("Superintendência de Seguros Privados (Susep)", "susep"),
+    r"instituto brasileiro do meio ambiente": ("Ibama", "ibama"),
+    r"instituto chico mendes": ("ICMBio", "icmbio"),
+    r"instituto nacional de colonizacao e reforma agraria": ("Incra", "incra"),
+    r"instituto nacional da propriedade industrial": ("INPI", "inpi"),
+    r"departamento nacional de infraestrutura de transportes": ("DNIT", "dnit"),
+    r"ministerio das relacoes exteriores": ("Ministério das Relações Exteriores", "mre"),
+    r"arquivo nacional": ("Arquivo Nacional", "arquivo-nacional"),
+    r"instituto do patrimonio historico e artistico nacional": ("Iphan", "iphan"),
+    r"instituto de pesquisa economica aplicada": ("Ipea", "ipea"),
+}
+# Siglas que só valem como primeira palavra do título ("ANTAQ 25 CF", "IBGE 26")
+_EXECUTIVO_SIGLAS = {
+    "inss": "Instituto Nacional do Seguro Social (INSS)", "ibge": "Instituto Brasileiro de Geografia e Estatística (IBGE)",
+    "cnu": "Concurso Público Nacional Unificado (CNU)", "cpnu": "Concurso Público Nacional Unificado (CNU)",
+    "bacen": "Banco Central do Brasil", "bcb": "Banco Central do Brasil", "abin": "Agência Brasileira de Inteligência (Abin)",
+    "cade": "Conselho Administrativo de Defesa Econômica (Cade)", "cvm": "Comissão de Valores Mobiliários (CVM)",
+    "susep": "Superintendência de Seguros Privados (Susep)", "previc": "Superintendência Nacional de Previdência Complementar (Previc)",
+    "ibama": "Ibama", "icmbio": "ICMBio", "incra": "Incra", "inep": "Inep", "capes": "Capes", "cnpq": "CNPq",
+    "funai": "Funai", "inpi": "INPI", "inmetro": "Inmetro", "dnit": "DNIT", "funasa": "Funasa", "iphan": "Iphan",
+    "ipea": "Ipea", "enap": "Enap", "mre": "Ministério das Relações Exteriores", "mgi": "Ministério da Gestão e da Inovação",
+    "antaq": "Agência Nacional de Transportes Aquaviários (Antaq)", "antt": "Agência Nacional de Transportes Terrestres (ANTT)",
+    "anac": "Agência Nacional de Aviação Civil (Anac)", "aneel": "Agência Nacional de Energia Elétrica (Aneel)",
+    "anatel": "Agência Nacional de Telecomunicações (Anatel)", "anvisa": "Agência Nacional de Vigilância Sanitária (Anvisa)",
+    "ans": "Agência Nacional de Saúde Suplementar (ANS)", "ana": "Agência Nacional de Águas (ANA)",
+    "anp": "Agência Nacional do Petróleo (ANP)", "ancine": "Agência Nacional do Cinema (Ancine)",
+    "anm": "Agência Nacional de Mineração (ANM)",
+}
+_SEFAZ_SIGLA = re.compile(r"^(sefaz|sefa|sef|sefin|sefe)([a-z]{2})?\d*$")
+
+
+def _primeiro_token(titulo: str) -> list[str]:
+    return re.sub(r"[^a-z0-9 ]", " ", sem_acento(titulo)).split()
+
+
+def _publico(partes: list[str], curtos_lista: list[str]) -> Classificacao | None:
+    """Fiscal, advocacia pública, executivo federal e legislativo (federal e estadual)."""
+    # Só título e segundo texto (nome completo na Cebraspe, hierarquia no DOU, id na FGV):
+    # descrições e cargos citam ministérios e secretarias sem ser deles o concurso.
+    for orig in (x for x in partes[:2] if len(x) <= 200):
+        r = _publico_por_nome(sem_acento(orig), orig)
+        if r is not None:
+            return r
+    return _publico_por_sigla(partes[0])
+
+
+def _publico_por_nome(t: str, orig: str) -> Classificacao | None:
+    # Fiscal
+    if re.search(r"receita federal|auditor[- ]fiscal da receita federal", t):
+        return _c("fiscal", "federal", "BR", "Receita Federal do Brasil", "receita-federal")
+    m = re.search(r"secretaria (?:de estado )?(?:da |de )?(?:fazenda|economia e fazenda|fazenda e planejamento)|"
+                  r"receita estadual|auditor[- ]fiscal da receita estadual", t)
+    if m:
+        uf = uf_por_nome(t, m.start())
+        if uf:
+            return _c("fiscal", "estadual", uf, f"Secretaria da Fazenda {_no_estado(uf)}", f"sefaz-{uf.lower()}")
+    # Advocacia pública
+    if re.search(r"advocacia[- ]geral da uniao", t):
+        return _c("advocacia", "federal", "BR", "Advocacia-Geral da União (AGU)", "agu")
+    if re.search(r"procuradoria[- ]geral da fazenda nacional", t):
+        return _c("advocacia", "federal", "BR", "Procuradoria-Geral da Fazenda Nacional (PGFN)", "pgfn")
+    if re.search(r"procuradoria[- ]geral do distrito federal", t):
+        return _c("advocacia", "estadual", "DF", "Procuradoria-Geral do Distrito Federal", "pgdf")
+    m = re.search(r"procuradoria[- ]geral do estado", t)
+    if m:
+        uf = uf_por_nome(t, m.start())
+        if uf:
+            return _c("advocacia", "estadual", uf, f"Procuradoria-Geral {_no_estado(uf)}", f"pge-{uf.lower()}")
+    # Legislativo (polícia legislativa já saiu como segurança no núcleo)
+    if re.search(r"camara dos deputados", t):
+        return _c("legislativo", "federal", "BR", "Câmara dos Deputados", "camara-dos-deputados")
+    if re.search(r"senado federal", t):
+        return _c("legislativo", "federal", "BR", "Senado Federal", "senado")
+    if re.search(r"camara legislativa do distrito federal", t):
+        return _c("legislativo", "estadual", "DF", "Câmara Legislativa do Distrito Federal", "cldf")
+    m = re.search(r"assembleia legislativa", t)
+    if m:
+        uf = uf_por_nome(t, m.end())
+        if uf:
+            return _c("legislativo", "estadual", uf, f"Assembleia Legislativa {_no_estado(uf)}", f"ale-{uf.lower()}")
+    # Executivo federal
+    for padrao, (orgao, sigla) in _EXECUTIVO_NOMES.items():
+        if re.search(padrao, t):
+            return _c("executivo", "federal", "BR", orgao, sigla)
+    m = re.search(r"\bministerio d[aoe]s? ([a-z ]+?)(?:\s*[-–(|/,]|$| e do | 20\d\d)", t)
+    if m and not m.group(1).startswith("publico"):
+        nome = orig[m.start():m.end(1)] if len(orig) == len(t) else "Ministério d" + t[m.start() + 12:m.end(1)]
+        nome = "Ministério" + nome[len("ministerio"):]
+        palavras = [w for w in m.group(1).split() if w not in {"da", "de", "do", "das", "dos", "e", "em"}]
+        return _c("executivo", "federal", "BR", nome, slug_simples("ministerio " + " ".join(palavras[:2])))
+    m = re.search(r"agencia nacional d[aeo]s? ([a-z ]+?)(?:\s*[-–(|/,]|$| 20\d\d)", t)
+    if m:
+        nome = orig[m.start():m.end(1)] if len(orig) == len(t) else f"Agência Nacional de {m.group(1)}"
+        return _c("executivo", "federal", "BR", "Agência" + nome[len("agencia"):], slug_simples("agencia " + " ".join(m.group(1).split()[:2])))
+    return None
+
+
+def _publico_por_sigla(titulo: str) -> Classificacao | None:
+    tokens = _primeiro_token(titulo)
+    if not tokens:
+        return None
+    a = tokens[0]
+    prox = tokens[1] if len(tokens) > 1 else ""
+    if a in {"rfb", "receita"} and (a == "rfb" or prox == "federal"):
+        return _c("fiscal", "federal", "BR", "Receita Federal do Brasil", "receita-federal")
+    m = _SEFAZ_SIGLA.match(a)
+    if m:
+        uf = (m.group(2) or (prox if prox in _UFS else "")).upper()
+        if uf in ESTADOS:
+            return _c("fiscal", "estadual", uf, f"Secretaria da Fazenda {_no_estado(uf)}", f"sefaz-{uf.lower()}")
+    if a == "agu":
+        return _c("advocacia", "federal", "BR", "Advocacia-Geral da União (AGU)", "agu")
+    if a == "pgfn":
+        return _c("advocacia", "federal", "BR", "Procuradoria-Geral da Fazenda Nacional (PGFN)", "pgfn")
+    if a == "pgdf":
+        return _c("advocacia", "estadual", "DF", "Procuradoria-Geral do Distrito Federal", "pgdf")
+    m = re.match(r"^pge([a-z]{2})?\d*$", a)
+    if m:
+        uf = (m.group(1) or (prox if prox in _UFS else "")).upper()
+        if uf in ESTADOS:
+            return _c("advocacia", "estadual", uf, f"Procuradoria-Geral {_no_estado(uf)}", f"pge-{uf.lower()}")
+    if a == "cd" or (a == "camara" and prox == "dos"):
+        return _c("legislativo", "federal", "BR", "Câmara dos Deputados", "camara-dos-deputados")
+    if a == "senado":
+        return _c("legislativo", "federal", "BR", "Senado Federal", "senado")
+    m = re.match(r"^([a-z]{3,5}?)\d*$", a)
+    base = m.group(1) if m else a
+    for sigla in sorted(_SIGLAS_ALE, key=len, reverse=True):
+        if a == sigla or re.fullmatch(rf"{sigla}\d+", a):
+            uf = _SIGLAS_ALE[sigla]
+            orgao = "Câmara Legislativa do Distrito Federal" if uf == "DF" else f"Assembleia Legislativa {_no_estado(uf)}"
+            return _c("legislativo", "estadual", uf, orgao, "cldf" if uf == "DF" else f"ale-{uf.lower()}")
+    if base in _EXECUTIVO_SIGLAS or a in _EXECUTIVO_SIGLAS:
+        chave = a if a in _EXECUTIVO_SIGLAS else base
+        # Siglas curtas ("ANA", "ANS", "MRE") só com ano/número logo depois: "Ana Maria" não é agência.
+        if len(chave) <= 3 and a == chave and prox and not prox.isdigit():
+            return None
+        return _c("executivo", "federal", "BR", _EXECUTIVO_SIGLAS[chave], chave)
+    return None
 
 
 # ---------------------------------------------------------------- tecnologia da informação
