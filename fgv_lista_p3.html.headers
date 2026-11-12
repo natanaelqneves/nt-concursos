@@ -1,0 +1,23 @@
+HTTP/2 200 
+server: Apache
+cache-control: max-age=1800, public
+x-drupal-dynamic-cache: UNCACHEABLE (poor cacheability)
+content-language: pt-br
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+expires: Sun, 19 Nov 1978 05:00:00 GMT
+content-security-policy: frame-ancestors http://*.fgv.br https://*.fgv.br; report-uri /report-csp-violation
+strict-transport-security: max-age=31536000; includeSubDomains; preload
+x-drupal-cache: HIT
+referrer-policy: strict-origin-when-cross-origin
+last-modified: Thu, 12 Nov 2026 15:15:20 GMT
+etag: "1794496520"
+content-type: text/html; charset=UTF-8
+x-akamai-transformed: 9 12659 0 pmb=mRUM,1
+date: Thu, 12 Nov 2026 15:54:35 GMT
+server-timing: cdn-cache; desc=MISS
+server-timing: edge; dur=129
+server-timing: origin; dur=106
+set-cookie: BT-DT-TRK=aa80d3fd17c84a09b8992b8ac5818bc7; path=/; domain=.conhecimento.fgv.br; Secure
+server-timing: ak_p; desc="1794498875649_399280570_11378557_23445_5470_7_7_15";dur=1
+

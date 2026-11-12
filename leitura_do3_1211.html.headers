@@ -1,0 +1,22 @@
+HTTP/2 200 
+date: Thu, 12 Nov 2026 15:54:41 GMT
+content-type: text/html;charset=UTF-8
+vary: Accept-Encoding
+expires: Thu, 01 Jan 1970 00:00:00 GMT
+cache-control: private, no-cache, no-store, must-revalidate
+x-xss-protection: 1
+pragma: no-cache
+x-content-type-options: nosniff
+liferay-portal: Liferay Community Edition Portal 7.1.2 CE GA3 (Judson / Build 7102 / January 7, 2019)
+link: <https://www.in.gov.br/o/api/doc rel="http://www.w3.org/ns/hydra/core#apiDocumentation">
+link: <https://www.in.gov.br/o/api/doc rel="http://www.w3.org/ns/hydra/core#apiDocumentation">
+link: <https://www.in.gov.br/o/api/doc rel="http://www.w3.org/ns/hydra/core#apiDocumentation">
+x-cached: MISS
+cache-control: public
+access-control-allow-origin: *
+x-cache-date: Thu, 12 Nov 2026 15:54:41 GMT
+x-azion-request-id: c1a6757fc08350687f366c0fcf807ecc
+x-azion-edge-location: IAD
+set-cookie: az_asm=579VCg02/Z4yA5MtjSryNYD0Y4mog8bHrLTtbxs7G3JZn6g9S5uBquv3ECH7xY7AXwSFhFDSlKLezxlo; Domain=www.in.gov.br; Path=/; Max-Age=86400; Secure; HttpOnly; SameSite=Lax
+set-cookie: az_botm=c1a6757fc08350687f366c0fcf807ecc; Domain=www.in.gov.br; Path=/; Max-Age=86400; Secure; HttpOnly; SameSite=Lax
+
