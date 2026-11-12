@@ -85,3 +85,4 @@ footer.rodape nav { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: .5
 .evidencia-tabela { border-collapse: collapse; margin: .5rem 0; font-size: .92rem; }
 .evidencia-tabela caption { text-align: left; color: var(--suave); font-size: .82rem; }
 .evidencia-tabela th, .evidencia-tabela td { border: 1px solid #dde1e6; padding: .3rem .5rem; text-align: left; vertical-align: top; }
+.resumo-concurso { font-size: 1.05rem; line-height: 1.6; }

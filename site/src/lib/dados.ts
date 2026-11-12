@@ -144,3 +144,21 @@ export function titulo(c: Concurso): string {
   const resumo = cargos.length > 2 ? `${cargos.slice(0, 2).join(", ")} e outros` : cargos.join(" e ");
   return resumo ? `${c.orgao} – ${resumo}` : c.orgao;
 }
+
+export interface Orgao {
+  resumo: string;
+  site?: string;
+  revisado: boolean;
+}
+
+let orgaos: Record<string, Orgao> | null = null;
+
+/** Resumo do órgão, só se alguém o revisou (`revisado: true` em data/orgaos.json). */
+export function orgaoRevisado(nome: string): Orgao | null {
+  if (!orgaos) {
+    const arq = path.join(DIR_DADOS, "orgaos.json");
+    orgaos = fs.existsSync(arq) ? JSON.parse(fs.readFileSync(arq, "utf-8")) : {};
+  }
+  const o = orgaos![nome];
+  return o && o.revisado === true && typeof o.resumo === "string" ? o : null;
+}

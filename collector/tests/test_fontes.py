@@ -116,3 +116,20 @@ def test_fgv_edital_avulso_nao_substitui_o_de_abertura():
     avulso = [d for d in cf.documentos if "Cumprimento de decisão" in d.titulo]
     assert avulso and avulso[0].tipo == "retificacao"
     assert cf.ano == 2026
+
+
+def test_cargos_da_cebraspe_com_nome_legivel():
+    det = json.loads((F / "cebraspe" / "CBM_AL_26.json").read_text(encoding="utf-8"))
+    assert cebraspe.parse_evento(det).cargos == [
+        "Oficial de Estado-maior", "Soldado – Qualificação: QPBM/1", "Soldado – Qualificação: QPBM/2"]
+    det = json.loads((F / "cebraspe" / "PC_PE_26.json").read_text(encoding="utf-8"))
+    assert cebraspe.parse_evento(det).cargos == ["Agente de Polícia", "Delegado de Polícia", "Escrivão de Polícia"]
+
+
+def test_cargo_da_fgv_pelo_titulo():
+    cf = fgv.parse_concurso((F / "fgv" / "tjscjuiz26.html").read_text(encoding="utf-8"),
+                            "https://conhecimento.fgv.br/concursos/tjscjuiz26")
+    assert cf.cargos == ["Juiz Substituto"]
+    cf = fgv.parse_concurso((F / "fgv" / "tjpb26.html").read_text(encoding="utf-8"),
+                            "https://conhecimento.fgv.br/concursos/tjpb26")
+    assert cf.cargos == []

@@ -17,7 +17,7 @@ from collections.abc import Iterator
 from datetime import datetime
 
 from ntc.fetch.http import Cliente, ErroColeta
-from ntc.sources.base import RE_MUDANCA, ConcursoFonte, DocFonte, Fonte, ano_de
+from ntc.sources.base import RE_MUDANCA, ConcursoFonte, DocFonte, Fonte, ano_de, nome_de_cargo
 
 API = "https://apis.cebraspe.org.br/cebraspe/eventos"
 CDN = "https://cdn.cebraspe.org.br/"
@@ -67,7 +67,9 @@ def parse_evento(det: dict) -> ConcursoFonte:
     ]
     documentos += sorted(mudancas, key=lambda d: d.publicado_em or datetime.min.date())
     ano = det.get("eventoAno") or ano_de(abreviado, evento)
-    return ConcursoFonte("cebraspe", evento, abreviado, f"{PAGINA}{evento}", contexto, documentos, ano)
+    cargos = list(dict.fromkeys(nome_de_cargo(c.get("area", "")) for c in det.get("eventoCargos") or [] if c.get("area")))
+    return ConcursoFonte("cebraspe", evento, abreviado, f"{PAGINA}{evento}", contexto, documentos, ano,
+                         cargos=[c for c in cargos if c])
 
 
 class Cebraspe(Fonte):

@@ -25,6 +25,7 @@ from ntc.fetch.http import BRT, Cliente, ErroColeta
 from ntc.gate.evidencia import Gate, TextoDocumento
 from ntc.model.schema import (
     Campo,
+    Cargo,
     Concurso,
     Descoberta,
     Documento,
@@ -230,6 +231,7 @@ class Coletor:
         slug = existente[1].slug if existente else self._novo_slug(cf, cls)
         concurso = Concurso(
             slug=slug, orgao=cls.orgao, categoria=cls.categoria, esfera=cls.esfera, banca=cf.fonte, uf=cls.uf,
+            cargos=[Cargo(nome=n) for n in cf.cargos if len(n) >= 2],
             vagas_imediatas=vagas_campo, porte=classificar_porte(vagas_campo), prazos=prazos,
             documentos=documentos, evidencias=evidencias,
             descoberto_via=Descoberta(fonte=cf.fonte, url=cf.url, data_dou=cf.data_dou),
