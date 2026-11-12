@@ -19,7 +19,7 @@ from urllib.parse import urlsplit
 
 from pydantic import AnyHttpUrl, AwareDatetime, BaseModel, ConfigDict, Field, model_validator
 
-from ntc.model.schema import UF, Categoria, Esfera
+from ntc.model.schema import FEDERAIS_COM_UF, UF, Area, Categoria, Esfera
 
 NOTICIA_SCHEMA_VERSION = 1
 
@@ -70,6 +70,7 @@ class Noticia(_Base):
     banca: str = Field(min_length=2, max_length=80)
     resumo: str = Field(min_length=80, max_length=1200)
     cargos: list[str] = Field(default_factory=list)
+    areas: list[Area] = Field(default_factory=list)
     fatos: list[Fato] = Field(min_length=2)
     fontes: list[Fonte] = Field(min_length=2)
     apurado_em: AwareDatetime
@@ -99,8 +100,10 @@ class Noticia(_Base):
             raise ValueError("toda notícia precisa do fim das inscrições, com fontes")
         if self.expira_em != insc.fim:
             raise ValueError("expira_em deve ser o fim das inscrições")
-        if self.esfera == "federal" and self.uf != "BR" and self.categoria != "tribunal":
+        if self.esfera == "federal" and self.uf != "BR" and self.categoria not in FEDERAIS_COM_UF:
             raise ValueError("órgão federal fora do Judiciário deve ter uf BR")
+        if self.categoria == "outro" and "ti" not in self.areas:
+            raise ValueError("categoria 'outro' só entra com cargo de TI")
         if self.esfera == "estadual" and self.uf == "BR":
             raise ValueError("órgão estadual precisa de UF")
         return self

@@ -21,7 +21,15 @@ UF = Literal[
     "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO", "BR",
 ]
 
-Categoria = Literal["tribunal", "controle", "mp", "defensoria", "seguranca"]
+Categoria = Literal[
+    "tribunal", "controle", "mp", "defensoria", "seguranca",
+    "estatal",   # empresas públicas e sociedades de economia mista federais e estaduais
+    "conselho",  # conselhos profissionais (autarquias federais, com sede regional)
+    "outro",     # demais órgãos federais/estaduais: só entram com cargo de TI (areas contém "ti")
+]
+Area = Literal["ti"]
+# Categorias federais que podem ter UF própria (sede regional); as demais federais usam BR.
+FEDERAIS_COM_UF = {"tribunal", "conselho"}
 Esfera = Literal["federal", "estadual"]
 Porte = Literal["grande", "medio", "pequeno", "indefinido"]
 
@@ -160,6 +168,7 @@ class Concurso(_Base):
     cargos: list[Cargo] = Field(default_factory=list)
     vagas_imediatas: Campo | None = None
     porte: Porte = "indefinido"
+    areas: list[Area] = Field(default_factory=list)  # áreas dos cargos (ex.: "ti")
     taxa: Campo | None = None
     prazos: Prazos = Field(default_factory=Prazos)
     isencao_publicos: list[str] = Field(default_factory=list)
@@ -202,9 +211,13 @@ class Concurso(_Base):
         for ev in self.evidencias:
             if ev.documento not in doc_ids:
                 raise ValueError(f"{ev.id} aponta para documento inexistente {ev.documento}")
-        if self.esfera == "federal" and self.uf != "BR" and self.categoria != "tribunal":
-            # Tribunais federais regionais (TRF, TRT, TRE) têm UF/sede; os demais órgãos federais são BR.
+        if self.esfera == "federal" and self.uf != "BR" and self.categoria not in FEDERAIS_COM_UF:
+            # TRF/TRT/TRE e conselhos regionais têm UF da sede; os demais órgãos federais são BR.
             raise ValueError("órgão federal fora do Judiciário deve ter uf BR")
+        if self.categoria == "outro" and "ti" not in self.areas:
+            raise ValueError("categoria 'outro' só entra com cargo de TI (areas: ['ti'])")
+        if len(set(self.areas)) != len(self.areas):
+            raise ValueError("areas repetidas")
         if self.esfera == "estadual" and self.uf == "BR":
             raise ValueError("órgão estadual precisa de UF")
         if self.vagas_imediatas is not None and self.vagas_imediatas.valor is not None:

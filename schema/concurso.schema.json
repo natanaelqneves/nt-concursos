@@ -410,7 +410,10 @@
         "controle",
         "mp",
         "defensoria",
-        "seguranca"
+        "seguranca",
+        "estatal",
+        "conselho",
+        "outro"
       ],
       "title": "Categoria",
       "type": "string"
@@ -490,6 +493,14 @@
       ],
       "title": "Porte",
       "type": "string"
+    },
+    "areas": {
+      "items": {
+        "const": "ti",
+        "type": "string"
+      },
+      "title": "Areas",
+      "type": "array"
     },
     "taxa": {
       "anyOf": [

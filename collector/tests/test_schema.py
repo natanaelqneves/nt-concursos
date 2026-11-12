@@ -108,3 +108,21 @@ def test_evidencia_de_tabela_exige_trecho_composto(novo):
     d["evidencias"][1]["trecho"] = "Período de solicitação de inscrições: 10/11 a 10/12/2026"
     with pytest.raises(ValidationError, match="atividade — datas"):
         Concurso.model_validate(d)
+
+
+def test_categoria_outro_exige_area_ti(novo):
+    d = novo()
+    d["categoria"] = "outro"
+    with pytest.raises(ValidationError, match="TI"):
+        Concurso.model_validate(d)
+    d["areas"] = ["ti"]
+    Concurso.model_validate(d)
+
+
+def test_conselho_federal_pode_ter_uf_da_sede(novo):
+    d = novo()
+    d["categoria"], d["esfera"], d["uf"] = "conselho", "federal", "SP"
+    Concurso.model_validate(d)
+    d["categoria"] = "estatal"
+    with pytest.raises(ValidationError, match="uf BR"):
+        Concurso.model_validate(d)
