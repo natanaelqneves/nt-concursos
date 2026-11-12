@@ -1,6 +1,6 @@
 ---
 import type { Concurso } from "../lib/dados";
-import { NOME_CATEGORIA, isencaoAberta, inscricaoAberta, local, titulo } from "../lib/dados";
+import { NOME_CATEGORIA, isencaoAberta, inscricaoAberta, local, temTI, titulo } from "../lib/dados";
 import { diasEntre, formatarData, hojeBRT } from "../lib/tempo";
 
 interface Props {
@@ -20,6 +20,7 @@ const restam = isen?.fim ? diasEntre(hoje, isen.fim) : null;
   <p class="meta small">
     {NOME_CATEGORIA[c.categoria]} · {c.esfera === "federal" ? "Federal" : "Estadual"} · {local(c)} · banca {c.banca.toUpperCase()}
     {c.porte === "grande" && <> · <span class="selo badge rounded-pill selo-porte">grande porte</span></>}
+    {temTI(c) && <> · <span class="selo badge rounded-pill selo-ti">vagas de TI</span></>}
   </p>
   {isen?.fim && (
     <p>

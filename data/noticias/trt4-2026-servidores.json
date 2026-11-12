@@ -9,7 +9,11 @@
   "resumo": "O Tribunal Regional do Trabalho da 4ª Região, que atende o Rio Grande do Sul, está com concurso aberto para analista e técnico judiciário, em várias áreas e especialidades, organizado pela Fundação Carlos Chagas. O edital forma cadastro de reserva: os aprovados são chamados conforme surgirem vagas durante a validade do concurso. O prazo para pedir isenção da taxa já terminou.",
   "cargos": [
     "Analista Judiciário",
-    "Técnico Judiciário"
+    "Técnico Judiciário",
+    "Analista Judiciário – Apoio Especializado – Tecnologia da Informação"
+  ],
+  "areas": [
+    "ti"
   ],
   "fatos": [
     {
@@ -57,6 +61,14 @@
       "fontes": [
         "f-2",
         "f-6"
+      ]
+    },
+    {
+      "campo": "cargos",
+      "texto": "Analista e técnico judiciário em várias áreas, inclusive apoio especializado em tecnologia da informação",
+      "fontes": [
+        "f-1",
+        "f-5"
       ]
     }
   ],

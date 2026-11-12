@@ -31,7 +31,7 @@ export interface Documento {
   titulo?: string | null;
 }
 
-export type Categoria = "tribunal" | "controle" | "mp" | "defensoria" | "seguranca";
+export type Categoria = "tribunal" | "controle" | "mp" | "defensoria" | "seguranca" | "estatal" | "conselho" | "outro";
 export type Esfera = "federal" | "estadual";
 export type Porte = "grande" | "medio" | "pequeno" | "indefinido";
 
@@ -41,6 +41,9 @@ export const NOME_CATEGORIA: Record<Categoria, string> = {
   mp: "Ministério Público",
   defensoria: "Defensoria Pública",
   seguranca: "Segurança pública",
+  estatal: "Empresas públicas",
+  conselho: "Conselhos profissionais",
+  outro: "Outros órgãos",
 };
 
 export interface Evidencia {
@@ -67,6 +70,7 @@ export interface Concurso {
   cargos: { nome: string; vagas?: Campo | null; remuneracao?: Campo | null }[];
   vagas_imediatas?: Campo | null;
   porte: Porte;
+  areas?: "ti"[];
   taxa?: Campo | null;
   prazos: { isencao: Prazo; inscricao: Prazo };
   isencao_publicos: string[];
@@ -191,6 +195,7 @@ export interface Noticia {
   banca: string;
   resumo: string;
   cargos: string[];
+  areas?: "ti"[];
   fatos: FatoNoticia[];
   fontes: FonteNoticia[];
   apurado_em: string;
@@ -230,4 +235,14 @@ export function noticiasAtivas(hoje = hojeBRT()): Noticia[] {
 
 export function fatoInscricao(n: Noticia): FatoNoticia | undefined {
   return n.fatos.find((f) => f.campo === "inscricao");
+}
+
+export const temTI = (x: { areas?: string[] }) => (x.areas ?? []).includes("ti");
+
+/** Concursos verificados abertos e notícias ativas com cargo de TI. */
+export function abertosTI(hoje = hojeBRT()): { concursos: Concurso[]; noticias: Noticia[] } {
+  return {
+    concursos: todos().filter((c) => temTI(c) && !encerrado(c, hoje)),
+    noticias: noticiasAtivas(hoje).filter(temTI),
+  };
 }

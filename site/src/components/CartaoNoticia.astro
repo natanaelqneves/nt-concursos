@@ -1,5 +1,5 @@
 ---
-import { NOME_CATEGORIA, fatoInscricao, type Noticia } from "../lib/dados";
+import { NOME_CATEGORIA, fatoInscricao, temTI, type Noticia } from "../lib/dados";
 import { formatarData } from "../lib/tempo";
 
 interface Props { n: Noticia }
@@ -14,7 +14,7 @@ const insc = fatoInscricao(n);
     {NOME_CATEGORIA[n.categoria]} · {n.esfera === "federal" ? "Federal" : "Estadual"} · {n.uf === "BR" ? "Nacional" : n.uf} · banca {n.banca}
   </p>
   {insc?.fim && <p class="mb-2">Inscrições até <strong>{formatarData(insc.fim)}</strong></p>}
-  <p class="meta mb-0"><span class="selo badge rounded-pill selo-apuracao">apuração em {n.fontes.length} fontes</span></p>
+  <p class="meta mb-0"><span class="selo badge rounded-pill selo-apuracao">apuração em {n.fontes.length} fontes</span>{temTI(n) && <> <span class="selo badge rounded-pill selo-ti">vagas de TI</span></>}</p>
 </div>
 </article>
 </li>

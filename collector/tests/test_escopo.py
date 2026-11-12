@@ -44,8 +44,6 @@ DENTRO = [
 
 FORA = [
     ["Concurso Público para a Prefeitura de Macaé"],
-    ["Concurso Público para Conselho Regional de Psicologia da 5ª Região – CRP/05"],
-    ["Concurso Público para Indústrias Nucleares do Brasil S.A. - INB"],
     ["Exame Nacional da Magistratura - ENAM (2026.2)"],
     ["Concurso Público de Provas e Títulos para Outorga de Delegações de Notas e de Registro do Estado do RS"],
     ["Processo Seletivo para Juiz Leigo do Tribunal de Justiça"],
@@ -56,6 +54,10 @@ FORA = [
     ["TJ CE 25 NOTÁRIOS"],
     ["SEAP MA 26 ESPECIALISTA E ASSISTENTE", "SEAP MA 26", "Especialista Penitenciário"],
     ["SEFAZ AL 26"],
+    ["SEFAZ AL 26", "SEFAZ AL 26", "Cargo 1: Auditor Fiscal da Receita Estadual", "Conhecimentos: noções de informática"],
+    ["Concurso Público para a Prefeitura de Macaé", "Cargo: Analista de Tecnologia da Informação"],
+    ["Processo Seletivo Simplificado para a Secretaria da Educação do Estado de São Paulo - Ensino Médio Técnico"],
+    ["SEDUC PI 25 PROFESSOR", "SEDUC PI 25", "Professor de Informática"],
     ["PREF PORTO ALEGRE RS 26"],
     ["Concurso Público para a Prefeitura Municipal do Salvador 2026 - Guarda Municipal"],
 ]
@@ -77,3 +79,35 @@ def test_nome_do_orgao():
     r = classificar("Concurso Público para Tribunal de Justiça do Estado da Paraíba")
     assert r.orgao == "Tribunal de Justiça do Estado da Paraíba"
     assert classificar("PC PE 26").orgao == "Polícia Civil do Estado de Pernambuco"
+
+
+NOVAS = [
+    # (textos, categoria, esfera, uf, sigla, ti) — títulos reais da FGV e da Cebraspe (12/11/2026)
+    (["Concurso Público para Indústrias Nucleares do Brasil S.A. - INB"], "estatal", "federal", "BR", "inb", False),
+    (["Concurso Público para a Empresa de Tecnologia e Informações da Previdência - DATAPREV"],
+     "estatal", "federal", "BR", "dataprev", True),
+    (["Concurso Público para a NAV Brasil Serviços de Navegação Aérea S.A."], "estatal", "federal", "BR", "nav-brasil", False),
+    (["Concurso Público para a Empresa Brasileira de Serviços Hospitalares - EBSERH - Área Médica"],
+     "estatal", "federal", "BR", "ebserh", False),
+    (["Concurso Público para a Companhia de Pesquisa de Recursos Minerais - CPRM"], "estatal", "federal", "BR", "sgb-cprm", False),
+    (["CAESB 24"], "estatal", "estadual", "DF", "caesb", False),
+    (["Concurso Público para Conselho Regional de Psicologia da 5ª Região – CRP/05"],
+     "conselho", "federal", "BR", "conselho-regional-de-psicologia-da-5a-regiao", False),
+    (["Concurso Público para o Conselho Regional de Medicina do Estado de São Paulo (CREMESP)"],
+     "conselho", "federal", "SP", "conselho-regional-de-medicina-do-estado-de-sao-paulo", False),
+    (["SEFAZ AL 26", "SEFAZ AL 26", "Cargo 4: Analista de Tecnologia da Informação"], "outro", "estadual", "AL", "sefaz-al", True),
+    (["CÂMARA DOS DEPUTADOS 26 ANALISTA", "CÂMARA DOS DEPUTADOS 26 ANALISTA",
+      "Analista Legislativo – Atribuição: Informática Legislativa"], "outro", "federal", "BR", "camara-dos-deputados", True),
+    (["Concurso Público para Secretaria de Planejamento e Gestão do Estado do Rio de Janeiro – SEPLAG/RJ",
+      "Analista de Planejamento e Orçamento – Tecnologia da Informação"], "outro", "estadual", "RJ", "seplag-rj", True),
+    # TI marcada também nas categorias de sempre
+    (["TRF 3 26", "Analista Judiciário – Apoio Especializado – Análise de Sistemas de Informação"],
+     "tribunal", "federal", "SP", "trf3", True),
+]
+
+
+@pytest.mark.parametrize("textos,categoria,esfera,uf,sigla,ti", NOVAS)
+def test_estatais_conselhos_e_ti(textos, categoria, esfera, uf, sigla, ti):
+    r = classificar(*textos)
+    assert r is not None, textos
+    assert (r.categoria, r.esfera, r.uf, r.sigla, "ti" in r.areas) == (categoria, esfera, uf, sigla, ti)

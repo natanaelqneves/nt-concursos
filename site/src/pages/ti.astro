@@ -1,0 +1,32 @@
+---
+import Base from "../layouts/Base.astro";
+import CartaoConcurso from "../components/CartaoConcurso.astro";
+import CartaoNoticia from "../components/CartaoNoticia.astro";
+import { abertosTI } from "../lib/dados";
+
+const { concursos, noticias } = abertosTI();
+const L = "lista row row-cols-1 row-cols-md-2 row-cols-xl-3 g-3 list-unstyled";
+---
+<Base
+  titulo="Concursos com vagas de TI abertos"
+  descricao="Concursos federais e estaduais com inscrições abertas para cargos de tecnologia da informação: analista de sistemas, desenvolvimento, infraestrutura, segurança da informação e dados."
+>
+  <h1>Concursos com vagas de TI</h1>
+  <p class="lead">
+    Concursos federais e estaduais com inscrições abertas que têm cargos de tecnologia da informação,
+    em qualquer órgão: tribunais, empresas públicas, secretarias, agências e outros.
+  </p>
+  <h2>Conferidos no edital ({concursos.length})</h2>
+  {concursos.length ? (
+    <ul class={L}>{concursos.map((c) => <CartaoConcurso c={c} />)}</ul>
+  ) : (
+    <p class="vazio alert alert-light border">Nenhum concurso com vaga de TI conferido no edital nesta edição.</p>
+  )}
+  <h2>Apuração na imprensa ({noticias.length})</h2>
+  <p class="meta">Ainda não conferidos por nós no edital; cada informação foi cruzada em pelo menos duas fontes.</p>
+  {noticias.length ? (
+    <ul class={L}>{noticias.map((n) => <CartaoNoticia n={n} />)}</ul>
+  ) : (
+    <p class="vazio alert alert-light border">Nenhum concurso com vaga de TI apurado nesta edição.</p>
+  )}
+</Base>

@@ -14,7 +14,7 @@ from __future__ import annotations
 
 import re
 import unicodedata
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 
 # (nome, preposição) — "Tribunal de Justiça do Estado da Paraíba"
 ESTADOS: dict[str, tuple[str, str]] = {
@@ -46,6 +46,7 @@ class Classificacao:
     uf: str
     orgao: str
     sigla: str  # base do slug, já em minúsculas e com hífens
+    areas: tuple[str, ...] = ()  # ("ti",) quando há cargo de tecnologia da informação
 
 
 def sem_acento(texto: str) -> str:
@@ -293,11 +294,26 @@ def classificar(*textos: str | None) -> Classificacao | None:
     t = sem_acento(" | ".join(partes))
     # Exclusões só em textos curtos (título, nome completo, cargos): o corpo de um edital
     # fala de "exame médico" ou "município" sem que o concurso seja exame ou municipal.
-    curtos = sem_acento(" | ".join(x for x in partes if len(x) <= 200))
+    curtos_lista = [x for x in partes if len(x) <= 200]
+    curtos = sem_acento(" | ".join(curtos_lista))
     if _FORA.search(curtos):
         return None
     if _MUNICIPAL.search(curtos) and not re.search(r"tribunal de contas dos municipios", curtos):
         return None
+    areas = ("ti",) if tem_ti(*partes) else ()
+
+    r = _nucleo(partes, t)
+    if r is None:
+        r = _conselho(partes) or _estatal(partes, t)
+    if r is None and tem_ti(*curtos_lista):
+        # Demais órgãos federais/estaduais só entram com cargo de TI nomeado (título ou cargo).
+        r = _outro(partes)
+    if r is None:
+        return None
+    return replace(r, areas=areas)
+
+
+def _nucleo(partes: list[str], t: str) -> Classificacao | None:
     for texto in partes:
         r = _por_nome(sem_acento(texto))
         if r is not None:
@@ -310,8 +326,232 @@ def classificar(*textos: str | None) -> Classificacao | None:
 
 
 def _confirmar(r: Classificacao, t: str) -> Classificacao | None:
-    # Câmara, Senado e assembleias só entram pelo concurso de polícia legislativa.
+    # Câmara, Senado e assembleias só entram pelo concurso de polícia legislativa
+    # (ou, como "outro", se tiverem cargo de TI).
     if re.search(r"camara dos deputados|senado federal|assembleia legislativa|camara legislativa", t):
         if not _POLICIA_LEGISLATIVA.search(t):
             return None
     return r
+
+
+# ---------------------------------------------------------------- tecnologia da informação
+
+_TI = re.compile(
+    r"tecnologia da informacao|\bti\b|analista de sistemas?|analise de sistemas|desenvolvimento de sistemas|"
+    r"desenvolvedor|programador|engenh(?:aria|eiro) de (?:software|computacao|dados)|ciencia de dados|"
+    r"cientista de dados|banco de dados|seguranca da informacao|ciberseguranca|seguranca cibernetica|"
+    r"infraestrutura de ti|redes de computadores|suporte (?:tecnico|em tecnologia)|informatica|"
+    r"ciencia da computacao|tecnologia e informacoes|processamento de dados"
+)
+_NAO_TI = re.compile(r"nocoes de informatica|informatica basica|conhecimentos de informatica")
+_DOCENCIA = re.compile(r"professor|docente|magisterio")
+
+
+def tem_ti(*textos: str | None) -> bool:
+    """Algum texto nomeia cargo/especialidade de TI? ("noções de informática" não conta)."""
+    for x in textos:
+        if not x:
+            continue
+        limpo = _NAO_TI.sub(" ", sem_acento(x))
+        if _DOCENCIA.search(limpo):
+            continue  # "professor de informática" é cargo de magistério, não de TI
+        if _TI.search(limpo):
+            return True
+    return False
+
+
+# ---------------------------------------------------------------- conselhos profissionais
+
+_CONSELHO = re.compile(r"conselho (regional|federal) d[eoa]s? ([a-z ]+?)(?: d[aeo]s? (\d{1,2})a? regiao|\s*[-–(|/,]|$| do estado| de | da | do )")
+
+
+def _conselho(partes: list[str]) -> Classificacao | None:
+    for texto in partes:
+        t = sem_acento(texto)
+        m = re.search(r"conselho (regional|federal) d[eoa]s? ", t)
+        if not m:
+            continue
+        inicio = texto[m.start():]
+        nome = re.split(r"\s+[-–(|]\s*|\s*[–(|]", inicio, maxsplit=1)[0].strip(" .")
+        if m.group(1) == "federal":
+            return _c("conselho", "federal", "BR", nome, slug_simples(nome))
+        uf = uf_por_nome(t, m.end())
+        return _c("conselho", "federal", uf or "BR", nome, slug_simples(nome))
+    # Siglas usuais (CRM-SP, CREA PR, CRP/05...)
+    for texto in partes:
+        t = sem_acento(texto)
+        m = re.match(r"\s*(cr[a-z]{1,4}|cf[a-z]{1,4})[\s/-]+([a-z]{2}|\d{1,2})\b", t)
+        if m and m.group(1).upper() in _SIGLAS_CONSELHO:
+            sufixo = m.group(2)
+            uf = sufixo.upper() if sufixo.upper() in ESTADOS else "BR"
+            nome = f"{_SIGLAS_CONSELHO[m.group(1).upper()]}" + (f" ({sufixo.upper()})" if uf != "BR" else f" da {int(sufixo)}ª Região" if sufixo.isdigit() else "")
+            return _c("conselho", "federal", uf, nome, slugify_simples(f"{m.group(1)} {sufixo}"))
+    return None
+
+
+_SIGLAS_CONSELHO = {
+    "CRM": "Conselho Regional de Medicina", "CREA": "Conselho Regional de Engenharia e Agronomia",
+    "CRP": "Conselho Regional de Psicologia", "CRC": "Conselho Regional de Contabilidade",
+    "COREN": "Conselho Regional de Enfermagem", "CRO": "Conselho Regional de Odontologia",
+    "CRF": "Conselho Regional de Farmácia", "CREFITO": "Conselho Regional de Fisioterapia e Terapia Ocupacional",
+    "CRMV": "Conselho Regional de Medicina Veterinária", "CRA": "Conselho Regional de Administração",
+    "CRN": "Conselho Regional de Nutricionistas", "CRESS": "Conselho Regional de Serviço Social",
+    "CRB": "Conselho Regional de Biblioteconomia", "CRQ": "Conselho Regional de Química",
+    "CRECI": "Conselho Regional de Corretores de Imóveis", "CREF": "Conselho Regional de Educação Física",
+    "CRBM": "Conselho Regional de Biomedicina", "CRFA": "Conselho Regional de Fonoaudiologia",
+    "CAU": "Conselho de Arquitetura e Urbanismo", "CORE": "Conselho Regional dos Representantes Comerciais",
+}
+
+
+# ---------------------------------------------------------------- empresas públicas
+
+# Federais: nome (sem acento, minúsculo) -> (nome oficial, sigla do slug)
+_ESTATAIS_FEDERAIS = {
+    r"petrobras|petroleo brasileiro": ("Petrobras", "petrobras"),
+    r"transpetro": ("Transpetro", "transpetro"),
+    r"banco do brasil\b": ("Banco do Brasil", "bb"),
+    r"caixa economica federal": ("Caixa Econômica Federal", "caixa"),
+    r"correios|empresa brasileira de correios": ("Correios", "correios"),
+    r"\bbndes\b|banco nacional de desenvolvimento": ("BNDES", "bndes"),
+    r"banco do nordeste": ("Banco do Nordeste", "bnb"),
+    r"banco da amazonia": ("Banco da Amazônia", "basa"),
+    r"\bserpro\b|servico federal de processamento": ("Serpro", "serpro"),
+    r"\bdataprev\b|tecnologia e informacoes da previdencia": ("Dataprev", "dataprev"),
+    r"\bembrapa\b|empresa brasileira de pesquisa agropecuaria": ("Embrapa", "embrapa"),
+    r"\bebserh\b|empresa brasileira de servicos hospitalares": ("Ebserh", "ebserh"),
+    r"casa da moeda": ("Casa da Moeda do Brasil", "casa-da-moeda"),
+    r"\bconab\b|companhia nacional de abastecimento": ("Conab", "conab"),
+    r"hemobras": ("Hemobrás", "hemobras"),
+    r"telebras": ("Telebras", "telebras"),
+    r"infraero": ("Infraero", "infraero"),
+    r"nav brasil": ("NAV Brasil", "nav-brasil"),
+    r"\bamazul\b|amazonia azul tecnologias": ("Amazul", "amazul"),
+    r"\bcprm\b|servico geologico do brasil|companhia de pesquisa de recursos minerais": ("Serviço Geológico do Brasil (CPRM)", "sgb-cprm"),
+    r"codevasf": ("Codevasf", "codevasf"),
+    r"\bfinep\b": ("Finep", "finep"),
+    r"empresa de pesquisa energetica": ("Empresa de Pesquisa Energética", "epe"),
+    r"\binb\b|industrias nucleares do brasil": ("Indústrias Nucleares do Brasil", "inb"),
+    r"\bnuclep\b": ("Nuclep", "nuclep"),
+    r"eletronuclear": ("Eletronuclear", "eletronuclear"),
+    r"\bemgepron\b": ("Emgepron", "emgepron"),
+    r"\bimbel\b|industria de material belico": ("Imbel", "imbel"),
+    r"\bebc\b|empresa brasil de comunicacao": ("EBC", "ebc"),
+    r"\bcbtu\b|companhia brasileira de trens urbanos": ("CBTU", "cbtu"),
+    r"trensurb": ("Trensurb", "trensurb"),
+    r"grupo hospitalar conceicao": ("Grupo Hospitalar Conceição", "ghc"),
+    r"hospital de clinicas de porto alegre": ("Hospital de Clínicas de Porto Alegre", "hcpa"),
+    r"companhia docas": ("Companhia Docas", "docas"),
+    r"infra s\.?a|valec": ("Infra S.A.", "infra-sa"),
+}
+
+# Estaduais conhecidas por sigla: sigla -> (UF, nome)
+_ESTATAIS_ESTADUAIS = {
+    "CAESB": ("DF", "Companhia de Saneamento Ambiental do Distrito Federal (Caesb)"),
+    "CAGECE": ("CE", "Companhia de Água e Esgoto do Ceará (Cagece)"),
+    "COMPESA": ("PE", "Companhia Pernambucana de Saneamento (Compesa)"),
+    "EMBASA": ("BA", "Empresa Baiana de Águas e Saneamento (Embasa)"),
+    "COPASA": ("MG", "Companhia de Saneamento de Minas Gerais (Copasa)"),
+    "CEDAE": ("RJ", "Companhia Estadual de Águas e Esgotos do Rio de Janeiro (Cedae)"),
+    "SANEPAR": ("PR", "Companhia de Saneamento do Paraná (Sanepar)"),
+    "CASAN": ("SC", "Companhia Catarinense de Águas e Saneamento (Casan)"),
+    "CAGEPA": ("PB", "Companhia de Água e Esgotos da Paraíba (Cagepa)"),
+    "CASAL": ("AL", "Companhia de Saneamento de Alagoas (Casal)"),
+    "CAERN": ("RN", "Companhia de Águas e Esgotos do Rio Grande do Norte (Caern)"),
+    "CAEMA": ("MA", "Companhia de Saneamento Ambiental do Maranhão (Caema)"),
+    "COSANPA": ("PA", "Companhia de Saneamento do Pará (Cosanpa)"),
+    "SANEAGO": ("GO", "Saneamento de Goiás (Saneago)"),
+    "SANESUL": ("MS", "Empresa de Saneamento de Mato Grosso do Sul (Sanesul)"),
+    "DESO": ("SE", "Companhia de Saneamento de Sergipe (Deso)"),
+    "CEMIG": ("MG", "Companhia Energética de Minas Gerais (Cemig)"),
+    "COPEL": ("PR", "Companhia Paranaense de Energia (Copel)"),
+    "CELESC": ("SC", "Centrais Elétricas de Santa Catarina (Celesc)"),
+    "BANRISUL": ("RS", "Banco do Estado do Rio Grande do Sul (Banrisul)"),
+    "BRB": ("DF", "Banco de Brasília (BRB)"),
+    "BANESTES": ("ES", "Banco do Estado do Espírito Santo (Banestes)"),
+    "BANPARA": ("PA", "Banco do Estado do Pará (Banpará)"),
+    "BANESE": ("SE", "Banco do Estado de Sergipe (Banese)"),
+    "PRODEMGE": ("MG", "Companhia de Tecnologia da Informação de Minas Gerais (Prodemge)"),
+    "PRODESP": ("SP", "Companhia de Processamento de Dados do Estado de São Paulo (Prodesp)"),
+    "CELEPAR": ("PR", "Companhia de Tecnologia da Informação e Comunicação do Paraná (Celepar)"),
+    "PROCERGS": ("RS", "Companhia de Processamento de Dados do Rio Grande do Sul (Procergs)"),
+    "METRO SP": ("SP", "Companhia do Metropolitano de São Paulo (Metrô)"),
+    "CPTM": ("SP", "Companhia Paulista de Trens Metropolitanos (CPTM)"),
+    "METRO DF": ("DF", "Companhia do Metropolitano do Distrito Federal (Metrô-DF)"),
+    "EMATER": ("", "Empresa de Assistência Técnica e Extensão Rural"),
+}
+_EMPRESA_GENERICA = re.compile(r"\b(companhia|empresa|banco|centrais eletricas|sociedade de economia mista)\b|\bs\.?\s?a\.?(?:\s|$|[-–)])")
+
+
+def _estatal(partes: list[str], t: str) -> Classificacao | None:
+    for texto in partes:
+        tt = sem_acento(texto)
+        for padrao, (nome, sigla) in _ESTATAIS_FEDERAIS.items():
+            if re.search(padrao, tt):
+                return _c("estatal", "federal", "BR", nome, sigla)
+    for texto in partes:
+        tokens = re.sub(r"[^A-Z0-9 ]", " ", sem_acento(texto).upper()).split()
+        for chave, (uf, nome) in _ESTATAIS_ESTADUAIS.items():
+            k = chave.split()
+            if tokens[: len(k)] == k:
+                uf = uf or (tokens[len(k)] if len(tokens) > len(k) and tokens[len(k)] in ESTADOS else "")
+                if uf:
+                    return _c("estatal", "estadual", uf, nome if "(" in nome else f"{nome} {_no_estado(uf)}",
+                              slug_simples(f"{chave} {uf if chave in ('EMATER',) else ''}"))
+    for texto in partes:
+        tt = sem_acento(texto)
+        m = _EMPRESA_GENERICA.search(tt)
+        if m:
+            uf = uf_por_nome(tt, 0)
+            if uf:
+                nome = _nome_do_titulo(texto)
+                return _c("estatal", "estadual", uf, nome, slug_simples(_sigla_do_titulo(texto) or nome))
+    return None
+
+
+# ---------------------------------------------------------------- demais órgãos (só com TI)
+
+_FEDERAL_GENERICO = re.compile(
+    r"\bfederal\b|\bnacional\b|da uniao|ministerio|brasileir|instituto federal|universidade federal|camara dos deputados|senado federal|"
+    r"^\s*(antaq|antt|anac|aneel|anatel|anvisa|ans|ana|anp|ancine|anm|inss|ibge|ibama|icmbio|incra|inep|"
+    r"capes|cnpq|mre|mpo|mgi|funai|funpresp|abin|cade|cvm|susep|previc|bacen|banco central|receita federal)\b"
+)
+
+
+def _outro(partes: list[str]) -> Classificacao | None:
+    titulo = partes[0]
+    t = sem_acento(" | ".join(x for x in partes if len(x) <= 200))
+    nome = _nome_do_titulo(titulo)
+    if _FEDERAL_GENERICO.search(t):
+        return _c("outro", "federal", "BR", nome, slug_simples(_sigla_do_titulo(titulo) or nome))
+    uf = uf_por_nome(t, 0)
+    if uf is None:
+        tokens = re.sub(r"[^a-z0-9 ]", " ", sem_acento(titulo)).split()
+        uf = next((x.upper() for x in tokens[1:4] if x in _UFS), None)
+    if uf:
+        return _c("outro", "estadual", uf, nome, slug_simples(_sigla_do_titulo(titulo) or nome))
+    return None
+
+
+def _nome_do_titulo(titulo: str) -> str:
+    """'Concurso Público para a Secretaria X – SIGLA' -> 'Secretaria X'; 'SEFAZ AL 26' -> 'SEFAZ AL'."""
+    t = re.sub(r"^\s*(concurso p[úu]blico|processo seletivo)[^a-zà-ú]*(?:para|do|da|de)\s+(?:o|a|os|as)?\s*", "",
+               titulo, flags=re.IGNORECASE)
+    t = re.split(r"\s+[-–]\s+|\s*\(", t, maxsplit=1)[0]
+    t = re.sub(r"\s+\d{2,4}\b.*$", "", t).strip(" .,")
+    t = t or titulo.strip()
+    palavras = t.split()
+    if sum(len(p) >= 4 and p.isupper() for p in palavras) >= 2:  # "CÂMARA DOS DEPUTADOS"
+        t = " ".join(p.lower() if p.lower() in {"de", "da", "do", "das", "dos", "e"} else p.capitalize() for p in palavras)
+    return t
+
+
+def _sigla_do_titulo(titulo: str) -> str | None:
+    m = re.search(r"[-–(]\s*([A-Z][A-Za-z]{1,9}(?:[/ -][A-Z]{2})?)\s*\)?\s*$", titulo)
+    return m.group(1) if m else None
+
+
+def slug_simples(texto: str) -> str:
+    return re.sub(r"-{2,}", "-", re.sub(r"[^a-z0-9]+", "-", sem_acento(texto))).strip("-")[:60]
+
+
+slugify_simples = slug_simples
