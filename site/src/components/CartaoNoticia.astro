@@ -6,11 +6,15 @@ interface Props { n: Noticia }
 const { n } = Astro.props;
 const insc = fatoInscricao(n);
 ---
-<li class="cartao cartao-noticia">
-  <h3><a href={`/noticias/${n.slug}/`}>{n.titulo}</a></h3>
-  <p class="meta">
+<li class="col">
+<article class="cartao cartao-noticia card h-100 shadow-sm border-warning-subtle">
+<div class="card-body">
+  <h3 class="card-title h6"><a class="stretched-link text-decoration-none" href={`/noticias/${n.slug}/`}>{n.titulo}</a></h3>
+  <p class="meta small">
     {NOME_CATEGORIA[n.categoria]} · {n.esfera === "federal" ? "Federal" : "Estadual"} · {n.uf === "BR" ? "Nacional" : n.uf} · banca {n.banca}
   </p>
-  {insc?.fim && <p>Inscrições até {formatarData(insc.fim)}</p>}
-  <p class="meta"><span class="selo selo-apuracao">apuração em {n.fontes.length} fontes</span></p>
+  {insc?.fim && <p class="mb-2">Inscrições até <strong>{formatarData(insc.fim)}</strong></p>}
+  <p class="meta mb-0"><span class="selo badge rounded-pill selo-apuracao">apuração em {n.fontes.length} fontes</span></p>
+</div>
+</article>
 </li>

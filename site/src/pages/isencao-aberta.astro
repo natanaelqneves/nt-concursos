@@ -19,8 +19,8 @@ const isencoes = comIsencaoAberta();
   </p>
   <AdSlot formato="topo" slot={import.meta.env.PUBLIC_ADSENSE_SLOT_TOPO} />
   {isencoes.length ? (
-    <ul class="lista">{isencoes.map((c) => <CartaoConcurso c={c} />)}</ul>
+    <ul class="lista row row-cols-1 row-cols-md-2 row-cols-xl-3 g-3 list-unstyled">{isencoes.map((c) => <CartaoConcurso c={c} />)}</ul>
   ) : (
-    <p class="vazio">Nenhum prazo de isenção aberto e verificado nesta edição.</p>
+    <p class="vazio alert alert-light border">Nenhum prazo de isenção aberto e verificado nesta edição.</p>
   )}
 </Base>

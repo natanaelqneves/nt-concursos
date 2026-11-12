@@ -18,8 +18,8 @@ const lista = noticiasAtivas();
   </p>
   <p><a href="/metodologia/#noticias">Como fazemos esta apuração</a></p>
   {lista.length ? (
-    <ul class="lista">{lista.map((n) => <CartaoNoticia n={n} />)}</ul>
+    <ul class="lista row row-cols-1 row-cols-md-2 row-cols-xl-3 g-3 list-unstyled">{lista.map((n) => <CartaoNoticia n={n} />)}</ul>
   ) : (
-    <p class="vazio">Nenhum concurso apurado com inscrições abertas nesta edição.</p>
+    <p class="vazio alert alert-light border">Nenhum concurso apurado com inscrições abertas nesta edição.</p>
   )}
 </Base>

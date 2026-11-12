@@ -1,4 +1,5 @@
 ---
+import "../styles/vendor/bootstrap-5.3.3.min.css";
 import "../styles/global.css";
 import Consentimento from "../components/Consentimento.astro";
 import { ADSENSE_CLIENT, SITE } from "../config";
@@ -30,6 +31,12 @@ const jsonLd = [
 ].filter(Boolean);
 
 const publicadoEm = agoraBRT();
+const MENU = [
+  { nome: "Isenção aberta", url: "/isencao-aberta/" },
+  { nome: "Apuração na imprensa", url: "/noticias/" },
+  { nome: "Como verificamos", url: "/metodologia/" },
+  { nome: "Sobre", url: "/sobre/" },
+];
 ---
 <!doctype html>
 <html lang="pt-BR">
@@ -75,23 +82,23 @@ const publicadoEm = agoraBRT();
     )}
   </head>
   <body>
-    <header class="topo">
-      <div class="container">
-        <a class="marca" href="/">{SITE.nome}</a>
-        <nav aria-label="Principal">
-          <a href="/isencao-aberta/">Isenção aberta</a>
-          <a href="/noticias/">Apuração na imprensa</a>
-          <a href="/metodologia/">Como verificamos</a>
-          <a href="/sobre/">Sobre</a>
+    <header class="topo border-bottom bg-white sticky-top">
+      <div class="container d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-2 py-2">
+        <a class="marca navbar-brand fw-bold" href="/">{SITE.nome}</a>
+        <nav aria-label="Principal" class="nav nav-pills flex-nowrap overflow-auto menu-principal">
+          {MENU.map((m) => (
+            <a class={`nav-link${Astro.url.pathname.startsWith(m.url) ? " active" : ""}`} href={m.url}
+               aria-current={Astro.url.pathname.startsWith(m.url) ? "page" : undefined}>{m.nome}</a>
+          ))}
         </nav>
       </div>
     </header>
-    <main class="container">
+    <main class="container py-4">
       <slot />
     </main>
-    <footer class="rodape">
-      <div class="container">
-        <nav aria-label="Institucional">
+    <footer class="rodape bg-light border-top mt-4">
+      <div class="container py-4">
+        <nav aria-label="Institucional" class="nav flex-wrap gap-3 mb-2">
           <a href="/sobre/">Sobre</a>
           <a href="/metodologia/">Metodologia</a>
           <a href="/privacidade/">Privacidade</a>
