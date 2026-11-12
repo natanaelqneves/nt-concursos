@@ -6,22 +6,23 @@
    (responsável, e-mail de contato, cidade/UF). A publicação fica bloqueada até isso ser feito.
    Use um e-mail próprio do site (ex.: `contato@ntconcursos.com.br`, com roteamento de e-mail grátis da Cloudflare).
 2. **Cloudflare.**
-   - Crie a conta e adicione o domínio `ntconcursos.com.br`; no registrador, troque os nameservers
-     pelos que a Cloudflare indicar.
-   - Workers & Pages → Create → Pages → *Direct Upload* → projeto `ntconcursos`.
-   - No projeto, *Custom domains* → adicione `ntconcursos.com.br` e `www.ntconcursos.com.br`.
-   - Crie um API Token com o modelo *Edit Cloudflare Workers* (inclui Pages) e anote o Account ID.
+   - O domínio `ntconcursos.com.br` precisa estar na conta com status *Active*.
+   - My Profile → API Tokens → Create Token → *Custom token* com as permissões
+     **Account → Cloudflare Pages → Edit** e **Account → Workers Scripts → Edit**, restrito à sua conta.
+   - Anote o **Account ID** (página inicial da conta ou Workers & Pages → barra lateral).
+   - Não crie o projeto do Pages manualmente: o `publish.yml` cria o projeto `ntconcursos` na primeira execução.
+     **Não conecte o repositório pela integração Git da Cloudflare**: ela publicaria sem passar pelo gate.
 3. **GitHub** (Settings → Secrets and variables → Actions):
-   - Secrets: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`.
+   - Secrets: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`, `DISPATCH_TOKEN`
+     (token fine-grained do GitHub com acesso só a `nt-concursos` e *Actions: Read and write*).
    - Variables (quando o AdSense aprovar): `ADSENSE_PUB_ID` (`pub-…`), `PUBLIC_ADSENSE_CLIENT`
      (`ca-pub-…`), `PUBLIC_ADSENSE_SLOT_TOPO`, `PUBLIC_ADSENSE_SLOT_MEIO`.
-4. **Worker de disparo.**
-   - GitHub → Settings → Developer settings → Fine-grained tokens: acesso só a `nt-concursos`,
-     permissão *Actions: Read and write*.
-   - `cd worker && npm install && npx wrangler login && npx wrangler secret put GITHUB_TOKEN && npm run deploy`
+4. **Primeiro deploy e domínio.**
+   - Actions → *Publicar edição* → *Run workflow*. Isso cria o projeto e publica.
+   - Workers & Pages → `ntconcursos` → *Custom domains* → `ntconcursos.com.br` e `www.ntconcursos.com.br`.
+   - Actions → *Publicar Worker de disparo* → *Run workflow*.
 5. **INLABS** (M1): crie o cadastro gratuito em inlabs.in.gov.br; e-mail e senha vão como secrets
    `INLABS_EMAIL` e `INLABS_SENHA`.
-6. **Primeira publicação:** Actions → *Publicar edição* → *Run workflow*.
 
 ## Operação diária
 
@@ -29,7 +30,7 @@
 |---|---|---|
 | 04h00 | Worker dispara `publish.yml` | nenhuma |
 | 04h30 | cron reserva (só publica se 04h00 falhou) | nenhuma |
-| a partir de M1 | coletas criam Issues `revisao` para casos duvidosos | aprovar ou corrigir |
+| a partir de M1 | coletas mandam casos duvidosos para o painel admin (M3) | aprovar ou corrigir |
 
 O GitHub manda e-mail quando um workflow falha. Se chegar:
 

@@ -67,6 +67,15 @@ jobs:
           npm run preflight
           npm run build
 
+      - name: Garantir projeto no Cloudflare Pages (só cria na primeira vez)
+        if: steps.hoje.outputs.ja_publicado != 'true'
+        continue-on-error: true
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages project create ${{ vars.CF_PAGES_PROJECT || 'ntconcursos' }} --production-branch=main
+
       - name: Deploy no Cloudflare Pages
         if: steps.hoje.outputs.ja_publicado != 'true'
         uses: cloudflare/wrangler-action@v3

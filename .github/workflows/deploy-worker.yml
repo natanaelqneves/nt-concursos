@@ -1,0 +1,28 @@
+# Publica o Worker que dispara a edição diária (worker/). Roda ao mudar worker/ ou manualmente.
+name: Publicar Worker de disparo
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["worker/**"]
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: cloudflare/wrangler-action@v3
+        env:
+          # Token fine-grained do GitHub (só este repo, Actions: read/write), gravado como segredo do Worker.
+          GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: worker
+          secrets: |
+            GITHUB_TOKEN
+          command: deploy
