@@ -97,3 +97,14 @@ def test_categoria_obrigatoria(novo):
     del d["categoria"]
     with pytest.raises(ValidationError):
         Concurso.model_validate(d)
+
+
+def test_evidencia_de_tabela_exige_trecho_composto(novo):
+    d = novo()
+    linha = {"atividade": "Período de solicitação de inscrições", "datas": "10/11 a 10/12/2026"}
+    d["evidencias"][1]["tabela"] = linha
+    d["evidencias"][1]["trecho"] = "Período de solicitação de inscrições — 10/11 a 10/12/2026"
+    Concurso.model_validate(d)
+    d["evidencias"][1]["trecho"] = "Período de solicitação de inscrições: 10/11 a 10/12/2026"
+    with pytest.raises(ValidationError, match="atividade — datas"):
+        Concurso.model_validate(d)

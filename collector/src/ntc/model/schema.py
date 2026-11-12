@@ -65,6 +65,17 @@ class Documento(_Base):
         return self.coletado_em > outro.coletado_em
 
 
+SEPARADOR_TABELA = " — "
+
+
+class LinhaTabela(_Base):
+    """Linha de uma tabela do documento (ex.: cronograma), lida célula por célula no PDF.
+    Cada célula precisa aparecer, literalmente, no texto da página (G3)."""
+
+    atividade: str = Field(min_length=5, max_length=300)
+    datas: str = Field(min_length=4, max_length=200)
+
+
 class Evidencia(_Base):
     id: str = Field(pattern=r"^ev-\d+$")
     campo: str = Field(min_length=3)
@@ -75,11 +86,15 @@ class Evidencia(_Base):
     metodo: str = Field(min_length=3)
     aprovado_por: str | None = None
     aprovado_em: AwareDatetime | None = None
+    # Presente quando a evidência é uma linha de tabela; o trecho é "atividade — datas".
+    tabela: LinhaTabela | None = None
 
     @model_validator(mode="after")
     def _aprovacao_completa(self) -> Evidencia:
         if (self.aprovado_por is None) != (self.aprovado_em is None):
             raise ValueError("aprovado_por e aprovado_em devem vir juntos")
+        if self.tabela is not None and self.trecho != f"{self.tabela.atividade}{SEPARADOR_TABELA}{self.tabela.datas}":
+            raise ValueError("trecho de evidência de tabela deve ser 'atividade — datas'")
         return self
 
 
