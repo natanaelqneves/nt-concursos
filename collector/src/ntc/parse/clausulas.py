@@ -66,6 +66,8 @@ class Candidato:
     def ambiguo(self) -> bool:
         return len(self.datas) > 2
 
+    de_tabela: bool = False
+
 
 _DATA_EXTENSO = r"\d{1,2}(?:º|°)?\s+de\s+[a-zç]+\s+de\s+\d{4}|\d{1,2}/\d{1,2}/\d{4}"
 # Datas de normas citadas ("Lei nº 10.567, de 07 de novembro de 1997") não são prazos.
@@ -78,9 +80,22 @@ _CITACAO = re.compile(
 )
 
 
+# Carimbo de impressão no cabeçalho de páginas do SEI ("10/04/2026, 11:19 SEI/TJSC").
+_CARIMBO = re.compile(r"\b\d{1,2}/\d{1,2}/\d{4},?\s+\d{1,2}:\d{2}\b")
+# Linhas de cronograma em tabela: o texto extraído separa as colunas e a data pode cair ao
+# lado do rótulo de outra linha. Esses trechos contam para detectar conflito (G5), mas nunca
+# sustentam um prazo sozinhos.
+_TABELA = re.compile(
+    r"cronograma\s+(?:previsto|de\s+atividades|do\s+concurso|de\s+eventos)|datas?\s+previstas?|"
+    r"anexo\s+[ivx\d]+\s*[-–—]?\s*cronograma",
+    re.IGNORECASE,
+)
+
+
 def datas_de_prazo(texto: str) -> list[date]:
-    """Datas do texto, ignorando as que datam normas citadas."""
-    return datas(_CITACAO.sub(lambda m: " " * len(m.group(0)), texto))
+    """Datas do texto, ignorando as que datam normas citadas e carimbos de impressão."""
+    limpo = _CITACAO.sub(lambda m: " " * len(m.group(0)), texto)
+    return datas(_CARIMBO.sub(lambda m: " " * len(m.group(0)), limpo))
 
 
 def segmentos(texto_pagina: str) -> list[str]:
@@ -99,7 +114,16 @@ def encontrar(paginas: dict[int, str], tipo: TipoPrazo) -> list[Candidato]:
     ancora_re, exclusao_re = ANCORAS[tipo], EXCLUSOES[tipo]
     candidatos: list[Candidato] = []
     for pagina in sorted(paginas):
+        # Tudo o que vem depois de um cabeçalho de cronograma na página é tratado como tabela.
+        cab = _TABELA.search(normalizar(paginas[pagina]))
+        inicio_tabela = cab.start() if cab else None
+        pos = 0
+        texto_norm = normalizar(paginas[pagina])
         for seg in segmentos(paginas[pagina]):
+            achado = texto_norm.find(seg, pos)
+            if achado >= 0:
+                pos = achado
+            em_tabela = inicio_tabela is not None and pos >= inicio_tabela
             m = ancora_re.search(seg)
             if not m or exclusao_re.search(seg):
                 continue
@@ -107,7 +131,7 @@ def encontrar(paginas: dict[int, str], tipo: TipoPrazo) -> list[Candidato]:
             encontradas = tuple(datas_de_prazo(trecho))
             if not encontradas or not ancora_re.search(trecho):
                 continue
-            candidatos.append(Candidato(tipo, pagina, trecho, m.group(0), encontradas))
+            candidatos.append(Candidato(tipo, pagina, trecho, m.group(0), encontradas, em_tabela))
     return candidatos
 
 
@@ -131,7 +155,9 @@ def principal(candidatos: list[Candidato]) -> Candidato | None:
     Prefere a que traz início e fim; entre essas, a primeira do documento."""
     if len(intervalos_distintos(candidatos)) != 1:
         return None
-    validos = [c for c in candidatos if not c.ambiguo]
+    validos = [c for c in candidatos if not c.ambiguo and not c.de_tabela]
+    if not validos:
+        return None
 
     def nota(c: Candidato) -> tuple[int, int, int]:
         # 1) traz início e fim; 2) é a cláusula que define o prazo; 3) a âncora vem no começo

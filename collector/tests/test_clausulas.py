@@ -79,3 +79,23 @@ def test_datas_de_normas_citadas_nao_sao_prazo():
     assert datas_de_prazo(paginas[19]) == []
     p = principal(encontrar(paginas, "isencao"))
     assert p is not None and p.pagina == 17
+
+
+def test_cronograma_em_tabela_nao_sustenta_prazo():
+    """Texto real do Anexo I do edital da PC-PE 2026 (Cebraspe): a data de outra linha cai
+    junto do rótulo da isenção. Sem cláusula em texto corrido, o campo não é verificado."""
+    from ntc.parse.clausulas import encontrar, principal
+
+    paginas = {92: (
+        "ANEXO I CRONOGRAMA PREVISTO Atividade Datas previstas 15/10 a 12/11/2026 "
+        "Período de solicitação de inscrição com isenção de Das 10 horas do primeiro dia às 18 horas do último "
+        "taxa de inscrição dia (horário oficial de Brasília/DF) 27/11 a 3/12/2026 "
+        "Consulta à situação provisória da solicitação de isenção de taxa de inscrição"
+    )}
+    assert principal(encontrar(paginas, "isencao")) is None
+
+
+def test_carimbo_de_impressao_do_sei_nao_e_data_de_prazo():
+    from ntc.parse.clausulas import datas_de_prazo
+
+    assert datas_de_prazo("10/04/2026, 11:19 SEI/TJSC - 10546555 - Edital 5.6 Isenção de pagamento") == []
