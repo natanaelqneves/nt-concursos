@@ -1,0 +1,11 @@
+https://inlabs.in.gov.br/ inlabs_home.html
+https://inlabs.in.gov.br/robots.txt inlabs_robots.txt
+https://www.in.gov.br/acesso-a-informacao/dados-abertos/base-de-dados basedados.html
+https://www.in.gov.br/robots.txt in_robots.txt
+https://www.in.gov.br/leiturajornal?data=11-11-2026&secao=do3 leitura_do3_1111.html
+https://www.in.gov.br/leiturajornal?data=12-11-2026&secao=do3 leitura_do3_1211.html
+https://www.cebraspe.org.br/concursos/ cebraspe_lista.html
+https://www.cebraspe.org.br/robots.txt cebraspe_robots.txt
+https://conhecimento.fgv.br/concursos fgv_lista.html
+https://conhecimento.fgv.br/concursos/inscricoes-abertas fgv_abertas.html
+https://conhecimento.fgv.br/robots.txt fgv_robots.txt

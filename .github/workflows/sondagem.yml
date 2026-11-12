@@ -1,0 +1,24 @@
+# Sondagem temporária do M1: baixa páginas das fontes para estudar a estrutura.
+# Sai do repositório antes do merge.
+name: Sondagem M1
+on:
+  push:
+    branches: [m1]
+    paths: [".github/workflows/sondagem.yml", "collector/sondagem/**"]
+permissions:
+  contents: read
+jobs:
+  sondar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Baixar
+        run: |
+          mkdir -p out
+          UA="ntconcursos-coletor/0.1 (+https://ntconcursos.com.br/metodologia/; contato@ntconcursos.com.br)"
+          baixar() { echo "== $1 -> $2"; curl -sS -L -A "$UA" --max-time 60 -o "out/$2" -D "out/$2.headers" -w "%{http_code} %{url_effective} %{size_download}\n" "$1" || true; }
+          while read -r url nome; do [ -n "$url" ] && baixar "$url" "$nome"; done < collector/sondagem/urls.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sondagem
+          path: out/
