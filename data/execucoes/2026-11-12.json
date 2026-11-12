@@ -1,0 +1,1128 @@
+{
+  "fgv": {
+    "inicio": "2026-11-12T13:51:52-03:00",
+    "fim": "2026-11-12T13:59:20-03:00",
+    "erro_fonte": null,
+    "contagem": {
+      "fora_do_escopo": 48,
+      "publicado": 6,
+      "so_revisao": 19,
+      "encerrado": 23,
+      "sem_edital": 5
+    },
+    "registros": [
+      {
+        "fonte": "fgv",
+        "id": "prefeiturademacae24",
+        "titulo": "Concurso Público para a Prefeitura de Macaé",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "spaguas26",
+        "titulo": "Concurso Público para a Agência de Águas do Estado de São Paulo - SP Águas",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "tjpb26",
+        "titulo": "Concurso Público para Tribunal de Justiça do Estado da Paraíba",
+        "situacao": "publicado",
+        "detalhe": "tribunal/estadual/PB",
+        "slug": "tj-pb-2026",
+        "campos": {
+          "prazos.isencao": "verificado",
+          "prazos.inscricao": "verificado"
+        },
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "psabdi",
+        "titulo": "Processo Seletivo Público para a Agência Brasileira de Desenvolvimento Industrial – ABDI",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "tjscjuiz26",
+        "titulo": "Concurso Público para o Tribunal de Justiça do Estado de Santa Catarina - Juiz Substituto (2026)",
+        "situacao": "publicado",
+        "detalhe": "tribunal/estadual/SC",
+        "slug": "tj-sc-2026-juiz-substituto",
+        "campos": {
+          "prazos.isencao": "verificado",
+          "prazos.inscricao": "verificado",
+          "vagas_imediatas": "verificado"
+        },
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "tjap26",
+        "titulo": "Concurso Público para Tribunal de Justiça do Estado do Amapá - Juiz de Direito Substituto",
+        "situacao": "publicado",
+        "detalhe": "tribunal/estadual/AP",
+        "slug": "tj-ap-2026-juiz-de-direito-substituto",
+        "campos": {
+          "prazos.isencao": "verificado",
+          "prazos.inscricao": "verificado",
+          "vagas_imediatas": "verificado"
+        },
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "pmsguarda2026",
+        "titulo": "Concurso Público para a Prefeitura Municipal do Salvador 2026 - Guarda Municipal",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "seplagrj",
+        "titulo": "Concurso Público para Secretaria de Planejamento e Gestão do Estado do Rio de Janeiro – SEPLAG/RJ",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "seducpa26",
+        "titulo": "Concurso Público para a Secretaria de Estado de Planejamento e Administração e a Secretaria de Estado de Educação do Pará",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "tjrsjuiz26",
+        "titulo": "Concurso Público para o Tribunal de Justiça do Estado do Rio Grande do Sul - Juiz Substituto",
+        "situacao": "so_revisao",
+        "detalhe": "tribunal/estadual/RS",
+        "slug": "tj-rs-2026-juiz-substituto",
+        "campos": {
+          "prazos.isencao": "ausente",
+          "prazos.inscricao": "ausente"
+        },
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "trf5juiz26",
+        "titulo": "XVI Concurso Público para provimento de cargos de Juiz Federal Substituto da 5ª Região",
+        "situacao": "encerrado",
+        "detalhe": "tribunal/federal/PE",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "sesto26",
+        "titulo": "Concurso Público para a Secretaria de Estado de Saúde do Tocantins e a Secretaria de Estado da Administração",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "pms2026",
+        "titulo": "Concurso Público para a Prefeitura Municipal do Salvador 2026",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "pcpr26",
+        "titulo": "Concurso Público para a Polícia Civil do Estado do Paraná",
+        "situacao": "encerrado",
+        "detalhe": "seguranca/estadual/PR",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "dataprev26",
+        "titulo": "Concurso Público para a Empresa de Tecnologia e Informações da Previdência - DATAPREV",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "dperj2026",
+        "titulo": "Concurso Público para a Defensoria Pública do Estado do Rio de Janeiro",
+        "situacao": "so_revisao",
+        "detalhe": "defensoria/estadual/RJ",
+        "slug": "dpe-rj-2026",
+        "campos": {
+          "prazos.isencao": "ausente",
+          "prazos.inscricao": "revisao"
+        },
+        "violacoes": [
+          "prazos.inscricao: 2 cláusulas diferentes"
+        ]
+      },
+      {
+        "fonte": "fgv",
+        "id": "tjpe26",
+        "titulo": "Concurso Público para o Tribunal de Justiça do Estado de Pernambuco - Juiz Substituto",
+        "situacao": "encerrado",
+        "detalhe": "tribunal/estadual/PE",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "seducsp26tecnico",
+        "titulo": "Processo Seletivo Simplificado para a Secretaria da Educação do Estado de São Paulo - Ensino Médio Técnico",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "seducsp26edbasica",
+        "titulo": "Processo Seletivo Simplificado para a Secretaria da Educação do Estado de São Paulo",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "navbrasil26",
+        "titulo": "Concurso Público para a NAV Brasil Serviços de Navegação Aérea S.A.",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "tjscservidor26",
+        "titulo": "Concurso Público para o Tribunal de Justiça do Estado de Santa Catarina",
+        "situacao": "so_revisao",
+        "detalhe": "tribunal/estadual/SC",
+        "slug": "tj-sc-2026",
+        "campos": {
+          "prazos.isencao": "ausente",
+          "prazos.inscricao": "ausente"
+        },
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "prefeiturademacae26",
+        "titulo": "Concurso Público para a Prefeitura de Macaé",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "mpmt",
+        "titulo": "Concurso Público para o Ministério Público do Estado de Mato Grosso",
+        "situacao": "publicado",
+        "detalhe": "mp/estadual/MT",
+        "slug": "mp-mt-2026",
+        "campos": {
+          "prazos.isencao": "verificado",
+          "prazos.inscricao": "revisao"
+        },
+        "violacoes": [
+          "prazos.inscricao: 2 cláusulas diferentes"
+        ]
+      },
+      {
+        "fonte": "fgv",
+        "id": "mprjpromotor2026",
+        "titulo": "XXXIX Concurso para Ingresso na Classe Inicial da Carreira do Ministério Público do Estado do Rio de Janeiro",
+        "situacao": "encerrado",
+        "detalhe": "mp/estadual/RJ",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "mpes26",
+        "titulo": "Concurso Público para o Ministério Público do Estado do Espírito Santo",
+        "situacao": "encerrado",
+        "detalhe": "mp/estadual/ES",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "pgeac",
+        "titulo": "Concurso Público para a Procuradoria-Geral do Estado do Acre",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "tcesc26",
+        "titulo": "Concurso Público para o Tribunal de Contas do Estado de Santa Catarina",
+        "situacao": "encerrado",
+        "detalhe": "controle/estadual/SC",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "tjrsnotarial26",
+        "titulo": "Concurso Público de Provas e Títulos para Outorga de Delegações de Notas e de Registro do Estado do Rio Grande do Sul",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "ebserh26",
+        "titulo": "Concurso Público para a Empresa Brasileira de Serviços Hospitalares - EBSERH - Área Médica",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "tjgo2025",
+        "titulo": "Concurso Público para o Tribunal de Justiça do Estado de Goiás",
+        "situacao": "publicado",
+        "detalhe": "tribunal/estadual/GO",
+        "slug": "tj-go-2026",
+        "campos": {
+          "prazos.isencao": "verificado",
+          "prazos.inscricao": "revisao",
+          "vagas_imediatas": "verificado"
+        },
+        "violacoes": [
+          "prazos.inscricao: 2 cláusulas diferentes"
+        ]
+      },
+      {
+        "fonte": "fgv",
+        "id": "prefsjceducacao25",
+        "titulo": "Concurso Público para a Prefeitura de São José dos Campos - Educação",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "trf2juiz",
+        "titulo": "Concurso Público para o Tribunal Regional Federal da 2ª Região",
+        "situacao": "so_revisao",
+        "detalhe": "tribunal/federal/RJ",
+        "slug": "trf2-2025",
+        "campos": {
+          "prazos.isencao": "revisao",
+          "prazos.inscricao": "revisao",
+          "vagas_imediatas": "verificado"
+        },
+        "violacoes": [
+          "prazos.isencao: 2 cláusulas diferentes",
+          "prazos.inscricao: 5 cláusulas diferentes"
+        ]
+      },
+      {
+        "fonte": "fgv",
+        "id": "tjpr25",
+        "titulo": "Concurso Público para o Tribunal de Justiça do Estado do Paraná",
+        "situacao": "so_revisao",
+        "detalhe": "tribunal/estadual/PR",
+        "slug": "tj-pr-2026",
+        "campos": {
+          "prazos.isencao": "ausente",
+          "prazos.inscricao": "ausente"
+        },
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "concursopgmcmrioproc",
+        "titulo": "Concurso Público para a Procuradoria-Geral do Município e Câmara Municipal do Rio de Janeiro (Procurador)",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "alero25",
+        "titulo": "Concurso Público para a Assembleia Legislativa do Estado de Rondônia",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "tjrjservidores25",
+        "titulo": "Concurso Público para o Tribunal de Justiça do Estado do Rio de Janeiro",
+        "situacao": "sem_edital",
+        "detalhe": "tribunal/estadual/RJ",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "tjms25",
+        "titulo": "XI Concurso Público para o Tribunal de Justiça do Estado de Mato Grosso do Sul",
+        "situacao": "encerrado",
+        "detalhe": "tribunal/estadual/MS",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "amazul",
+        "titulo": "Concurso Público para a Amazônia Azul Tecnologias de Defesa S.A. - AMAZUL",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "tjmsnotarial25",
+        "titulo": "Concurso Público para o Tribunal de Justiça do Estado de Mato Grosso do Sul - Atividade Notarial e de Registro",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "alerj2025",
+        "titulo": "Concurso Público para a Assembleia Legislativa do Estado do Rio de Janeiro (ALERJ)",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "gestorsegurancario",
+        "titulo": "Concurso Público para a Prefeitura do Rio de Janeiro - Gestor de Segurança Municipal",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "mpgo25",
+        "titulo": "Concurso Público para o Ministério Público do Estado de Goiás",
+        "situacao": "so_revisao",
+        "detalhe": "mp/estadual/GO",
+        "slug": "mp-go-2025",
+        "campos": {
+          "prazos.isencao": "revisao",
+          "prazos.inscricao": "revisao"
+        },
+        "violacoes": [
+          "prazos.inscricao: 2 cláusulas diferentes",
+          "G7 prazos.isencao: retificação posterior menciona este prazo"
+        ]
+      },
+      {
+        "fonte": "fgv",
+        "id": "pcpi25",
+        "titulo": "Concurso Público para a Polícia Civil do Estado do Piauí",
+        "situacao": "sem_edital",
+        "detalhe": "seguranca/estadual/PI",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "tjrnnotarial",
+        "titulo": "Concurso Público para o Tribunal de Justiça do Estado do Rio Grande do Norte",
+        "situacao": "encerrado",
+        "detalhe": "tribunal/estadual/RN",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "aleam25",
+        "titulo": "Concurso Público para a Assembleia Legislativa do Estado do Amazonas – ALE-AM",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "trf6",
+        "titulo": "Concurso Público para o Tribunal Regional Federal da 6ª Região - TRF6",
+        "situacao": "so_revisao",
+        "detalhe": "tribunal/federal/MG",
+        "slug": "trf6-2026",
+        "campos": {
+          "prazos.isencao": "ausente",
+          "prazos.inscricao": "ausente"
+        },
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "mpes25promotor",
+        "titulo": "Concurso Público para o Ministério Público do Estado do Espírito Santo",
+        "situacao": "encerrado",
+        "detalhe": "mp/estadual/ES",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "tjmsjuiz25",
+        "titulo": "Concurso Público para o Tribunal de Justiça do Estado de Mato Grosso do Sul",
+        "situacao": "so_revisao",
+        "detalhe": "tribunal/estadual/MS",
+        "slug": "tj-ms-2026",
+        "campos": {
+          "prazos.isencao": "ausente",
+          "prazos.inscricao": "ausente"
+        },
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "cprm",
+        "titulo": "Concurso Público para a Companhia de Pesquisa de Recursos Minerais - CPRM",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "nittrans25",
+        "titulo": "Concurso Público para a Niterói Trânsito (NITTRANS)",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "seducsp25",
+        "titulo": "Processo Seletivo Simplificado para a Secretaria da Educação do Estado de São Paulo",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "pgmcmrio",
+        "titulo": "Concurso Público para a Procuradoria-Geral do Município e Câmara Municipal do Rio de Janeiro",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "tcepe",
+        "titulo": "Concurso Público para o Tribunal de Contas do Estado de Pernambuco",
+        "situacao": "encerrado",
+        "detalhe": "controle/estadual/PE",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "agesan25",
+        "titulo": "Concurso Público para a Agência Reguladora Intermunicipal de Saneamento do Estado do Rio Grande do Sul – AGESAN-RS",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "cfopmesp26",
+        "titulo": "Concurso Público para a Polícia Militar do Estado de São Paulo - Aluno-Oficial PM",
+        "situacao": "publicado",
+        "detalhe": "seguranca/estadual/SP",
+        "slug": "pm-sp-2025-aluno-oficial-pm",
+        "campos": {
+          "prazos.isencao": "verificado",
+          "prazos.inscricao": "revisao"
+        },
+        "violacoes": [
+          "prazos.inscricao: 2 cláusulas diferentes"
+        ]
+      },
+      {
+        "fonte": "fgv",
+        "id": "tjce25",
+        "titulo": "Concurso Público para o Tribunal de Justiça do Estado do Ceará",
+        "situacao": "so_revisao",
+        "detalhe": "tribunal/estadual/CE",
+        "slug": "tj-ce-2025",
+        "campos": {
+          "prazos.isencao": "ausente",
+          "prazos.inscricao": "ausente"
+        },
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "psstjsc25",
+        "titulo": "Processo Seletivo para o Tribunal de Justiça do Estado de Santa Catarina",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "seducmt25",
+        "titulo": "Concurso Público para a Secretaria de Estado de Educação do Mato Grosso",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "pmto",
+        "titulo": "Concurso Público para a Polícia Militar do Estado de Tocantins",
+        "situacao": "sem_edital",
+        "detalhe": "seguranca/estadual/TO",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "dpe-pe",
+        "titulo": "Concurso Público para a Defensoria Pública do Estado de Pernambuco",
+        "situacao": "encerrado",
+        "detalhe": "defensoria/estadual/PE",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "trf1juiz25",
+        "titulo": "Concurso Público para o Tribunal Regional Federal da 1ª Região",
+        "situacao": "encerrado",
+        "detalhe": "tribunal/federal/DF",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "seadse25",
+        "titulo": "Concurso Público para o Cargo Especialista em Políticas Públicas e Gestão Governamental - SEAD/SE",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "tjesnotarial25",
+        "titulo": "Concurso Público para o Tribunal de Justiça do Estado do Espírito Santo - Atividade Notarial e de Registro",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "dpero25",
+        "titulo": "Concurso Público para a Defensoria Pública do Estado de Rondônia",
+        "situacao": "encerrado",
+        "detalhe": "defensoria/estadual/RO",
+        "slug": null,
+        "campos": {},
+        "violacoes": [
+          "prazos.isencao: 2 cláusulas diferentes"
+        ]
+      },
+      {
+        "fonte": "fgv",
+        "id": "seappr25",
+        "titulo": "Concurso Público para o Cargo de Auditor Fiscal da Receita Estadual do Paraná",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "mprj2025",
+        "titulo": "Concurso Público para o Ministério Público do Estado do Rio de Janeiro",
+        "situacao": "encerrado",
+        "detalhe": "mp/estadual/RJ",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "tjto25",
+        "titulo": "Concurso Público para o Tribunal de Justiça do Estado do Tocantins",
+        "situacao": "so_revisao",
+        "detalhe": "tribunal/estadual/TO",
+        "slug": "tj-to-2026",
+        "campos": {
+          "prazos.isencao": "ausente",
+          "prazos.inscricao": "ausente"
+        },
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "tjscjuiz25",
+        "titulo": "Concurso Público para o Tribunal de Justiça do Estado de Santa Catarina - Juiz Substituto (2025)",
+        "situacao": "so_revisao",
+        "detalhe": "tribunal/estadual/SC",
+        "slug": "tj-sc-2025-juiz-substituto",
+        "campos": {
+          "prazos.isencao": "ausente",
+          "prazos.inscricao": "ausente"
+        },
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "seasic25",
+        "titulo": "Concurso Público para a Secretaria de Estado da Assistência Social, Inclusão e Cidadania do Estado do Sergipe - SEASIC",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "psstjgo2025",
+        "titulo": "Processo Seletivo Simplificado para o Tribunal de Justiça do Estado de Goiás",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "trf5juiz",
+        "titulo": "Concurso Público para o Tribunal Regional Federal da 5ª Região",
+        "situacao": "so_revisao",
+        "detalhe": "tribunal/federal/PE",
+        "slug": "trf5-2025",
+        "campos": {
+          "prazos.isencao": "ausente",
+          "prazos.inscricao": "ausente"
+        },
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "pmerjsaude",
+        "titulo": "Concurso Público para a Polícia Militar do Estado do Rio de Janeiro - Saúde",
+        "situacao": "sem_edital",
+        "detalhe": "seguranca/estadual/RJ",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "mpu2025",
+        "titulo": "Concurso Público para o Ministério Público da União",
+        "situacao": "so_revisao",
+        "detalhe": "mp/federal/BR",
+        "slug": "mpu-2025",
+        "campos": {
+          "prazos.isencao": "ausente",
+          "prazos.inscricao": "ausente"
+        },
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "trf3juiz",
+        "titulo": "Concurso Público para o Tribunal Regional Federal da 3ª Região",
+        "situacao": "so_revisao",
+        "detalhe": "tribunal/federal/SP",
+        "slug": "trf3-2025",
+        "campos": {
+          "prazos.isencao": "ausente",
+          "prazos.inscricao": "ausente"
+        },
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "tjam24",
+        "titulo": "Concurso Público para o Tribunal de Justiça do Estado do Amazonas",
+        "situacao": "encerrado",
+        "detalhe": "tribunal/estadual/AM",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "ebserh24",
+        "titulo": "Concurso Público para a Empresa Brasileira de Serviços Hospitalares - EBSERH",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "tjse24",
+        "titulo": "Concurso Público para o Tribunal de Justiça do Estado de Sergipe - Juiz Substituto",
+        "situacao": "encerrado",
+        "detalhe": "tribunal/estadual/SE",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "iphan24",
+        "titulo": "Processo Seletivo Simplificado para o Instituto do Patrimônio Histórico e Artístico Nacional (Iphan)",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "pmespsoldado25",
+        "titulo": "Concurso Público para a Polícia Militar do Estado de São Paulo",
+        "situacao": "so_revisao",
+        "detalhe": "seguranca/estadual/SP",
+        "slug": "pm-sp-2025",
+        "campos": {
+          "prazos.isencao": "ausente",
+          "prazos.inscricao": "ausente"
+        },
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "trt24",
+        "titulo": "Concurso Público para o Tribunal Regional do Trabalho da 24ª Região (TRT-24)",
+        "situacao": "encerrado",
+        "detalhe": "tribunal/federal/MS",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "tcerr24",
+        "titulo": "Concurso Público para o Tribunal de Contas do Estado de Roraima",
+        "situacao": "encerrado",
+        "detalhe": "controle/estadual/RR",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "selecaoseducrs",
+        "titulo": "Seleção de Diretores e Vice-Diretores da Rede Pública de Ensino do Estado do Rio Grande do Sul",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "seec.rn24",
+        "titulo": "Concurso Público para o Magistério Público da Secretaria de Estado da Educação, do Esporte e do Lazer (SEEC), do Rio Grande do Norte",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "cage-rs2024",
+        "titulo": "Concurso Público para a Contadoria e Auditoria-Geral do Estado do Rio Grande do Sul (CAGE RS)",
+        "situacao": "encerrado",
+        "detalhe": "controle/estadual/RS",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "cgmcuiaba24",
+        "titulo": "Concurso Público para a Controladoria Geral do Município de Cuiabá",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "smfcuiaba24",
+        "titulo": "Concurso Público para a Secretaria Municipal de Fazenda de Cuiabá",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "smacanaacarajas24",
+        "titulo": "Concurso Público para a Prefeitura Municipal de Canaã dos Carajás/PA",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "tjmtservidor",
+        "titulo": "Concurso Público para o Tribunal de Justiça de Mato Grosso - Servidores",
+        "situacao": "so_revisao",
+        "detalhe": "tribunal/estadual/MT",
+        "slug": "tj-mt-2025-servidores",
+        "campos": {
+          "prazos.isencao": "ausente",
+          "prazos.inscricao": "ausente"
+        },
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "pcmg24",
+        "titulo": "Concurso Público para a Polícia Civil de Minas Gerais",
+        "situacao": "sem_edital",
+        "detalhe": "seguranca/estadual/MG",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "tjpe24",
+        "titulo": "Concurso Público para o Tribunal de Justiça do Estado de Pernambuco - Juiz Substituto",
+        "situacao": "encerrado",
+        "detalhe": "tribunal/estadual/PE",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "tjmtjuiz24",
+        "titulo": "Concurso Público para o Tribunal de Justiça de Mato Grosso",
+        "situacao": "encerrado",
+        "detalhe": "tribunal/estadual/MT",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "tcepi",
+        "titulo": "Concurso Público para o Tribunal de Contas do Estado do Piauí",
+        "situacao": "encerrado",
+        "detalhe": "controle/estadual/PI",
+        "slug": null,
+        "campos": {},
+        "violacoes": [
+          "prazos.isencao: 2 cláusulas diferentes"
+        ]
+      },
+      {
+        "fonte": "fgv",
+        "id": "smesaolourencodamata24",
+        "titulo": "Concurso Público para a Secretaria Municipal de Educação do Município de São Lourenço da Mata",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "tjscjuiz24",
+        "titulo": "Concurso Público para o Tribunal de Justiça do Estado de Santa Catarina - Juiz Substituto (2024)",
+        "situacao": "so_revisao",
+        "detalhe": "tribunal/estadual/SC",
+        "slug": "tj-sc-2024-juiz-substituto",
+        "campos": {
+          "prazos.isencao": "ausente",
+          "prazos.inscricao": "ausente"
+        },
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "tjrr24",
+        "titulo": "Concurso Público para o Tribunal de Justiça do Estado de Roraima",
+        "situacao": "so_revisao",
+        "detalhe": "tribunal/estadual/RR",
+        "slug": "tj-rr-2024",
+        "campos": {
+          "prazos.isencao": "revisao",
+          "prazos.inscricao": "revisao"
+        },
+        "violacoes": [
+          "prazos.inscricao: 2 cláusulas diferentes",
+          "G6 prazos.isencao: ano do prazo distante do ano da coleta"
+        ]
+      },
+      {
+        "fonte": "fgv",
+        "id": "seapba24",
+        "titulo": "Concurso Público para a Secretaria de Administração Penitenciária e Ressocialização do Estado da Bahia - SEAP-BA",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "guardavitoria24",
+        "titulo": "Concurso Público para a Prefeitura Municipal de Vitória - Guarda Municipal",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "pmespsoldado24",
+        "titulo": "Concurso Público para a Polícia Militar do Estado de São Paulo",
+        "situacao": "so_revisao",
+        "detalhe": "seguranca/estadual/SP",
+        "slug": "pm-sp-2024",
+        "campos": {
+          "prazos.isencao": "ausente",
+          "prazos.inscricao": "revisao"
+        },
+        "violacoes": [
+          "prazos.inscricao: 2 cláusulas diferentes"
+        ]
+      },
+      {
+        "fonte": "fgv",
+        "id": "tjerj2023",
+        "titulo": "Processo Seletivo para o Tribunal de Justiça do Estado do Rio de Janeiro",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "ppscabo-pe23",
+        "titulo": "Processo Seletivo Simplificado para a Prefeitura de Cabo de Santo Agostinho",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "tjes23",
+        "titulo": "Concurso Público para o Tribunal de Justiça do Estado do Espírito Santo",
+        "situacao": "encerrado",
+        "detalhe": "tribunal/estadual/ES",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "slug": "dpe-rj-2026",
+  "orgao": "Defensoria Pública do Estado do Rio de Janeiro",
+  "fonte": "fgv",
+  "url": "https://conhecimento.fgv.br/concursos/dperj2026",
+  "edital": "https://conhecimento.fgv.br/sites/default/files/concursos/edital-de-concurso-xxix-dpgerj.pdf",
+  "campos_em_revisao": [
+    "prazos.inscricao"
+  ],
+  "motivos": [
+    "prazos.inscricao: 2 cláusulas diferentes"
+  ],
+  "registrado_em": "2026-11-12T13:52:32-03:00"
+}

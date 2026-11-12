@@ -1,0 +1,14 @@
+{
+  "slug": "pm-sp-2025-aluno-oficial-pm",
+  "orgao": "Polícia Militar do Estado de São Paulo",
+  "fonte": "fgv",
+  "url": "https://conhecimento.fgv.br/concursos/cfopmesp26",
+  "edital": "https://conhecimento.fgv.br/sites/default/files/concursos/10.-minuta-do-edital-1.321.25-v_final-site-pmesp-e-fgv.pdf",
+  "campos_em_revisao": [
+    "prazos.inscricao"
+  ],
+  "motivos": [
+    "prazos.inscricao: 2 cláusulas diferentes"
+  ],
+  "registrado_em": "2026-11-12T13:56:52-03:00"
+}

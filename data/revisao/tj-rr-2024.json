@@ -1,0 +1,16 @@
+{
+  "slug": "tj-rr-2024",
+  "orgao": "Tribunal de Justiça do Estado de Roraima",
+  "fonte": "fgv",
+  "url": "https://conhecimento.fgv.br/concursos/tjrr24",
+  "edital": "https://conhecimento.fgv.br/sites/default/files/concursos/tjrr-edital-retificado-prorrogacao-incricao-02-para-09.08_.pdf",
+  "campos_em_revisao": [
+    "prazos.inscricao",
+    "prazos.isencao"
+  ],
+  "motivos": [
+    "prazos.inscricao: 2 cláusulas diferentes",
+    "G6 prazos.isencao: ano do prazo distante do ano da coleta"
+  ],
+  "registrado_em": "2026-11-12T13:59:11-03:00"
+}

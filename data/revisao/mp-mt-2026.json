@@ -1,0 +1,14 @@
+{
+  "slug": "mp-mt-2026",
+  "orgao": "Ministério Público do Estado de Mato Grosso",
+  "fonte": "fgv",
+  "url": "https://conhecimento.fgv.br/concursos/mpmt",
+  "edital": "https://conhecimento.fgv.br/sites/default/files/concursos/edital_n_01_2026_compilado_ate_a_1_a_retificacao_de_20_07_2026-1.pdf",
+  "campos_em_revisao": [
+    "prazos.inscricao"
+  ],
+  "motivos": [
+    "prazos.inscricao: 2 cláusulas diferentes"
+  ],
+  "registrado_em": "2026-11-12T13:53:02-03:00"
+}

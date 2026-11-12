@@ -1,0 +1,130 @@
+{
+  "schema_version": 2,
+  "slug": "tj-go-2026",
+  "orgao": "Tribunal de Justiça do Estado de Goiás",
+  "categoria": "tribunal",
+  "esfera": "estadual",
+  "banca": "fgv",
+  "uf": "GO",
+  "cargos": [],
+  "vagas_imediatas": {
+    "status": "verificado",
+    "evidencia": "ev-2",
+    "valor": 51
+  },
+  "porte": "medio",
+  "taxa": null,
+  "prazos": {
+    "isencao": {
+      "status": "verificado",
+      "evidencia": "ev-1",
+      "inicio": "2025-12-29",
+      "fim": "2026-01-02"
+    },
+    "inscricao": {
+      "status": "revisao",
+      "evidencia": null,
+      "inicio": null,
+      "fim": null
+    }
+  },
+  "isencao_publicos": [],
+  "documentos": [
+    {
+      "id": "doc-1",
+      "tipo": "edital",
+      "url": "https://conhecimento.fgv.br/sites/default/files/concursos/59_juiz_edital_abertura_consolidado_13-01-2026.pdf",
+      "url_final": "https://conhecimento.fgv.br/sites/default/files/concursos/59_juiz_edital_abertura_consolidado_13-01-2026.pdf",
+      "sha256": "fbac0aa877753cb1bd36d10dbb2ce2787d164f53b58015277211024dcceeddf4",
+      "coletado_em": "2026-11-12T13:53:19-03:00",
+      "fonte": "fgv",
+      "publicado_em": "2026-01-12",
+      "titulo": "Edital (retificado em 12/01/2026)"
+    },
+    {
+      "id": "doc-2",
+      "tipo": "retificacao",
+      "url": "https://conhecimento.fgv.br/sites/default/files/concursos/retificacao_59-juiz-edital-de-abertura-assinado.pdf",
+      "url_final": "https://conhecimento.fgv.br/sites/default/files/concursos/retificacao_59-juiz-edital-de-abertura-assinado.pdf",
+      "sha256": "689bb7975e911c4b7d4b32e29b8a3dc3e97727214c8c8edb1025afa404e86946",
+      "coletado_em": "2026-11-12T13:53:22-03:00",
+      "fonte": "fgv",
+      "publicado_em": "2026-01-12",
+      "titulo": "1ª Retificação"
+    },
+    {
+      "id": "doc-3",
+      "tipo": "retificacao",
+      "url": "https://conhecimento.fgv.br/sites/default/files/concursos/edital-alteracao-composicao-ce-magistrado-aposentado-assinado.pdf",
+      "url_final": "https://conhecimento.fgv.br/sites/default/files/concursos/edital-alteracao-composicao-ce-magistrado-aposentado-assinado.pdf",
+      "sha256": "6b2fd35419714ae19facd60082b4b5bdb6cc78cac6621a8503bd948328582284",
+      "coletado_em": "2026-11-12T13:53:24-03:00",
+      "fonte": "fgv",
+      "publicado_em": "2026-03-09",
+      "titulo": "Alteração da Composição da Comissão da Banca Examinadora"
+    },
+    {
+      "id": "doc-4",
+      "tipo": "retificacao",
+      "url": "https://conhecimento.fgv.br/sites/default/files/concursos/comunicado_material-de-consulta-comissao-examinadora-fgv.pdf",
+      "url_final": "https://conhecimento.fgv.br/sites/default/files/concursos/comunicado_material-de-consulta-comissao-examinadora-fgv.pdf",
+      "sha256": "ac00ddf9498e3281278a71f56ac81185011afb93c5f95ecc3bfab1ae62f7e2fe",
+      "coletado_em": "2026-11-12T13:53:27-03:00",
+      "fonte": "fgv",
+      "publicado_em": "2026-05-26",
+      "titulo": "COMUNICADO"
+    },
+    {
+      "id": "doc-5",
+      "tipo": "retificacao",
+      "url": "https://conhecimento.fgv.br/sites/default/files/concursos/edital-comunicado_sessao-publica-de-identificacao-das-provas-e-divulgacao-das-notas-da-prova-pratica-assinado.pdf",
+      "url_final": "https://conhecimento.fgv.br/sites/default/files/concursos/edital-comunicado_sessao-publica-de-identificacao-das-provas-e-divulgacao-das-notas-da-prova-pratica-assinado.pdf",
+      "sha256": "ff55aa3847088f58f7fabe6dfb39cd3d6f7441c38018546c84d7fc52a83de36d",
+      "coletado_em": "2026-11-12T13:53:28-03:00",
+      "fonte": "fgv",
+      "publicado_em": "2026-09-17",
+      "titulo": "Comunicado - Sessão Pública de Identificação das Provas e divulgação das notas da Prova Prática"
+    },
+    {
+      "id": "doc-6",
+      "tipo": "retificacao",
+      "url": "https://conhecimento.fgv.br/sites/default/files/concursos/comunicado_sessao-publica-de-divulgacao-de-julgamento-de-recursos-contra-a-prova-pratica-assinado.pdf",
+      "url_final": "https://conhecimento.fgv.br/sites/default/files/concursos/comunicado_sessao-publica-de-divulgacao-de-julgamento-de-recursos-contra-a-prova-pratica-assinado.pdf",
+      "sha256": "496b70df87f9cb7146bba3b562c6588f78aed406f61f771f8d0e0beed24409e1",
+      "coletado_em": "2026-11-12T13:53:31-03:00",
+      "fonte": "fgv",
+      "publicado_em": "2026-10-23",
+      "titulo": "Comunicado - Sessão Pública de Divulgação do Julgamento dos Recursos contra o Resultado da Prova Prática"
+    }
+  ],
+  "evidencias": [
+    {
+      "id": "ev-1",
+      "campo": "prazos.isencao",
+      "documento": "doc-1",
+      "pagina": 15,
+      "trecho": "10.2 A isenção mencionada no subitem 10.1 poderá ser solicitada no período entre 16h do dia 29 de dezembro de 2025 e 16h do dia 02 de janeiro de 2026, no momento da inscrição no sítio TRIBUNAL DE JUSTIÇA DO ESTADO DE GOIÁS 15",
+      "ancora": "isenção",
+      "metodo": "regex:v1",
+      "aprovado_por": null,
+      "aprovado_em": null
+    },
+    {
+      "id": "ev-2",
+      "campo": "vagas_imediatas",
+      "documento": "doc-1",
+      "pagina": 1,
+      "trecho": "1.2 O Concurso Público destina-se ao provimento de 51 (cinquenta e uma) vagas ao cargo de Juiz Substituto do Tribunal de Justiça do Estado de Goiás, bem como aqueles que vierem a surgir durante o período de validade do certame, desde que haja necessidade do serviço e disponibilidade orçamentária e financeira.",
+      "ancora": "vagas",
+      "metodo": "regex:v1",
+      "aprovado_por": null,
+      "aprovado_em": null
+    }
+  ],
+  "descoberto_via": {
+    "fonte": "fgv",
+    "url": "https://conhecimento.fgv.br/concursos/tjgo2025",
+    "data_dou": null
+  },
+  "conferido_em": "2026-11-12T13:53:31-03:00"
+}
