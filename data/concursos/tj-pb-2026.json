@@ -1,0 +1,82 @@
+{
+  "schema_version": 2,
+  "slug": "tj-pb-2026",
+  "orgao": "Tribunal de Justiça do Estado da Paraíba",
+  "categoria": "tribunal",
+  "esfera": "estadual",
+  "banca": "fgv",
+  "uf": "PB",
+  "cargos": [],
+  "vagas_imediatas": null,
+  "porte": "indefinido",
+  "taxa": null,
+  "prazos": {
+    "isencao": {
+      "status": "verificado",
+      "evidencia": "ev-1",
+      "inicio": "2026-10-20",
+      "fim": "2026-10-27"
+    },
+    "inscricao": {
+      "status": "verificado",
+      "evidencia": "ev-2",
+      "inicio": "2026-10-20",
+      "fim": "2026-11-18"
+    }
+  },
+  "isencao_publicos": [],
+  "documentos": [
+    {
+      "id": "doc-1",
+      "tipo": "edital",
+      "url": "https://conhecimento.fgv.br/sites/default/files/concursos/edital-retificado-tjpb_11.11.pdf",
+      "url_final": "https://conhecimento.fgv.br/sites/default/files/concursos/edital-retificado-tjpb_11.11.pdf",
+      "sha256": "d1cfa9897dfb3cacf2e84bbefd6631127e1adb3dbeca0935296afc3e7f514700",
+      "coletado_em": "2026-11-12T14:14:39-03:00",
+      "fonte": "fgv",
+      "publicado_em": "2026-11-12",
+      "titulo": "Edital (retificado em 12/11/2026)"
+    },
+    {
+      "id": "doc-2",
+      "tipo": "retificacao",
+      "url": "https://conhecimento.fgv.br/sites/default/files/concursos/06.11-extrato-3a-retificacao-do-edital-tjpb.pdf",
+      "url_final": "https://conhecimento.fgv.br/sites/default/files/concursos/06.11-extrato-3a-retificacao-do-edital-tjpb.pdf",
+      "sha256": "cf7655a8ca63e637a9bb3568d0908ebe366828b8e41006eac3c3903057178c6e",
+      "coletado_em": "2026-11-12T14:14:41-03:00",
+      "fonte": "fgv",
+      "publicado_em": "2026-11-12",
+      "titulo": "3ª Retificação"
+    }
+  ],
+  "evidencias": [
+    {
+      "id": "ev-1",
+      "campo": "prazos.isencao",
+      "documento": "doc-1",
+      "pagina": 6,
+      "trecho": "5.2 A isenção mencionada no subitem 5.1 poderá ser solicitada no período entre 16h do dia 20 de outubro de 2026 e 16h do dia 27 de outubro de 2026, horário oficial de Brasília/DF, no momento da inscrição no endereço eletrônico https://conhecimento.fgv.br/concursos/tjpb26, devendo o candidato fazer o upload (imagem original) dos documentos comprobatórios para a obtenção da isenção.",
+      "ancora": "isenção",
+      "metodo": "regex:v1",
+      "aprovado_por": null,
+      "aprovado_em": null
+    },
+    {
+      "id": "ev-2",
+      "campo": "prazos.inscricao",
+      "documento": "doc-1",
+      "pagina": 3,
+      "trecho": "DAS INSCRIÇÕES 4.1 As inscrições para o Concurso Público estarão abertas no período das 16h do dia 20 de outubro de 2026 até às 16h do dia 18 de novembro de 2026.",
+      "ancora": "INSCRIÇÕES",
+      "metodo": "regex:v1",
+      "aprovado_por": null,
+      "aprovado_em": null
+    }
+  ],
+  "descoberto_via": {
+    "fonte": "fgv",
+    "url": "https://conhecimento.fgv.br/concursos/tjpb26",
+    "data_dou": null
+  },
+  "conferido_em": "2026-11-12T14:14:41-03:00"
+}

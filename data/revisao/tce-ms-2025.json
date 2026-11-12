@@ -1,0 +1,14 @@
+{
+  "slug": "tce-ms-2025",
+  "orgao": "Tribunal de Contas do Estado de Mato Grosso do Sul",
+  "fonte": "cebraspe",
+  "url": "https://www.cebraspe.org.br/concursos/TCE_MS_25",
+  "edital": "https://cdn.cebraspe.org.br/concursos/TCE_MS_25/arquivos/84E86AED6CE1736C8A0CBD0840FAB66E40C05BDF0B76ACD4DC0F5D4FE0A8B5C7.pdf",
+  "campos_em_revisao": [
+    "prazos.isencao"
+  ],
+  "motivos": [
+    "prazos.isencao: 1 cláusulas diferentes"
+  ],
+  "registrado_em": "2026-11-12T14:14:13-03:00"
+}

@@ -1,0 +1,14 @@
+{
+  "slug": "pm-sp-2025",
+  "orgao": "Polícia Militar do Estado de São Paulo",
+  "fonte": "fgv",
+  "url": "https://conhecimento.fgv.br/concursos/pmespsoldado25",
+  "edital": "https://conhecimento.fgv.br/sites/default/files/concursos/7.-minuta-do-edital-no-dp-3.321.24_-v.final_ccb_fgv-e-site-pmesp.pdf",
+  "campos_em_revisao": [
+    "prazos.inscricao"
+  ],
+  "motivos": [
+    "prazos.inscricao: 2 cláusulas diferentes"
+  ],
+  "registrado_em": "2026-11-12T14:17:25-03:00"
+}
