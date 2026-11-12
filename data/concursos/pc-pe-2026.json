@@ -1,0 +1,101 @@
+{
+  "schema_version": 2,
+  "slug": "pc-pe-2026",
+  "orgao": "Polícia Civil do Estado de Pernambuco",
+  "categoria": "seguranca",
+  "esfera": "estadual",
+  "banca": "cebraspe",
+  "uf": "PE",
+  "cargos": [],
+  "vagas_imediatas": null,
+  "porte": "indefinido",
+  "taxa": null,
+  "prazos": {
+    "isencao": {
+      "status": "verificado",
+      "evidencia": "ev-1",
+      "inicio": "2026-10-15",
+      "fim": "2026-11-12"
+    },
+    "inscricao": {
+      "status": "verificado",
+      "evidencia": "ev-2",
+      "inicio": "2026-10-15",
+      "fim": "2026-12-16"
+    }
+  },
+  "isencao_publicos": [],
+  "documentos": [
+    {
+      "id": "doc-1",
+      "tipo": "edital",
+      "url": "https://cdn.cebraspe.org.br/concursos/PC_PE_26/arquivos/19E649EFD47D414D072E0EBB585FDBE3E315F1A3D8F6C94626FB29E70ECB66FB.pdf",
+      "url_final": "https://cdn.cebraspe.org.br/concursos/PC_PE_26/arquivos/19E649EFD47D414D072E0EBB585FDBE3E315F1A3D8F6C94626FB29E70ECB66FB.pdf",
+      "sha256": "15bad6a9f4dea325902e36cdf3d85337736fcd249509aa6f6234fd3feaff88fb",
+      "coletado_em": "2026-11-12T15:24:49-03:00",
+      "fonte": "cebraspe",
+      "publicado_em": "2026-10-02",
+      "titulo": "Edital nº 1 - Abertura - Atualizado conforme retificações"
+    },
+    {
+      "id": "doc-2",
+      "tipo": "retificacao",
+      "url": "https://cdn.cebraspe.org.br/concursos/PC_PE_26/arquivos/C335A790C2386E779A43F3A77EC4951ED8D2D044B99B94305A47B4777EFDA48D.pdf",
+      "url_final": "https://cdn.cebraspe.org.br/concursos/PC_PE_26/arquivos/C335A790C2386E779A43F3A77EC4951ED8D2D044B99B94305A47B4777EFDA48D.pdf",
+      "sha256": "9026394ea4f72b91bb14210166aa3db063624b748f7b8c27cd730154ede3e8e1",
+      "coletado_em": "2026-11-12T15:24:51-03:00",
+      "fonte": "cebraspe",
+      "publicado_em": "2026-10-21",
+      "titulo": "Edital nº 2 – Retificação do subitem 10.2 e dos conhecimentos referentes a Noções de Direito Penal, constantes dos subitens 22.2.3.1 e 22.2.5.1, do Edital nº 1, bem como a inclusão, no referido edital, dos subitens 5.2.1.4 e 5.2.1.5"
+    },
+    {
+      "id": "doc-3",
+      "tipo": "retificacao",
+      "url": "https://cdn.cebraspe.org.br/concursos/PC_PE_26/arquivos/95BF4127E54CA73F44CAB3305F87A4E6480E25D7D7E1B580AC64F98E0A48824A.pdf",
+      "url_final": "https://cdn.cebraspe.org.br/concursos/PC_PE_26/arquivos/95BF4127E54CA73F44CAB3305F87A4E6480E25D7D7E1B580AC64F98E0A48824A.pdf",
+      "sha256": "2176029b9fc74f3f311fb7d0caac5e2a988f6199fddb9676422b595362e007c8",
+      "coletado_em": "2026-11-12T15:24:53-03:00",
+      "fonte": "cebraspe",
+      "publicado_em": "2026-11-11",
+      "titulo": "Edital nº 3 - Retificação dos subitens 2.2, 5.1.10, 5.1.12.1, 11.11.4.1 a 11.11.4.10 e 20.9 do Edital nº 1, bem como a inclusão das alíneas “a” a “f” no inciso IV do subitem 10.16, no referido edital"
+    }
+  ],
+  "evidencias": [
+    {
+      "id": "ev-1",
+      "campo": "prazos.isencao",
+      "documento": "doc-1",
+      "pagina": 92,
+      "trecho": "Período de solicitação de inscrição com isenção de taxa de inscrição — 15/10 a 12/11/2026",
+      "ancora": "isenção",
+      "metodo": "tabela:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": {
+        "atividade": "Período de solicitação de inscrição com isenção de taxa de inscrição",
+        "datas": "15/10 a 12/11/2026"
+      }
+    },
+    {
+      "id": "ev-2",
+      "campo": "prazos.inscricao",
+      "documento": "doc-1",
+      "pagina": 92,
+      "trecho": "Período de solicitação de inscrições — 15/10 a 16/12/2026",
+      "ancora": "inscrições",
+      "metodo": "tabela:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": {
+        "atividade": "Período de solicitação de inscrições",
+        "datas": "15/10 a 16/12/2026"
+      }
+    }
+  ],
+  "descoberto_via": {
+    "fonte": "cebraspe",
+    "url": "https://www.cebraspe.org.br/concursos/PC_PE_26",
+    "data_dou": null
+  },
+  "conferido_em": "2026-11-12T15:24:53-03:00"
+}

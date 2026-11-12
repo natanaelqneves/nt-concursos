@@ -1,12 +1,13 @@
 {
   "cebraspe": {
-    "inicio": "2026-11-12T14:12:04-03:00",
-    "fim": "2026-11-12T14:14:33-03:00",
+    "inicio": "2026-11-12T15:24:39-03:00",
+    "fim": "2026-11-12T15:27:12-03:00",
     "erro_fonte": null,
     "contagem": {
       "fora_do_escopo": 44,
-      "so_revisao": 25,
-      "encerrado": 1,
+      "publicado": 2,
+      "encerrado": 20,
+      "so_revisao": 4,
       "sem_edital": 3
     },
     "registros": [
@@ -34,12 +35,12 @@
         "fonte": "cebraspe",
         "id": "PC_PE_26",
         "titulo": "PC PE 26",
-        "situacao": "so_revisao",
+        "situacao": "publicado",
         "detalhe": "seguranca/estadual/PE",
         "slug": "pc-pe-2026",
         "campos": {
-          "prazos.isencao": "ausente",
-          "prazos.inscricao": "ausente"
+          "prazos.isencao": "verificado",
+          "prazos.inscricao": "verificado"
         },
         "violacoes": []
       },
@@ -47,12 +48,12 @@
         "fonte": "cebraspe",
         "id": "SEAP_PE_26",
         "titulo": "SEAP PE 26",
-        "situacao": "so_revisao",
+        "situacao": "publicado",
         "detalhe": "seguranca/estadual/PE",
         "slug": "policia-penal-pe-2026-seap",
         "campos": {
-          "prazos.isencao": "ausente",
-          "prazos.inscricao": "ausente"
+          "prazos.isencao": "verificado",
+          "prazos.inscricao": "verificado"
         },
         "violacoes": []
       },
@@ -160,13 +161,10 @@
         "fonte": "cebraspe",
         "id": "CD_26_PL",
         "titulo": "CÂMARA DOS DEPUTADOS 26 PLF",
-        "situacao": "so_revisao",
+        "situacao": "encerrado",
         "detalhe": "seguranca/federal/BR",
-        "slug": "camara-dos-deputados-2026-cd-pl",
-        "campos": {
-          "prazos.isencao": "ausente",
-          "prazos.inscricao": "ausente"
-        },
+        "slug": null,
+        "campos": {},
         "violacoes": []
       },
       {
@@ -197,24 +195,22 @@
         "detalhe": "seguranca/estadual/AL",
         "slug": "cbm-al-2026",
         "campos": {
-          "prazos.isencao": "ausente",
+          "prazos.isencao": "revisao",
           "prazos.inscricao": "revisao"
         },
         "violacoes": [
-          "prazos.inscricao: 1 cláusulas diferentes"
+          "prazos.isencao: 2 linhas de cronograma com datas diferentes",
+          "prazos.inscricao: 2 linhas de cronograma com datas diferentes"
         ]
       },
       {
         "fonte": "cebraspe",
         "id": "CBM_MA_26",
         "titulo": "CBM MA 26",
-        "situacao": "so_revisao",
+        "situacao": "encerrado",
         "detalhe": "seguranca/estadual/MA",
-        "slug": "cbm-ma-2026",
-        "campos": {
-          "prazos.isencao": "ausente",
-          "prazos.inscricao": "ausente"
-        },
+        "slug": null,
+        "campos": {},
         "violacoes": []
       },
       {
@@ -225,24 +221,22 @@
         "detalhe": "controle/estadual/AL",
         "slug": "cge-al-2026",
         "campos": {
-          "prazos.isencao": "ausente",
+          "prazos.isencao": "revisao",
           "prazos.inscricao": "revisao"
         },
         "violacoes": [
-          "prazos.inscricao: 1 cláusulas diferentes"
+          "prazos.isencao: 2 linhas de cronograma com datas diferentes",
+          "prazos.inscricao: cronograma em tabela diverge do texto corrido"
         ]
       },
       {
         "fonte": "cebraspe",
         "id": "CGU_26_AFFC",
         "titulo": "CGU 26 AFFC",
-        "situacao": "so_revisao",
+        "situacao": "encerrado",
         "detalhe": "controle/federal/BR",
-        "slug": "cgu-2026-affc",
-        "campos": {
-          "prazos.isencao": "ausente",
-          "prazos.inscricao": "ausente"
-        },
+        "slug": null,
+        "campos": {},
         "violacoes": []
       },
       {
@@ -309,28 +303,22 @@
         "fonte": "cebraspe",
         "id": "PC_AL_26",
         "titulo": "PC AL 26",
-        "situacao": "so_revisao",
+        "situacao": "encerrado",
         "detalhe": "seguranca/estadual/AL",
-        "slug": "pc-al-2026",
-        "campos": {
-          "prazos.isencao": "ausente",
-          "prazos.inscricao": "revisao"
-        },
+        "slug": null,
+        "campos": {},
         "violacoes": [
-          "prazos.inscricao: 1 cláusulas diferentes"
+          "prazos.inscricao: cronograma em tabela diverge do texto corrido"
         ]
       },
       {
         "fonte": "cebraspe",
         "id": "PC_CE_25_DELEGADO",
         "titulo": "PC CE 25 DELEGADO ",
-        "situacao": "so_revisao",
+        "situacao": "encerrado",
         "detalhe": "seguranca/estadual/CE",
-        "slug": "pc-ce-2025-delegado",
-        "campos": {
-          "prazos.isencao": "ausente",
-          "prazos.inscricao": "ausente"
-        },
+        "slug": null,
+        "campos": {},
         "violacoes": []
       },
       {
@@ -341,7 +329,9 @@
         "detalhe": "seguranca/estadual/DF",
         "slug": null,
         "campos": {},
-        "violacoes": []
+        "violacoes": [
+          "prazos.inscricao: cláusula do edital e cronograma em tabela divergem"
+        ]
       },
       {
         "fonte": "cebraspe",
@@ -357,39 +347,30 @@
         "fonte": "cebraspe",
         "id": "PC_MA_26_DELEGADO",
         "titulo": "PC MA 26 DELEGADO",
-        "situacao": "so_revisao",
+        "situacao": "encerrado",
         "detalhe": "seguranca/estadual/MA",
-        "slug": "pc-ma-2026-delegado",
-        "campos": {
-          "prazos.isencao": "ausente",
-          "prazos.inscricao": "ausente"
-        },
+        "slug": null,
+        "campos": {},
         "violacoes": []
       },
       {
         "fonte": "cebraspe",
         "id": "PC_MA_26_INVESTIGADOR",
         "titulo": "PC MA 26 INVESTIGADOR",
-        "situacao": "so_revisao",
+        "situacao": "encerrado",
         "detalhe": "seguranca/estadual/MA",
-        "slug": "pc-ma-2026-investigador",
-        "campos": {
-          "prazos.isencao": "ausente",
-          "prazos.inscricao": "ausente"
-        },
+        "slug": null,
+        "campos": {},
         "violacoes": []
       },
       {
         "fonte": "cebraspe",
         "id": "PC_MG_25_TPAG",
         "titulo": "PC MG 25 TPAG",
-        "situacao": "so_revisao",
+        "situacao": "encerrado",
         "detalhe": "seguranca/estadual/MG",
-        "slug": "pc-mg-2025-tpag",
-        "campos": {
-          "prazos.isencao": "ausente",
-          "prazos.inscricao": "ausente"
-        },
+        "slug": null,
+        "campos": {},
         "violacoes": []
       },
       {
@@ -406,26 +387,20 @@
         "fonte": "cebraspe",
         "id": "PERICIA_OFICIAL_MA_26",
         "titulo": "PERICIA OFICIAL MA 26",
-        "situacao": "so_revisao",
+        "situacao": "encerrado",
         "detalhe": "seguranca/estadual/MA",
-        "slug": "pci-ma-2026-pericia-oficial",
-        "campos": {
-          "prazos.isencao": "ausente",
-          "prazos.inscricao": "ausente"
-        },
+        "slug": null,
+        "campos": {},
         "violacoes": []
       },
       {
         "fonte": "cebraspe",
         "id": "PF_25",
         "titulo": "PF 25",
-        "situacao": "so_revisao",
+        "situacao": "encerrado",
         "detalhe": "seguranca/federal/BR",
-        "slug": "pf-2025",
-        "campos": {
-          "prazos.isencao": "ausente",
-          "prazos.inscricao": "ausente"
-        },
+        "slug": null,
+        "campos": {},
         "violacoes": []
       },
       {
@@ -456,10 +431,13 @@
         "detalhe": "seguranca/estadual/AL",
         "slug": "pm-al-2026",
         "campos": {
-          "prazos.isencao": "ausente",
-          "prazos.inscricao": "ausente"
+          "prazos.isencao": "revisao",
+          "prazos.inscricao": "revisao"
         },
-        "violacoes": []
+        "violacoes": [
+          "prazos.isencao: 3 linhas de cronograma com datas diferentes",
+          "prazos.inscricao: 2 linhas de cronograma com datas diferentes"
+        ]
       },
       {
         "fonte": "cebraspe",
@@ -475,26 +453,20 @@
         "fonte": "cebraspe",
         "id": "PM_MA_26",
         "titulo": "PM MA 26",
-        "situacao": "so_revisao",
+        "situacao": "encerrado",
         "detalhe": "seguranca/estadual/MA",
-        "slug": "pm-ma-2026",
-        "campos": {
-          "prazos.isencao": "ausente",
-          "prazos.inscricao": "ausente"
-        },
+        "slug": null,
+        "campos": {},
         "violacoes": []
       },
       {
         "fonte": "cebraspe",
         "id": "PM_SC_23_SOLDADO",
         "titulo": "PM SC 23 SOLDADO",
-        "situacao": "so_revisao",
+        "situacao": "encerrado",
         "detalhe": "seguranca/estadual/SC",
-        "slug": "pm-sc-2023-soldado",
-        "campos": {
-          "prazos.isencao": "ausente",
-          "prazos.inscricao": "ausente"
-        },
+        "slug": null,
+        "campos": {},
         "violacoes": []
       },
       {
@@ -571,13 +543,10 @@
         "fonte": "cebraspe",
         "id": "SEAP_MA_26_INSPETOR_MONITOR",
         "titulo": "SEAP MA 26 INSPETOR E MONITOR",
-        "situacao": "so_revisao",
+        "situacao": "encerrado",
         "detalhe": "seguranca/estadual/MA",
-        "slug": "policia-penal-ma-2026-seap-inspetor-monitor",
-        "campos": {
-          "prazos.isencao": "ausente",
-          "prazos.inscricao": "ausente"
-        },
+        "slug": null,
+        "campos": {},
         "violacoes": []
       },
       {
@@ -664,13 +633,10 @@
         "fonte": "cebraspe",
         "id": "TC_DF_26_ANALISTA",
         "titulo": "TC DF 26 ANALISTA",
-        "situacao": "so_revisao",
+        "situacao": "encerrado",
         "detalhe": "controle/estadual/DF",
-        "slug": "tcdf-2026-tc-analista",
-        "campos": {
-          "prazos.isencao": "ausente",
-          "prazos.inscricao": "ausente"
-        },
+        "slug": null,
+        "campos": {},
         "violacoes": []
       },
       {
@@ -681,78 +647,61 @@
         "detalhe": "controle/estadual/AC",
         "slug": "tce-ac-2026",
         "campos": {
-          "prazos.isencao": "ausente",
+          "prazos.isencao": "revisao",
           "prazos.inscricao": "ausente"
         },
-        "violacoes": []
+        "violacoes": [
+          "prazos.isencao: 2 linhas de cronograma com datas diferentes"
+        ]
       },
       {
         "fonte": "cebraspe",
         "id": "TCE_MA_26",
         "titulo": "TCE MA 26",
-        "situacao": "so_revisao",
+        "situacao": "encerrado",
         "detalhe": "controle/estadual/MA",
-        "slug": "tce-ma-2026",
-        "campos": {
-          "prazos.isencao": "ausente",
-          "prazos.inscricao": "ausente"
-        },
+        "slug": null,
+        "campos": {},
         "violacoes": []
       },
       {
         "fonte": "cebraspe",
         "id": "TCE_MS_25",
         "titulo": "TCE MS 2025 SERVIDOR",
-        "situacao": "so_revisao",
+        "situacao": "encerrado",
         "detalhe": "controle/estadual/MS",
-        "slug": "tce-ms-2025",
-        "campos": {
-          "prazos.isencao": "revisao",
-          "prazos.inscricao": "ausente"
-        },
-        "violacoes": [
-          "prazos.isencao: 1 cláusulas diferentes"
-        ]
+        "slug": null,
+        "campos": {},
+        "violacoes": []
       },
       {
         "fonte": "cebraspe",
         "id": "TCE_MS_25_CONSELHEIRO",
         "titulo": "TCE MS 25 CONSELHEIRO",
-        "situacao": "so_revisao",
+        "situacao": "encerrado",
         "detalhe": "controle/estadual/MS",
-        "slug": "tce-ms-2025-conselheiro",
-        "campos": {
-          "prazos.isencao": "revisao",
-          "prazos.inscricao": "ausente"
-        },
-        "violacoes": [
-          "prazos.isencao: 1 cláusulas diferentes"
-        ]
+        "slug": null,
+        "campos": {},
+        "violacoes": []
       },
       {
         "fonte": "cebraspe",
         "id": "TCE_RN_25",
         "titulo": "TCE RN 25",
-        "situacao": "so_revisao",
+        "situacao": "encerrado",
         "detalhe": "controle/estadual/RN",
-        "slug": "tce-rn-2025",
-        "campos": {
-          "prazos.isencao": "ausente",
-          "prazos.inscricao": "ausente"
-        },
+        "slug": null,
+        "campos": {},
         "violacoes": []
       },
       {
         "fonte": "cebraspe",
         "id": "TCU_25_AUFC",
         "titulo": "TCU 25 AUFC",
-        "situacao": "so_revisao",
+        "situacao": "encerrado",
         "detalhe": "controle/federal/BR",
-        "slug": "tcu-2025-aufc",
-        "campos": {
-          "prazos.isencao": "ausente",
-          "prazos.inscricao": "ausente"
-        },
+        "slug": null,
+        "campos": {},
         "violacoes": []
       },
       {

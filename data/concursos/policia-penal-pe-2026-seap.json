@@ -1,0 +1,79 @@
+{
+  "schema_version": 2,
+  "slug": "policia-penal-pe-2026-seap",
+  "orgao": "Polícia Penal do Estado de Pernambuco",
+  "categoria": "seguranca",
+  "esfera": "estadual",
+  "banca": "cebraspe",
+  "uf": "PE",
+  "cargos": [],
+  "vagas_imediatas": null,
+  "porte": "indefinido",
+  "taxa": null,
+  "prazos": {
+    "isencao": {
+      "status": "verificado",
+      "evidencia": "ev-1",
+      "inicio": "2026-11-12",
+      "fim": "2026-11-22"
+    },
+    "inscricao": {
+      "status": "verificado",
+      "evidencia": "ev-2",
+      "inicio": "2026-11-12",
+      "fim": "2027-01-04"
+    }
+  },
+  "isencao_publicos": [],
+  "documentos": [
+    {
+      "id": "doc-1",
+      "tipo": "edital",
+      "url": "https://cdn.cebraspe.org.br/concursos/SEAP_PE_26/arquivos/2327822CE642EE75B289D1FEF1BD0A9FCD699F971AC65A85CA07D3786DCF7AC4.pdf",
+      "url_final": "https://cdn.cebraspe.org.br/concursos/SEAP_PE_26/arquivos/2327822CE642EE75B289D1FEF1BD0A9FCD699F971AC65A85CA07D3786DCF7AC4.pdf",
+      "sha256": "150a143dadd4bb3c034e1559383c0b0f169c52746aa0b1f7d81114767413c6d8",
+      "coletado_em": "2026-11-12T15:24:55-03:00",
+      "fonte": "cebraspe",
+      "publicado_em": "2026-11-04",
+      "titulo": "Edital nº 1 - Abertura"
+    }
+  ],
+  "evidencias": [
+    {
+      "id": "ev-1",
+      "campo": "prazos.isencao",
+      "documento": "doc-1",
+      "pagina": 74,
+      "trecho": "Período de solicitação de inscrição com isenção de taxa de inscrição — 12 a 22/11/2026",
+      "ancora": "isenção",
+      "metodo": "tabela:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": {
+        "atividade": "Período de solicitação de inscrição com isenção de taxa de inscrição",
+        "datas": "12 a 22/11/2026"
+      }
+    },
+    {
+      "id": "ev-2",
+      "campo": "prazos.inscricao",
+      "documento": "doc-1",
+      "pagina": 74,
+      "trecho": "Período de solicitação de inscrições — 12/11/2026 a 4/1/2027",
+      "ancora": "inscrições",
+      "metodo": "tabela:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": {
+        "atividade": "Período de solicitação de inscrições",
+        "datas": "12/11/2026 a 4/1/2027"
+      }
+    }
+  ],
+  "descoberto_via": {
+    "fonte": "cebraspe",
+    "url": "https://www.cebraspe.org.br/concursos/SEAP_PE_26",
+    "data_dou": null
+  },
+  "conferido_em": "2026-11-12T15:24:56-03:00"
+}

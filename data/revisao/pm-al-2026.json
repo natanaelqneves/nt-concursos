@@ -1,0 +1,16 @@
+{
+  "slug": "pm-al-2026",
+  "orgao": "Polícia Militar do Estado de Alagoas",
+  "fonte": "cebraspe",
+  "url": "https://www.cebraspe.org.br/concursos/PM_AL_26",
+  "edital": "https://cdn.cebraspe.org.br/concursos/PM_AL_26/arquivos/E688593023689F1D37AA63ABA2D913FC7B9BA86134008EF9170ECEC2A937871F.pdf",
+  "campos_em_revisao": [
+    "prazos.inscricao",
+    "prazos.isencao"
+  ],
+  "motivos": [
+    "prazos.isencao: 3 linhas de cronograma com datas diferentes",
+    "prazos.inscricao: 2 linhas de cronograma com datas diferentes"
+  ],
+  "registrado_em": "2026-11-12T15:26:07-03:00"
+}
