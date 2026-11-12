@@ -1,6 +1,6 @@
 # ntconcursos — Arquitetura vencedora e plano do repositório
 
-Versão 1.0 · 12/11/2026 · Mediação: Claude · Revisores: Codex, Gemini Pro
+Versão 1.1 · 12/11/2026 (M1 entregue) · Mediação: Claude · Revisores: Codex, Gemini Pro
 
 ## 1. Consenso
 
@@ -210,8 +210,9 @@ revisa uma vez por milestone** (o dono cola o diff no Codex e devolve a crítica
 | Milestone | Status |
 |---|---|
 | M0 | esqueleto, contrato, gate G1–G8, site, CI, publicação e Worker: entregue |
-| M1 | contrato v2 (PR #1); `fetch/http.py`, `pdf/extract.py`, `ntc collect`, escopo, porte, FGV e Cebraspe de ponta a ponta, INLABS (descoberta) e medição de horário: entregue em 12/11/2026. INLABS em manutenção nesse dia: conector testado só com XML no formato documentado |
-| M2 | publicação automática: próximo |
+| M1 | contrato v2 (PR #1) e M1 (PR #2) incorporados em 12/11/2026. FGV publica 3 concursos (TJ-PB, TJ-SC Juiz, TJ-AP Juiz). Cebraspe coleta tudo, mas publica 0: os prazos só aparecem no cronograma em tabela. INLABS em manutenção: conector testado só com XML no formato documentado; horário ainda não medido (faltam os secrets INLABS_EMAIL/INLABS_SENHA) |
+| M1.1 | leitura de cronograma em tabela com evidência de célula (muda o contrato: PR próprio), para destravar a Cebraspe: próximo |
+| M2 | publicação automática: depois do M1.1 |
 
 ### Decisões tomadas no M1 (12/11/2026)
 
@@ -224,8 +225,13 @@ revisa uma vez por milestone** (o dono cola o diff no Codex e devolve a crítica
   A regra anterior (qualquer menção a "inscrição") derrubava quase toda retificação da Cebraspe.
 - **Datas de normas citadas** ("Lei nº 10.567, de 7 de novembro de 1997") são ignoradas na leitura
   de prazos; antes elas criavam cláusulas falsas e mandavam o campo para revisão (G5).
-- **Concurso novo com inscrição já encerrada não é publicado**; os já publicados continuam sendo
+- **Concurso novo só entra com prazo verificado ainda aberto**; os já publicados continuam sendo
   atualizados (inclusive rebaixados para revisão se uma retificação mudar o prazo).
+- **Cronograma em tabela não sustenta prazo sozinho**: o texto extraído separa as colunas e pode
+  juntar o rótulo de uma linha com a data de outra (caso real: PC-PE 2026 daria isenção de 27/11 a
+  3/12, que é a consulta à situação provisória). Trechos de tabela só servem para detectar conflito.
+- **Extração com `pdftotext` (Poppler)** no lugar do pdfplumber: cerca de 25 vezes mais rápida,
+  com as mesmas cláusulas. Carimbos de impressão do SEI ("10/04/2026, 11:19") não contam como data.
 - **Cartórios (outorga de delegações), juiz leigo, processos seletivos e exames** ficam fora do escopo.
 
 ## 11. Escopo e prioridade (decidido em 12/11/2026; Tribunais de Contas, Defensorias, Bombeiros e Polícias Legislativas incluídos no mesmo dia)
