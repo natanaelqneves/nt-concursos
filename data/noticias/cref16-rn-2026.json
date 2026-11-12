@@ -1,0 +1,49 @@
+{
+  "slug": "cref16-rn-2026",
+  "titulo": "CREF16/RN abre concurso para advogado, contador e agente de licitações",
+  "orgao": "Conselho Regional de Educação Física da 16ª Região (CREF16/RN)",
+  "categoria": "conselho",
+  "esfera": "federal",
+  "uf": "RN",
+  "banca": "Comperve/UFRN",
+  "resumo": "O Conselho Regional de Educação Física da 16ª Região, que fiscaliza a profissão no Rio Grande do Norte, abriu concurso para três cargos de nível superior. São poucas vagas imediatas e um cadastro de reserva grande. As provas serão aplicadas em Natal, e a organização é do Núcleo Comperve, da UFRN.",
+  "cargos": [
+    "Advogado",
+    "Contador",
+    "Agente de Licitações e Contratos"
+  ],
+  "fatos": [
+    {
+      "campo": "inscricao",
+      "texto": "De 30/10 a 15/11/2026, no site da Comperve",
+      "inicio": "2026-10-30",
+      "fim": "2026-11-15",
+      "fontes": ["f-1", "f-2", "f-3", "f-4"]
+    },
+    {
+      "campo": "vagas",
+      "texto": "3 vagas imediatas e 180 em cadastro de reserva",
+      "fontes": ["f-1", "f-2"]
+    },
+    {
+      "campo": "taxa",
+      "texto": "R$ 150, com pagamento até 16/11/2026",
+      "fontes": ["f-1", "f-2", "f-3"]
+    },
+    {
+      "campo": "prova",
+      "texto": "Provas em 13/12/2026, em Natal",
+      "inicio": "2026-12-13",
+      "fim": "2026-12-13",
+      "fontes": ["f-1", "f-2", "f-3"]
+    }
+  ],
+  "fontes": [
+    {"id": "f-1", "nome": "Direção Concursos", "url": "https://www.direcaoconcursos.com.br/noticias/edital-concurso-cref-16-publicado", "oficial": false, "consultado_em": "2026-11-12"},
+    {"id": "f-2", "nome": "Nova Concursos", "url": "https://www.novaconcursos.com.br/portal/?p=317261", "oficial": false, "consultado_em": "2026-11-12"},
+    {"id": "f-3", "nome": "Qconcursos Folha Dirigida", "url": "https://folha.qconcursos.com/n/conselho-regional-de-educacao-fisica-da-16-regiao-abre-concurso-com-3-vagas", "oficial": false, "consultado_em": "2026-11-12"},
+    {"id": "f-4", "nome": "Concursos no Brasil", "url": "https://concursosnobrasil.com/concursos/rn/2026/10/23/concurso-cref-16-rn-oferta-mais-de-180-vagas-de-ate-r-41-mil/", "oficial": false, "consultado_em": "2026-11-12"}
+  ],
+  "apurado_em": "2026-11-12T19:30:00-03:00",
+  "expira_em": "2026-11-15"
+}

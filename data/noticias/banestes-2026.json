@@ -1,0 +1,51 @@
+{
+  "slug": "banestes-2026",
+  "titulo": "Banestes abre concurso para técnico bancário com inscrições prorrogadas",
+  "orgao": "Banco do Estado do Espírito Santo (Banestes)",
+  "categoria": "estatal",
+  "esfera": "estadual",
+  "uf": "ES",
+  "banca": "Fundação Carlos Chagas (FCC)",
+  "resumo": "O Banestes, banco público do Espírito Santo, e a Banestes Seguros abriram concurso para cargos de nível médio e técnico. Não há vagas imediatas: o concurso forma cadastro de reserva, e as contratações seguem o regime da CLT. Uma retificação estendeu o prazo de inscrição e criou reserva de vagas para candidatos hipossuficientes. As provas serão aplicadas em Vitória, São Mateus e Cachoeiro de Itapemirim.",
+  "cargos": [
+    "Técnico Bancário",
+    "Técnico em Segurança do Trabalho",
+    "Assistente Securitário (Banestes Seguros)"
+  ],
+  "fatos": [
+    {
+      "campo": "inscricao",
+      "texto": "De 19/10 a 23/11/2026 (prorrogadas), no site da FCC",
+      "inicio": "2026-10-19",
+      "fim": "2026-11-23",
+      "fontes": ["f-1", "f-2", "f-3", "f-4"]
+    },
+    {
+      "campo": "vagas",
+      "texto": "936 posições em cadastro de reserva (886 no Banestes e 50 na Banestes Seguros), sem vagas imediatas",
+      "fontes": ["f-5", "f-3"]
+    },
+    {
+      "campo": "taxa",
+      "texto": "R$ 67, com pagamento até 24/11/2026",
+      "fontes": ["f-1", "f-3"]
+    },
+    {
+      "campo": "prova",
+      "texto": "Prova objetiva prevista para 24/1/2027",
+      "inicio": "2027-01-24",
+      "fim": "2027-01-24",
+      "fontes": ["f-5", "f-6"]
+    }
+  ],
+  "fontes": [
+    {"id": "f-1", "nome": "Direção Concursos", "url": "https://www.direcaoconcursos.com.br/noticias/concurso-banestes-inscricoes-prorrogadas", "oficial": false, "consultado_em": "2026-11-12"},
+    {"id": "f-2", "nome": "Nova Concursos", "url": "https://www.novaconcursos.com.br/portal/?p=317384", "oficial": false, "consultado_em": "2026-11-12"},
+    {"id": "f-3", "nome": "JC Concursos", "url": "https://jcconcursos.com.br/noticia/concursos/concurso-banestes-estende-prazo-de-inscricao-para-936-vagas-146222", "oficial": false, "consultado_em": "2026-11-12"},
+    {"id": "f-4", "nome": "Qconcursos Folha Dirigida", "url": "https://folha.qconcursos.com/n/concurso-banestes-2026-retificacao", "oficial": false, "consultado_em": "2026-11-12"},
+    {"id": "f-5", "nome": "Aprova Concursos", "url": "https://www.aprovaconcursos.com.br/noticias/?p=167883", "oficial": false, "consultado_em": "2026-11-12"},
+    {"id": "f-6", "nome": "Focus Concursos", "url": "https://noticias.focusconcursos.com.br/noticias/concurso-banestes-publicado-edital-com-salarios-de-ate-r-56-mil", "oficial": false, "consultado_em": "2026-11-12"}
+  ],
+  "apurado_em": "2026-11-12T19:30:00-03:00",
+  "expira_em": "2026-11-23"
+}
