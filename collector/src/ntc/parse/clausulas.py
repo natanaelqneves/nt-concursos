@@ -67,6 +67,22 @@ class Candidato:
         return len(self.datas) > 2
 
 
+_DATA_EXTENSO = r"\d{1,2}(?:º|°)?\s+de\s+[a-zç]+\s+de\s+\d{4}|\d{1,2}/\d{1,2}/\d{4}"
+# Datas de normas citadas ("Lei nº 10.567, de 07 de novembro de 1997") não são prazos.
+_CITACAO = re.compile(
+    rf"(?:\b(?:lei|decreto(?:-lei)?|portaria|resolu[çc][ãa]o|instru[çc][ãa]o\s+normativa|"
+    rf"medida\s+provis[óo]ria|emenda\s+constitucional|edital)\b(?:(?!inscri|isen|per[íi]odo|prazo)[^.;:]){{0,40}}?"
+    rf"|\b\d{{1,3}}(?:\.\d{{3}})+(?:/\d{{2,4}})?,?\s+)"
+    rf"de\s+(?:{_DATA_EXTENSO})",
+    re.IGNORECASE,
+)
+
+
+def datas_de_prazo(texto: str) -> list[date]:
+    """Datas do texto, ignorando as que datam normas citadas."""
+    return datas(_CITACAO.sub(lambda m: " " * len(m.group(0)), texto))
+
+
 def segmentos(texto_pagina: str) -> list[str]:
     return [s.strip() for s in _FRONTEIRA.split(normalizar(texto_pagina)) if s.strip()]
 
@@ -88,7 +104,7 @@ def encontrar(paginas: dict[int, str], tipo: TipoPrazo) -> list[Candidato]:
             if not m or exclusao_re.search(seg):
                 continue
             trecho = _recortar(seg, m)
-            encontradas = tuple(datas(trecho))
+            encontradas = tuple(datas_de_prazo(trecho))
             if not encontradas or not ancora_re.search(trecho):
                 continue
             candidatos.append(Candidato(tipo, pagina, trecho, m.group(0), encontradas))
@@ -96,4 +112,47 @@ def encontrar(paginas: dict[int, str], tipo: TipoPrazo) -> list[Candidato]:
 
 
 def intervalos_distintos(candidatos: list[Candidato]) -> set[tuple[date | None, date | None]]:
-    return {(c.inicio, c.fim) for c in candidatos if not c.ambiguo}
+    """Intervalos diferentes entre si. "até 18/11" é compatível com "20/10 a 18/11"
+    (mesmo fim, início omitido) e não conta como cláusula conflitante."""
+    brutos = {(c.inicio, c.fim) for c in candidatos if not c.ambiguo}
+    completos = {i for i in brutos if i[0] is not None}
+    return completos | {i for i in brutos if i[0] is None and not any(c[1] == i[1] for c in completos)}
+
+
+def principal(candidatos: list[Candidato]) -> Candidato | None:
+    """A cláusula que sustenta o campo: só existe se não houver conflito (G5).
+    Prefere a que traz início e fim; entre essas, a primeira do documento."""
+    if len(intervalos_distintos(candidatos)) != 1:
+        return None
+    validos = [c for c in candidatos if not c.ambiguo]
+    completos = [c for c in validos if c.inicio is not None]
+    return (completos or validos)[0]
+
+
+_MUDANCA_PRAZO = re.compile(
+    r"prorroga|reabert|reabr|adiad|adiament|suspens|nova\s+data|novo\s+per[íi]odo|novo\s+prazo",
+    re.IGNORECASE,
+)
+_ONDE_SE_LE = re.compile(r"onde\s+se\s+l[êe]", re.IGNORECASE)
+
+
+def altera_prazo(paginas: dict[int, str], tipo: TipoPrazo, inicio: date | None, fim: date | None) -> bool:
+    """Um documento posterior (retificação, comunicado) muda o prazo declarado?
+
+    Sim se: alguma cláusula do prazo traz datas diferentes ou é ambígua; algum trecho
+    fala do prazo junto de prorrogação/reabertura/suspensão; ou é errata "onde se lê"
+    que menciona o prazo. Mencionar o prazo sem data (ex.: "taxa de inscrição") não muda nada.
+    """
+    ancora = ANCORAS[tipo]
+    if not any(ancora.search(p) for p in paginas.values()):
+        return False
+    if any(_ONDE_SE_LE.search(p) for p in paginas.values()):
+        return True
+    for pagina in paginas.values():
+        for seg in segmentos(pagina):
+            if ancora.search(seg) and _MUDANCA_PRAZO.search(seg):
+                return True
+    for cand in encontrar(paginas, tipo):
+        if cand.ambiguo or cand.fim != fim or (cand.inicio is not None and cand.inicio != inicio):
+            return True
+    return False

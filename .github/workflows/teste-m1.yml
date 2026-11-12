@@ -1,0 +1,37 @@
+# Temporário (M1): roda a coleta no ramo m1 e grava data/ no próprio ramo. Sai antes do merge.
+name: Teste M1 (coleta no ramo)
+on:
+  push:
+    branches: [m1]
+    paths: ["collector/sondagem/coletar.txt"]
+permissions:
+  contents: write
+concurrency:
+  group: teste-m1
+jobs:
+  coletar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e "collector[dev]"
+      - run: cd collector && pytest -q
+      - name: Coletar
+        run: |
+          while read -r fonte so; do
+            [ -z "$fonte" ] && continue
+            echo "::group::$fonte $so"
+            ntc collect --fonte "$fonte" ${so:+--so $so} || echo "::warning::$fonte falhou ($?)"
+            echo "::endgroup::"
+          done < collector/sondagem/coletar.txt
+      - run: ntc validate
+      - name: Gravar no ramo
+        run: |
+          git config user.name ntc-bot; git config user.email bot@ntconcursos.com.br
+          git add data/
+          git diff --cached --quiet && exit 0
+          git commit -q -m "teste m1: dados da coleta"
+          git pull -q --rebase origin m1 && git push -q origin HEAD:m1

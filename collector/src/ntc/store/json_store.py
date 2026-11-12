@@ -22,6 +22,8 @@ class JsonStore:
         self.raiz = raiz
         self.dir_concursos = raiz / "concursos"
         self.dir_documentos = raiz / "documentos"
+        self.dir_revisao = raiz / "revisao"
+        self.dir_execucoes = raiz / "execucoes"
 
     def concursos(self) -> list[tuple[Path, Concurso]]:
         if not self.dir_concursos.exists():
@@ -63,4 +65,22 @@ class JsonStore:
             "paginas": {str(n): texto.paginas[n] for n in sorted(paginas) if n in texto.paginas},
         }
         caminho.write_text(_dump(corpo), encoding="utf-8")
+        return caminho
+
+    def salvar_revisao(self, slug: str, corpo: dict) -> Path:
+        self.dir_revisao.mkdir(parents=True, exist_ok=True)
+        caminho = self.dir_revisao / f"{slug}.json"
+        caminho.write_text(_dump(corpo), encoding="utf-8")
+        return caminho
+
+    def remover_revisao(self, slug: str) -> None:
+        (self.dir_revisao / f"{slug}.json").unlink(missing_ok=True)
+
+    def salvar_execucao(self, dia: str, fonte: str, corpo: dict) -> Path:
+        """Uma entrada por fonte e dia; a coleta seguinte da mesma fonte no mesmo dia substitui."""
+        self.dir_execucoes.mkdir(parents=True, exist_ok=True)
+        caminho = self.dir_execucoes / f"{dia}.json"
+        atual = json.loads(caminho.read_text(encoding="utf-8")) if caminho.exists() else {}
+        atual[fonte] = corpo
+        caminho.write_text(_dump(dict(sorted(atual.items()))), encoding="utf-8")
         return caminho

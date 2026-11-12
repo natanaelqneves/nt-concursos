@@ -9,7 +9,10 @@ G3  trecho contido literalmente na página indicada (normalizando só espaços)
 G4  cláusula: o trecho contém a âncora do campo e exatamente o(s) valor(es) declarado(s)
 G5  unicidade: o documento (texto completo) não tem outra cláusula com datas diferentes
 G6  plausibilidade: ano próximo ao da coleta; isenção não termina depois da inscrição
-G7  retificação posterior que menciona o campo derruba a evidência anterior
+G7  retificação publicada depois do documento da evidência derruba o campo se: não tiver
+    texto; trouxer cláusula do prazo com datas diferentes (ou ambígua); falar do prazo junto
+    de prorrogação/reabertura/suspensão; ou for errata "onde se lê" que cite o prazo.
+    Ordem por `publicado_em`; sem ela, `coletado_em`.
 G8  documento sem camada de texto (PDF escaneado) não sustenta campo nenhum
 
 Campos aprovados por humano (aprovado_por) passam apenas por G1–G3: a revisão
@@ -25,7 +28,6 @@ from datetime import date
 from ntc.fetch.allowlist import Allowlist
 from ntc.model.schema import Campo, Concurso, Evidencia, Prazo
 from ntc.parse import clausulas
-from ntc.parse.datas import datas
 from ntc.parse.texto import normalizar
 
 TIPO_POR_CAMPO = {v: k for k, v in clausulas.CAMPO_POR_TIPO.items()}
@@ -128,8 +130,8 @@ class Gate:
             if clausulas.EXCLUSOES[tipo].search(trecho):
                 return falha("G4", "trecho descreve outro evento do cronograma")
             esperado = [d for d in (campo.inicio, campo.fim) if d is not None]
-            if datas(trecho) != esperado:
-                return falha("G4", f"datas do trecho {datas(trecho)} ≠ declaradas {esperado}")
+            if clausulas.datas_de_prazo(trecho) != esperado:
+                return falha("G4", f"datas do trecho {clausulas.datas_de_prazo(trecho)} ≠ declaradas {esperado}")
             if texto.completo:
                 distintos = clausulas.intervalos_distintos(clausulas.encontrar(texto.paginas, tipo))
                 if len(distintos) > 1:
@@ -137,7 +139,7 @@ class Gate:
             ano = doc.coletado_em.year
             if any(not (ano - 1 <= d.year <= ano + 1) for d in esperado):
                 return falha("G6", "ano do prazo distante do ano da coleta")
-            if self._retificado_depois(c, doc.id, tipo, textos):
+            if self._retificado_depois(c, doc.id, tipo, campo, textos):
                 return falha("G7", "retificação posterior menciona este prazo")
         elif not _valor_no_trecho(campo.valor, trecho):
             return falha("G4", f"valor {campo.valor!r} não aparece no trecho")
@@ -145,15 +147,17 @@ class Gate:
 
     @staticmethod
     def _retificado_depois(
-        c: Concurso, doc_id: str, tipo: str, textos: dict[str, TextoDocumento]
+        c: Concurso, doc_id: str, tipo: str, campo: Prazo, textos: dict[str, TextoDocumento]
     ) -> bool:
         base = c.documento(doc_id)
         for d in c.documentos:
-            if d.tipo != "retificacao" or d.coletado_em <= base.coletado_em:
+            if d.tipo != "retificacao" or not d.posterior_a(base):
                 continue
             t = textos.get(d.sha256)
-            if t is None or any(clausulas.ANCORAS[tipo].search(p) for p in t.paginas.values()):
+            if t is None or not t.tem_texto:
                 return True  # sem texto, não há como descartar o impacto
+            if clausulas.altera_prazo(t.paginas, tipo, campo.inicio, campo.fim):
+                return True
         return False
 
     @staticmethod
