@@ -43,7 +43,7 @@
       "url": "https://conhecimento.fgv.br/sites/default/files/concursos/edital-n-33-2026-edital-de-abertura-retificado.pdf",
       "url_final": "https://conhecimento.fgv.br/sites/default/files/concursos/edital-n-33-2026-edital-de-abertura-retificado.pdf",
       "sha256": "e461a1d24b4523a4264ac4741937b935873abf69f0456897a532c2187b847859",
-      "coletado_em": "2026-11-12T19:11:23-03:00",
+      "coletado_em": "2026-11-12T19:21:28-03:00",
       "fonte": "fgv",
       "publicado_em": "2026-10-19",
       "titulo": "Edital (retificado em 19/10/2026)"
@@ -54,7 +54,7 @@
       "url": "https://conhecimento.fgv.br/sites/default/files/concursos/sei_11350910_edital.pdf",
       "url_final": "https://conhecimento.fgv.br/sites/default/files/concursos/sei_11350910_edital.pdf",
       "sha256": "c32a37c3eaeffe5195e60071484ccde507689e559fddcce3f5f8d34ba41bd7df",
-      "coletado_em": "2026-11-12T19:11:25-03:00",
+      "coletado_em": "2026-11-12T19:21:30-03:00",
       "fonte": "fgv",
       "publicado_em": "2026-10-19",
       "titulo": "1ª Retificação"
@@ -103,5 +103,5 @@
     "url": "https://conhecimento.fgv.br/concursos/tjscjuiz26",
     "data_dou": null
   },
-  "conferido_em": "2026-11-12T19:11:25-03:00"
+  "conferido_em": "2026-11-12T19:21:30-03:00"
 }
