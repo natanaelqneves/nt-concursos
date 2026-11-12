@@ -6,7 +6,7 @@ export const SITE = {
   descricao:
     "Concursos públicos com inscrições abertas e prazos de isenção da taxa, conferidos no edital oficial.",
   responsavel: "Natanael Q. Neves",
-  emailContato: "nqneves@ntconcursos.com.br",
+  emailContato: "contato@ntconcursos.com.br",
   cidadeUf: "João Pessoa/PB",
 };
 
