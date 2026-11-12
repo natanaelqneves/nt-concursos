@@ -1,8 +1,9 @@
 import type { APIRoute } from "astro";
 import { SITE } from "../config";
-import { todos } from "../lib/dados";
+import { todasNoticias, todos } from "../lib/dados";
+import { hojeBRT } from "../lib/tempo";
 
-const FIXAS = ["/", "/isencao-aberta/", "/metodologia/", "/sobre/", "/contato/", "/privacidade/", "/termos/"];
+const FIXAS = ["/", "/isencao-aberta/", "/noticias/", "/metodologia/", "/sobre/", "/contato/", "/privacidade/", "/termos/"];
 
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
 
@@ -12,6 +13,10 @@ export const GET: APIRoute = () => {
     ...todos().map((c) => ({
       loc: new URL(`/concursos/${c.slug}/`, SITE.url).href,
       lastmod: c.conferido_em.slice(0, 10), // data real da última conferência
+    })),
+    ...todasNoticias().filter((n) => n.expira_em >= hojeBRT()).map((n) => ({
+      loc: new URL(`/noticias/${n.slug}/`, SITE.url).href,
+      lastmod: n.apurado_em.slice(0, 10),
     })),
   ];
   const corpo = urls

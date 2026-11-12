@@ -1,0 +1,76 @@
+{
+  "slug": "pm-pe-2026-soldado-e-oficial",
+  "titulo": "PM de Pernambuco prorroga inscrições para soldado e oficial",
+  "orgao": "Polícia Militar do Estado de Pernambuco",
+  "categoria": "seguranca",
+  "esfera": "estadual",
+  "uf": "PE",
+  "banca": "Instituto AOCP",
+  "resumo": "A Polícia Militar de Pernambuco tem concurso aberto para soldado e para 2º tenente, organizado pelo Instituto AOCP. O prazo, que acabaria em 5 de novembro, foi prorrogado por retificação publicada no Diário Oficial do estado, que também mudou requisitos, como a altura mínima. O concurso faz parte do pacote de seleções da segurança pública de Pernambuco, junto com Polícia Civil, Polícia Penal e Bombeiros.",
+  "cargos": [
+    "Soldado",
+    "2º Tenente"
+  ],
+  "fatos": [
+    {
+      "campo": "inscricao",
+      "texto": "Até as 14h de 23/11/2026 (prazo prorrogado), no site do Instituto AOCP",
+      "inicio": "2026-10-05",
+      "fim": "2026-11-23",
+      "fontes": [
+        "f-1",
+        "f-2",
+        "f-3"
+      ]
+    },
+    {
+      "campo": "vagas",
+      "texto": "1.320 vagas: 1.250 para soldado e 70 para 2º tenente",
+      "fontes": [
+        "f-1",
+        "f-2",
+        "f-4"
+      ]
+    },
+    {
+      "campo": "taxa",
+      "texto": "R$ 180 (soldado) e R$ 220 (2º tenente)",
+      "fontes": [
+        "f-2",
+        "f-3"
+      ]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "f-1",
+      "nome": "Direção Concursos",
+      "url": "https://www.direcaoconcursos.com.br/noticias/concurso-pm-pe-inscricoes-prorrogadas-2",
+      "oficial": false,
+      "consultado_em": "2026-11-12"
+    },
+    {
+      "id": "f-2",
+      "nome": "Nova Concursos",
+      "url": "https://www.novaconcursos.com.br/portal/?p=316821",
+      "oficial": false,
+      "consultado_em": "2026-11-12"
+    },
+    {
+      "id": "f-3",
+      "nome": "Folha Dirigida",
+      "url": "https://folha.qconcursos.com/n/concursos-pm-e-bombeiros-pe-novas-datas-2026",
+      "oficial": false,
+      "consultado_em": "2026-11-12"
+    },
+    {
+      "id": "f-4",
+      "nome": "Focus Concursos",
+      "url": "https://noticias.focusconcursos.com.br/noticias/concursos-pm-e-bombeiros-pe-editais-somam-1890-vagas-salarios-r-129-mil",
+      "oficial": false,
+      "consultado_em": "2026-11-12"
+    }
+  ],
+  "apurado_em": "2026-11-12T17:45:00-03:00",
+  "expira_em": "2026-11-23"
+}

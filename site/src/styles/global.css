@@ -86,3 +86,6 @@ footer.rodape nav { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: .5
 .evidencia-tabela caption { text-align: left; color: var(--suave); font-size: .82rem; }
 .evidencia-tabela th, .evidencia-tabela td { border: 1px solid #dde1e6; padding: .3rem .5rem; text-align: left; vertical-align: top; }
 .resumo-concurso { font-size: 1.05rem; line-height: 1.6; }
+.selo-apuracao { background: #fff4e0; color: #7a4b00; }
+.aviso-apuracao { background: #fff8ec; border-left: 4px solid #e0a030; padding: .6rem .8rem; }
+.fontes-fato a { color: inherit; }

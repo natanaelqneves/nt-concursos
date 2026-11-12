@@ -25,23 +25,36 @@ from ntc.store.json_store import JsonStore
 
 RAIZ = Path(__file__).resolve().parents[3]
 SCHEMA_PATH = RAIZ / "schema" / "concurso.schema.json"
+SCHEMA_NOTICIA_PATH = RAIZ / "schema" / "noticia.schema.json"
 
 
 def _schema_json() -> str:
     return json.dumps(Concurso.model_json_schema(), ensure_ascii=False, indent=2) + "\n"
 
 
+def _schemas() -> dict[Path, str]:
+    from ntc.model.noticia import Noticia
+
+    return {
+        SCHEMA_PATH: _schema_json(),
+        SCHEMA_NOTICIA_PATH: json.dumps(Noticia.model_json_schema(), ensure_ascii=False, indent=2) + "\n",
+    }
+
+
 def cmd_schema(args: argparse.Namespace) -> int:
-    atual = _schema_json()
+    schemas = _schemas()
     if args.check:
-        if not SCHEMA_PATH.exists() or SCHEMA_PATH.read_text(encoding="utf-8") != atual:
-            print("schema/concurso.schema.json desatualizado: rode `ntc schema`", file=sys.stderr)
+        velhos = [p for p, atual in schemas.items() if not p.exists() or p.read_text(encoding="utf-8") != atual]
+        for p in velhos:
+            print(f"{p.relative_to(RAIZ)} desatualizado: rode `ntc schema`", file=sys.stderr)
+        if velhos:
             return 1
         print("schema em dia")
         return 0
-    SCHEMA_PATH.parent.mkdir(parents=True, exist_ok=True)
-    SCHEMA_PATH.write_text(atual, encoding="utf-8")
-    print(f"gravado {SCHEMA_PATH.relative_to(RAIZ)}")
+    for p, atual in schemas.items():
+        p.parent.mkdir(parents=True, exist_ok=True)
+        p.write_text(atual, encoding="utf-8")
+        print(f"gravado {p.relative_to(RAIZ)}")
     return 0
 
 
@@ -65,8 +78,43 @@ def cmd_validate(args: argparse.Namespace) -> int:
         for v in gate.aplicar(concurso, textos).violacoes:
             erros += 1
             print(f"ERRO {caminho.name}: {v.regra} {v.campo}: {v.mensagem}", file=sys.stderr)
-    print(f"{len(arquivos)} concurso(s) verificados, {erros} erro(s)")
+    erros_noticias, n_noticias = _validar_noticias(data, {c.orgao for c in _concursos_validos(arquivos)})
+    erros += erros_noticias
+    print(f"{len(arquivos)} concurso(s) verificados, {n_noticias} notícia(s), {erros} erro(s)")
     return 1 if erros else 0
+
+
+def _concursos_validos(arquivos: list[Path]) -> list[Concurso]:
+    saida = []
+    for caminho in arquivos:
+        try:
+            saida.append(Concurso.model_validate_json(caminho.read_text(encoding="utf-8")))
+        except ValidationError:
+            pass
+    return saida
+
+
+def _validar_noticias(data: Path, orgaos_verificados: set[str]) -> tuple[int, int]:
+    """data/noticias: schema, nome do arquivo e aviso (não erro) quando o órgão já tem
+    concurso verificado, caso em que a notícia é redundante e pode sair."""
+    from ntc.model.noticia import Noticia
+
+    pasta = data / "noticias"
+    arquivos = sorted(pasta.glob("*.json")) if pasta.exists() else []
+    erros = 0
+    for caminho in arquivos:
+        try:
+            n = Noticia.model_validate_json(caminho.read_text(encoding="utf-8"))
+        except ValidationError as e:
+            erros += 1
+            print(f"ERRO noticias/{caminho.name}: schema\n{e}", file=sys.stderr)
+            continue
+        if caminho.stem != n.slug:
+            erros += 1
+            print(f"ERRO noticias/{caminho.name}: nome do arquivo difere do slug", file=sys.stderr)
+        if n.orgao in orgaos_verificados:
+            print(f"AVISO noticias/{caminho.name}: {n.orgao} já tem concurso verificado", file=sys.stderr)
+    return erros, len(arquivos)
 
 
 def cmd_collect(args: argparse.Namespace) -> int:

@@ -1,0 +1,109 @@
+{
+  "slug": "trt4-2026-servidores",
+  "titulo": "TRT da 4ª Região recebe inscrições para analista e técnico",
+  "orgao": "Tribunal Regional do Trabalho da 4ª Região",
+  "categoria": "tribunal",
+  "esfera": "federal",
+  "uf": "RS",
+  "banca": "FCC",
+  "resumo": "O Tribunal Regional do Trabalho da 4ª Região, que atende o Rio Grande do Sul, está com concurso aberto para analista e técnico judiciário, em várias áreas e especialidades, organizado pela Fundação Carlos Chagas. O edital forma cadastro de reserva: os aprovados são chamados conforme surgirem vagas durante a validade do concurso. O prazo para pedir isenção da taxa já terminou.",
+  "cargos": [
+    "Analista Judiciário",
+    "Técnico Judiciário"
+  ],
+  "fatos": [
+    {
+      "campo": "inscricao",
+      "texto": "Das 10h de 26/10/2026 às 23h59 de 25/11/2026, no site da FCC",
+      "inicio": "2026-10-26",
+      "fim": "2026-11-25",
+      "fontes": [
+        "f-1",
+        "f-2",
+        "f-3"
+      ]
+    },
+    {
+      "campo": "isencao",
+      "texto": "Pedido de isenção de 26/10 a 30/10/2026 (encerrado)",
+      "inicio": "2026-10-26",
+      "fim": "2026-10-30",
+      "fontes": [
+        "f-3",
+        "f-4"
+      ]
+    },
+    {
+      "campo": "vagas",
+      "texto": "Só cadastro de reserva, sem vagas imediatas",
+      "fontes": [
+        "f-4",
+        "f-5"
+      ]
+    },
+    {
+      "campo": "taxa",
+      "texto": "R$ 110 (analista) e R$ 90 (técnico)",
+      "fontes": [
+        "f-2",
+        "f-3"
+      ]
+    },
+    {
+      "campo": "prova",
+      "texto": "Provas objetiva e discursiva em 31/1/2027, em Porto Alegre",
+      "inicio": "2027-01-31",
+      "fim": "2027-01-31",
+      "fontes": [
+        "f-2",
+        "f-6"
+      ]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "f-1",
+      "nome": "TRT4 (notícia oficial)",
+      "url": "https://www.trt4.jus.br/portais/trt4/modulos/noticias/51150831",
+      "oficial": true,
+      "consultado_em": "2026-11-12"
+    },
+    {
+      "id": "f-2",
+      "nome": "Nova Concursos",
+      "url": "https://www.novaconcursos.com.br/portal/?p=317485",
+      "oficial": false,
+      "consultado_em": "2026-11-12"
+    },
+    {
+      "id": "f-3",
+      "nome": "Direção Concursos",
+      "url": "https://www.direcaoconcursos.com.br/noticias/concurso-trt-4-rs-inscricoes-abertas",
+      "oficial": false,
+      "consultado_em": "2026-11-12"
+    },
+    {
+      "id": "f-4",
+      "nome": "Aprova Concursos",
+      "url": "https://www.aprovaconcursos.com.br/noticias/?p=166907",
+      "oficial": false,
+      "consultado_em": "2026-11-12"
+    },
+    {
+      "id": "f-5",
+      "nome": "Folha Dirigida",
+      "url": "https://folha.qconcursos.com/n/tribunal-regional-do-trabalho-da-4-regiao-abre-concurso-para-cadastro-de-reserva-em-analista-e-tecnico-judiciario",
+      "oficial": false,
+      "consultado_em": "2026-11-12"
+    },
+    {
+      "id": "f-6",
+      "nome": "Focus Concursos",
+      "url": "https://noticias.focusconcursos.com.br/noticias/concurso-trt-rs-edital-publicado-salarios-de-ate-r-16-mil",
+      "oficial": false,
+      "consultado_em": "2026-11-12"
+    }
+  ],
+  "apurado_em": "2026-11-12T17:45:00-03:00",
+  "expira_em": "2026-11-25"
+}

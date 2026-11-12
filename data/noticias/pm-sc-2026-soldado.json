@@ -1,0 +1,99 @@
+{
+  "slug": "pm-sc-2026-soldado",
+  "titulo": "PM de Santa Catarina recebe inscrições para 500 vagas de soldado",
+  "orgao": "Polícia Militar do Estado de Santa Catarina",
+  "categoria": "seguranca",
+  "esfera": "estadual",
+  "uf": "SC",
+  "banca": "Instituto AOCP",
+  "resumo": "A Polícia Militar de Santa Catarina abriu concurso para o Curso de Formação de Praças, com ingresso no cargo de soldado. Diferentemente de muitas PMs, a seleção exige nível superior completo em qualquer área. O concurso é organizado pelo Instituto AOCP, e a prova escrita acontece ainda em dezembro de 2026.",
+  "cargos": [
+    "Soldado do Quadro de Praças Policial Militar"
+  ],
+  "fatos": [
+    {
+      "campo": "inscricao",
+      "texto": "Das 9h de 26/10/2026 às 16h de 16/11/2026, no site do Instituto AOCP",
+      "inicio": "2026-10-26",
+      "fim": "2026-11-16",
+      "fontes": [
+        "f-1",
+        "f-2",
+        "f-3"
+      ]
+    },
+    {
+      "campo": "vagas",
+      "texto": "500 vagas",
+      "fontes": [
+        "f-1",
+        "f-4",
+        "f-5"
+      ]
+    },
+    {
+      "campo": "taxa",
+      "texto": "R$ 200",
+      "fontes": [
+        "f-3",
+        "f-4"
+      ]
+    },
+    {
+      "campo": "prova",
+      "texto": "Provas objetiva e de redação em 13/12/2026",
+      "inicio": "2026-12-13",
+      "fim": "2026-12-13",
+      "fontes": [
+        "f-5",
+        "f-6"
+      ]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "f-1",
+      "nome": "Direção Concursos",
+      "url": "https://www.direcaoconcursos.com.br/noticias/concurso-pm-sc-inscricoes-abertas",
+      "oficial": false,
+      "consultado_em": "2026-11-12"
+    },
+    {
+      "id": "f-2",
+      "nome": "Nova Concursos",
+      "url": "https://www.novaconcursos.com.br/portal/?p=317471",
+      "oficial": false,
+      "consultado_em": "2026-11-12"
+    },
+    {
+      "id": "f-3",
+      "nome": "JC Concursos",
+      "url": "https://jcconcursos.com.br/noticia/concursos/concurso-da-pm-sc-abre-inscricao-para-soldado-retificacao-inclui-vagas-para-pcd-146226",
+      "oficial": false,
+      "consultado_em": "2026-11-12"
+    },
+    {
+      "id": "f-4",
+      "nome": "Aprova Concursos",
+      "url": "https://www.aprovaconcursos.com.br/noticias/?p=167820",
+      "oficial": false,
+      "consultado_em": "2026-11-12"
+    },
+    {
+      "id": "f-5",
+      "nome": "Folha Dirigida",
+      "url": "https://folha.qconcursos.com/n/concurso-pm-sc-2026-inscricoes",
+      "oficial": false,
+      "consultado_em": "2026-11-12"
+    },
+    {
+      "id": "f-6",
+      "nome": "Magistrar",
+      "url": "https://magistrarcursos.com.br/blog/?p=51708",
+      "oficial": false,
+      "consultado_em": "2026-11-12"
+    }
+  ],
+  "apurado_em": "2026-11-12T17:45:00-03:00",
+  "expira_em": "2026-11-16"
+}

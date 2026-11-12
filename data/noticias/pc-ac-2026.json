@@ -1,0 +1,98 @@
+{
+  "slug": "pc-ac-2026",
+  "titulo": "Polícia Civil do Acre abre 139 vagas em seis carreiras",
+  "orgao": "Polícia Civil do Estado do Acre",
+  "categoria": "seguranca",
+  "esfera": "estadual",
+  "uf": "AC",
+  "banca": "Idecan",
+  "resumo": "A Polícia Civil do Acre publicou edital de concurso com vagas imediatas em seis carreiras de nível superior, de delegado a papiloscopista, organizado pelo Idecan. As vagas são distribuídas entre municípios e regionais do estado, conforme a opção feita na inscrição. As provas objetiva e discursiva estão previstas para janeiro de 2027.",
+  "cargos": [
+    "Delegado de Polícia Civil",
+    "Oficial Investigador de Polícia",
+    "Perito Criminal",
+    "Médico Legista",
+    "Papiloscopista",
+    "Auxiliar de Necropsia"
+  ],
+  "fatos": [
+    {
+      "campo": "inscricao",
+      "texto": "De 11/11/2026 a 14/12/2026, no site do Idecan",
+      "inicio": "2026-11-11",
+      "fim": "2026-12-14",
+      "fontes": [
+        "f-1",
+        "f-2",
+        "f-3"
+      ]
+    },
+    {
+      "campo": "vagas",
+      "texto": "139 vagas imediatas, além de cadastro de reserva",
+      "fontes": [
+        "f-1",
+        "f-3",
+        "f-4"
+      ]
+    },
+    {
+      "campo": "prova",
+      "texto": "Provas objetiva e discursiva previstas para 24/1/2027",
+      "inicio": "2027-01-24",
+      "fim": "2027-01-24",
+      "fontes": [
+        "f-1",
+        "f-3"
+      ]
+    },
+    {
+      "campo": "cargos",
+      "texto": "Seis carreiras de nível superior",
+      "fontes": [
+        "f-1",
+        "f-4",
+        "f-5"
+      ]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "f-1",
+      "nome": "Focus Concursos",
+      "url": "https://noticias.focusconcursos.com.br/noticias/concurso-policia-civil-do-acre-edital-publicado-com-139-vagas",
+      "oficial": false,
+      "consultado_em": "2026-11-12"
+    },
+    {
+      "id": "f-2",
+      "nome": "Gran Cursos Online",
+      "url": "https://blog.grancursosonline.com.br/?p=79980256",
+      "oficial": false,
+      "consultado_em": "2026-11-12"
+    },
+    {
+      "id": "f-3",
+      "nome": "Nova Concursos",
+      "url": "https://www.novaconcursos.com.br/portal/?p=318077",
+      "oficial": false,
+      "consultado_em": "2026-11-12"
+    },
+    {
+      "id": "f-4",
+      "nome": "Concursos no Brasil",
+      "url": "https://concursosnobrasil.com/concursos/ac/2026/11/06/concurso-policia-civil-ac-tem-139-vagas-e-salario-de-ate-r-195-mil/",
+      "oficial": false,
+      "consultado_em": "2026-11-12"
+    },
+    {
+      "id": "f-5",
+      "nome": "Magistrar",
+      "url": "https://magistrarcursos.com.br/blog/?p=51708",
+      "oficial": false,
+      "consultado_em": "2026-11-12"
+    }
+  ],
+  "apurado_em": "2026-11-12T17:45:00-03:00",
+  "expira_em": "2026-12-14"
+}

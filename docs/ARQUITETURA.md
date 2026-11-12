@@ -240,6 +240,10 @@ revisa uma vez por milestone** (o dono cola o diff no Codex e devolve a crítica
 - **INLABS sem previsão de volta**: a descoberta federal segue pelas bancas. A Base de Dados de
   Publicações do DOU (substituto indicado pela Imprensa Nacional) fica em www.in.gov.br, cujo robots.txt
   proíbe tudo; só será usada com autorização escrita da Imprensa Nacional.
+- **Apuração na imprensa (decisão do dono, 12/11/2026)**: enquanto INLABS e várias bancas estão
+  inacessíveis, o site mostra concursos do escopo apurados em fontes não oficiais, numa seção separada
+  (`/noticias/`) e rotulada. Cada fato exige 2 veículos diferentes ou 1 fonte oficial; nada entra nas
+  listas verificadas. Ver `docs/CONTRATO-DADOS.md`.
 - **Resumo por órgão** (`data/orgaos.json`) só vai ao ar com `revisado: true`; os textos por categoria são
   autorais e genéricos (sem dado que mude de edital para edital).
 

@@ -1,0 +1,250 @@
+{
+  "$defs": {
+    "Fato": {
+      "additionalProperties": false,
+      "properties": {
+        "campo": {
+          "enum": [
+            "inscricao",
+            "isencao",
+            "vagas",
+            "taxa",
+            "prova",
+            "remuneracao",
+            "banca",
+            "cargos"
+          ],
+          "title": "Campo",
+          "type": "string"
+        },
+        "texto": {
+          "maxLength": 300,
+          "minLength": 3,
+          "title": "Texto",
+          "type": "string"
+        },
+        "inicio": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Inicio"
+        },
+        "fim": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Fim"
+        },
+        "fontes": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Fontes",
+          "type": "array"
+        }
+      },
+      "required": [
+        "campo",
+        "texto",
+        "fontes"
+      ],
+      "title": "Fato",
+      "type": "object"
+    },
+    "Fonte": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^f-\\d+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "nome": {
+          "maxLength": 120,
+          "minLength": 2,
+          "title": "Nome",
+          "type": "string"
+        },
+        "url": {
+          "format": "uri",
+          "minLength": 1,
+          "title": "Url",
+          "type": "string"
+        },
+        "oficial": {
+          "default": false,
+          "title": "Oficial",
+          "type": "boolean"
+        },
+        "consultado_em": {
+          "format": "date",
+          "title": "Consultado Em",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "nome",
+        "url",
+        "consultado_em"
+      ],
+      "title": "Fonte",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "slug": {
+      "maxLength": 120,
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "title": "Slug",
+      "type": "string"
+    },
+    "titulo": {
+      "maxLength": 140,
+      "minLength": 10,
+      "title": "Titulo",
+      "type": "string"
+    },
+    "orgao": {
+      "minLength": 3,
+      "title": "Orgao",
+      "type": "string"
+    },
+    "categoria": {
+      "enum": [
+        "tribunal",
+        "controle",
+        "mp",
+        "defensoria",
+        "seguranca"
+      ],
+      "title": "Categoria",
+      "type": "string"
+    },
+    "esfera": {
+      "enum": [
+        "federal",
+        "estadual"
+      ],
+      "title": "Esfera",
+      "type": "string"
+    },
+    "uf": {
+      "enum": [
+        "AC",
+        "AL",
+        "AP",
+        "AM",
+        "BA",
+        "CE",
+        "DF",
+        "ES",
+        "GO",
+        "MA",
+        "MT",
+        "MS",
+        "MG",
+        "PA",
+        "PB",
+        "PR",
+        "PE",
+        "PI",
+        "RJ",
+        "RN",
+        "RS",
+        "RO",
+        "RR",
+        "SC",
+        "SP",
+        "SE",
+        "TO",
+        "BR"
+      ],
+      "title": "Uf",
+      "type": "string"
+    },
+    "banca": {
+      "maxLength": 80,
+      "minLength": 2,
+      "title": "Banca",
+      "type": "string"
+    },
+    "resumo": {
+      "maxLength": 1200,
+      "minLength": 80,
+      "title": "Resumo",
+      "type": "string"
+    },
+    "cargos": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Cargos",
+      "type": "array"
+    },
+    "fatos": {
+      "items": {
+        "$ref": "#/$defs/Fato"
+      },
+      "minItems": 2,
+      "title": "Fatos",
+      "type": "array"
+    },
+    "fontes": {
+      "items": {
+        "$ref": "#/$defs/Fonte"
+      },
+      "minItems": 2,
+      "title": "Fontes",
+      "type": "array"
+    },
+    "apurado_em": {
+      "format": "date-time",
+      "title": "Apurado Em",
+      "type": "string"
+    },
+    "expira_em": {
+      "format": "date",
+      "title": "Expira Em",
+      "type": "string"
+    }
+  },
+  "required": [
+    "slug",
+    "titulo",
+    "orgao",
+    "categoria",
+    "esfera",
+    "uf",
+    "banca",
+    "resumo",
+    "fatos",
+    "fontes",
+    "apurado_em",
+    "expira_em"
+  ],
+  "title": "Noticia",
+  "type": "object"
+}

@@ -1,0 +1,99 @@
+{
+  "slug": "cbm-pe-2026-soldado-e-oficial",
+  "titulo": "Bombeiros de Pernambuco têm inscrições até 23 de novembro",
+  "orgao": "Corpo de Bombeiros Militar do Estado de Pernambuco",
+  "categoria": "seguranca",
+  "esfera": "estadual",
+  "uf": "PE",
+  "banca": "Instituto AOCP",
+  "resumo": "O Corpo de Bombeiros Militar de Pernambuco está com concurso aberto para soldado e 2º tenente, organizado pelo Instituto AOCP. Assim como o da Polícia Militar, o prazo de inscrição foi prorrogado por retificação publicada no Diário Oficial do estado em outubro. A prova objetiva está marcada para o fim de fevereiro de 2027.",
+  "cargos": [
+    "Soldado",
+    "2º Tenente"
+  ],
+  "fatos": [
+    {
+      "campo": "inscricao",
+      "texto": "Até as 14h de 23/11/2026 (prazo prorrogado), no site do Instituto AOCP",
+      "inicio": "2026-10-05",
+      "fim": "2026-11-23",
+      "fontes": [
+        "f-1",
+        "f-2",
+        "f-3"
+      ]
+    },
+    {
+      "campo": "vagas",
+      "texto": "570 vagas: 510 para soldado e 60 para 2º tenente",
+      "fontes": [
+        "f-1",
+        "f-4"
+      ]
+    },
+    {
+      "campo": "taxa",
+      "texto": "R$ 180 (soldado) e R$ 220 (2º tenente)",
+      "fontes": [
+        "f-3",
+        "f-5"
+      ]
+    },
+    {
+      "campo": "prova",
+      "texto": "Prova em 28/2/2027",
+      "inicio": "2027-02-28",
+      "fim": "2027-02-28",
+      "fontes": [
+        "f-5",
+        "f-6"
+      ]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "f-1",
+      "nome": "Direção Concursos",
+      "url": "https://www.direcaoconcursos.com.br/noticias/concurso-bombeiros-pe-inscricoes-prorrogadas",
+      "oficial": false,
+      "consultado_em": "2026-11-12"
+    },
+    {
+      "id": "f-2",
+      "nome": "Portal de Prefeitura",
+      "url": "https://portaldeprefeitura.com.br/oportunidades/concursos-pmpe-e-bombeiros-inscricoes-prorrogadas/634152/",
+      "oficial": false,
+      "consultado_em": "2026-11-12"
+    },
+    {
+      "id": "f-3",
+      "nome": "Folha Dirigida",
+      "url": "https://folha.qconcursos.com/n/concursos-pm-e-bombeiros-pe-novas-datas-2026",
+      "oficial": false,
+      "consultado_em": "2026-11-12"
+    },
+    {
+      "id": "f-4",
+      "nome": "Focus Concursos",
+      "url": "https://noticias.focusconcursos.com.br/noticias/concursos-pm-e-bombeiros-pe-editais-somam-1890-vagas-salarios-r-129-mil",
+      "oficial": false,
+      "consultado_em": "2026-11-12"
+    },
+    {
+      "id": "f-5",
+      "nome": "Estratégia Concursos",
+      "url": "https://www.estrategiaconcursos.com.br/blog/concurso-bombeiro-pe-edital-publicado-2026/amp/",
+      "oficial": false,
+      "consultado_em": "2026-11-12"
+    },
+    {
+      "id": "f-6",
+      "nome": "Nova Concursos",
+      "url": "https://www.novaconcursos.com.br/portal/?p=316821",
+      "oficial": false,
+      "consultado_em": "2026-11-12"
+    }
+  ],
+  "apurado_em": "2026-11-12T17:45:00-03:00",
+  "expira_em": "2026-11-23"
+}
