@@ -1,6 +1,6 @@
 # ntconcursos — Arquitetura vencedora e plano do repositório
 
-Versão 1.1 · 12/11/2026 (M1 entregue) · Mediação: Claude · Revisores: Codex, Gemini Pro
+Versão 1.2 · 12/11/2026 (M1 e M1.1 entregues) · Mediação: Claude · Revisores: Codex, Gemini Pro
 
 ## 1. Consenso
 
@@ -211,8 +211,8 @@ revisa uma vez por milestone** (o dono cola o diff no Codex e devolve a crítica
 |---|---|
 | M0 | esqueleto, contrato, gate G1–G8, site, CI, publicação e Worker: entregue |
 | M1 | contrato v2 (PR #1) e M1 (PR #2) incorporados em 12/11/2026. FGV publica 3 concursos (TJ-PB, TJ-SC Juiz, TJ-AP Juiz). Cebraspe coleta tudo, mas publica 0: os prazos só aparecem no cronograma em tabela. INLABS em manutenção: conector testado só com XML no formato documentado; horário ainda não medido (faltam os secrets INLABS_EMAIL/INLABS_SENHA) |
-| M1.1 | leitura de cronograma em tabela com evidência de célula (muda o contrato: PR próprio), para destravar a Cebraspe: próximo |
-| M2 | publicação automática: depois do M1.1 |
+| M1.1 | cronograma em tabela com evidência de célula (PRs #3 e #4), resumo do concurso, "sobre a instituição" e cargos (PR #5): entregue em 12/11/2026. Cebraspe passa a publicar (PC-PE e Polícia Penal PE no primeiro dia) |
+| M2 | publicação automática: próximo |
 
 ### Decisões tomadas no M1 (12/11/2026)
 
@@ -233,6 +233,15 @@ revisa uma vez por milestone** (o dono cola o diff no Codex e devolve a crítica
 - **Extração com `pdftotext` (Poppler)** no lugar do pdfplumber: cerca de 25 vezes mais rápida,
   com as mesmas cláusulas. Carimbos de impressão do SEI ("10/04/2026, 11:19") não contam como data.
 - **Cartórios (outorga de delegações), juiz leigo, processos seletivos e exames** ficam fora do escopo.
+- **Bancas inacessíveis pelo Actions (12/11/2026)**: o robots.txt da FCC proíbe `/concursos/` e todos os
+  PDFs; Vunesp, Cesgranrio, IBFC, Fundatec e Consulplan respondem 403 aos servidores do GitHub. Não se
+  contorna: ficam para o plano B (coleta no PC do dono, com robots respeitado) ou autorização da banca.
+  Acessíveis e ainda não implementadas: Instituto AOCP, Idecan, IADES, Ibade, Selecon, Quadrix, Instituto Acesso.
+- **INLABS sem previsão de volta**: a descoberta federal segue pelas bancas. A Base de Dados de
+  Publicações do DOU (substituto indicado pela Imprensa Nacional) fica em www.in.gov.br, cujo robots.txt
+  proíbe tudo; só será usada com autorização escrita da Imprensa Nacional.
+- **Resumo por órgão** (`data/orgaos.json`) só vai ao ar com `revisado: true`; os textos por categoria são
+  autorais e genéricos (sem dado que mude de edital para edital).
 
 ## 11. Escopo e prioridade (decidido em 12/11/2026; Tribunais de Contas, Defensorias, Bombeiros e Polícias Legislativas incluídos no mesmo dia)
 
