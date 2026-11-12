@@ -5,9 +5,9 @@ export const SITE = {
   url: "https://ntconcursos.com.br",
   descricao:
     "Concursos públicos com inscrições abertas e prazos de isenção da taxa, conferidos no edital oficial.",
-  responsavel: "PREENCHER",
-  emailContato: "PREENCHER",
-  cidadeUf: "PREENCHER",
+  responsavel: "Natanael Q. Neves",
+  emailContato: "nqneves@ntconcursos.com.br",
+  cidadeUf: "João Pessoa/PB",
 };
 
 // Preenchidos via variáveis de ambiente no build (GitHub Actions → vars).

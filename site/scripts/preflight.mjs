@@ -5,7 +5,7 @@ import fs from "node:fs";
 const problemas = [];
 
 const config = fs.readFileSync(new URL("../src/config.ts", import.meta.url), "utf-8");
-if (config.includes('"PREENCHER"')) {
+if (/:\s*"PREENCHER"/.test(config)) {
   problemas.push("site/src/config.ts ainda tem campos \"PREENCHER\" (responsável, e-mail, cidade)");
 }
 
