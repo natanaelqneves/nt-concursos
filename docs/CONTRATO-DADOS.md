@@ -43,6 +43,17 @@ Classificação de escopo: `collector/src/ntc/escopo.py` (regras explícitas, co
 Classificação de escopo: `collector/src/ntc/escopo.py` (regras explícitas, com testes em
 `tests/test_escopo.py`). Concurso fora do escopo não gera arquivo, só uma linha no log da execução.
 
+## Áreas novas (12/11/2026, compatível com a versão 2)
+
+| Campo | Regra |
+|---|---|
+| `categoria` | ganha `estatal` (empresas públicas e sociedades de economia mista federais e estaduais), `conselho` (conselhos profissionais) e `outro` (demais órgãos federais e estaduais) |
+| `areas` | lista de áreas dos cargos; por enquanto só `"ti"` (cargo de tecnologia da informação). Vale para qualquer categoria |
+| `outro` | só existe com `areas: ["ti"]`: órgão fora das categorias entra apenas se tiver cargo de TI |
+| `uf` | federais usam `BR`, exceto `tribunal` e `conselho`, que usam a UF da sede regional |
+
+Municipais continuam fora, inclusive TI municipal e empresas municipais. O mesmo vale para `data/noticias`.
+
 ## Evidência de tabela (12/11/2026, compatível com a versão 2)
 
 Cronogramas em tabela (padrão da Cebraspe) são lidos célula por célula no PDF. A evidência ganha:
