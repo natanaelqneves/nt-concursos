@@ -60,6 +60,7 @@ h3 { font-size: 1.05rem; }
 .selo-urgente { background: var(--alerta-fundo); color: var(--alerta); }
 .selo-porte { background: #e8eefc; color: #1d3f8f; }
 .selo-encerrado { background: #eef0f2; color: var(--suave); }
+.selo-ti { background: #ede7fb; color: #4b2a9a; }
 .selo-apuracao { background: #fff4e0; color: #7a4b00; }
 
 .vazio { color: var(--suave); }

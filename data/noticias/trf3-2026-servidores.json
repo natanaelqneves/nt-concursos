@@ -12,6 +12,9 @@
     "Oficial de Justiça Avaliador Federal",
     "Técnico Judiciário"
   ],
+  "areas": [
+    "ti"
+  ],
   "fatos": [
     {
       "campo": "inscricao",
@@ -52,7 +55,7 @@
     },
     {
       "campo": "cargos",
-      "texto": "Analista judiciário, oficial de justiça avaliador federal e técnico judiciário",
+      "texto": "Analista judiciário (área judiciária, análise de sistemas de informação e suporte em tecnologia da informação), oficial de justiça avaliador federal e técnico judiciário (inclusive desenvolvimento de sistemas e suporte técnico)",
       "fontes": [
         "f-1"
       ]

@@ -38,4 +38,25 @@ export const SOBRE_CATEGORIA: Record<Categoria, { titulo: string; paragrafos: st
       "Além das provas escritas, esses concursos costumam ter teste de aptidão física, avaliação psicológica, exames médicos, investigação social e curso de formação. O edital de cada concurso define quais etapas existem e em que ordem.",
     ],
   },
+  estatal: {
+    titulo: "O que são as empresas públicas",
+    paragrafos: [
+      "Empresas públicas e sociedades de economia mista são empresas controladas pela União ou por um estado, como bancos públicos, empresas de tecnologia do governo, companhias de saneamento e de energia. Elas contratam por concurso, mas os empregados são regidos pela CLT, e não pelo regime estatutário dos servidores.",
+      "Por isso, a estabilidade é diferente da de um servidor público, e benefícios como plano de saúde e previdência complementar variam de empresa para empresa. O edital informa salário, jornada e benefícios de cada emprego.",
+    ],
+  },
+  conselho: {
+    titulo: "O que são os conselhos profissionais",
+    paragrafos: [
+      "Os conselhos profissionais, como os de medicina, engenharia, contabilidade e enfermagem, fiscalizam o exercício das profissões regulamentadas. Têm um conselho federal e conselhos regionais, em geral com sede num estado ou numa região que reúne alguns estados.",
+      "Para contratar, os conselhos precisam fazer concurso público. Os cargos mais comuns são de fiscal, agente administrativo, analista e advogado, e os empregados costumam ser contratados pela CLT.",
+    ],
+  },
+  outro: {
+    titulo: "Por que este concurso aparece aqui",
+    paragrafos: [
+      "Além dos tribunais, órgãos de controle, Ministério Público, Defensoria, segurança pública, empresas públicas e conselhos, acompanhamos concursos de outros órgãos federais e estaduais quando eles têm vagas na área de tecnologia da informação.",
+      "Cargos de TI aparecem com nomes diferentes de um órgão para outro: analista de tecnologia da informação, analista de sistemas, especialista em infraestrutura, técnico de informática. O edital traz os requisitos de formação e o conteúdo da prova de cada um.",
+    ],
+  },
 };

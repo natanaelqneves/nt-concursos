@@ -3,7 +3,7 @@ import { SITE } from "../config";
 import { todasNoticias, todos } from "../lib/dados";
 import { hojeBRT } from "../lib/tempo";
 
-const FIXAS = ["/", "/isencao-aberta/", "/noticias/", "/metodologia/", "/sobre/", "/contato/", "/privacidade/", "/termos/"];
+const FIXAS = ["/", "/isencao-aberta/", "/noticias/", "/ti/", "/metodologia/", "/sobre/", "/contato/", "/privacidade/", "/termos/"];
 
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
 

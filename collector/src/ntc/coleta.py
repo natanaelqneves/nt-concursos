@@ -233,6 +233,7 @@ class Coletor:
             slug=slug, orgao=cls.orgao, categoria=cls.categoria, esfera=cls.esfera, banca=cf.fonte, uf=cls.uf,
             cargos=[Cargo(nome=n) for n in cf.cargos if len(n) >= 2],
             vagas_imediatas=vagas_campo, porte=classificar_porte(vagas_campo), prazos=prazos,
+            areas=list(cls.areas),
             documentos=documentos, evidencias=evidencias,
             descoberto_via=Descoberta(fonte=cf.fonte, url=cf.url, data_dou=cf.data_dou),
             conferido_em=self.agora(),
