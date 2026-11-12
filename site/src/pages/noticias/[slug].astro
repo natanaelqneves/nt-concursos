@@ -23,7 +23,7 @@ const sobre = SOBRE_CATEGORIA[n.categoria];
     {NOME_CATEGORIA[n.categoria]} · {n.esfera === "federal" ? "Federal" : "Estadual"} · {n.uf === "BR" ? "Nacional" : n.uf} · banca {n.banca}
   </p>
   <h1>{n.titulo}</h1>
-  <p class="aviso-apuracao">
+  <p class="aviso-apuracao alert alert-warning">
     {expirada
       ? "As inscrições deste concurso já terminaram."
       : "Informação apurada em fontes de imprensa e cruzada entre elas, ainda não conferida por nós no edital. Confira o edital no site da banca antes de se inscrever."}
@@ -67,7 +67,7 @@ const sobre = SOBRE_CATEGORIA[n.categoria];
     {n.fontes.map((f) => (
       <li>
         <a href={f.url} rel="nofollow noopener">{f.nome}</a>
-        {f.oficial && <span class="selo">oficial</span>}
+        {f.oficial && <span class="selo badge rounded-pill text-bg-success ms-1">oficial</span>}
         <span class="meta"> · consultada em {formatarData(f.consultado_em)}</span>
       </li>
     ))}

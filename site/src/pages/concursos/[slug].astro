@@ -78,7 +78,7 @@ const descricao = verificado(c.prazos.isencao) && c.prazos.isencao.fim
     {NOME_CATEGORIA[c.categoria]} · {c.esfera === "federal" ? "Federal" : "Estadual"} · {local(c)} · banca {c.banca.toUpperCase()}
   </p>
   <h1>{nome}</h1>
-  {situacao && <p><span class={`selo ${situacao.classe}`}>{situacao.texto}</span></p>}
+  {situacao && <p><span class={`selo badge rounded-pill ${situacao.classe}`}>{situacao.texto}</span></p>}
 
   <p class="resumo-concurso">{partesResumo.join(" ")}</p>
 
@@ -101,7 +101,7 @@ const descricao = verificado(c.prazos.isencao) && c.prazos.isencao.fim
         <dt>Vagas imediatas</dt>
         <dd>
           {Number(c.vagas_imediatas!.valor).toLocaleString("pt-BR")}
-          {c.porte === "grande" && <> <span class="selo selo-porte">grande porte</span></>}
+          {c.porte === "grande" && <> <span class="selo badge rounded-pill selo-porte">grande porte</span></>}
           <EvidenciaBox ev={evVagas.ev} doc={evVagas.doc} />
         </dd>
       </>

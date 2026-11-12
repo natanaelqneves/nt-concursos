@@ -15,7 +15,7 @@ const noticias = noticiasAtivas();
   descricao="Concursos públicos com inscrições abertas, ordenados pelo prazo de isenção da taxa. Cada data é conferida no edital oficial."
 >
   <h1>Concursos com inscrições abertas</h1>
-  <p>
+  <p class="lead">
     Primeiro, os concursos com pedido de <strong>isenção da taxa</strong> aberto, do prazo mais curto
     para o mais longo. Toda data mostrada tem link para o trecho do edital oficial.
   </p>
@@ -23,7 +23,7 @@ const noticias = noticiasAtivas();
   {destaques.length > 0 && (
     <section aria-labelledby="destaque">
       <h2 id="destaque">Em destaque: maiores concursos com inscrição aberta</h2>
-      <ul class="lista">{destaques.map((c) => <CartaoConcurso c={c} />)}</ul>
+      <ul class="lista row row-cols-1 row-cols-md-2 row-cols-xl-3 g-3 list-unstyled">{destaques.map((c) => <CartaoConcurso c={c} />)}</ul>
     </section>
   )}
 
@@ -31,18 +31,18 @@ const noticias = noticiasAtivas();
 
   <h2>Isenção da taxa aberta ({isencoes.length})</h2>
   {isencoes.length ? (
-    <ul class="lista">{isencoes.map((c) => <CartaoConcurso c={c} />)}</ul>
+    <ul class="lista row row-cols-1 row-cols-md-2 row-cols-xl-3 g-3 list-unstyled">{isencoes.map((c) => <CartaoConcurso c={c} />)}</ul>
   ) : (
-    <p class="vazio">Nenhum prazo de isenção aberto e verificado nesta edição.</p>
+    <p class="vazio alert alert-light border">Nenhum prazo de isenção aberto e verificado nesta edição.</p>
   )}
 
   <AdSlot formato="meio" slot={import.meta.env.PUBLIC_ADSENSE_SLOT_MEIO} />
 
   <h2>Demais inscrições abertas ({abertas.length})</h2>
   {abertas.length ? (
-    <ul class="lista">{abertas.map((c) => <CartaoConcurso c={c} />)}</ul>
+    <ul class="lista row row-cols-1 row-cols-md-2 row-cols-xl-3 g-3 list-unstyled">{abertas.map((c) => <CartaoConcurso c={c} />)}</ul>
   ) : (
-    <p class="vazio">Nenhuma outra inscrição aberta e verificada nesta edição.</p>
+    <p class="vazio alert alert-light border">Nenhuma outra inscrição aberta e verificada nesta edição.</p>
   )}
 
   {noticias.length > 0 && (
@@ -52,7 +52,7 @@ const noticias = noticiasAtivas();
         Ainda não conferidos por nós no edital. Cada informação foi cruzada em pelo menos duas fontes;
         confira o edital antes de se inscrever. <a href="/noticias/">Ver todos</a>
       </p>
-      <ul class="lista">{noticias.map((n) => <CartaoNoticia n={n} />)}</ul>
+      <ul class="lista row row-cols-1 row-cols-md-2 row-cols-xl-3 g-3 list-unstyled">{noticias.map((n) => <CartaoNoticia n={n} />)}</ul>
     </section>
   )}
 </Base>

@@ -13,19 +13,23 @@ const isen = isencaoAberta(c, hoje) ? c.prazos.isencao : null;
 const insc = inscricaoAberta(c, hoje) ? c.prazos.inscricao : null;
 const restam = isen?.fim ? diasEntre(hoje, isen.fim) : null;
 ---
-<li class="cartao">
-  <h3><a href={`/concursos/${c.slug}/`}>{titulo(c)}</a></h3>
-  <p class="meta">
+<li class="col">
+<article class="cartao card h-100 shadow-sm">
+<div class="card-body">
+  <h3 class="card-title h6"><a class="stretched-link text-decoration-none" href={`/concursos/${c.slug}/`}>{titulo(c)}</a></h3>
+  <p class="meta small">
     {NOME_CATEGORIA[c.categoria]} · {c.esfera === "federal" ? "Federal" : "Estadual"} · {local(c)} · banca {c.banca.toUpperCase()}
-    {c.porte === "grande" && <> · <span class="selo selo-porte">grande porte</span></>}
+    {c.porte === "grande" && <> · <span class="selo badge rounded-pill selo-porte">grande porte</span></>}
   </p>
   {isen?.fim && (
     <p>
-      <span class={`selo ${restam !== null && restam <= 2 ? "selo-urgente" : "selo-isencao"}`}>
+      <span class={`selo badge rounded-pill ${restam !== null && restam <= 2 ? "selo-urgente" : "selo-isencao"}`}>
         Isenção até {formatarData(isen.fim)}
         {restam === 0 ? " – último dia" : restam === 1 ? " – falta 1 dia" : ` – faltam ${restam} dias`}
       </span>
     </p>
   )}
-  {insc?.fim && <p class="meta">Inscrições até {formatarData(insc.fim)}</p>}
+  {insc?.fim && <p class="meta mb-0">Inscrições até <strong>{formatarData(insc.fim)}</strong></p>}
+</div>
+</article>
 </li>
