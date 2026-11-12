@@ -6,7 +6,13 @@
   "esfera": "estadual",
   "banca": "fgv",
   "uf": "AP",
-  "cargos": [],
+  "cargos": [
+    {
+      "nome": "Juiz de Direito Substituto",
+      "vagas": null,
+      "remuneracao": null
+    }
+  ],
   "vagas_imediatas": {
     "status": "verificado",
     "evidencia": "ev-3",
@@ -36,7 +42,7 @@
       "url": "https://conhecimento.fgv.br/sites/default/files/concursos/tjap.versao-final.13.10.pdf",
       "url_final": "https://conhecimento.fgv.br/sites/default/files/concursos/tjap.versao-final.13.10.pdf",
       "sha256": "b8faf5646486298f1b604c779a643c446e4bcc73e8158b896c0953b4630b5777",
-      "coletado_em": "2026-11-12T14:14:51-03:00",
+      "coletado_em": "2026-11-12T15:30:56-03:00",
       "fonte": "fgv",
       "publicado_em": "2026-10-13",
       "titulo": "Edital (retificado em 13/10/2026)"
@@ -47,7 +53,7 @@
       "url": "https://conhecimento.fgv.br/sites/default/files/concursos/retificacao-tjap_.pdf",
       "url_final": "https://conhecimento.fgv.br/sites/default/files/concursos/retificacao-tjap_.pdf",
       "sha256": "872b49327950c29f8a1d747bbea11758db81a090703b1d01aade232e0dffa162",
-      "coletado_em": "2026-11-12T14:14:54-03:00",
+      "coletado_em": "2026-11-12T15:31:01-03:00",
       "fonte": "fgv",
       "publicado_em": "2026-10-13",
       "titulo": "1ª Retificação"
@@ -63,7 +69,8 @@
       "ancora": "isenção",
       "metodo": "regex:v1",
       "aprovado_por": null,
-      "aprovado_em": null
+      "aprovado_em": null,
+      "tabela": null
     },
     {
       "id": "ev-2",
@@ -74,7 +81,8 @@
       "ancora": "inscrições",
       "metodo": "regex:v1",
       "aprovado_por": null,
-      "aprovado_em": null
+      "aprovado_em": null,
+      "tabela": null
     },
     {
       "id": "ev-3",
@@ -85,7 +93,8 @@
       "ancora": "vagas",
       "metodo": "regex:v1",
       "aprovado_por": null,
-      "aprovado_em": null
+      "aprovado_em": null,
+      "tabela": null
     }
   ],
   "descoberto_via": {
@@ -93,5 +102,5 @@
     "url": "https://conhecimento.fgv.br/concursos/tjap26",
     "data_dou": null
   },
-  "conferido_em": "2026-11-12T14:14:54-03:00"
+  "conferido_em": "2026-11-12T15:31:01-03:00"
 }
