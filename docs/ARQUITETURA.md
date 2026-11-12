@@ -258,6 +258,13 @@ revisa uma vez por milestone** (o dono cola o diff no Codex e devolve a crítica
 | `mp` | MPU (MPF, MPT, MPM, MPDFT) e MPs estaduais |
 | `defensoria` | DPU e Defensorias Públicas estaduais |
 | `seguranca` | PF, PRF, Polícia Penal Federal, polícias civis, militares, penais e científicas, corpos de bombeiros militares, polícias legislativas (Câmara, Senado e assembleias) |
+| `estatal` | empresas públicas e sociedades de economia mista federais e estaduais (incluído em 12/11) |
+| `conselho` | conselhos profissionais federais e regionais (incluído em 12/11) |
+| `fiscal` | Receita Federal, secretarias estaduais de Fazenda e receitas estaduais (incluído em 12/11) |
+| `advocacia` | AGU, PGFN, procuradorias-gerais dos estados e do DF (incluído em 12/11) |
+| `executivo` | só federal: ministérios, autarquias e fundações, agências reguladoras, INSS, IBGE, Banco Central, CNU (incluído em 12/11) |
+| `legislativo` | Câmara dos Deputados, Senado, assembleias legislativas e Câmara Legislativa do DF (incluído em 12/11) |
+| `outro` | demais órgãos federais e estaduais, só com cargo de TI (incluído em 12/11) |
 
 A organização é **por órgão, não por banca**: a banca é só o lugar onde o edital é publicado.
 Cada concurso ganha `categoria` e `esfera` (`federal`/`estadual`); concurso fora do escopo é descartado na coleta.
