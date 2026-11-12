@@ -1,5 +1,9 @@
-https://www.cebraspe.org.br/concursos/static/js/main.ec8dbc70.chunk.js cebraspe_main.js
-https://conhecimento.fgv.br/concursos?page=1 fgv_lista_p1.html
-https://conhecimento.fgv.br/concursos/tjpb26 fgv_tjpb26.html
-https://conhecimento.fgv.br/concursos/trf5juiz26 fgv_trf5juiz26.html
-https://conhecimento.fgv.br/concursos/seplagrj fgv_seplagrj.html
+https://apis.cebraspe.org.br/cebraspe/eventos/tipo/concursos/ ceb_api_lista.json
+https://apis.cebraspe.org.br/cebraspe/eventos/tipo/concursos/fase/em-andamento ceb_api_andamento.json
+https://apis.cebraspe.org.br/robots.txt ceb_api_robots.txt
+https://cdn.cebraspe.org.br/robots.txt ceb_cdn_robots.txt
+https://conhecimento.fgv.br/concursos?page=2 fgv_lista_p2.html
+https://conhecimento.fgv.br/concursos?page=3 fgv_lista_p3.html
+https://conhecimento.fgv.br/concursos?page=6 fgv_lista_p6.html
+https://conhecimento.fgv.br/concursos/tjscjuiz26 fgv_tjscjuiz26.html
+https://www.in.gov.br/leiturajornal?data=12-11-2026&secao=do3 leitura_do3_1211.html

@@ -18,10 +18,11 @@ jobs:
           UA="ntconcursos-coletor/0.1 (+https://ntconcursos.com.br/metodologia/; contato@ntconcursos.com.br)"
           baixar() { echo "== $1 -> $2"; curl -sS -L -A "$UA" --max-time 60 -o "out/$2" -D "out/$2.headers" -w "%{http_code} %{url_effective} %{size_download}\n" "$1" || true; }
           while read -r url nome; do [ -n "$url" ] && baixar "$url" "$nome"; done < collector/sondagem/urls.txt
-      - name: Guardar no ramo sondagem-dados
+      - name: Guardar no ramo sondagem-dados (cumulativo)
         run: |
-          cd out
-          git init -q -b sondagem-dados
+          git clone -q --depth 1 -b sondagem-dados "https://x-access-token:${{ github.token }}@github.com/$GITHUB_REPOSITORY" acum || { mkdir acum; cd acum; git init -q -b sondagem-dados; cd ..; }
+          cp -r out/. acum/
+          cd acum
           git config user.name ntc-bot; git config user.email bot@ntconcursos.com.br
-          git add -A; git commit -qm "sondagem $GITHUB_RUN_ID"
-          git push -f -q "https://x-access-token:${{ github.token }}@github.com/$GITHUB_REPOSITORY" sondagem-dados
+          git add -A; git commit -qm "sondagem $GITHUB_RUN_ID" || true
+          git push -q "https://x-access-token:${{ github.token }}@github.com/$GITHUB_REPOSITORY" HEAD:sondagem-dados
