@@ -4,7 +4,9 @@ import AdSlot from "../../components/AdSlot.astro";
 import EvidenciaBox from "../../components/Evidencia.astro";
 import type { Campo, Concurso, Prazo } from "../../lib/dados";
 import {
+  NOME_CATEGORIA,
   encerrado,
+  local,
   evidenciaDe,
   inscricaoAberta,
   isencaoAberta,
@@ -38,6 +40,7 @@ const situacao = encerrado(c)
       : null;
 
 const evTaxa = c.taxa && verificado(c.taxa) ? evidenciaDe(c, c.taxa) : null;
+const evVagas = c.vagas_imediatas && verificado(c.vagas_imediatas) ? evidenciaDe(c, c.vagas_imediatas) : null;
 const nome = titulo(c);
 const descricao = verificado(c.prazos.isencao) && c.prazos.isencao.fim
   ? `${nome}: pedido de isenção da taxa até ${formatarData(c.prazos.isencao.fim)}. Datas conferidas no edital oficial.`
@@ -48,7 +51,9 @@ const descricao = verificado(c.prazos.isencao) && c.prazos.isencao.fim
   descricao={descricao}
   breadcrumbs={[{ nome: "Início", url: "/" }, { nome, url: `/concursos/${c.slug}/` }]}
 >
-  <p class="meta">{c.banca.toUpperCase()} · {c.uf}</p>
+  <p class="meta">
+    {NOME_CATEGORIA[c.categoria]} · {c.esfera === "federal" ? "Federal" : "Estadual"} · {local(c)} · banca {c.banca.toUpperCase()}
+  </p>
   <h1>{nome}</h1>
   {situacao && <p><span class={`selo ${situacao.classe}`}>{situacao.texto}</span></p>}
 
@@ -66,6 +71,16 @@ const descricao = verificado(c.prazos.isencao) && c.prazos.isencao.fim
         </>
       );
     })}
+    {evVagas && (
+      <>
+        <dt>Vagas imediatas</dt>
+        <dd>
+          {Number(c.vagas_imediatas!.valor).toLocaleString("pt-BR")}
+          {c.porte === "grande" && <> <span class="selo selo-porte">grande porte</span></>}
+          <EvidenciaBox ev={evVagas.ev} doc={evVagas.doc} />
+        </dd>
+      </>
+    )}
     {c.taxa && (
       <>
         <dt>Taxa de inscrição</dt>
@@ -103,7 +118,8 @@ const descricao = verificado(c.prazos.isencao) && c.prazos.isencao.fim
   <ul>
     {c.documentos.map((d) => (
       <li>
-        <a href={d.url_final} rel="nofollow noopener">{d.tipo === "retificacao" ? "Retificação" : d.tipo === "edital" ? "Edital" : d.tipo.toUpperCase()}</a>
+        <a href={d.url_final} rel="nofollow noopener">{d.titulo ?? (d.tipo === "retificacao" ? "Retificação" : d.tipo === "edital" ? "Edital" : d.tipo.toUpperCase())}</a>
+        {d.publicado_em && <span class="meta"> · publicado em {formatarData(d.publicado_em)}</span>}
         <span class="meta"> · conferido em {formatarDataHora(d.coletado_em)}</span>
       </li>
     ))}

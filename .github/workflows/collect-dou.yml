@@ -1,0 +1,53 @@
+# Descoberta federal pelo DOU (INLABS): 10h30 BRT, com a edição do dia.
+# Grava data/descobertas/<data>.json com os editais de abertura do escopo.
+# Código 3 = INLABS indisponível ou DOU ainda não publicado: não é falha.
+name: Coletar DOU (INLABS)
+
+on:
+  schedule:
+    - cron: "30 13 * * 1-5"  # 10h30 BRT, dias úteis
+  workflow_dispatch:
+    inputs:
+      data_dou:
+        description: "data da edição (AAAA-MM-DD); vazio = hoje"
+        required: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: dados
+  cancel-in-progress: false
+
+jobs:
+  coletar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: collector/pyproject.toml
+      - run: pip install -e collector
+      - name: Coletar
+        env:
+          INLABS_EMAIL: ${{ secrets.INLABS_EMAIL }}
+          INLABS_SENHA: ${{ secrets.INLABS_SENHA }}
+          DATA_DOU: ${{ inputs.data_dou }}
+        run: |
+          set +e
+          ntc collect --fonte inlabs ${DATA_DOU:+--data-dou "$DATA_DOU"}
+          rc=$?
+          [ $rc -eq 3 ] && echo "::warning::INLABS indisponível ou DOU ainda não publicado" && exit 0
+          exit $rc
+      - name: Gravar
+        run: |
+          git config user.name "ntc-bot"
+          git config user.email "bot@ntconcursos.com.br"
+          git add data/
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -q -m "dados: descoberta DOU $(TZ=America/Sao_Paulo date '+%d/%m')"
+          for i in 1 2 3; do git pull -q --rebase && git push -q && exit 0; sleep 5; done
+          exit 1

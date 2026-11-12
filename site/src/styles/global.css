@@ -46,6 +46,7 @@ h2 { font-size: 1.25rem; margin: 2rem 0 .75rem; }
 .selo { display: inline-block; padding: .15rem .55rem; border-radius: 999px; font-size: .82rem; font-weight: 600; }
 .selo-isencao { background: var(--destaque-fundo); color: var(--destaque); }
 .selo-urgente { background: var(--alerta-fundo); color: var(--alerta); }
+.selo-porte { background: #e8eefc; color: #1d3f8f; }
 .selo-encerrado { background: #eef0f2; color: var(--suave); }
 
 .vazio { color: var(--suave); padding: 1rem 0; }

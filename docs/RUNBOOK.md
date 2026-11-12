@@ -22,7 +22,8 @@
    - Workers & Pages → `ntconcursos` → *Custom domains* → `ntconcursos.com.br` e `www.ntconcursos.com.br`.
    - Actions → *Publicar Worker de disparo* → *Run workflow*.
 5. **INLABS** (M1): crie o cadastro gratuito em inlabs.in.gov.br; e-mail e senha vão como secrets
-   `INLABS_EMAIL` e `INLABS_SENHA`.
+   `INLABS_EMAIL` e `INLABS_SENHA`. Sem eles, *Coletar DOU* e *Medir horário do INLABS* rodam e
+   registram `sem_credenciais`, sem falhar.
 
 ## Operação diária
 
@@ -30,7 +31,23 @@
 |---|---|---|
 | 04h00 | Worker dispara `publish.yml` | nenhuma |
 | 04h30 | cron reserva (só publica se 04h00 falhou) | nenhuma |
-| a partir de M1 | coletas mandam casos duvidosos para o painel admin (M3) | aprovar ou corrigir |
+| 18h00 e 02h30 | *Coletar bancas*: Cebraspe e FGV, uma de cada vez | nenhuma |
+| 10h30 (dias úteis) | *Coletar DOU (INLABS)*: descoberta federal em `data/descobertas/` | nenhuma |
+| 00h00–13h50, a cada 10 min | *Medir horário do INLABS*: log no ramo `inlabs-horario` | nenhuma |
+| a qualquer hora | casos duvidosos ficam em `data/revisao/` (painel admin no M3) | conferir |
+
+### Coletar à mão
+
+- Tudo: Actions → *Coletar bancas* → *Run workflow*.
+- Só um concurso: mesmo caminho, escolha a fonte e preencha `so` com o id da banca
+  (FGV: o fim da URL, ex. `tjpb26`; Cebraspe: o `eventoURL`, ex. `PC_PE_26`).
+- No PC: `pip install -e collector` e `ntc collect --fonte fgv --so tjpb26`.
+
+### Ler o log de uma coleta
+
+`data/execucoes/<dia>.json` tem, por fonte, a contagem e cada concurso visto com `situacao`:
+`publicado`, `so_revisao` (nenhum prazo passou no gate), `sem_edital`, `fora_do_escopo` ou `erro`
+(com o motivo). `erro_fonte` preenchido = a lista da banca não abriu.
 
 O GitHub manda e-mail quando um workflow falha. Se chegar:
 

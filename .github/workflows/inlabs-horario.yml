@@ -1,0 +1,57 @@
+# Medição do horário em que o XML da seção 3 do dia aparece no INLABS (M1).
+# A cada 10 min, das 00h00 às 13h50 BRT, em dias úteis; para no dia assim que encontra.
+# O log fica no ramo `inlabs-horario` (horario.jsonl), fora do main.
+# O cron do Actions atrasa: o horário real fica entre a última sondagem "ausente" e a
+# primeira "disponivel" (os dois instantes são gravados).
+name: Medir horário do INLABS
+
+on:
+  schedule:
+    - cron: "*/10 3-16 * * 1-5"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: inlabs-horario
+  cancel-in-progress: false
+
+jobs:
+  sondar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Log atual
+        run: |
+          git fetch -q --depth 1 origin inlabs-horario && git worktree add -q log origin/inlabs-horario \
+            || { mkdir log; touch log/horario.jsonl; }
+          hoje=$(TZ=America/Sao_Paulo date +%F)
+          if grep -q "\"data_dou\": \"$hoje\".*\"status\": \"disponivel\"" log/horario.jsonl 2>/dev/null; then
+            echo "JA_VISTO=1" >> "$GITHUB_ENV"
+          fi
+      - uses: actions/setup-python@v5
+        if: env.JA_VISTO != '1'
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: collector/pyproject.toml
+      - if: env.JA_VISTO != '1'
+        run: pip install -e collector
+      - name: Sondar
+        if: env.JA_VISTO != '1'
+        env:
+          INLABS_EMAIL: ${{ secrets.INLABS_EMAIL }}
+          INLABS_SENHA: ${{ secrets.INLABS_SENHA }}
+        run: ntc inlabs-horario | tee -a log/horario.jsonl
+      - name: Gravar no ramo inlabs-horario
+        if: env.JA_VISTO != '1'
+        run: |
+          cd log
+          [ -d .git ] || [ -f .git ] || git init -q -b inlabs-horario
+          git config user.name "ntc-bot"; git config user.email "bot@ntconcursos.com.br"
+          git add horario.jsonl
+          git commit -q -m "sondagem $(TZ=America/Sao_Paulo date '+%d/%m %H:%M')"
+          git push -q origin HEAD:inlabs-horario 2>/dev/null \
+            || git push -q "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" HEAD:inlabs-horario

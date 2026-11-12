@@ -140,3 +140,60 @@ def test_gate_nao_altera_entrada(gate, novo):
     c = Concurso.model_validate(novo())
     gate.aplicar(c, {})
     assert c.prazos.isencao.status == "verificado"
+
+
+def test_g7_retificacao_que_so_cita_a_taxa_nao_derruba(gate, novo, textos):
+    d = novo()
+    sha_ret = "b" * 64
+    d["documentos"].append({
+        **d["documentos"][0], "id": "doc-2", "tipo": "retificacao", "sha256": sha_ret,
+        "coletado_em": "2026-11-12T10:00:00-03:00",
+    })
+    textos = dict(textos)
+    textos[sha_ret] = TextoDocumento(
+        sha_ret, {1: "Retificação do subitem 9.3: o conteúdo de Direito Penal passa a incluir a Lei nº 14.000. "
+                     "Permanecem inalteradas as demais disposições, inclusive sobre a taxa de inscrição e a isenção."}
+    )
+    r = aplicar(gate, d, textos)
+    assert "G7" not in regras(r)
+
+
+def test_g7_retificacao_que_repete_as_mesmas_datas_nao_derruba(gate, novo, textos):
+    d = novo()
+    sha_ret = "b" * 64
+    d["documentos"].append({
+        **d["documentos"][0], "id": "doc-2", "tipo": "retificacao", "sha256": sha_ret,
+        "coletado_em": "2026-11-12T10:00:00-03:00",
+    })
+    textos = dict(textos)
+    textos[sha_ret] = TextoDocumento(
+        sha_ret, {1: "6.1 A solicitação de isenção do pagamento da taxa de inscrição deverá ser feita de 10 a 14 de novembro de 2026."}
+    )
+    assert "G7" not in regras(aplicar(gate, d, textos))
+
+
+def test_g7_errata_onde_se_le_derruba(gate, novo, textos):
+    d = novo()
+    sha_ret = "b" * 64
+    d["documentos"].append({
+        **d["documentos"][0], "id": "doc-2", "tipo": "retificacao", "sha256": sha_ret,
+        "coletado_em": "2026-11-12T10:00:00-03:00",
+    })
+    textos = dict(textos)
+    textos[sha_ret] = TextoDocumento(
+        sha_ret, {1: "No subitem 5.1 (inscrições), onde se lê: 10/12/2026, leia-se: 17/12/2026."}
+    )
+    assert ("G7", "prazos.inscricao") in {(v.regra, v.campo) for v in aplicar(gate, d, textos).violacoes}
+
+
+def test_g7_retificacao_anterior_pela_data_de_publicacao_nao_conta(gate, novo, textos):
+    d = novo()
+    sha_ret = "b" * 64
+    d["documentos"][0]["publicado_em"] = "2026-11-12"
+    d["documentos"].append({
+        **d["documentos"][0], "id": "doc-2", "tipo": "retificacao", "sha256": sha_ret,
+        "coletado_em": "2026-11-13T10:00:00-03:00", "publicado_em": "2026-11-12",
+    })
+    textos = dict(textos)
+    textos[sha_ret] = TextoDocumento(sha_ret, {1: "Fica prorrogado o prazo de solicitação de isenção até 21/11/2026."})
+    assert "G7" not in regras(aplicar(gate, d, textos))
