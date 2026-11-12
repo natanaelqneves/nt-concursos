@@ -1,0 +1,158 @@
+{
+  "schema_version": 2,
+  "slug": "camara-dos-deputados-2026-cd-analista",
+  "orgao": "Câmara dos Deputados",
+  "categoria": "legislativo",
+  "esfera": "federal",
+  "banca": "cebraspe",
+  "uf": "BR",
+  "cargos": [
+    {
+      "nome": "Analista Legislativo – Especialidade: Comunicação Social – Área: Divulgação Institucional",
+      "vagas": null,
+      "remuneracao": null
+    },
+    {
+      "nome": "Analista Legislativo – Especialidade: Comunicação Social – Área: Jornalismo",
+      "vagas": null,
+      "remuneracao": null
+    },
+    {
+      "nome": "Analista Legislativo – Especialidade: Comunicação Social – Área: Relações Públicas",
+      "vagas": null,
+      "remuneracao": null
+    },
+    {
+      "nome": "Analista Legislativo – Especialidade: Documentação e Informação Legislativa – Área: Arquivologia",
+      "vagas": null,
+      "remuneracao": null
+    },
+    {
+      "nome": "Analista Legislativo – Especialidade: Documentação e Informação Legislativa – Área: Biblioteconomia",
+      "vagas": null,
+      "remuneracao": null
+    },
+    {
+      "nome": "Analista Legislativo – Especialidade: Engenheiro – Área: Engenharia Civil",
+      "vagas": null,
+      "remuneracao": null
+    },
+    {
+      "nome": "Analista Legislativo – Especialidade: Engenheiro – Área: Engenharia Elétrica",
+      "vagas": null,
+      "remuneracao": null
+    },
+    {
+      "nome": "Analista Legislativo – Especialidade: Engenheiro – Área: Engenharia Eletrônica/telecomunicações",
+      "vagas": null,
+      "remuneracao": null
+    },
+    {
+      "nome": "Analista Legislativo – Especialidade: Engenheiro – Área: Engenharia Mecânica",
+      "vagas": null,
+      "remuneracao": null
+    },
+    {
+      "nome": "Analista Legislativo – Especialidade: Museólogo",
+      "vagas": null,
+      "remuneracao": null
+    },
+    {
+      "nome": "Analista Legislativo – Especialidade: Registro e Redação",
+      "vagas": null,
+      "remuneracao": null
+    }
+  ],
+  "vagas_imediatas": null,
+  "porte": "indefinido",
+  "areas": [],
+  "taxa": null,
+  "prazos": {
+    "isencao": {
+      "status": "verificado",
+      "evidencia": "ev-1",
+      "inicio": "2026-10-15",
+      "fim": "2026-10-23"
+    },
+    "inscricao": {
+      "status": "verificado",
+      "evidencia": "ev-2",
+      "inicio": "2026-10-15",
+      "fim": "2026-11-17"
+    }
+  },
+  "isencao_publicos": [],
+  "documentos": [
+    {
+      "id": "doc-1",
+      "tipo": "edital",
+      "url": "https://cdn.cebraspe.org.br/concursos/CD_26_ANALISTA/arquivos/D0A680C4506DD7153722F50B4F05038D9C80FE7BAD36D52A5E65DA395F75A94B.pdf",
+      "url_final": "https://cdn.cebraspe.org.br/concursos/CD_26_ANALISTA/arquivos/D0A680C4506DD7153722F50B4F05038D9C80FE7BAD36D52A5E65DA395F75A94B.pdf",
+      "sha256": "07c9951012a976479692a87c08026b8fdd1648d84b7cd5858508dc27f4adc274",
+      "coletado_em": "2026-11-12T19:00:50-03:00",
+      "fonte": "cebraspe",
+      "publicado_em": "2026-10-02",
+      "titulo": "Edital nº 1 - Abertura – Atualizado conforme retificações"
+    },
+    {
+      "id": "doc-2",
+      "tipo": "retificacao",
+      "url": "https://cdn.cebraspe.org.br/concursos/CD_26_ANALISTA/arquivos/3FBDBB5294547B38537683E819608B5FB8DB0366C22D40681F2B19FC69A8A652.pdf",
+      "url_final": "https://cdn.cebraspe.org.br/concursos/CD_26_ANALISTA/arquivos/3FBDBB5294547B38537683E819608B5FB8DB0366C22D40681F2B19FC69A8A652.pdf",
+      "sha256": "fd89f1bb9d187e50ef5a4de8cad7485d5d7df273f525cbaca4edeea32dec5969",
+      "coletado_em": "2026-11-12T19:00:52-03:00",
+      "fonte": "cebraspe",
+      "publicado_em": "2026-10-15",
+      "titulo": "Edital nº 5 - Retificação dos subitens 2.1, 2.2, 2.4.1, 2.5.1, 2.5.2, 2.5.3, 2.5.4 e 14.2.4; inclusão do subitem 2.8 e atualização do quadro de vagas constante do subitem 4.1 do Edital nº 1 – Câmara dos Deputados – Analista Legislativo, de 2 de outubro de 2026"
+    },
+    {
+      "id": "doc-3",
+      "tipo": "retificacao",
+      "url": "https://cdn.cebraspe.org.br/concursos/CD_26_ANALISTA/arquivos/89153BAB1AF0FB959B7C9202327E3D8DE10D6D25433F78F0B5A76FC6A5313774.pdf",
+      "url_final": "https://cdn.cebraspe.org.br/concursos/CD_26_ANALISTA/arquivos/89153BAB1AF0FB959B7C9202327E3D8DE10D6D25433F78F0B5A76FC6A5313774.pdf",
+      "sha256": "0bdab0b074444077a3b3c38a9f492f119537e7437bf4d28f10b5e042a1764122",
+      "coletado_em": "2026-11-12T19:00:54-03:00",
+      "fonte": "cebraspe",
+      "publicado_em": "2026-10-21",
+      "titulo": "Edital nº 6 - Retificação dos subitens 2.5.4 e 11.8 e de legenda constante do item 4 do Edital nº 1 – Câmara dos Deputados – Analista Legislativo, de 2 de outubro de 2026, e suas alterações"
+    }
+  ],
+  "evidencias": [
+    {
+      "id": "ev-1",
+      "campo": "prazos.isencao",
+      "documento": "doc-1",
+      "pagina": 67,
+      "trecho": "Período de solicitação de isenção de taxa de inscrição — 15 a 23/10/2026",
+      "ancora": "isenção",
+      "metodo": "tabela:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": {
+        "atividade": "Período de solicitação de isenção de taxa de inscrição",
+        "datas": "15 a 23/10/2026"
+      }
+    },
+    {
+      "id": "ev-2",
+      "campo": "prazos.inscricao",
+      "documento": "doc-1",
+      "pagina": 67,
+      "trecho": "Período de solicitação de inscrições — 15/10 a 17/11/2026",
+      "ancora": "inscrições",
+      "metodo": "tabela:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": {
+        "atividade": "Período de solicitação de inscrições",
+        "datas": "15/10 a 17/11/2026"
+      }
+    }
+  ],
+  "descoberto_via": {
+    "fonte": "cebraspe",
+    "url": "https://www.cebraspe.org.br/concursos/CD_26_ANALISTA",
+    "data_dou": null
+  },
+  "conferido_em": "2026-11-12T19:00:54-03:00"
+}

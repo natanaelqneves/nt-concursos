@@ -1,14 +1,14 @@
 {
   "cebraspe": {
-    "inicio": "2026-11-12T18:03:21-03:00",
-    "fim": "2026-11-12T18:05:55-03:00",
+    "inicio": "2026-11-12T19:00:41-03:00",
+    "fim": "2026-11-12T19:03:19-03:00",
     "erro_fonte": null,
     "contagem": {
-      "fora_do_escopo": 37,
-      "publicado": 2,
-      "encerrado": 25,
-      "so_revisao": 6,
-      "sem_edital": 3
+      "fora_do_escopo": 29,
+      "publicado": 3,
+      "encerrado": 27,
+      "sem_edital": 7,
+      "so_revisao": 7
     },
     "registros": [
       {
@@ -25,10 +25,13 @@
         "fonte": "cebraspe",
         "id": "CD_26_ANALISTA",
         "titulo": "CÂMARA DOS DEPUTADOS 26 ANALISTA",
-        "situacao": "fora_do_escopo",
-        "detalhe": "",
-        "slug": null,
-        "campos": {},
+        "situacao": "publicado",
+        "detalhe": "legislativo/federal/BR",
+        "slug": "camara-dos-deputados-2026-cd-analista",
+        "campos": {
+          "prazos.isencao": "verificado",
+          "prazos.inscricao": "verificado"
+        },
         "violacoes": []
       },
       {
@@ -131,8 +134,8 @@
         "fonte": "cebraspe",
         "id": "ANTAQ_25_CF",
         "titulo": "ANTAQ 25 CF",
-        "situacao": "fora_do_escopo",
-        "detalhe": "",
+        "situacao": "sem_edital",
+        "detalhe": "executivo/federal/BR",
         "slug": null,
         "campos": {},
         "violacoes": []
@@ -298,8 +301,8 @@
         "fonte": "cebraspe",
         "id": "MRE_23",
         "titulo": "MRE 23",
-        "situacao": "fora_do_escopo",
-        "detalhe": "",
+        "situacao": "sem_edital",
+        "detalhe": "executivo/federal/BR",
         "slug": null,
         "campos": {},
         "violacoes": []
@@ -412,18 +415,24 @@
         "fonte": "cebraspe",
         "id": "PGE_AL_26",
         "titulo": "PGE AL 26",
-        "situacao": "fora_do_escopo",
-        "detalhe": "",
-        "slug": null,
-        "campos": {},
-        "violacoes": []
+        "situacao": "so_revisao",
+        "detalhe": "advocacia/estadual/AL",
+        "slug": "pge-al-2026",
+        "campos": {
+          "prazos.isencao": "revisao",
+          "prazos.inscricao": "revisao"
+        },
+        "violacoes": [
+          "prazos.isencao: 2 linhas de cronograma com datas diferentes",
+          "prazos.inscricao: 2 linhas de cronograma com datas diferentes"
+        ]
       },
       {
         "fonte": "cebraspe",
         "id": "PGE_RN_26",
         "titulo": "PGE RN 26",
-        "situacao": "fora_do_escopo",
-        "detalhe": "",
+        "situacao": "encerrado",
+        "detalhe": "advocacia/estadual/RN",
         "slug": null,
         "campos": {},
         "violacoes": []
@@ -578,18 +587,20 @@
         "fonte": "cebraspe",
         "id": "SEFAZ_AL_26",
         "titulo": "SEFAZ AL 26",
-        "situacao": "fora_do_escopo",
-        "detalhe": "",
+        "situacao": "encerrado",
+        "detalhe": "fiscal/estadual/AL",
         "slug": null,
         "campos": {},
-        "violacoes": []
+        "violacoes": [
+          "prazos.inscricao: cronograma em tabela diverge do texto corrido"
+        ]
       },
       {
         "fonte": "cebraspe",
         "id": "SEFAZ_RJ_25_ANALISTA",
         "titulo": "SEFAZ/RJ 25 ANALISTA",
-        "situacao": "fora_do_escopo",
-        "detalhe": "",
+        "situacao": "sem_edital",
+        "detalhe": "fiscal/estadual/RJ",
         "slug": null,
         "campos": {},
         "violacoes": []
@@ -598,8 +609,8 @@
         "fonte": "cebraspe",
         "id": "SEFAZ_RJ_25_AUDITOR",
         "titulo": "SEFAZ/RJ 25 AUDITOR",
-        "situacao": "fora_do_escopo",
-        "detalhe": "",
+        "situacao": "sem_edital",
+        "detalhe": "fiscal/estadual/RJ",
         "slug": null,
         "campos": {},
         "violacoes": []
@@ -790,15 +801,15 @@
     ]
   },
   "fgv": {
-    "inicio": "2026-11-12T18:05:56-03:00",
-    "fim": "2026-11-12T18:10:11-03:00",
+    "inicio": "2026-11-12T19:03:20-03:00",
+    "fim": "2026-11-12T19:07:50-03:00",
     "erro_fonte": null,
     "contagem": {
-      "fora_do_escopo": 43,
+      "fora_do_escopo": 38,
       "publicado": 3,
-      "encerrado": 40,
+      "encerrado": 44,
       "so_revisao": 9,
-      "sem_edital": 6
+      "sem_edital": 7
     },
     "registros": [
       {
@@ -1073,11 +1084,13 @@
         "fonte": "fgv",
         "id": "pgeac",
         "titulo": "Concurso Público para a Procuradoria-Geral do Estado do Acre",
-        "situacao": "fora_do_escopo",
-        "detalhe": "",
+        "situacao": "encerrado",
+        "detalhe": "advocacia/estadual/AC",
         "slug": null,
         "campos": {},
-        "violacoes": []
+        "violacoes": [
+          "prazos.inscricao: 2 cláusulas diferentes"
+        ]
       },
       {
         "fonte": "fgv",
@@ -1175,8 +1188,8 @@
         "fonte": "fgv",
         "id": "alero25",
         "titulo": "Concurso Público para a Assembleia Legislativa do Estado de Rondônia",
-        "situacao": "fora_do_escopo",
-        "detalhe": "",
+        "situacao": "encerrado",
+        "detalhe": "legislativo/estadual/RO",
         "slug": null,
         "campos": {},
         "violacoes": []
@@ -1225,8 +1238,8 @@
         "fonte": "fgv",
         "id": "alerj2025",
         "titulo": "Concurso Público para a Assembleia Legislativa do Estado do Rio de Janeiro (ALERJ)",
-        "situacao": "fora_do_escopo",
-        "detalhe": "",
+        "situacao": "sem_edital",
+        "detalhe": "legislativo/estadual/RJ",
         "slug": null,
         "campos": {},
         "violacoes": []
@@ -1277,11 +1290,13 @@
         "fonte": "fgv",
         "id": "aleam25",
         "titulo": "Concurso Público para a Assembleia Legislativa do Estado do Amazonas – ALE-AM",
-        "situacao": "fora_do_escopo",
-        "detalhe": "",
+        "situacao": "encerrado",
+        "detalhe": "legislativo/estadual/AM",
         "slug": null,
         "campos": {},
-        "violacoes": []
+        "violacoes": [
+          "prazos.isencao: 2 cláusulas diferentes"
+        ]
       },
       {
         "fonte": "fgv",
@@ -1484,8 +1499,8 @@
         "fonte": "fgv",
         "id": "seappr25",
         "titulo": "Concurso Público para o Cargo de Auditor Fiscal da Receita Estadual do Paraná",
-        "situacao": "fora_do_escopo",
-        "detalhe": "",
+        "situacao": "encerrado",
+        "detalhe": "fiscal/estadual/PR",
         "slug": null,
         "campos": {},
         "violacoes": []

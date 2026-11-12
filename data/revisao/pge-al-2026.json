@@ -1,0 +1,16 @@
+{
+  "slug": "pge-al-2026",
+  "orgao": "Procuradoria-Geral do Estado de Alagoas",
+  "fonte": "cebraspe",
+  "url": "https://www.cebraspe.org.br/concursos/PGE_AL_26",
+  "edital": "https://cdn.cebraspe.org.br/concursos/PGE_AL_26/arquivos/0C284DE63B81A961F93A4CE27711AF9109B61CE570945D18A8B6F64252D282E3.pdf",
+  "campos_em_revisao": [
+    "prazos.inscricao",
+    "prazos.isencao"
+  ],
+  "motivos": [
+    "prazos.isencao: 2 linhas de cronograma com datas diferentes",
+    "prazos.inscricao: 2 linhas de cronograma com datas diferentes"
+  ],
+  "registrado_em": "2026-11-12T19:02:10-03:00"
+}
