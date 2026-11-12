@@ -13,7 +13,15 @@ const rotuloDoc = doc.tipo === "retificacao" ? "retificação" : doc.tipo;
 ---
 <details class="evidencia">
   <summary>Ver no edital (pág. {ev.pagina})</summary>
-  <blockquote lang="pt-BR">{ev.trecho}</blockquote>
+  {ev.tabela ? (
+    <table class="evidencia-tabela">
+      <caption>Linha do cronograma do edital</caption>
+      <tr><th scope="row">Atividade</th><td>{ev.tabela.atividade}</td></tr>
+      <tr><th scope="row">Datas</th><td>{ev.tabela.datas}</td></tr>
+    </table>
+  ) : (
+    <blockquote lang="pt-BR">{ev.trecho}</blockquote>
+  )}
   <p>
     Fonte: <a href={linkPagina} rel="nofollow noopener" target="_blank">{rotuloDoc} oficial, página {ev.pagina}</a>
     · conferido em {formatarDataHora(doc.coletado_em)}

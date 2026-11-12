@@ -53,6 +53,7 @@ export interface Evidencia {
   metodo: string;
   aprovado_por?: string | null;
   aprovado_em?: string | null;
+  tabela?: { atividade: string; datas: string } | null;
 }
 
 export interface Concurso {

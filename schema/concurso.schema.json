@@ -297,7 +297,7 @@
       "description": "Linha de uma tabela do documento (ex.: cronograma), lida célula por célula no PDF.\nCada célula precisa aparecer, literalmente, no texto da página (G3).",
       "properties": {
         "atividade": {
-          "maxLength": 300,
+          "maxLength": 290,
           "minLength": 5,
           "title": "Atividade",
           "type": "string"
