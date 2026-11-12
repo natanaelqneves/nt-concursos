@@ -14,10 +14,10 @@ last-modified: Thu, 12 Nov 2026 16:01:26 GMT
 etag: "1794499286"
 content-type: text/html; charset=UTF-8
 x-akamai-transformed: 9 13170 0 pmb=mRUM,1
-date: Thu, 12 Nov 2026 16:51:34 GMT
+date: Thu, 12 Nov 2026 17:00:41 GMT
 server-timing: cdn-cache; desc=MISS
-server-timing: edge; dur=143
-server-timing: origin; dur=24
-set-cookie: BT-DT-TRK=79213302ba2044bf9a3211675beecb11; path=/; domain=.conhecimento.fgv.br; Secure
-server-timing: ak_p; desc="1794502294205_399594262_3815209601_16657_5725_17_14_15";dur=1
+server-timing: edge; dur=126
+server-timing: origin; dur=28
+set-cookie: BT-DT-TRK=4432d4bde2da465fa32a99fad2a00ce9; path=/; domain=.conhecimento.fgv.br; Secure
+server-timing: ak_p; desc="1794502840824_386075747_102907349_15561_6029_6_7_15";dur=1
 
