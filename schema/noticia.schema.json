@@ -141,6 +141,10 @@
         "seguranca",
         "estatal",
         "conselho",
+        "fiscal",
+        "advocacia",
+        "executivo",
+        "legislativo",
         "outro"
       ],
       "title": "Categoria",
