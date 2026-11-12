@@ -158,9 +158,12 @@ class Coletor:
             vagas_campo = Campo(status="revisao")
 
         existente = self._existentes.get(cf.url)
-        insc = prazos.inscricao
-        if not existente and insc.status == "verificado" and insc.fim and insc.fim < self.agora().date():
-            reg.situacao = "encerrado"  # concurso novo já encerrado: nem baixa as retificações
+        hoje = self.agora().date()
+        abertos = [p for p in (prazos.isencao, prazos.inscricao) if p.status == "verificado" and p.fim and p.fim >= hoje]
+        verif = [p for p in (prazos.isencao, prazos.inscricao) if p.status == "verificado"]
+        if not existente and verif and not abertos:
+            # Concurso novo sem nenhum prazo verificado ainda aberto: o site é sobre prazos abertos.
+            reg.situacao = "encerrado"
             return reg
         if not existente and all(p.status != "verificado" for p in (prazos.isencao, prazos.inscricao)):
             mudancas_necessarias = False  # nada a proteger: o G7 não tem o que rebaixar
@@ -209,14 +212,9 @@ class Coletor:
         reg.slug = slug
         reg.campos = {caminho: c.status for caminho, c in final.campos_com_evidencia()}
         verificados = [p for p in (final.prazos.isencao, final.prazos.inscricao) if p.status == "verificado"]
-        hoje = self.agora().date()
-        insc = final.prazos.inscricao
-        ja_encerrado = insc.status == "verificado" and insc.fim is not None and insc.fim < hoje
-        if ja_encerrado and not existente:
-            # Concurso novo com inscrições já encerradas não entra: o site é sobre prazos abertos.
-            reg.situacao = "encerrado"
-            return reg
-        if verificados or existente:
+        # Novo concurso entra só com prazo verificado ainda aberto; um já publicado é sempre
+        # regravado (para rebaixar campos que deixaram de passar no gate).
+        if existente or any(p.fim and p.fim >= hoje for p in verificados):
             self.store.salvar_concurso(final)
             for doc in final.documentos:
                 t = guardados.get(doc.sha256)

@@ -107,3 +107,12 @@ def test_inlabs_descobre_abertura_federal():
     assert cf.data_dou == date(2026, 11, 12)
     cls = inlabs.no_escopo(cf)
     assert (cls.sigla, cls.esfera, cls.uf) == ("prf", "federal", "BR")
+
+
+def test_fgv_edital_avulso_nao_substitui_o_de_abertura():
+    cf = fgv.parse_concurso((F / "fgv" / "tjscservidor26.html").read_text(encoding="utf-8"),
+                            "https://conhecimento.fgv.br/concursos/tjscservidor26")
+    assert "Cumprimento de decisão" not in cf.edital.titulo
+    avulso = [d for d in cf.documentos if "Cumprimento de decisão" in d.titulo]
+    assert avulso and avulso[0].tipo == "retificacao"
+    assert cf.ano == 2026

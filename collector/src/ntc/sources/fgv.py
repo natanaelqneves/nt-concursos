@@ -26,6 +26,11 @@ LISTA = f"{BASE}/concursos"
 MAX_PAGINAS = 20
 
 _RE_EDITAL = re.compile(r"^\s*edital\b(?!\s+de\s+convoca)", re.IGNORECASE)
+# Rótulo do edital de abertura: "Edital", "Edital (retificado em ...)", "Edital de abertura",
+# "Edital nº 1/2026". "Edital N. 36/2026 - Cumprimento de decisão" é edital avulso, não o de abertura.
+_RE_ABERTURA = re.compile(
+    r"^\s*edital\s*(?:$|\(|de\s+abertura|n[º°o.]*\s*0*1\s*/|.*abertura)", re.IGNORECASE
+)
 _RE_RETIFICADO_EM = re.compile(r"retificad[oa]\s+em\s+(\d{2}/\d{2}/\d{4})", re.IGNORECASE)
 
 
@@ -78,11 +83,25 @@ def parse_concurso(html: str, url: str) -> ConcursoFonte:
             elif RE_MUDANCA.search(rotulo):
                 mudancas.append(DocFonte(href, "retificacao", rotulo, publicado))
 
-    # Edital vigente: o publicado (ou retificado) mais recentemente.
-    editais.sort(key=lambda d: d.publicado_em or date.min, reverse=True)
-    documentos = editais[:1] + sorted(mudancas, key=lambda d: d.publicado_em or date.min)
-    ano = ano_de(titulo, id_fonte) or (editais[0].publicado_em.year if editais and editais[0].publicado_em else None)
-    return ConcursoFonte("fgv", id_fonte, titulo, url, contexto, documentos, ano)
+    # Edital vigente: entre os rótulos de abertura, o publicado (ou retificado) mais recentemente;
+    # sem rótulo de abertura, o primeiro edital publicado. Os demais editais viram documentos de mudança.
+    abertura = sorted((d for d in editais if _RE_ABERTURA.search(d.titulo)),
+                      key=lambda d: d.publicado_em or date.min, reverse=True)
+    if abertura:
+        principal = abertura[0]
+    elif editais:
+        principal = min(editais, key=lambda d: d.publicado_em or date.max)
+    else:
+        principal = None
+    avulsos = [DocFonte(d.url, "retificacao", d.titulo, d.publicado_em) for d in editais
+               if principal and d is not principal and d not in abertura]
+    documentos = ([principal] if principal else []) + sorted(mudancas + avulsos, key=lambda d: d.publicado_em or date.min)
+    m = re.search(r"(\d{4}|\d{2})$", id_fonte)
+    ano_id = (int(m.group(1)) if len(m.group(1)) == 4 else 2000 + int(m.group(1))) if m else None
+    if ano_id is not None and not 2015 <= ano_id <= 2035:
+        ano_id = None
+    ano = ano_id or ano_de(titulo) or (principal.publicado_em.year if principal and principal.publicado_em else None)
+    return ConcursoFonte("fgv", id_fonte, titulo, url, [id_fonte] + contexto, documentos, ano)
 
 
 class FGV(Fonte):
