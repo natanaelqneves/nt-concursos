@@ -159,3 +159,70 @@ def test_cebraspe_pelo_cronograma_em_tabela(dados, monkeypatch):
     assert c["prazos"]["inscricao"]["fim"] == "2026-12-16"
     assert c["evidencias"][0]["metodo"] == "tabela:v1"
     assert main(["validate", "--data", str(dados)]) == 0
+
+
+# ---- revisão com opções e decisões do editor ----------------------------------------------
+
+CONFLITO = "As inscrições serão recebidas no período de 01/12/2026 a 10/12/2026, exclusivamente pela internet."
+
+
+def _coletar(dados, cf=None):
+    cliente = ClienteFalso({EDITAL: b"%PDF-edital"})
+    return coleta.Coletor(cliente, JsonStore(dados), Allowlist.carregar(dados / "fontes.yaml"),
+                          agora=lambda: AGORA).processar(cf or _cf())
+
+
+def _decidir(dados, corpo: dict, nome="20261112-190000"):
+    pasta = dados / "decisoes" / corpo["slug"]
+    pasta.mkdir(parents=True, exist_ok=True)
+    (pasta / f"{nome}.json").write_text(json.dumps(corpo), encoding="utf-8")
+
+
+def test_revisao_traz_opcoes_e_decisao_publica_com_aprovacao(dados, extrair_falso, paginas_tjpb):
+    extrair_falso[b"%PDF-edital"] = paginas_tjpb | {50: CONFLITO}
+    reg = _coletar(dados)
+    assert reg.campos.get("prazos.inscricao") == "revisao", reg
+    rev = json.loads((dados / "revisao" / "tj-pb-2026.json").read_text(encoding="utf-8"))
+    assert rev["schema_version"] == 2 and rev["campos_em_revisao"] == ["prazos.inscricao"]
+    opcoes = rev["opcoes"]["prazos.inscricao"]
+    fins = {o["fim"] for o in opcoes}
+    assert {"2026-11-18", "2026-12-10"} <= fins
+    certa = next(o for o in opcoes if o["fim"] == "2026-11-18")
+
+    _decidir(dados, {"schema_version": 1, "slug": "tj-pb-2026", "decidido_em": "2026-11-12T19:00:00-03:00",
+                     "edital_sha256": rev["edital_sha256"], "acao": "decidir",
+                     "campos": {"prazos.inscricao": {"acao": "usar", "opcao": {
+                         k: certa[k] for k in ("origem", "pagina", "trecho", "inicio", "fim")}}}})
+    reg = _coletar(dados)
+    assert reg.campos["prazos.inscricao"] == "verificado", reg
+    c = json.loads((dados / "concursos" / "tj-pb-2026.json").read_text(encoding="utf-8"))
+    ev = next(e for e in c["evidencias"] if e["id"] == c["prazos"]["inscricao"]["evidencia"])
+    assert ev["aprovado_por"] == "editor" and c["prazos"]["inscricao"]["fim"] == "2026-11-18"
+    assert not (dados / "revisao" / "tj-pb-2026.json").exists()
+    assert main(["validate", "--data", str(dados)]) == 0
+
+
+def test_decisao_com_outro_edital_nao_vale(dados, extrair_falso, paginas_tjpb):
+    extrair_falso[b"%PDF-edital"] = paginas_tjpb | {50: CONFLITO}
+    _coletar(dados)
+    _decidir(dados, {"schema_version": 1, "slug": "tj-pb-2026", "decidido_em": "2026-11-12T19:00:00-03:00",
+                     "edital_sha256": "0" * 64, "acao": "decidir",
+                     "campos": {"prazos.inscricao": {"acao": "ausente"}}})
+    reg = _coletar(dados)
+    assert reg.campos["prazos.inscricao"] == "revisao"
+    assert any("edital mudou" in v for v in reg.violacoes)
+
+
+def test_decisao_ausente_e_descartar(dados, extrair_falso, paginas_tjpb):
+    extrair_falso[b"%PDF-edital"] = paginas_tjpb | {50: CONFLITO}
+    _coletar(dados)
+    rev = json.loads((dados / "revisao" / "tj-pb-2026.json").read_text(encoding="utf-8"))
+    _decidir(dados, {"schema_version": 1, "slug": "tj-pb-2026", "decidido_em": "2026-11-12T19:00:00-03:00",
+                     "edital_sha256": rev["edital_sha256"], "acao": "decidir",
+                     "campos": {"prazos.inscricao": {"acao": "ausente"}}})
+    reg = _coletar(dados)
+    assert "prazos.inscricao" not in reg.campos or reg.campos["prazos.inscricao"] == "ausente"
+    assert not (dados / "revisao" / "tj-pb-2026.json").exists()
+    _decidir(dados, {"schema_version": 1, "slug": "tj-pb-2026", "decidido_em": "2026-11-12T19:30:00-03:00",
+                     "acao": "descartar"}, nome="20261112-193000")
+    assert _coletar(dados).situacao == "descartado"

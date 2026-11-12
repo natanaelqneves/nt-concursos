@@ -1,0 +1,164 @@
+---
+// Página do editor: pendências da coleta que precisam de uma decisão humana.
+// Não guarda chave nenhuma: cada decisão vira um arquivo novo no GitHub (data/decisoes/...),
+// criado pelo próprio editor, logado na conta dele. A coleta seguinte aplica a decisão.
+import Base from "../../layouts/Base.astro";
+import { NOME_CATEGORIA, type Categoria } from "../../lib/dados";
+import { NOME_CAMPO, REPO, dataBR, intervalo, todasRevisoes, ultimaDecisao } from "../../lib/revisao";
+
+const revisoes = todasRevisoes().map((r) => ({ r, decisao: ultimaDecisao(r.slug) }));
+const DECIDIVEIS = new Set(["prazos.isencao", "prazos.inscricao"]);
+const pdf = (url: string, pagina: number) => `${url}#page=${pagina}`;
+---
+<Base titulo="Pendências da coleta" noindex semAnuncios>
+  <h1 class="h3">Pendências da coleta</h1>
+  <p class="text-secondary">
+    Concursos em que o coletor achou leituras diferentes no edital e não publicou o campo sozinho.
+    Escolha a leitura certa (confira no PDF, na página indicada) e toque em <strong>Gerar decisão</strong>:
+    o GitHub abre com o arquivo pronto; é só confirmar em <em>Commit changes</em>. A próxima coleta
+    (21h e 5h30, horário de Brasília, ou rodando "Coletar bancas" à mão) aplica a decisão.
+  </p>
+  <p class="small text-secondary">
+    Uma decisão só vale enquanto o edital for o mesmo e não sair retificação depois dela; se algo mudar,
+    a pendência volta para cá. O trecho escolhido continua precisando estar, literalmente, no edital.
+  </p>
+
+  {revisoes.length === 0 && <div class="alert alert-success">Nenhuma pendência. 🎉</div>}
+
+  <div class="d-flex flex-column gap-4 mt-3">
+    {revisoes.map(({ r, decisao }) => (
+      <section class="card shadow-sm" data-revisao={r.slug}>
+        <div class="card-body">
+          <div class="d-flex flex-wrap justify-content-between gap-2">
+            <h2 class="h5 mb-1">{r.orgao}</h2>
+            <span class={`badge ${r.situacao === "publicado" ? "text-bg-warning" : "text-bg-secondary"} align-self-start`}>
+              {r.situacao === "publicado" ? "no site, com campo pendente" : "fora do site até decidir"}
+            </span>
+          </div>
+          <p class="small text-secondary mb-2">
+            {r.categoria && NOME_CATEGORIA[r.categoria as Categoria]}{r.uf && ` · ${r.uf}`} · fonte {r.fonte} ·
+            {" "}<a href={r.url} rel="noopener" target="_blank">página do concurso</a> ·
+            {" "}<a href={r.edital} rel="noopener" target="_blank">edital (PDF)</a> ·
+            {" "}lido em {dataBR(r.registrado_em)} · <code>{r.slug}</code>
+          </p>
+          {decisao && (
+            <div class="alert alert-info py-2 small">
+              Já existe decisão ({decisao.acao}) de {dataBR(decisao.decidido_em)}, arquivo <code>{decisao.arquivo}</code>.
+              Se a pendência continua aqui, a coleta ainda não rodou ou a decisão deixou de valer (veja os motivos).
+            </div>
+          )}
+          <details class="mb-3">
+            <summary class="small">Motivos registrados pelo coletor ({r.motivos.length})</summary>
+            <ul class="small mb-0">{r.motivos.map((m) => <li>{m}</li>)}</ul>
+          </details>
+          {r.cargos && r.cargos.length > 0 && (
+            <p class="small mb-3"><strong>Cargos:</strong> {r.cargos.slice(0, 8).join("; ")}{r.cargos.length > 8 && " …"}</p>
+          )}
+
+          <form class="decisao" data-slug={r.slug} data-sha={r.edital_sha256 ?? ""}>
+            {r.campos_em_revisao.map((campo) => (
+              <fieldset class="mb-3">
+                <legend class="h6">{NOME_CAMPO[campo] ?? campo}</legend>
+                {!DECIDIVEIS.has(campo) && <p class="small text-secondary">Este campo ainda não tem decisão pela página; fica sem dado no site.</p>}
+                {DECIDIVEIS.has(campo) && !r.opcoes && (
+                  <p class="small text-secondary">As opções aparecem depois da próxima coleta (revisão no formato antigo).</p>
+                )}
+                {DECIDIVEIS.has(campo) && r.opcoes && (
+                  <div class="d-flex flex-column gap-2" data-campo={campo}>
+                    {(r.opcoes[campo] ?? []).map((o) => (
+                      <label class="border rounded p-2 d-flex gap-2">
+                        <input class="form-check-input flex-shrink-0 mt-1" type="radio" name={`${r.slug}:${campo}`}
+                               value="usar" data-opcao={JSON.stringify({ origem: o.origem, pagina: o.pagina, trecho: o.trecho, inicio: o.inicio, fim: o.fim })} />
+                        <span>
+                          <strong>{intervalo(o)}</strong>
+                          <span class="small text-secondary">
+                            {" "}· {o.origem === "tabela" ? "linha do cronograma" : "texto do edital"} ·
+                            {" "}<a href={pdf(r.edital, o.pagina)} rel="noopener" target="_blank">página {o.pagina}</a>
+                          </span>
+                          <span class="d-block small fst-italic">“{o.trecho}”</span>
+                        </span>
+                      </label>
+                    ))}
+                    <label class="border rounded p-2 d-flex gap-2">
+                      <input class="form-check-input flex-shrink-0 mt-1" type="radio" name={`${r.slug}:${campo}`} value="ausente" />
+                      <span>Nenhuma está certa: deixar sem data no site</span>
+                    </label>
+                    <label class="d-flex gap-2 small text-secondary">
+                      <input class="form-check-input flex-shrink-0" type="radio" name={`${r.slug}:${campo}`} value="" checked />
+                      <span>Não decidir agora</span>
+                    </label>
+                  </div>
+                )}
+              </fieldset>
+            ))}
+            {r.mudancas && r.mudancas.length > 0 && (
+              <details class="mb-3">
+                <summary class="small">Retificações e avisos publicados ({r.mudancas.length}) — confira antes de decidir</summary>
+                <ul class="small mb-0">
+                  {r.mudancas.map((m) => (
+                    <li>{m.publicado_em && `${dataBR(m.publicado_em)} · `}<a href={m.url} rel="noopener" target="_blank">{m.titulo || "documento"}</a></li>
+                  ))}
+                </ul>
+              </details>
+            )}
+            <div class="d-flex flex-wrap gap-2">
+              <button type="submit" class="btn btn-primary" disabled={!r.opcoes || !r.edital_sha256}>Gerar decisão</button>
+              {r.situacao !== "publicado" && (
+                <button type="button" class="btn btn-outline-danger descartar">Descartar este concurso</button>
+              )}
+            </div>
+            <p class="small text-danger mt-2 mb-0 erro" hidden></p>
+          </form>
+        </div>
+      </section>
+    ))}
+  </div>
+
+  <script is:inline define:vars={{ REPO }}>
+    function agoraBRT() {
+      // Brasília sem horário de verão: UTC-3
+      const d = new Date(Date.now() - 3 * 3600 * 1000);
+      const p = (n) => String(n).padStart(2, "0");
+      const data = `${d.getUTCFullYear()}-${p(d.getUTCMonth() + 1)}-${p(d.getUTCDate())}`;
+      const hora = `${p(d.getUTCHours())}:${p(d.getUTCMinutes())}:${p(d.getUTCSeconds())}`;
+      return { iso: `${data}T${hora}-03:00`, arquivo: `${data.replaceAll("-", "")}-${hora.replaceAll(":", "")}` };
+    }
+    function abrir(slug, corpo, mensagem) {
+      const { arquivo } = agoraBRT();
+      const url = new URL(`https://github.com/${REPO}/new/main`);
+      url.searchParams.set("filename", `data/decisoes/${slug}/${arquivo}.json`);
+      url.searchParams.set("value", JSON.stringify(corpo, null, 2) + "\n");
+      url.searchParams.set("message", mensagem);
+      window.open(url.toString(), "_blank", "noopener");
+    }
+    document.querySelectorAll("form.decisao").forEach((form) => {
+      const slug = form.dataset.slug;
+      const erro = form.querySelector(".erro");
+      form.addEventListener("submit", (ev) => {
+        ev.preventDefault();
+        const campos = {};
+        form.querySelectorAll("[data-campo]").forEach((grupo) => {
+          const marcado = grupo.querySelector("input[type=radio]:checked");
+          if (!marcado || !marcado.value) return;
+          campos[grupo.dataset.campo] = marcado.value === "usar"
+            ? { acao: "usar", opcao: JSON.parse(marcado.dataset.opcao) }
+            : { acao: "ausente" };
+        });
+        if (!Object.keys(campos).length) {
+          erro.textContent = "Escolha uma opção em pelo menos um campo.";
+          erro.hidden = false;
+          return;
+        }
+        erro.hidden = true;
+        const corpo = { schema_version: 1, slug, decidido_em: agoraBRT().iso, edital_sha256: form.dataset.sha,
+                        acao: "decidir", campos };
+        abrir(slug, corpo, `decisão do editor: ${slug}`);
+      });
+      form.querySelector(".descartar")?.addEventListener("click", () => {
+        if (!confirm("Descartar este concurso? Ele deixa de ser coletado e some desta lista.")) return;
+        abrir(slug, { schema_version: 1, slug, decidido_em: agoraBRT().iso, acao: "descartar" },
+              `decisão do editor: descartar ${slug}`);
+      });
+    });
+  </script>
+</Base>
