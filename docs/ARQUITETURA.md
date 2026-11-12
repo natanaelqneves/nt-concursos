@@ -194,10 +194,10 @@ O site mostra "Edição de DD/MM, publicada às HH:MM" e, em cada concurso, "con
 | # | Entrega | Critério de pronto |
 |---|---|---|
 | M0 | Esqueleto: repositório, Pydantic → JSON Schema, CI, Astro com páginas institucionais, `ads.txt` | `ci.yml` verde; site de teste no Pages |
-| M1 | INLABS (descoberta) + FGV de ponta a ponta + gate G1–G8 | 1 concurso real publicado com evidência clicável; horário real do INLABS medido |
+| M1 | INLABS (descoberta federal) + Cebraspe e FGV de ponta a ponta; campos `categoria`, `esfera` e filtro de escopo (seção 11) | 1 concurso real publicado com evidência clicável; horário real do INLABS medido |
 | M2 | Publicação automática (Worker + `publish.yml` + alerta) | 7 dias seguidos publicados antes das 05h00 |
-| M3 | Fila de revisão via Issues + retificações | Aprovar por PR fecha a Issue e publica o campo |
-| M4 | Cebraspe, FCC e Vunesp | Testes com fixtures reais por banca |
+| M3 | Painel admin (`admin.ntconcursos.com.br`, seção 12) + retificações | Aprovar/corrigir pela tela gera PR; CI valida e incorpora |
+| M4 | FCC, Vunesp e demais bancas do escopo, por ordem de porte | Testes com fixtures reais por banca |
 | M5 | SEO avançado, consentimento, afiliados, Lighthouse CI | CLS medido < 0,05; avaliação do `JobPosting` |
 | M6 | Opcional: LLM sugestor atrás do gate; runner self-hosted | Só se a taxa de revisão manual passar de ~20% |
 
@@ -210,4 +210,44 @@ revisa uma vez por milestone** (o dono cola o diff no Codex e devolve a crítica
 | Milestone | Status |
 |---|---|
 | M0 | esqueleto, contrato, gate G1–G8, site, CI, publicação e Worker: entregue |
-| M1 | conectores INLABS e FGV, `fetch/http.py`, `pdf/extract.py`, `ntc collect`: próximo |
+| M1 | INLABS, Cebraspe e FGV, `fetch/http.py`, `pdf/extract.py`, `ntc collect`, escopo e porte: próximo |
+
+## 11. Escopo e prioridade (decidido em 12/11/2026)
+
+**Escopo:** concursos de órgãos **federais e estaduais** destas áreas. Municipais ficam fora.
+
+| Categoria | Exemplos |
+|---|---|
+| `tribunal` | STF, STJ, TST, TSE, STM, TRFs, TRTs, TREs, TJs, TJMs |
+| `controle` | CGU, controladorias e auditorias-gerais dos estados |
+| `mp` | MPU (MPF, MPT, MPM, MPDFT) e MPs estaduais |
+| `policia` | PF, PRF, Polícia Penal Federal, polícias civis, militares, penais e científicas |
+
+A organização é **por órgão, não por banca**: a banca é só o lugar onde o edital é publicado.
+Cada concurso ganha `categoria` e `esfera` (`federal`/`estadual`); concurso fora do escopo é descartado na coleta.
+
+**Descoberta:**
+1. DOU via INLABS, para os órgãos federais.
+2. Sites das bancas, que listam concursos federais e estaduais num só lugar. Os diários oficiais
+   estaduais são 27 sistemas diferentes e ficam como fonte complementar futura.
+
+**Ordem das bancas:** pelas que mais organizam concursos do escopo. Começa por Cebraspe e FGV (M1),
+depois FCC e Vunesp, e então as demais, conforme o volume medido nas primeiras semanas.
+
+**Porte:** `porte = vagas imediatas` (cadastro reserva não conta), com remuneração e esfera federal
+como desempate. Uso no site:
+- a lista de **isenção aberta continua ordenada pelo prazo** (perder o prazo é o problema principal),
+  com selo "grande porte";
+- um bloco **"Em destaque"** no topo da home mostra os maiores concursos com inscrição aberta.
+
+## 12. Painel admin (aprovado em 12/11/2026, substitui as Issues do M3)
+
+- Endereço `admin.ntconcursos.com.br`, protegido pelo Cloudflare Access (código por e-mail, só o
+  e-mail do dono). O plano gratuito do Zero Trust cobre até 50 usuários.
+- Fila de pendências com o concurso, o campo, o motivo da regra que falhou e o texto da página do edital.
+- O revisor seleciona o trecho com o mouse e escolhe **aprovar**, **corrigir** ou **deixar como
+  "Consulte o edital"**.
+- Um Worker por trás do Access guarda o token do GitHub (nunca no navegador). Cada decisão vira um
+  PR; o CI roda `ntc validate` e incorpora só se passar. Uma revisão errada é recusada e nunca
+  trava a edição do dia.
+- Ficam registrados quem aprovou, quando e com qual trecho (`aprovado_por`, `aprovado_em`).
