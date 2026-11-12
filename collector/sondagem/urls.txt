@@ -1,13 +1,4 @@
-https://apis.cebraspe.org.br/cebraspe/eventos/PC_PE_26 ceb_PC_PE_26.json
-https://apis.cebraspe.org.br/cebraspe/eventos/SEAP_PE_26 ceb_SEAP_PE_26.json
-https://apis.cebraspe.org.br/cebraspe/eventos/CD_26_PL ceb_CD_26_PL.json
-https://apis.cebraspe.org.br/cebraspe/eventos/CGU_26_AFFC ceb_CGU_26_AFFC.json
-https://apis.cebraspe.org.br/cebraspe/eventos/CBM_AL_26 ceb_CBM_AL_26.json
-https://conhecimento.fgv.br/sites/default/files/concursos/edital-retificado-tjpb_11.11.pdf fgv_tjpb26_edital.pdf
-https://conhecimento.fgv.br/sites/default/files/concursos/edital-n-33-2026-edital-de-abertura-retificado.pdf fgv_tjscjuiz26_edital.pdf
-https://conhecimento.fgv.br/concursos/pcpr26 fgv_pcpr26.html
-https://conhecimento.fgv.br/concursos/dperj2026 fgv_dperj2026.html
-https://conhecimento.fgv.br/concursos/tjscservidor26 fgv_tjscservidor26.html
-https://conhecimento.fgv.br/concursos/mpes26 fgv_mpes26.html
-https://conhecimento.fgv.br/concursos/tcesc26 fgv_tcesc26.html
-https://conhecimento.fgv.br/concursos/mpmt fgv_mpmt.html
+https://conhecimento.fgv.br/concursos/tjrsjuiz26 fgv_tjrsjuiz26.html
+https://conhecimento.fgv.br/concursos/trf6 fgv_trf6.html
+https://conhecimento.fgv.br/concursos/tjpr25 fgv_tjpr25.html
+https://conhecimento.fgv.br/concursos/mpu2025 fgv_mpu2025.html
