@@ -8,12 +8,11 @@ last-modified: Wed, 11 Nov 2026 20:40:16 GMT
 accept-ranges: bytes
 content-length: 858137
 content-type: application/pdf
-cache-control: public, max-age=86400
+cache-control: public, max-age=83898
 expires: Fri, 13 Nov 2026 16:09:50 GMT
-date: Thu, 12 Nov 2026 16:09:50 GMT
-server-timing: cdn-cache; desc=MISS
-server-timing: edge; dur=10
-server-timing: origin; dur=1140
-set-cookie: BT-DT-TRK=570dc29a52bc4a00841a332dd5628853; path=/; domain=.conhecimento.fgv.br; Secure
-server-timing: ak_p; desc="1794499789332_399594262_3801100444_114747_6046_17_26_15";dur=1
+date: Thu, 12 Nov 2026 16:51:32 GMT
+server-timing: cdn-cache; desc=HIT
+server-timing: edge; dur=1
+set-cookie: BT-DT-TRK=e696a430eda44282a1745a3fdc614bd7; path=/; domain=.conhecimento.fgv.br; Secure
+server-timing: ak_p; desc="1794502292748_399594262_3815202252_39_5117_25_26_15";dur=1
 

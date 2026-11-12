@@ -8,11 +8,11 @@ last-modified: Mon, 19 Oct 2026 21:51:41 GMT
 accept-ranges: bytes
 content-length: 868785
 content-type: application/pdf
-cache-control: public, max-age=82446
+cache-control: public, max-age=79945
 expires: Fri, 13 Nov 2026 15:03:58 GMT
-date: Thu, 12 Nov 2026 16:09:52 GMT
+date: Thu, 12 Nov 2026 16:51:33 GMT
 server-timing: cdn-cache; desc=HIT
-server-timing: edge; dur=6
+server-timing: edge; dur=1
 set-cookie: BT-DT-TRK=79213302ba2044bf9a3211675beecb11; path=/; domain=.conhecimento.fgv.br; Secure
-server-timing: ak_p; desc="1794499792860_399594262_3801122112_566_5381_12_13_15";dur=1
+server-timing: ak_p; desc="1794502293009_399594262_3815203632_39_5368_25_27_15";dur=1
 
