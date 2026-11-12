@@ -10,14 +10,14 @@ content-security-policy: frame-ancestors http://*.fgv.br https://*.fgv.br; repor
 strict-transport-security: max-age=31536000; includeSubDomains; preload
 x-drupal-cache: HIT
 referrer-policy: strict-origin-when-cross-origin
-last-modified: Thu, 12 Nov 2026 15:01:04 GMT
-etag: "1794495664"
+last-modified: Thu, 12 Nov 2026 16:01:26 GMT
+etag: "1794499286"
 content-type: text/html; charset=UTF-8
-x-akamai-transformed: 9 13186 0 pmb=mRUM,1
-date: Thu, 12 Nov 2026 15:56:05 GMT
+x-akamai-transformed: 9 13170 0 pmb=mRUM,1
+date: Thu, 12 Nov 2026 16:09:54 GMT
 server-timing: cdn-cache; desc=MISS
-server-timing: edge; dur=130
-server-timing: origin; dur=56
-set-cookie: BT-DT-TRK=89d644505c8c45aa802c911ef35fad64; path=/; domain=.conhecimento.fgv.br; Secure
-server-timing: ak_p; desc="1794498965130_386075722_2058924305_19874_7283_6_7_15";dur=1
+server-timing: edge; dur=141
+server-timing: origin; dur=82
+set-cookie: BT-DT-TRK=ed5c6811ec9f4f7f8d325f3453f8ed32; path=/; domain=.conhecimento.fgv.br; Secure
+server-timing: ak_p; desc="1794499794190_399594262_3801130424_22285_5955_10_10_15";dur=1
 
