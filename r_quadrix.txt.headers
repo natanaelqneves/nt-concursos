@@ -1,0 +1,10 @@
+HTTP/2 200 
+date: Thu, 12 Nov 2026 18:15:30 GMT
+content-type: text/plain; charset=utf-8
+content-length: 2676
+location: https://quadrix.org.br/robots.txt
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=8J0MImrc3sEebisshQr6bxY3udPjTqpnh3NXPQYvV1LuAVqp1%2FHQ3TmuQQu11yERHuSvJdSTTeYHP1ngq%2BXQvk0cxAlKMn6KPk6%2B1bvFcex6HeCT%2BI7bYgBbtgUg0K8QAigEmRc%3D"}]}
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+server: cloudflare
+cf-ray: a59785bc286a0fa5-EWR
+

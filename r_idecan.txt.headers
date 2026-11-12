@@ -1,0 +1,22 @@
+HTTP/2 200 
+date: Thu, 12 Nov 2026 18:15:28 GMT
+content-type: text/plain; charset=utf-8
+content-length: 2676
+location: https://idecan.org.br/robots.txt
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+x-redirect-by: WordPress
+server: cloudflare
+platform: hostinger
+panel: hpanel
+content-security-policy: upgrade-insecure-requests
+x-turbo-charged-by: LiteSpeed
+cache-control: max-age=14400
+cf-cache-status: EXPIRED
+x-xss-protection: 1; mode=block
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=M8D3tAZ2CzXRnMx97ZNm7swVv%2BCbBCtDq0lznk4URtX5fVa74XGpeAgRQMaTreNR8L4oa1INgR47u9JPPRKK63HMrjSQkLY%2FJjv%2Bqcfr90xPVcr6XCg6Ru0wlil4eFQc1y%2Bh"}]}
+expect-ct: max-age=86400, enforce
+referrer-policy: same-origin
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+cf-ray: a59785ad0daff461-EWR
+

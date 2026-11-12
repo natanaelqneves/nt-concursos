@@ -1,0 +1,13 @@
+HTTP/2 200 
+date: Thu, 12 Nov 2026 18:15:30 GMT
+content-type: text/plain; charset=utf-8
+content-length: 2676
+server: cloudflare
+x-powered-by: ASP.NET
+cache-control: max-age=14400
+cf-cache-status: EXPIRED
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=vHIeaw1hwSGBgARJOgUkK3PouCVigiqrmy4hTCE0UouyDS1Lo4B8PynYOjH2KaDLRotMhaV5gfrW7uN8ztvqOjNsvWCM9iQR%2BYljeDScnNvzdcGlAsSWZ7aOUpB%2B685xJCXI"}]}
+cf-ray: a59785bf58e46109-EWR
+alt-svc: h3=":443"; ma=86400
+
