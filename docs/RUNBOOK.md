@@ -15,7 +15,7 @@
 3. **GitHub** (Settings → Secrets and variables → Actions):
    - Secrets: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`, `DISPATCH_TOKEN`
      (token fine-grained do GitHub com acesso só a `nt-concursos` e *Actions: Read and write*).
-   - Variables (quando o AdSense aprovar): `ADSENSE_PUB_ID` (`pub-…`), `PUBLIC_ADSENSE_CLIENT`
+   - Variables opcionais (o ID de editor já está em `site/src/config.ts`): `ADSENSE_PUB_ID`, `PUBLIC_ADSENSE_CLIENT`
      (`ca-pub-…`), `PUBLIC_ADSENSE_SLOT_TOPO`, `PUBLIC_ADSENSE_SLOT_MEIO`.
 4. **Primeiro deploy e domínio.**
    - Actions → *Publicar edição* → *Run workflow*. Isso cria o projeto e publica.

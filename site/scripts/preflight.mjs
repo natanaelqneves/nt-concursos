@@ -19,4 +19,4 @@ if (problemas.length) {
   console.error("Preflight falhou:\n- " + problemas.join("\n- "));
   process.exit(1);
 }
-console.log("Preflight ok" + (pub ? "" : " (AdSense ainda não configurado: site sai sem anúncios)"));
+console.log("Preflight ok");
