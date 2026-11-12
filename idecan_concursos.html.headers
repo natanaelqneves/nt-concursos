@@ -1,0 +1,44 @@
+HTTP/2 301 
+date: Thu, 12 Nov 2026 18:16:46 GMT
+content-type: text/html; charset=UTF-8
+location: https://idecan.org.br/concursos
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+expires: Wed, 11 Jan 1984 05:00:00 GMT
+cache-control: no-cache, must-revalidate, max-age=0, no-store, private
+x-redirect-by: WordPress
+server: cloudflare
+platform: hostinger
+panel: hpanel
+content-security-policy: upgrade-insecure-requests
+x-turbo-charged-by: LiteSpeed
+cf-cache-status: DYNAMIC
+x-xss-protection: 1; mode=block
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=oABG%2FqmW3nq8d3LpnnucshijA4H0zWaesshCEDHopXoBZQhclCM0Fp65B1AEhKK0d%2FH0wj2J9z4K5BGnyI9dGRhHIVHGxxfL1MvROE7Q3QAi30mEEm0uort267ufxXIdOfcA"}]}
+expect-ct: max-age=86400, enforce
+referrer-policy: same-origin
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+cf-ray: a59787978d4cf459-STL
+
+HTTP/2 404 
+date: Thu, 12 Nov 2026 18:16:46 GMT
+content-type: text/html; charset=UTF-8
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+expires: Wed, 11 Jan 1984 05:00:00 GMT
+cache-control: no-cache, must-revalidate, max-age=0, no-store, private
+link: <https://idecan.org.br/wp-json/>; rel="https://api.w.org/"
+x-frame-options: SAMEORIGIN
+vary: Accept-Encoding
+server: cloudflare
+platform: hostinger
+panel: hpanel
+content-security-policy: upgrade-insecure-requests
+x-turbo-charged-by: LiteSpeed
+cf-cache-status: DYNAMIC
+x-xss-protection: 1; mode=block
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=Dm%2FVQtkP2bc%2B2hPRO9FFHIaVx8esj60I4IVUMAv%2Bk2QVGGZXteMubaNveW2LzWYdr%2FB0A19qAUCWeSPQ%2F7H7Fo4l15%2BGFgAhIrNXvo%2Bbjlh5%2BRDr2AM2BONgWB6lNrg%3D"}]}
+expect-ct: max-age=86400, enforce
+referrer-policy: same-origin
+x-content-type-options: nosniff
+cf-ray: a5978799cc85980a-STL
+

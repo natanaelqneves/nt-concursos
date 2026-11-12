@@ -1,0 +1,42 @@
+HTTP/2 301 
+date: Thu, 12 Nov 2026 18:16:44 GMT
+content-type: text/html; charset=UTF-8
+location: https://idecan.org.br/
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+x-redirect-by: WordPress
+server: cloudflare
+platform: hostinger
+panel: hpanel
+content-security-policy: upgrade-insecure-requests
+x-turbo-charged-by: LiteSpeed
+cf-cache-status: DYNAMIC
+x-xss-protection: 1; mode=block
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=aB%2FH1npP4AMr4ugp4526wpdM5jIX4PtlgA%2B6IZzywGqrr6djuNLj6pgRyOMhVdEyMlixW%2BMUPjC%2Fag2m8ZMURz5iVUG9sCoJHBSsS14qpJvRkKAM0cj0N5DMOOxIDXC3hQS3"}]}
+expect-ct: max-age=86400, enforce
+referrer-policy: same-origin
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+cf-ray: a597878a8b74d8d3-STL
+
+HTTP/2 200 
+date: Thu, 12 Nov 2026 18:16:45 GMT
+content-type: text/html; charset=UTF-8
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+link: <https://idecan.org.br/wp-json/>; rel="https://api.w.org/"
+link: <https://idecan.org.br/wp-json/wp/v2/pages/7>; rel="alternate"; title="JSON"; type="application/json"
+link: <https://idecan.org.br/>; rel=shortlink
+x-frame-options: SAMEORIGIN
+vary: Accept-Encoding
+server: cloudflare
+platform: hostinger
+panel: hpanel
+content-security-policy: upgrade-insecure-requests
+x-turbo-charged-by: LiteSpeed
+cf-cache-status: DYNAMIC
+x-xss-protection: 1; mode=block
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=jgJb1VO%2FTOz1EHIBPwoHKBI4P7dJ4LHxJj4WNXTDY1wTdLYdLnupO%2F8x12o0K9QfRS2S48F5ImNtwjUIICZXGqSrnJu3jZ1OPISf90aEJQECjtnL2uxuD9mno1CbHA8%3D"}]}
+expect-ct: max-age=86400, enforce
+referrer-policy: same-origin
+x-content-type-options: nosniff
+cf-ray: a5978790dd3b8638-STL
+
