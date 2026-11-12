@@ -91,6 +91,8 @@ def _opcoes(texto: list, tab: list) -> list:
     datas (sem as de tabela lida como texto) e linhas de cronograma lidas célula por célula."""
     vistos, saida = set(), []
     for c in [*tab, *(c for c in texto if not c.de_tabela and not c.ambiguo and c.fim)]:
+        if not (2000 <= c.fim.year <= 2100):  # data mal lida (ex.: ano 8000): não é opção
+            continue
         chave = (c.pagina, c.trecho)
         if chave not in vistos:
             vistos.add(chave)
