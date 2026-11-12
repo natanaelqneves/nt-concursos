@@ -1,13 +1,13 @@
 {
   "cebraspe": {
-    "inicio": "2026-11-12T15:28:04-03:00",
-    "fim": "2026-11-12T15:30:37-03:00",
+    "inicio": "2026-11-12T18:03:21-03:00",
+    "fim": "2026-11-12T18:05:55-03:00",
     "erro_fonte": null,
     "contagem": {
-      "fora_do_escopo": 44,
+      "fora_do_escopo": 37,
       "publicado": 2,
-      "encerrado": 20,
-      "so_revisao": 4,
+      "encerrado": 25,
+      "so_revisao": 6,
       "sem_edital": 3
     },
     "registros": [
@@ -71,8 +71,8 @@
         "fonte": "cebraspe",
         "id": "AGEPAR_PR_26",
         "titulo": "AGEPAR PR 26",
-        "situacao": "fora_do_escopo",
-        "detalhe": "",
+        "situacao": "encerrado",
+        "detalhe": "outro/estadual/PR",
         "slug": null,
         "campos": {},
         "violacoes": []
@@ -151,10 +151,13 @@
         "fonte": "cebraspe",
         "id": "CAESB_24",
         "titulo": "CAESB 24",
-        "situacao": "fora_do_escopo",
-        "detalhe": "",
-        "slug": null,
-        "campos": {},
+        "situacao": "so_revisao",
+        "detalhe": "estatal/estadual/DF",
+        "slug": "caesb-2024",
+        "campos": {
+          "prazos.isencao": "ausente",
+          "prazos.inscricao": "ausente"
+        },
         "violacoes": []
       },
       {
@@ -253,8 +256,8 @@
         "fonte": "cebraspe",
         "id": "DETRAN_AL_26",
         "titulo": "DETRAN AL 26",
-        "situacao": "fora_do_escopo",
-        "detalhe": "",
+        "situacao": "encerrado",
+        "detalhe": "outro/estadual/AL",
         "slug": null,
         "campos": {},
         "violacoes": []
@@ -273,18 +276,20 @@
         "fonte": "cebraspe",
         "id": "FAPEAL_26",
         "titulo": "FAPE AL 26",
-        "situacao": "fora_do_escopo",
-        "detalhe": "",
+        "situacao": "encerrado",
+        "detalhe": "outro/estadual/AL",
         "slug": null,
         "campos": {},
-        "violacoes": []
+        "violacoes": [
+          "prazos.inscricao: cronograma em tabela diverge do texto corrido"
+        ]
       },
       {
         "fonte": "cebraspe",
         "id": "FUNPRESP_26_JUD",
         "titulo": "FUNPRESP 26 JUD",
-        "situacao": "fora_do_escopo",
-        "detalhe": "",
+        "situacao": "encerrado",
+        "detalhe": "outro/federal/BR",
         "slug": null,
         "campos": {},
         "violacoes": []
@@ -613,11 +618,17 @@
         "fonte": "cebraspe",
         "id": "SEPLAG_AL_26_ESPECIALISTA",
         "titulo": "SEPLAG AL 26 ESPECIALISTA",
-        "situacao": "fora_do_escopo",
-        "detalhe": "",
-        "slug": null,
-        "campos": {},
-        "violacoes": []
+        "situacao": "so_revisao",
+        "detalhe": "outro/estadual/AL",
+        "slug": "seplag-al-2026-especialista",
+        "campos": {
+          "prazos.isencao": "revisao",
+          "prazos.inscricao": "revisao"
+        },
+        "violacoes": [
+          "prazos.isencao: 2 linhas de cronograma com datas diferentes",
+          "prazos.inscricao: cronograma em tabela diverge do texto corrido"
+        ]
       },
       {
         "fonte": "cebraspe",
@@ -768,24 +779,26 @@
         "fonte": "cebraspe",
         "id": "UNE_AL_26",
         "titulo": "UNE AL 26",
-        "situacao": "fora_do_escopo",
-        "detalhe": "",
+        "situacao": "encerrado",
+        "detalhe": "outro/estadual/AL",
         "slug": null,
         "campos": {},
-        "violacoes": []
+        "violacoes": [
+          "prazos.inscricao: cronograma em tabela diverge do texto corrido"
+        ]
       }
     ]
   },
   "fgv": {
-    "inicio": "2026-11-12T15:30:37-03:00",
-    "fim": "2026-11-12T15:34:27-03:00",
+    "inicio": "2026-11-12T18:05:56-03:00",
+    "fim": "2026-11-12T18:10:11-03:00",
     "erro_fonte": null,
     "contagem": {
-      "fora_do_escopo": 49,
+      "fora_do_escopo": 43,
       "publicado": 3,
-      "encerrado": 36,
-      "so_revisao": 8,
-      "sem_edital": 5
+      "encerrado": 40,
+      "so_revisao": 9,
+      "sem_edital": 6
     },
     "registros": [
       {
@@ -943,8 +956,8 @@
         "fonte": "fgv",
         "id": "dataprev26",
         "titulo": "Concurso Público para a Empresa de Tecnologia e Informações da Previdência - DATAPREV",
-        "situacao": "fora_do_escopo",
-        "detalhe": "",
+        "situacao": "encerrado",
+        "detalhe": "estatal/federal/BR",
         "slug": null,
         "campos": {},
         "violacoes": []
@@ -998,8 +1011,8 @@
         "fonte": "fgv",
         "id": "navbrasil26",
         "titulo": "Concurso Público para a NAV Brasil Serviços de Navegação Aérea S.A.",
-        "situacao": "fora_do_escopo",
-        "detalhe": "",
+        "situacao": "encerrado",
+        "detalhe": "estatal/federal/BR",
         "slug": null,
         "campos": {},
         "violacoes": []
@@ -1090,10 +1103,13 @@
         "fonte": "fgv",
         "id": "ebserh26",
         "titulo": "Concurso Público para a Empresa Brasileira de Serviços Hospitalares - EBSERH - Área Médica",
-        "situacao": "fora_do_escopo",
-        "detalhe": "",
-        "slug": null,
-        "campos": {},
+        "situacao": "so_revisao",
+        "detalhe": "estatal/federal/BR",
+        "slug": "ebserh-2026-area-medica",
+        "campos": {
+          "prazos.isencao": "ausente",
+          "prazos.inscricao": "ausente"
+        },
         "violacoes": []
       },
       {
@@ -1189,8 +1205,8 @@
         "fonte": "fgv",
         "id": "amazul",
         "titulo": "Concurso Público para a Amazônia Azul Tecnologias de Defesa S.A. - AMAZUL",
-        "situacao": "fora_do_escopo",
-        "detalhe": "",
+        "situacao": "encerrado",
+        "detalhe": "estatal/federal/BR",
         "slug": null,
         "campos": {},
         "violacoes": []
@@ -1304,8 +1320,8 @@
         "fonte": "fgv",
         "id": "cprm",
         "titulo": "Concurso Público para a Companhia de Pesquisa de Recursos Minerais - CPRM",
-        "situacao": "fora_do_escopo",
-        "detalhe": "",
+        "situacao": "encerrado",
+        "detalhe": "estatal/federal/BR",
         "slug": null,
         "campos": {},
         "violacoes": []
@@ -1584,8 +1600,8 @@
         "fonte": "fgv",
         "id": "ebserh24",
         "titulo": "Concurso Público para a Empresa Brasileira de Serviços Hospitalares - EBSERH",
-        "situacao": "fora_do_escopo",
-        "detalhe": "",
+        "situacao": "sem_edital",
+        "detalhe": "estatal/federal/BR",
         "slug": null,
         "campos": {},
         "violacoes": []

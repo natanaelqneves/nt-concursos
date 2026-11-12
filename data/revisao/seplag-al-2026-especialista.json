@@ -1,0 +1,16 @@
+{
+  "slug": "seplag-al-2026-especialista",
+  "orgao": "SEPLAG AL",
+  "fonte": "cebraspe",
+  "url": "https://www.cebraspe.org.br/concursos/SEPLAG_AL_26_ESPECIALISTA",
+  "edital": "https://cdn.cebraspe.org.br/concursos/SEPLAG_AL_26_ESPECIALISTA/arquivos/CFF603E6110306710444F346D3275540DDDFE548FBF824BB2B9BFA7AD54B7D9A.pdf",
+  "campos_em_revisao": [
+    "prazos.inscricao",
+    "prazos.isencao"
+  ],
+  "motivos": [
+    "prazos.isencao: 2 linhas de cronograma com datas diferentes",
+    "prazos.inscricao: cronograma em tabela diverge do texto corrido"
+  ],
+  "registrado_em": "2026-11-12T18:05:26-03:00"
+}
