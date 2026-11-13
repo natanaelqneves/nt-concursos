@@ -207,6 +207,53 @@ def cmd_collect(args: argparse.Namespace) -> int:
     return codigo
 
 
+def cmd_trechos(args: argparse.Namespace) -> int:
+    """Diagnóstico: baixa os documentos de uma fonte e mostra os trechos com âncora de prazo e data,
+    sem filtros (inclusive os que as exclusões descartam) e as linhas de cronograma lidas da tabela.
+    Não grava nada em data/."""
+    from ntc.fetch.http import Cliente, ErroColeta
+    from ntc.parse import clausulas, tabela
+    from ntc.pdf.extract import NaoEhPdf, extrair
+    from ntc.sources.avulsos import Avulsos
+
+    data = Path(args.data)
+    cliente = Cliente(Allowlist.carregar(data / "fontes.yaml"), intervalo=args.intervalo)
+    for cf in Avulsos(data, set(args.so) if args.so else None).descobrir(cliente):
+        print(f"\n######## {cf.id}")
+        for d in cf.documentos:
+            r = None
+            for url in (d.url, *d.alternativas):
+                try:
+                    r = cliente.get(url)
+                    break
+                except ErroColeta as e:
+                    print(f"  falhou {url}: {e}")
+            if r is None:
+                continue
+            try:
+                t = extrair(r.conteudo)
+            except NaoEhPdf:
+                print(f"  {d.tipo} {r.url_final}: não é PDF")
+                continue
+            print(f"== {d.tipo} {r.url_final} paginas={len(t.paginas)} texto={t.tem_texto}")
+            for tipo, ancora in clausulas.ANCORAS.items():
+                n = 0
+                for pag in sorted(t.paginas):
+                    for seg in clausulas.segmentos(t.paginas[pag]):
+                        if ancora.search(seg) and clausulas.datas_de_prazo(seg) and n < args.max:
+                            excl = "EXCL " if clausulas.EXCLUSOES[tipo].search(seg) else ""
+                            print(f"  [{tipo} p{pag}] {excl}{seg[:300]}")
+                            n += 1
+                try:
+                    linhas = tabela.linhas(r.conteudo, t.paginas)
+                except Exception as e:
+                    print(f"  tabela ilegível: {type(e).__name__}: {e}")
+                    linhas = []
+                for c in tabela.candidatos(linhas, t.paginas, tipo):
+                    print(f"  [{tipo} TABELA p{c.pagina}] amb={c.ambiguo} {c.tabela} -> {c.inicio} {c.fim}")
+    return 0
+
+
 def cmd_inlabs_horario(args: argparse.Namespace) -> int:
     """Uma sondagem: o ZIP da seção 3 de hoje já está no INLABS? Imprime uma linha JSON."""
     import os
@@ -240,6 +287,13 @@ def main(argv: list[str] | None = None) -> int:
     p_val = sub.add_parser("validate", help="valida data/ inteiro")
     p_val.add_argument("--data", default=str(RAIZ / "data"))
     p_val.set_defaults(func=cmd_validate)
+
+    p_tr = sub.add_parser("trechos", help="diagnóstico: trechos de prazo dos editais avulsos")
+    p_tr.add_argument("--data", default=str(RAIZ / "data"))
+    p_tr.add_argument("--so", nargs="*")
+    p_tr.add_argument("--max", type=int, default=25)
+    p_tr.add_argument("--intervalo", type=float, default=1.0)
+    p_tr.set_defaults(func=cmd_trechos)
 
     p_col = sub.add_parser("collect", help="coleta uma fonte")
     p_col.add_argument("--fonte", required=True, choices=["fgv", "cebraspe", "aocp", "avulsos", "inlabs"])

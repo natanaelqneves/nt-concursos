@@ -30,7 +30,10 @@ EXCLUSOES: dict[TipoPrazo, re.Pattern[str]] = {
     ),
     "inscricao": re.compile(
         r"isen[çc][ãa]o|isent|resultado|recurso|divulga|homologa|deferid|indeferid|"
-        r"confirma|cart[ãa]o|local de prova|pagamento|boleto|reimpress",
+        r"confirma|cart[ãa]o|local de prova|pagamento|boleto|reimpress|"
+        # "a partir de 02/12, o candidato poderá conferir se a inscrição foi recebida";
+        # listas de candidatos ("Data da prova: ... Inscrição Nome")
+        r"poder[áa]\s+conferir|data\s+da\s+prova",
         re.IGNORECASE,
     ),
 }
@@ -141,6 +144,12 @@ _DEFINE_PRAZO = re.compile(
     r"dever[áa]\s+ser\s+(?:solicitad|requerid|feit)|per[íi]odo\s+(?:de|das|entre)\s+(?:\d|inscri|solicita)",
     re.IGNORECASE,
 )
+
+
+def plausiveis(candidatos: list[Candidato], ano: int) -> list[Candidato]:
+    """Só cláusulas com datas perto do ano da coleta: "servidores que ingressaram a partir de
+    05/11/2015" não é prazo do concurso e não deve contar como conflito (o G6 já recusaria)."""
+    return [c for c in candidatos if all(ano - 1 <= d.year <= ano + 1 for d in c.datas)]
 
 
 def intervalos_distintos(candidatos: list[Candidato]) -> set[tuple[date | None, date | None]]:

@@ -141,7 +141,8 @@ class Gate:
             if clausulas.datas_de_prazo(texto_datas) != esperado:
                 return falha("G4", f"datas do trecho {clausulas.datas_de_prazo(texto_datas)} ≠ declaradas {esperado}")
             if texto.completo:
-                distintos = clausulas.intervalos_distintos(clausulas.encontrar(texto.paginas, tipo))
+                distintos = clausulas.intervalos_distintos(
+                    clausulas.plausiveis(clausulas.encontrar(texto.paginas, tipo), doc.coletado_em.year))
                 if len(distintos) > 1:
                     return falha("G5", f"{len(distintos)} cláusulas de {tipo} com datas diferentes")
             ano = doc.coletado_em.year
