@@ -147,7 +147,7 @@ details.menu-celular[open] .hamburguer::after { top: 0; transform: rotate(-45deg
 
 /* ---- Atalho por estado ---- */
 .faixa-uf { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: 1rem; }
-.faixa-uf a { display: inline-flex; align-items: center; gap: .3rem; min-width: 2.75rem; justify-content: center;
+.faixa-uf a { flex: 0 0 auto; display: inline-flex; align-items: center; gap: .3rem; min-width: 2.75rem; justify-content: center;
   padding: .35rem .55rem; border: 1px solid var(--bs-border-color); border-radius: .5rem; font-size: .88rem;
   font-weight: 600; color: var(--suave); text-decoration: none; background: #fff; }
 .faixa-uf a.tem { color: var(--destaque); border-color: var(--bs-primary-border-subtle); }
@@ -191,3 +191,5 @@ dl.grade dd { margin: 0; font-size: .9rem; font-weight: 600; }
 .lista-links li { display: flex; justify-content: space-between; padding: .3rem 0; border-bottom: 1px solid #f3f4f6; }
 .lista-links .n { font-size: .78rem; background: var(--destaque-fundo); color: var(--destaque); border-radius: 1rem; padding: 0 .5rem; align-self: center; }
 footer.rodape li { padding: .15rem 0; }
+.prazos a, .lista-links a { text-decoration: none; }
+.prazos a:hover, .lista-links a:hover { text-decoration: underline; }
