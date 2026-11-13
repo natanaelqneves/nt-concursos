@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "slug": "policia-penal-df-validade-2027",
+  "titulo": "Polícia Penal DF: validade do último concurso termina em agosto de 2027",
+  "orgao": "Polícia Penal do Distrito Federal",
+  "categoria": "seguranca",
+  "esfera": "estadual",
+  "uf": "DF",
+  "resumo": "O último concurso da Polícia Penal do Distrito Federal, aberto em 2022 e homologado em agosto de 2023, teve a validade prorrogada por dois anos e vale até 22 de agosto de 2027. A prorrogação permite chamar mais aprovados até lá. Quando a validade acabar, só um concurso novo poderá preencher vagas. Não há inscrições abertas.",
+  "cargos": ["Policial Penal"],
+  "fatos": [
+    {"campo": "validade", "texto": "A validade foi prorrogada até 22 de agosto de 2027, por ato publicado no Diário Oficial do DF.", "fim": "2027-08-22", "fontes": ["f-1", "f-2", "f-3"]},
+    {"campo": "homologacao", "texto": "O resultado final foi homologado em agosto de 2023.", "fontes": ["f-1", "f-2"]}
+  ],
+  "fontes": [
+    {"id": "f-1", "nome": "Direção Concursos", "url": "https://www.direcaoconcursos.com.br/noticias/concurso-policia-penal-df-validade-prorrogada", "consultado_em": "2026-11-13"},
+    {"id": "f-2", "nome": "O Hoje", "url": "https://ohoje.com/2025/06/28/policia-penal-reforca-selecoes-df-amplia-validade-e-sp-abre-1-100-vagas/", "consultado_em": "2026-11-13"},
+    {"id": "f-3", "nome": "Ache Concursos", "url": "https://www.acheconcursos.com.br/noticias/concurso-da-policia-penal-df-tem-prazo-de-validade-prorrogado-81692", "consultado_em": "2026-11-13"}
+  ],
+  "validade_ate": "2027-08-22",
+  "apurado_em": "2026-11-13T15:30:00-03:00"
+}

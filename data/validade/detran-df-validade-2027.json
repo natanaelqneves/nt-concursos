@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "slug": "detran-df-validade-2027",
+  "titulo": "Detran DF: validade do concurso de Técnico e Analista termina em abril de 2027",
+  "orgao": "Departamento de Trânsito do Distrito Federal (Detran DF)",
+  "categoria": "transito",
+  "esfera": "estadual",
+  "uf": "DF",
+  "resumo": "O último concurso do Detran DF para Técnico e Analista em Atividades de Trânsito, aberto em 2022 e homologado em abril de 2023, teve a validade prorrogada por dois anos e vale até 11 de abril de 2027. Depois dessa data não há mais lista de aprovados para esses cargos. Há também um processo separado para um concurso de Agente de Trânsito, ainda sem edital. Não há inscrições abertas.",
+  "cargos": ["Técnico em Atividades de Trânsito", "Analista em Atividades de Trânsito"],
+  "fatos": [
+    {"campo": "validade", "texto": "A validade foi prorrogada até 11 de abril de 2027, por ato publicado no Diário Oficial do DF em 7 de março de 2025.", "fim": "2027-04-11", "fontes": ["f-1", "f-2", "f-3"]},
+    {"campo": "novo_concurso", "texto": "Um concurso para Agente de Trânsito, com 182 vagas anunciadas, está em preparação e ainda não tem edital.", "fontes": ["f-3", "f-4"]}
+  ],
+  "fontes": [
+    {"id": "f-1", "nome": "Direção Concursos", "url": "https://www.direcaoconcursos.com.br/noticias/concurso-detran-df-validade-prorrogada", "consultado_em": "2026-11-13"},
+    {"id": "f-2", "nome": "Estudo Certeiro", "url": "https://estudocerteiro.com.br/concurso-detran-df/", "consultado_em": "2026-11-13"},
+    {"id": "f-3", "nome": "Gran Cursos Online", "url": "https://blog.grancursosonline.com.br/?p=86858", "consultado_em": "2026-11-13"},
+    {"id": "f-4", "nome": "JC Concursos", "url": "https://jcconcursos.com.br/concurso/concurso-detran-df-79201", "consultado_em": "2026-11-13"}
+  ],
+  "validade_ate": "2027-04-11",
+  "apurado_em": "2026-11-13T15:30:00-03:00"
+}

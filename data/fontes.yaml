@@ -51,6 +51,10 @@ fontes:
     nome: Instituto Access
     papel: banca
     dominios: [access.org.br, access.selecao.net.br]
+  selecon:
+    nome: Instituto Selecon
+    papel: banca
+    dominios: [selecon.org.br]
 
   # Cópias de editais publicadas por sites de notícias e cursos (papel: copia). Só entram
   # pela fonte "avulsos", quando o edital não está numa fonte oficial que alcançamos. O gate

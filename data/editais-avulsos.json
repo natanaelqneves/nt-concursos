@@ -238,6 +238,82 @@
         "Diário Oficial de Pernambuco de 29/09 e 15/10/2026, citados pela imprensa",
         "Busca na web por \"edital PMPE 2026\" e pela Portaria Conjunta 310: edital em cópia do Qconcursos e retificação em CDN de portal de concursos e na Magistrar Cursos"
       ]
+    },
+    {
+      "slug": "gcm-sao-goncalo-2026",
+      "titulo": "Prefeitura Municipal de São Gonçalo - Guarda Municipal",
+      "banca": "selecon",
+      "pagina": "https://www.selecon.org.br/",
+      "cargos": [
+        "Guarda Municipal Nível II"
+      ],
+      "documentos": [
+        {
+          "tipo": "edital",
+          "titulo": "Edital nº 001/PMSG/2026 (Guarda Municipal Nível II)",
+          "publicado_em": "2026-09-23",
+          "urls": [
+            "https://www.editorasolucao.com.br/blog/wp-content/uploads/2026/09/Concurso-Guarda-de-Sao-Goncalo-RJ-Edital.pdf"
+          ]
+        }
+      ],
+      "imprensa": {
+        "inscricao": {
+          "inicio": "2026-09-28",
+          "fim": "2026-11-18"
+        },
+        "fontes": [
+          "https://www.novaconcursos.com.br/portal/?p=315869",
+          "https://magistrarcursos.com.br/blog/?p=47738"
+        ]
+      },
+      "pesquisa": [
+        "Site do Instituto Selecon (selecon.org.br): banca sem coletor automático no NT Concursos",
+        "Busca na web por \"edital Guarda São Gonçalo 2026\": PDF do Edital nº 001/PMSG/2026 em cópia da Editora Solução",
+        "Datas de inscrição conferidas com Nova Concursos e Magistrar Cursos"
+      ]
+    },
+    {
+      "slug": "camara-cuiaba-2026",
+      "titulo": "Câmara Municipal de Cuiabá",
+      "banca": "selecon",
+      "pagina": "https://www.selecon.org.br/",
+      "cargos": [
+        "Técnico Legislativo",
+        "Analista Legislativo",
+        "Contador",
+        "Controlador Interno"
+      ],
+      "documentos": [
+        {
+          "tipo": "edital",
+          "titulo": "Edital nº 001/2026-CMC, de 26 de outubro de 2026",
+          "publicado_em": "2026-10-26",
+          "urls": [
+            "https://arquivos.qconcursos.com/regulamento/arquivo/102705/camara-de-cuiaba-mt-2026-edital-n-1-edital.pdf"
+          ]
+        }
+      ],
+      "imprensa": {
+        "inscricao": {
+          "inicio": "2026-10-29",
+          "fim": "2026-11-30"
+        },
+        "isencao": {
+          "inicio": "2026-10-29",
+          "fim": "2026-10-30"
+        },
+        "fontes": [
+          "https://www.direcaoconcursos.com.br/noticias/edital-concurso-camara-de-cuiaba-publicado-2026",
+          "https://www.novaconcursos.com.br/portal/?p=317512"
+        ]
+      },
+      "pesquisa": [
+        "Site do Instituto Selecon (selecon.org.br): banca sem coletor automático no NT Concursos",
+        "Gazeta Municipal de Cuiabá nº 1.478, de 26/10/2026, citada pela imprensa",
+        "Busca na web por \"edital Câmara de Cuiabá 2026\": PDF do edital em cópia do Qconcursos",
+        "Datas conferidas com Direção Concursos e Nova Concursos"
+      ]
     }
   ]
 }
