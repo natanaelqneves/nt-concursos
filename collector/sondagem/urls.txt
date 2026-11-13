@@ -1,0 +1,12 @@
+https://www.institutoaocp.org.br/concursos/status/inscricoes-abertas aocp_abertas.html
+https://www.institutoaocp.org.br/concursos/status/em-andamento aocp_andamento.html
+https://concurso.idecan.org.br/robots.txt idecan2_robots.txt
+https://concurso.idecan.org.br/editais idecan2_editais.html
+https://concurso.idecan.org.br/editais/310 idecan2_310.html
+https://www.iades.com.br/inscricao/Menu.aspx iades_menu.html
+https://quadrix.org.br/ quadrix_home.html
+https://ibade.org.br/ ibade_home.html
+https://selecon.org.br/ selecon_home.html
+https://www.institutoacesso.org.br/ acesso_home.html
+https://www.institutoaccess.org.br/robots.txt access_robots.txt
+https://www.institutoaccess.org.br/ access_home.html
