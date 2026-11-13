@@ -35,6 +35,7 @@ class Linha:
     pagina: int
     atividade: str
     datas: str
+    grade: bool = True  # False: lida do texto corrido (sem grade), mais sujeita a desalinhar
 
 
 # Bloco de texto que é só uma célula de datas: datas, horários e conectivos, nada mais.
@@ -57,7 +58,7 @@ def linhas_texto(paginas_texto: dict[int, str], alvo: list[int]) -> list[Linha]:
         blocos = [normalizar(b) for b in re.split(r"\n\s*\n", paginas_texto.get(n, "")) if normalizar(b)]
         for anterior, atual in zip(blocos, blocos[1:]):
             if _so_datas(atual) and not _so_datas(anterior):
-                saida.append(Linha(n, anterior, atual))
+                saida.append(Linha(n, anterior, atual, grade=False))
     return saida
 
 
