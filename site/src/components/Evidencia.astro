@@ -14,7 +14,7 @@ const rotuloDoc = doc.tipo === "retificacao" ? "retificação" : doc.tipo;
 const copia = ehCopia(doc);
 ---
 <details class="evidencia">
-  <summary>Ver no edital (pág. {ev.pagina})</summary>
+  <summary>Ver no {doc.tipo === "retificacao" ? "documento" : "edital"} (pág. {ev.pagina})</summary>
   {ev.tabela ? (
     <table class="evidencia-tabela table table-sm table-bordered mb-2">
       <caption>Linha do cronograma do edital</caption>

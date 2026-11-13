@@ -14,7 +14,7 @@ export const COPIAS: Record<string, string> = {
   editorasolucao: "Editora Solução",
   magistrar: "Magistrar Cursos",
   acheconcursos: "Ache Concursos",
-  "cdn-cloudfront": "um portal de concursos (CDN)",
+  "cdn-cloudfront": "um portal de concursos",
 };
 
 const BANCAS: Record<string, string> = {
