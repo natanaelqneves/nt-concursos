@@ -27,13 +27,17 @@ Categoria = Literal[
     "conselho",  # conselhos profissionais (autarquias federais, com sede regional)
     "fiscal",       # Receita Federal e secretarias estaduais de Fazenda (auditoria fiscal)
     "advocacia",    # advocacia pública: AGU, PGFN, procuradorias-gerais dos estados e do DF
-    "executivo",    # executivo federal: ministérios, autarquias, agências reguladoras, INSS, IBGE, CNU
+    "executivo",    # executivo federal (ministérios, autarquias, agências, INSS, IBGE, CNU) e gestão estadual
+                    # (secretarias de administração/planejamento, concursos unificados estaduais, EPPGG)
     "legislativo",  # Câmara dos Deputados, Senado Federal e assembleias legislativas
+    "educacao",     # universidades e institutos federais (UF da sede) e secretarias estaduais de educação
+    "saude",        # secretarias estaduais de saúde e fundações estaduais de saúde
+    "militar",      # Forças Armadas: Exército, Marinha e Aeronáutica (carreira, não temporários)
     "outro",     # demais órgãos federais/estaduais: só entram com cargo de TI (areas contém "ti")
 ]
 Area = Literal["ti"]
 # Categorias federais que podem ter UF própria (sede regional); as demais federais usam BR.
-FEDERAIS_COM_UF = {"tribunal", "conselho"}
+FEDERAIS_COM_UF = {"tribunal", "conselho", "educacao"}
 Esfera = Literal["federal", "estadual"]
 Porte = Literal["grande", "medio", "pequeno", "indefinido"]
 
@@ -216,14 +220,17 @@ class Concurso(_Base):
             if ev.documento not in doc_ids:
                 raise ValueError(f"{ev.id} aponta para documento inexistente {ev.documento}")
         if self.esfera == "federal" and self.uf != "BR" and self.categoria not in FEDERAIS_COM_UF:
-            # TRF/TRT/TRE e conselhos regionais têm UF da sede; os demais órgãos federais são BR.
+            # TRF/TRT/TRE, conselhos regionais, universidades e institutos federais têm UF da sede;
+            # os demais órgãos federais são BR.
             raise ValueError("órgão federal fora do Judiciário deve ter uf BR")
         if self.categoria == "outro" and "ti" not in self.areas:
             raise ValueError("categoria 'outro' só entra com cargo de TI (areas: ['ti'])")
         if len(set(self.areas)) != len(self.areas):
             raise ValueError("areas repetidas")
-        if self.categoria == "executivo" and self.esfera != "federal":
-            raise ValueError("categoria 'executivo' cobre só o executivo federal")
+        if self.categoria in ("militar",) and self.esfera != "federal":
+            raise ValueError("categoria 'militar' cobre só as Forças Armadas (federal)")
+        if self.categoria == "saude" and self.esfera != "estadual":
+            raise ValueError("categoria 'saude' cobre só as secretarias e fundações estaduais de saúde")
         if self.esfera == "estadual" and self.uf == "BR":
             raise ValueError("órgão estadual precisa de UF")
         if self.vagas_imediatas is not None and self.vagas_imediatas.valor is not None:

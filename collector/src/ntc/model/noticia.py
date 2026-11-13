@@ -104,6 +104,10 @@ class Noticia(_Base):
             raise ValueError("órgão federal fora do Judiciário deve ter uf BR")
         if self.categoria == "outro" and "ti" not in self.areas:
             raise ValueError("categoria 'outro' só entra com cargo de TI")
+        if self.categoria == "militar" and self.esfera != "federal":
+            raise ValueError("categoria 'militar' cobre só as Forças Armadas (federal)")
+        if self.categoria == "saude" and self.esfera != "estadual":
+            raise ValueError("categoria 'saude' cobre só as secretarias e fundações estaduais de saúde")
         if self.esfera == "estadual" and self.uf == "BR":
             raise ValueError("órgão estadual precisa de UF")
         return self
