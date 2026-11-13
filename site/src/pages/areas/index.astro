@@ -1,0 +1,31 @@
+---
+import Base from "../../layouts/Base.astro";
+import { NOME_CATEGORIA } from "../../lib/dados";
+import { AREAS, porCategoria, total, urlArea } from "../../lib/navegacao";
+
+const areas = AREAS.map((c) => ({ c, nome: NOME_CATEGORIA[c], n: total(porCategoria(c)) }));
+---
+<Base
+  titulo="Concursos abertos por área"
+  descricao="Concursos federais e estaduais com inscrições abertas por área: tribunais, segurança pública, fiscal, educação, saúde, empresas públicas, Forças Armadas e outras."
+  breadcrumbs={[{ nome: "Início", url: "/" }, { nome: "Por área", url: "/areas/" }]}
+>
+  <h1>Concursos por área</h1>
+  <p class="lead">
+    O site organiza os concursos pelo tipo de órgão que contrata. Cada área tem uma explicação de como
+    funcionam os concursos dela e a lista dos que estão com inscrições abertas.
+  </p>
+  <ul class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-2 list-unstyled">
+    {areas.map((a) => (
+      <li class="col">
+        <a class="d-flex justify-content-between align-items-center border rounded p-2 text-decoration-none" href={urlArea(a.c)}>
+          <span>{a.nome}</span><span class={`badge ${a.n ? "text-bg-primary" : "text-bg-light border"}`}>{a.n}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+  <p class="meta mt-3">
+    O número soma os concursos conferidos no edital e os apurados na imprensa. Concursos com vagas de
+    tecnologia da informação, em qualquer área, também aparecem em <a href="/ti/">Vagas de TI</a>.
+  </p>
+</Base>

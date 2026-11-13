@@ -1,0 +1,49 @@
+---
+import Base from "../../layouts/Base.astro";
+import ListaGrupo from "../../components/ListaGrupo.astro";
+import { NOME_CATEGORIA } from "../../lib/dados";
+import { urlArea, urlEstado } from "../../lib/navegacao";
+import { RECORRENTES, abertoAgora } from "../../lib/recorrentes";
+import { formatarData } from "../../lib/tempo";
+
+export function getStaticPaths() {
+  return RECORRENTES.map((r) => ({ params: { slug: r.slug }, props: { r } }));
+}
+
+const { r } = Astro.props as { r: (typeof RECORRENTES)[number] };
+const agora = abertoAgora(r);
+const aberto = agora.concursos.length + agora.noticias.length > 0;
+---
+<Base
+  titulo={`Concurso ${r.nome}: últimos editais e próximo concurso`}
+  descricao={`Como é o concurso ${r.nome}: cargos, escolaridade, editais anteriores, bancas e a situação atual do próximo concurso.`}
+  breadcrumbs={[{ nome: "Início", url: "/" }, { nome: "Concursos que se repetem", url: "/recorrentes/" }, { nome: r.nome, url: `/recorrentes/${r.slug}/` }]}
+>
+  <p class="meta"><a href="/recorrentes/">Concursos que se repetem</a> · <a href={urlArea(r.categoria)}>{NOME_CATEGORIA[r.categoria]}</a> · <a href={urlEstado(r.uf)}>{r.uf === "BR" ? "Nacional" : r.uf}</a></p>
+  <h1>Concurso {r.nome}</h1>
+
+  <div class={`alert ${aberto ? "alert-success" : "alert-light border"}`}>
+    <strong>{aberto ? "Há edital aberto agora." : "Situação atual:"}</strong>{" "}
+    {aberto ? "Veja abaixo o concurso com inscrições abertas." : r.situacao}
+  </div>
+  {aberto && <ListaGrupo g={agora} vazio="" />}
+
+  <h2>Sobre o órgão e os concursos</h2>
+  {r.sobre.map((p) => <p>{p}</p>)}
+
+  <h2>Cargos mais frequentes</h2>
+  <ul>{r.cargos.map((c) => <li>{c.nome} – {c.escolaridade}{c.nota ? ` (${c.nota})` : ""}</li>)}</ul>
+
+  <h2>Editais anteriores</h2>
+  <ul class="list-unstyled">
+    {r.historico.map((h) => <li class="mb-2"><strong>{h.ano}:</strong> {h.texto}</li>)}
+  </ul>
+  <p class="meta">
+    Números e datas dos editais anteriores servem como referência; o próximo edital pode mudar cargos,
+    vagas, salários e etapas. Quando ele sair, confira sempre o documento oficial.
+  </p>
+
+  <h2>Fontes</h2>
+  <ul>{r.fontes.map((f) => <li><a href={f.url} rel="noopener" target="_blank">{f.nome}</a></li>)}</ul>
+  <p class="meta">Conferido em {formatarData(r.conferido_em)}.</p>
+</Base>

@@ -16,6 +16,7 @@ import {
 } from "../../lib/dados";
 import { formatarData, formatarDataHora } from "../../lib/tempo";
 import { SOBRE_CATEGORIA } from "../../lib/categorias";
+import { urlArea, urlEstado } from "../../lib/navegacao";
 import { orgaoRevisado } from "../../lib/dados";
 
 export function getStaticPaths() {
@@ -75,7 +76,7 @@ const descricao = verificado(c.prazos.isencao) && c.prazos.isencao.fim
   breadcrumbs={[{ nome: "Início", url: "/" }, { nome, url: `/concursos/${c.slug}/` }]}
 >
   <p class="meta">
-    {NOME_CATEGORIA[c.categoria]} · {c.esfera === "federal" ? "Federal" : "Estadual"} · {local(c)} · banca {c.banca.toUpperCase()}
+    <a href={urlArea(c.categoria)}>{NOME_CATEGORIA[c.categoria]}</a> · {c.esfera === "federal" ? "Federal" : "Estadual"} · <a href={urlEstado(c.uf)}>{local(c)}</a> · banca {c.banca.toUpperCase()}
   </p>
   <h1>{nome}</h1>
   {situacao && <p><span class={`selo badge rounded-pill ${situacao.classe}`}>{situacao.texto}</span></p>}

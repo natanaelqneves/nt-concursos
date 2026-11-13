@@ -1,0 +1,36 @@
+---
+import Base from "../../layouts/Base.astro";
+import { ESTADOS, porUf, total, urlEstado } from "../../lib/navegacao";
+
+const nacional = total(porUf("BR"));
+const estados = Object.entries(ESTADOS)
+  .map(([uf, e]) => ({ uf, nome: e.nome, n: total(porUf(uf)) }))
+  .sort((a, b) => a.nome.localeCompare(b.nome, "pt-BR"));
+---
+<Base
+  titulo="Concursos abertos por estado"
+  descricao="Concursos federais e estaduais com inscrições abertas, organizados por estado, com os órgãos nacionais numa lista própria."
+  breadcrumbs={[{ nome: "Início", url: "/" }, { nome: "Por estado", url: "/estados/" }]}
+>
+  <h1>Concursos por estado</h1>
+  <p class="lead">
+    Escolha o estado para ver os concursos com inscrições abertas ou previstas para os próximos dias.
+    Órgãos federais com sede regional, como os TRTs e os conselhos regionais, aparecem no estado da sede;
+    os de lotação nacional ficam em "Nacionais".
+  </p>
+  <ul class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-2 list-unstyled">
+    <li class="col">
+      <a class="d-flex justify-content-between align-items-center border rounded p-2 text-decoration-none" href={urlEstado("BR")}>
+        <span>Nacionais (federais)</span><span class="badge text-bg-light border">{nacional}</span>
+      </a>
+    </li>
+    {estados.map((e) => (
+      <li class="col">
+        <a class="d-flex justify-content-between align-items-center border rounded p-2 text-decoration-none" href={urlEstado(e.uf)}>
+          <span>{e.nome}</span><span class={`badge ${e.n ? "text-bg-primary" : "text-bg-light border"}`}>{e.n}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+  <p class="meta mt-3">O número ao lado de cada estado soma os concursos conferidos no edital e os apurados na imprensa.</p>
+</Base>

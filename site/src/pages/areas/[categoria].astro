@@ -1,0 +1,38 @@
+---
+import Base from "../../layouts/Base.astro";
+import ListaGrupo from "../../components/ListaGrupo.astro";
+import type { Categoria } from "../../lib/dados";
+import { NOME_CATEGORIA } from "../../lib/dados";
+import { SOBRE_CATEGORIA } from "../../lib/categorias";
+import { AREAS, porCategoria, urlArea } from "../../lib/navegacao";
+import { RECORRENTES } from "../../lib/recorrentes";
+
+export function getStaticPaths() {
+  return AREAS.map((categoria) => ({ params: { categoria }, props: { categoria } }));
+}
+
+const { categoria } = Astro.props as { categoria: Categoria };
+const nome = NOME_CATEGORIA[categoria];
+const sobre = SOBRE_CATEGORIA[categoria];
+const g = porCategoria(categoria);
+const recorrentes = RECORRENTES.filter((r) => r.categoria === categoria);
+---
+<Base
+  titulo={categoria === "outro" ? "Concursos de outros órgãos com vagas de TI" : `Concursos abertos: ${nome}`}
+  descricao={`${sobre.titulo}: como funcionam os concursos da área e quais estão com inscrições abertas.`}
+  breadcrumbs={[{ nome: "Início", url: "/" }, { nome: "Por área", url: "/areas/" }, { nome, url: urlArea(categoria) }]}
+>
+  <p class="meta"><a href="/areas/">Todas as áreas</a></p>
+  <h1>{nome}</h1>
+  <section class="mb-4">
+    <h2 class="h5">{sobre.titulo}</h2>
+    {sobre.paragrafos.map((p) => <p>{p}</p>)}
+  </section>
+  <ListaGrupo g={g} vazio={`Nenhum concurso desta área com inscrições abertas nesta edição.`} />
+  {recorrentes.length > 0 && (
+    <section class="mt-4">
+      <h2>Concursos que se repetem nesta área</h2>
+      <ul>{recorrentes.map((r) => <li><a href={`/recorrentes/${r.slug}/`}>{r.nome}</a></li>)}</ul>
+    </section>
+  )}
+</Base>
