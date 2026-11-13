@@ -162,6 +162,12 @@ export function emAndamento(c: Concurso, hoje = hojeBRT()): boolean {
     && (c.prazos.inscricao.fim ?? "") >= menosDias(hoje, JANELA_ANDAMENTO_DIAS);
 }
 
+/** Concurso com algo conferido para mostrar hoje: prazo aberto ou etapas (em andamento). Os demais
+ *  ficam fora das buscas (noindex) e do sitemap. */
+export function indexavel(c: Concurso, hoje = hojeBRT()): boolean {
+  return isencaoAberta(c, hoje) || inscricaoAberta(c, hoje) || emAndamento(c, hoje);
+}
+
 export function proximaEtapa(c: Concurso, hoje = hojeBRT()): Etapa | undefined {
   return etapasVerificadas(c).find((e) => (e.fim ?? "") >= hoje);
 }
