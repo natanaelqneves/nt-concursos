@@ -238,6 +238,13 @@ revisa uma vez por milestone** (o dono cola o diff no Codex e devolve a crítica
   PDFs; Vunesp, Cesgranrio, IBFC, Fundatec e Consulplan respondem 403 aos servidores do GitHub. Não se
   contorna: ficam para o plano B (coleta no PC do dono, com robots respeitado) ou autorização da banca.
   Acessíveis e ainda não implementadas: Instituto AOCP, Idecan, IADES, Ibade, Selecon, Quadrix, Instituto Acesso.
+- **Bancas novas (13/11/2026)**: Instituto AOCP entrou (API pública do site; PMSC 2026 publicada com
+  prazos lidos do Anexo I). Os concursos antigos do AOCP (PMPE, CBMPE, CASAN) têm PDFs em
+  `arquivos-site.institutoaocp.org.br`, com robots `Disallow: /`: ficam de fora. Bloqueadas por desafio
+  do Cloudflare aos servidores do GitHub (não se contorna): Idecan (`concurso.idecan.org.br`), Quadrix,
+  Instituto Access (`access.org.br`) e a plataforma `selecao.net.br` (Selecon e Instituto Acesso).
+  IADES e Ibade são acessíveis, mas hoje só listam processos seletivos, exames e concursos municipais;
+  o Ibade publica o cronograma num anexo separado do edital, o que exige evidência em dois documentos.
 - **INLABS sem previsão de volta**: a descoberta federal segue pelas bancas. A Base de Dados de
   Publicações do DOU (substituto indicado pela Imprensa Nacional) fica em www.in.gov.br, cujo robots.txt
   proíbe tudo; só será usada com autorização escrita da Imprensa Nacional.
