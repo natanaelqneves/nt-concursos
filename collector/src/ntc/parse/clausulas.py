@@ -45,6 +45,8 @@ CAMPO_POR_TIPO = {"isencao": "prazos.isencao", "inscricao": "prazos.inscricao"}
 _FRONTEIRA = re.compile(
     r"(?<=[.;])\s+(?=[A-ZÁÉÍÓÚÂÊÔÃÕÇ0-9])"
     r"|(?<=\d{4})\s+(?=[A-ZÁÉÍÓÚÂÊÔÃÕÇ])"
+    # cronograma numerado: "... 07/11/2026 10/11/2026 3 Período de inscrições 11/11/2026 14/12/2026 4 ..."
+    r"|(?<=\d{4})\s+(?=\d{1,2}\s+[A-ZÁÉÍÓÚÂÊÔÃÕÇ][a-záéíóúâêôãõç])"
     r"|(?<=\d{4}\.)\s+"
 )
 
