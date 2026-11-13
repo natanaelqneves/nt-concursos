@@ -211,3 +211,17 @@ validade terminando.
 | `data/validade/<slug>.json` | concursos que podem reabrir: `titulo`, `orgao`, `categoria`, `esfera`, `uf`, `municipio`, `banca` (do último concurso), `resumo` (texto próprio), `cargos`, `fatos[]` (`validade` obrigatório com `fim`; `homologacao`, `prorrogacao`, `cargos`, `banca`, `novo_concurso`), `fontes[]` (2 veículos diferentes ou 1 oficial por fato), `validade_ate` (= fim do fato `validade`), `apurado_em`. Schema em `schema/validade.schema.json` |
 | Site | `/podem-reabrir/` lista as validades que terminam nos próximos 12 meses ou terminaram há até 6 meses. Nunca aparece como inscrição aberta nem entra nas listas conferidas no edital |
 | `editais-avulsos.json` | entrada sem notícia publicada pode trazer `imprensa`: `{"inscricao": {"inicio", "fim"}, "fontes": [URLs de 2 veículos]}`; essas datas fazem a mesma conferência das da notícia |
+
+## Etapas e "Em andamento" (13/11/2026, compatível com a versão 2)
+
+Decisão do dono: o concurso não some do site quando as inscrições fecham. Ele passa para a seção
+"Em andamento" e mostra as etapas seguintes. Feito em partes; a Parte 1 cobre os concursos das
+bancas que o coletor alcança.
+
+| Campo / arquivo | Regra |
+|---|---|
+| `etapas[]` (concurso) | opcional, em ordem de data. Cada etapa: `tipo` (`prova_objetiva`, `prova_discursiva`, `prova_pratica`, `taf`, `avaliacao_psicologica`, `avaliacao_medica`, `investigacao_social`, `titulos`, `heteroidentificacao`, `curso_formacao`, `gabarito`, `resultado`, `resultado_final`, `homologacao`, `outra`), `nome` (como o cronograma chama), `inicio`, `fim` (data da etapa), `status`, `evidencia` |
+| Evidência | igual à dos prazos: caminho `etapas.N`; etapa `verificada` exige evidência e `fim`; `(tipo, nome)` não se repete |
+| Gate | enquanto a regra própria não entra no coletor, etapa verificada sem aprovação do editor vai para revisão (G4) |
+| `noticias/*.json` | `fatos[].campo` ganha `gabarito`, `resultado`, `homologacao`, `etapa`. `expira_em` continua sendo o fim das inscrições: depois dele a notícia sai das abertas e pode ficar em "em andamento" |
+| Histórico do órgão | o site agrupa concursos pelo campo `orgao`; por isso o nome do órgão é o mesmo entre editais de anos diferentes (o classificador já normaliza) |

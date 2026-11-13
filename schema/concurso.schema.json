@@ -205,6 +205,92 @@
       "title": "Documento",
       "type": "object"
     },
+    "Etapa": {
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "default": "ausente",
+          "enum": [
+            "verificado",
+            "revisao",
+            "ausente"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "evidencia": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Evidencia"
+        },
+        "tipo": {
+          "enum": [
+            "prova_objetiva",
+            "prova_discursiva",
+            "prova_pratica",
+            "taf",
+            "avaliacao_psicologica",
+            "avaliacao_medica",
+            "investigacao_social",
+            "titulos",
+            "heteroidentificacao",
+            "curso_formacao",
+            "gabarito",
+            "resultado",
+            "resultado_final",
+            "homologacao",
+            "outra"
+          ],
+          "title": "Tipo",
+          "type": "string"
+        },
+        "nome": {
+          "maxLength": 200,
+          "minLength": 3,
+          "title": "Nome",
+          "type": "string"
+        },
+        "inicio": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Inicio"
+        },
+        "fim": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Fim"
+        }
+      },
+      "required": [
+        "tipo",
+        "nome"
+      ],
+      "title": "Etapa",
+      "type": "object"
+    },
     "Evidencia": {
       "additionalProperties": false,
       "properties": {
@@ -541,6 +627,13 @@
     },
     "prazos": {
       "$ref": "#/$defs/Prazos"
+    },
+    "etapas": {
+      "items": {
+        "$ref": "#/$defs/Etapa"
+      },
+      "title": "Etapas",
+      "type": "array"
     },
     "isencao_publicos": {
       "items": {

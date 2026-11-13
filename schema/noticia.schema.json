@@ -12,7 +12,11 @@
             "prova",
             "remuneracao",
             "banca",
-            "cargos"
+            "cargos",
+            "gabarito",
+            "resultado",
+            "homologacao",
+            "etapa"
           ],
           "title": "Campo",
           "type": "string"

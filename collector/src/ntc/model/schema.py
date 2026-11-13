@@ -188,6 +188,30 @@ class Cargo(_Base):
     remuneracao: Campo | None = None
 
 
+# Etapas depois das inscrições (13/11/2026): o concurso não some do site quando as inscrições
+# fecham; passa para "em andamento" e mostra as etapas do cronograma, cada uma com evidência.
+TipoEtapa = Literal[
+    "prova_objetiva", "prova_discursiva", "prova_pratica", "taf", "avaliacao_psicologica",
+    "avaliacao_medica", "investigacao_social", "titulos", "heteroidentificacao", "curso_formacao",
+    "gabarito", "resultado", "resultado_final", "homologacao", "outra",
+]
+
+
+class Etapa(_ComEvidencia):
+    tipo: TipoEtapa
+    nome: str = Field(min_length=3, max_length=200)  # como o cronograma chama a etapa
+    inicio: date | None = None
+    fim: date | None = None  # data da etapa (ou fim do período)
+
+    @model_validator(mode="after")
+    def _coerente(self) -> Etapa:
+        if self.status == "verificado" and self.fim is None:
+            raise ValueError("etapa verificada sem data")
+        if self.inicio and self.fim and self.inicio > self.fim:
+            raise ValueError("início da etapa posterior ao fim")
+        return self
+
+
 class Prazos(_Base):
     isencao: Prazo = Field(default_factory=Prazo)
     inscricao: Prazo = Field(default_factory=Prazo)
@@ -214,6 +238,7 @@ class Concurso(_Base):
     areas: list[Area] = Field(default_factory=list)  # áreas dos cargos (ex.: "ti")
     taxa: Campo | None = None
     prazos: Prazos = Field(default_factory=Prazos)
+    etapas: list[Etapa] = Field(default_factory=list)  # em ordem de data
     isencao_publicos: list[str] = Field(default_factory=list)
     documentos: list[Documento] = Field(min_length=1)
     evidencias: list[Evidencia] = Field(default_factory=list)
@@ -230,6 +255,8 @@ class Concurso(_Base):
             pares.append(("vagas_imediatas", self.vagas_imediatas))
         if self.taxa is not None:
             pares.append(("taxa", self.taxa))
+        for i, etapa in enumerate(self.etapas):
+            pares.append((f"etapas.{i}", etapa))
         for i, cargo in enumerate(self.cargos):
             if cargo.vagas is not None:
                 pares.append((f"cargos.{i}.vagas", cargo.vagas))
@@ -259,6 +286,12 @@ class Concurso(_Base):
             raise ValueError("categoria 'outro' só entra com cargo de TI (areas: ['ti'])")
         if len(set(self.areas)) != len(self.areas):
             raise ValueError("areas repetidas")
+        chaves = [(e.tipo, e.nome) for e in self.etapas]
+        if len(set(chaves)) != len(chaves):
+            raise ValueError("etapas repetidas")
+        datas = [e.fim for e in self.etapas if e.fim is not None]
+        if datas != sorted(datas):
+            raise ValueError("etapas fora da ordem de data")
         if self.vagas_imediatas is not None and self.vagas_imediatas.valor is not None:
             if not isinstance(self.vagas_imediatas.valor, int) or self.vagas_imediatas.valor < 0:
                 raise ValueError("vagas_imediatas deve ser inteiro não negativo")

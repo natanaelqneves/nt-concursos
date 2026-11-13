@@ -161,3 +161,38 @@ def test_validade_regras():
         Validade.model_validate(dict(base, validade_ate="2027-03-11"))
     with pytest.raises(ValueError):  # uma só fonte não oficial
         Validade.model_validate(dict(base, fontes=[dict(base["fontes"][0], oficial=False)]))
+
+
+def _etapa(**kw):
+    base = {"tipo": "prova_objetiva", "nome": "Aplicação das provas objetivas", "fim": "2026-12-14",
+            "status": "revisao"}
+    return {**base, **kw}
+
+
+def test_etapas_regras(novo):
+    d = novo()
+    d["etapas"] = [_etapa(), _etapa(tipo="gabarito", nome="Gabarito preliminar", fim="2026-12-15")]
+    Concurso.model_validate(d)
+    d["etapas"] = [_etapa(), _etapa()]
+    with pytest.raises(ValidationError, match="repetidas"):
+        Concurso.model_validate(d)
+    d["etapas"] = [_etapa(fim="2027-01-10"), _etapa(tipo="gabarito", nome="Gabarito", fim="2026-12-15")]
+    with pytest.raises(ValidationError, match="ordem"):
+        Concurso.model_validate(d)
+    d["etapas"] = [_etapa(status="verificado", fim=None, evidencia="ev-1")]
+    with pytest.raises(ValidationError, match="sem data"):
+        Concurso.model_validate(d)
+    d["etapas"] = [_etapa(status="verificado")]
+    with pytest.raises(ValidationError, match="sem evidência"):
+        Concurso.model_validate(d)
+
+
+def test_etapa_verificada_exige_evidencia_do_proprio_caminho(novo):
+    d = novo()
+    ev = dict(d["evidencias"][0], id="ev-90", campo="etapas.0")
+    d["evidencias"].append(ev)
+    d["etapas"] = [_etapa(status="verificado", evidencia="ev-90")]
+    Concurso.model_validate(d)
+    d["etapas"][0]["evidencia"] = d["evidencias"][0]["id"]
+    with pytest.raises(ValidationError, match="outro campo"):
+        Concurso.model_validate(d)

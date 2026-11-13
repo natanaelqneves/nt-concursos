@@ -8,7 +8,8 @@ Regras (conferidas pelo schema):
 - todo fato cita fontes; precisa de 2 fontes de domínios diferentes, ou de 1 fonte oficial
   (órgão, banca ou diário oficial) que tenha sido consultada;
 - o texto é escrito pelo site, com as próprias palavras; nada copiado das fontes;
-- a notícia tem data de expiração (fim das inscrições) e sai do ar depois dela.
+- `expira_em` é o fim das inscrições: depois dele a notícia sai das inscrições abertas e passa a
+  "em andamento", com as etapas apuradas (prova, gabarito, resultado, homologação).
 """
 
 from __future__ import annotations
@@ -23,7 +24,11 @@ from ntc.model.schema import UF, Area, Categoria, Esfera, checar_esfera
 
 NOTICIA_SCHEMA_VERSION = 1
 
-CampoFato = Literal["inscricao", "isencao", "vagas", "taxa", "prova", "remuneracao", "banca", "cargos"]
+CampoFato = Literal[
+    "inscricao", "isencao", "vagas", "taxa", "prova", "remuneracao", "banca", "cargos",
+    # etapas depois das inscrições (13/11/2026): a notícia passa a "em andamento"
+    "gabarito", "resultado", "homologacao", "etapa",
+]
 
 
 class _Base(BaseModel):
@@ -75,7 +80,7 @@ class Noticia(_Base):
     fatos: list[Fato] = Field(min_length=2)
     fontes: list[Fonte] = Field(min_length=2)
     apurado_em: AwareDatetime
-    expira_em: date  # some do site depois desta data (fim das inscrições)
+    expira_em: date  # fim das inscrições: depois dele, a notícia fica em "em andamento"
 
     @model_validator(mode="after")
     def _fontes_suficientes(self) -> Noticia:

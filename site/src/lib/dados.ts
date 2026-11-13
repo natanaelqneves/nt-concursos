@@ -71,6 +71,20 @@ export interface Evidencia {
   tabela?: { atividade: string; datas: string } | null;
 }
 
+export type TipoEtapa =
+  | "prova_objetiva" | "prova_discursiva" | "prova_pratica" | "taf" | "avaliacao_psicologica"
+  | "avaliacao_medica" | "investigacao_social" | "titulos" | "heteroidentificacao" | "curso_formacao"
+  | "gabarito" | "resultado" | "resultado_final" | "homologacao" | "outra";
+
+export interface Etapa {
+  tipo: TipoEtapa;
+  nome: string;
+  inicio?: string | null;
+  fim?: string | null;
+  status: Status;
+  evidencia?: string | null;
+}
+
 export interface Concurso {
   schema_version: 2;
   slug: string;
@@ -86,6 +100,7 @@ export interface Concurso {
   areas?: "ti"[];
   taxa?: Campo | null;
   prazos: { isencao: Prazo; inscricao: Prazo };
+  etapas?: Etapa[];
   isencao_publicos: string[];
   documentos: Documento[];
   evidencias: Evidencia[];
@@ -197,7 +212,8 @@ export interface FonteNoticia {
 }
 
 export interface FatoNoticia {
-  campo: "inscricao" | "isencao" | "vagas" | "taxa" | "prova" | "remuneracao" | "banca" | "cargos";
+  campo: "inscricao" | "isencao" | "vagas" | "taxa" | "prova" | "remuneracao" | "banca" | "cargos"
+    | "gabarito" | "resultado" | "homologacao" | "etapa";
   texto: string;
   inicio?: string | null;
   fim?: string | null;
