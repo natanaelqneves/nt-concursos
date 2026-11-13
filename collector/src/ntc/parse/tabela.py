@@ -37,16 +37,42 @@ class Linha:
     datas: str
 
 
+# Bloco de texto que é só uma célula de datas: datas, horários e conectivos, nada mais.
+_SO_DATAS_RESTO = re.compile(
+    r"\d{1,2}/\d{1,2}(?:/\d{2,4})?|\d{1,2}h(?:\d{2})?(?:min)?|\b(?:das?|de|dos?|dia|at[ée]|[àa]s?|e|partir|no|ao)\b|[\s,.;–-]",
+    re.IGNORECASE,
+)
+
+
+def _so_datas(bloco: str) -> bool:
+    return bool(re.search(r"\d{1,2}/\d{1,2}", bloco)) and not _SO_DATAS_RESTO.sub("", bloco).strip()
+
+
+def linhas_texto(paginas_texto: dict[int, str], alvo: list[int]) -> list[Linha]:
+    """Cronograma sem grade (o pdfplumber não acha tabela), como o do Instituto AOCP: no texto do
+    pdftotext cada célula vira um bloco separado por linha em branco, atividade e depois datas.
+    Só vale o par em que o bloco de datas vem logo depois do bloco da atividade."""
+    saida: list[Linha] = []
+    for n in alvo:
+        blocos = [normalizar(b) for b in re.split(r"\n\s*\n", paginas_texto.get(n, "")) if normalizar(b)]
+        for anterior, atual in zip(blocos, blocos[1:]):
+            if _so_datas(atual) and not _so_datas(anterior):
+                saida.append(Linha(n, anterior, atual))
+    return saida
+
+
 def linhas(pdf: bytes, paginas_texto: dict[int, str]) -> list[Linha]:
     alvo = [n for n, t in paginas_texto.items() if TABELA_CABECALHO.search(normalizar(t))]
     if not alvo:
         return []
     saida: list[Linha] = []
+    sem_grade: list[int] = []
     with pdfplumber.open(io.BytesIO(pdf)) as doc:
         for n in alvo:
             if n > len(doc.pages):
                 continue
             pagina = doc.pages[n - 1]
+            antes = len(saida)
             for tabela in pagina.extract_tables():
                 for linha in tabela:
                     celulas = [normalizar(c) for c in linha if c and normalizar(c)]
@@ -56,8 +82,10 @@ def linhas(pdf: bytes, paginas_texto: dict[int, str]) -> list[Linha]:
                     if not m:
                         continue
                     saida.append(Linha(n, celulas[0], m.group(0).strip()))
+            if len(saida) == antes:
+                sem_grade.append(n)
             pagina.flush_cache()
-    return saida
+    return saida + linhas_texto(paginas_texto, sem_grade)
 
 
 def candidatos(linhas_: list[Linha], paginas_texto: dict[int, str], tipo: TipoPrazo) -> list[Candidato]:
