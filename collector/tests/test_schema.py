@@ -126,3 +126,38 @@ def test_conselho_federal_pode_ter_uf_da_sede(novo):
     d["categoria"] = "estatal"
     with pytest.raises(ValidationError, match="uf BR"):
         Concurso.model_validate(d)
+
+
+def test_esfera_municipal(concurso_dict):
+    import pytest
+    from ntc.model.schema import Concurso
+
+    d = dict(concurso_dict, esfera="municipal", categoria="guarda", municipio="João Pessoa", uf="PB")
+    Concurso.model_validate(d)
+    with pytest.raises(ValueError):
+        Concurso.model_validate(dict(d, municipio=None))
+    with pytest.raises(ValueError):
+        Concurso.model_validate(dict(d, categoria="tribunal"))
+    with pytest.raises(ValueError):
+        Concurso.model_validate(dict(d, esfera="estadual", municipio=None))  # guarda é só municipal
+    Concurso.model_validate(dict(d, esfera="estadual", categoria="transito", municipio=None))
+
+
+def test_validade_regras():
+    import pytest
+    from ntc.model.validade import Validade
+
+    base = {
+        "slug": "gcm-recife-2022", "titulo": "Guarda Civil do Recife: validade termina em março",
+        "orgao": "Guarda Civil Municipal do Recife", "categoria": "guarda", "esfera": "municipal",
+        "uf": "PE", "municipio": "Recife", "resumo": "x" * 90,
+        "fatos": [{"campo": "validade", "texto": "Validade até 10/3/2027", "fim": "2027-03-10", "fontes": ["f-1"]}],
+        "fontes": [{"id": "f-1", "nome": "Diário Oficial do Recife", "url": "https://www.recife.pe.gov.br/x",
+                    "oficial": True, "consultado_em": "2026-11-13"}],
+        "validade_ate": "2027-03-10", "apurado_em": "2026-11-13T15:00:00-03:00",
+    }
+    Validade.model_validate(base)
+    with pytest.raises(ValueError):
+        Validade.model_validate(dict(base, validade_ate="2027-03-11"))
+    with pytest.raises(ValueError):  # uma só fonte não oficial
+        Validade.model_validate(dict(base, fontes=[dict(base["fontes"][0], oficial=False)]))

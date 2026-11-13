@@ -420,6 +420,10 @@
         "educacao",
         "saude",
         "militar",
+        "guarda",
+        "transito",
+        "vigilancia",
+        "prefeitura",
         "outro"
       ],
       "title": "Categoria",
@@ -428,7 +432,8 @@
     "esfera": {
       "enum": [
         "federal",
-        "estadual"
+        "estadual",
+        "municipal"
       ],
       "title": "Esfera",
       "type": "string"
@@ -471,6 +476,20 @@
       ],
       "title": "Uf",
       "type": "string"
+    },
+    "municipio": {
+      "anyOf": [
+        {
+          "maxLength": 80,
+          "minLength": 2,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Municipio"
     },
     "cargos": {
       "items": {
