@@ -270,8 +270,11 @@ revisa uma vez por milestone** (o dono cola o diff no Codex e devolve a crítica
 | `conselho` | conselhos profissionais federais e regionais (incluído em 12/11) |
 | `fiscal` | Receita Federal, secretarias estaduais de Fazenda e receitas estaduais (incluído em 12/11) |
 | `advocacia` | AGU, PGFN, procuradorias-gerais dos estados e do DF (incluído em 12/11) |
-| `executivo` | só federal: ministérios, autarquias e fundações, agências reguladoras, INSS, IBGE, Banco Central, CNU (incluído em 12/11) |
+| `executivo` | federal: ministérios, autarquias e fundações, agências reguladoras, INSS, IBGE, Banco Central, CNU (incluído em 12/11); gestão estadual: secretarias de administração, planejamento e gestão, concursos unificados estaduais, EPPGG (incluído em 13/11) |
 | `legislativo` | Câmara dos Deputados, Senado, assembleias legislativas e Câmara Legislativa do DF (incluído em 12/11) |
+| `educacao` | universidades e institutos federais (UF da sede) e secretarias estaduais de educação (incluído em 13/11) |
+| `saude` | secretarias e fundações estaduais de saúde (incluído em 13/11) |
+| `militar` | Forças Armadas, seleções de carreira: escolas de formação, quadros técnicos e de saúde (incluído em 13/11) |
 | `outro` | demais órgãos federais e estaduais, só com cargo de TI (incluído em 12/11) |
 
 A organização é **por órgão, não por banca**: a banca é só o lugar onde o edital é publicado.
