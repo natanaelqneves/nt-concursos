@@ -1,6 +1,6 @@
 # ntconcursos — Arquitetura vencedora e plano do repositório
 
-Versão 1.4 · 13/11/2026 (M1, M1.1 e M1.2 entregues; escopo ampliado em 13/11) · Mediação: Claude · Revisores: Codex, Gemini Pro
+Versão 1.5 · 13/11/2026 (M1 a M1.4 entregues; editais avulsos em 13/11) · Mediação: Claude · Revisores: Codex, Gemini Pro
 
 ## 1. Consenso
 
@@ -214,6 +214,7 @@ revisa uma vez por milestone** (o dono cola o diff no Codex e devolve a crítica
 | M1.1 | cronograma em tabela com evidência de célula (PRs #3 e #4), resumo do concurso, "sobre a instituição" e cargos (PR #5): entregue em 12/11/2026. Cebraspe passa a publicar (PC-PE e Polícia Penal PE no primeiro dia) |
 | M1.2 | notícias apuradas na imprensa (PR #6), Bootstrap (PR #7), escopo ampliado para empresas públicas, conselhos, TI em qualquer órgão (PRs #8–#10), fiscal, advocacia pública, executivo federal e legislativo (PRs #11–#12), página /admin/ fase 1 (PRs #11, #13, #15) e guia de isenção (PR #14): entregue em 12/11/2026. Câmara dos Deputados 2026 publicada como `legislativo` |
 | M1.3 | escopo ampliado em 13/11/2026: educação (universidades e institutos federais, secretarias estaduais), saúde estadual, Forças Armadas e gestão estadual no `executivo` (contrato no PR #20, classificador no PR #21) |
+| M1.4 | editais avulsos em 13/11/2026 (contrato no PR #25, código nos PRs #26–#30): concursos da apuração na imprensa entram com o edital achado fora das bancas coletadas, oficial ou em cópia de site de concursos. 7 dos 9 publicados no primeiro dia (PC-AC, TRF3, TRT4, PM-SP, CREF16/RN, PM-PE, CBM-PE) |
 | M2 | publicação automática: próximo |
 
 ### Decisões tomadas no M1 (12/11/2026)
@@ -253,6 +254,13 @@ revisa uma vez por milestone** (o dono cola o diff no Codex e devolve a crítica
   inacessíveis, o site mostra concursos do escopo apurados em fontes não oficiais, numa seção separada
   (`/noticias/`) e rotulada. Cada fato exige 2 veículos diferentes ou 1 fonte oficial; nada entra nas
   listas verificadas. Ver `docs/CONTRATO-DADOS.md`.
+- **Editais avulsos e cópias (decisão do dono, 13/11/2026)**: quando o edital não está numa fonte que o
+  coletor alcança, a lista `data/editais-avulsos.json` aponta as URLs do documento (oficial primeiro, cópias
+  de sites de concursos depois, sempre com robots.txt respeitado). O gate é o mesmo; a mais, a data lida
+  precisa bater com a da notícia na imprensa, e o prazo pode vir da retificação (prorrogação). A linha de
+  cronograma lida como texto só vale nesses casos. A página do concurso diz de onde veio cada documento e
+  onde se pesquisou. Banestes ficou de fora (retificação com a prorrogação não encontrada) e a DPDF
+  também (cronograma do Diário Oficial ilegível na cópia).
 - **Resumo por órgão** (`data/orgaos.json`) só vai ao ar com `revisado: true`; os textos por categoria são
   autorais e genéricos (sem dado que mude de edital para edital).
 
