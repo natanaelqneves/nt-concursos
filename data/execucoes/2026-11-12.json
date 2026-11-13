@@ -1,4 +1,179 @@
 {
+  "aocp": {
+    "inicio": "2026-11-12T23:17:57-03:00",
+    "fim": "2026-11-12T23:18:39-03:00",
+    "erro_fonte": null,
+    "contagem": {
+      "fora_do_escopo": 10,
+      "publicado": 1,
+      "erro": 5
+    },
+    "registros": [
+      {
+        "fonte": "aocp",
+        "id": "727",
+        "titulo": "HU BRASIL - EMPRESA BRASILEIRA DE SERVIÇOS HOSPITALARES",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "aocp",
+        "id": "proseleta-3",
+        "titulo": "PMSC - POLÍCIA MILITAR DE SANTA CATARINA",
+        "situacao": "publicado",
+        "detalhe": "seguranca/estadual/SC",
+        "slug": "pm-sc-2026",
+        "campos": {
+          "prazos.isencao": "verificado",
+          "prazos.inscricao": "verificado"
+        },
+        "violacoes": []
+      },
+      {
+        "fonte": "aocp",
+        "id": "693",
+        "titulo": "CBMERJ - CORPO DE BOMBEIROS MILITAR DO ESTADO DO RIO DE JANEIRO",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "aocp",
+        "id": "714",
+        "titulo": "PMPE - POLÍCIA MILITAR DE PERNAMBUCO",
+        "situacao": "erro",
+        "detalhe": "BloqueadoPorRobots: robots.txt não permite: https://arquivos-site.institutoaocp.org.br/publicacoes/2900b54e-fae0-462e-8a77-58784523dfa0.pdf",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "aocp",
+        "id": "715",
+        "titulo": "CBMPE - CORPO DE BOMBEIROS MILITAR DE PERNAMBUCO",
+        "situacao": "erro",
+        "detalhe": "BloqueadoPorRobots: robots.txt não permite: https://arquivos-site.institutoaocp.org.br/publicacoes/af766320-b99c-4c1b-b803-12351ce250ed.pdf",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "aocp",
+        "id": "723",
+        "titulo": "PREFEITURA MUNICIPAL DE CURITIBA",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "aocp",
+        "id": "722",
+        "titulo": "PREFEITURA MUNICIPAL DE CURITIBA",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "aocp",
+        "id": "721",
+        "titulo": "PREFEITURA MUNICIPAL DE CURITIBA",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "aocp",
+        "id": "720",
+        "titulo": "IPSM - Instituto de Previdência do Servidor Municipal",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "aocp",
+        "id": "719",
+        "titulo": "PREFEITURA MUNICIPAL DE CURITIBA",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "aocp",
+        "id": "718",
+        "titulo": "PREFEITURA MUNICIPAL DE CURITIBA",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "aocp",
+        "id": "717",
+        "titulo": "IFPA - INSTITUTO FEDERAL DE EDUCAÇÃO, CIÊNCIA E TECNOLOGIA DO PARÁ",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "aocp",
+        "id": "713",
+        "titulo": "SECRETARIA DE ESTADO DA ADMINISTRAÇÃO DO ESTADO DO AMAPÁ - AP",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "aocp",
+        "id": "712",
+        "titulo": "CASAN - COMPANHIA CATARINENSE DE ÁGUAS E SANEAMENTO - SC",
+        "situacao": "erro",
+        "detalhe": "BloqueadoPorRobots: robots.txt não permite: https://arquivos-site.institutoaocp.org.br/publicacoes/b1d30a05-e72f-48bd-8919-95d4a6fa727a.pdf",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "aocp",
+        "id": "711",
+        "titulo": "CASAN - COMPANHIA CATARINENSE DE ÁGUAS E SANEAMENTO - SC",
+        "situacao": "erro",
+        "detalhe": "BloqueadoPorRobots: robots.txt não permite: https://arquivos-site.institutoaocp.org.br/publicacoes/7e661af1-8d45-4602-b364-9d61f8af17ab.pdf",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "aocp",
+        "id": "709",
+        "titulo": "CASAN - COMPANHIA CATARINENSE DE ÁGUAS E SANEAMENTO - SC",
+        "situacao": "erro",
+        "detalhe": "BloqueadoPorRobots: robots.txt não permite: https://arquivos-site.institutoaocp.org.br/publicacoes/47a061ec-2c75-4de8-8b99-ebcc301fe134.pdf",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      }
+    ]
+  },
   "cebraspe": {
     "inicio": "2026-11-12T22:34:39-03:00",
     "fim": "2026-11-12T22:37:16-03:00",
