@@ -1,18 +1,20 @@
 import type { APIRoute } from "astro";
 import { SITE } from "../config";
-import { indexavel, substitutoDe, todasNoticias, todos } from "../lib/dados";
+import { concursosEmAndamento, indexavel, substitutoDe, todasNoticias, todos } from "../lib/dados";
 import { validadesNaPagina } from "../lib/validade";
 import { hojeBRT } from "../lib/tempo";
 import { AREAS, ESTADOS, porCategoria, porUf, total, urlArea, urlEstado } from "../lib/navegacao";
 import { RECORRENTES } from "../lib/recorrentes";
 
-const FIXAS = ["/", "/isencao-aberta/", "/em-andamento/", "/podem-reabrir/", "/como-pedir-isencao/", "/guias/", "/guias/como-ler-um-edital/", "/guias/cadastro-de-reserva/", "/guias/etapas-do-concurso/", "/noticias/", "/ti/", "/metodologia/", "/sobre/", "/contato/", "/privacidade/", "/termos/"];
+const FIXAS = ["/", "/isencao-aberta/", "/podem-reabrir/", "/como-pedir-isencao/", "/guias/", "/guias/como-ler-um-edital/", "/guias/cadastro-de-reserva/", "/guias/etapas-do-concurso/", "/noticias/", "/ti/", "/metodologia/", "/sobre/", "/contato/", "/privacidade/", "/termos/"];
 
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
 
 export const GET: APIRoute = () => {
   const urls = [
     ...FIXAS.map((p) => ({ loc: new URL(p, SITE.url).href, lastmod: null as string | null })),
+    // /em-andamento/ com a lista vazia fica com noindex: só entra no sitemap quando tem concurso
+    ...(concursosEmAndamento().length > 0 ? ["/em-andamento/"] : []).map((p) => ({ loc: new URL(p, SITE.url).href, lastmod: null as string | null })),
     ...["/estados/", "/areas/", "/recorrentes/"].map((p) => ({ loc: new URL(p, SITE.url).href, lastmod: null as string | null })),
     // páginas de estado vazias ficam com noindex e fora do sitemap
     ...["BR", ...Object.keys(ESTADOS)].filter((uf) => total(porUf(uf)) > 0)
