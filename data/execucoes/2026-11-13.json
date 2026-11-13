@@ -174,6 +174,133 @@
       }
     ]
   },
+  "avulsos": {
+    "inicio": "2026-11-13T14:30:48-03:00",
+    "fim": "2026-11-13T14:32:27-03:00",
+    "erro_fonte": null,
+    "contagem": {
+      "so_revisao": 4,
+      "publicado": 2,
+      "encerrado": 3
+    },
+    "registros": [
+      {
+        "fonte": "avulsos",
+        "id": "pc-ac-2026",
+        "titulo": "Polícia Civil do Estado do Acre",
+        "situacao": "so_revisao",
+        "detalhe": "seguranca/estadual/AC",
+        "slug": "pc-ac-2026",
+        "campos": {
+          "prazos.isencao": "ausente",
+          "prazos.inscricao": "ausente",
+          "vagas_imediatas": "verificado"
+        },
+        "violacoes": []
+      },
+      {
+        "fonte": "avulsos",
+        "id": "banestes-2026",
+        "titulo": "Banco do Estado do Espírito Santo - Banestes",
+        "situacao": "so_revisao",
+        "detalhe": "estatal/estadual/ES",
+        "slug": "banestes-2026",
+        "campos": {
+          "prazos.isencao": "ausente",
+          "prazos.inscricao": "revisao"
+        },
+        "violacoes": [
+          "prazos.inscricao: 2 cláusulas diferentes"
+        ]
+      },
+      {
+        "fonte": "avulsos",
+        "id": "trf3-2026-servidores",
+        "titulo": "Tribunal Regional Federal da 3ª Região",
+        "situacao": "so_revisao",
+        "detalhe": "tribunal/federal/SP",
+        "slug": "trf3-2026-servidores",
+        "campos": {
+          "prazos.isencao": "verificado",
+          "prazos.inscricao": "revisao"
+        },
+        "violacoes": [
+          "prazos.inscricao: 6 cláusulas diferentes"
+        ]
+      },
+      {
+        "fonte": "avulsos",
+        "id": "trt4-2026-servidores",
+        "titulo": "Tribunal Regional do Trabalho da 4ª Região",
+        "situacao": "so_revisao",
+        "detalhe": "tribunal/federal/RS",
+        "slug": "trt4-2026-servidores",
+        "campos": {
+          "prazos.isencao": "verificado",
+          "prazos.inscricao": "revisao"
+        },
+        "violacoes": [
+          "prazos.inscricao: 2 cláusulas diferentes"
+        ]
+      },
+      {
+        "fonte": "avulsos",
+        "id": "pm-sp-2026-aluno-soldado",
+        "titulo": "Polícia Militar do Estado de São Paulo",
+        "situacao": "publicado",
+        "detalhe": "seguranca/estadual/SP",
+        "slug": "pm-sp-2026-aluno-soldado",
+        "campos": {
+          "prazos.isencao": "verificado",
+          "prazos.inscricao": "verificado"
+        },
+        "violacoes": []
+      },
+      {
+        "fonte": "avulsos",
+        "id": "dpdf-2026-analista",
+        "titulo": "Defensoria Pública do Distrito Federal",
+        "situacao": "encerrado",
+        "detalhe": "defensoria/estadual/DF",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "avulsos",
+        "id": "cref16-rn-2026",
+        "titulo": "Conselho Regional de Educação Física da 16ª Região - CREF16/RN",
+        "situacao": "publicado",
+        "detalhe": "conselho/federal/RN",
+        "slug": "cref16-rn-2026",
+        "campos": {
+          "prazos.isencao": "ausente",
+          "prazos.inscricao": "verificado"
+        },
+        "violacoes": []
+      },
+      {
+        "fonte": "avulsos",
+        "id": "cbm-pe-2026-soldado-e-oficial",
+        "titulo": "Corpo de Bombeiros Militar do Estado de Pernambuco",
+        "situacao": "encerrado",
+        "detalhe": "seguranca/estadual/PE",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "avulsos",
+        "id": "pm-pe-2026-soldado-e-oficial",
+        "titulo": "Polícia Militar do Estado de Pernambuco",
+        "situacao": "encerrado",
+        "detalhe": "seguranca/estadual/PE",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      }
+    ]
+  },
   "cebraspe": {
     "inicio": "2026-11-13T10:22:31-03:00",
     "fim": "2026-11-13T10:25:08-03:00",

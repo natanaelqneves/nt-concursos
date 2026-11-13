@@ -1,0 +1,81 @@
+{
+  "schema_version": 2,
+  "slug": "cref16-rn-2026",
+  "orgao": "Conselho Regional de Educação Física da 16ª Região",
+  "categoria": "conselho",
+  "esfera": "federal",
+  "banca": "comperve",
+  "uf": "RN",
+  "cargos": [
+    {
+      "nome": "Advogado",
+      "vagas": null,
+      "remuneracao": null
+    },
+    {
+      "nome": "Contador",
+      "vagas": null,
+      "remuneracao": null
+    },
+    {
+      "nome": "Agente de Licitações e Contratos",
+      "vagas": null,
+      "remuneracao": null
+    }
+  ],
+  "vagas_imediatas": null,
+  "porte": "indefinido",
+  "areas": [],
+  "taxa": null,
+  "prazos": {
+    "isencao": {
+      "status": "ausente",
+      "evidencia": null,
+      "inicio": null,
+      "fim": null
+    },
+    "inscricao": {
+      "status": "verificado",
+      "evidencia": "ev-1",
+      "inicio": "2026-10-30",
+      "fim": "2026-11-15"
+    }
+  },
+  "isencao_publicos": [],
+  "documentos": [
+    {
+      "id": "doc-1",
+      "tipo": "edital",
+      "url": "https://www.editorasolucao.com.br/blog/wp-content/uploads/2025/04/Edital-Concurso-CREF-RN.pdf",
+      "url_final": "https://www.editorasolucao.com.br/blog/wp-content/uploads/2025/04/Edital-Concurso-CREF-RN.pdf",
+      "sha256": "e7bf434e13ed6c66ab70bc62d12d8cee7ad5ab482b274cd64e0e3bd7a25c06ac",
+      "coletado_em": "2026-11-13T14:32:16-03:00",
+      "fonte": "editorasolucao",
+      "publicado_em": "2026-10-23",
+      "titulo": "Edital nº 001/2026 – CREF16/RN"
+    }
+  ],
+  "evidencias": [
+    {
+      "id": "ev-1",
+      "campo": "prazos.inscricao",
+      "documento": "doc-1",
+      "pagina": 26,
+      "trecho": "Período de realização de inscrição — de 30/10 a 15/11/2026",
+      "ancora": "inscrição",
+      "metodo": "tabela:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": {
+        "atividade": "Período de realização de inscrição",
+        "datas": "de 30/10 a 15/11/2026"
+      }
+    }
+  ],
+  "descoberto_via": {
+    "fonte": "avulsos",
+    "url": "https://www.comperve.ufrn.br/",
+    "data_dou": null
+  },
+  "conferido_em": "2026-11-13T14:32:16-03:00"
+}

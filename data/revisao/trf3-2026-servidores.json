@@ -1,0 +1,76 @@
+{
+  "schema_version": 2,
+  "slug": "trf3-2026-servidores",
+  "orgao": "Tribunal Regional Federal da 3ª Região",
+  "situacao": "so_revisao",
+  "categoria": "tribunal",
+  "esfera": "federal",
+  "uf": "SP",
+  "cargos": [
+    "Analista Judiciário",
+    "Analista Judiciário – Oficial de Justiça Avaliador Federal",
+    "Técnico Judiciário",
+    "Técnico Judiciário – Desenvolvimento de Sistemas de Informação"
+  ],
+  "fonte": "avulsos",
+  "url": "https://www.trf3.jus.br/sege/concurso-servidores/2026",
+  "edital": "https://arquivos.qconcursos.com/f/concurso-trf3-2026-edial__.pdf",
+  "edital_sha256": "9b7ad84587a291f1be796760a3fe33dda9383a2832acb87ba7add05d0d710406",
+  "campos_em_revisao": [
+    "prazos.inscricao"
+  ],
+  "motivos": [
+    "prazos.inscricao: 6 cláusulas diferentes"
+  ],
+  "opcoes": {
+    "prazos.inscricao": [
+      {
+        "id": "o-1",
+        "origem": "texto",
+        "pagina": 3,
+        "trecho": "3.2 As inscrições ficarão abertas, exclusivamente via internet, no período das 10h do dia 04/11/2026 às 23h59 do dia 23/11/2026 (horário de Brasília), de acordo com o item 3.3 deste Capítulo.",
+        "ancora": "inscrições",
+        "inicio": "2026-11-04",
+        "fim": "2026-11-23"
+      },
+      {
+        "id": "o-2",
+        "origem": "texto",
+        "pagina": 3,
+        "trecho": "3.6 A partir de 02/12/2026, o candidato poderá conferir no site da VUNESP se os dados da inscrição foram recebidos e se o valor da inscrição foi pago.",
+        "ancora": "inscrição",
+        "inicio": null,
+        "fim": "2026-12-02"
+      },
+      {
+        "id": "o-3",
+        "origem": "texto",
+        "pagina": 16,
+        "trecho": "19.14.1 Aplicam-se, no que couber, aos servidores que ingressarem no serviço público a partir de 05/11/2015, os demais regramentos previstos na Resolução Conjunta STF/MPU n.º 2, de 23/05/2018, como percentual máximo de contribuição da inscrição automática, direito de requerer cancelamento, direito à restituição integral das contribuições vertidas etc.",
+        "ancora": "inscrição",
+        "inicio": "2015-11-05",
+        "fim": "2018-05-23"
+      },
+      {
+        "id": "o-4",
+        "origem": "texto",
+        "pagina": 23,
+        "trecho": "GRUPO 1 Data da prova: 11/11/2026 - 8h Local: Auditório do prédio UCC do Ministério Público de Minas Gerais, 6º andar - Avenida Álvares Cabral, nº 1.707, Belo Horizonte/MG Inscrição Nome 250000360654",
+        "ancora": "Inscrição",
+        "inicio": null,
+        "fim": "2026-11-11"
+      },
+      {
+        "id": "o-5",
+        "origem": "texto",
+        "pagina": 23,
+        "trecho": "THAÍS VIANA SILVA GRUPO 2 Data da prova: 12/11/2026 - 8h Local: Auditório do prédio UCC do Ministério Público de Minas Gerais, 6º andar - Avenida Álvares Cabral, nº 1.707, Belo Horizonte/MG Inscrição Nome 250000359633",
+        "ancora": "Inscrição",
+        "inicio": null,
+        "fim": "2026-11-12"
+      }
+    ]
+  },
+  "mudancas": [],
+  "registrado_em": "2026-11-13T14:32:01-03:00"
+}
