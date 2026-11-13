@@ -3,6 +3,7 @@
 import type { Categoria, Concurso, Noticia } from "./dados";
 import { NOME_CATEGORIA, encerrado, noticiasAtivas, todos } from "./dados";
 import { hojeBRT } from "./tempo";
+import { validadesNaPagina } from "./validade";
 
 export const ESTADOS: Record<string, { nome: string; prep: "do" | "da" | "de" }> = {
   AC: { nome: "Acre", prep: "do" },
@@ -139,6 +140,9 @@ export function indiceBusca(hoje = hojeBRT()): ItemBusca[] {
       k: semAcento(`${n.orgao} ${n.banca} ${uf} ${NOME_CATEGORIA[n.categoria]} ${n.cargos.join(" ")}`),
     });
   }
+  for (const v of validadesNaPagina(hoje))
+    itens.push({ t: `${v.orgao}: validade até ${v.validade_ate.split("-").reverse().join("/")}`, u: `/podem-reabrir/${v.slug}/`,
+      d: "Podem reabrir", k: semAcento(`${v.orgao} ${v.municipio ?? ""} ${v.uf} ${ESTADOS[v.uf]?.nome ?? ""} ${v.cargos.join(" ")} validade reabrir`) });
   for (const r of RECORRENTES)
     itens.push({ t: `Concurso ${r.nome}`, u: `/recorrentes/${r.slug}/`, d: "Concursos que se repetem", k: semAcento(`banco ${r.cargos.map((c) => c.nome).join(" ")}`) });
   for (const [uf, e] of Object.entries(ESTADOS))

@@ -43,11 +43,16 @@ DENTRO = [
 ]
 
 FORA = [
+    ["Prefeitura de Serra Talhada"],
+    ["Prefeitura Municipal de Campinas"],  # cidade grande, mas não capital: só guarda/trânsito/vigilância
+    ["Câmara Municipal de Campinas"],
+    ["Prefeitura de Serra/RN"],
+    ["Prefeitura de Sapé - Agente de Trânsito"],  # cidade pequena
+    ["Prefeitura do Recife - processo seletivo simplificado"],
     ["Concurso Público para a Prefeitura de Macaé"],
     ["Exame Nacional da Magistratura - ENAM (2026.2)"],
     ["Concurso Público de Provas e Títulos para Outorga de Delegações de Notas e de Registro do Estado do RS"],
     ["Processo Seletivo para Juiz Leigo do Tribunal de Justiça"],
-    ["Concurso Público para a Controladoria Geral do Município do Rio de Janeiro"],
     ["TJ CE 25 NOTÁRIOS"],
     ["SEAP MA 26 ESPECIALISTA E ASSISTENTE", "SEAP MA 26", "Especialista Penitenciário"],
     ["Concurso Público para a Prefeitura de Macaé", "Cargo: Analista de Tecnologia da Informação"],
@@ -63,12 +68,9 @@ FORA = [
     ["UDESC 26"],
     ["PREF PORTO ALEGRE RS 26"],
     ["PREF PORTO VELHO 26 PROCURADOR"],
-    ["Concurso Público para a Procuradoria-Geral do Município do Rio de Janeiro"],
     ["CAMARA MUNICIPAL BOAVISTA 25"],
     ["Ana Maria 26"],
     ["ARSAL 26"],
-    ["DETRAN AL 26"],
-    ["Concurso Público para a Prefeitura Municipal do Salvador 2026 - Guarda Municipal"],
 ]
 
 
@@ -199,3 +201,28 @@ def test_nomes_com_acento():
     assert classificar("IFPA - INSTITUTO FEDERAL DE EDUCAÇÃO, CIÊNCIA E TECNOLOGIA DO PARÁ").orgao == "Instituto Federal do Pará"
     assert (classificar("SECRETARIA DE ESTADO DA ADMINISTRAÇÃO DO ESTADO DO AMAPÁ - AP").orgao
             == "Secretaria de Estado da Administração do Estado do Amapá")
+
+
+@pytest.mark.parametrize("textos,esperado", [
+    (["Concurso Público para a Prefeitura Municipal do Salvador 2026 - Guarda Municipal"],
+     ("guarda", "municipal", "BA", "Salvador", "Guarda Municipal de Salvador")),
+    (["Prefeitura Municipal de João Pessoa - PB"], ("prefeitura", "municipal", "PB", "João Pessoa", "Prefeitura de João Pessoa")),
+    (["Câmara Municipal do Recife"], ("legislativo", "municipal", "PE", "Recife", "Câmara Municipal do Recife")),
+    (["Prefeitura do Rio de Janeiro"], ("prefeitura", "municipal", "RJ", "Rio de Janeiro", "Prefeitura do Rio de Janeiro")),
+    (["Concurso Público para a Controladoria Geral do Município do Rio de Janeiro"],
+     ("prefeitura", "municipal", "RJ", "Rio de Janeiro", "Controladoria-Geral do Município do Rio de Janeiro")),
+    (["Concurso Público para a Procuradoria-Geral do Município do Rio de Janeiro"],
+     ("prefeitura", "municipal", "RJ", "Rio de Janeiro", "Procuradoria-Geral do Município do Rio de Janeiro")),
+    (["Concurso Guarda Civil Municipal de Campinas"], ("guarda", "municipal", "SP", "Campinas", "Guarda Municipal de Campinas")),
+    (["Prefeitura de Fortaleza - Agente de Trânsito"], ("transito", "municipal", "CE", "Fortaleza", "Prefeitura de Fortaleza")),
+    (["Prefeitura Municipal de Feira de Santana", "Agente de Combate às Endemias"],
+     ("vigilancia", "municipal", "BA", "Feira de Santana", "Prefeitura de Feira de Santana")),
+    (["DETRAN AL 26"], ("transito", "estadual", "AL", None, "Departamento Estadual de Trânsito de Alagoas")),
+    (["Departamento Estadual de Trânsito do Rio Grande do Norte"],
+     ("transito", "estadual", "RN", None, "Departamento Estadual de Trânsito do Rio Grande do Norte")),
+    (["Agência Estadual de Vigilância Sanitária da Paraíba"],
+     ("vigilancia", "estadual", "PB", None, "Agência Estadual de Vigilância Sanitária da Paraíba")),
+])
+def test_municipal_e_novas_areas(textos, esperado):
+    r = classificar(*textos)
+    assert r is not None and (r.categoria, r.esfera, r.uf, r.municipio, r.orgao) == esperado

@@ -1,0 +1,50 @@
+---
+import Base from "../../layouts/Base.astro";
+import { NOME_CATEGORIA, textoEsfera } from "../../lib/dados";
+import { terminou, validadesNaPagina } from "../../lib/validade";
+import { diasEntre, formatarData, hojeBRT } from "../../lib/tempo";
+
+const lista = validadesNaPagina();
+const proximas = lista.filter((v) => !terminou(v));
+const encerradas = lista.filter((v) => terminou(v));
+---
+<Base
+  titulo="Concursos que podem reabrir: validade terminando"
+  descricao="Concursos com prazo de validade perto do fim, que costumam ganhar edital novo. Data da validade e fontes de cada um."
+  breadcrumbs={[{ nome: "Início", url: "/" }, { nome: "Podem reabrir", url: "/podem-reabrir/" }]}
+>
+  <h1>Concursos que podem reabrir</h1>
+  <p class="lead">
+    Quando a validade de um concurso termina, o órgão não pode mais chamar os aprovados e, se precisar
+    de servidores, tem de abrir um concurso novo. Por isso, validade perto do fim costuma anteceder um edital.
+  </p>
+  <p class="alert alert-info">
+    Isto não é previsão nem inscrição aberta: mostramos só a data em que a validade termina, com as fontes.
+    Um concurso pode ser prorrogado, ter os aprovados todos chamados ou simplesmente não ganhar edital novo.
+  </p>
+
+  <h2>Validade terminando ({proximas.length})</h2>
+  {proximas.length === 0 ? <p>Nenhum concurso acompanhado com validade terminando nos próximos 12 meses.</p> : (
+    <ul class="lista-cartoes list-unstyled">
+      {proximas.map((v) => (
+        <li class="card mb-3"><div class="card-body">
+          <p class="meta small mb-1">{NOME_CATEGORIA[v.categoria]} · {textoEsfera(v)} · {v.uf}</p>
+          <h3 class="h5"><a href={`/podem-reabrir/${v.slug}/`}>{v.orgao}</a></h3>
+          {v.cargos.length > 0 && <p class="mb-1">{v.cargos.slice(0, 3).join(", ")}{v.cargos.length > 3 ? " e outros" : ""}</p>}
+          <p class="mb-0">Validade até <strong>{formatarData(v.validade_ate)}</strong> <span class="meta">({diasEntre(hojeBRT(), v.validade_ate)} dias)</span></p>
+        </div></li>
+      ))}
+    </ul>
+  )}
+
+  {encerradas.length > 0 && (
+    <>
+      <h2>Validade terminou há pouco ({encerradas.length})</h2>
+      <ul>
+        {encerradas.map((v) => (
+          <li><a href={`/podem-reabrir/${v.slug}/`}>{v.orgao}</a> <span class="meta">· terminou em {formatarData(v.validade_ate)}</span></li>
+        ))}
+      </ul>
+    </>
+  )}
+</Base>

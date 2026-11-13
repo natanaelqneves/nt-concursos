@@ -4,8 +4,10 @@ import ListaGrupo from "../../components/ListaGrupo.astro";
 import type { Categoria } from "../../lib/dados";
 import { NOME_CATEGORIA } from "../../lib/dados";
 import { SOBRE_CATEGORIA } from "../../lib/categorias";
-import { AREAS, porCategoria, urlArea } from "../../lib/navegacao";
+import { AREAS, porCategoria, total, urlArea } from "../../lib/navegacao";
+import { validadesNaPagina } from "../../lib/validade";
 import { RECORRENTES } from "../../lib/recorrentes";
+import { formatarData } from "../../lib/tempo";
 
 export function getStaticPaths() {
   return AREAS.map((categoria) => ({ params: { categoria }, props: { categoria } }));
@@ -16,11 +18,15 @@ const nome = NOME_CATEGORIA[categoria];
 const sobre = SOBRE_CATEGORIA[categoria];
 const g = porCategoria(categoria);
 const recorrentes = RECORRENTES.filter((r) => r.categoria === categoria);
+const reabrir = validadesNaPagina().filter((v) => v.categoria === categoria);
+// Área sem nada a mostrar fica fora do índice (e do sitemap) até ter concurso.
+const vazia = total(g) === 0 && recorrentes.length === 0 && reabrir.length === 0;
 ---
 <Base
   titulo={categoria === "outro" ? "Concursos de outros órgãos com vagas de TI" : `Concursos abertos: ${nome}`}
   descricao={`${sobre.titulo}: como funcionam os concursos da área e quais estão com inscrições abertas.`}
   breadcrumbs={[{ nome: "Início", url: "/" }, { nome: "Por área", url: "/areas/" }, { nome, url: urlArea(categoria) }]}
+  noindex={vazia}
 >
   <p class="meta"><a href="/areas/">Todas as áreas</a></p>
   <h1>{nome}</h1>
@@ -29,6 +35,12 @@ const recorrentes = RECORRENTES.filter((r) => r.categoria === categoria);
     {sobre.paragrafos.map((p) => <p>{p}</p>)}
   </section>
   <ListaGrupo g={g} vazio={`Nenhum concurso desta área com inscrições abertas nesta edição.`} />
+  {reabrir.length > 0 && (
+    <section class="mt-4">
+      <h2>Podem reabrir: validade terminando</h2>
+      <ul>{reabrir.map((v) => <li><a href={`/podem-reabrir/${v.slug}/`}>{v.orgao}</a> <span class="meta">· validade até {formatarData(v.validade_ate)}</span></li>)}</ul>
+    </section>
+  )}
   {recorrentes.length > 0 && (
     <section class="mt-4">
       <h2>Concursos que se repetem nesta área</h2>

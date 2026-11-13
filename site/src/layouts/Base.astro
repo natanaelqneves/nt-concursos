@@ -11,11 +11,12 @@ interface Props {
   noindex?: boolean;
   semAnuncios?: boolean; // páginas internas (admin): sem AdSense nem aviso de cookies
   breadcrumbs?: { nome: string; url: string }[];
+  canonical?: string; // caminho da página que deve ser indexada no lugar desta
 }
 
-const { titulo, descricao = SITE.descricao, noindex = false, semAnuncios = false, breadcrumbs = [] } = Astro.props;
+const { titulo, descricao = SITE.descricao, noindex = false, semAnuncios = false, breadcrumbs = [], canonical: canonicalProp } = Astro.props;
 const anuncios = Boolean(ADSENSE_CLIENT) && !semAnuncios;
-const canonical = new URL(Astro.url.pathname, SITE.url).href;
+const canonical = new URL(canonicalProp ?? Astro.url.pathname, SITE.url).href;
 const tituloCompleto = Astro.url.pathname === "/" ? titulo : `${titulo} | ${SITE.nome}`;
 
 const jsonLd = [
@@ -41,6 +42,7 @@ const MENU = [
   { nome: "Vagas de TI", url: "/ti/" },
 ];
 const MAIS = [
+  { nome: "Podem reabrir", url: "/podem-reabrir/" },
   { nome: "Apuração na imprensa", url: "/noticias/" },
   { nome: "Como pedir isenção", url: "/como-pedir-isencao/" },
   { nome: "Como verificamos", url: "/metodologia/" },
@@ -124,7 +126,7 @@ const ativo = (url: string) => Astro.url.pathname.startsWith(url);
         <div class="row g-4">
           <div class="col-12 col-md-4">
             <p class="fw-bold mb-1 text-body">{SITE.nome}</p>
-            <p class="mb-0">Concursos federais e estaduais com inscrições abertas, com destaque para o prazo de isenção da taxa. Cada data tem link para o trecho do edital.</p>
+            <p class="mb-0">Concursos federais, estaduais e das capitais com inscrições abertas, com destaque para o prazo de isenção da taxa. Cada data tem link para o trecho do edital.</p>
           </div>
           <nav class="col-6 col-md-3" aria-label="Encontre concursos">
             <p class="fw-bold mb-1 text-body">Encontre concursos</p>
@@ -134,6 +136,7 @@ const ativo = (url: string) => Astro.url.pathname.startsWith(url);
               <li><a href="/estados/">Por estado</a></li>
               <li><a href="/areas/">Por área</a></li>
               <li><a href="/recorrentes/">Concursos que se repetem</a></li>
+              <li><a href="/podem-reabrir/">Podem reabrir</a></li>
               <li><a href="/ti/">Vagas de TI</a></li>
             </ul>
           </nav>

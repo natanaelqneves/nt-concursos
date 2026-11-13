@@ -32,8 +32,8 @@ export interface Documento {
   titulo?: string | null;
 }
 
-export type Categoria = "tribunal" | "controle" | "mp" | "defensoria" | "seguranca" | "estatal" | "conselho" | "fiscal" | "advocacia" | "executivo" | "legislativo" | "educacao" | "saude" | "militar" | "outro";
-export type Esfera = "federal" | "estadual";
+export type Categoria = "tribunal" | "controle" | "mp" | "defensoria" | "seguranca" | "estatal" | "conselho" | "fiscal" | "advocacia" | "executivo" | "legislativo" | "educacao" | "saude" | "militar" | "guarda" | "transito" | "vigilancia" | "prefeitura" | "outro";
+export type Esfera = "federal" | "estadual" | "municipal";
 export type Porte = "grande" | "medio" | "pequeno" | "indefinido";
 
 export const NOME_CATEGORIA: Record<Categoria, string> = {
@@ -51,6 +51,10 @@ export const NOME_CATEGORIA: Record<Categoria, string> = {
   educacao: "Educação",
   saude: "Saúde",
   militar: "Forças Armadas",
+  guarda: "Guardas municipais",
+  transito: "Trânsito",
+  vigilancia: "Vigilância",
+  prefeitura: "Prefeituras das capitais",
   outro: "Outros órgãos",
 };
 
@@ -75,6 +79,7 @@ export interface Concurso {
   esfera: Esfera;
   banca: string;
   uf: string;
+  municipio?: string | null;
   cargos: { nome: string; vagas?: Campo | null; remuneracao?: Campo | null }[];
   vagas_imediatas?: Campo | null;
   porte: Porte;
@@ -144,6 +149,12 @@ export function local(c: Concurso): string {
   return c.uf === "BR" ? "Nacional" : c.uf;
 }
 
+/** "Federal", "Estadual" ou "Municipal · João Pessoa". */
+export function textoEsfera(x: { esfera: Esfera; municipio?: string | null }): string {
+  if (x.esfera === "municipal") return `Municipal · ${x.municipio ?? ""}`;
+  return x.esfera === "federal" ? "Federal" : "Estadual";
+}
+
 export function evidenciaDe(c: Concurso, campo?: Prazo | Campo | null) {
   if (!campo?.evidencia) return null;
   const ev = c.evidencias.find((e) => e.id === campo.evidencia);
@@ -200,6 +211,7 @@ export interface Noticia {
   categoria: Categoria;
   esfera: Esfera;
   uf: string;
+  municipio?: string | null;
   banca: string;
   resumo: string;
   cargos: string[];
@@ -231,6 +243,12 @@ export function todasNoticias(): Noticia[] {
         .map((f) => JSON.parse(fs.readFileSync(path.join(dir, f), "utf-8")) as Noticia)
     : [];
   return cacheNoticias;
+}
+
+/** Concurso conferido que substitui a notícia (pela lista de editais avulsos), se houver. */
+export function substitutoDe(n: Noticia): Concurso | undefined {
+  const slug = substituicoes().get(n.slug);
+  return slug ? todos().find((c) => c.slug === slug) : undefined;
 }
 
 /** Notícias com inscrição ainda não encerrada, de órgãos que não têm concurso verificado aberto
