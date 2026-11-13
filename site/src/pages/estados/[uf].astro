@@ -24,7 +24,7 @@ const vazio = nacional
   titulo={titulo}
   descricao={nacional
     ? "Concursos de órgãos federais com lotação nacional e inscrições abertas, conferidos no edital oficial."
-    : `Concursos federais e estaduais com inscrições abertas ${nome}: tribunais, polícias, fiscais, educação, saúde e outros órgãos.`}
+    : `Concursos federais, estaduais e municipais com inscrições abertas ${nome}: tribunais, polícias, fiscais, educação, saúde, prefeitura da capital e guardas municipais.`}
   noindex={total(g) === 0}
   breadcrumbs={[{ nome: "Início", url: "/" }, { nome: "Por estado", url: "/estados/" }, { nome: nacional ? "Nacionais" : ESTADOS[uf].nome, url: urlEstado(uf) }]}
 >
@@ -33,7 +33,7 @@ const vazio = nacional
   <p class="lead">
     {nacional
       ? "Órgãos federais cujas vagas não são de um estado só: ministérios, agências, autarquias, empresas públicas nacionais e Forças Armadas."
-      : `Concursos de órgãos estaduais ${nome} e de órgãos federais com sede no estado. Concursos municipais não entram no site.`}
+      : `Concursos de órgãos estaduais ${nome}, de órgãos federais com sede no estado e, entre os municipais, da capital (prefeitura e câmara) e das guardas, trânsito e vigilância das cidades com mais de 200 mil habitantes.`}
   </p>
   <FaixaUF atual={uf} />
   <ListaGrupo g={g} vazio={vazio} />

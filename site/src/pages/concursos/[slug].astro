@@ -53,7 +53,7 @@ const sobreOrgao = orgaoRevisado(c.orgao);
 
 // Resumo do concurso montado só com campos verificados.
 const partesResumo: string[] = [];
-partesResumo.push(`Concurso ${c.esfera === "federal" ? "federal" : c.esfera === "municipal" ? "municipal" : "estadual"} ${/^(Polícia|Defensoria|Controladoria|Câmara|Assembleia)/.test(c.orgao) ? "da" : "do"} ${c.orgao}, organizado pela banca ${c.banca.toUpperCase()}.`);
+partesResumo.push(`Concurso ${c.esfera === "federal" ? "federal" : c.esfera === "municipal" ? "municipal" : "estadual"} ${/^(Polícia|Defensoria|Controladoria|Câmara|Assembleia|Guarda|Procuradoria|Prefeitura|Agência|Secretaria|Universidade|Fundação|Empresa|Companhia|Caixa|Receita)/.test(c.orgao) ? "da" : "do"} ${c.orgao}, organizado pela banca ${c.banca.toUpperCase()}.`);
 if (verificado(c.prazos.inscricao) && c.prazos.inscricao.fim) {
   partesResumo.push(c.prazos.inscricao.inicio
     ? `As inscrições vão de ${formatarData(c.prazos.inscricao.inicio)} a ${formatarData(c.prazos.inscricao.fim)}.`
