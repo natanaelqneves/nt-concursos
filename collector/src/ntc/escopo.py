@@ -1,8 +1,8 @@
 """Filtro de escopo: decide se um concurso é de um órgão coberto pelo site.
 
 Escopo (docs/ARQUITETURA.md, seção 11): órgãos federais e estaduais das categorias
-tribunal, controle, mp, defensoria, seguranca, fiscal, advocacia, executivo (só federal),
-legislativo, estatal e conselho; outros órgãos só com cargo de TI. Municipais, outorgas de
+tribunal, controle, mp, defensoria, seguranca, fiscal, advocacia, executivo (federal e gestão
+estadual), legislativo, educacao, saude, militar, estatal e conselho; outros órgãos só com cargo de TI. Municipais, outorgas de
 cartório, exames e processos seletivos ficam fora.
 
 A classificação usa só texto que a fonte publica sobre o concurso (título, nome
@@ -396,10 +396,11 @@ def _publico(partes: list[str], curtos_lista: list[str]) -> Classificacao | None
     # Só título e segundo texto (nome completo na Cebraspe, hierarquia no DOU, id na FGV):
     # descrições e cargos citam ministérios e secretarias sem ser deles o concurso.
     for orig in (x for x in partes[:2] if len(x) <= 200):
-        r = _publico_por_nome(sem_acento(orig), orig)
+        t = sem_acento(orig)
+        r = _setorial_por_nome(t, orig) or _publico_por_nome(t, orig)
         if r is not None:
             return r
-    return _publico_por_sigla(partes[0])
+    return _publico_por_sigla(partes[0]) or _setorial_por_sigla(partes[0])
 
 
 def _publico_por_nome(t: str, orig: str) -> Classificacao | None:
@@ -494,6 +495,201 @@ def _publico_por_sigla(titulo: str) -> Classificacao | None:
         if len(chave) <= 3 and a == chave and prox and not prox.isdigit():
             return None
         return _c("executivo", "federal", "BR", _EXECUTIVO_SIGLAS[chave], chave)
+    return None
+
+
+# ---------------------------------------------------------------- educação, saúde, Forças Armadas, gestão estadual
+
+# Universidades e institutos federais por sigla -> UF da sede (a lista cobre a rede federal;
+# o que não estiver aqui ainda entra pelo nome por extenso).
+_FEDERAIS_EDUCACAO = {
+    "ufac": "AC", "ufal": "AL", "ufam": "AM", "unifap": "AP", "ufba": "BA", "ufrb": "BA", "ufob": "BA",
+    "ufsb": "BA", "univasf": "PE", "ufc": "CE", "ufca": "CE", "unilab": "CE", "unb": "DF", "fub": "DF",
+    "ufes": "ES", "ufg": "GO", "ufcat": "GO", "ufj": "GO", "ufma": "MA", "ufmg": "MG", "ufjf": "MG",
+    "ufu": "MG", "ufv": "MG", "ufop": "MG", "ufla": "MG", "unifal": "MG", "unifei": "MG", "ufsj": "MG",
+    "ufvjm": "MG", "uftm": "MG", "ufms": "MS", "ufgd": "MS", "ufmt": "MT", "ufr": "MT", "ufpa": "PA",
+    "ufra": "PA", "ufopa": "PA", "unifesspa": "PA", "ufpb": "PB", "ufcg": "PB", "ufpe": "PE",
+    "ufrpe": "PE", "ufape": "PE", "ufpi": "PI", "ufdpar": "PI", "ufpr": "PR", "utfpr": "PR", "unila": "PR",
+    "ufrj": "RJ", "uff": "RJ", "unirio": "RJ", "ufrrj": "RJ", "ufrn": "RN", "ufersa": "RN", "unir": "RO",
+    "ufrr": "RR", "ufrgs": "RS", "ufsm": "RS", "ufpel": "RS", "furg": "RS", "unipampa": "RS",
+    "ufcspa": "RS", "ufsc": "SC", "uffs": "SC", "ufs": "SE", "unifesp": "SP", "ufscar": "SP", "ufabc": "SP",
+    "uft": "TO", "ufnt": "TO",
+    "ifac": "AC", "ifal": "AL", "ifam": "AM", "ifap": "AP", "ifba": "BA", "ifbaiano": "BA", "ifce": "CE",
+    "ifb": "DF", "ifes": "ES", "ifg": "GO", "ifgoiano": "GO", "ifma": "MA", "ifmg": "MG", "ifnmg": "MG",
+    "ifsuldeminas": "MG", "iftm": "MG", "ifsudestemg": "MG", "ifms": "MS", "ifmt": "MT", "ifpa": "PA",
+    "ifpb": "PB", "ifpe": "PE", "ifsertaope": "PE", "ifpi": "PI", "ifpr": "PR", "ifrj": "RJ", "iff": "RJ",
+    "ifrn": "RN", "ifro": "RO", "ifrr": "RR", "ifrs": "RS", "ifsul": "RS", "iffar": "RS", "ifsc": "SC",
+    "ifc": "SC", "ifs": "SE", "ifsp": "SP", "ifto": "TO", "cefetmg": "MG", "cefetrj": "RJ", "cp2": "RJ",
+}
+# Secretarias estaduais por sigla (com a UF logo depois: "SEDUC AL 26", "SESAU AL 26").
+_SIGLAS_SETORIAIS = {
+    "seduc": "educacao", "sedu": "educacao", "seed": "educacao", "see": "educacao", "sec": "educacao",
+    "seec": "educacao", "sedf": "educacao",
+    "ses": "saude", "sesa": "saude", "sesau": "saude", "sesab": "saude", "sespa": "saude", "susam": "saude",
+    "seplag": "executivo", "sead": "executivo", "sad": "executivo", "seger": "executivo", "saeb": "executivo",
+    "seplan": "executivo", "seges": "executivo", "seplad": "executivo",
+}
+_SIGLAS_SETORIAIS_UF = {"sesab": "BA", "sespa": "PA", "susam": "AM", "saeb": "BA", "seger": "ES"}
+_SIGLAS_MILITARES = {
+    "essa": "Escola de Sargentos das Armas (Exército)",
+    "espcex": "Escola Preparatória de Cadetes do Exército",
+    "esfcex": "Escola de Formação Complementar do Exército",
+    "ime": "Instituto Militar de Engenharia (Exército)",
+    "eear": "Escola de Especialistas de Aeronáutica",
+    "epcar": "Escola Preparatória de Cadetes do Ar",
+    "afa": "Academia da Força Aérea",
+    "efomm": "Escola de Formação de Oficiais da Marinha Mercante",
+    "eam": "Escola de Aprendizes-Marinheiros (Marinha)",
+}
+_MILITAR_NOMES = [
+    (r"escola de sargentos das armas", "Escola de Sargentos das Armas (Exército)", "essa"),
+    (r"escola preparatoria de cadetes do exercito", "Escola Preparatória de Cadetes do Exército", "espcex"),
+    (r"escola de formacao complementar do exercito", "Escola de Formação Complementar do Exército", "esfcex"),
+    (r"instituto militar de engenharia", "Instituto Militar de Engenharia (Exército)", "ime"),
+    (r"escola de especialistas de aeronautica", "Escola de Especialistas de Aeronáutica", "eear"),
+    (r"escola preparatoria de cadetes do ar", "Escola Preparatória de Cadetes do Ar", "epcar"),
+    (r"academia da forca aerea", "Academia da Força Aérea", "afa"),
+    (r"escola de formacao de oficiais da marinha mercante", "Escola de Formação de Oficiais da Marinha Mercante", "efomm"),
+    (r"escola de aprendizes[- ]marinheiros", "Escola de Aprendizes-Marinheiros (Marinha)", "eam"),
+    (r"escola naval\b", "Escola Naval (Marinha)", "escola-naval"),
+    (r"colegio naval", "Colégio Naval (Marinha)", "colegio-naval"),
+    (r"corpo de fuzileiros navais", "Corpo de Fuzileiros Navais (Marinha)", "fuzileiros-navais"),
+    (r"marinha do brasil|comando da marinha", "Marinha do Brasil", "marinha"),
+    (r"exercito brasileiro|comando do exercito", "Exército Brasileiro", "exercito"),
+    (r"forca aerea brasileira|comando da aeronautica", "Força Aérea Brasileira", "fab"),
+]
+# Serviço militar temporário/voluntário não é carreira; "temporário" já cai em _FORA.
+_MILITAR_FORA = re.compile(r"servico militar|\bvoluntari|\brm2\b|\bstt\b|\bsmv\b|convocacao")
+_EBSERH = re.compile(r"ebserh|servicos hospitalares")
+_PENITENCIARIA = re.compile(r"penitenciari|prisional|socioeducativ|ressocializacao")
+_MARCA_ESTADUAL = re.compile(r"\bestad(?:o|ual)\b|distrito federal")
+
+
+def _uf_estadual(t: str, pos: int) -> str | None:
+    """UF de uma secretaria só quando o texto diz que ela é do estado ("Secretaria de Estado de
+    Saúde do Tocantins", "... do Estado de Alagoas"): "Secretaria de Saúde de São Paulo" pode ser
+    a da capital, e municipal fica fora."""
+    trecho = t[pos:pos + 160]
+    if not _MARCA_ESTADUAL.search(trecho):
+        return None
+    return uf_por_nome(t, pos)
+
+
+def _setorial_por_nome(t: str, orig: str) -> Classificacao | None:
+    fonte = orig if len(orig) == len(t) else t  # mesmo comprimento: dá para recortar o original com acentos
+    # Forças Armadas (só federal, BR)
+    if not _MILITAR_FORA.search(t):
+        for padrao, orgao, sigla in _MILITAR_NOMES:
+            if re.search(padrao, t):
+                return _c("militar", "federal", "BR", orgao, sigla)
+    candidatos: list[tuple[int, Classificacao]] = []
+    # Universidades e institutos federais (UF da sede quando o nome traz o estado)
+    if not _EBSERH.search(t):
+        m = re.search(r"universidade federal|universidade tecnologica federal|instituto federal|"
+                      r"centro federal de educacao tecnologica|fundacao universidade de brasilia|"
+                      r"universidade de brasilia|colegio pedro ii", t)
+        if m:
+            uf = "DF" if "brasilia" in m.group(0) else ("RJ" if "pedro ii" in m.group(0) else uf_por_nome(t, m.start()))
+            if m.group(0) == "instituto federal" and uf:
+                nome_uf, prep = ESTADOS[uf]
+                nome, sigla = f"Instituto Federal {prep} {nome_uf}", f"if{uf.lower()}"
+            else:
+                nome = _nome_por_extenso(fonte, t, m.start())
+                sigla = slug_simples(nome)
+            candidatos.append((m.start(), _c("educacao", "federal", uf or "BR", nome, sigla)))
+    # Secretarias estaduais de educação e de saúde; fundações estaduais de saúde
+    for categoria, padrao, rotulo, base in (
+        ("educacao", r"secretaria (?:de estado )?(?:da |de )?educacao", "Secretaria de Educação", "seduc"),
+        ("saude", r"secretaria (?:de estado )?(?:da |de )?saude", "Secretaria de Saúde", "ses"),
+        ("saude", r"fundacao (?:estadual de saude|de saude do estado|saude do estado|hospitalar do estado)",
+         "Fundação Estadual de Saúde", "fundacao-saude"),
+    ):
+        m = re.search(padrao, t)
+        if m:
+            uf = _uf_estadual(t, m.start())
+            if uf:
+                candidatos.append((m.start(), _c(categoria, "estadual", uf, f"{rotulo} {_no_estado(uf)}",
+                                                 f"{base}-{uf.lower()}")))
+    # Gestão estadual: administração, planejamento e gestão; concursos unificados; EPPGG
+    m = re.search(r"secretaria (?:de estado )?(?:da |de )?(?:administracao|planejamento|gestao)", t)
+    if m and not _PENITENCIARIA.search(t[m.start():m.start() + 80]):
+        uf = _uf_estadual(t, m.start())
+        if uf:
+            candidatos.append((m.start(), _c("executivo", "estadual", uf, f"{_nome_por_extenso(fonte, t, m.start(), ate_estado=True)} {_no_estado(uf)}",
+                                             _slug_gestao(orig, uf))))
+    m = re.search(r"concurso (?:publico )?unificado", t)
+    if m and "nacional" not in t[max(0, m.start() - 20):m.end() + 12]:
+        uf = uf_por_nome(t, m.start())
+        if uf:
+            candidatos.append((m.start(), _c("executivo", "estadual", uf, f"Concurso Público Unificado {_no_estado(uf)}",
+                                             f"cpu-{uf.lower()}")))
+    m = re.search(r"especialista em politicas publicas e gestao governamental|gestor governamental", t)
+    if m:
+        uf = uf_por_nome(t, 0)
+        if uf is None:
+            tokens = re.sub(r"[^a-z0-9 ]", " ", t).split()
+            uf = next((x.upper() for x in reversed(tokens) if x in _UFS), None)
+        if uf:
+            candidatos.append((m.start(), _c("executivo", "estadual", uf, f"Governo {_no_estado(uf)} (gestor governamental)",
+                                             f"eppgg-{uf.lower()}")))
+    if not candidatos:
+        return None
+    return min(candidatos, key=lambda x: x[0])[1]
+
+
+def _slug_gestao(orig: str, uf: str) -> str:
+    sigla = _sigla_do_titulo(orig)
+    if sigla and sem_acento(sigla) not in _UFS:  # "SEPLAG/RJ" -> seplag-rj; "- AP" é só a UF
+        return slug_simples(sigla)
+    return f"gestao-{uf.lower()}"
+
+
+def _nome_por_extenso(fonte: str, t: str, inicio: int, ate_estado: bool = False) -> str:
+    """Nome legível recortado do texto original ('Universidade Federal de Pelotas - ...' ->
+    'Universidade Federal de Pelotas'). Corta em separadores e, com ate_estado, antes de
+    'do Estado'/nome do estado (a UF vai à parte). `t` é `fonte` sem acento, de mesmo comprimento."""
+    m = re.search(r"\s*[-–(|/,]\s*|\s+20\d\d\b| e a | e o |$", t[inicio:])
+    fim = inicio + m.start()
+    if ate_estado:
+        e = re.search(r"\s+(?:do estado|d[aoe] (?:" + "|".join(sorted((re.escape(sem_acento(n)) for n, _ in ESTADOS.values()), key=len, reverse=True)) + r"))\b", t[inicio:fim])
+        if e:
+            fim = inicio + e.start()
+    trecho = fonte[inicio:fim].strip()
+    menores = {"de", "da", "do", "das", "dos", "e", "em"}
+    palavras = trecho.split()[:12]
+    return " ".join(p.lower() if p.lower() in menores else p[:1].upper() + p[1:].lower() for p in palavras)
+
+
+def _setorial_por_sigla(titulo: str) -> Classificacao | None:
+    tokens = _primeiro_token(titulo)
+    if not tokens:
+        return None
+    a = tokens[0]
+    prox = tokens[1] if len(tokens) > 1 else ""
+    m = re.match(r"^([a-z]+?)(\d*)$", a)
+    base = m.group(1) if m else a
+    for chave in (a, base):
+        if chave in _SIGLAS_MILITARES:
+            # siglas curtas ("IME", "AFA", "EAM") só com ano/número logo depois
+            if len(chave) <= 4 and a == chave and prox and not prox.isdigit():
+                return None
+            return _c("militar", "federal", "BR", _SIGLAS_MILITARES[chave], chave)
+        if chave in _FEDERAIS_EDUCACAO:
+            if len(chave) <= 3 and a == chave and prox and not (prox.isdigit() or prox in _UFS):
+                return None
+            uf = _FEDERAIS_EDUCACAO[chave]
+            return _c("educacao", "federal", uf, chave.upper(), chave)
+        if chave in _SIGLAS_SETORIAIS:
+            categoria = _SIGLAS_SETORIAIS[chave]
+            uf = _SIGLAS_SETORIAIS_UF.get(chave) or (prox.upper() if prox in _UFS else "")
+            if not uf:
+                return None
+            if categoria == "executivo":
+                # o nome das secretarias de gestão varia muito ("SEPLAG", "SEAD", "SAEB"): fica a sigla
+                return _c(categoria, "estadual", uf, f"{chave.upper()} {_no_estado(uf)}", f"{chave}-{uf.lower()}")
+            rotulo = {"educacao": "Secretaria de Educação", "saude": "Secretaria de Saúde"}[categoria]
+            base_slug = {"educacao": "seduc", "saude": "ses"}[categoria]
+            return _c(categoria, "estadual", uf, f"{rotulo} {_no_estado(uf)}", f"{base_slug}-{uf.lower()}")
     return None
 
 

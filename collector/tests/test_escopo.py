@@ -52,7 +52,15 @@ FORA = [
     ["SEAP MA 26 ESPECIALISTA E ASSISTENTE", "SEAP MA 26", "Especialista Penitenciário"],
     ["Concurso Público para a Prefeitura de Macaé", "Cargo: Analista de Tecnologia da Informação"],
     ["Processo Seletivo Simplificado para a Secretaria da Educação do Estado de São Paulo - Ensino Médio Técnico"],
-    ["SEDUC PI 25 PROFESSOR", "SEDUC PI 25", "Professor de Informática"],
+    # educação, saúde e gestão: municipais, temporários, penitenciária e assistência social ficam fora
+    ["Concurso Público para a Secretaria Municipal de Educação do Município de São Lourenço da Mata"],
+    ["Concurso Público para a Secretaria de Administração Penitenciária e Ressocialização do Estado da Bahia - SEAP-BA"],
+    ["Concurso Público para a Secretaria de Estado da Assistência Social, Inclusão e Cidadania do Estado do Sergipe"],
+    ["Secretaria de Saúde de São Paulo"],
+    ["Serviço Militar Voluntário - Exército Brasileiro"],
+    ["Processo Seletivo Simplificado para Professor Substituto da Universidade Federal do Pará"],
+    ["IME Brasil"],
+    ["UDESC 26"],
     ["PREF PORTO ALEGRE RS 26"],
     ["PREF PORTO VELHO 26 PROCURADOR"],
     ["Concurso Público para a Procuradoria-Geral do Município do Rio de Janeiro"],
@@ -100,7 +108,7 @@ NOVAS = [
     (["CÂMARA DOS DEPUTADOS 26 ANALISTA", "CÂMARA DOS DEPUTADOS 26 ANALISTA",
       "Analista Legislativo – Atribuição: Informática Legislativa"], "legislativo", "federal", "BR", "camara-dos-deputados", True),
     (["Concurso Público para Secretaria de Planejamento e Gestão do Estado do Rio de Janeiro – SEPLAG/RJ",
-      "Analista de Planejamento e Orçamento – Tecnologia da Informação"], "outro", "estadual", "RJ", "seplag-rj", True),
+      "Analista de Planejamento e Orçamento – Tecnologia da Informação"], "executivo", "estadual", "RJ", "seplag-rj", True),
     # TI marcada também nas categorias de sempre
     (["TRF 3 26", "Analista Judiciário – Apoio Especializado – Análise de Sistemas de Informação"],
      "tribunal", "federal", "SP", "trf3", True),
@@ -145,3 +153,49 @@ def test_fiscal_advocacia_executivo_legislativo(textos, categoria, esfera, uf, s
     r = classificar(*textos)
     assert r is not None, textos
     assert (r.categoria, r.esfera, r.uf, r.sigla) == (categoria, esfera, uf, sigla)
+
+
+SETORIAL = [
+    # (textos, categoria, esfera, uf, sigla) — títulos reais da coleta de 12/11/2026 + casos-limite
+    (["IFPA - INSTITUTO FEDERAL DE EDUCAÇÃO, CIÊNCIA E TECNOLOGIA DO PARÁ"], "educacao", "federal", "PA", "ifpa"),
+    (["UFRN 26"], "educacao", "federal", "RN", "ufrn"),
+    (["Universidade Federal de Pelotas - concurso técnico-administrativo"], "educacao", "federal", "BR",
+     "universidade-federal-de-pelotas"),
+    (["SEDUC AL 26"], "educacao", "estadual", "AL", "seduc-al"),
+    (["SEDUC PI 25 PROFESSOR", "SEDUC PI 25", "Professor de Informática"], "educacao", "estadual", "PI", "seduc-pi"),
+    (["Concurso Público para a Secretaria de Estado de Educação do Mato Grosso"], "educacao", "estadual", "MT", "seduc-mt"),
+    (["Concurso Público para o Magistério Público da Secretaria de Estado da Educação, do Esporte e do Lazer (SEEC), "
+      "do Rio Grande do Norte"], "educacao", "estadual", "RN", "seduc-rn"),
+    (["SESAU AL 26"], "saude", "estadual", "AL", "ses-al"),
+    (["SES DF 26"], "saude", "estadual", "DF", "ses-df"),
+    (["Concurso Público para a Secretaria de Estado de Saúde do Tocantins e a Secretaria de Estado da Administração"],
+     "saude", "estadual", "TO", "ses-to"),
+    (["SECRETARIA DE ESTADO DA ADMINISTRAÇÃO DO ESTADO DO AMAPÁ - AP"], "executivo", "estadual", "AP", "gestao-ap"),
+    (["Concurso Público para Secretaria de Planejamento e Gestão do Estado do Rio de Janeiro – SEPLAG/RJ"],
+     "executivo", "estadual", "RJ", "seplag-rj"),
+    (["Concurso Público para o Cargo Especialista em Políticas Públicas e Gestão Governamental - SEAD/SE"],
+     "executivo", "estadual", "SE", "eppgg-se"),
+    (["Concurso Público Unificado do Estado de Pernambuco - CPU-PE"], "executivo", "estadual", "PE", "cpu-pe"),
+    (["CNU 2026"], "executivo", "federal", "BR", "cnu"),
+    (["Concurso de Admissão à Escola de Sargentos das Armas 2026"], "militar", "federal", "BR", "essa"),
+    (["ESSA 26"], "militar", "federal", "BR", "essa"),
+    (["EEAR 2027"], "militar", "federal", "BR", "eear"),
+    (["SEPLAG AL 26 ESPECIALISTA"], "executivo", "estadual", "AL", "seplag-al"),
+    # o que já era de outra categoria continua lá
+    (["HU BRASIL - EMPRESA BRASILEIRA DE SERVIÇOS HOSPITALARES"], "estatal", "federal", "BR", "ebserh"),
+    (["Superior Tribunal Militar"], "tribunal", "federal", "BR", "stm"),
+    (["PM PE 26"], "seguranca", "estadual", "PE", "pm-pe"),
+]
+
+
+@pytest.mark.parametrize("textos,categoria,esfera,uf,sigla", SETORIAL)
+def test_educacao_saude_militar_gestao(textos, categoria, esfera, uf, sigla):
+    r = classificar(*textos)
+    assert r is not None, textos
+    assert (r.categoria, r.esfera, r.uf, r.sigla) == (categoria, esfera, uf, sigla)
+
+
+def test_nomes_com_acento():
+    assert classificar("IFPA - INSTITUTO FEDERAL DE EDUCAÇÃO, CIÊNCIA E TECNOLOGIA DO PARÁ").orgao == "Instituto Federal do Pará"
+    assert (classificar("SECRETARIA DE ESTADO DA ADMINISTRAÇÃO DO ESTADO DO AMAPÁ - AP").orgao
+            == "Secretaria de Estado da Administração do Estado do Amapá")
