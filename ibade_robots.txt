@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Página não encontrada</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-7 mt-5" align="center">
+            <img src="https://ibade.selecao.site/arquivo.php?file=prestador/logo.png" style="max-width: 200px;"/>
+            <div class="card p-5 my-5 text-center text-12">
+                <h1 class="mb-0 text-700 display-4">404</h1>
+                <p class="mb-3 text-14">Página não encontrada<br>
+                <p class="text-left mb-0"><strong>Talvez não seja possível exibir a página solicitada devido à um dos seguintes motivos:</strong></p>
+                <ol type="1" class="text-left">
+                    <li tabindex="16">Um <strong>Link de favoritos desatualizado</strong>;</li>
+                    <li tabindex="17">Um mecanismo de busca que possua uma referência<strong> desatualizada de nosso site</strong>;</li>
+                    <li tabindex="18">Uma <strong>URL digitada erradamente</strong>;</li>
+                    <li tabindex="19">Uma <strong>página que pode ter sido apagada ou removida</strong>.</li>
+                </ol>
+            </div>
+            <a href="https://portal.ibade.selecao.site/">Página inicial</a> - <a href="https://candidato.ibade.selecao.site/">Área do candidato</a><br>
+            <b>IBADE</b><br>
+            2026        </div>
+    </div>
+</div>
+</body>
+</html>
