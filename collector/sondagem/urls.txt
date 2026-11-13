@@ -1,6 +1,4 @@
-https://www.institutoaocp.org.br/api/concursos?status=SUBSCRIBE aocp_api_abertas.json
-https://www.institutoaocp.org.br/api/concursos?status=IN_PROGRESS aocp_api_andamento.json
-https://www.institutoaocp.org.br/api/concursos?status=NEW aocp_api_novos.json
-https://link.institutoaocp.org.br/robots.txt aocp_link_robots.txt
-https://www.institutoaocp.org.br/robots.txt aocp_www_robots.txt
-https://ibade.selecao.site/robots.txt ibade_arq_robots.txt
+https://link.institutoaocp.org.br/api/concursos/714 aocp_714.json
+https://link.institutoaocp.org.br/api/concursos/701 aocp_701.json
+https://www.institutoaocp.org.br/api/concursos/proseleta/3 aocp_p3.json
+https://www.institutoaocp.org.br/concursos/714 aocp_714.html
