@@ -26,7 +26,7 @@ from dataclasses import dataclass, field
 from datetime import date
 
 from ntc.fetch.allowlist import Allowlist
-from ntc.model.schema import Campo, Concurso, Evidencia, Prazo
+from ntc.model.schema import Campo, Concurso, Etapa, Evidencia, Prazo
 from ntc.parse import clausulas
 from ntc.parse.texto import normalizar
 
@@ -97,7 +97,7 @@ class Gate:
         self,
         c: Concurso,
         caminho: str,
-        campo: Prazo | Campo,
+        campo: Prazo | Campo | Etapa,
         ev: Evidencia,
         textos: dict[str, TextoDocumento],
     ) -> list[Violacao]:
@@ -150,6 +150,10 @@ class Gate:
                 return falha("G6", "ano do prazo distante do ano da coleta")
             if self._retificado_depois(c, doc.id, tipo, campo, textos):
                 return falha("G7", "retificação posterior menciona este prazo")
+        elif isinstance(campo, Etapa):
+            # A conferência das etapas (âncora por tipo e datas no trecho) entra com o coletor.
+            # Até lá, etapa verificada sem aprovação do editor não passa.
+            return falha("G4", "etapa sem regra de conferência automática")
         elif not _valor_no_trecho(campo.valor, trecho):
             return falha("G4", f"valor {campo.valor!r} não aparece no trecho")
         return []
