@@ -1,0 +1,97 @@
+{
+  "schema_version": 2,
+  "slug": "trf3-2026-servidores",
+  "orgao": "Tribunal Regional Federal da 3ª Região",
+  "categoria": "tribunal",
+  "esfera": "federal",
+  "banca": "vunesp",
+  "uf": "SP",
+  "cargos": [
+    {
+      "nome": "Analista Judiciário",
+      "vagas": null,
+      "remuneracao": null
+    },
+    {
+      "nome": "Analista Judiciário – Oficial de Justiça Avaliador Federal",
+      "vagas": null,
+      "remuneracao": null
+    },
+    {
+      "nome": "Técnico Judiciário",
+      "vagas": null,
+      "remuneracao": null
+    },
+    {
+      "nome": "Técnico Judiciário – Desenvolvimento de Sistemas de Informação",
+      "vagas": null,
+      "remuneracao": null
+    }
+  ],
+  "vagas_imediatas": null,
+  "porte": "indefinido",
+  "areas": [
+    "ti"
+  ],
+  "taxa": null,
+  "prazos": {
+    "isencao": {
+      "status": "verificado",
+      "evidencia": "ev-1",
+      "inicio": "2026-11-04",
+      "fim": "2026-11-05"
+    },
+    "inscricao": {
+      "status": "verificado",
+      "evidencia": "ev-2",
+      "inicio": "2026-11-04",
+      "fim": "2026-11-23"
+    }
+  },
+  "isencao_publicos": [],
+  "documentos": [
+    {
+      "id": "doc-1",
+      "tipo": "edital",
+      "url": "https://arquivos.qconcursos.com/f/concurso-trf3-2026-edial__.pdf",
+      "url_final": "https://arquivos.qconcursos.com/f/concurso-trf3-2026-edial__.pdf",
+      "sha256": "9b7ad84587a291f1be796760a3fe33dda9383a2832acb87ba7add05d0d710406",
+      "coletado_em": "2026-11-13T14:37:47-03:00",
+      "fonte": "qconcursos",
+      "publicado_em": "2026-10-23",
+      "titulo": "Edital de Abertura de Inscrições nº 01/2026"
+    }
+  ],
+  "evidencias": [
+    {
+      "id": "ev-1",
+      "campo": "prazos.isencao",
+      "documento": "doc-1",
+      "pagina": 4,
+      "trecho": "No caso de solicitação de isenção pelo CadÚnico, o candidato deverá: a) a partir das 10h do dia 04.11.2026 às 23h59min do dia 05.11.2026 (horário de Brasília), acessar o link próprio da página deste Concurso Público no site www.vunesp.com.br; b) no preenchimento da ficha de inscrição, obrigatoriamente, informar o Número de Identificação Social - NIS, atribuído pelo CadÚnico.",
+      "ancora": "isenção",
+      "metodo": "regex:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": null
+    },
+    {
+      "id": "ev-2",
+      "campo": "prazos.inscricao",
+      "documento": "doc-1",
+      "pagina": 3,
+      "trecho": "3.2 As inscrições ficarão abertas, exclusivamente via internet, no período das 10h do dia 04/11/2026 às 23h59 do dia 23/11/2026 (horário de Brasília), de acordo com o item 3.3 deste Capítulo.",
+      "ancora": "inscrições",
+      "metodo": "regex:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": null
+    }
+  ],
+  "descoberto_via": {
+    "fonte": "avulsos",
+    "url": "https://www.trf3.jus.br/sege/concurso-servidores/2026",
+    "data_dou": null
+  },
+  "conferido_em": "2026-11-13T14:37:55-03:00"
+}

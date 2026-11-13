@@ -175,12 +175,12 @@
     ]
   },
   "avulsos": {
-    "inicio": "2026-11-13T14:30:48-03:00",
-    "fim": "2026-11-13T14:32:27-03:00",
+    "inicio": "2026-11-13T14:36:36-03:00",
+    "fim": "2026-11-13T14:38:22-03:00",
     "erro_fonte": null,
     "contagem": {
-      "so_revisao": 4,
-      "publicado": 2,
+      "so_revisao": 2,
+      "publicado": 4,
       "encerrado": 3
     },
     "registros": [
@@ -210,38 +210,34 @@
           "prazos.inscricao": "revisao"
         },
         "violacoes": [
-          "prazos.inscricao: 2 cláusulas diferentes"
+          "prazos.inscricao: documento diz 2026-11-17, imprensa diz 2026-11-23 (cópia desatualizada ou retificação não encontrada)"
         ]
       },
       {
         "fonte": "avulsos",
         "id": "trf3-2026-servidores",
         "titulo": "Tribunal Regional Federal da 3ª Região",
-        "situacao": "so_revisao",
+        "situacao": "publicado",
         "detalhe": "tribunal/federal/SP",
         "slug": "trf3-2026-servidores",
         "campos": {
           "prazos.isencao": "verificado",
-          "prazos.inscricao": "revisao"
+          "prazos.inscricao": "verificado"
         },
-        "violacoes": [
-          "prazos.inscricao: 6 cláusulas diferentes"
-        ]
+        "violacoes": []
       },
       {
         "fonte": "avulsos",
         "id": "trt4-2026-servidores",
         "titulo": "Tribunal Regional do Trabalho da 4ª Região",
-        "situacao": "so_revisao",
+        "situacao": "publicado",
         "detalhe": "tribunal/federal/RS",
         "slug": "trt4-2026-servidores",
         "campos": {
           "prazos.isencao": "verificado",
-          "prazos.inscricao": "revisao"
+          "prazos.inscricao": "verificado"
         },
-        "violacoes": [
-          "prazos.inscricao: 2 cláusulas diferentes"
-        ]
+        "violacoes": []
       },
       {
         "fonte": "avulsos",

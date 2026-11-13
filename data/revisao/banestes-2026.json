@@ -18,7 +18,7 @@
     "prazos.inscricao"
   ],
   "motivos": [
-    "prazos.inscricao: 2 cláusulas diferentes"
+    "prazos.inscricao: documento diz 2026-11-17, imprensa diz 2026-11-23 (cópia desatualizada ou retificação não encontrada)"
   ],
   "opcoes": {
     "prazos.inscricao": [
@@ -34,15 +34,6 @@
       {
         "id": "o-2",
         "origem": "texto",
-        "pagina": 4,
-        "trecho": "4.4.4 A partir de 26/10/2026 o candidato poderá conferir, no endereço eletrônico da Fundação Carlos Chagas, se os dados da inscrição efetuada foram recebidos e o valor da inscrição foi pago.",
-        "ancora": "inscrição",
-        "inicio": null,
-        "fim": "2026-10-26"
-      },
-      {
-        "id": "o-3",
-        "origem": "texto",
         "pagina": 7,
         "trecho": "5.1 5.1.1 5.1.2 5.2 5.3 5.3.1 5.3.2 5.3.3 5.4 5.5 atestado médico ou de especialista que comprove a necessidade do atendimento específico, no link de Inscrição do Concurso Público, até a data de encerramento das inscrições (17/11/2026), a fim de que sejam tomadas as providências cabíveis.",
         "ancora": "Inscrição",
@@ -50,7 +41,7 @@
         "fim": "2026-11-17"
       },
       {
-        "id": "o-4",
+        "id": "o-3",
         "origem": "texto",
         "pagina": 8,
         "trecho": "Para tanto, deverá encaminhar, durante o período de inscrições (do dia 19/10/2026 ao dia 17/11/2026), a documentação relacionada abaixo via Internet, legível, sem rasuras e sem cortes, por meio do link de inscrição do Concurso Público (www.concursosfcc.com.br): a) Laudo Médico, atestando a espécie e o grau ou nível de deficiência, com expressa referência ao código correspondente da Classificação Internacional de Doença – CID, bem como a provável causa da deficiência, contendo a assinatura e o ca",
@@ -59,7 +50,7 @@
         "fim": "2026-11-17"
       },
       {
-        "id": "o-5",
+        "id": "o-4",
         "origem": "texto",
         "pagina": 13,
         "trecho": "Para tanto, os candidatos durante o período de inscrição (do dia 19/10/2026 ao dia 17/11/2026).",
@@ -70,5 +61,5 @@
     ]
   },
   "mudancas": [],
-  "registrado_em": "2026-11-13T14:30:55-03:00"
+  "registrado_em": "2026-11-13T14:36:47-03:00"
 }
