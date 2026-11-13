@@ -175,28 +175,30 @@
     ]
   },
   "avulsos": {
-    "inicio": "2026-11-13T14:36:36-03:00",
-    "fim": "2026-11-13T14:38:22-03:00",
+    "inicio": "2026-11-13T14:42:59-03:00",
+    "fim": "2026-11-13T14:44:31-03:00",
     "erro_fonte": null,
     "contagem": {
-      "so_revisao": 2,
-      "publicado": 4,
-      "encerrado": 3
+      "publicado": 7,
+      "so_revisao": 1,
+      "encerrado": 1
     },
     "registros": [
       {
         "fonte": "avulsos",
         "id": "pc-ac-2026",
         "titulo": "Polícia Civil do Estado do Acre",
-        "situacao": "so_revisao",
+        "situacao": "publicado",
         "detalhe": "seguranca/estadual/AC",
         "slug": "pc-ac-2026",
         "campos": {
-          "prazos.isencao": "ausente",
-          "prazos.inscricao": "ausente",
+          "prazos.isencao": "revisao",
+          "prazos.inscricao": "verificado",
           "vagas_imediatas": "verificado"
         },
-        "violacoes": []
+        "violacoes": [
+          "prazos.isencao: 1 cláusulas diferentes"
+        ]
       },
       {
         "fonte": "avulsos",
@@ -279,21 +281,31 @@
         "fonte": "avulsos",
         "id": "cbm-pe-2026-soldado-e-oficial",
         "titulo": "Corpo de Bombeiros Militar do Estado de Pernambuco",
-        "situacao": "encerrado",
+        "situacao": "publicado",
         "detalhe": "seguranca/estadual/PE",
-        "slug": null,
-        "campos": {},
-        "violacoes": []
+        "slug": "cbm-pe-2026-soldado-e-oficial",
+        "campos": {
+          "prazos.isencao": "revisao",
+          "prazos.inscricao": "verificado"
+        },
+        "violacoes": [
+          "G7 prazos.isencao: retificação posterior menciona este prazo"
+        ]
       },
       {
         "fonte": "avulsos",
         "id": "pm-pe-2026-soldado-e-oficial",
         "titulo": "Polícia Militar do Estado de Pernambuco",
-        "situacao": "encerrado",
+        "situacao": "publicado",
         "detalhe": "seguranca/estadual/PE",
-        "slug": null,
-        "campos": {},
-        "violacoes": []
+        "slug": "pm-pe-2026-soldado-e-oficial",
+        "campos": {
+          "prazos.isencao": "revisao",
+          "prazos.inscricao": "verificado"
+        },
+        "violacoes": [
+          "G7 prazos.isencao: retificação posterior menciona este prazo"
+        ]
       }
     ]
   },

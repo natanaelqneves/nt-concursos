@@ -1,0 +1,109 @@
+{
+  "schema_version": 2,
+  "slug": "pc-ac-2026",
+  "orgao": "Polícia Civil do Estado do Acre",
+  "categoria": "seguranca",
+  "esfera": "estadual",
+  "banca": "idecan",
+  "uf": "AC",
+  "cargos": [
+    {
+      "nome": "Delegado de Polícia Civil",
+      "vagas": null,
+      "remuneracao": null
+    },
+    {
+      "nome": "Oficial Investigador de Polícia",
+      "vagas": null,
+      "remuneracao": null
+    },
+    {
+      "nome": "Perito Criminal",
+      "vagas": null,
+      "remuneracao": null
+    },
+    {
+      "nome": "Perito Médico-Legista",
+      "vagas": null,
+      "remuneracao": null
+    },
+    {
+      "nome": "Papiloscopista Policial",
+      "vagas": null,
+      "remuneracao": null
+    },
+    {
+      "nome": "Auxiliar de Necropsia",
+      "vagas": null,
+      "remuneracao": null
+    }
+  ],
+  "vagas_imediatas": {
+    "status": "verificado",
+    "evidencia": "ev-2",
+    "valor": 139
+  },
+  "porte": "grande",
+  "areas": [],
+  "taxa": null,
+  "prazos": {
+    "isencao": {
+      "status": "revisao",
+      "evidencia": null,
+      "inicio": null,
+      "fim": null
+    },
+    "inscricao": {
+      "status": "verificado",
+      "evidencia": "ev-1",
+      "inicio": "2026-11-11",
+      "fim": "2026-12-14"
+    }
+  },
+  "isencao_publicos": [],
+  "documentos": [
+    {
+      "id": "doc-1",
+      "tipo": "edital",
+      "url": "https://arquivos.qconcursos.com/f/edital_pcac_001-2026.pdf",
+      "url_final": "https://arquivos.qconcursos.com/f/edital_pcac_001-2026.pdf",
+      "sha256": "023e93897dbe8cf902350c64e3a24585a858bc6e9c890916f328d46130cd1946",
+      "coletado_em": "2026-11-13T14:43:01-03:00",
+      "fonte": "qconcursos",
+      "publicado_em": "2026-11-06",
+      "titulo": "Edital nº 001 SEAD/PCAC, de 5 de novembro de 2026"
+    }
+  ],
+  "evidencias": [
+    {
+      "id": "ev-1",
+      "campo": "prazos.inscricao",
+      "documento": "doc-1",
+      "pagina": 47,
+      "trecho": "3 Período de inscrições 11/11/2026 14/12/2026",
+      "ancora": "inscrições",
+      "metodo": "regex:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": null
+    },
+    {
+      "id": "ev-2",
+      "campo": "vagas_imediatas",
+      "documento": "doc-1",
+      "pagina": 2,
+      "trecho": "1.2 O presente concurso público destina-se ao provimento de 139 (cento e trinta e nove) vagas, assim distribuídas: 8 (oito) vagas para o cargo de Delegado de Polícia Civil;",
+      "ancora": "vagas",
+      "metodo": "regex:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": null
+    }
+  ],
+  "descoberto_via": {
+    "fonte": "avulsos",
+    "url": "https://www.idecan.org.br/",
+    "data_dou": null
+  },
+  "conferido_em": "2026-11-13T14:43:03-03:00"
+}
