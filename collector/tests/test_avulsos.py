@@ -84,6 +84,7 @@ def _rodar(dados, entrada, cliente, agora=AGORA):
 
 EDITAL = {"tipo": "edital", "titulo": "Edital 001/2026", "publicado_em": "2026-09-29", "urls": [OFICIAL, COPIA]}
 RETIF = {"tipo": "retificacao", "titulo": "Portaria 310", "publicado_em": "2026-10-15", "urls": [BLOQ, RET]}
+RETIF_UNICA = {"tipo": "retificacao", "titulo": "Portaria 310", "publicado_em": "2026-10-15", "urls": [RET]}
 
 
 def test_prazo_da_retificacao_em_copia(dados):
@@ -160,3 +161,10 @@ def test_linha_de_cronograma_sem_imprensa_nao_vale(dados, monkeypatch):
     cliente = Cliente({COPIA: b"%PDF-edital", RET: b"%PDF-ret"})
     reg, _ = _rodar(dados, _entrada([EDITAL, RETIF]), cliente)
     assert reg.situacao == "encerrado"
+
+
+def test_origem_com_endereco_unico(dados):
+    cliente = Cliente({COPIA: b"%PDF-edital", RET: b"%PDF-ret"})
+    _rodar(dados, _entrada([EDITAL, RETIF_UNICA]), cliente)
+    c = Concurso.model_validate_json((dados / "concursos" / "pm-pe-2026-soldado.json").read_text(encoding="utf-8"))
+    assert [d.fonte for d in c.documentos] == ["qconcursos", "cdn-cloudfront"]
