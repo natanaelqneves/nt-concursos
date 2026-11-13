@@ -27,6 +27,7 @@ from datetime import date
 
 from ntc.fetch.allowlist import Allowlist
 from ntc.model.schema import Campo, Concurso, Etapa, Evidencia, Prazo
+from ntc.parse import etapas as etapas_parse
 from ntc.parse import clausulas
 from ntc.parse.texto import normalizar
 
@@ -151,9 +152,24 @@ class Gate:
             if self._retificado_depois(c, doc.id, tipo, campo, textos):
                 return falha("G7", "retificação posterior menciona este prazo")
         elif isinstance(campo, Etapa):
-            # A conferência das etapas (âncora por tipo e datas no trecho) entra com o coletor.
-            # Até lá, etapa verificada sem aprovação do editor não passa.
-            return falha("G4", "etapa sem regra de conferência automática")
+            # Só linha de cronograma em tabela; a atividade tem de ser deste tipo de etapa e as
+            # datas da célula, as declaradas.
+            if ev.tabela is None:
+                return falha("G4", "etapa sem linha de cronograma")
+            if etapas_parse.classificar(ev.tabela.atividade) != campo.tipo:
+                return falha("G4", f"atividade não é etapa do tipo {campo.tipo}")
+            esperado = [d for d in (campo.inicio, campo.fim) if d is not None]
+            if clausulas.datas_de_prazo(ev.tabela.datas) != esperado:
+                return falha("G4", "datas da linha ≠ declaradas")
+            ano = doc.coletado_em.year
+            if any(not (ano - 1 <= d.year <= ano + 1) for d in esperado):
+                return falha("G6", "ano da etapa distante do ano da coleta")
+            for d in c.documentos:
+                if d.tipo != "retificacao" or not d.posterior_a(doc):
+                    continue
+                t = textos.get(d.sha256)
+                if t is None or not t.tem_texto or etapas_parse.alterada_por(t.paginas, campo.tipo):
+                    return falha("G7", "retificação posterior pode mudar esta etapa")
         elif not _valor_no_trecho(campo.valor, trecho):
             return falha("G4", f"valor {campo.valor!r} não aparece no trecho")
         return []

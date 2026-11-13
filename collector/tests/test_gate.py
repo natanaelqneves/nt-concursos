@@ -197,3 +197,37 @@ def test_g7_retificacao_anterior_pela_data_de_publicacao_nao_conta(gate, novo, t
     textos = dict(textos)
     textos[sha_ret] = TextoDocumento(sha_ret, {1: "Fica prorrogado o prazo de solicitação de isenção até 21/11/2026."})
     assert "G7" not in regras(aplicar(gate, d, textos))
+
+
+def _com_etapa(novo, atividade="Aplicação das provas objetivas", datas="14/12/2026", tipo="prova_objetiva",
+               fim="2026-12-14"):
+    d = novo()
+    d["evidencias"].append({
+        "id": "ev-90", "campo": "etapas.0", "documento": "doc-1", "pagina": 1,
+        "trecho": f"{atividade} — {datas}", "ancora": tipo, "metodo": "tabela:v1",
+        "tabela": {"atividade": atividade, "datas": datas},
+    })
+    d["etapas"] = [{"tipo": tipo, "nome": atividade, "fim": fim, "status": "verificado", "evidencia": "ev-90"}]
+    return d
+
+
+def _textos_com(paginas, extra):
+    p = dict(paginas)
+    p[1] = p[1] + " " + extra
+    return {SHA: TextoDocumento(SHA, p, completo=True)}
+
+
+def test_etapa_conferida(gate, novo, paginas):
+    t = _textos_com(paginas, "Aplicação das provas objetivas 14/12/2026")
+    r = aplicar(gate, _com_etapa(novo), t)
+    assert r.concurso.etapas[0].status == "verificado", r.violacoes
+
+
+def test_etapa_com_data_ou_tipo_errado(gate, novo, paginas):
+    t = _textos_com(paginas, "Aplicação das provas objetivas 14/12/2026")
+    r = aplicar(gate, _com_etapa(novo, fim="2026-12-15"), t)
+    assert r.concurso.etapas[0].status == "revisao"
+    r = aplicar(gate, _com_etapa(novo, tipo="gabarito"), t)
+    assert r.concurso.etapas[0].status == "revisao"
+    r = aplicar(gate, _com_etapa(novo), {SHA: TextoDocumento(SHA, paginas, completo=True)})
+    assert "G3" in regras(r)

@@ -16,7 +16,7 @@ from __future__ import annotations
 import re
 import traceback
 from dataclasses import asdict, dataclass, field, replace
-from datetime import datetime
+from datetime import datetime, timedelta
 from typing import Callable
 
 from ntc.escopo import Classificacao, classificar, sem_acento
@@ -30,18 +30,23 @@ from ntc.model.schema import (
     Concurso,
     Descoberta,
     Documento,
+    Etapa,
     Evidencia,
     LinhaTabela,
     Prazo,
     Prazos,
+    SEPARADOR_TABELA,
     classificar_porte,
 )
-from ntc.parse import clausulas, tabela, vagas
+from ntc.parse import clausulas, etapas as etapas_parse, tabela, vagas
 from ntc.pdf.extract import NaoEhPdf, extrair
 from ntc.sources.base import ConcursoFonte, DocFonte
 from ntc.store.json_store import JsonStore
 
 METODO = "regex:v1"
+# "Em andamento" (Parte 1): concurso com inscrições encerradas há até ~6 meses continua no site se
+# o cronograma do edital trouxer etapas conferidas.
+JANELA_ANDAMENTO = timedelta(days=183)
 MAX_MUDANCAS = 15
 MAX_OPCOES = 8
 _ONDE_SE_LE = re.compile(r"onde\s+se\s+l[êe]", re.IGNORECASE)
@@ -296,6 +301,21 @@ class Coletor:
         elif achados:
             vagas_campo = Campo(status="revisao")
 
+        etapas: list[Etapa] = []
+        insc = prazos.inscricao
+        if insc.status == "verificado" and insc.fim is not None:
+            for e in etapas_parse.encontrar(linhas_tabela, txt_edital.paginas, (insc.inicio, insc.fim),
+                                            doc_edital.coletado_em.year):
+                trecho = f"{e.atividade}{SEPARADOR_TABELA}{e.datas}"
+                if len(e.atividade) > 290 or len(e.datas) > 200 or not 15 <= len(trecho) <= 500:
+                    continue
+                ev = Evidencia(id=f"ev-{len(evidencias) + 1}", campo=f"etapas.{len(etapas)}", documento="doc-1",
+                               pagina=e.pagina, trecho=trecho, ancora=e.tipo, metodo="tabela:v1",
+                               tabela=LinhaTabela(atividade=e.atividade, datas=e.datas))
+                evidencias.append(ev)
+                etapas.append(Etapa(tipo=e.tipo, nome=e.nome, inicio=e.inicio, fim=e.fim,
+                                    status="verificado", evidencia=ev.id))
+
         baixadas: list[tuple[Documento, TextoDocumento | None]] | None = None
         if cf.prazo_na_retificacao:
             baixadas = self._baixar_mudancas(cf, edital_fonte, documentos, textos, reg)
@@ -310,7 +330,8 @@ class Coletor:
             if getattr(prazos, tipo).status == "revisao"
             for o in opcoes.get(campo, [])
         )
-        if not existente and verif and not abertos and not em_revisao_aberta:
+        recente = insc.status == "verificado" and insc.fim is not None and insc.fim >= hoje - JANELA_ANDAMENTO
+        if not existente and verif and not abertos and not em_revisao_aberta and not (recente and etapas):
             # Concurso novo sem nenhum prazo verificado ainda aberto: o site é sobre prazos abertos.
             reg.situacao = "encerrado"
             self.store.remover_revisao(slug)
@@ -326,7 +347,7 @@ class Coletor:
             slug=slug, orgao=cls.orgao, categoria=cls.categoria, esfera=cls.esfera, banca=cf.banca or cf.fonte,
             uf=cls.uf, municipio=cls.municipio,
             cargos=[Cargo(nome=n) for n in cf.cargos if len(n) >= 2],
-            vagas_imediatas=vagas_campo, porte=classificar_porte(vagas_campo), prazos=prazos,
+            vagas_imediatas=vagas_campo, porte=classificar_porte(vagas_campo), prazos=prazos, etapas=etapas,
             areas=list(cls.areas),
             documentos=documentos, evidencias=evidencias,
             descoberto_via=Descoberta(fonte=cf.fonte, url=cf.url, data_dou=cf.data_dou),
@@ -349,7 +370,8 @@ class Coletor:
         verificados = [p for p in (final.prazos.isencao, final.prazos.inscricao) if p.status == "verificado"]
         # Novo concurso entra só com prazo verificado ainda aberto; um já publicado é sempre
         # regravado (para rebaixar campos que deixaram de passar no gate).
-        if existente or any(p.fim and p.fim >= hoje for p in verificados):
+        em_andamento = recente and any(e.status == "verificado" for e in final.etapas)
+        if existente or any(p.fim and p.fim >= hoje for p in verificados) or em_andamento:
             self.store.salvar_concurso(final)
             for doc in final.documentos:
                 t = guardados.get(doc.sha256)
@@ -358,12 +380,14 @@ class Coletor:
             reg.situacao = "publicado"
         else:
             reg.situacao = "so_revisao"
-        pendentes = {k: s for k, s in reg.campos.items() if s == "revisao"}
+        # Etapas em revisão não vão para a fila do editor (Parte 1): ficam só fora do site.
+        pendentes = {k: s for k, s in reg.campos.items() if s == "revisao" and not k.startswith("etapas.")}
         # Concurso fora do site cujas opções já venceram todas: não há o que decidir.
         alguma_aberta = any(
             o["fim"] >= hoje.isoformat() for k in pendentes for o in opcoes.get(k, [])
         )
-        if (pendentes or reg.violacoes) and (existente or alguma_aberta):
+        violacoes = [v for v in reg.violacoes if " etapas." not in v]
+        if (pendentes or violacoes) and (existente or alguma_aberta):
             self.store.salvar_revisao(slug, {
                 "schema_version": 2, "slug": slug, "orgao": final.orgao, "situacao": reg.situacao,
                 "categoria": final.categoria, "esfera": final.esfera, "uf": final.uf,
