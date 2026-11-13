@@ -67,10 +67,10 @@ export const SOBRE_CATEGORIA: Record<Categoria, { titulo: string; paragrafos: st
     ],
   },
   executivo: {
-    titulo: "O que é o executivo federal",
+    titulo: "O que é o executivo e a gestão pública",
     paragrafos: [
-      "É a parte do governo federal que executa as políticas públicas: ministérios, autarquias e fundações como o INSS e o IBGE, o Banco Central e as agências reguladoras, que fiscalizam setores como energia, telecomunicações, transportes e saúde suplementar. Desde 2024, parte desses órgãos seleciona servidores pelo Concurso Público Nacional Unificado (CNU).",
-      "Os servidores são estatutários, regidos pela Lei 8.112/1990. Os cargos vão de técnico, de nível médio, a analista e especialista, de nível superior, e cada edital traz as áreas de formação aceitas e o conteúdo das provas.",
+      "No governo federal, o Executivo reúne os ministérios, autarquias e fundações como o INSS e o IBGE, o Banco Central e as agências reguladoras, que fiscalizam setores como energia, telecomunicações, transportes e saúde suplementar. Desde 2024, parte desses órgãos seleciona servidores pelo Concurso Público Nacional Unificado (CNU).",
+      "Nos estados, acompanhamos os concursos da área de gestão: secretarias de administração, planejamento e gestão, concursos unificados que reúnem vários órgãos do governo estadual e carreiras de gestor governamental, como especialista em políticas públicas e gestão governamental. Os cargos vão de técnico, de nível médio, a analista e especialista, de nível superior, e cada edital traz as áreas de formação aceitas e o conteúdo das provas.",
     ],
   },
   legislativo: {
@@ -78,6 +78,27 @@ export const SOBRE_CATEGORIA: Record<Categoria, { titulo: string; paragrafos: st
     paragrafos: [
       "O Legislativo faz as leis e fiscaliza o Executivo. Na União, é formado pela Câmara dos Deputados e pelo Senado Federal; nos estados, pelas assembleias legislativas; no Distrito Federal, pela Câmara Legislativa.",
       "Os concursos são para analistas e técnicos legislativos, consultores legislativos e de orçamento e, em algumas casas, policiais legislativos (que aparecem aqui em segurança pública). Os salários costumam estar entre os mais altos do serviço público, e as provas cobram o regimento interno da casa, além das matérias da especialidade.",
+    ],
+  },
+  educacao: {
+    titulo: "Concursos da educação pública",
+    paragrafos: [
+      "Na esfera federal, acompanhamos as universidades e os institutos federais de educação, ciência e tecnologia. Eles fazem concursos para professores (magistério superior e ensino básico, técnico e tecnológico) e para técnicos-administrativos em educação, cargos de nível médio e superior que trabalham na gestão, nos laboratórios, nas bibliotecas e no atendimento.",
+      "Nos estados, acompanhamos as secretarias de educação, que contratam professores da rede estadual e profissionais de apoio. Seleções temporárias, como as de professor substituto ou contratado, ficam de fora: aqui entram só concursos para cargos efetivos.",
+    ],
+  },
+  saude: {
+    titulo: "Concursos da saúde pública estadual",
+    paragrafos: [
+      "As secretarias estaduais de saúde e as fundações estaduais de saúde administram hospitais, hemocentros, laboratórios e a gestão do SUS em cada estado. Os concursos costumam ter muitos cargos ao mesmo tempo: médicos de várias especialidades, enfermeiros, técnicos de enfermagem, farmacêuticos, fisioterapeutas, psicólogos, assistentes sociais e cargos administrativos.",
+      "Muitos cargos exigem registro no conselho profissional e, às vezes, residência ou especialização, e o concurso pode ter prova de títulos. Seleções temporárias e processos seletivos simplificados ficam de fora.",
+    ],
+  },
+  militar: {
+    titulo: "Concursos das Forças Armadas",
+    paragrafos: [
+      "Exército, Marinha e Aeronáutica selecionam pessoal por concursos de admissão às suas escolas de formação, como a Escola de Sargentos das Armas, a Escola Preparatória de Cadetes do Exército, a Escola Naval, o Colégio Naval, a Escola de Especialistas de Aeronáutica e a Academia da Força Aérea, e por concursos para quadros técnicos, de saúde e de engenharia.",
+      "Os requisitos de idade, altura, estado civil e escolaridade variam muito de uma seleção para outra, e quase todas têm exames de saúde, teste físico e avaliação psicológica além das provas. O serviço militar temporário e voluntário fica de fora: aqui entram só as seleções de carreira.",
     ],
   },
   outro: {

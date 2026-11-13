@@ -51,7 +51,7 @@ Classificação de escopo: `collector/src/ntc/escopo.py` (regras explícitas, co
 | `categoria` | ganha `estatal` (empresas públicas e sociedades de economia mista federais e estaduais), `conselho` (conselhos profissionais) e `outro` (demais órgãos federais e estaduais) |
 | `areas` | lista de áreas dos cargos; por enquanto só `"ti"` (cargo de tecnologia da informação). Vale para qualquer categoria |
 | `outro` | só existe com `areas: ["ti"]`: órgão fora das categorias entra apenas se tiver cargo de TI |
-| `uf` | federais usam `BR`, exceto `tribunal` e `conselho`, que usam a UF da sede regional |
+| `uf` | federais usam `BR`, exceto `tribunal`, `conselho` e (desde 13/11) `educacao`, que usam a UF da sede |
 
 Municipais continuam fora, inclusive TI municipal e empresas municipais. O mesmo vale para `data/noticias`.
 
@@ -65,6 +65,19 @@ Ainda em 12/11/2026, `categoria` ganha mais quatro valores (compatível com a ve
 | `legislativo` | Câmara dos Deputados e Senado (`BR`), assembleias legislativas e Câmara Legislativa do DF |
 
 Polícia legislativa continua em `seguranca`. Procuradorias municipais e câmaras municipais ficam fora.
+
+Em 13/11/2026, `categoria` ganha mais três valores e `executivo` passa a aceitar a esfera estadual
+(compatível com a versão 2):
+
+| Valor | O que cobre |
+|---|---|
+| `executivo` | federal (`BR`) como antes e, agora, **gestão estadual**: secretarias estaduais de administração, planejamento e gestão, concursos unificados estaduais e carreiras de gestor governamental (EPPGG) |
+| `educacao` | universidades e institutos federais (federal, com a UF da sede, como `tribunal` e `conselho`) e secretarias estaduais de educação |
+| `saude` | só estadual: secretarias estaduais de saúde e fundações estaduais de saúde |
+| `militar` | só federal (`BR`): Exército, Marinha e Aeronáutica, nas seleções de carreira (escolas de formação, quadros técnicos e de saúde) |
+
+Ficam fora, como antes: seleções temporárias (inclusive serviço militar temporário e professor
+substituto), processos seletivos simplificados, universidades estaduais e secretarias municipais.
 
 ## Evidência de tabela (12/11/2026, compatível com a versão 2)
 

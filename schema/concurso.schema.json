@@ -417,6 +417,9 @@
         "advocacia",
         "executivo",
         "legislativo",
+        "educacao",
+        "saude",
+        "militar",
         "outro"
       ],
       "title": "Categoria",
