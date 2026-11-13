@@ -1,0 +1,29 @@
+HTTP/2 302 
+date: Fri, 13 Nov 2026 02:03:56 GMT
+content-type: text/html; charset=utf-8
+cache-control: private
+location: /inscricao/Login.aspx
+server: cloudflare
+set-cookie: ASP.NET_SessionId=jm1sk143efdrmqpaqm44z4ga; path=/; HttpOnly; SameSite=Lax
+x-aspnet-version: 4.0.30319
+x-powered-by: ASP.NET
+cf-cache-status: DYNAMIC
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=aHTKrSfByQH7Q5FtAZGGedxIz43vaOPmxGx5HLvGk%2BRqCWaID83gw6q1ik1SQtrdFzX%2Bi5CR7OhbBeaKkzy28sOv%2FxdzwUaE9%2FLutJMVN6j42gDyX3eEJwl5BTdweqJUmwDU"}]}
+cf-ray: a59a33eeec966a00-ATL
+alt-svc: h3=":443"; ma=86400
+
+HTTP/2 200 
+date: Fri, 13 Nov 2026 02:03:57 GMT
+content-type: text/html; charset=utf-8
+cache-control: private
+server: cloudflare
+set-cookie: ASP.NET_SessionId=y2schrdc3hmeyqr1op4yjmgz; path=/; HttpOnly; SameSite=Lax
+x-aspnet-version: 4.0.30319
+x-powered-by: ASP.NET
+cf-cache-status: DYNAMIC
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=S%2FTzHEKQuUcLmV0qagn%2Fr%2BoBb%2BrKISQ1gdfQ%2B5TERQwCFVQ4QFLXjKVNVfOlBRqlsUb2mTacbqvLZsKklZIc0QRY27ZyNqAHkqw8Zj5SxPA6VOWSuKiuio11HUsn8LJf4NXz"}]}
+cf-ray: a59a33f0b8a76a00-ATL
+alt-svc: h3=":443"; ma=86400
+

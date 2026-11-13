@@ -1,0 +1,16 @@
+HTTP/2 200 
+date: Fri, 13 Nov 2026 02:03:58 GMT
+content-type: text/html; charset=UTF-8
+vary: accept, content-type,Accept-Encoding
+link: <https://selecon.org.br/wp-json/>; rel="https://api.w.org/"
+link: <https://selecon.org.br/wp-json/wp/v2/pages/5794>; rel="alternate"; title="JSON"; type="application/json"
+link: <https://selecon.org.br/>; rel=shortlink
+server: cloudflare
+x-turbo-charged-by: LiteSpeed
+x-litespeed-cache: hit
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=zpo1lSTYTKanel%2F%2B25Rc4kAm5SKahNMkyxdn2pmbxKNg27wgPPwIPBNt88BegzFxbxlo0%2Bma%2FstLVcOuywsFpRH1Ih26HW0wFOpr%2BN%2FJRWKmoz7kpRo9tZYIPjjd9LJIBg%3D%3D"}]}
+cf-cache-status: DYNAMIC
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+cf-ray: a59a33fa8bd8da3d-ATL
+alt-svc: h3=":443"; ma=86400
+

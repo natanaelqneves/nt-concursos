@@ -1,0 +1,16 @@
+HTTP/2 200 
+x-powered-by: PHP/8.2.35
+content-type: text/html; charset=UTF-8
+permissions-policy: private-state-token-redemption=(self "https://www.google.com" "https://www.gstatic.com" "https://recaptcha.net" "https://challenges.cloudflare.com" "https://hcaptcha.com"), private-state-token-issuance=(self "https://www.google.com" "https://www.gstatic.com" "https://recaptcha.net" "https://challenges.cloudflare.com" "https://hcaptcha.com")
+link: <https://ibade.org.br/wp-json/>; rel="https://api.w.org/"
+link: <https://ibade.org.br/wp-json/wp/v2/pages/133>; rel="alternate"; title="JSON"; type="application/json"
+link: <https://ibade.org.br/>; rel=shortlink
+etag: "944-1794497334;;;"
+x-litespeed-cache: hit
+date: Fri, 13 Nov 2026 02:03:57 GMT
+server: LiteSpeed
+platform: hostinger
+panel: hpanel
+content-security-policy: upgrade-insecure-requests
+alt-svc: h3=":443"; ma=2592000, h3-29=":443"; ma=2592000
+
