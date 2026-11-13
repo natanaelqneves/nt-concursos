@@ -86,6 +86,23 @@ def _escolher(texto: list, tab: list):
     return None, None
 
 
+_LINHA_CRONOGRAMA = re.compile(
+    r"^(?:\d{1,2}\s+)?per[íi]odo\s+(?:para\s+(?:a\s+)?(?:solicita[çc][ãa]o\s+de\s+)?|de\s+)?inscri[çc](?:[ãa]o|[õo]es)\b",
+    re.IGNORECASE,
+)
+
+
+def _linha_de_cronograma(texto: list):
+    """Avulsos: linha de cronograma lida como texto ("Período para solicitação de inscrição 9h do dia
+    05/10 até às 14h do dia 23/11/2026") quando a leitura célula por célula falha. Só vale se for a
+    única leitura do prazo no documento (sem conflito) e se começar pelo rótulo da atividade; a data
+    ainda precisa bater com a da imprensa (_conferir_com_imprensa)."""
+    if len(clausulas.intervalos_distintos(texto)) != 1:
+        return None
+    return next((c for c in texto if c.de_tabela and c.inicio and len(c.trecho) <= 200
+                 and _LINHA_CRONOGRAMA.match(c.trecho)), None)
+
+
 def _opcoes(texto: list, tab: list) -> list:
     """Leituras do edital que o editor pode escolher: cláusulas de texto corrido com uma ou duas
     datas (sem as de tabela lida como texto) e linhas de cronograma lidas célula por célula."""
@@ -251,6 +268,9 @@ class Coletor:
                     escolhido, motivo, aprovado = achado, None, True
             else:
                 escolhido, motivo = _escolher(cands, tab)
+                if escolhido is None and tipo in cf.esperado:
+                    escolhido = _linha_de_cronograma(cands)
+                    motivo = None if escolhido else motivo
             if escolhido is not None:
                 linha = LinhaTabela(atividade=escolhido.tabela[0], datas=escolhido.tabela[1]) if escolhido.tabela else None
                 ev = Evidencia(id=f"ev-{len(evidencias) + 1}", campo=campo, documento="doc-1",
@@ -279,7 +299,7 @@ class Coletor:
         baixadas: list[tuple[Documento, TextoDocumento | None]] | None = None
         if cf.prazo_na_retificacao:
             baixadas = self._baixar_mudancas(cf, edital_fonte, documentos, textos, reg)
-            self._prazo_da_retificacao(baixadas, prazos, evidencias, reg)
+            self._prazo_da_retificacao(baixadas, prazos, evidencias, reg, set(cf.esperado))
 
         hoje = self.agora().date()
         abertos = [p for p in (prazos.isencao, prazos.inscricao) if p.status == "verificado" and p.fim and p.fim >= hoje]
@@ -393,7 +413,8 @@ class Coletor:
         return baixadas
 
     @staticmethod
-    def _prazo_da_retificacao(baixadas: list, prazos: Prazos, evidencias: list[Evidencia], reg: Registro) -> None:
+    def _prazo_da_retificacao(baixadas: list, prazos: Prazos, evidencias: list[Evidencia], reg: Registro,
+                              conferiveis: set[str] = frozenset()) -> None:
         """Prazo republicado numa retificação (prorrogação): vale o da retificação mais recente que
         traga uma cláusula clara do prazo. O gate confere o trecho nela (G3–G5) e o G7 só olha as
         retificações posteriores a ela."""
@@ -411,6 +432,8 @@ class Coletor:
                     linhas = []
                 tab = [c for c in tabela.candidatos(linhas, txt.paginas, tipo) if not c.ambiguo]
                 escolhido, _motivo = _escolher(cands, tab)
+                if escolhido is None and tipo in conferiveis:
+                    escolhido = _linha_de_cronograma(cands)
                 if escolhido is None:
                     continue
                 linha = LinhaTabela(atividade=escolhido.tabela[0], datas=escolhido.tabela[1]) if escolhido.tabela else None

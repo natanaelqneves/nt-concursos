@@ -130,3 +130,33 @@ def test_lista_real_e_valida():
         for d in e["documentos"]:
             for u in d["urls"]:
                 assert al.permitido(u), u
+
+
+def test_linha_de_cronograma_na_retificacao(dados, monkeypatch):
+    """Retificação do DOE-PE: o cronograma sai como texto ("Período para solicitação de inscrição ...")."""
+    ret = {1: "ANEXO II - CRONOGRAMA PREVISTO Divulgação do resultado pós-recurso 28/10/2026 "
+              "Período para solicitação de inscrição 9h do dia 05/10 até às 14h do dia 23/11/2026 "
+              "Período para pagamento da taxa de inscrição Até o dia 23/11/2026"}
+    textos = {b"%PDF-edital": EDITAL_TXT, b"%PDF-ret": ret}
+    monkeypatch.setattr(coleta, "extrair",
+                        lambda c: TextoDocumento(hashlib.sha256(c).hexdigest(), textos[c], completo=True))
+    cliente = Cliente({COPIA: b"%PDF-edital", RET: b"%PDF-ret"})
+    reg, _ = _rodar(dados, _entrada([EDITAL, RETIF]), cliente)
+
+    assert reg.situacao == "publicado", reg
+    c = Concurso.model_validate_json((dados / "concursos" / "pm-pe-2026-soldado.json").read_text(encoding="utf-8"))
+    assert (str(c.prazos.inscricao.fim), c.prazos.inscricao.status) == ("2026-11-23", "verificado")
+
+
+def test_linha_de_cronograma_sem_imprensa_nao_vale(dados, monkeypatch):
+    """Sem data da imprensa para conferir, a linha de cronograma lida como texto não sustenta o prazo."""
+    (dados / "noticias" / "pm-pe-2026.json").write_text(json.dumps({"slug": "pm-pe-2026", "fatos": []}),
+                                                         encoding="utf-8")
+    ret = {1: "ANEXO II - CRONOGRAMA PREVISTO Divulgação do resultado pós-recurso 28/10/2026 "
+              "Período para solicitação de inscrição 9h do dia 05/10 até às 14h do dia 23/11/2026"}
+    textos = {b"%PDF-edital": EDITAL_TXT, b"%PDF-ret": ret}
+    monkeypatch.setattr(coleta, "extrair",
+                        lambda c: TextoDocumento(hashlib.sha256(c).hexdigest(), textos[c], completo=True))
+    cliente = Cliente({COPIA: b"%PDF-edital", RET: b"%PDF-ret"})
+    reg, _ = _rodar(dados, _entrada([EDITAL, RETIF]), cliente)
+    assert reg.situacao == "encerrado"
