@@ -193,3 +193,7 @@ dl.grade dd { margin: 0; font-size: .9rem; font-weight: 600; }
 footer.rodape li { padding: .15rem 0; }
 .prazos a, .lista-links a { text-decoration: none; }
 .prazos a:hover, .lista-links a:hover { text-decoration: underline; }
+
+/* Fim da página do concurso: origem dos documentos e onde pesquisamos */
+.origem { border-top: 1px solid var(--bs-border-color, #dee2e6); margin-top: 2rem; padding-top: 1rem; }
+.origem h3 { font-size: 1rem; margin-top: 1rem; }
