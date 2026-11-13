@@ -289,6 +289,10 @@ export const NOME_FATO: Record<FatoNoticia["campo"], string> = {
   remuneracao: "Remuneração",
   banca: "Banca",
   cargos: "Cargos",
+  gabarito: "Gabarito",
+  resultado: "Resultado",
+  homologacao: "Homologação",
+  etapa: "Etapa",
 };
 
 let cacheNoticias: Noticia[] | null = null;
