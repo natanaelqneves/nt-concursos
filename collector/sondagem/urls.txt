@@ -1,6 +1,2 @@
-https://arquivos-site.institutoaocp.org.br/robots.txt aocp_arq_robots.txt
-https://arquivos-site.institutoaocp.org.br/publicacoes/2900b54e-fae0-462e-8a77-58784523dfa0.pdf aocp_pmpe_edital.pdf
-https://anexos-r2.selecao.net.br/robots.txt selr2_robots.txt
-https://anexos-r2.selecao.net.br/uploads/738/concursos/3/anexos/9985364e-18af-4a50-896d-114d97ae783f.pdf aocp_pmsc_edital.pdf
-https://link.institutoaocp.org.br/api/concursos/715 aocp_715.json
-https://link.institutoaocp.org.br/api/concursos/693 aocp_693.json
+https://www.access.org.br/robots.txt access_robots.txt
+https://www.access.org.br/ access_home.html
