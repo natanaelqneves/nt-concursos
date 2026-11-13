@@ -1,0 +1,32 @@
+---
+// Linha do tempo das próximas datas (isenção primeiro no mesmo dia).
+import { proximosPrazos } from "../lib/navegacao";
+import { diasEntre, formatarData, hojeBRT } from "../lib/tempo";
+
+interface Props { limite?: number }
+const { limite = 8 } = Astro.props;
+const hoje = hojeBRT();
+const prazos = proximosPrazos().slice(0, limite);
+const quando = (d: string) => {
+  const n = diasEntre(hoje, d);
+  return n === 0 ? "hoje" : n === 1 ? "amanhã" : `em ${n} dias`;
+};
+---
+<section class="prazos card shadow-sm" aria-labelledby="prox-prazos">
+  <div class="card-body">
+    <h2 id="prox-prazos" class="h6 mt-0 mb-3">Próximos prazos</h2>
+    {prazos.length ? (
+      <ol class="list-unstyled mb-0">
+        {prazos.map((p) => (
+          <li class={p.isencao ? "isencao" : ""}>
+            <span class="quando"><time datetime={p.data}>{formatarData(p.data).slice(0, 5)}</time> · {quando(p.data)}</span>
+            <span class="evento">{p.evento}{p.imprensa && <span class="meta"> (imprensa)</span>}</span>
+            <a href={p.url}>{p.nome}</a>
+          </li>
+        ))}
+      </ol>
+    ) : (
+      <p class="meta mb-0">Nenhum prazo nas próximas três semanas.</p>
+    )}
+  </div>
+</section>

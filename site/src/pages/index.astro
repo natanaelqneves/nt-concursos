@@ -1,58 +1,92 @@
 ---
 import Base from "../layouts/Base.astro";
 import AdSlot from "../components/AdSlot.astro";
+import BuscaRapida from "../components/BuscaRapida.astro";
 import CartaoConcurso from "../components/CartaoConcurso.astro";
 import CartaoNoticia from "../components/CartaoNoticia.astro";
-import { comIsencaoAberta, emDestaque, inscricoesAbertasSemIsencao, noticiasAtivas } from "../lib/dados";
+import FaixaUF from "../components/FaixaUF.astro";
+import ProximosPrazos from "../components/ProximosPrazos.astro";
+import { NOME_CATEGORIA, comIsencaoAberta, inscricoesAbertasSemIsencao, noticiasAtivas } from "../lib/dados";
+import { AREAS, porCategoria, total, urlArea } from "../lib/navegacao";
+import { RECORRENTES } from "../lib/recorrentes";
 
 const isencoes = comIsencaoAberta();
 const abertas = inscricoesAbertasSemIsencao();
-const destaques = emDestaque();
 const noticias = noticiasAtivas();
+const areas = AREAS.map((c) => ({ c, n: total(porCategoria(c)) })).filter((a) => a.n > 0)
+  .sort((a, b) => b.n - a.n);
+const L = "lista row row-cols-1 row-cols-md-2 g-3 list-unstyled";
 ---
 <Base
   titulo="Concursos abertos e prazos de isenção da taxa | NT Concursos"
-  descricao="Concursos públicos com inscrições abertas, ordenados pelo prazo de isenção da taxa. Cada data é conferida no edital oficial."
+  descricao="Concursos públicos federais e estaduais com inscrições abertas, ordenados pelo prazo de isenção da taxa. Cada data é conferida no edital oficial."
 >
-  <h1>Concursos com inscrições abertas</h1>
-  <p class="lead">
-    Primeiro, os concursos com pedido de <strong>isenção da taxa</strong> aberto, do prazo mais curto
-    para o mais longo. Toda data mostrada tem link para o trecho do edital oficial.
-  </p>
+  <section class="hero mb-4">
+    <h1>Concursos com inscrições abertas</h1>
+    <p class="lead mb-3">
+      Concursos federais e estaduais, com o <strong>pedido de isenção da taxa</strong> em primeiro lugar.
+      Toda data conferida tem link para o trecho do edital oficial.
+    </p>
+    <BuscaRapida id="busca-inicio" grande />
+    <FaixaUF />
+  </section>
 
-  {destaques.length > 0 && (
-    <section aria-labelledby="destaque">
-      <h2 id="destaque">Em destaque: maiores concursos com inscrição aberta</h2>
-      <ul class="lista row row-cols-1 row-cols-md-2 row-cols-xl-3 g-3 list-unstyled">{destaques.map((c) => <CartaoConcurso c={c} />)}</ul>
-    </section>
-  )}
+  <div class="row g-4">
+    <div class="col-lg-8">
+      <h2 class="mt-0">Isenção da taxa aberta ({isencoes.length})</h2>
+      {isencoes.length ? (
+        <ul class={L}>{isencoes.map((c) => <CartaoConcurso c={c} />)}</ul>
+      ) : (
+        <p class="vazio alert alert-light border">Nenhum prazo de isenção aberto e conferido no edital nesta edição.</p>
+      )}
 
-  <AdSlot formato="topo" slot={import.meta.env.PUBLIC_ADSENSE_SLOT_TOPO} />
+      <AdSlot formato="topo" slot={import.meta.env.PUBLIC_ADSENSE_SLOT_TOPO} />
 
-  <h2>Isenção da taxa aberta ({isencoes.length})</h2>
-  {isencoes.length ? (
-    <ul class="lista row row-cols-1 row-cols-md-2 row-cols-xl-3 g-3 list-unstyled">{isencoes.map((c) => <CartaoConcurso c={c} />)}</ul>
-  ) : (
-    <p class="vazio alert alert-light border">Nenhum prazo de isenção aberto e verificado nesta edição.</p>
-  )}
+      <h2>Inscrições abertas ({abertas.length})</h2>
+      {abertas.length ? (
+        <ul class={L}>{abertas.map((c) => <CartaoConcurso c={c} />)}</ul>
+      ) : (
+        <p class="vazio alert alert-light border">Nenhuma outra inscrição aberta e conferida nesta edição.</p>
+      )}
 
-  <AdSlot formato="meio" slot={import.meta.env.PUBLIC_ADSENSE_SLOT_MEIO} />
+      <AdSlot formato="meio" slot={import.meta.env.PUBLIC_ADSENSE_SLOT_MEIO} />
 
-  <h2>Demais inscrições abertas ({abertas.length})</h2>
-  {abertas.length ? (
-    <ul class="lista row row-cols-1 row-cols-md-2 row-cols-xl-3 g-3 list-unstyled">{abertas.map((c) => <CartaoConcurso c={c} />)}</ul>
-  ) : (
-    <p class="vazio alert alert-light border">Nenhuma outra inscrição aberta e verificada nesta edição.</p>
-  )}
+      {noticias.length > 0 && (
+        <section aria-labelledby="apuracao">
+          <h2 id="apuracao">Apuração na imprensa ({noticias.length})</h2>
+          <p class="meta">
+            Ainda não conferidos por nós no edital. Cada informação foi cruzada em pelo menos duas fontes;
+            confira o edital antes de se inscrever. <a href="/noticias/">Ver todos</a>
+          </p>
+          <ul class={L}>{noticias.map((n) => <CartaoNoticia n={n} />)}</ul>
+        </section>
+      )}
+    </div>
 
-  {noticias.length > 0 && (
-    <section aria-labelledby="apuracao">
-      <h2 id="apuracao">Também com inscrições abertas: apuração na imprensa ({noticias.length})</h2>
-      <p class="meta">
-        Ainda não conferidos por nós no edital. Cada informação foi cruzada em pelo menos duas fontes;
-        confira o edital antes de se inscrever. <a href="/noticias/">Ver todos</a>
-      </p>
-      <ul class="lista row row-cols-1 row-cols-md-2 row-cols-xl-3 g-3 list-unstyled">{noticias.map((n) => <CartaoNoticia n={n} />)}</ul>
-    </section>
-  )}
+    <aside class="col-lg-4">
+      <div class="lateral">
+        <ProximosPrazos />
+        {areas.length > 0 && (
+          <section class="card shadow-sm mt-3" aria-labelledby="por-area">
+            <div class="card-body">
+              <h2 id="por-area" class="h6 mt-0 mb-2">Abertos por área</h2>
+              <ul class="list-unstyled mb-2 lista-links">
+                {areas.map((a) => <li><a href={urlArea(a.c)}>{NOME_CATEGORIA[a.c]}</a><span class="n">{a.n}</span></li>)}
+              </ul>
+              <a class="small" href="/areas/">Todas as áreas</a>
+            </div>
+          </section>
+        )}
+        <section class="card shadow-sm mt-3" aria-labelledby="recorrentes">
+          <div class="card-body">
+            <h2 id="recorrentes" class="h6 mt-0 mb-2">Concursos que se repetem</h2>
+            <ul class="list-unstyled mb-2 lista-links">
+              {RECORRENTES.slice(0, 5).map((r) => <li><a href={`/recorrentes/${r.slug}/`}>{r.nome}</a></li>)}
+            </ul>
+            <a class="small" href="/recorrentes/">Ver todos</a>
+          </div>
+        </section>
+      </div>
+    </aside>
+  </div>
 </Base>

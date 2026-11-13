@@ -1,0 +1,17 @@
+---
+// Atalho por estado: as 27 UFs e "Nacional" em botões; as que têm concurso aberto ficam em destaque.
+import { ESTADOS, porUf, total, urlEstado } from "../lib/navegacao";
+
+interface Props { atual?: string }
+const { atual } = Astro.props;
+const ufs = ["BR", ...Object.keys(ESTADOS).sort()].map((uf) => ({ uf, n: total(porUf(uf)) }));
+---
+<nav class="faixa-uf" aria-label="Concursos por estado">
+  {ufs.map(({ uf, n }) => (
+    <a href={urlEstado(uf)} class={`${n ? "tem" : ""} ${atual === uf ? "atual" : ""}`}
+       aria-current={atual === uf ? "page" : undefined}
+       title={uf === "BR" ? `Nacionais: ${n}` : `${ESTADOS[uf].nome}: ${n}`}>
+      {uf === "BR" ? "Nacional" : uf}{n > 0 && <span class="n">{n}</span>}
+    </a>
+  ))}
+</nav>

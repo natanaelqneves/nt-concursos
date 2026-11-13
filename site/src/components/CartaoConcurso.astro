@@ -1,6 +1,8 @@
 ---
+// Cartão de concurso conferido no edital: situação e UF no topo, órgão como título, cargos numa
+// linha e os dados principais em grade (área, banca, vagas, inscrições).
 import type { Concurso } from "../lib/dados";
-import { NOME_CATEGORIA, isencaoAberta, inscricaoAberta, local, temTI, titulo } from "../lib/dados";
+import { NOME_CATEGORIA, isencaoAberta, inscricaoAberta, temTI, verificado } from "../lib/dados";
 import { diasEntre, formatarData, hojeBRT } from "../lib/tempo";
 
 interface Props {
@@ -10,27 +12,53 @@ interface Props {
 const { c } = Astro.props;
 const hoje = hojeBRT();
 const isen = isencaoAberta(c, hoje) ? c.prazos.isencao : null;
-const insc = inscricaoAberta(c, hoje) ? c.prazos.inscricao : null;
-const restam = isen?.fim ? diasEntre(hoje, isen.fim) : null;
+const insc = c.prazos.inscricao;
+const aberta = inscricaoAberta(c, hoje);
+const embreve = verificado(insc) && !!insc.inicio && insc.inicio > hoje;
+const fimInsc = verificado(insc) && insc.fim ? insc.fim : null;
+const restIsen = isen?.fim ? diasEntre(hoje, isen.fim) : null;
+const restInsc = aberta && fimInsc ? diasEntre(hoje, fimInsc) : null;
+
+const situacao = isen
+  ? { txt: "Isenção aberta", cls: "st-isencao" }
+  : aberta
+    ? { txt: restInsc === 0 ? "Inscrições: último dia" : "Inscrições abertas", cls: restInsc !== null && restInsc <= 2 ? "st-urgente" : "st-aberta" }
+    : embreve
+      ? { txt: `Inscrições a partir de ${formatarData(insc.inicio!)}`, cls: "st-breve" }
+      : { txt: "Conferir no edital", cls: "st-neutro" };
+
+const cargos = c.cargos.map((x) => x.nome.split(" – ")[0]);
+const unicos = [...new Set(cargos)];
+const linhaCargos = unicos.length > 2 ? `${unicos.slice(0, 2).join(", ")} e mais ${unicos.length - 2}` : unicos.join(" e ");
+const vagas = verificado(c.vagas_imediatas) ? `${Number(c.vagas_imediatas!.valor).toLocaleString("pt-BR")} imediatas` : null;
+const faltam = (n: number | null) => (n === null ? "" : n === 0 ? " (hoje)" : n === 1 ? " (amanhã)" : ` (${n} dias)`);
 ---
 <li class="col">
 <article class="cartao card h-100 shadow-sm">
-<div class="card-body">
-  <h3 class="card-title h6"><a class="stretched-link text-decoration-none" href={`/concursos/${c.slug}/`}>{titulo(c)}</a></h3>
-  <p class="meta small">
-    {NOME_CATEGORIA[c.categoria]} · {c.esfera === "federal" ? "Federal" : "Estadual"} · {local(c)} · banca {c.banca.toUpperCase()}
-    {c.porte === "grande" && <> · <span class="selo badge rounded-pill selo-porte">grande porte</span></>}
-    {temTI(c) && <> · <span class="selo badge rounded-pill selo-ti">vagas de TI</span></>}
-  </p>
+<div class="card-body d-flex flex-column">
+  <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+    <span class={`situacao ${situacao.cls}`}>{situacao.txt}</span>
+    <span class="uf" title={c.uf === "BR" ? "Lotação nacional" : undefined}>{c.uf === "BR" ? "BR" : c.uf}</span>
+  </div>
+  <h3 class="card-title h6 mb-1"><a class="stretched-link text-decoration-none" href={`/concursos/${c.slug}/`}>{c.orgao}</a></h3>
+  {linhaCargos && <p class="cargos small mb-2">{linhaCargos}</p>}
   {isen?.fim && (
-    <p>
-      <span class={`selo badge rounded-pill ${restam !== null && restam <= 2 ? "selo-urgente" : "selo-isencao"}`}>
-        Isenção até {formatarData(isen.fim)}
-        {restam === 0 ? " – último dia" : restam === 1 ? " – falta 1 dia" : ` – faltam ${restam} dias`}
-      </span>
+    <p class={`faixa-isencao ${restIsen !== null && restIsen <= 2 ? "urgente" : ""}`}>
+      Pedido de isenção até <strong>{formatarData(isen.fim)}</strong>{faltam(restIsen)}
     </p>
   )}
-  {insc?.fim && <p class="meta mb-0">Inscrições até <strong>{formatarData(insc.fim)}</strong></p>}
+  <dl class="grade mt-auto">
+    <div><dt>Área</dt><dd>{NOME_CATEGORIA[c.categoria]}</dd></div>
+    <div><dt>Banca</dt><dd>{c.banca.toUpperCase()}</dd></div>
+    {vagas && <div><dt>Vagas</dt><dd>{vagas}</dd></div>}
+    <div><dt>Inscrições até</dt><dd>{fimInsc ? <>{formatarData(fimInsc)}<span class="meta">{faltam(restInsc)}</span></> : "ver edital"}</dd></div>
+  </dl>
+  {(c.porte === "grande" || temTI(c)) && (
+    <p class="mb-0 mt-2">
+      {c.porte === "grande" && <span class="selo badge rounded-pill selo-porte">grande porte</span>}{" "}
+      {temTI(c) && <span class="selo badge rounded-pill selo-ti">vagas de TI</span>}
+    </p>
+  )}
 </div>
 </article>
 </li>

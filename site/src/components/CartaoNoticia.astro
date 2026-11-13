@@ -1,20 +1,36 @@
 ---
+// Cartão de concurso apurado na imprensa: mesmo desenho do cartão conferido, com a situação
+// "Apuração na imprensa" e o número de fontes, para nunca ser confundido com um conferido.
 import { NOME_CATEGORIA, fatoInscricao, temTI, type Noticia } from "../lib/dados";
-import { formatarData } from "../lib/tempo";
+import { diasEntre, formatarData, hojeBRT } from "../lib/tempo";
 
 interface Props { n: Noticia }
 const { n } = Astro.props;
+const hoje = hojeBRT();
 const insc = fatoInscricao(n);
+const isen = n.fatos.find((f) => f.campo === "isencao" && f.fim && f.fim >= hoje && (!f.inicio || f.inicio <= hoje));
+const vagasTxt = n.fatos.find((f) => f.campo === "vagas")?.texto;
+const vagas = vagasTxt ? vagasTxt.split(/[:(]/)[0].replace(/,? além de.*$/, "").trim() : null;
+const rest = insc?.fim ? diasEntre(hoje, insc.fim) : null;
+const faltam = (x: number | null) => (x === null || x < 0 ? "" : x === 0 ? " (hoje)" : x === 1 ? " (amanhã)" : ` (${x} dias)`);
 ---
 <li class="col">
-<article class="cartao cartao-noticia card h-100 shadow-sm border-warning-subtle">
-<div class="card-body">
-  <h3 class="card-title h6"><a class="stretched-link text-decoration-none" href={`/noticias/${n.slug}/`}>{n.titulo}</a></h3>
-  <p class="meta small">
-    {NOME_CATEGORIA[n.categoria]} · {n.esfera === "federal" ? "Federal" : "Estadual"} · {n.uf === "BR" ? "Nacional" : n.uf} · banca {n.banca}
-  </p>
-  {insc?.fim && <p class="mb-2">Inscrições até <strong>{formatarData(insc.fim)}</strong></p>}
-  <p class="meta mb-0"><span class="selo badge rounded-pill selo-apuracao">apuração em {n.fontes.length} fontes</span>{temTI(n) && <> <span class="selo badge rounded-pill selo-ti">vagas de TI</span></>}</p>
+<article class="cartao cartao-noticia card h-100 shadow-sm">
+<div class="card-body d-flex flex-column">
+  <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+    <span class="situacao st-imprensa">Apuração na imprensa · {n.fontes.length} fontes</span>
+    <span class="uf">{n.uf === "BR" ? "BR" : n.uf}</span>
+  </div>
+  <h3 class="card-title h6 mb-1"><a class="stretched-link text-decoration-none" href={`/noticias/${n.slug}/`}>{n.orgao}</a></h3>
+  <p class="cargos small mb-2">{n.titulo}</p>
+  {isen?.fim && <p class="faixa-isencao">Pedido de isenção até <strong>{formatarData(isen.fim)}</strong>{faltam(diasEntre(hoje, isen.fim))}</p>}
+  <dl class="grade mt-auto">
+    <div><dt>Área</dt><dd>{NOME_CATEGORIA[n.categoria]}</dd></div>
+    <div><dt>Banca</dt><dd>{n.banca}</dd></div>
+    {vagas && <div><dt>Vagas</dt><dd>{vagas}</dd></div>}
+    <div><dt>Inscrições até</dt><dd>{insc?.fim ? <>{formatarData(insc.fim)}<span class="meta">{faltam(rest)}</span></> : "ver edital"}</dd></div>
+  </dl>
+  {temTI(n) && <p class="mb-0 mt-2"><span class="selo badge rounded-pill selo-ti">vagas de TI</span></p>}
 </div>
 </article>
 </li>
