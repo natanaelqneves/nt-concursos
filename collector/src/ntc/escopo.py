@@ -48,6 +48,7 @@ class Classificacao:
     orgao: str
     sigla: str  # base do slug, já em minúsculas e com hífens
     areas: tuple[str, ...] = ()  # ("ti",) quando há cargo de tecnologia da informação
+    municipio: str | None = None  # só na esfera municipal
 
 
 def sem_acento(texto: str) -> str:
@@ -299,9 +300,15 @@ def classificar(*textos: str | None) -> Classificacao | None:
     curtos = sem_acento(" | ".join(curtos_lista))
     if _FORA.search(curtos):
         return None
+    areas = ("ti",) if tem_ti(*partes) else ()
+    m = _municipal(partes, curtos)
+    if m is not None:
+        return replace(m, areas=areas)
     if _MUNICIPAL.search(curtos) and not re.search(r"tribunal de contas dos municipios", curtos):
         return None
-    areas = ("ti",) if tem_ti(*partes) else ()
+    e = _transito_vigilancia_estadual(curtos)
+    if e is not None:
+        return replace(e, areas=areas)
 
     r = _nucleo(partes, t)
     if r is None:
@@ -914,3 +921,104 @@ def slug_simples(texto: str) -> str:
 
 
 slugify_simples = slug_simples
+
+
+# ---------------------------------------------------------------- esfera municipal (13/11/2026)
+# Capitais: todos os concursos efetivos de prefeitura e câmara. Capitais e cidades com mais de
+# 200 mil habitantes: guarda municipal, trânsito e vigilância. Detrans e vigilância estaduais.
+
+from ntc.municipios import CAPITAIS, GRANDES  # noqa: E402
+
+_CIDADES = sorted(((sem_acento(n), n, uf) for n, uf in GRANDES.items()), key=lambda x: -len(x[0]))
+_ANTES_CIDADE = re.compile(
+    r"(?:prefeitura(?: municipal)?|camara municipal|camara de vereadores|municipio|guarda civil municipal|"
+    r"guarda municipal|guarda civil metropolitana|superintendencia (?:municipal )?de transito[a-z ]*?|"
+    r"secretaria municipal de [a-z ]+?|autarquia municipal de [a-z ]+?|cidade)\s+(?:d[eoa]s?\s+)?"
+)
+_DEPOIS_CIDADE = re.compile(
+    r"^(?:$|\s*[-–—/|(),;:.]|\s+(?:[a-z]{2})(?![a-z])\s*(?:$|[-–—/|(),;:.\d])|\s+\d{2,4}\b|\s+(?:edital|concurso)\b)"
+)
+_UF_DEPOIS = re.compile(r"^\s*(?:[-–—/(]\s*)?([a-z]{2})(?![a-z])")
+_GUARDA = re.compile(r"guarda (?:civil )?municipal|guarda civil metropolitana|\bgcm\b|agente de seguranca municipal")
+_TRANSITO = re.compile(r"agente (?:municipal )?de (?:transito|mobilidade)|\btransito\b|mobilidade urbana|agente de fiscalizacao de transito")
+_VIGILANCIA = re.compile(
+    r"vigilancia sanitaria|vigilancia epidemiologica|vigilancia em saude|vigilancia ambiental|"
+    r"agente (?:de )?(?:combate (?:a|as) )?endemias|fiscal sanitario|fiscal de vigilancia|\bvigilante\b"
+)
+_CAMARA = re.compile(r"camara municipal|camara de vereadores")
+# Cidades que se escrevem com artigo ("Prefeitura do Recife", "Câmara Municipal do Rio de Janeiro").
+_COM_ARTIGO = {"Rio de Janeiro": "do", "Recife": "do", "Natal": "do", "Guarujá": "do", "Rio Claro": "de"}
+_ORGAO_MUNICIPAL = re.compile(r"(controladoria|procuradoria)[- ]geral do municipio")
+_NOME_TIPO = {
+    "guarda": ("Guarda Municipal", "gcm"), "transito": ("Prefeitura", "transito"),
+    "vigilancia": ("Prefeitura", "vigilancia"), "prefeitura": ("Prefeitura", "prefeitura"),
+    "legislativo": ("Câmara Municipal", "camara"),
+}
+
+
+def _cidade(curtos: str) -> tuple[str, str] | None:
+    """(nome, UF) da cidade nomeada logo depois de "prefeitura de", "câmara municipal de" etc."""
+    for m in _ANTES_CIDADE.finditer(curtos):
+        resto = curtos[m.end():]
+        for chave, nome, uf in _CIDADES:
+            if resto.startswith(chave) and _DEPOIS_CIDADE.match(resto[len(chave):]):
+                u = _UF_DEPOIS.match(resto[len(chave):])
+                if u and u.group(1) in _UFS and u.group(1) != uf.lower():
+                    continue  # homônimo em outro estado
+                return nome, uf
+    return None
+
+
+def _municipal(partes: list[str], curtos: str) -> Classificacao | None:
+    achada = _cidade(curtos)
+    if achada is None:
+        return None
+    nome, uf = achada
+    titulo = sem_acento(partes[0])
+    capital = nome in CAPITAIS
+    if _CAMARA.search(titulo):
+        categoria = "legislativo"
+    elif _GUARDA.search(titulo):
+        categoria = "guarda"
+    elif _TRANSITO.search(titulo):
+        categoria = "transito"
+    elif _VIGILANCIA.search(titulo):
+        categoria = "vigilancia"
+    elif capital:
+        categoria = "prefeitura"
+    else:  # cidade grande: só entra se algum cargo for de guarda, trânsito ou vigilância
+        categoria = next((c for c, r in (("guarda", _GUARDA), ("transito", _TRANSITO), ("vigilancia", _VIGILANCIA))
+                          if r.search(curtos)), None)
+        if categoria is None:
+            return None
+    if categoria in ("legislativo", "prefeitura") and not capital:
+        return None
+    rotulo, prefixo = _NOME_TIPO[categoria]
+    prep = _COM_ARTIGO.get(nome, "de")
+    orgao = f"{rotulo} {prep} {nome}"
+    o = _ORGAO_MUNICIPAL.search(titulo)
+    if categoria == "prefeitura" and o:
+        orgao = f"{o.group(1).capitalize()}-Geral do Município {prep} {nome}"
+        prefixo = f"{o.group(1)[:4]}geral"
+    return Classificacao(categoria, "municipal", uf, orgao, f"{prefixo}-{slug_simples(nome)}", municipio=nome)
+
+
+_DETRAN = re.compile(r"\bdetran\s*[-/ ]?\s*([a-z]{2})\b|departamento estadual de transito|departamento de transito d[eoa]s?")
+_VIGILANCIA_ESTADUAL = re.compile(r"agencia (?:estadual )?de vigilancia sanitaria|\bagevisa\b|\bapevisa\b|\bsuvisa\b")
+
+
+def _transito_vigilancia_estadual(curtos: str) -> Classificacao | None:
+    m = _DETRAN.search(curtos)
+    if m:
+        uf = m.group(1).upper() if m.group(1) and m.group(1) in _UFS else uf_por_nome(curtos, m.end())
+        if uf and uf != "BR":
+            nome_uf, prep = ESTADOS[uf]
+            return _c("transito", "estadual", uf, f"Departamento Estadual de Trânsito {prep} {nome_uf}", f"detran-{uf.lower()}")
+    m = _VIGILANCIA_ESTADUAL.search(curtos)
+    if m:
+        uf = uf_por_nome(curtos, m.start()) or {"agevisa": "PB", "apevisa": "PE"}.get(m.group(0))
+        if uf and uf != "BR":
+            nome_uf, prep = ESTADOS[uf]
+            return _c("vigilancia", "estadual", uf, f"Agência Estadual de Vigilância Sanitária {prep} {nome_uf}",
+                      f"vigilancia-{uf.lower()}")
+    return None

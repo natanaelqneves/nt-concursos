@@ -1,0 +1,70 @@
+---
+import Base from "../../layouts/Base.astro";
+import { NOME_CATEGORIA, textoEsfera } from "../../lib/dados";
+import { SOBRE_CATEGORIA } from "../../lib/categorias";
+import { NOME_FATO_VALIDADE, terminou, todasValidades, validadesNaPagina, type Validade } from "../../lib/validade";
+import { formatarData, formatarDataHora } from "../../lib/tempo";
+import { urlArea, urlEstado } from "../../lib/navegacao";
+
+export function getStaticPaths() {
+  return todasValidades().map((v) => ({ params: { slug: v.slug }, props: { v } }));
+}
+
+interface Props { v: Validade }
+const { v } = Astro.props;
+const porId = new Map(v.fontes.map((f) => [f.id, f]));
+const naPagina = validadesNaPagina().some((x) => x.slug === v.slug);
+const sobre = SOBRE_CATEGORIA[v.categoria];
+---
+<Base
+  titulo={v.titulo}
+  descricao={v.resumo.slice(0, 155)}
+  noindex={!naPagina}
+  breadcrumbs={[{ nome: "Início", url: "/" }, { nome: "Podem reabrir", url: "/podem-reabrir/" }, { nome: v.orgao, url: `/podem-reabrir/${v.slug}/` }]}
+>
+  <p class="meta">
+    <a href={urlArea(v.categoria)}>{NOME_CATEGORIA[v.categoria]}</a> · {textoEsfera(v)} · <a href={urlEstado(v.uf)}>{v.uf}</a>
+    {v.banca && <> · último concurso pela banca {v.banca}</>}
+  </p>
+  <h1>{v.titulo}</h1>
+  <p class="alert alert-info">
+    {terminou(v)
+      ? `A validade terminou em ${formatarData(v.validade_ate)}. Sem concurso válido, o órgão precisa de edital novo para contratar.`
+      : `A validade termina em ${formatarData(v.validade_ate)}. Isto não é inscrição aberta: um concurso novo depende de autorização e de edital.`}
+  </p>
+  <p>{v.resumo}</p>
+  {v.cargos.length > 0 && (
+    <>
+      <h2>Cargos do último concurso</h2>
+      <ul>{v.cargos.map((c) => <li>{c}</li>)}</ul>
+    </>
+  )}
+  <h2>O que se sabe</h2>
+  <dl class="fatos">
+    {v.fatos.map((f) => (
+      <>
+        <dt>{NOME_FATO_VALIDADE[f.campo]}</dt>
+        <dd>
+          {f.texto}
+          <span class="meta"> · fonte: {f.fontes.map((id, i) => {
+            const fo = porId.get(id)!;
+            return <>{i > 0 && ", "}<a href={fo.url} rel="nofollow noopener">{fo.nome}</a>{fo.oficial && " (oficial)"}</>;
+          })}</span>
+        </dd>
+      </>
+    ))}
+  </dl>
+  <section class="mt-4">
+    <h2 class="h5">{sobre.titulo}</h2>
+    {sobre.paragrafos.map((p) => <p>{p}</p>)}
+  </section>
+  <section class="origem" aria-labelledby="origem">
+    <h2 id="origem">De onde vêm estas informações</h2>
+    <ul>
+      {v.fontes.map((f) => (
+        <li><a href={f.url} rel="nofollow noopener">{f.nome}</a>{f.oficial ? " (fonte oficial)" : ""} · consultada em {formatarData(f.consultado_em)}</li>
+      ))}
+    </ul>
+    <p class="meta">Cada informação foi conferida numa fonte oficial ou em pelo menos dois veículos diferentes. Apurado em {formatarDataHora(v.apurado_em)}. <a href="/metodologia/#reabrir">Como apuramos</a>.</p>
+  </section>
+</Base>

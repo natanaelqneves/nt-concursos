@@ -18,7 +18,7 @@ const nome = nacional ? "nacionais" : `${ESTADOS[uf].prep} ${ESTADOS[uf].nome}`;
 const titulo = nacional ? "Concursos federais de lotação nacional abertos" : `Concursos abertos ${nome}`;
 const vazio = nacional
   ? "Nenhum concurso federal de lotação nacional com inscrições abertas nesta edição."
-  : `Nenhum concurso federal ou estadual com inscrições abertas ${nome} nesta edição.`;
+  : `Nenhum concurso federal, estadual ou municipal com inscrições abertas ${nome} nesta edição.`;
 ---
 <Base
   titulo={titulo}

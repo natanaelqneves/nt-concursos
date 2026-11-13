@@ -78,6 +78,7 @@ export const SOBRE_CATEGORIA: Record<Categoria, { titulo: string; paragrafos: st
     paragrafos: [
       "O Legislativo faz as leis e fiscaliza o Executivo. Na União, é formado pela Câmara dos Deputados e pelo Senado Federal; nos estados, pelas assembleias legislativas; no Distrito Federal, pela Câmara Legislativa.",
       "Os concursos são para analistas e técnicos legislativos, consultores legislativos e de orçamento e, em algumas casas, policiais legislativos (que aparecem aqui em segurança pública). Os salários costumam estar entre os mais altos do serviço público, e as provas cobram o regimento interno da casa, além das matérias da especialidade.",
+      "Nos municípios, acompanhamos as câmaras municipais das capitais, que fazem concursos para técnicos e analistas legislativos, procuradores e cargos de apoio.",
     ],
   },
   educacao: {
@@ -99,6 +100,34 @@ export const SOBRE_CATEGORIA: Record<Categoria, { titulo: string; paragrafos: st
     paragrafos: [
       "Exército, Marinha e Aeronáutica selecionam pessoal por concursos de admissão às suas escolas de formação, como a Escola de Sargentos das Armas, a Escola Preparatória de Cadetes do Exército, a Escola Naval, o Colégio Naval, a Escola de Especialistas de Aeronáutica e a Academia da Força Aérea, e por concursos para quadros técnicos, de saúde e de engenharia.",
       "Os requisitos de idade, altura, estado civil e escolaridade variam muito de uma seleção para outra, e quase todas têm exames de saúde, teste físico e avaliação psicológica além das provas. O serviço militar temporário e voluntário fica de fora: aqui entram só as seleções de carreira.",
+    ],
+  },
+  guarda: {
+    titulo: "O que faz a guarda municipal",
+    paragrafos: [
+      "As guardas municipais protegem os bens, os serviços e as instalações do município, fazem patrulhamento preventivo em praças, escolas e prédios públicos e, em muitas cidades, ajudam na fiscalização do trânsito. O Estatuto Geral das Guardas Municipais (Lei 13.022/2014) define essas funções e permite que a guarda atue em conjunto com as polícias.",
+      "Acompanhamos as guardas das capitais e das cidades com mais de 200 mil habitantes. Os concursos costumam pedir ensino médio, carteira de habilitação e idade mínima, e além da prova escrita têm teste físico, avaliação psicológica, investigação social e curso de formação.",
+    ],
+  },
+  transito: {
+    titulo: "Concursos da área de trânsito",
+    paragrafos: [
+      "Nos estados, os departamentos estaduais de trânsito (Detrans) cuidam da habilitação de condutores, do registro e do licenciamento de veículos e da fiscalização. Os concursos são para cargos administrativos, de vistoria, de examinador de trânsito e de nível superior.",
+      "Nos municípios, os órgãos de trânsito e mobilidade urbana (superintendências, secretarias ou autarquias) contratam agentes de trânsito, que fiscalizam e orientam o tráfego, aplicam autuações e operam o trânsito em eventos e obras. Acompanhamos as capitais e as cidades com mais de 200 mil habitantes.",
+    ],
+  },
+  vigilancia: {
+    titulo: "Concursos de vigilância",
+    paragrafos: [
+      "Aqui entram três tipos de concurso: vigilância sanitária e epidemiológica (fiscais e agentes que inspecionam estabelecimentos, alimentos e serviços de saúde e acompanham doenças), agentes de combate às endemias (que atuam contra a dengue e outras doenças transmitidas por vetores) e vigilantes de órgãos públicos.",
+      "Acompanhamos as agências estaduais de vigilância sanitária e, nos municípios, as capitais e as cidades com mais de 200 mil habitantes. Muitos cargos de vigilância sanitária pedem formação na área de saúde ou em áreas técnicas, e o edital diz quais cursos são aceitos.",
+    ],
+  },
+  prefeitura: {
+    titulo: "Concursos das prefeituras das capitais",
+    paragrafos: [
+      "As prefeituras das capitais estão entre os maiores empregadores públicos de cada estado. Fazem concursos para professores da rede municipal, profissionais de saúde, fiscais de tributos e de obras, procuradores, analistas e técnicos de várias secretarias.",
+      "Acompanhamos as 26 capitais estaduais (Brasília fica de fora porque o Distrito Federal não tem prefeitura; os concursos do governo do DF aparecem nas outras áreas). Entram só concursos para cargos efetivos: seleções temporárias e processos seletivos simplificados ficam de fora.",
     ],
   },
   outro: {

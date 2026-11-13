@@ -1,6 +1,6 @@
 ---
 import Base from "../../layouts/Base.astro";
-import { NOME_CATEGORIA, NOME_FATO, todasNoticias, type Noticia } from "../../lib/dados";
+import { NOME_CATEGORIA, NOME_FATO, substitutoDe, textoEsfera, todasNoticias, type Noticia } from "../../lib/dados";
 import { SOBRE_CATEGORIA } from "../../lib/categorias";
 import { formatarData, formatarDataHora, hojeBRT } from "../../lib/tempo";
 
@@ -12,17 +12,26 @@ interface Props { n: Noticia }
 const { n } = Astro.props;
 const porId = new Map(n.fontes.map((f) => [f.id, f]));
 const expirada = n.expira_em < hojeBRT();
+// Concurso já conferido no edital: a notícia fica só como histórico e aponta para ele.
+const substituto = substitutoDe(n);
 const sobre = SOBRE_CATEGORIA[n.categoria];
 ---
 <Base
   titulo={n.titulo}
   descricao={n.resumo.slice(0, 155)}
-  noindex={expirada}
+  noindex={expirada || !!substituto}
+  canonical={substituto ? `/concursos/${substituto.slug}/` : undefined}
 >
   <p class="meta">
-    {NOME_CATEGORIA[n.categoria]} · {n.esfera === "federal" ? "Federal" : "Estadual"} · {n.uf === "BR" ? "Nacional" : n.uf} · banca {n.banca}
+    {NOME_CATEGORIA[n.categoria]} · {textoEsfera(n)} · {n.uf === "BR" ? "Nacional" : n.uf} · banca {n.banca}
   </p>
   <h1>{n.titulo}</h1>
+  {substituto && (
+    <p class="alert alert-success">
+      Este concurso já foi conferido por nós no edital.{" "}
+      <a href={`/concursos/${substituto.slug}/`}>Veja as datas conferidas</a>.
+    </p>
+  )}
   <p class="aviso-apuracao alert alert-warning">
     {expirada
       ? "As inscrições deste concurso já terminaram."
