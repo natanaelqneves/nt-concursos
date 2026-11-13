@@ -29,6 +29,9 @@ class DocFonte:
     tipo: str  # "edital" | "retificacao"
     titulo: str
     publicado_em: date | None = None
+    # Outros endereços do mesmo documento, tentados em ordem quando o principal falha
+    # (fora da allowlist, robots.txt ou indisponível). Usado pela fonte "avulsos".
+    alternativas: tuple[str, ...] = ()
 
 
 @dataclass
@@ -42,6 +45,15 @@ class ConcursoFonte:
     ano: int | None = None
     data_dou: date | None = None
     cargos: list[str] = field(default_factory=list)  # nomes como a banca publica
+    # Campos usados só pela fonte "avulsos" (edital achado fora das bancas que coletamos):
+    banca: str | None = None  # banca real; sem ele, a banca é a própria fonte
+    slug: str | None = None  # slug fixo, para casar o concurso com a notícia que ele substitui
+    uf: str | None = None  # corrige a UF quando o classificador não a deduz (ex.: conselho regional)
+    # Datas que a imprensa publicou para o prazo (tipo -> (início, fim)). O que o edital mostrar
+    # de diferente vai para revisão: protege contra cópia desatualizada ou prorrogação sem documento.
+    esperado: dict[str, tuple[date | None, date]] = field(default_factory=dict)
+    # Lê o prazo também na retificação mais recente que o traga (cronograma retificado).
+    prazo_na_retificacao: bool = False
 
     @property
     def edital(self) -> DocFonte | None:

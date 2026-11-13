@@ -32,6 +32,14 @@ class Allowlist:
         extras = tuple(d for ds in self.dominios_por_fonte.values() for d in ds)
         return self.sufixos_oficiais + extras
 
+    def fonte_de(self, url: str) -> str | None:
+        """Nome da entrada de `fontes` que cobre o host da URL (None se só um sufixo oficial cobre)."""
+        host = (urlsplit(url).hostname or "").lower().rstrip(".")
+        for nome, dominios in self.dominios_por_fonte.items():
+            if any(host == d or host.endswith("." + d) for d in dominios):
+                return nome
+        return None
+
     def permitido(self, url: str) -> bool:
         partes = urlsplit(url)
         if partes.scheme != "https":

@@ -18,6 +18,7 @@ import { formatarData, formatarDataHora } from "../../lib/tempo";
 import { SOBRE_CATEGORIA } from "../../lib/categorias";
 import { urlArea, urlEstado } from "../../lib/navegacao";
 import { orgaoRevisado } from "../../lib/dados";
+import { avulsoDe, ehCopia, origemDoc } from "../../lib/origem";
 
 export function getStaticPaths() {
   return todos().map((c) => ({ params: { slug: c.slug }, props: { c } }));
@@ -25,6 +26,8 @@ export function getStaticPaths() {
 
 const { c } = Astro.props as { c: Concurso };
 const doc = c.documentos.find((d) => d.tipo === "edital") ?? c.documentos[0];
+const avulso = avulsoDe(c);
+const temCopia = c.documentos.some(ehCopia);
 
 const periodo = (p: Prazo) =>
   p.inicio ? `${formatarData(p.inicio)} a ${formatarData(p.fim!)}` : `até ${formatarData(p.fim!)}`;
@@ -153,7 +156,7 @@ const descricao = verificado(c.prazos.isencao) && c.prazos.isencao.fim
     {sobreCategoria.paragrafos.map((p) => <p>{p}</p>)}
   </section>
 
-  <h2>Documentos oficiais</h2>
+  <h2>{temCopia ? "Documentos" : "Documentos oficiais"}</h2>
   <ul>
     {c.documentos.map((d) => (
       <li>
@@ -163,8 +166,35 @@ const descricao = verificado(c.prazos.isencao) && c.prazos.isencao.fim
       </li>
     ))}
   </ul>
-  <p class="meta">
-    Dados extraídos automaticamente e conferidos contra o texto do documento oficial.
-    <a href="/metodologia/">Veja como verificamos</a>. Encontrou um erro? <a href="/contato/">Avise-nos</a>.
-  </p>
+
+  <section class="origem" aria-labelledby="origem">
+    <h2 id="origem">De onde vêm estas informações</h2>
+    <ul>
+      {c.documentos.map((d) => (
+        <li>
+          {d.tipo === "retificacao" ? "Retificação" : "Edital"}: {origemDoc(d)}.
+        </li>
+      ))}
+    </ul>
+    {temCopia && (
+      <p class="meta">
+        Não encontramos este documento num site oficial que o nosso coletor alcance, então usamos uma cópia
+        publicada por um site de concursos. As datas foram lidas no texto da cópia e conferidas com o que a
+        imprensa publicou; se houvesse diferença, a data não apareceria aqui. Antes de se inscrever, confira no
+        site da banca.
+      </p>
+    )}
+    {avulso ? (
+      <>
+        <h3>Onde pesquisamos</h3>
+        <ul>{avulso.pesquisa.map((p) => <li>{p}</li>)}</ul>
+      </>
+    ) : (
+      <p class="meta">Edital encontrado automaticamente pelo nosso coletor, que consulta todos os dias as páginas das bancas e o Diário Oficial da União.</p>
+    )}
+    <p class="meta">
+      Cada data foi conferida contra o texto do documento.
+      <a href="/metodologia/">Veja como verificamos</a>. Encontrou um erro? <a href="/contato/">Avise-nos</a>.
+    </p>
+  </section>
 </Base>

@@ -3,6 +3,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { hojeBRT } from "./tempo";
+import { substituicoes } from "./origem";
 
 export type Status = "verificado" | "revisao" | "ausente";
 
@@ -232,11 +233,15 @@ export function todasNoticias(): Noticia[] {
   return cacheNoticias;
 }
 
-/** Notícias com inscrição ainda não encerrada, de órgãos que não têm concurso verificado aberto. */
+/** Notícias com inscrição ainda não encerrada, de órgãos que não têm concurso verificado aberto
+ * (pelo nome do órgão ou pela lista de editais avulsos, que liga a notícia ao concurso conferido). */
 export function noticiasAtivas(hoje = hojeBRT()): Noticia[] {
-  const verificados = new Set(todos().filter((c) => !encerrado(c, hoje)).map((c) => c.orgao));
+  const abertos = todos().filter((c) => !encerrado(c, hoje));
+  const verificados = new Set(abertos.map((c) => c.orgao));
+  const slugsAbertos = new Set(abertos.map((c) => c.slug));
+  const subst = substituicoes();
   return todasNoticias()
-    .filter((n) => n.expira_em >= hoje && !verificados.has(n.orgao))
+    .filter((n) => n.expira_em >= hoje && !verificados.has(n.orgao) && !slugsAbertos.has(subst.get(n.slug) ?? ""))
     .sort((a, b) => a.expira_em.localeCompare(b.expira_em));
 }
 

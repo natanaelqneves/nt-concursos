@@ -1,6 +1,6 @@
 """Linha de comando do coletor.
 
-    ntc collect --fonte fgv|cebraspe|aocp|inlabs [--so ID ...] [--data-dou AAAA-MM-DD]
+    ntc collect --fonte fgv|cebraspe|aocp|avulsos|inlabs [--so ID ...] [--data-dou AAAA-MM-DD]
                                  coleta uma fonte, grava data/ e o log em data/execucoes/
     ntc validate [--data DIR]    valida schema, integridade e gate de todos os concursos
     ntc schema [--check]         gera (ou confere) schema/concurso.schema.json
@@ -143,6 +143,7 @@ def cmd_collect(args: argparse.Namespace) -> int:
     from ntc.coleta import Coletor, Registro, resumo
     from ntc.fetch.http import BRT, Cliente, ErroColeta
     from ntc.sources.aocp import Aocp
+    from ntc.sources.avulsos import Avulsos
     from ntc.sources.cebraspe import Cebraspe
     from ntc.sources.fgv import FGV
     from ntc.sources.inlabs import Inlabs, Indisponivel, SemCredenciais, no_escopo
@@ -180,7 +181,10 @@ def cmd_collect(args: argparse.Namespace) -> int:
             destino.parent.mkdir(parents=True, exist_ok=True)
             destino.write_text(json.dumps(descobertas, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     else:
-        fonte = {"fgv": FGV, "cebraspe": Cebraspe, "aocp": Aocp}[args.fonte](so)
+        if args.fonte == "avulsos":
+            fonte = Avulsos(data, so)
+        else:
+            fonte = {"fgv": FGV, "cebraspe": Cebraspe, "aocp": Aocp}[args.fonte](so)
         coletor = Coletor(cliente, store, allowlist)
         try:
             import time
@@ -238,7 +242,7 @@ def main(argv: list[str] | None = None) -> int:
     p_val.set_defaults(func=cmd_validate)
 
     p_col = sub.add_parser("collect", help="coleta uma fonte")
-    p_col.add_argument("--fonte", required=True, choices=["fgv", "cebraspe", "aocp", "inlabs"])
+    p_col.add_argument("--fonte", required=True, choices=["fgv", "cebraspe", "aocp", "avulsos", "inlabs"])
     p_col.add_argument("--so", nargs="*", help="só estes ids da fonte (ex.: tjpb26, PC_PE_26)")
     p_col.add_argument("--data", default=str(RAIZ / "data"))
     p_col.add_argument("--cache", default=None, help="diretório de cache HTTP (ETag)")

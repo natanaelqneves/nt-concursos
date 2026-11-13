@@ -15,7 +15,7 @@ from __future__ import annotations
 
 import re
 import traceback
-from dataclasses import asdict, dataclass, field
+from dataclasses import asdict, dataclass, field, replace
 from datetime import datetime
 from typing import Callable
 
@@ -148,7 +148,8 @@ class Coletor:
         self._existentes = {
             str(c.descoberto_via.url): (p, c) for p, c in store.concursos() if c.descoberto_via is not None
         }
-        self._slugs = {c.slug for _, c in store.concursos()}
+        self._por_slug = {c.slug: (p, c) for p, c in store.concursos()}
+        self._slugs = set(self._por_slug)
 
     # ---- entrada ------------------------------------------------------------------
 
@@ -159,6 +160,8 @@ class Coletor:
             if cls is None:
                 reg.situacao = "fora_do_escopo"
                 return reg
+            if cf.uf and cf.uf != cls.uf:
+                cls = replace(cls, uf=cf.uf)
             reg.detalhe = f"{cls.categoria}/{cls.esfera}/{cls.uf}"
             if cf.edital is None:
                 reg.situacao = "sem_edital"
@@ -174,22 +177,35 @@ class Coletor:
     # ---- etapas -------------------------------------------------------------------
 
     def _baixar(self, doc: DocFonte, doc_id: str) -> tuple[Documento, TextoDocumento | None, bytes]:
-        r = self.cliente.get(doc.url)
+        r, falhas = None, []
+        for url in (doc.url, *doc.alternativas):
+            try:
+                r = self.cliente.get(url)
+                break
+            except ErroColeta as e:  # tenta o próximo endereço do mesmo documento
+                falhas.append(f"{url}: {e}")
+        if r is None:
+            raise ErroColeta("; ".join(falhas))
+        if doc.alternativas:  # avulsos: a origem do documento é o site onde ele foi achado
+            fonte = self.gate.allowlist.fonte_de(r.url_final) or "oficial"
+        else:
+            fonte = self._fonte_atual
         try:
             texto = extrair(r.conteudo)
         except NaoEhPdf:
             texto = None
         documento = Documento(
-            id=doc_id, tipo=doc.tipo, url=doc.url, url_final=r.url_final, sha256=r.sha256,
-            coletado_em=r.coletado_em, fonte=self._fonte_atual, publicado_em=doc.publicado_em,
+            id=doc_id, tipo=doc.tipo, url=r.url, url_final=r.url_final, sha256=r.sha256,
+            coletado_em=r.coletado_em, fonte=fonte, publicado_em=doc.publicado_em,
             titulo=doc.titulo[:300] or None,
         )
         return documento, texto, r.conteudo
 
     def _processar(self, cf: ConcursoFonte, cls: Classificacao, reg: Registro) -> Registro:
         self._fonte_atual = cf.fonte
-        existente = self._existentes.get(cf.url)
-        slug = existente[1].slug if existente else self._novo_slug(cf, cls)
+        # avulsos têm slug fixo (várias entradas podem apontar para a mesma página de banca)
+        existente = self._por_slug.get(cf.slug) if cf.slug else self._existentes.get(cf.url)
+        slug = existente[1].slug if existente else (cf.slug or self._novo_slug(cf, cls))
         try:
             decisao = self.store.decisao(slug)
         except ValueError as e:  # arquivo de decisão malformado: ignora e mantém a pendência
@@ -260,6 +276,11 @@ class Coletor:
         elif achados:
             vagas_campo = Campo(status="revisao")
 
+        baixadas: list[tuple[Documento, TextoDocumento | None]] | None = None
+        if cf.prazo_na_retificacao:
+            baixadas = self._baixar_mudancas(cf, edital_fonte, documentos, textos, reg)
+            self._prazo_da_retificacao(baixadas, prazos, evidencias, reg)
+
         hoje = self.agora().date()
         abertos = [p for p in (prazos.isencao, prazos.inscricao) if p.status == "verificado" and p.fim and p.fim >= hoje]
         verif = [p for p in (prazos.isencao, prazos.inscricao) if p.status == "verificado"]
@@ -278,29 +299,12 @@ class Coletor:
             mudancas_necessarias = False  # nada a proteger: o G7 não tem o que rebaixar
         else:
             mudancas_necessarias = True
-        mudancas = [] if not mudancas_necessarias else [
-            d for d in cf.documentos
-            if d.tipo == "retificacao"
-            and (d.publicado_em is None or edital_fonte.publicado_em is None or d.publicado_em >= edital_fonte.publicado_em)
-        ][-MAX_MUDANCAS:]
-        for i, d in enumerate(mudancas, start=2):
-            try:
-                doc, txt, _ = self._baixar(d, f"doc-{i}")
-            except ErroColeta as e:
-                # sem o documento não dá para descartar impacto: G7 rebaixa o que ele poderia afetar
-                reg.violacoes.append(f"documento de mudança indisponível: {d.url} ({e})")
-                doc = Documento(id=f"doc-{i}", tipo="retificacao", url=d.url, url_final=d.url, sha256="0" * 64,
-                                coletado_em=self.agora(), fonte=cf.fonte, publicado_em=d.publicado_em,
-                                titulo=d.titulo[:300] or None)
-                txt = None
-            documentos.append(doc)
-            if txt is not None:
-                textos[doc.sha256] = txt
-            elif doc.sha256 != "0" * 64:
-                textos[doc.sha256] = TextoDocumento(doc.sha256, {}, completo=True, tem_texto=False)
+        if mudancas_necessarias and baixadas is None:
+            self._baixar_mudancas(cf, edital_fonte, documentos, textos, reg)
 
         concurso = Concurso(
-            slug=slug, orgao=cls.orgao, categoria=cls.categoria, esfera=cls.esfera, banca=cf.fonte, uf=cls.uf,
+            slug=slug, orgao=cls.orgao, categoria=cls.categoria, esfera=cls.esfera, banca=cf.banca or cf.fonte,
+            uf=cls.uf,
             cargos=[Cargo(nome=n) for n in cf.cargos if len(n) >= 2],
             vagas_imediatas=vagas_campo, porte=classificar_porte(vagas_campo), prazos=prazos,
             areas=list(cls.areas),
@@ -316,6 +320,7 @@ class Coletor:
         resultado2 = self.gate.aplicar(resultado.concurso, guardados)
         final = resultado2.concurso
         final.porte = classificar_porte(final.vagas_imediatas)
+        self._conferir_com_imprensa(cf, final, reg)
         Concurso.model_validate(final.model_dump())
         reg.violacoes += [f"{v.regra} {v.campo}: {v.mensagem}" for v in resultado.violacoes + resultado2.violacoes]
 
@@ -359,6 +364,81 @@ class Coletor:
             self.store.remover_revisao(slug)
         self._slugs.add(slug)
         return reg
+
+    def _baixar_mudancas(self, cf: ConcursoFonte, edital_fonte: DocFonte, documentos: list[Documento],
+                         textos: dict[str, TextoDocumento], reg: Registro) -> list[tuple[Documento, TextoDocumento | None, bytes]]:
+        mudancas = [
+            d for d in cf.documentos
+            if d.tipo == "retificacao"
+            and (d.publicado_em is None or edital_fonte.publicado_em is None or d.publicado_em >= edital_fonte.publicado_em)
+        ][-MAX_MUDANCAS:]
+        baixadas = []
+        for i, d in enumerate(mudancas, start=len(documentos) + 1):
+            pdf = b""
+            try:
+                doc, txt, pdf = self._baixar(d, f"doc-{i}")
+            except ErroColeta as e:
+                # sem o documento não dá para descartar impacto: G7 rebaixa o que ele poderia afetar
+                reg.violacoes.append(f"documento de mudança indisponível: {d.url} ({e})")
+                doc = Documento(id=f"doc-{i}", tipo="retificacao", url=d.url, url_final=d.url, sha256="0" * 64,
+                                coletado_em=self.agora(), fonte=cf.fonte, publicado_em=d.publicado_em,
+                                titulo=d.titulo[:300] or None)
+                txt = None
+            documentos.append(doc)
+            if txt is not None:
+                textos[doc.sha256] = txt
+            elif doc.sha256 != "0" * 64:
+                textos[doc.sha256] = TextoDocumento(doc.sha256, {}, completo=True, tem_texto=False)
+            baixadas.append((doc, txt, pdf))
+        return baixadas
+
+    @staticmethod
+    def _prazo_da_retificacao(baixadas: list, prazos: Prazos, evidencias: list[Evidencia], reg: Registro) -> None:
+        """Prazo republicado numa retificação (prorrogação): vale o da retificação mais recente que
+        traga uma cláusula clara do prazo. O gate confere o trecho nela (G3–G5) e o G7 só olha as
+        retificações posteriores a ela."""
+        ordenadas = sorted(
+            (b for b in baixadas if b[1] is not None and b[1].tem_texto),
+            key=lambda b: (b[0].publicado_em is not None, b[0].publicado_em or b[0].coletado_em.date(), b[0].id),
+            reverse=True,
+        )
+        for tipo, campo in clausulas.CAMPO_POR_TIPO.items():
+            for doc, txt, pdf in ordenadas:
+                cands = clausulas.encontrar(txt.paginas, tipo)
+                try:
+                    linhas = tabela.linhas(pdf, txt.paginas) if pdf else []
+                except Exception:
+                    linhas = []
+                tab = [c for c in tabela.candidatos(linhas, txt.paginas, tipo) if not c.ambiguo]
+                escolhido, _motivo = _escolher(cands, tab)
+                if escolhido is None:
+                    continue
+                linha = LinhaTabela(atividade=escolhido.tabela[0], datas=escolhido.tabela[1]) if escolhido.tabela else None
+                anterior = next((i for i, ev in enumerate(evidencias) if ev.campo == campo), None)
+                ev_id = evidencias[anterior].id if anterior is not None else f"ev-{len(evidencias) + 1}"
+                ev = Evidencia(id=ev_id, campo=campo, documento=doc.id, pagina=escolhido.pagina,
+                               trecho=escolhido.trecho, ancora=escolhido.ancora,
+                               metodo="tabela:v1" if linha else METODO, tabela=linha)
+                if anterior is not None:
+                    evidencias[anterior] = ev
+                else:
+                    evidencias.append(ev)
+                setattr(prazos, tipo, Prazo(inicio=escolhido.inicio, fim=escolhido.fim, status="verificado",
+                                            evidencia=ev.id))
+                reg.violacoes = [v for v in reg.violacoes if not v.startswith(f"{campo}:")]
+                break
+
+    @staticmethod
+    def _conferir_com_imprensa(cf: ConcursoFonte, c: Concurso, reg: Registro) -> None:
+        """Avulsos: prazo verificado que diverge do publicado pela imprensa vai para revisão."""
+        for tipo, (_inicio, fim) in cf.esperado.items():
+            p = getattr(c.prazos, tipo)
+            if p.status == "verificado" and p.fim != fim:
+                p.status = "revisao"
+                reg.violacoes.append(
+                    f"{clausulas.CAMPO_POR_TIPO[tipo]}: documento diz {p.fim}, imprensa diz {fim} "
+                    "(cópia desatualizada ou retificação não encontrada)"
+                )
 
     def _novo_slug(self, cf: ConcursoFonte, cls: Classificacao) -> str:
         ano = cf.ano or self.agora().year
