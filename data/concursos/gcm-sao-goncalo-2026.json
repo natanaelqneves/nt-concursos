@@ -1,0 +1,87 @@
+{
+  "schema_version": 2,
+  "slug": "gcm-sao-goncalo-2026",
+  "orgao": "Guarda Municipal de São Gonçalo",
+  "categoria": "guarda",
+  "esfera": "municipal",
+  "banca": "selecon",
+  "uf": "RJ",
+  "municipio": "São Gonçalo",
+  "cargos": [
+    {
+      "nome": "Guarda Municipal Nível II",
+      "vagas": null,
+      "remuneracao": null
+    }
+  ],
+  "vagas_imediatas": null,
+  "porte": "indefinido",
+  "areas": [],
+  "taxa": null,
+  "prazos": {
+    "isencao": {
+      "status": "verificado",
+      "evidencia": "ev-1",
+      "inicio": null,
+      "fim": "2026-09-29"
+    },
+    "inscricao": {
+      "status": "verificado",
+      "evidencia": "ev-2",
+      "inicio": null,
+      "fim": "2026-11-18"
+    }
+  },
+  "isencao_publicos": [],
+  "documentos": [
+    {
+      "id": "doc-1",
+      "tipo": "edital",
+      "url": "https://www.editorasolucao.com.br/blog/wp-content/uploads/2026/09/Concurso-Guarda-de-Sao-Goncalo-RJ-Edital.pdf",
+      "url_final": "https://www.editorasolucao.com.br/blog/wp-content/uploads/2026/09/Concurso-Guarda-de-Sao-Goncalo-RJ-Edital.pdf",
+      "sha256": "505de481b9684b915be53af26adeb8e9e320816b9b12f49547821300a13cb157",
+      "coletado_em": "2026-11-13T15:34:28-03:00",
+      "fonte": "editorasolucao",
+      "publicado_em": "2026-09-23",
+      "titulo": "Edital nº 001/PMSG/2026 (Guarda Municipal Nível II)"
+    }
+  ],
+  "evidencias": [
+    {
+      "id": "ev-1",
+      "campo": "prazos.isencao",
+      "documento": "doc-1",
+      "pagina": 46,
+      "trecho": "Período para solicitação de Pedido de Isenção da taxa de inscrição. — até 23h59 do dia 29/09/2026",
+      "ancora": "Isenção",
+      "metodo": "tabela:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": {
+        "atividade": "Período para solicitação de Pedido de Isenção da taxa de inscrição.",
+        "datas": "até 23h59 do dia 29/09/2026"
+      }
+    },
+    {
+      "id": "ev-2",
+      "campo": "prazos.inscricao",
+      "documento": "doc-1",
+      "pagina": 46,
+      "trecho": "Período para solicitação de Inscrições. — até 23h59 do dia 18/11/2026",
+      "ancora": "Inscrições",
+      "metodo": "tabela:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": {
+        "atividade": "Período para solicitação de Inscrições.",
+        "datas": "até 23h59 do dia 18/11/2026"
+      }
+    }
+  ],
+  "descoberto_via": {
+    "fonte": "avulsos",
+    "url": "https://www.selecon.org.br/",
+    "data_dou": null
+  },
+  "conferido_em": "2026-11-13T15:34:29-03:00"
+}

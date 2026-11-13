@@ -175,12 +175,12 @@
     ]
   },
   "avulsos": {
-    "inicio": "2026-11-13T15:27:59-03:00",
-    "fim": "2026-11-13T15:29:42-03:00",
+    "inicio": "2026-11-13T15:32:53-03:00",
+    "fim": "2026-11-13T15:34:30-03:00",
     "erro_fonte": null,
     "contagem": {
-      "publicado": 7,
-      "so_revisao": 1,
+      "publicado": 8,
+      "so_revisao": 2,
       "encerrado": 1
     },
     "registros": [
@@ -305,6 +305,35 @@
         },
         "violacoes": [
           "G7 prazos.isencao: retificação posterior menciona este prazo"
+        ]
+      },
+      {
+        "fonte": "avulsos",
+        "id": "gcm-sao-goncalo-2026",
+        "titulo": "Prefeitura Municipal de São Gonçalo - Guarda Municipal",
+        "situacao": "publicado",
+        "detalhe": "guarda/municipal/RJ",
+        "slug": "gcm-sao-goncalo-2026",
+        "campos": {
+          "prazos.isencao": "verificado",
+          "prazos.inscricao": "verificado"
+        },
+        "violacoes": []
+      },
+      {
+        "fonte": "avulsos",
+        "id": "camara-cuiaba-2026",
+        "titulo": "Câmara Municipal de Cuiabá",
+        "situacao": "so_revisao",
+        "detalhe": "legislativo/municipal/MT",
+        "slug": "camara-cuiaba-2026",
+        "campos": {
+          "prazos.isencao": "revisao",
+          "prazos.inscricao": "revisao"
+        },
+        "violacoes": [
+          "prazos.isencao: 1 cláusulas diferentes",
+          "prazos.inscricao: 1 cláusulas diferentes"
         ]
       }
     ]
