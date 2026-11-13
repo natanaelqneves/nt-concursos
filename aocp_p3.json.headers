@@ -1,0 +1,11 @@
+HTTP/2 200 
+date: Fri, 13 Nov 2026 02:09:11 GMT
+content-type: application/json
+cf-ray: a59a3b9b1dd82950-DTW
+cf-cache-status: DYNAMIC
+server: cloudflare
+vary: accept-encoding
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=6paDJ9bLqSPMFzXiU%2B2dIz649cIVVlleH6%2Be5BbOzih5plghh5dJyTb85oO2LcmSvw34I7%2BTK6j%2Fb%2FYnucxFeFROpNhGpDMWvlQgaZKp7Ioob8P8nnqj9I435SO9klKBL8gWoqXT8akC69o%3D"}]}
+x-matched-path: /api/concursos/proseleta/[id]
+

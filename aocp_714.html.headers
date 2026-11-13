@@ -1,0 +1,14 @@
+HTTP/2 200 
+date: Fri, 13 Nov 2026 02:09:11 GMT
+content-type: text/html; charset=utf-8
+x-powered-by: Next.js
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=P0hviLA8yEzvPdR3wnTvh21XghAfCLdKLMrj6VB0zsGLe0ya747kcILvWTfFIltpg6T6r3xv8Pt1PUEyD8SgfUICFHKYzWqus32m62qs%2BMzCgAgUJklBVwqxqBjQSDZjGR6%2BWfllrZLUuT8%3D"}]}
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+link: </_next/static/media/7f06be3f780a819a-s.p.woff2>; rel=preload; as="font"; crossorigin=""; type="font/woff2"
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch
+x-edge-runtime: 1
+x-matched-path: /concursos/[id]
+server: cloudflare
+cf-cache-status: DYNAMIC
+cf-ray: a59a3b9d58d0f275-DTW
+
