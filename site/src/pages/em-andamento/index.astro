@@ -1,0 +1,52 @@
+---
+import Base from "../../layouts/Base.astro";
+import { NOME_CATEGORIA, NOME_ETAPA, concursosEmAndamento, proximaEtapa, textoEsfera, titulo, local } from "../../lib/dados";
+import { formatarData } from "../../lib/tempo";
+
+const lista = concursosEmAndamento();
+const comProxima = lista.filter((c) => proximaEtapa(c));
+const semProxima = lista.filter((c) => !proximaEtapa(c));
+---
+<Base
+  titulo="Concursos em andamento: próximas provas e resultados"
+  descricao="Concursos com inscrições encerradas que seguem em andamento: data da próxima prova, gabarito e resultado, conferidas no cronograma do edital."
+  noindex={lista.length === 0}
+  breadcrumbs={[{ nome: "Início", url: "/" }, { nome: "Em andamento", url: "/em-andamento/" }]}
+>
+  <h1>Concursos em andamento</h1>
+  <p class="lead">
+    Concursos que já fecharam as inscrições e seguem com provas, gabaritos e resultados. Para cada um,
+    mostramos as etapas do cronograma do edital, com o link para o trecho de onde tiramos a data.
+  </p>
+  <p class="alert alert-info">
+    Estas páginas não são de inscrição aberta. As datas são as do cronograma publicado e podem mudar por
+    retificação; confira sempre no site da banca. Ficam aqui os concursos com inscrições encerradas há até
+    seis meses.
+  </p>
+
+  <h2>Próximas etapas ({comProxima.length})</h2>
+  {comProxima.length === 0 ? <p>Nenhum concurso acompanhado com etapa futura no cronograma.</p> : (
+    <ul class="lista-cartoes list-unstyled">
+      {comProxima.map((c) => {
+        const e = proximaEtapa(c)!;
+        return (
+          <li class="card mb-3"><div class="card-body">
+            <p class="meta small mb-1">{NOME_CATEGORIA[c.categoria]} · {textoEsfera(c)} · {local(c)}</p>
+            <h3 class="h5"><a href={`/concursos/${c.slug}/#etapas`}>{titulo(c)}</a></h3>
+            <p class="mb-0">{NOME_ETAPA[e.tipo]}: <strong>{e.inicio ? `${formatarData(e.inicio)} a ${formatarData(e.fim!)}` : formatarData(e.fim!)}</strong></p>
+          </div></li>
+        );
+      })}
+    </ul>
+  )}
+
+  {semProxima.length > 0 && (
+    <>
+      <h2>Etapas do cronograma já realizadas ({semProxima.length})</h2>
+      <p>O cronograma do edital não traz etapa futura; os próximos passos (resultado, homologação, convocação) saem no site da banca.</p>
+      <ul>
+        {semProxima.map((c) => <li><a href={`/concursos/${c.slug}/#etapas`}>{titulo(c)}</a> <span class="meta">· {local(c)}</span></li>)}
+      </ul>
+    </>
+  )}
+</Base>

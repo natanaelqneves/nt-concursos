@@ -1,0 +1,92 @@
+---
+// Guia: o que é cadastro de reserva. Texto próprio. Revisado em 13/11/2026.
+import Base from "../../layouts/Base.astro";
+import AdSlot from "../../components/AdSlot.astro";
+
+const REVISADO = "13/11/2026";
+const fontes = [
+  { nome: "Constituição Federal, art. 37 (validade e prioridade dos aprovados)", url: "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm" },
+  { nome: "Lei nº 14.965/2024 (normas gerais dos concursos)", url: "https://legis.senado.leg.br/norma/39581018/publicacao/39582256" },
+];
+---
+<Base
+  titulo="Cadastro de reserva em concurso público: o que é e quando chamam"
+  descricao="O que significa cadastro de reserva (CR) no edital, a diferença para vagas imediatas, quando o aprovado tem direito à nomeação e o papel da validade do concurso."
+  breadcrumbs={[{ nome: "Início", url: "/" }, { nome: "Guias", url: "/guias/" }, { nome: "Cadastro de reserva", url: "/guias/cadastro-de-reserva/" }]}
+>
+  <article class="texto-longo">
+    <h1>Cadastro de reserva: o que é e quando o aprovado é chamado</h1>
+    <p class="text-secondary small">Guia geral, revisado em {REVISADO}. Não substitui o edital nem orientação jurídica.</p>
+
+    <p>
+      Muitos editais anunciam algo como "50 vagas + CR". O número é de <strong>vagas imediatas</strong>: cargos
+      que o órgão já tem livres e pretende preencher. O "CR" é o <strong>cadastro de reserva</strong>: uma
+      lista de aprovados além dessas vagas, que o órgão pode chamar se surgirem novos cargos livres durante a
+      validade do concurso. Há também concursos só para cadastro de reserva, sem nenhuma vaga imediata.
+    </p>
+
+    <h2>Vaga imediata e cadastro de reserva não são a mesma coisa</h2>
+    <p>
+      A diferença está na garantia. O Supremo Tribunal Federal decidiu que quem é aprovado
+      <strong>dentro do número de vagas</strong> do edital tem direito à nomeação durante a validade do
+      concurso (RE 598.099). A administração escolhe o momento, mas não pode simplesmente deixar de nomear,
+      salvo situações excepcionais e justificadas.
+    </p>
+    <p>
+      Quem fica no cadastro de reserva tem, em regra, <strong>expectativa de direito</strong>. No julgamento
+      do RE 837.311 (Tema 784 da repercussão geral), o STF fixou que o surgimento de novas vagas ou a abertura
+      de novo concurso durante a validade do anterior não dá, sozinho, direito à nomeação de quem está fora
+      das vagas. A exceção é a <strong>preterição arbitrária e imotivada</strong>: por exemplo, quando a ordem
+      de classificação é desrespeitada, ou quando surgem vagas, o órgão mostra que precisa preencher e, mesmo
+      assim, deixa de nomear sem motivo. Casos assim costumam ir à Justiça e dependem de prova.
+    </p>
+
+    <h2>Quanto tempo dura o cadastro</h2>
+    <p>
+      O cadastro vale enquanto o concurso estiver válido. Pela Constituição (art. 37, III), a validade é de
+      <strong>até dois anos</strong>, contados da homologação do resultado, e pode ser
+      <strong>prorrogada uma vez, por igual período</strong>. O edital diz o prazo exato. Terminada a
+      validade, a lista perde o efeito e o órgão só pode preencher vagas com um concurso novo. É por isso que
+      acompanhamos, na página <a href="/podem-reabrir/">Podem reabrir</a>, os concursos com validade perto do fim.
+    </p>
+    <p>
+      A Constituição também diz (art. 37, IV) que, durante a validade, quem foi aprovado tem prioridade
+      sobre os aprovados de um concurso novo para o mesmo cargo.
+    </p>
+
+    <AdSlot formato="meio" slot={import.meta.env.PUBLIC_ADSENSE_SLOT_MEIO} />
+
+    <h2>Vale a pena fazer concurso só para cadastro de reserva?</h2>
+    <p>
+      Depende do órgão. Alguns usam o cadastro com frequência e chamam muito além das vagas anunciadas,
+      principalmente quando há aposentadorias em massa ou criação de cargos por lei. Outros quase não chamam.
+      Três sinais ajudam a avaliar:
+    </p>
+    <ul>
+      <li><strong>Histórico:</strong> quantos aprovados o último concurso do órgão chamou além das vagas. A
+        imprensa especializada e os diários oficiais publicam as nomeações.</li>
+      <li><strong>Cargos vagos:</strong> alguns órgãos divulgam o número de cargos vagos no portal da
+        transparência ou em relatórios de gestão.</li>
+      <li><strong>Tamanho do cadastro:</strong> editais recentes costumam limitar o cadastro a um número de
+        candidatos (por exemplo, "até 500 aprovados em CR"). Quem fica fora desse limite é eliminado, mesmo
+        com nota acima da mínima.</li>
+    </ul>
+
+    <h2>Como o cadastro aparece no NT Concursos</h2>
+    <p>
+      Nas páginas dos concursos, o número de vagas que mostramos é o de <strong>vagas imediatas</strong>
+      conferido no edital; o cadastro de reserva não entra nessa conta nem no "porte" do concurso. Quando o
+      edital é só para cadastro, a página mostra os prazos normalmente, mas não aparece como concurso de
+      grande porte.
+    </p>
+
+    <h2>Fontes</h2>
+    <ul>
+      {fontes.map((f) => <li><a href={f.url} rel="noopener" target="_blank">{f.nome}</a></li>)}
+      <li>Supremo Tribunal Federal: RE 598.099 (aprovado dentro das vagas) e RE 837.311, Tema 784 (aprovado fora das vagas).</li>
+    </ul>
+    <p class="small text-secondary">
+      Viu algo desatualizado? Fale com a gente pela página de <a href="/contato/">contato</a>.
+    </p>
+  </article>
+</Base>

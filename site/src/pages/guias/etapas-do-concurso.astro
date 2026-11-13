@@ -1,0 +1,91 @@
+---
+// Guia: o que acontece depois da inscrição. Texto próprio. Revisado em 13/11/2026.
+import Base from "../../layouts/Base.astro";
+import AdSlot from "../../components/AdSlot.astro";
+
+const REVISADO = "13/11/2026";
+---
+<Base
+  titulo="Depois da inscrição: as etapas de um concurso até a nomeação"
+  descricao="O que acontece depois que as inscrições fecham: provas, gabarito, recursos, teste físico, avaliação psicológica, resultado final, homologação, validade e nomeação."
+  breadcrumbs={[{ nome: "Início", url: "/" }, { nome: "Guias", url: "/guias/" }, { nome: "Etapas do concurso", url: "/guias/etapas-do-concurso/" }]}
+>
+  <article class="texto-longo">
+    <h1>Depois da inscrição: as etapas até a nomeação</h1>
+    <p class="text-secondary small">Guia geral, revisado em {REVISADO}. A ordem e as etapas mudam de um concurso para outro; vale sempre o edital.</p>
+
+    <p>
+      Fechar as inscrições é só o começo. Entre a prova e a posse, um concurso pode levar de poucos meses a
+      mais de um ano, e cada fase tem prazos curtos para o candidato. Esta é a sequência mais comum. Os
+      concursos que acompanhamos nessa fase estão em <a href="/em-andamento/">Em andamento</a>, com as datas
+      tiradas do cronograma do edital.
+    </p>
+
+    <h2>1. Homologação das inscrições e local de prova</h2>
+    <p>
+      Depois do prazo de pagamento, a banca publica a lista de inscrições confirmadas e, alguns dias antes da
+      prova, o cartão de confirmação com o local, o horário e a sala. Confira os dados assim que saírem: é a
+      última chance de corrigir erro de cadastro ou pedido de atendimento especial.
+    </p>
+
+    <h2>2. Provas objetiva e discursiva</h2>
+    <p>
+      A prova objetiva (múltipla escolha ou certo e errado) quase sempre vem primeiro e costuma ser
+      eliminatória. A discursiva (redação, questões abertas ou peça técnica) pode ser no mesmo dia ou em outro,
+      e muitas vezes só é corrigida para os candidatos mais bem colocados na objetiva.
+    </p>
+
+    <h2>3. Gabarito e recursos</h2>
+    <p>
+      O gabarito preliminar sai poucos dias depois da prova, e abre-se um prazo curto (em geral dois ou três
+      dias úteis) para recorrer de questões. Depois vêm o gabarito definitivo, com as questões anuladas ou
+      alteradas, e o resultado da etapa. Para cada resultado preliminar costuma haver um novo prazo de recurso.
+    </p>
+
+    <AdSlot formato="meio" slot={import.meta.env.PUBLIC_ADSENSE_SLOT_MEIO} />
+
+    <h2>4. Etapas específicas do cargo</h2>
+    <ul>
+      <li><strong>Teste de aptidão física (TAF):</strong> comum em carreiras policiais, guardas municipais e
+        bombeiros. O edital traz os exercícios e os índices mínimos por sexo e idade.</li>
+      <li><strong>Avaliação psicológica:</strong> testes aplicados por psicólogos, eliminatórios, com direito a
+        entrevista devolutiva e recurso.</li>
+      <li><strong>Avaliação médica e investigação social:</strong> exames de saúde e checagem da vida
+        pregressa, com envio de documentos e certidões.</li>
+      <li><strong>Prova prática e avaliação de títulos:</strong> a prática avalia uma tarefa do cargo; os
+        títulos somam pontos por diplomas e experiência.</li>
+      <li><strong>Heteroidentificação:</strong> confirmação da autodeclaração de quem concorre às vagas
+        reservadas para pessoas negras.</li>
+      <li><strong>Curso de formação:</strong> em algumas carreiras é a última etapa, eliminatória e às vezes
+        com bolsa.</li>
+    </ul>
+
+    <h2>5. Resultado final e homologação</h2>
+    <p>
+      Com todas as etapas encerradas, a banca publica o resultado final, com a classificação. O órgão então
+      <strong>homologa</strong> o concurso, em ato publicado no diário oficial. A partir da homologação conta
+      o <strong>prazo de validade</strong>: até dois anos, prorrogável uma vez por igual período, como prevê a
+      Constituição (art. 37, III).
+    </p>
+
+    <h2>6. Nomeação e posse</h2>
+    <p>
+      Durante a validade, o órgão nomeia os aprovados pela ordem de classificação, também por ato no diário
+      oficial. Quem é nomeado tem um prazo para tomar posse (apresentar documentos e exames) e depois para
+      entrar em exercício. Perder esses prazos significa perder a vaga. Quem foi aprovado dentro das vagas do
+      edital tem direito à nomeação; quem ficou no cadastro de reserva depende de novas vagas, como explica o
+      guia sobre <a href="/guias/cadastro-de-reserva/">cadastro de reserva</a>.
+    </p>
+
+    <h2>Onde acompanhar</h2>
+    <p>
+      A fonte principal é a página do concurso no site da banca, onde saem gabaritos, resultados,
+      convocações e retificações. Atos de homologação e nomeação também aparecem no diário oficial do ente
+      (União, estado ou município). Cadastre-se nos avisos da banca, se houver, e confira o e-mail usado na
+      inscrição.
+    </p>
+    <p class="small text-secondary">
+      Viu algo desatualizado? Fale com a gente pela página de <a href="/contato/">contato</a>.
+    </p>
+  </article>
+</Base>

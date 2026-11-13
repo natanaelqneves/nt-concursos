@@ -1,0 +1,101 @@
+---
+// Guia: como ler um edital de concurso. Texto próprio. Revisado em 13/11/2026.
+import Base from "../../layouts/Base.astro";
+import AdSlot from "../../components/AdSlot.astro";
+
+const REVISADO = "13/11/2026";
+---
+<Base
+  titulo="Como ler um edital de concurso público: o que conferir primeiro"
+  descricao="Roteiro para ler um edital de concurso: requisitos do cargo, vagas, cronograma, isenção, etapas, conteúdo da prova, retificações e prazos que não podem ser perdidos."
+  breadcrumbs={[{ nome: "Início", url: "/" }, { nome: "Guias", url: "/guias/" }, { nome: "Como ler um edital", url: "/guias/como-ler-um-edital/" }]}
+>
+  <article class="texto-longo">
+    <h1>Como ler um edital de concurso</h1>
+    <p class="text-secondary small">Guia geral, revisado em {REVISADO}. Cada edital tem regras próprias; em caso de dúvida, vale o texto dele.</p>
+
+    <p>
+      O edital é a regra do concurso. Tudo o que vale para o candidato, das datas aos critérios de
+      desempate, está nele ou nas retificações publicadas depois. Editais passam facilmente de 50 páginas,
+      mas não é preciso ler tudo de uma vez: há uma ordem que poupa tempo e evita os erros mais comuns.
+    </p>
+
+    <h2>1. Confira se você pode concorrer</h2>
+    <p>
+      Antes de qualquer coisa, procure o capítulo de <strong>requisitos para investidura</strong> e o
+      quadro de cargos. Veja a escolaridade exigida (às vezes um curso específico ou registro em conselho
+      profissional), a idade mínima ou máxima, a carteira de habilitação, a altura e outras exigências de
+      cargos policiais. Os requisitos são cobrados na posse, mas quem não os terá até lá perde tempo e taxa.
+    </p>
+
+    <h2>2. Ache o cronograma</h2>
+    <p>
+      Quase todo edital traz um quadro chamado "cronograma" ou "datas previstas", em geral num anexo. É a
+      parte mais útil do documento: período de inscrições, prazo para pedir isenção, pagamento da taxa, data
+      das provas, gabaritos, prazos de recurso e resultados. Anote as datas no calendário assim que ler. Os
+      prazos de isenção costumam ser curtos (às vezes dois ou três dias) e vêm antes do fim das inscrições.
+    </p>
+    <p>
+      É exatamente desse quadro que o NT Concursos tira as datas: cada prazo que mostramos tem o link para o
+      trecho do cronograma. Veja <a href="/metodologia/">como verificamos</a>.
+    </p>
+
+    <h2>3. Vagas, lotação e cadastro de reserva</h2>
+    <p>
+      O quadro de vagas mostra quantas são imediatas, quantas vão para pessoas com deficiência e para
+      cotas raciais, e onde ficam (cidade, região ou polo). Em concursos com lotação por região, a escolha é
+      feita na inscrição e normalmente não muda depois. Se aparecer "CR", leia o guia sobre
+      <a href="/guias/cadastro-de-reserva/">cadastro de reserva</a>.
+    </p>
+
+    <AdSlot formato="meio" slot={import.meta.env.PUBLIC_ADSENSE_SLOT_MEIO} />
+
+    <h2>4. Taxa e isenção</h2>
+    <p>
+      O edital informa o valor da taxa, quem pode pedir isenção e quais documentos enviar. A lista de
+      grupos com direito depende da lei de quem faz o concurso (União, estado, DF ou município). O guia
+      <a href="/como-pedir-isencao/">como pedir isenção</a> explica os casos mais comuns.
+    </p>
+
+    <h2>5. Etapas e critérios de eliminação</h2>
+    <p>
+      Procure o capítulo que descreve cada etapa: prova objetiva, discursiva, teste físico, avaliação
+      psicológica, títulos, curso de formação. Repare em três pontos: quais etapas são
+      <strong>eliminatórias</strong> (reprovar tira do concurso) e quais só somam pontos
+      (<strong>classificatórias</strong>); a <strong>nota mínima</strong> por disciplina ou no total; e a
+      <strong>cláusula de barreira</strong>, quando só um número limitado de candidatos passa para a etapa
+      seguinte. O guia <a href="/guias/etapas-do-concurso/">o que acontece depois da inscrição</a> explica
+      cada etapa.
+    </p>
+
+    <h2>6. Conteúdo programático</h2>
+    <p>
+      O anexo de conteúdo lista as matérias e os temas de cada prova. Compare o peso de cada disciplina
+      (quantidade de questões e pontos) para organizar o estudo, e confira se há bibliografia indicada ou
+      legislação específica do órgão.
+    </p>
+
+    <h2>7. Acompanhe as retificações</h2>
+    <p>
+      A banca pode corrigir o edital depois de publicado, com documentos chamados retificação, errata ou
+      comunicado. Eles valem tanto quanto o edital: podem prorrogar inscrições, mudar a data da prova ou o
+      número de vagas. Por isso, guarde o endereço da página do concurso no site da banca e volte lá com
+      frequência. No NT Concursos, quando uma retificação mexe num prazo, a data sai do site até ser
+      conferida de novo.
+    </p>
+
+    <h2>Lista rápida</h2>
+    <ol>
+      <li>Requisitos do cargo: posso concorrer?</li>
+      <li>Cronograma: datas de isenção, inscrição, pagamento e prova.</li>
+      <li>Vagas: imediatas, cadastro de reserva, lotação.</li>
+      <li>Taxa e isenção: tenho direito? quais documentos?</li>
+      <li>Etapas: quais eliminam e qual a nota mínima.</li>
+      <li>Conteúdo: matérias, pesos e legislação.</li>
+      <li>Retificações: voltar ao site da banca até o fim do concurso.</li>
+    </ol>
+    <p class="small text-secondary">
+      Viu algo desatualizado? Fale com a gente pela página de <a href="/contato/">contato</a>.
+    </p>
+  </article>
+</Base>
