@@ -14,6 +14,10 @@ def test_classificar():
     assert etapas.classificar("Prazo para interposição de recurso contra o gabarito") is None
     assert etapas.classificar("Resultado preliminar da prova objetiva") is None
     assert etapas.classificar("Consulta aos locais de prova") is None
+    assert etapas.classificar("Divulgação do padrão preliminar de respostas da prova discursiva") is None
+    assert etapas.classificar(
+        "Divulgação do edital de resultado final na avaliação biopsicossocial e no procedimento de heteroidentificação"
+    ) == "resultado"
     assert etapas.classificar("Período de inscrições") is None
 
 
