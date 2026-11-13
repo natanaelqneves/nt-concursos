@@ -156,6 +156,8 @@ class Gate:
             # datas da célula, as declaradas.
             if ev.tabela is None:
                 return falha("G4", "etapa sem linha de cronograma")
+            if not etapas_parse.adjacente(normalizar(pagina), celulas[0], celulas[1]):
+                return falha("G3", "data não está ao lado da atividade no texto da página")
             if etapas_parse.classificar(ev.tabela.atividade) != campo.tipo:
                 return falha("G4", f"atividade não é etapa do tipo {campo.tipo}")
             esperado = [d for d in (campo.inicio, campo.fim) if d is not None]

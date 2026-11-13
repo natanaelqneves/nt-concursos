@@ -71,7 +71,7 @@
   },
   "etapas": [
     {
-      "status": "verificado",
+      "status": "revisao",
       "evidencia": "ev-3",
       "tipo": "prova_objetiva",
       "nome": "Aplicação das provas objetivas e da prova discursiva",
@@ -79,7 +79,7 @@
       "fim": "2026-09-20"
     },
     {
-      "status": "verificado",
+      "status": "revisao",
       "evidencia": "ev-4",
       "tipo": "gabarito",
       "nome": "Divulgação dos gabaritos oficiais preliminares das provas objetivas",
