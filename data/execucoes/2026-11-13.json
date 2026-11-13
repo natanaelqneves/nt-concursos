@@ -2351,5 +2351,12 @@
         "violacoes": []
       }
     ]
+  },
+  "inlabs": {
+    "inicio": "2026-11-13T17:36:59-03:00",
+    "fim": "2026-11-13T17:36:59-03:00",
+    "erro_fonte": "SemCredenciais: defina INLABS_EMAIL e INLABS_SENHA",
+    "contagem": {},
+    "registros": []
   }
 }
