@@ -1,0 +1,77 @@
+{
+  "schema_version": 2,
+  "slug": "gcm-salvador-2026-guarda-municipal",
+  "orgao": "Guarda Municipal de Salvador",
+  "situacao": "publicado",
+  "categoria": "guarda",
+  "esfera": "municipal",
+  "uf": "BA",
+  "cargos": [],
+  "fonte": "fgv",
+  "url": "https://conhecimento.fgv.br/concursos/pmsguarda2026",
+  "edital": "https://conhecimento.fgv.br/sites/default/files/concursos/edital-prefeitura-de-salvador-2026-guarda-retificado-1_1.pdf",
+  "edital_sha256": "679a3ebc2ca0d8e63f4fa59e0150ecc57f6d861bc89d01445f44c47609cd3ba8",
+  "campos_em_revisao": [
+    "prazos.inscricao"
+  ],
+  "motivos": [
+    "G7 prazos.inscricao: retificação posterior menciona este prazo"
+  ],
+  "opcoes": {
+    "prazos.inscricao": [
+      {
+        "id": "o-1",
+        "origem": "tabela",
+        "pagina": 61,
+        "trecho": "Período de Inscrição — 21/09/2026 a 30/10/2026",
+        "ancora": "Inscrição",
+        "inicio": "2026-09-21",
+        "fim": "2026-10-30",
+        "tabela": {
+          "atividade": "Período de Inscrição",
+          "datas": "21/09/2026 a 30/10/2026"
+        }
+      },
+      {
+        "id": "o-2",
+        "origem": "texto",
+        "pagina": 5,
+        "trecho": "Para efetuar sua inscrição, o interessado deverá acessar, via Internet, o endereço eletrônico https://conhecimento.fgv.br/concursos/pmsguarda2026, observando o seguinte: a) acessar o endereço eletrônico, a partir das 16h do dia 21 de setembro de 2026 até as 16h do dia 30 de outubro de 2026.",
+        "ancora": "inscrição",
+        "inicio": "2026-09-21",
+        "fim": "2026-10-30"
+      },
+      {
+        "id": "o-3",
+        "origem": "texto",
+        "pagina": 9,
+        "trecho": "6.1.4 No momento da inscrição preliminar, o candidato que deseja concorrer na condição de Pessoa com Deficiência deverá selecionar a opção e enviar o laudo médico ou parecer específico, devidamente assinado e com o respectivo número do registro profissional de saúde – imagem do documento original – em campo específico no link de inscrição das 16h do dia 21 de setembro de 2026 até as 16h do dia 30 de outubro de 2026, horário oficial de Brasília/DF, no sítio eletrônico https://conhecimento.fgv.br/",
+        "ancora": "inscrição",
+        "inicio": "2026-09-21",
+        "fim": "2026-10-30"
+      },
+      {
+        "id": "o-4",
+        "origem": "texto",
+        "pagina": 15,
+        "trecho": "7.17.1 O candidato que porventura declarar indevidamente, quando do preenchimento do requerimento de inscrição via Internet, ser Pessoa Preta ou Parda deverá, após tomar conhecimento da inscrição nessa condição, entrar em contato com a FGV por meio do email concursopmsguarda26@fgv.br, para a correção da informação, por se tratar apenas de erro material e inconsistência efetivada no ato da inscrição, até o dia 30 de outubro de 2026.",
+        "ancora": "inscrição",
+        "inicio": null,
+        "fim": "2026-10-30"
+      }
+    ]
+  },
+  "mudancas": [
+    {
+      "titulo": "1ª Retificação",
+      "url": "https://conhecimento.fgv.br/sites/default/files/concursos/1-retificacao-do-edital-n-02-de-2026.pdf",
+      "publicado_em": "2026-09-28"
+    },
+    {
+      "titulo": "COMUNICADO - Prorrogação do prazo para reimpressão e pagamento dos boletos",
+      "url": "https://conhecimento.fgv.br/sites/default/files/concursos/comunicado-prorrogacao-reimpressao-e-pagamento-dos-boletos-guarda-municipal-salvador-ajust.pdf",
+      "publicado_em": "2026-11-06"
+    }
+  ],
+  "registrado_em": "2026-11-13T16:17:15-03:00"
+}

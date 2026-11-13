@@ -76,7 +76,7 @@
       "url": "https://conhecimento.fgv.br/sites/default/files/concursos/edital-prefeitura-de-salvador-2026-guarda-retificado-1_1.pdf",
       "url_final": "https://conhecimento.fgv.br/sites/default/files/concursos/edital-prefeitura-de-salvador-2026-guarda-retificado-1_1.pdf",
       "sha256": "679a3ebc2ca0d8e63f4fa59e0150ecc57f6d861bc89d01445f44c47609cd3ba8",
-      "coletado_em": "2026-11-13T16:02:45-03:00",
+      "coletado_em": "2026-11-13T16:17:11-03:00",
       "fonte": "fgv",
       "publicado_em": "2026-09-28",
       "titulo": "Edital (retificado em 28/09/2026)"
@@ -87,7 +87,7 @@
       "url": "https://conhecimento.fgv.br/sites/default/files/concursos/1-retificacao-do-edital-n-02-de-2026.pdf",
       "url_final": "https://conhecimento.fgv.br/sites/default/files/concursos/1-retificacao-do-edital-n-02-de-2026.pdf",
       "sha256": "d264baab65354a6b1a3319daa25ca166b2fe2839230f589b448e3ae1537ac657",
-      "coletado_em": "2026-11-13T16:02:48-03:00",
+      "coletado_em": "2026-11-13T16:17:13-03:00",
       "fonte": "fgv",
       "publicado_em": "2026-09-28",
       "titulo": "1ª Retificação"
@@ -98,7 +98,7 @@
       "url": "https://conhecimento.fgv.br/sites/default/files/concursos/comunicado-prorrogacao-reimpressao-e-pagamento-dos-boletos-guarda-municipal-salvador-ajust.pdf",
       "url_final": "https://conhecimento.fgv.br/sites/default/files/concursos/comunicado-prorrogacao-reimpressao-e-pagamento-dos-boletos-guarda-municipal-salvador-ajust.pdf",
       "sha256": "314813f94c1d33ba8f508636abe987c9442fd7002175a6b474ca3bf6eed721da",
-      "coletado_em": "2026-11-13T16:02:50-03:00",
+      "coletado_em": "2026-11-13T16:17:15-03:00",
       "fonte": "fgv",
       "publicado_em": "2026-11-06",
       "titulo": "COMUNICADO - Prorrogação do prazo para reimpressão e pagamento dos boletos"
@@ -210,5 +210,5 @@
     "url": "https://conhecimento.fgv.br/concursos/pmsguarda2026",
     "data_dou": null
   },
-  "conferido_em": "2026-11-13T16:02:50-03:00"
+  "conferido_em": "2026-11-13T16:17:15-03:00"
 }

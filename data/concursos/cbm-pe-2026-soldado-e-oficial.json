@@ -71,7 +71,7 @@
       "url": "https://arquivos.qconcursos.com/regulamento/arquivo/102168/cbm-pe-2026-edital-n-2-edital.pdf",
       "url_final": "https://arquivos.qconcursos.com/regulamento/arquivo/102168/cbm-pe-2026-edital-n-2-edital.pdf",
       "sha256": "4019c7765328121da005185102ef595bce027d876058917b21c7b21dba34438b",
-      "coletado_em": "2026-11-13T16:10:14-03:00",
+      "coletado_em": "2026-11-13T16:24:39-03:00",
       "fonte": "qconcursos",
       "publicado_em": "2026-09-29",
       "titulo": "Edital de Abertura nº 002/2026 (Portaria Conjunta SAD/SDS nº 300)"
@@ -82,7 +82,7 @@
       "url": "https://dhg1h5j42swfq.cloudfront.net/2026/10/15005732/cronogramas-retificados-pm-e-cbm-pe.pdf",
       "url_final": "https://dhg1h5j42swfq.cloudfront.net/2026/10/15005732/cronogramas-retificados-pm-e-cbm-pe.pdf",
       "sha256": "380fce7123159aaaf4a101d1c2713a1a91eee186f2fdf61df409f0e0f881e7fc",
-      "coletado_em": "2026-11-13T16:10:18-03:00",
+      "coletado_em": "2026-11-13T16:24:43-03:00",
       "fonte": "cdn-cloudfront",
       "publicado_em": "2026-10-15",
       "titulo": "Portarias Conjuntas SAD/SDS nº 310 e 311 (cronogramas retificados, Diário Oficial de 15/10/2026)"
@@ -167,5 +167,5 @@
     "url": "https://www.institutoaocp.org.br/",
     "data_dou": null
   },
-  "conferido_em": "2026-11-13T16:10:19-03:00"
+  "conferido_em": "2026-11-13T16:24:45-03:00"
 }

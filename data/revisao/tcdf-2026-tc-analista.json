@@ -1,0 +1,60 @@
+{
+  "schema_version": 2,
+  "slug": "tcdf-2026-tc-analista",
+  "orgao": "Tribunal de Contas do Distrito Federal",
+  "situacao": "publicado",
+  "categoria": "controle",
+  "esfera": "estadual",
+  "uf": "DF",
+  "cargos": [
+    "Analista Administrativo de Controle Externo – Área de Gestão – Serviços Técnico-administrativos"
+  ],
+  "fonte": "cebraspe",
+  "url": "https://www.cebraspe.org.br/concursos/TC_DF_26_ANALISTA",
+  "edital": "https://cdn.cebraspe.org.br/concursos/TC_DF_26_ANALISTA/arquivos/132841120D1767C91430042A81063E012CD5EDDBC11169982C8B711A9A932EBB.pdf",
+  "edital_sha256": "2874935266474c40c87592a83275d0a0de1a7c38b4ffc0675a657d575c8cd68f",
+  "campos_em_revisao": [
+    "prazos.inscricao"
+  ],
+  "motivos": [
+    "G7 prazos.inscricao: retificação posterior menciona este prazo",
+    "G7 etapas.0: retificação posterior pode mudar esta etapa",
+    "G7 etapas.1: retificação posterior pode mudar esta etapa",
+    "G7 etapas.3: retificação posterior pode mudar esta etapa"
+  ],
+  "opcoes": {
+    "prazos.inscricao": [
+      {
+        "id": "o-1",
+        "origem": "tabela",
+        "pagina": 43,
+        "trecho": "Período de solicitação de inscrição — 26/8 a 17/9/2026",
+        "ancora": "inscrição",
+        "inicio": "2026-08-26",
+        "fim": "2026-09-17",
+        "tabela": {
+          "atividade": "Período de solicitação de inscrição",
+          "datas": "26/8 a 17/9/2026"
+        }
+      }
+    ]
+  },
+  "mudancas": [
+    {
+      "titulo": "Edital nº 2 - Retificação da alínea “a” do subitem 10.1 do Edital nº 1, bem como a renumeração de tópicos de Direito Previdenciário, constantes dos conhecimentos específicos ao cargo",
+      "url": "https://cdn.cebraspe.org.br/concursos/TC_DF_26_ANALISTA/arquivos/5CB46AAAA40D34A100FD4FC47162F1A1DE432F92456E8098F2FB11523DBA7876.pdf",
+      "publicado_em": "2026-07-30"
+    },
+    {
+      "titulo": "Comunicado – Envio de documentação complementar à comprovação de que a sua inscrição possa ser deferida e retificação da relação provisória dos candidatos com a inscrição deferida",
+      "url": "https://cdn.cebraspe.org.br/concursos/TC_DF_26_ANALISTA/arquivos/3FB457A3F427066638F6D2FBD1D822AE16C1893E3A252D38BDE88BB81EB9CB36.pdf",
+      "publicado_em": "2026-10-13"
+    },
+    {
+      "titulo": "Comunicado - Prorrogação do prazo para interposição de recurso contra o indeferimento da inscrição e envio de documentos",
+      "url": "https://cdn.cebraspe.org.br/concursos/TC_DF_26_ANALISTA/arquivos/69746990F13A769980B604F1F62D796BA5673E6D790C3D51E125FD179BEAD698.pdf",
+      "publicado_em": "2026-10-16"
+    }
+  ],
+  "registrado_em": "2026-11-13T16:16:21-03:00"
+}
