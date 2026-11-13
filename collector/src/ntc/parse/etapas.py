@@ -24,7 +24,10 @@ from ntc.parse.texto import normalizar
 # Ordem importa: o primeiro tipo que casar decide (do mais específico ao mais geral).
 _TIPOS: list[tuple[str, re.Pattern[str]]] = [
     ("homologacao", re.compile(r"homologa[çc][ãa]o\s+(?:do\s+)?(?:resultado|concurso)", re.I)),
-    ("resultado_final", re.compile(r"resultado\s+final", re.I)),
+    # "resultado final na avaliação psicológica" é resultado de uma etapa, não do concurso
+    ("resultado_final", re.compile(
+        r"resultado\s+final(?![^.;]{0,30}?\b(?:avalia|procedimento|prova|per[íi]cia|heteroid|teste|exame|etapa|fase))",
+        re.I)),
     ("resultado", re.compile(r"resultado", re.I)),
     ("gabarito", re.compile(r"gabarito", re.I)),
     ("curso_formacao", re.compile(r"curso\s+de\s+forma[çc][ãa]o", re.I)),
@@ -44,7 +47,7 @@ _TIPOS: list[tuple[str, re.Pattern[str]]] = [
 _OUTRO_EVENTO = re.compile(
     r"recurs|interposi|pedido|solicita|requeriment|consulta|link|envio|entrega|laudo|"
     r"atendimento|loca(?:l|is)|convoca|pagamento|boleto|isen[çc]|inscri|"
-    r"padr[ãa]o\s+de\s+resposta|espelho|vista\s+d",
+    r"padr[ãa]o\s+(?:\w+\s+)?de\s+respostas?|espelho|vista\s+d",
     re.I,
 )
 # "resultado preliminar/provisório" e "resultado da isenção" não são etapas do concurso.
