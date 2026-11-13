@@ -56,3 +56,17 @@ def test_dias_e_sem_entre_nao_vira_intervalo():
 def test_ordem_de_aparicao():
     texto = "provas em 20/12/2026; inscrições de 10/11/2026 a 30/11/2026"
     assert datas(texto) == [D(2026, 12, 20), D(2026, 11, 10), D(2026, 11, 30)]
+
+
+@pytest.mark.parametrize("texto,esperado", [
+    ("das 09h00min do dia 26/10 até às 16h00min do dia 28/10/26", [date(2026, 10, 26), date(2026, 10, 28)]),
+    ("05/11 a 06/11/26", [date(2026, 11, 5), date(2026, 11, 6)]),
+    ("Até 16/11/26", [date(2026, 11, 16)]),
+    ("26/10/26 a 27/10/26", [date(2026, 10, 26), date(2026, 10, 27)]),
+    ("item 4.11.15 do edital", []),
+    ("1/2/99", []),
+    ("processo 0026204-71.2025.4.02.8000", []),
+    ("às 16h do dia 22 de janeiro de 2026", [date(2026, 1, 22)]),
+])
+def test_ano_curto_e_horarios(texto, esperado):
+    assert datas(texto) == esperado

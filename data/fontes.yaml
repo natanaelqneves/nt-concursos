@@ -23,6 +23,12 @@ fontes:
     nome: Cebraspe
     papel: banca
     dominios: [cebraspe.org.br]
+  aocp:
+    nome: Instituto AOCP
+    papel: banca
+    # anexos-r2.selecao.net.br: armazenamento dos PDFs da plataforma nova do AOCP (link oficial da API).
+    # arquivos-site.institutoaocp.org.br (concursos antigos) tem robots.txt "Disallow: /": não é baixado.
+    dominios: [institutoaocp.org.br, anexos-r2.selecao.net.br]
   fcc:
     nome: Fundação Carlos Chagas
     papel: banca

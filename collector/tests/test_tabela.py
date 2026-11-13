@@ -79,3 +79,20 @@ def test_gate_confere_celulas_da_evidencia_de_tabela(gate, novo):
     ruim["evidencias"][0]["trecho"] = f"{c.tabela[0]} — 27/11 a 3/12/2026"
     r2 = gate.aplicar(Concurso.model_validate(ruim), textos)
     assert any(v.regra == "G4" and v.campo == "prazos.isencao" for v in r2.violacoes)
+
+
+def test_cronograma_sem_grade_do_aocp():
+    """PMSC 2026 (Instituto AOCP): o pdfplumber não acha tabela; as células vêm em blocos."""
+    import json
+    from datetime import date
+    from pathlib import Path
+
+    dados = json.loads((Path(__file__).parent / "fixtures" / "editais" / "pmsc26_cronograma.json").read_text(encoding="utf-8"))
+    paginas = {int(k): v for k, v in dados["paginas"].items()}
+    lin = tabela.linhas_texto(paginas, [25])
+    isen = tabela.candidatos(lin, paginas, "isencao")
+    insc = tabela.candidatos(lin, paginas, "inscricao")
+    assert [(c.inicio, c.fim) for c in isen] == [(date(2026, 10, 26), date(2026, 10, 28))]
+    assert [(c.inicio, c.fim) for c in insc] == [(date(2026, 10, 26), date(2026, 11, 16))]
+    assert insc[0].tabela == ("Período para solicitação de inscrição",
+                              "das 09h00min do dia 26/10 até às 16h00min do dia 16/11/26")
