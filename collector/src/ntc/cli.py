@@ -26,6 +26,7 @@ from ntc.store.json_store import JsonStore
 RAIZ = Path(__file__).resolve().parents[3]
 SCHEMA_PATH = RAIZ / "schema" / "concurso.schema.json"
 SCHEMA_NOTICIA_PATH = RAIZ / "schema" / "noticia.schema.json"
+SCHEMA_VALIDADE_PATH = RAIZ / "schema" / "validade.schema.json"
 
 
 def _schema_json() -> str:
@@ -34,8 +35,10 @@ def _schema_json() -> str:
 
 def _schemas() -> dict[Path, str]:
     from ntc.model.noticia import Noticia
+    from ntc.model.validade import Validade
 
     return {
+        SCHEMA_VALIDADE_PATH: json.dumps(Validade.model_json_schema(), ensure_ascii=False, indent=2) + "\n",
         SCHEMA_PATH: _schema_json(),
         SCHEMA_NOTICIA_PATH: json.dumps(Noticia.model_json_schema(), ensure_ascii=False, indent=2) + "\n",
     }
@@ -80,9 +83,31 @@ def cmd_validate(args: argparse.Namespace) -> int:
             print(f"ERRO {caminho.name}: {v.regra} {v.campo}: {v.mensagem}", file=sys.stderr)
     erros_noticias, n_noticias = _validar_noticias(data, {c.orgao for c in _concursos_validos(arquivos)})
     erros += erros_noticias
+    erros_val, n_val = _validar_validades(data)
+    erros += erros_val
     n_decisoes = _avisar_decisoes(data)
-    print(f"{len(arquivos)} concurso(s) verificados, {n_noticias} notícia(s), {n_decisoes} decisão(ões), {erros} erro(s)")
+    print(f"{len(arquivos)} concurso(s) verificados, {n_noticias} notícia(s), {n_val} validade(s), {n_decisoes} decisão(ões), {erros} erro(s)")
     return 1 if erros else 0
+
+
+def _validar_validades(data: Path) -> tuple[int, int]:
+    """data/validade: concursos que podem reabrir (validade terminando)."""
+    from ntc.model.validade import Validade
+
+    pasta = data / "validade"
+    arquivos = sorted(pasta.glob("*.json")) if pasta.exists() else []
+    erros = 0
+    for caminho in arquivos:
+        try:
+            v = Validade.model_validate_json(caminho.read_text(encoding="utf-8"))
+        except ValidationError as e:
+            erros += 1
+            print(f"ERRO validade/{caminho.name}: schema\n{e}", file=sys.stderr)
+            continue
+        if caminho.stem != v.slug:
+            erros += 1
+            print(f"ERRO validade/{caminho.name}: nome do arquivo difere do slug", file=sys.stderr)
+    return erros, len(arquivos)
 
 
 def _avisar_decisoes(data: Path) -> int:

@@ -127,7 +127,12 @@ def test_lista_real_e_valida():
     assert len(slugs) == len(set(slugs))
     for e in entradas:
         assert e["pesquisa"], e["slug"]
-        assert (RAIZ / "data" / "noticias" / f"{e['noticia']}.json").exists(), e["slug"]
+        if e.get("noticia"):
+            assert (RAIZ / "data" / "noticias" / f"{e['noticia']}.json").exists(), e["slug"]
+        else:  # datas da imprensa na própria entrada, com 2 veículos
+            imp = e["imprensa"]
+            assert imp["inscricao"]["fim"], e["slug"]
+            assert len({u.split("/")[2] for u in imp["fontes"]}) >= 2, e["slug"]
         for d in e["documentos"]:
             for u in d["urls"]:
                 assert al.permitido(u), u

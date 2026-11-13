@@ -194,3 +194,20 @@ Concursos que a imprensa noticia e cujo edital não está numa fonte que o colet
 | `banca` | nos avulsos, a banca real informada na lista (ex.: `idecan`, `fcc`, `vunesp`) |
 | Prazo nos avulsos | pode ter evidência numa retificação (prorrogação); o G7 olha só as retificações posteriores à evidência. Se a data do documento diferir da publicada pela imprensa na notícia ligada, o prazo vai para `revisao` |
 | Site | documento com `fonte` de `papel: copia` é exibido como "cópia publicada por …"; a notícia ligada sai do ar quando o concurso conferido está aberto |
+
+## Esfera municipal e "Podem reabrir" (13/11/2026, compatível com a versão 2)
+
+Decisão do dono: entram os concursos municipais das capitais, as guardas municipais, os órgãos de
+trânsito e a vigilância (sanitária, endemias, vigilante), e uma página própria para concursos com
+validade terminando.
+
+| Campo / arquivo | Regra |
+|---|---|
+| `esfera` | ganha `municipal`. Exige `municipio` (nome da cidade) e UF; fora da esfera municipal, `municipio` fica vazio |
+| `categoria` | novas: `guarda` (só municipal), `prefeitura` (só municipal: demais concursos das prefeituras das capitais), `transito` (Detrans estaduais e órgãos municipais de trânsito), `vigilancia` (vigilância sanitária/epidemiológica, agente de endemias, vigilante; estadual ou municipal). `legislativo` passa a aceitar as câmaras municipais das capitais |
+| Municipal permitido | `guarda`, `transito`, `vigilancia`, `prefeitura`, `legislativo` |
+| Recorte de cidades | capitais: todos os concursos efetivos de prefeitura e câmara. Guarda, trânsito e vigilância: capitais e municípios com mais de ~200 mil habitantes (lista no classificador) |
+| `noticias/*.json` | ganham `municipio`, com as mesmas regras |
+| `data/validade/<slug>.json` | concursos que podem reabrir: `titulo`, `orgao`, `categoria`, `esfera`, `uf`, `municipio`, `banca` (do último concurso), `resumo` (texto próprio), `cargos`, `fatos[]` (`validade` obrigatório com `fim`; `homologacao`, `prorrogacao`, `cargos`, `banca`, `novo_concurso`), `fontes[]` (2 veículos diferentes ou 1 oficial por fato), `validade_ate` (= fim do fato `validade`), `apurado_em`. Schema em `schema/validade.schema.json` |
+| Site | `/podem-reabrir/` lista as validades que terminam nos próximos 12 meses ou terminaram há até 6 meses. Nunca aparece como inscrição aberta nem entra nas listas conferidas no edital |
+| `editais-avulsos.json` | entrada sem notícia publicada pode trazer `imprensa`: `{"inscricao": {"inicio", "fim"}, "fontes": [URLs de 2 veículos]}`; essas datas fazem a mesma conferência das da notícia |

@@ -46,6 +46,16 @@ def esperado_da_noticia(pasta_dados: Path, slug_noticia: str | None) -> dict[str
     return saida
 
 
+def esperado_da_entrada(e: dict) -> dict[str, tuple[date | None, date]]:
+    """Sem notícia publicada: datas que a imprensa deu, anotadas na própria entrada
+    ("imprensa": {"inscricao": {"inicio", "fim"}, "fontes": [urls de 2 veículos]})."""
+    imp = e.get("imprensa") or {}
+    return {
+        tipo: (_data(v.get("inicio")), _data(v["fim"]))
+        for tipo, v in imp.items() if tipo in ("inscricao", "isencao") and v.get("fim")
+    }
+
+
 class Avulsos(Fonte):
     nome = "avulsos"
 
@@ -71,5 +81,6 @@ class Avulsos(Fonte):
                 fonte=self.nome, id=e["slug"], titulo=e["titulo"], url=e["pagina"],
                 contexto=e.get("contexto", []), documentos=docs, ano=ano_de(e["slug"]),
                 cargos=e.get("cargos", []), banca=e["banca"], slug=e["slug"], uf=e.get("uf"),
-                esperado=esperado_da_noticia(self.pasta, e.get("noticia")), prazo_na_retificacao=True,
+                esperado=esperado_da_noticia(self.pasta, e.get("noticia")) or esperado_da_entrada(e),
+                prazo_na_retificacao=True,
             )

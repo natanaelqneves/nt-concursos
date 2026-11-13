@@ -33,12 +33,46 @@ Categoria = Literal[
     "educacao",     # universidades e institutos federais (UF da sede) e secretarias estaduais de educação
     "saude",        # secretarias estaduais de saúde e fundações estaduais de saúde
     "militar",      # Forças Armadas: Exército, Marinha e Aeronáutica (carreira, não temporários)
+    "guarda",       # guardas municipais (capitais e cidades grandes)
+    "transito",     # Detrans estaduais e órgãos municipais de trânsito (capitais e cidades grandes)
+    "vigilancia",   # vigilância sanitária/epidemiológica, agente de endemias e vigilante (estadual ou municipal)
+    "prefeitura",   # demais concursos das prefeituras das capitais
     "outro",     # demais órgãos federais/estaduais: só entram com cargo de TI (areas contém "ti")
 ]
 Area = Literal["ti"]
 # Categorias federais que podem ter UF própria (sede regional); as demais federais usam BR.
 FEDERAIS_COM_UF = {"tribunal", "conselho", "educacao"}
-Esfera = Literal["federal", "estadual"]
+Esfera = Literal["federal", "estadual", "municipal"]
+# Na esfera municipal (13/11/2026) entram as capitais (prefeitura e câmara) e, nas capitais e
+# cidades grandes, guarda municipal, trânsito e vigilância.
+CATEGORIAS_MUNICIPAIS = {"guarda", "transito", "vigilancia", "prefeitura", "legislativo"}
+SO_MUNICIPAIS = {"guarda", "prefeitura"}
+SEM_FEDERAL = {"transito", "vigilancia"}
+
+
+def checar_esfera(categoria: str, esfera: str, uf: str, municipio: str | None) -> None:
+    """Regras de esfera, categoria, UF e município comuns a concursos, notícias e validades."""
+    if esfera == "federal" and uf != "BR" and categoria not in FEDERAIS_COM_UF:
+        # TRF/TRT/TRE, conselhos regionais, universidades e institutos federais têm UF da sede;
+        # os demais órgãos federais são BR.
+        raise ValueError("órgão federal fora do Judiciário deve ter uf BR")
+    if categoria == "militar" and esfera != "federal":
+        raise ValueError("categoria 'militar' cobre só as Forças Armadas (federal)")
+    if categoria == "saude" and esfera != "estadual":
+        raise ValueError("categoria 'saude' cobre só as secretarias e fundações estaduais de saúde")
+    if esfera in ("estadual", "municipal") and uf == "BR":
+        raise ValueError("órgão estadual ou municipal precisa de UF")
+    if esfera == "municipal":
+        if not municipio:
+            raise ValueError("órgão municipal precisa de município")
+        if categoria not in CATEGORIAS_MUNICIPAIS:
+            raise ValueError(f"categoria {categoria!r} não existe na esfera municipal")
+    elif municipio:
+        raise ValueError("município só se aplica à esfera municipal")
+    if categoria in SO_MUNICIPAIS and esfera != "municipal":
+        raise ValueError(f"categoria {categoria!r} é só municipal")
+    if categoria in SEM_FEDERAL and esfera == "federal":
+        raise ValueError(f"categoria {categoria!r} é estadual ou municipal")
 Porte = Literal["grande", "medio", "pequeno", "indefinido"]
 
 TRECHO_MAX = 500
@@ -173,6 +207,7 @@ class Concurso(_Base):
     esfera: Esfera
     banca: str = Field(min_length=2)
     uf: UF
+    municipio: str | None = Field(default=None, min_length=2, max_length=80)  # só na esfera municipal
     cargos: list[Cargo] = Field(default_factory=list)
     vagas_imediatas: Campo | None = None
     porte: Porte = "indefinido"
@@ -219,20 +254,11 @@ class Concurso(_Base):
         for ev in self.evidencias:
             if ev.documento not in doc_ids:
                 raise ValueError(f"{ev.id} aponta para documento inexistente {ev.documento}")
-        if self.esfera == "federal" and self.uf != "BR" and self.categoria not in FEDERAIS_COM_UF:
-            # TRF/TRT/TRE, conselhos regionais, universidades e institutos federais têm UF da sede;
-            # os demais órgãos federais são BR.
-            raise ValueError("órgão federal fora do Judiciário deve ter uf BR")
+        checar_esfera(self.categoria, self.esfera, self.uf, self.municipio)
         if self.categoria == "outro" and "ti" not in self.areas:
             raise ValueError("categoria 'outro' só entra com cargo de TI (areas: ['ti'])")
         if len(set(self.areas)) != len(self.areas):
             raise ValueError("areas repetidas")
-        if self.categoria in ("militar",) and self.esfera != "federal":
-            raise ValueError("categoria 'militar' cobre só as Forças Armadas (federal)")
-        if self.categoria == "saude" and self.esfera != "estadual":
-            raise ValueError("categoria 'saude' cobre só as secretarias e fundações estaduais de saúde")
-        if self.esfera == "estadual" and self.uf == "BR":
-            raise ValueError("órgão estadual precisa de UF")
         if self.vagas_imediatas is not None and self.vagas_imediatas.valor is not None:
             if not isinstance(self.vagas_imediatas.valor, int) or self.vagas_imediatas.valor < 0:
                 raise ValueError("vagas_imediatas deve ser inteiro não negativo")

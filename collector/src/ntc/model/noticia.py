@@ -19,7 +19,7 @@ from urllib.parse import urlsplit
 
 from pydantic import AnyHttpUrl, AwareDatetime, BaseModel, ConfigDict, Field, model_validator
 
-from ntc.model.schema import FEDERAIS_COM_UF, UF, Area, Categoria, Esfera
+from ntc.model.schema import UF, Area, Categoria, Esfera, checar_esfera
 
 NOTICIA_SCHEMA_VERSION = 1
 
@@ -67,6 +67,7 @@ class Noticia(_Base):
     categoria: Categoria
     esfera: Esfera
     uf: UF
+    municipio: str | None = Field(default=None, min_length=2, max_length=80)
     banca: str = Field(min_length=2, max_length=80)
     resumo: str = Field(min_length=80, max_length=1200)
     cargos: list[str] = Field(default_factory=list)
@@ -100,14 +101,7 @@ class Noticia(_Base):
             raise ValueError("toda notícia precisa do fim das inscrições, com fontes")
         if self.expira_em != insc.fim:
             raise ValueError("expira_em deve ser o fim das inscrições")
-        if self.esfera == "federal" and self.uf != "BR" and self.categoria not in FEDERAIS_COM_UF:
-            raise ValueError("órgão federal fora do Judiciário deve ter uf BR")
+        checar_esfera(self.categoria, self.esfera, self.uf, self.municipio)
         if self.categoria == "outro" and "ti" not in self.areas:
             raise ValueError("categoria 'outro' só entra com cargo de TI")
-        if self.categoria == "militar" and self.esfera != "federal":
-            raise ValueError("categoria 'militar' cobre só as Forças Armadas (federal)")
-        if self.categoria == "saude" and self.esfera != "estadual":
-            raise ValueError("categoria 'saude' cobre só as secretarias e fundações estaduais de saúde")
-        if self.esfera == "estadual" and self.uf == "BR":
-            raise ValueError("órgão estadual precisa de UF")
         return self
