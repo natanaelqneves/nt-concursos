@@ -26,6 +26,7 @@ const BANCAS: Record<string, string> = {
   idecan: "Idecan",
   comperve: "Comperve/UFRN",
   access: "Instituto Access",
+  selecon: "Instituto Selecon",
   inlabs: "Imprensa Nacional (Diário Oficial da União)",
 };
 

@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "slug": "tj-sp-escrevente-validade-2027",
+  "titulo": "TJ SP: concursos de Escrevente Técnico Judiciário perdem a validade em junho de 2027",
+  "orgao": "Tribunal de Justiça do Estado de São Paulo (TJ SP)",
+  "categoria": "tribunal",
+  "esfera": "estadual",
+  "uf": "SP",
+  "banca": "Vunesp",
+  "resumo": "Os concursos de Escrevente Técnico Judiciário do TJ SP, feitos por região, já foram prorrogados e terminam em junho de 2027: a maior parte das circunscrições do interior vai até 11 de junho; a 3ª e a 10ª RAJs, até 23 de junho; a Capital e a 7ª RAJ, até 24 de junho. As datas foram informadas pelo próprio tribunal à imprensa. O tribunal diz estudar novos editais, mas não informa datas. Não há inscrições abertas.",
+  "cargos": ["Escrevente Técnico Judiciário"],
+  "fatos": [
+    {"campo": "validade", "texto": "As últimas listas válidas, da Capital e da 7ª RAJ, terminam em 24 de junho de 2027; a maioria das demais termina em 11 de junho.", "inicio": "2027-06-11", "fim": "2027-06-24", "fontes": ["f-1", "f-2", "f-3"]},
+    {"campo": "banca", "texto": "O contrato do tribunal com a Fundação Vunesp para organizar concursos vai até junho de 2027.", "fontes": ["f-4", "f-5"]},
+    {"campo": "novo_concurso", "texto": "O tribunal informou que estuda novos concursos de escrevente, sem data.", "fontes": ["f-1", "f-3"]}
+  ],
+  "fontes": [
+    {"id": "f-1", "nome": "Qconcursos Folha Dirigida", "url": "https://folha.qconcursos.com/n/concurso-tj-sp-validades-e-cenario-novo-edital", "consultado_em": "2026-11-13"},
+    {"id": "f-2", "nome": "Tribuna de Jundiaí", "url": "https://tribunadejundiai.com.br/economia/concursos/concurso-tjsp-cargos-vagos-escrevente/", "consultado_em": "2026-11-13"},
+    {"id": "f-3", "nome": "Magistrar Cursos", "url": "https://www.magistrarcursos.com.br/blog/?p=44653", "consultado_em": "2026-11-13"},
+    {"id": "f-4", "nome": "Aprova Concursos", "url": "https://www.aprovaconcursos.com.br/noticias/?p=162054", "consultado_em": "2026-11-13"},
+    {"id": "f-5", "nome": "Qconcursos Folha Dirigida (banca)", "url": "https://folha.qconcursos.com/n/concurso-tj-sp-pode-ter-banca-definida-2026", "consultado_em": "2026-11-13"}
+  ],
+  "validade_ate": "2027-06-24",
+  "apurado_em": "2026-11-13T15:30:00-03:00"
+}
