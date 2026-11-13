@@ -37,11 +37,16 @@ const MENU = [
   { nome: "Isenção aberta", url: "/isencao-aberta/" },
   { nome: "Por estado", url: "/estados/" },
   { nome: "Por área", url: "/areas/" },
-  { nome: "Concursos que se repetem", url: "/recorrentes/" },
+  { nome: "Recorrentes", url: "/recorrentes/" },
   { nome: "Vagas de TI", url: "/ti/" },
-  { nome: "Apuração na imprensa", url: "/noticias/" },
-  { nome: "Como verificamos", url: "/metodologia/" },
 ];
+const MAIS = [
+  { nome: "Apuração na imprensa", url: "/noticias/" },
+  { nome: "Como pedir isenção", url: "/como-pedir-isencao/" },
+  { nome: "Como verificamos", url: "/metodologia/" },
+  { nome: "Sobre o site", url: "/sobre/" },
+];
+const ativo = (url: string) => Astro.url.pathname.startsWith(url);
 ---
 <!doctype html>
 <html lang="pt-BR">
@@ -88,38 +93,80 @@ const MENU = [
   </head>
   <body>
     <header class="topo border-bottom bg-white sticky-top">
-      <div class="container d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-2 py-2">
-        <a class="marca navbar-brand fw-bold" href="/">{SITE.nome}</a>
-        <nav aria-label="Principal" class="nav nav-pills flex-nowrap overflow-auto menu-principal">
+      <div class="container d-flex align-items-center justify-content-between gap-3 py-2">
+        <a class="marca fw-bold" href="/">{SITE.nome}</a>
+        <nav aria-label="Principal" class="d-none d-lg-flex align-items-center gap-1 menu-principal">
           {MENU.map((m) => (
-            <a class={`nav-link${Astro.url.pathname.startsWith(m.url) ? " active" : ""}`} href={m.url}
-               aria-current={Astro.url.pathname.startsWith(m.url) ? "page" : undefined}>{m.nome}</a>
+            <a class={`nav-link${ativo(m.url) ? " active" : ""}`} href={m.url} aria-current={ativo(m.url) ? "page" : undefined}>{m.nome}</a>
           ))}
+          <details class="mais">
+            <summary class="nav-link">Mais</summary>
+            <div class="mais-lista shadow-sm">
+              {MAIS.map((m) => <a href={m.url} aria-current={ativo(m.url) ? "page" : undefined}>{m.nome}</a>)}
+            </div>
+          </details>
         </nav>
+        <details class="menu-celular d-lg-none">
+          <summary aria-label="Abrir menu"><span class="hamburguer" aria-hidden="true"></span><span class="visually-hidden">Menu</span></summary>
+          <nav aria-label="Menu" class="menu-celular-lista shadow">
+            {[...MENU, ...MAIS].map((m) => (
+              <a href={m.url} class={ativo(m.url) ? "active" : ""} aria-current={ativo(m.url) ? "page" : undefined}>{m.nome}</a>
+            ))}
+          </nav>
+        </details>
       </div>
     </header>
     <main class="container py-4">
       <slot />
     </main>
-    <footer class="rodape bg-light border-top mt-4">
+    <footer class="rodape bg-light border-top mt-5">
       <div class="container py-4">
-        <nav aria-label="Institucional" class="nav flex-wrap gap-3 mb-2">
-          <a href="/sobre/">Sobre</a>
-          <a href="/metodologia/">Metodologia</a>
-          <a href="/como-pedir-isencao/">Como pedir isenção</a>
-          <a href="/estados/">Concursos por estado</a>
-          <a href="/areas/">Concursos por área</a>
-          <a href="/recorrentes/">Concursos que se repetem</a>
-          <a href="/privacidade/">Privacidade</a>
-          <a href="/termos/">Termos de uso</a>
-          <a href="/contato/">Contato</a>
-        </nav>
-        <p>
+        <div class="row g-4">
+          <div class="col-12 col-md-4">
+            <p class="fw-bold mb-1 text-body">{SITE.nome}</p>
+            <p class="mb-0">Concursos federais e estaduais com inscrições abertas, com destaque para o prazo de isenção da taxa. Cada data tem link para o trecho do edital.</p>
+          </div>
+          <nav class="col-6 col-md-3" aria-label="Encontre concursos">
+            <p class="fw-bold mb-1 text-body">Encontre concursos</p>
+            <ul class="list-unstyled mb-0">
+              <li><a href="/">Inscrições abertas</a></li>
+              <li><a href="/isencao-aberta/">Isenção aberta</a></li>
+              <li><a href="/estados/">Por estado</a></li>
+              <li><a href="/areas/">Por área</a></li>
+              <li><a href="/recorrentes/">Concursos que se repetem</a></li>
+              <li><a href="/ti/">Vagas de TI</a></li>
+            </ul>
+          </nav>
+          <nav class="col-6 col-md-2" aria-label="Guias">
+            <p class="fw-bold mb-1 text-body">Guias</p>
+            <ul class="list-unstyled mb-0">
+              <li><a href="/como-pedir-isencao/">Como pedir isenção</a></li>
+              <li><a href="/metodologia/">Como verificamos</a></li>
+              <li><a href="/noticias/">Apuração na imprensa</a></li>
+            </ul>
+          </nav>
+          <nav class="col-12 col-md-3" aria-label="Institucional">
+            <p class="fw-bold mb-1 text-body">Institucional</p>
+            <ul class="list-unstyled mb-0">
+              <li><a href="/sobre/">Sobre</a></li>
+              <li><a href="/contato/">Contato</a></li>
+              <li><a href="/privacidade/">Privacidade</a></li>
+              <li><a href="/termos/">Termos de uso</a></li>
+            </ul>
+          </nav>
+        </div>
+        <p class="mt-4 mb-0">
           Edição publicada em {publicadoEm} (horário de Brasília). As informações são extraídas de
           documentos oficiais; confira sempre o edital antes de se inscrever.
         </p>
       </div>
     </footer>
+    <script>
+      // Fecha os menus (<details>) ao clicar fora ou ao apertar Esc.
+      const menus = document.querySelectorAll<HTMLDetailsElement>("details.mais, details.menu-celular");
+      document.addEventListener("click", (e) => menus.forEach((d) => { if (!d.contains(e.target as Node)) d.open = false; }));
+      document.addEventListener("keydown", (e) => { if (e.key === "Escape") menus.forEach((d) => (d.open = false)); });
+    </script>
     {anuncios && <Consentimento />}
   </body>
 </html>
