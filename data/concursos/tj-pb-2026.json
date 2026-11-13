@@ -6,6 +6,7 @@
   "esfera": "estadual",
   "banca": "fgv",
   "uf": "PB",
+  "municipio": null,
   "cargos": [],
   "vagas_imediatas": null,
   "porte": "indefinido",
@@ -35,7 +36,7 @@
       "url": "https://conhecimento.fgv.br/sites/default/files/concursos/edital-retificado-tjpb_11.11.pdf",
       "url_final": "https://conhecimento.fgv.br/sites/default/files/concursos/edital-retificado-tjpb_11.11.pdf",
       "sha256": "d1cfa9897dfb3cacf2e84bbefd6631127e1adb3dbeca0935296afc3e7f514700",
-      "coletado_em": "2026-11-13T10:25:14-03:00",
+      "coletado_em": "2026-11-13T15:22:03-03:00",
       "fonte": "fgv",
       "publicado_em": "2026-11-12",
       "titulo": "Edital (retificado em 12/11/2026)"
@@ -46,7 +47,7 @@
       "url": "https://conhecimento.fgv.br/sites/default/files/concursos/06.11-extrato-3a-retificacao-do-edital-tjpb.pdf",
       "url_final": "https://conhecimento.fgv.br/sites/default/files/concursos/06.11-extrato-3a-retificacao-do-edital-tjpb.pdf",
       "sha256": "cf7655a8ca63e637a9bb3568d0908ebe366828b8e41006eac3c3903057178c6e",
-      "coletado_em": "2026-11-13T10:25:16-03:00",
+      "coletado_em": "2026-11-13T15:22:05-03:00",
       "fonte": "fgv",
       "publicado_em": "2026-11-12",
       "titulo": "3ª Retificação"
@@ -83,5 +84,5 @@
     "url": "https://conhecimento.fgv.br/concursos/tjpb26",
     "data_dou": null
   },
-  "conferido_em": "2026-11-13T10:25:16-03:00"
+  "conferido_em": "2026-11-13T15:22:05-03:00"
 }

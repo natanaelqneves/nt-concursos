@@ -6,6 +6,7 @@
   "esfera": "estadual",
   "banca": "aocp",
   "uf": "PE",
+  "municipio": null,
   "cargos": [
     {
       "nome": "Soldado do Corpo de Bombeiros Militar (QBMG)",
@@ -44,7 +45,7 @@
       "url": "https://arquivos.qconcursos.com/regulamento/arquivo/102168/cbm-pe-2026-edital-n-2-edital.pdf",
       "url_final": "https://arquivos.qconcursos.com/regulamento/arquivo/102168/cbm-pe-2026-edital-n-2-edital.pdf",
       "sha256": "4019c7765328121da005185102ef595bce027d876058917b21c7b21dba34438b",
-      "coletado_em": "2026-11-13T14:49:13-03:00",
+      "coletado_em": "2026-11-13T15:29:29-03:00",
       "fonte": "qconcursos",
       "publicado_em": "2026-09-29",
       "titulo": "Edital de Abertura nº 002/2026 (Portaria Conjunta SAD/SDS nº 300)"
@@ -55,7 +56,7 @@
       "url": "https://dhg1h5j42swfq.cloudfront.net/2026/10/15005732/cronogramas-retificados-pm-e-cbm-pe.pdf",
       "url_final": "https://dhg1h5j42swfq.cloudfront.net/2026/10/15005732/cronogramas-retificados-pm-e-cbm-pe.pdf",
       "sha256": "380fce7123159aaaf4a101d1c2713a1a91eee186f2fdf61df409f0e0f881e7fc",
-      "coletado_em": "2026-11-13T14:49:16-03:00",
+      "coletado_em": "2026-11-13T15:29:34-03:00",
       "fonte": "cdn-cloudfront",
       "publicado_em": "2026-10-15",
       "titulo": "Portarias Conjuntas SAD/SDS nº 310 e 311 (cronogramas retificados, Diário Oficial de 15/10/2026)"
@@ -95,5 +96,5 @@
     "url": "https://www.institutoaocp.org.br/",
     "data_dou": null
   },
-  "conferido_em": "2026-11-13T14:49:17-03:00"
+  "conferido_em": "2026-11-13T15:29:36-03:00"
 }

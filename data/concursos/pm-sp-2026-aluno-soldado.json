@@ -6,6 +6,7 @@
   "esfera": "estadual",
   "banca": "vunesp",
   "uf": "SP",
+  "municipio": null,
   "cargos": [
     {
       "nome": "Aluno-Soldado PM do Quadro de Praças",
@@ -39,7 +40,7 @@
       "url": "https://dhg1h5j42swfq.cloudfront.net/2026/11/05092636/edital-pm-sp-soldado-2026.pdf",
       "url_final": "https://dhg1h5j42swfq.cloudfront.net/2026/11/05092636/edital-pm-sp-soldado-2026.pdf",
       "sha256": "cbd6b7aeeb8c72b23b99df8ea60ae12f57c11bf7d82438bafa1559d4a6381278",
-      "coletado_em": "2026-11-13T14:49:06-03:00",
+      "coletado_em": "2026-11-13T15:29:21-03:00",
       "fonte": "cdn-cloudfront",
       "publicado_em": "2026-11-05",
       "titulo": "Edital de Concurso Público nº DP-4/321/26 (Diário Oficial do Estado de 5/11/2026)"
@@ -76,5 +77,5 @@
     "url": "https://doe.sp.gov.br/executivo/secretaria-da-seguranca-publica/edital-de-concurso-publico-n-dp-4-321-26-202611041336161962254080",
     "data_dou": null
   },
-  "conferido_em": "2026-11-13T14:49:07-03:00"
+  "conferido_em": "2026-11-13T15:29:22-03:00"
 }

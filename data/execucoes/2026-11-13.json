@@ -1,7 +1,7 @@
 {
   "aocp": {
-    "inicio": "2026-11-13T10:29:56-03:00",
-    "fim": "2026-11-13T10:30:36-03:00",
+    "inicio": "2026-11-13T15:27:19-03:00",
+    "fim": "2026-11-13T15:27:59-03:00",
     "erro_fonte": null,
     "contagem": {
       "fora_do_escopo": 8,
@@ -47,7 +47,7 @@
         "id": "714",
         "titulo": "PMPE - POLÍCIA MILITAR DE PERNAMBUCO",
         "situacao": "erro",
-        "detalhe": "BloqueadoPorRobots: robots.txt não permite: https://arquivos-site.institutoaocp.org.br/publicacoes/2900b54e-fae0-462e-8a77-58784523dfa0.pdf",
+        "detalhe": "ErroColeta: https://arquivos-site.institutoaocp.org.br/publicacoes/2900b54e-fae0-462e-8a77-58784523dfa0.pdf: robots.txt não permite: https://arquivos-site.institutoaocp.org.br/publicacoes/2900b54e-fae0-462e-8a77-58784523dfa0.pdf",
         "slug": null,
         "campos": {},
         "violacoes": []
@@ -57,7 +57,7 @@
         "id": "715",
         "titulo": "CBMPE - CORPO DE BOMBEIROS MILITAR DE PERNAMBUCO",
         "situacao": "erro",
-        "detalhe": "BloqueadoPorRobots: robots.txt não permite: https://arquivos-site.institutoaocp.org.br/publicacoes/af766320-b99c-4c1b-b803-12351ce250ed.pdf",
+        "detalhe": "ErroColeta: https://arquivos-site.institutoaocp.org.br/publicacoes/af766320-b99c-4c1b-b803-12351ce250ed.pdf: robots.txt não permite: https://arquivos-site.institutoaocp.org.br/publicacoes/af766320-b99c-4c1b-b803-12351ce250ed.pdf",
         "slug": null,
         "campos": {},
         "violacoes": []
@@ -127,7 +127,7 @@
         "id": "717",
         "titulo": "IFPA - INSTITUTO FEDERAL DE EDUCAÇÃO, CIÊNCIA E TECNOLOGIA DO PARÁ",
         "situacao": "erro",
-        "detalhe": "BloqueadoPorRobots: robots.txt não permite: https://arquivos-site.institutoaocp.org.br/publicacoes/ce397631-6c6e-487d-b136-60b45c4a25df.pdf",
+        "detalhe": "ErroColeta: https://arquivos-site.institutoaocp.org.br/publicacoes/ce397631-6c6e-487d-b136-60b45c4a25df.pdf: robots.txt não permite: https://arquivos-site.institutoaocp.org.br/publicacoes/ce397631-6c6e-487d-b136-60b45c4a25df.pdf",
         "slug": null,
         "campos": {},
         "violacoes": []
@@ -137,7 +137,7 @@
         "id": "713",
         "titulo": "SECRETARIA DE ESTADO DA ADMINISTRAÇÃO DO ESTADO DO AMAPÁ - AP",
         "situacao": "erro",
-        "detalhe": "BloqueadoPorRobots: robots.txt não permite: https://arquivos-site.institutoaocp.org.br/publicacoes/415023ed-d21f-410a-978c-49ae1708992f.pdf",
+        "detalhe": "ErroColeta: https://arquivos-site.institutoaocp.org.br/publicacoes/415023ed-d21f-410a-978c-49ae1708992f.pdf: robots.txt não permite: https://arquivos-site.institutoaocp.org.br/publicacoes/415023ed-d21f-410a-978c-49ae1708992f.pdf",
         "slug": null,
         "campos": {},
         "violacoes": []
@@ -147,7 +147,7 @@
         "id": "712",
         "titulo": "CASAN - COMPANHIA CATARINENSE DE ÁGUAS E SANEAMENTO - SC",
         "situacao": "erro",
-        "detalhe": "BloqueadoPorRobots: robots.txt não permite: https://arquivos-site.institutoaocp.org.br/publicacoes/b1d30a05-e72f-48bd-8919-95d4a6fa727a.pdf",
+        "detalhe": "ErroColeta: https://arquivos-site.institutoaocp.org.br/publicacoes/b1d30a05-e72f-48bd-8919-95d4a6fa727a.pdf: robots.txt não permite: https://arquivos-site.institutoaocp.org.br/publicacoes/b1d30a05-e72f-48bd-8919-95d4a6fa727a.pdf",
         "slug": null,
         "campos": {},
         "violacoes": []
@@ -157,7 +157,7 @@
         "id": "711",
         "titulo": "CASAN - COMPANHIA CATARINENSE DE ÁGUAS E SANEAMENTO - SC",
         "situacao": "erro",
-        "detalhe": "BloqueadoPorRobots: robots.txt não permite: https://arquivos-site.institutoaocp.org.br/publicacoes/7e661af1-8d45-4602-b364-9d61f8af17ab.pdf",
+        "detalhe": "ErroColeta: https://arquivos-site.institutoaocp.org.br/publicacoes/7e661af1-8d45-4602-b364-9d61f8af17ab.pdf: robots.txt não permite: https://arquivos-site.institutoaocp.org.br/publicacoes/7e661af1-8d45-4602-b364-9d61f8af17ab.pdf",
         "slug": null,
         "campos": {},
         "violacoes": []
@@ -167,7 +167,7 @@
         "id": "709",
         "titulo": "CASAN - COMPANHIA CATARINENSE DE ÁGUAS E SANEAMENTO - SC",
         "situacao": "erro",
-        "detalhe": "BloqueadoPorRobots: robots.txt não permite: https://arquivos-site.institutoaocp.org.br/publicacoes/47a061ec-2c75-4de8-8b99-ebcc301fe134.pdf",
+        "detalhe": "ErroColeta: https://arquivos-site.institutoaocp.org.br/publicacoes/47a061ec-2c75-4de8-8b99-ebcc301fe134.pdf: robots.txt não permite: https://arquivos-site.institutoaocp.org.br/publicacoes/47a061ec-2c75-4de8-8b99-ebcc301fe134.pdf",
         "slug": null,
         "campos": {},
         "violacoes": []
@@ -175,8 +175,8 @@
     ]
   },
   "avulsos": {
-    "inicio": "2026-11-13T14:47:49-03:00",
-    "fim": "2026-11-13T14:49:21-03:00",
+    "inicio": "2026-11-13T15:27:59-03:00",
+    "fim": "2026-11-13T15:29:42-03:00",
     "erro_fonte": null,
     "contagem": {
       "publicado": 7,
@@ -310,14 +310,14 @@
     ]
   },
   "cebraspe": {
-    "inicio": "2026-11-13T10:22:31-03:00",
-    "fim": "2026-11-13T10:25:08-03:00",
+    "inicio": "2026-11-13T15:19:18-03:00",
+    "fim": "2026-11-13T15:21:56-03:00",
     "erro_fonte": null,
     "contagem": {
-      "fora_do_escopo": 26,
+      "fora_do_escopo": 24,
       "publicado": 3,
-      "encerrado": 30,
-      "sem_edital": 7,
+      "encerrado": 31,
+      "sem_edital": 8,
       "so_revisao": 7
     },
     "registros": [
@@ -487,8 +487,8 @@
         "fonte": "cebraspe",
         "id": "CAMARA_MUNICIPAL_BOAVISTA_25",
         "titulo": "CAMARA MUNICIPAL BOA VISTA 25",
-        "situacao": "fora_do_escopo",
-        "detalhe": "",
+        "situacao": "encerrado",
+        "detalhe": "legislativo/municipal/RR",
         "slug": null,
         "campos": {},
         "violacoes": []
@@ -570,7 +570,7 @@
         "id": "DETRAN_AL_26",
         "titulo": "DETRAN AL 26",
         "situacao": "encerrado",
-        "detalhe": "outro/estadual/AL",
+        "detalhe": "transito/estadual/AL",
         "slug": null,
         "campos": {},
         "violacoes": []
@@ -837,8 +837,8 @@
         "fonte": "cebraspe",
         "id": "PREF_BOA_VISTA_23_GUARDA",
         "titulo": "PREFEITURA DE BOA VISTA 2023 - GUARDA",
-        "situacao": "fora_do_escopo",
-        "detalhe": "",
+        "situacao": "sem_edital",
+        "detalhe": "prefeitura/municipal/RR",
         "slug": null,
         "campos": {},
         "violacoes": []
@@ -1115,14 +1115,14 @@
     ]
   },
   "fgv": {
-    "inicio": "2026-11-13T10:25:08-03:00",
-    "fim": "2026-11-13T10:29:56-03:00",
+    "inicio": "2026-11-13T15:21:57-03:00",
+    "fim": "2026-11-13T15:27:18-03:00",
     "erro_fonte": null,
     "contagem": {
-      "fora_do_escopo": 32,
+      "fora_do_escopo": 25,
       "publicado": 3,
-      "encerrado": 50,
-      "so_revisao": 9,
+      "encerrado": 45,
+      "so_revisao": 22,
       "sem_edital": 7
     },
     "registros": [
@@ -1201,8 +1201,8 @@
         "fonte": "fgv",
         "id": "pmsguarda2026",
         "titulo": "Concurso Público para a Prefeitura Municipal do Salvador 2026 - Guarda Municipal",
-        "situacao": "fora_do_escopo",
-        "detalhe": "",
+        "situacao": "encerrado",
+        "detalhe": "guarda/municipal/BA",
         "slug": null,
         "campos": {},
         "violacoes": []
@@ -1263,8 +1263,8 @@
         "fonte": "fgv",
         "id": "pms2026",
         "titulo": "Concurso Público para a Prefeitura Municipal do Salvador 2026",
-        "situacao": "fora_do_escopo",
-        "detalhe": "",
+        "situacao": "encerrado",
+        "detalhe": "prefeitura/municipal/BA",
         "slug": null,
         "campos": {},
         "violacoes": []
@@ -1489,8 +1489,8 @@
         "fonte": "fgv",
         "id": "concursopgmcmrioproc",
         "titulo": "Concurso Público para a Procuradoria-Geral do Município e Câmara Municipal do Rio de Janeiro (Procurador)",
-        "situacao": "fora_do_escopo",
-        "detalhe": "",
+        "situacao": "encerrado",
+        "detalhe": "legislativo/municipal/RJ",
         "slug": null,
         "campos": {},
         "violacoes": []
@@ -1559,8 +1559,8 @@
         "fonte": "fgv",
         "id": "gestorsegurancario",
         "titulo": "Concurso Público para a Prefeitura do Rio de Janeiro - Gestor de Segurança Municipal",
-        "situacao": "fora_do_escopo",
-        "detalhe": "",
+        "situacao": "encerrado",
+        "detalhe": "prefeitura/municipal/RJ",
         "slug": null,
         "campos": {},
         "violacoes": []
@@ -1676,8 +1676,8 @@
         "fonte": "fgv",
         "id": "pgmcmrio",
         "titulo": "Concurso Público para a Procuradoria-Geral do Município e Câmara Municipal do Rio de Janeiro",
-        "situacao": "fora_do_escopo",
-        "detalhe": "",
+        "situacao": "encerrado",
+        "detalhe": "legislativo/municipal/RJ",
         "slug": null,
         "campos": {},
         "violacoes": []
@@ -1807,9 +1807,7 @@
         "detalhe": "defensoria/estadual/RO",
         "slug": null,
         "campos": {},
-        "violacoes": [
-          "prazos.isencao: 2 cláusulas diferentes"
-        ]
+        "violacoes": []
       },
       {
         "fonte": "fgv",
@@ -1941,10 +1939,14 @@
         "fonte": "fgv",
         "id": "tjse24",
         "titulo": "Concurso Público para o Tribunal de Justiça do Estado de Sergipe - Juiz Substituto",
-        "situacao": "encerrado",
+        "situacao": "so_revisao",
         "detalhe": "tribunal/estadual/SE",
-        "slug": null,
-        "campos": {},
+        "slug": "tj-se-2024-juiz-substituto",
+        "campos": {
+          "prazos.isencao": "ausente",
+          "prazos.inscricao": "ausente",
+          "vagas_imediatas": "verificado"
+        },
         "violacoes": []
       },
       {
@@ -1966,30 +1968,34 @@
         "slug": "pm-sp-2025",
         "campos": {
           "prazos.isencao": "ausente",
-          "prazos.inscricao": "revisao"
+          "prazos.inscricao": "ausente"
         },
-        "violacoes": [
-          "prazos.inscricao: 2 cláusulas diferentes"
-        ]
+        "violacoes": []
       },
       {
         "fonte": "fgv",
         "id": "trt24",
         "titulo": "Concurso Público para o Tribunal Regional do Trabalho da 24ª Região (TRT-24)",
-        "situacao": "encerrado",
+        "situacao": "so_revisao",
         "detalhe": "tribunal/federal/MS",
-        "slug": null,
-        "campos": {},
+        "slug": "trt24-2024",
+        "campos": {
+          "prazos.isencao": "ausente",
+          "prazos.inscricao": "ausente"
+        },
         "violacoes": []
       },
       {
         "fonte": "fgv",
         "id": "tcerr24",
         "titulo": "Concurso Público para o Tribunal de Contas do Estado de Roraima",
-        "situacao": "encerrado",
+        "situacao": "so_revisao",
         "detalhe": "controle/estadual/RR",
-        "slug": null,
-        "campos": {},
+        "slug": "tce-rr-2024",
+        "campos": {
+          "prazos.isencao": "ausente",
+          "prazos.inscricao": "ausente"
+        },
         "violacoes": []
       },
       {
@@ -2006,10 +2012,13 @@
         "fonte": "fgv",
         "id": "seec.rn24",
         "titulo": "Concurso Público para o Magistério Público da Secretaria de Estado da Educação, do Esporte e do Lazer (SEEC), do Rio Grande do Norte",
-        "situacao": "encerrado",
+        "situacao": "so_revisao",
         "detalhe": "educacao/estadual/RN",
-        "slug": null,
-        "campos": {},
+        "slug": "seduc-rn-2024",
+        "campos": {
+          "prazos.isencao": "ausente",
+          "prazos.inscricao": "ausente"
+        },
         "violacoes": []
       },
       {
@@ -2026,20 +2035,26 @@
         "fonte": "fgv",
         "id": "cgmcuiaba24",
         "titulo": "Concurso Público para a Controladoria Geral do Município de Cuiabá",
-        "situacao": "fora_do_escopo",
-        "detalhe": "",
-        "slug": null,
-        "campos": {},
+        "situacao": "so_revisao",
+        "detalhe": "prefeitura/municipal/MT",
+        "slug": "contgeral-cuiaba-2024",
+        "campos": {
+          "prazos.isencao": "ausente",
+          "prazos.inscricao": "ausente"
+        },
         "violacoes": []
       },
       {
         "fonte": "fgv",
         "id": "smfcuiaba24",
         "titulo": "Concurso Público para a Secretaria Municipal de Fazenda de Cuiabá",
-        "situacao": "fora_do_escopo",
-        "detalhe": "",
-        "slug": null,
-        "campos": {},
+        "situacao": "so_revisao",
+        "detalhe": "prefeitura/municipal/MT",
+        "slug": "prefeitura-cuiaba-2024",
+        "campos": {
+          "prazos.isencao": "ausente",
+          "prazos.inscricao": "ausente"
+        },
         "violacoes": []
       },
       {
@@ -2056,10 +2071,13 @@
         "fonte": "fgv",
         "id": "tjmtservidor",
         "titulo": "Concurso Público para o Tribunal de Justiça de Mato Grosso - Servidores",
-        "situacao": "encerrado",
+        "situacao": "so_revisao",
         "detalhe": "tribunal/estadual/MT",
-        "slug": null,
-        "campos": {},
+        "slug": "tj-mt-2024-servidores",
+        "campos": {
+          "prazos.isencao": "ausente",
+          "prazos.inscricao": "ausente"
+        },
         "violacoes": []
       },
       {
@@ -2076,33 +2094,44 @@
         "fonte": "fgv",
         "id": "tjpe24",
         "titulo": "Concurso Público para o Tribunal de Justiça do Estado de Pernambuco - Juiz Substituto",
-        "situacao": "encerrado",
+        "situacao": "so_revisao",
         "detalhe": "tribunal/estadual/PE",
-        "slug": null,
-        "campos": {},
+        "slug": "tj-pe-2024-juiz-substituto",
+        "campos": {
+          "prazos.isencao": "ausente",
+          "prazos.inscricao": "ausente",
+          "vagas_imediatas": "verificado"
+        },
         "violacoes": []
       },
       {
         "fonte": "fgv",
         "id": "tjmtjuiz24",
         "titulo": "Concurso Público para o Tribunal de Justiça de Mato Grosso",
-        "situacao": "encerrado",
+        "situacao": "so_revisao",
         "detalhe": "tribunal/estadual/MT",
-        "slug": null,
-        "campos": {},
-        "violacoes": []
+        "slug": "tj-mt-2024",
+        "campos": {
+          "prazos.isencao": "ausente",
+          "prazos.inscricao": "ausente",
+          "vagas_imediatas": "revisao"
+        },
+        "violacoes": [
+          "G4 vagas_imediatas: valor 5 não aparece no trecho"
+        ]
       },
       {
         "fonte": "fgv",
         "id": "tcepi",
         "titulo": "Concurso Público para o Tribunal de Contas do Estado do Piauí",
-        "situacao": "encerrado",
+        "situacao": "so_revisao",
         "detalhe": "controle/estadual/PI",
-        "slug": null,
-        "campos": {},
-        "violacoes": [
-          "prazos.isencao: 2 cláusulas diferentes"
-        ]
+        "slug": "tce-pi-2024",
+        "campos": {
+          "prazos.isencao": "ausente",
+          "prazos.inscricao": "ausente"
+        },
+        "violacoes": []
       },
       {
         "fonte": "fgv",
@@ -2131,13 +2160,14 @@
         "fonte": "fgv",
         "id": "tjrr24",
         "titulo": "Concurso Público para o Tribunal de Justiça do Estado de Roraima",
-        "situacao": "encerrado",
+        "situacao": "so_revisao",
         "detalhe": "tribunal/estadual/RR",
-        "slug": null,
-        "campos": {},
-        "violacoes": [
-          "prazos.inscricao: 2 cláusulas diferentes"
-        ]
+        "slug": "tj-rr-2024",
+        "campos": {
+          "prazos.isencao": "ausente",
+          "prazos.inscricao": "ausente"
+        },
+        "violacoes": []
       },
       {
         "fonte": "fgv",
@@ -2153,10 +2183,13 @@
         "fonte": "fgv",
         "id": "guardavitoria24",
         "titulo": "Concurso Público para a Prefeitura Municipal de Vitória - Guarda Municipal",
-        "situacao": "fora_do_escopo",
-        "detalhe": "",
-        "slug": null,
-        "campos": {},
+        "situacao": "so_revisao",
+        "detalhe": "guarda/municipal/ES",
+        "slug": "gcm-vitoria-2024-guarda-municipal",
+        "campos": {
+          "prazos.isencao": "ausente",
+          "prazos.inscricao": "ausente"
+        },
         "violacoes": []
       },
       {
@@ -2168,11 +2201,9 @@
         "slug": "pm-sp-2024",
         "campos": {
           "prazos.isencao": "ausente",
-          "prazos.inscricao": "revisao"
+          "prazos.inscricao": "ausente"
         },
-        "violacoes": [
-          "prazos.inscricao: 2 cláusulas diferentes"
-        ]
+        "violacoes": []
       },
       {
         "fonte": "fgv",
@@ -2198,8 +2229,22 @@
         "fonte": "fgv",
         "id": "tjes23",
         "titulo": "Concurso Público para o Tribunal de Justiça do Estado do Espírito Santo",
-        "situacao": "encerrado",
+        "situacao": "so_revisao",
         "detalhe": "tribunal/estadual/ES",
+        "slug": "tj-es-2023",
+        "campos": {
+          "prazos.isencao": "ausente",
+          "prazos.inscricao": "ausente",
+          "vagas_imediatas": "verificado"
+        },
+        "violacoes": []
+      },
+      {
+        "fonte": "fgv",
+        "id": "seadap22",
+        "titulo": "Concurso Público para a Secretaria de Estado da Administração - SEAD-AP",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
         "slug": null,
         "campos": {},
         "violacoes": []
