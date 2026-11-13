@@ -7,6 +7,7 @@ import {
   NOME_CATEGORIA,
   encerrado,
   emAndamento,
+  indexavel,
   etapasVerificadas,
   NOME_ETAPA,
   local,
@@ -90,7 +91,7 @@ const descricao = verificado(c.prazos.isencao) && c.prazos.isencao.fim
 <Base
   titulo={nome}
   descricao={andamento ? `${nome}: etapas do concurso (provas, gabarito, resultado) conferidas no cronograma do edital.` : descricao}
-  noindex={encerrado(c) && !andamento}
+  noindex={!indexavel(c)}
   breadcrumbs={[{ nome: "Início", url: "/" }, { nome, url: `/concursos/${c.slug}/` }]}
 >
   <p class="meta">
