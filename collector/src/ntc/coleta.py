@@ -203,7 +203,7 @@ class Coletor:
                 falhas.append(f"{url}: {e}")
         if r is None:
             raise ErroColeta("; ".join(falhas))
-        if doc.alternativas:  # avulsos: a origem do documento é o site onde ele foi achado
+        if doc.alternativas or self._fonte_atual == "avulsos":  # a origem é o site onde o documento foi achado
             fonte = self.gate.allowlist.fonte_de(r.url_final) or "oficial"
         else:
             fonte = self._fonte_atual
