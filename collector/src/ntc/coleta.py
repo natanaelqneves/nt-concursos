@@ -234,7 +234,7 @@ class Coletor:
             linhas_tabela = []
             reg.violacoes.append(f"cronograma em tabela ilegível: {type(e).__name__}")
         for tipo, campo in clausulas.CAMPO_POR_TIPO.items():
-            cands = clausulas.encontrar(txt_edital.paginas, tipo)
+            cands = clausulas.plausiveis(clausulas.encontrar(txt_edital.paginas, tipo), doc_edital.coletado_em.year)
             tab = [c for c in tabela.candidatos(linhas_tabela, txt_edital.paginas, tipo) if not c.ambiguo]
             lista = _opcoes(cands, tab)
             opcoes[campo] = [_opcao_json(i, c) for i, c in enumerate(lista, start=1)]
@@ -404,7 +404,7 @@ class Coletor:
         )
         for tipo, campo in clausulas.CAMPO_POR_TIPO.items():
             for doc, txt, pdf in ordenadas:
-                cands = clausulas.encontrar(txt.paginas, tipo)
+                cands = clausulas.plausiveis(clausulas.encontrar(txt.paginas, tipo), doc.coletado_em.year)
                 try:
                     linhas = tabela.linhas(pdf, txt.paginas) if pdf else []
                 except Exception:

@@ -99,3 +99,24 @@ def test_carimbo_de_impressao_do_sei_nao_e_data_de_prazo():
     from ntc.parse.clausulas import datas_de_prazo
 
     assert datas_de_prazo("10/04/2026, 11:19 SEI/TJSC - 10546555 - Edital 5.6 Isenção de pagamento") == []
+
+
+def test_conferencia_da_inscricao_nao_e_prazo():
+    """FCC/Vunesp: "A partir de 26/10, o candidato poderá conferir..." não concorre com o período."""
+    from ntc.parse import clausulas as cl
+
+    paginas = {4: "4.3 As inscrições ficarão abertas, exclusivamente via internet, no período de 10h do dia "
+                  "19/10/2026 às 23h59min do dia 17/11/2026 (horário de Brasília). 4.4.4 A partir de 26/10/2026 "
+                  "o candidato poderá conferir, no endereço eletrônico da banca, se os dados da inscrição efetuada "
+                  "foram recebidos."}
+    cands = cl.encontrar(paginas, "inscricao")
+    assert len(cands) == 1 and cl.principal(cands).fim.isoformat() == "2026-11-17"
+
+
+def test_datas_de_outros_anos_nao_contam_como_conflito():
+    from ntc.parse import clausulas as cl
+
+    paginas = {3: "3.2 As inscrições ficarão abertas no período das 10h do dia 04/11/2026 às 23h59 do dia 23/11/2026.",
+               16: "19.14.1 Aplicam-se aos servidores com inscrição no regime a partir de 05/11/2015 as regras de 23/05/2018."}
+    cands = cl.plausiveis(cl.encontrar(paginas, "inscricao"), 2026)
+    assert len(cl.intervalos_distintos(cands)) == 1
