@@ -44,7 +44,7 @@
   },
   "etapas": [
     {
-      "status": "verificado",
+      "status": "revisao",
       "evidencia": "ev-3",
       "tipo": "prova_objetiva",
       "nome": "Aplicação das provas objetivas e discursiva (para o cargo de Escrivão de Polícia)",
@@ -52,7 +52,7 @@
       "fim": "2027-03-07"
     },
     {
-      "status": "verificado",
+      "status": "revisao",
       "evidencia": "ev-4",
       "tipo": "prova_objetiva",
       "nome": "Aplicação das provas objetivas e discursiva (para o cargo de Agente de Polícia)",

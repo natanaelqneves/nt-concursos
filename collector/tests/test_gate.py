@@ -231,3 +231,11 @@ def test_etapa_com_data_ou_tipo_errado(gate, novo, paginas):
     assert r.concurso.etapas[0].status == "revisao"
     r = aplicar(gate, _com_etapa(novo), {SHA: TextoDocumento(SHA, paginas, completo=True)})
     assert "G3" in regras(r)
+
+
+def test_etapa_com_data_de_outra_linha(gate, novo, paginas):
+    # as duas células existem na página, mas a data é da linha seguinte
+    t = _textos_com(paginas, "Aplicação das provas objetivas 13/12/2026 Gabarito preliminar 14/12/2026")
+    r = aplicar(gate, _com_etapa(novo), t)
+    assert r.concurso.etapas[0].status == "revisao"
+    assert "G3" in regras(r)

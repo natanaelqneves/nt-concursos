@@ -66,3 +66,26 @@ def test_celula_ausente_da_pagina_e_ano_distante():
 def test_alterada_por():
     assert etapas.alterada_por({1: "Onde se lê: aplicação das provas objetivas em 14/12"}, "prova_objetiva")
     assert not etapas.alterada_por({1: "Retifica o anexo de vagas"}, "prova_objetiva")
+
+
+def test_linhas_trocadas_nao_viram_etapa():
+    # o leitor de tabela devolveu a data do gabarito na linha da prova (e vice-versa)
+    pagina = ("Cronograma previsto Período de inscrições 10/10/2026 a 30/10/2026 "
+              "Aplicação das provas objetivas 14/12/2026 Divulgação do gabarito oficial preliminar 16/12/2026")
+    trocadas = [
+        Linha(3, "Período de inscrições", "10/10/2026 a 30/10/2026"),
+        Linha(3, "Aplicação das provas objetivas", "16/12/2026"),
+        Linha(3, "Divulgação do gabarito oficial preliminar", "14/12/2026"),
+    ]
+    assert etapas.encontrar(trocadas, {3: pagina}, INSC, 2026) == []
+    # sem grade e com a linha de inscrição certa na página, a troca também não passa
+    sem_grade = [Linha(l.pagina, l.atividade, l.datas, grade=False) for l in trocadas]
+    assert etapas.encontrar(sem_grade, {3: pagina}, INSC, 2026) == []
+
+
+def test_adjacente():
+    p = "Aplicação das provas objetivas (manhã) 14/12/2026 Gabarito 16/12/2026"
+    assert etapas.adjacente(p, "Aplicação das provas objetivas", "14/12/2026")
+    assert not etapas.adjacente(p, "Aplicação das provas objetivas", "16/12/2026")
+    assert not etapas.adjacente("Aplicação das provas objetivas " + "x" * 120 + " 14/12/2026",
+                                "Aplicação das provas objetivas", "14/12/2026")

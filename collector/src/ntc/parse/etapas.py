@@ -79,6 +79,28 @@ def classificar(atividade: str) -> str | None:
     return None
 
 
+_DATA = re.compile(r"\d{1,2}/\d{1,2}(?:/\d{2,4})?|\d{1,2}(?:º|°)?\s+de\s+[a-zç]+", re.I)
+_MAX_ENTRE = 80
+
+
+def adjacente(pagina_normalizada: str, atividade: str, datas: str) -> bool:
+    """A data está logo depois da atividade no texto da página, sem outra data no meio?
+
+    Ler a tabela pela geometria não prova que a célula de data é da mesma linha (célula mesclada,
+    tabela quebrada). Aqui se exige o par também no texto corrido: a atividade e, até 80
+    caracteres depois, a célula de datas, sem nenhuma data entre as duas. Se o texto da página
+    vier embaralhado, a etapa simplesmente não entra.
+    """
+    inicio = 0
+    while (i := pagina_normalizada.find(atividade, inicio)) >= 0:
+        depois = pagina_normalizada[i + len(atividade):]
+        j = depois.find(datas)
+        if 0 <= j <= _MAX_ENTRE and not _DATA.search(depois[:j]):
+            return True
+        inicio = i + 1
+    return False
+
+
 def _linha_de_inscricao(ln: Linha) -> bool:
     a = ln.atividade
     return bool(ANCORAS["inscricao"].search(a) and _AFIRMA_INSCRICAO.search(a)
@@ -104,7 +126,7 @@ def encontrar(
         if tipo is None:
             continue
         pagina = normalizar(paginas_texto.get(ln.pagina, ""))
-        if ln.atividade not in pagina or ln.datas not in pagina:
+        if not adjacente(pagina, ln.atividade, ln.datas):
             continue
         ds = datas_de_prazo(ln.datas)
         if not 1 <= len(ds) <= 2 or (len(ds) == 2 and ds[0] > ds[1]):
