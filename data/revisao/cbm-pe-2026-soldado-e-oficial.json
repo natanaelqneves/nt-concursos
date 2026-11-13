@@ -1,0 +1,48 @@
+{
+  "schema_version": 2,
+  "slug": "cbm-pe-2026-soldado-e-oficial",
+  "orgao": "Corpo de Bombeiros Militar do Estado de Pernambuco",
+  "situacao": "publicado",
+  "categoria": "seguranca",
+  "esfera": "estadual",
+  "uf": "PE",
+  "cargos": [
+    "Soldado do Corpo de Bombeiros Militar (QBMG)",
+    "2º Tenente do Corpo de Bombeiros Militar (QOC)"
+  ],
+  "fonte": "avulsos",
+  "url": "https://www.institutoaocp.org.br/",
+  "edital": "https://arquivos.qconcursos.com/regulamento/arquivo/102168/cbm-pe-2026-edital-n-2-edital.pdf",
+  "edital_sha256": "4019c7765328121da005185102ef595bce027d876058917b21c7b21dba34438b",
+  "campos_em_revisao": [
+    "prazos.isencao"
+  ],
+  "motivos": [
+    "G7 prazos.isencao: retificação posterior menciona este prazo"
+  ],
+  "opcoes": {
+    "prazos.isencao": [
+      {
+        "id": "o-1",
+        "origem": "tabela",
+        "pagina": 13,
+        "trecho": "Período para solicitação de Isenção da Taxa de Inscrição — 9h do dia 05/10 até às 13h do dia 08/10/2026",
+        "ancora": "Isenção",
+        "inicio": "2026-10-05",
+        "fim": "2026-10-08",
+        "tabela": {
+          "atividade": "Período para solicitação de Isenção da Taxa de Inscrição",
+          "datas": "9h do dia 05/10 até às 13h do dia 08/10/2026"
+        }
+      }
+    ]
+  },
+  "mudancas": [
+    {
+      "titulo": "Portarias Conjuntas SAD/SDS nº 310 e 311 (cronogramas retificados, Diário Oficial de 15/10/2026)",
+      "url": "https://dhg1h5j42swfq.cloudfront.net/2026/10/15005732/cronogramas-retificados-pm-e-cbm-pe.pdf",
+      "publicado_em": "2026-10-15"
+    }
+  ],
+  "registrado_em": "2026-11-13T14:49:17-03:00"
+}

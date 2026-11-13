@@ -1,0 +1,32 @@
+{
+  "schema_version": 2,
+  "slug": "pc-ac-2026",
+  "orgao": "Polícia Civil do Estado do Acre",
+  "situacao": "publicado",
+  "categoria": "seguranca",
+  "esfera": "estadual",
+  "uf": "AC",
+  "cargos": [
+    "Delegado de Polícia Civil",
+    "Oficial Investigador de Polícia",
+    "Perito Criminal",
+    "Perito Médico-Legista",
+    "Papiloscopista Policial",
+    "Auxiliar de Necropsia"
+  ],
+  "fonte": "avulsos",
+  "url": "https://www.idecan.org.br/",
+  "edital": "https://arquivos.qconcursos.com/f/edital_pcac_001-2026.pdf",
+  "edital_sha256": "023e93897dbe8cf902350c64e3a24585a858bc6e9c890916f328d46130cd1946",
+  "campos_em_revisao": [
+    "prazos.isencao"
+  ],
+  "motivos": [
+    "prazos.isencao: 1 cláusulas diferentes"
+  ],
+  "opcoes": {
+    "prazos.isencao": []
+  },
+  "mudancas": [],
+  "registrado_em": "2026-11-13T14:47:53-03:00"
+}
