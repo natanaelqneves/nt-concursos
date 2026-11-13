@@ -1,0 +1,32 @@
+---
+// Lista de um grupo (estado ou área): primeiro os conferidos no edital, depois a apuração na imprensa.
+import CartaoConcurso from "./CartaoConcurso.astro";
+import CartaoNoticia from "./CartaoNoticia.astro";
+import type { Grupo } from "../lib/navegacao";
+
+interface Props {
+  g: Grupo;
+  vazio: string;
+}
+const { g, vazio } = Astro.props;
+const L = "lista row row-cols-1 row-cols-md-2 row-cols-xl-3 g-3 list-unstyled";
+---
+{g.concursos.length + g.noticias.length === 0 ? (
+  <p class="vazio alert alert-light border">{vazio}</p>
+) : (
+  <>
+    <h2>Conferidos no edital ({g.concursos.length})</h2>
+    {g.concursos.length ? (
+      <ul class={L}>{g.concursos.map((c) => <CartaoConcurso c={c} />)}</ul>
+    ) : (
+      <p class="vazio alert alert-light border">Nenhum concurso conferido no edital nesta edição.</p>
+    )}
+    <h2>Apuração na imprensa ({g.noticias.length})</h2>
+    <p class="meta">Ainda não conferidos por nós no edital; cada informação foi cruzada em pelo menos duas fontes.</p>
+    {g.noticias.length ? (
+      <ul class={L}>{g.noticias.map((n) => <CartaoNoticia n={n} />)}</ul>
+    ) : (
+      <p class="vazio alert alert-light border">Nenhum concurso apurado na imprensa nesta edição.</p>
+    )}
+  </>
+)}

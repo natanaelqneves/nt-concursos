@@ -1,0 +1,41 @@
+---
+import Base from "../../layouts/Base.astro";
+import { RECORRENTES, abertoAgora } from "../../lib/recorrentes";
+
+const lista = RECORRENTES.map((r) => {
+  const a = abertoAgora(r);
+  return { r, aberto: a.concursos.length + a.noticias.length > 0 };
+});
+---
+<Base
+  titulo="Concursos que se repetem: bancos públicos"
+  descricao="Banco do Brasil, Caixa, Banco do Nordeste, Banco da Amazônia, BNDES, Banrisul, BRB e Banpará: como são os concursos, os últimos editais e a situação atual."
+  breadcrumbs={[{ nome: "Início", url: "/" }, { nome: "Concursos que se repetem", url: "/recorrentes/" }]}
+>
+  <h1>Concursos que se repetem</h1>
+  <p class="lead">
+    Alguns órgãos fazem concurso de tempos em tempos para os mesmos cargos. Quem se prepara com
+    antecedência chega à abertura do edital com vantagem. Aqui reunimos como esses concursos costumam
+    ser, os editais anteriores e a situação de agora, começando pelos bancos públicos.
+  </p>
+  <h2>Bancos públicos</h2>
+  <ul class="row row-cols-1 row-cols-md-2 g-3 list-unstyled">
+    {lista.map(({ r, aberto }) => (
+      <li class="col">
+        <article class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h3 class="h6 card-title"><a class="stretched-link text-decoration-none" href={`/recorrentes/${r.slug}/`}>{r.nome}</a></h3>
+            <p class="meta small mb-1">{r.esfera === "federal" ? "Federal" : `Estadual · ${r.uf}`} · {r.cargos.map((c) => c.nome.split(" (")[0]).join(", ")}</p>
+            {aberto
+              ? <span class="selo badge rounded-pill selo-isencao">Edital aberto agora</span>
+              : <span class="small">{r.situacao.split(". ")[0]}.</span>}
+          </div>
+        </article>
+      </li>
+    ))}
+  </ul>
+  <p class="meta mt-3">
+    Estas páginas são apuradas em reportagens e no histórico dos editais, com as fontes listadas em cada
+    uma. Quando um desses órgãos abre concurso, ele entra nas nossas listas e o aviso aparece aqui.
+  </p>
+</Base>
