@@ -37,3 +37,54 @@ fontes:
     nome: Vunesp
     papel: banca
     dominios: [vunesp.com.br]
+
+  # Bancas sem coletor próprio: o edital entra pela fonte "avulsos" (data/editais-avulsos.json).
+  idecan:
+    nome: Idecan
+    papel: banca
+    dominios: [idecan.org.br]
+  comperve:
+    nome: Comperve/UFRN
+    papel: banca
+    dominios: [comperve.ufrn.br]
+  access:
+    nome: Instituto Access
+    papel: banca
+    dominios: [access.org.br, access.selecao.net.br]
+
+  # Cópias de editais publicadas por sites de notícias e cursos (papel: copia). Só entram
+  # pela fonte "avulsos", quando o edital não está numa fonte oficial que alcançamos. O gate
+  # confere o trecho no texto da cópia e a coleta compara as datas com as da imprensa; a página
+  # do concurso informa que o documento é uma cópia e onde foi achado.
+  qconcursos:
+    nome: Qconcursos (cópia)
+    papel: copia
+    dominios: [arquivos.qconcursos.com]
+  direcao:
+    nome: Direção Concursos (cópia)
+    papel: copia
+    dominios: [cdn.direcaoconcursos.com.br]
+  jcconcursos:
+    nome: JC Concursos (cópia)
+    papel: copia
+    dominios: [jcconcursos.com.br]
+  novaconcursos:
+    nome: Nova Concursos (cópia)
+    papel: copia
+    dominios: [novaconcursos.com.br]
+  editorasolucao:
+    nome: Editora Solução (cópia)
+    papel: copia
+    dominios: [editorasolucao.com.br]
+  magistrar:
+    nome: Magistrar Cursos (cópia)
+    papel: copia
+    dominios: [magistrarcursos.com.br]
+  acheconcursos:
+    nome: Ache Concursos (cópia)
+    papel: copia
+    dominios: [acheconcursos.com.br]
+  cdn-cloudfront:
+    nome: CDN de portal de concursos (cópia)
+    papel: copia
+    dominios: [dhg1h5j42swfq.cloudfront.net]

@@ -180,3 +180,17 @@ ainda não consegue conferir no edital (banca bloqueada, INLABS fora do ar).
 | `expira_em` = fim das inscrições; a página sai das listas depois dessa data e ganha `noindex` | schema e site |
 | Texto próprio (`resumo`, `fatos[].texto`), nada copiado das fontes | revisão |
 | Órgão que já tem concurso verificado aberto: a notícia some das listas do site e o `ntc validate` avisa | site e validate |
+
+## Editais avulsos e cópias (13/11/2026, compatível com a versão 2)
+
+Concursos que a imprensa noticia e cujo edital não está numa fonte que o coletor alcança
+(banca sem coletor, PDF bloqueado por robots.txt) entram pela fonte `avulsos`.
+
+| Item | Regra |
+|---|---|
+| `data/editais-avulsos.json` | lista mantida à mão: `slug` (fixo), `noticia` (slug em `data/noticias/` que o concurso substitui), `titulo`, `banca`, `uf` (opcional, corrige o classificador), `pagina`, `cargos`, `contexto`, `documentos[]` (`tipo`, `titulo`, `publicado_em`, `urls` em ordem de preferência: oficial primeiro, cópias depois) e `pesquisa[]` (onde se procurou o edital; aparece no fim da página) |
+| `data/fontes.yaml`, `papel: copia` | sites de concursos que publicam cópias de editais. Entram na allowlist, mas só são usados pela fonte `avulsos` |
+| `documentos[].fonte` | nas bancas, o nome da banca (como antes). Nos avulsos, a entrada de `fontes.yaml` que cobre o host da URL final (ex.: `qconcursos`) ou `oficial` quando só um sufixo oficial cobre (ex.: `trf3.jus.br`) |
+| `banca` | nos avulsos, a banca real informada na lista (ex.: `idecan`, `fcc`, `vunesp`) |
+| Prazo nos avulsos | pode ter evidência numa retificação (prorrogação); o G7 olha só as retificações posteriores à evidência. Se a data do documento diferir da publicada pela imprensa na notícia ligada, o prazo vai para `revisao` |
+| Site | documento com `fonte` de `papel: copia` é exibido como "cópia publicada por …"; a notícia ligada sai do ar quando o concurso conferido está aberto |

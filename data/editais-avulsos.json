@@ -1,0 +1,243 @@
+{
+  "_leia": "Editais achados fora das bancas que o coletor alcança. Em cada documento, as URLs vêm em ordem de preferência (oficial primeiro, depois cópias). 'noticia' é a apuração na imprensa que o concurso substitui no site quando o prazo é conferido; as datas dela são comparadas com as do documento. 'pesquisa' aparece no fim da página do concurso.",
+  "conferido_em": "2026-11-13",
+  "concursos": [
+    {
+      "slug": "pc-ac-2026",
+      "noticia": "pc-ac-2026",
+      "titulo": "Polícia Civil do Estado do Acre",
+      "banca": "idecan",
+      "pagina": "https://www.idecan.org.br/",
+      "cargos": ["Delegado de Polícia Civil", "Oficial Investigador de Polícia", "Perito Criminal", "Perito Médico-Legista", "Papiloscopista Policial", "Auxiliar de Necropsia"],
+      "documentos": [
+        {
+          "tipo": "edital",
+          "titulo": "Edital nº 001 SEAD/PCAC, de 5 de novembro de 2026",
+          "publicado_em": "2026-11-06",
+          "urls": [
+            "https://arquivos.qconcursos.com/f/edital_pcac_001-2026.pdf",
+            "https://dhg1h5j42swfq.cloudfront.net/2026/11/06104024/edital-pc-ac-2026.pdf"
+          ]
+        }
+      ],
+      "pesquisa": [
+        "Site do Idecan (idecan.org.br): banca sem coletor automático no NT Concursos",
+        "Diário Oficial do Acre (diario.ac.gov.br): edição de 6/11/2026 citada pela imprensa",
+        "Busca na web por \"edital PC-AC 2026\": PDF do edital em cópia do Qconcursos e em CDN de portal de concursos"
+      ]
+    },
+    {
+      "slug": "banestes-2026",
+      "noticia": "banestes-2026",
+      "titulo": "Banco do Estado do Espírito Santo - Banestes",
+      "banca": "fcc",
+      "pagina": "https://www.concursosfcc.com.br/",
+      "cargos": ["Técnico Bancário", "Técnico em Segurança do Trabalho"],
+      "documentos": [
+        {
+          "tipo": "edital",
+          "titulo": "Edital nº 01/2026 de abertura de inscrições",
+          "publicado_em": "2026-10-16",
+          "urls": [
+            "https://cdn.direcaoconcursos.com.br/uploads/2026/10/edital_01-2026_-_banestes_oficial.pdf",
+            "https://arquivos.qconcursos.com/f/edital-concurso-banestes-1-2026.pdf",
+            "https://www.editorasolucao.com.br/blog/wp-content/uploads/2026/10/Concurso-Banestes-Edital.pdf"
+          ]
+        }
+      ],
+      "pesquisa": [
+        "Site da Fundação Carlos Chagas (concursosfcc.com.br): banca sem coletor automático no NT Concursos",
+        "Busca na web por \"edital Banestes 2026\": edital de abertura em cópias da Direção Concursos, do Qconcursos e da Editora Solução",
+        "Busca na web pela retificação nº 03/2026 (prorrogação até 23/11): PDF não encontrado"
+      ]
+    },
+    {
+      "slug": "trf3-2026-servidores",
+      "noticia": "trf3-2026-servidores",
+      "titulo": "Tribunal Regional Federal da 3ª Região",
+      "banca": "vunesp",
+      "pagina": "https://www.trf3.jus.br/sege/concurso-servidores/2026",
+      "cargos": ["Analista Judiciário", "Analista Judiciário – Oficial de Justiça Avaliador Federal", "Técnico Judiciário", "Técnico Judiciário – Desenvolvimento de Sistemas de Informação"],
+      "contexto": ["Tecnologia da Informação"],
+      "documentos": [
+        {
+          "tipo": "edital",
+          "titulo": "Edital de Abertura de Inscrições nº 01/2026",
+          "publicado_em": "2026-10-23",
+          "urls": [
+            "https://www.trf3.jus.br/documentos/sege/RING_-_Concursos/2026/Editais/Edital_01_2026_completo.pdf",
+            "https://arquivos.qconcursos.com/f/concurso-trf3-2026-edial__.pdf"
+          ]
+        }
+      ],
+      "pesquisa": [
+        "Página do concurso no site do TRF3 (trf3.jus.br): edital completo em PDF",
+        "Diário Oficial da União de 23/10/2026: extrato do edital"
+      ]
+    },
+    {
+      "slug": "trt4-2026-servidores",
+      "noticia": "trt4-2026-servidores",
+      "titulo": "Tribunal Regional do Trabalho da 4ª Região",
+      "banca": "fcc",
+      "pagina": "https://www.trt4.jus.br/",
+      "cargos": ["Analista Judiciário", "Técnico Judiciário", "Técnico Judiciário – Tecnologia da Informação"],
+      "contexto": ["Tecnologia da Informação"],
+      "documentos": [
+        {
+          "tipo": "edital",
+          "titulo": "Edital nº 01/2026 de abertura de inscrições",
+          "publicado_em": "2026-10-22",
+          "urls": [
+            "https://www.acheconcursos.com.br/imagens/anexo/64899/trt4-rs-2026-fcc-acheconcursos.pdf",
+            "https://cdn.direcaoconcursos.com.br/uploads/2026/10/TRT-RS.pdf"
+          ]
+        }
+      ],
+      "pesquisa": [
+        "Site do TRT4 (trt4.jus.br): notícia do concurso, sem link direto para o PDF",
+        "Site da Fundação Carlos Chagas (concursosfcc.com.br): banca sem coletor automático no NT Concursos",
+        "Busca na web por \"edital TRT4 2026\": edital da FCC em cópia do Ache Concursos e Diário Oficial da União em cópia da Direção Concursos"
+      ]
+    },
+    {
+      "slug": "pm-sp-2026-aluno-soldado",
+      "noticia": "pm-sp-2026-aluno-soldado",
+      "titulo": "Polícia Militar do Estado de São Paulo",
+      "banca": "vunesp",
+      "pagina": "https://doe.sp.gov.br/executivo/secretaria-da-seguranca-publica/edital-de-concurso-publico-n-dp-4-321-26-202611041336161962254080",
+      "cargos": ["Aluno-Soldado PM do Quadro de Praças"],
+      "documentos": [
+        {
+          "tipo": "edital",
+          "titulo": "Edital de Concurso Público nº DP-4/321/26 (Diário Oficial do Estado de 5/11/2026)",
+          "publicado_em": "2026-11-05",
+          "urls": [
+            "https://dhg1h5j42swfq.cloudfront.net/2026/11/05092636/edital-pm-sp-soldado-2026.pdf"
+          ]
+        }
+      ],
+      "pesquisa": [
+        "Diário Oficial do Estado de São Paulo (doe.sp.gov.br): edital publicado como página, sem PDF",
+        "Site da Vunesp (vunesp.com.br): banca sem coletor automático no NT Concursos",
+        "Busca na web por \"edital DP-4/321/26\": PDF do Diário Oficial em CDN de portal de concursos"
+      ]
+    },
+    {
+      "slug": "dpdf-2026-analista",
+      "noticia": "dpdf-2026-analista",
+      "titulo": "Defensoria Pública do Distrito Federal",
+      "banca": "access",
+      "pagina": "https://access.selecao.net.br/informacoes/172/",
+      "cargos": ["Analista de Apoio à Assistência Judiciária"],
+      "contexto": ["Informática – Desenvolvimento de Sistemas"],
+      "documentos": [
+        {
+          "tipo": "edital",
+          "titulo": "Edital nº 1 – DPDF, de 26 de outubro de 2026",
+          "publicado_em": "2026-10-26",
+          "urls": [
+            "https://jcconcursos.com.br/media/uploads/anexos/concurso-dp-df-edital-1-2026.pdf",
+            "https://arquivos.qconcursos.com/f/concurso-dp-df-2026-edital-analista.pdf",
+            "https://dhg1h5j42swfq.cloudfront.net/2026/10/26061122/edital-dpdf.pdf"
+          ]
+        }
+      ],
+      "pesquisa": [
+        "Página do concurso no Instituto Access (access.selecao.net.br): banca sem coletor automático no NT Concursos",
+        "Diário Oficial do Distrito Federal de 26/10/2026, citado pela imprensa",
+        "Busca na web por \"edital DPDF 2026\": edital em cópias do JC Concursos e do Qconcursos"
+      ]
+    },
+    {
+      "slug": "cref16-rn-2026",
+      "noticia": "cref16-rn-2026",
+      "titulo": "Conselho Regional de Educação Física da 16ª Região - CREF16/RN",
+      "uf": "RN",
+      "banca": "comperve",
+      "pagina": "https://www.comperve.ufrn.br/",
+      "cargos": ["Advogado", "Contador", "Agente de Licitações e Contratos"],
+      "documentos": [
+        {
+          "tipo": "edital",
+          "titulo": "Edital nº 001/2026 – CREF16/RN",
+          "publicado_em": "2026-10-23",
+          "urls": [
+            "https://www.editorasolucao.com.br/blog/wp-content/uploads/2025/04/Edital-Concurso-CREF-RN.pdf",
+            "https://cdn.direcaoconcursos.com.br/uploads/2026/10/diarioOficial.pdf"
+          ]
+        }
+      ],
+      "pesquisa": [
+        "Site da Comperve/UFRN (comperve.ufrn.br): PDF do edital de 2026 não encontrado na busca",
+        "Diário Oficial da União de 23/10/2026, citado pela imprensa",
+        "Busca na web por \"edital CREF16 RN 2026\": edital em cópia da Editora Solução e Diário Oficial em cópia da Direção Concursos"
+      ]
+    },
+    {
+      "slug": "cbm-pe-2026-soldado-e-oficial",
+      "noticia": "cbm-pe-2026-soldado-e-oficial",
+      "titulo": "Corpo de Bombeiros Militar do Estado de Pernambuco",
+      "banca": "aocp",
+      "pagina": "https://www.institutoaocp.org.br/",
+      "cargos": ["Soldado do Corpo de Bombeiros Militar (QBMG)", "2º Tenente do Corpo de Bombeiros Militar (QOC)"],
+      "documentos": [
+        {
+          "tipo": "edital",
+          "titulo": "Edital de Abertura nº 002/2026 (Portaria Conjunta SAD/SDS nº 300)",
+          "publicado_em": "2026-09-29",
+          "urls": [
+            "https://arquivos.qconcursos.com/regulamento/arquivo/102168/cbm-pe-2026-edital-n-2-edital.pdf",
+            "https://arquivos.qconcursos.com/f/edital-pm-bombeiros-pe-2026.pdf"
+          ]
+        },
+        {
+          "tipo": "retificacao",
+          "titulo": "Portarias Conjuntas SAD/SDS nº 310 e 311 (cronogramas retificados, Diário Oficial de 15/10/2026)",
+          "publicado_em": "2026-10-15",
+          "urls": [
+            "https://dhg1h5j42swfq.cloudfront.net/2026/10/15005732/cronogramas-retificados-pm-e-cbm-pe.pdf"
+          ]
+        }
+      ],
+      "pesquisa": [
+        "Site do Instituto AOCP: os PDFs deste concurso ficam em arquivos-site.institutoaocp.org.br, cujo robots.txt proíbe a coleta",
+        "Diário Oficial de Pernambuco de 29/09 e 15/10/2026, citados pela imprensa",
+        "Busca na web por \"edital CBMPE 2026\" e pela Portaria Conjunta 311: edital em cópia do Qconcursos e retificação em CDN de portal de concursos"
+      ]
+    },
+    {
+      "slug": "pm-pe-2026-soldado-e-oficial",
+      "noticia": "pm-pe-2026-soldado-e-oficial",
+      "titulo": "Polícia Militar do Estado de Pernambuco",
+      "banca": "aocp",
+      "pagina": "https://www.institutoaocp.org.br/",
+      "cargos": ["Soldado (QPMG)", "2º Tenente (QOPM)", "2º Tenente – Oficial Médico (QOM)", "2º Tenente – Oficial Dentista (QOD)"],
+      "documentos": [
+        {
+          "tipo": "edital",
+          "titulo": "Edital de Abertura nº 001/2026 (Portaria Conjunta SAD/SDS nº 299)",
+          "publicado_em": "2026-09-29",
+          "urls": [
+            "https://arquivos.qconcursos.com/regulamento/arquivo/102167/pm-pe-2026-edital-n-1-edital.pdf",
+            "https://arquivos.qconcursos.com/f/edital-pm-bombeiros-pe-2026.pdf"
+          ]
+        },
+        {
+          "tipo": "retificacao",
+          "titulo": "Portaria Conjunta SAD/SDS nº 310 (cronograma retificado, Diário Oficial de 15/10/2026)",
+          "publicado_em": "2026-10-15",
+          "urls": [
+            "https://dhg1h5j42swfq.cloudfront.net/2026/10/15005732/cronogramas-retificados-pm-e-cbm-pe.pdf",
+            "https://magistrarcursos.com.br/blog/wp-content/uploads/2026/10/edital-pm-pe-retificado-6-7.pdf"
+          ]
+        }
+      ],
+      "pesquisa": [
+        "Site do Instituto AOCP: os PDFs deste concurso ficam em arquivos-site.institutoaocp.org.br, cujo robots.txt proíbe a coleta",
+        "Diário Oficial de Pernambuco de 29/09 e 15/10/2026, citados pela imprensa",
+        "Busca na web por \"edital PMPE 2026\" e pela Portaria Conjunta 310: edital em cópia do Qconcursos e retificação em CDN de portal de concursos e na Magistrar Cursos"
+      ]
+    }
+  ]
+}
