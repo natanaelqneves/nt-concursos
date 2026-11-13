@@ -42,6 +42,24 @@
       "fim": "2026-11-15"
     }
   },
+  "etapas": [
+    {
+      "status": "verificado",
+      "evidencia": "ev-2",
+      "tipo": "prova_objetiva",
+      "nome": "1ª e 2ª FASES: Realização das provas objetivas e discursiva (eliminatória e classificatória)",
+      "inicio": null,
+      "fim": "2026-12-13"
+    },
+    {
+      "status": "verificado",
+      "evidencia": "ev-3",
+      "tipo": "gabarito",
+      "nome": "Divulgação do Gabarito Oficial Preliminar das provas objetivas",
+      "inicio": null,
+      "fim": "2026-12-13"
+    }
+  ],
   "isencao_publicos": [],
   "documentos": [
     {
@@ -50,7 +68,7 @@
       "url": "https://www.editorasolucao.com.br/blog/wp-content/uploads/2025/04/Edital-Concurso-CREF-RN.pdf",
       "url_final": "https://www.editorasolucao.com.br/blog/wp-content/uploads/2025/04/Edital-Concurso-CREF-RN.pdf",
       "sha256": "e7bf434e13ed6c66ab70bc62d12d8cee7ad5ab482b274cd64e0e3bd7a25c06ac",
-      "coletado_em": "2026-11-13T15:34:16-03:00",
+      "coletado_em": "2026-11-13T16:10:14-03:00",
       "fonte": "editorasolucao",
       "publicado_em": "2026-10-23",
       "titulo": "Edital nº 001/2026 – CREF16/RN"
@@ -71,6 +89,36 @@
         "atividade": "Período de realização de inscrição",
         "datas": "de 30/10 a 15/11/2026"
       }
+    },
+    {
+      "id": "ev-2",
+      "campo": "etapas.0",
+      "documento": "doc-1",
+      "pagina": 26,
+      "trecho": "1ª e 2ª FASES: Realização das provas objetivas e discursiva (eliminatória e classificatória) — 13/12/2026",
+      "ancora": "prova_objetiva",
+      "metodo": "tabela:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": {
+        "atividade": "1ª e 2ª FASES: Realização das provas objetivas e discursiva (eliminatória e classificatória)",
+        "datas": "13/12/2026"
+      }
+    },
+    {
+      "id": "ev-3",
+      "campo": "etapas.1",
+      "documento": "doc-1",
+      "pagina": 26,
+      "trecho": "Divulgação do Gabarito Oficial Preliminar das provas objetivas — 13/12/2026",
+      "ancora": "gabarito",
+      "metodo": "tabela:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": {
+        "atividade": "Divulgação do Gabarito Oficial Preliminar das provas objetivas",
+        "datas": "13/12/2026"
+      }
     }
   ],
   "descoberto_via": {
@@ -78,5 +126,5 @@
     "url": "https://www.comperve.ufrn.br/",
     "data_dou": null
   },
-  "conferido_em": "2026-11-13T15:34:17-03:00"
+  "conferido_em": "2026-11-13T16:10:14-03:00"
 }

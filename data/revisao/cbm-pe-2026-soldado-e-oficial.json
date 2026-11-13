@@ -18,7 +18,10 @@
     "prazos.isencao"
   ],
   "motivos": [
-    "G7 prazos.isencao: retificação posterior menciona este prazo"
+    "G7 prazos.isencao: retificação posterior menciona este prazo",
+    "G7 etapas.0: retificação posterior pode mudar esta etapa",
+    "G7 etapas.1: retificação posterior pode mudar esta etapa",
+    "G7 etapas.2: retificação posterior pode mudar esta etapa"
   ],
   "opcoes": {
     "prazos.isencao": [
@@ -44,5 +47,5 @@
       "publicado_em": "2026-10-15"
     }
   ],
-  "registrado_em": "2026-11-13T15:34:21-03:00"
+  "registrado_em": "2026-11-13T16:10:19-03:00"
 }

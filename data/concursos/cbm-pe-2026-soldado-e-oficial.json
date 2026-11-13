@@ -37,6 +37,32 @@
       "fim": "2026-11-23"
     }
   },
+  "etapas": [
+    {
+      "status": "revisao",
+      "evidencia": "ev-3",
+      "tipo": "prova_objetiva",
+      "nome": "APLICAÇÃO DA PROVA OBJETIVA",
+      "inicio": null,
+      "fim": "2027-02-28"
+    },
+    {
+      "status": "revisao",
+      "evidencia": "ev-4",
+      "tipo": "gabarito",
+      "nome": "Divulgação do Gabarito Preliminar e do(s) Caderno(s) de questões",
+      "inicio": null,
+      "fim": "2027-02-28"
+    },
+    {
+      "status": "revisao",
+      "evidencia": "ev-5",
+      "tipo": "prova_discursiva",
+      "nome": "Divulgação do candidato habilitado para a correção redação",
+      "inicio": null,
+      "fim": "2027-04-12"
+    }
+  ],
   "isencao_publicos": [],
   "documentos": [
     {
@@ -45,7 +71,7 @@
       "url": "https://arquivos.qconcursos.com/regulamento/arquivo/102168/cbm-pe-2026-edital-n-2-edital.pdf",
       "url_final": "https://arquivos.qconcursos.com/regulamento/arquivo/102168/cbm-pe-2026-edital-n-2-edital.pdf",
       "sha256": "4019c7765328121da005185102ef595bce027d876058917b21c7b21dba34438b",
-      "coletado_em": "2026-11-13T15:34:17-03:00",
+      "coletado_em": "2026-11-13T16:10:14-03:00",
       "fonte": "qconcursos",
       "publicado_em": "2026-09-29",
       "titulo": "Edital de Abertura nº 002/2026 (Portaria Conjunta SAD/SDS nº 300)"
@@ -56,7 +82,7 @@
       "url": "https://dhg1h5j42swfq.cloudfront.net/2026/10/15005732/cronogramas-retificados-pm-e-cbm-pe.pdf",
       "url_final": "https://dhg1h5j42swfq.cloudfront.net/2026/10/15005732/cronogramas-retificados-pm-e-cbm-pe.pdf",
       "sha256": "380fce7123159aaaf4a101d1c2713a1a91eee186f2fdf61df409f0e0f881e7fc",
-      "coletado_em": "2026-11-13T15:34:20-03:00",
+      "coletado_em": "2026-11-13T16:10:18-03:00",
       "fonte": "cdn-cloudfront",
       "publicado_em": "2026-10-15",
       "titulo": "Portarias Conjuntas SAD/SDS nº 310 e 311 (cronogramas retificados, Diário Oficial de 15/10/2026)"
@@ -89,6 +115,51 @@
       "aprovado_por": null,
       "aprovado_em": null,
       "tabela": null
+    },
+    {
+      "id": "ev-3",
+      "campo": "etapas.0",
+      "documento": "doc-1",
+      "pagina": 13,
+      "trecho": "APLICAÇÃO DA PROVA OBJETIVA — 28/02/2027",
+      "ancora": "prova_objetiva",
+      "metodo": "tabela:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": {
+        "atividade": "APLICAÇÃO DA PROVA OBJETIVA",
+        "datas": "28/02/2027"
+      }
+    },
+    {
+      "id": "ev-4",
+      "campo": "etapas.1",
+      "documento": "doc-1",
+      "pagina": 13,
+      "trecho": "Divulgação do Gabarito Preliminar e do(s) Caderno(s) de questões — 28/02/2027",
+      "ancora": "gabarito",
+      "metodo": "tabela:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": {
+        "atividade": "Divulgação do Gabarito Preliminar e do(s) Caderno(s) de questões",
+        "datas": "28/02/2027"
+      }
+    },
+    {
+      "id": "ev-5",
+      "campo": "etapas.2",
+      "documento": "doc-1",
+      "pagina": 13,
+      "trecho": "Divulgação do candidato habilitado para a correção redação — 12/04/2027",
+      "ancora": "prova_discursiva",
+      "metodo": "tabela:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": {
+        "atividade": "Divulgação do candidato habilitado para a correção redação",
+        "datas": "12/04/2027"
+      }
     }
   ],
   "descoberto_via": {
@@ -96,5 +167,5 @@
     "url": "https://www.institutoaocp.org.br/",
     "data_dou": null
   },
-  "conferido_em": "2026-11-13T15:34:21-03:00"
+  "conferido_em": "2026-11-13T16:10:19-03:00"
 }

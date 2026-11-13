@@ -1,0 +1,179 @@
+{
+  "schema_version": 2,
+  "slug": "gestao-pa-2026",
+  "orgao": "Secretaria de Estado de Planejamento e Administração do Estado do Pará",
+  "categoria": "executivo",
+  "esfera": "estadual",
+  "banca": "fgv",
+  "uf": "PA",
+  "municipio": null,
+  "cargos": [],
+  "vagas_imediatas": null,
+  "porte": "indefinido",
+  "areas": [],
+  "taxa": null,
+  "prazos": {
+    "isencao": {
+      "status": "revisao",
+      "evidencia": null,
+      "inicio": null,
+      "fim": null
+    },
+    "inscricao": {
+      "status": "verificado",
+      "evidencia": "ev-1",
+      "inicio": "2026-08-31",
+      "fim": "2026-10-07"
+    }
+  },
+  "etapas": [
+    {
+      "status": "verificado",
+      "evidencia": "ev-2",
+      "tipo": "prova_objetiva",
+      "nome": "Aplicação da Prova Objetiva e da Prova Discursiva (turno matutino – área meio; turno vespertino – área fim)",
+      "inicio": null,
+      "fim": "2026-11-29"
+    },
+    {
+      "status": "verificado",
+      "evidencia": "ev-3",
+      "tipo": "gabarito",
+      "nome": "Divulgação do gabarito preliminar da Prova Objetiva",
+      "inicio": null,
+      "fim": "2026-11-30"
+    },
+    {
+      "status": "verificado",
+      "evidencia": "ev-4",
+      "tipo": "gabarito",
+      "nome": "Publicação do gabarito definitivo da Prova Objetiva",
+      "inicio": null,
+      "fim": "2027-01-08"
+    },
+    {
+      "status": "verificado",
+      "evidencia": "ev-5",
+      "tipo": "resultado",
+      "nome": "Publicação do resultado definitivo da Prova Objetiva",
+      "inicio": null,
+      "fim": "2027-01-28"
+    }
+  ],
+  "isencao_publicos": [],
+  "documentos": [
+    {
+      "id": "doc-1",
+      "tipo": "edital",
+      "url": "https://conhecimento.fgv.br/sites/default/files/concursos/edital-consolidado-01.10-minuta.pdf",
+      "url_final": "https://conhecimento.fgv.br/sites/default/files/concursos/edital-consolidado-01.10-minuta.pdf",
+      "sha256": "bd30f562442e808a1ec788f10cc7adae51cee796e2dfd52932d35c54663712ac",
+      "coletado_em": "2026-11-13T16:02:59-03:00",
+      "fonte": "fgv",
+      "publicado_em": "2026-10-02",
+      "titulo": "Edital (retificado em 02/10/2026)"
+    },
+    {
+      "id": "doc-2",
+      "tipo": "retificacao",
+      "url": "https://conhecimento.fgv.br/sites/default/files/concursos/edital-n-004-de-01.10.2026-doe-n-36.789-de-02.10.2026-retificacao-do-cronograma-e-de-subitens.pdf",
+      "url_final": "https://conhecimento.fgv.br/sites/default/files/concursos/edital-n-004-de-01.10.2026-doe-n-36.789-de-02.10.2026-retificacao-do-cronograma-e-de-subitens.pdf",
+      "sha256": "2f84971b0c26fd98808f10dfed6e3505d85109d25f79f73636dc2d939217a9fc",
+      "coletado_em": "2026-11-13T16:03:00-03:00",
+      "fonte": "fgv",
+      "publicado_em": "2026-10-02",
+      "titulo": "2ª Retificação"
+    },
+    {
+      "id": "doc-3",
+      "tipo": "retificacao",
+      "url": "https://conhecimento.fgv.br/sites/default/files/concursos/relacao-candidato_vaga-seduc-pa_0.pdf",
+      "url_final": "https://conhecimento.fgv.br/sites/default/files/concursos/relacao-candidato_vaga-seduc-pa_0.pdf",
+      "sha256": "96144185d57c229f49712d35e08abec9306c05b1e498aa31744f38e79ee14fe6",
+      "coletado_em": "2026-11-13T16:03:02-03:00",
+      "fonte": "fgv",
+      "publicado_em": "2026-11-03",
+      "titulo": "Demanda de candidato por vaga (retificado em 10/11/2026)"
+    }
+  ],
+  "evidencias": [
+    {
+      "id": "ev-1",
+      "campo": "prazos.inscricao",
+      "documento": "doc-1",
+      "pagina": 5,
+      "trecho": "As inscrições para o Concurso estarão abertas no período das 16h do dia 31 de agosto de 2026 até as 16h do dia 07 de outubro de 2026, de acordo com o Horário Oficial de Brasília (BRT – Brasília Time em UTC-03:00).",
+      "ancora": "inscrições",
+      "metodo": "regex:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": null
+    },
+    {
+      "id": "ev-2",
+      "campo": "etapas.0",
+      "documento": "doc-1",
+      "pagina": 60,
+      "trecho": "Aplicação da Prova Objetiva e da Prova Discursiva (turno matutino – área meio; turno vespertino – área fim) — 29/11/2026",
+      "ancora": "prova_objetiva",
+      "metodo": "tabela:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": {
+        "atividade": "Aplicação da Prova Objetiva e da Prova Discursiva (turno matutino – área meio; turno vespertino – área fim)",
+        "datas": "29/11/2026"
+      }
+    },
+    {
+      "id": "ev-3",
+      "campo": "etapas.1",
+      "documento": "doc-1",
+      "pagina": 60,
+      "trecho": "Divulgação do gabarito preliminar da Prova Objetiva — 30/11/2026",
+      "ancora": "gabarito",
+      "metodo": "tabela:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": {
+        "atividade": "Divulgação do gabarito preliminar da Prova Objetiva",
+        "datas": "30/11/2026"
+      }
+    },
+    {
+      "id": "ev-4",
+      "campo": "etapas.2",
+      "documento": "doc-1",
+      "pagina": 60,
+      "trecho": "Publicação do gabarito definitivo da Prova Objetiva — 08/01/2027",
+      "ancora": "gabarito",
+      "metodo": "tabela:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": {
+        "atividade": "Publicação do gabarito definitivo da Prova Objetiva",
+        "datas": "08/01/2027"
+      }
+    },
+    {
+      "id": "ev-5",
+      "campo": "etapas.3",
+      "documento": "doc-1",
+      "pagina": 60,
+      "trecho": "Publicação do resultado definitivo da Prova Objetiva — 28/01/2027",
+      "ancora": "resultado",
+      "metodo": "tabela:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": {
+        "atividade": "Publicação do resultado definitivo da Prova Objetiva",
+        "datas": "28/01/2027"
+      }
+    }
+  ],
+  "descoberto_via": {
+    "fonte": "fgv",
+    "url": "https://conhecimento.fgv.br/concursos/seducpa26",
+    "data_dou": null
+  },
+  "conferido_em": "2026-11-13T16:03:02-03:00"
+}

@@ -1,7 +1,7 @@
 {
   "aocp": {
-    "inicio": "2026-11-13T15:27:19-03:00",
-    "fim": "2026-11-13T15:27:59-03:00",
+    "inicio": "2026-11-13T16:08:09-03:00",
+    "fim": "2026-11-13T16:08:50-03:00",
     "erro_fonte": null,
     "contagem": {
       "fora_do_escopo": 8,
@@ -28,9 +28,13 @@
         "slug": "pm-sc-2026",
         "campos": {
           "prazos.isencao": "verificado",
-          "prazos.inscricao": "verificado"
+          "prazos.inscricao": "verificado",
+          "etapas.0": "revisao",
+          "etapas.1": "verificado"
         },
-        "violacoes": []
+        "violacoes": [
+          "G7 etapas.0: retificação posterior pode mudar esta etapa"
+        ]
       },
       {
         "fonte": "aocp",
@@ -175,8 +179,8 @@
     ]
   },
   "avulsos": {
-    "inicio": "2026-11-13T15:32:53-03:00",
-    "fim": "2026-11-13T15:34:30-03:00",
+    "inicio": "2026-11-13T16:08:50-03:00",
+    "fim": "2026-11-13T16:10:29-03:00",
     "erro_fonte": null,
     "contagem": {
       "publicado": 8,
@@ -273,7 +277,9 @@
         "slug": "cref16-rn-2026",
         "campos": {
           "prazos.isencao": "ausente",
-          "prazos.inscricao": "verificado"
+          "prazos.inscricao": "verificado",
+          "etapas.0": "verificado",
+          "etapas.1": "verificado"
         },
         "violacoes": []
       },
@@ -286,10 +292,16 @@
         "slug": "cbm-pe-2026-soldado-e-oficial",
         "campos": {
           "prazos.isencao": "revisao",
-          "prazos.inscricao": "verificado"
+          "prazos.inscricao": "verificado",
+          "etapas.0": "revisao",
+          "etapas.1": "revisao",
+          "etapas.2": "revisao"
         },
         "violacoes": [
-          "G7 prazos.isencao: retificação posterior menciona este prazo"
+          "G7 prazos.isencao: retificação posterior menciona este prazo",
+          "G7 etapas.0: retificação posterior pode mudar esta etapa",
+          "G7 etapas.1: retificação posterior pode mudar esta etapa",
+          "G7 etapas.2: retificação posterior pode mudar esta etapa"
         ]
       },
       {
@@ -339,13 +351,13 @@
     ]
   },
   "cebraspe": {
-    "inicio": "2026-11-13T15:19:18-03:00",
-    "fim": "2026-11-13T15:21:56-03:00",
+    "inicio": "2026-11-13T15:59:31-03:00",
+    "fim": "2026-11-13T16:02:20-03:00",
     "erro_fonte": null,
     "contagem": {
       "fora_do_escopo": 24,
-      "publicado": 3,
-      "encerrado": 31,
+      "publicado": 6,
+      "encerrado": 28,
       "sem_edital": 8,
       "so_revisao": 7
     },
@@ -382,7 +394,9 @@
         "slug": "pc-pe-2026",
         "campos": {
           "prazos.isencao": "verificado",
-          "prazos.inscricao": "verificado"
+          "prazos.inscricao": "verificado",
+          "etapas.0": "verificado",
+          "etapas.1": "verificado"
         },
         "violacoes": []
       },
@@ -395,7 +409,12 @@
         "slug": "policia-penal-pe-2026-seap",
         "campos": {
           "prazos.isencao": "verificado",
-          "prazos.inscricao": "verificado"
+          "prazos.inscricao": "verificado",
+          "etapas.0": "verificado",
+          "etapas.1": "verificado",
+          "etapas.2": "verificado",
+          "etapas.3": "verificado",
+          "etapas.4": "verificado"
         },
         "violacoes": []
       },
@@ -578,10 +597,16 @@
         "fonte": "cebraspe",
         "id": "CGU_26_AFFC",
         "titulo": "CGU 26 AFFC",
-        "situacao": "encerrado",
+        "situacao": "publicado",
         "detalhe": "controle/federal/BR",
-        "slug": null,
-        "campos": {},
+        "slug": "cgu-2026-affc",
+        "campos": {
+          "prazos.isencao": "verificado",
+          "prazos.inscricao": "verificado",
+          "etapas.0": "verificado",
+          "etapas.1": "verificado",
+          "etapas.2": "verificado"
+        },
         "violacoes": []
       },
       {
@@ -598,10 +623,16 @@
         "fonte": "cebraspe",
         "id": "DETRAN_AL_26",
         "titulo": "DETRAN AL 26",
-        "situacao": "encerrado",
+        "situacao": "publicado",
         "detalhe": "transito/estadual/AL",
-        "slug": null,
-        "campos": {},
+        "slug": "detran-al-2026",
+        "campos": {
+          "prazos.isencao": "verificado",
+          "prazos.inscricao": "verificado",
+          "etapas.0": "verificado",
+          "etapas.1": "verificado",
+          "etapas.2": "verificado"
+        },
         "violacoes": []
       },
       {
@@ -998,11 +1029,24 @@
         "fonte": "cebraspe",
         "id": "TC_DF_26_ANALISTA",
         "titulo": "TC DF 26 ANALISTA",
-        "situacao": "encerrado",
+        "situacao": "publicado",
         "detalhe": "controle/estadual/DF",
-        "slug": null,
-        "campos": {},
-        "violacoes": []
+        "slug": "tcdf-2026-tc-analista",
+        "campos": {
+          "prazos.isencao": "verificado",
+          "prazos.inscricao": "revisao",
+          "etapas.0": "revisao",
+          "etapas.1": "revisao",
+          "etapas.2": "revisao",
+          "etapas.3": "verificado",
+          "etapas.4": "verificado"
+        },
+        "violacoes": [
+          "G7 prazos.inscricao: retificação posterior menciona este prazo",
+          "G7 etapas.0: retificação posterior pode mudar esta etapa",
+          "G7 etapas.1: retificação posterior pode mudar esta etapa",
+          "G7 etapas.2: retificação posterior pode mudar esta etapa"
+        ]
       },
       {
         "fonte": "cebraspe",
@@ -1144,14 +1188,14 @@
     ]
   },
   "fgv": {
-    "inicio": "2026-11-13T15:21:57-03:00",
-    "fim": "2026-11-13T15:27:18-03:00",
+    "inicio": "2026-11-13T16:02:21-03:00",
+    "fim": "2026-11-13T16:08:09-03:00",
     "erro_fonte": null,
     "contagem": {
       "fora_do_escopo": 25,
-      "publicado": 3,
-      "encerrado": 45,
-      "so_revisao": 22,
+      "publicado": 6,
+      "encerrado": 41,
+      "so_revisao": 23,
       "sem_edital": 7
     },
     "registros": [
@@ -1230,11 +1274,21 @@
         "fonte": "fgv",
         "id": "pmsguarda2026",
         "titulo": "Concurso Público para a Prefeitura Municipal do Salvador 2026 - Guarda Municipal",
-        "situacao": "encerrado",
+        "situacao": "publicado",
         "detalhe": "guarda/municipal/BA",
-        "slug": null,
-        "campos": {},
-        "violacoes": []
+        "slug": "gcm-salvador-2026-guarda-municipal",
+        "campos": {
+          "prazos.isencao": "verificado",
+          "prazos.inscricao": "revisao",
+          "etapas.0": "verificado",
+          "etapas.1": "verificado",
+          "etapas.2": "verificado",
+          "etapas.3": "verificado",
+          "etapas.4": "verificado"
+        },
+        "violacoes": [
+          "G7 prazos.inscricao: retificação posterior menciona este prazo"
+        ]
       },
       {
         "fonte": "fgv",
@@ -1250,10 +1304,17 @@
         "fonte": "fgv",
         "id": "seducpa26",
         "titulo": "Concurso Público para a Secretaria de Estado de Planejamento e Administração e a Secretaria de Estado de Educação do Pará",
-        "situacao": "encerrado",
+        "situacao": "publicado",
         "detalhe": "executivo/estadual/PA",
-        "slug": null,
-        "campos": {},
+        "slug": "gestao-pa-2026",
+        "campos": {
+          "prazos.isencao": "revisao",
+          "prazos.inscricao": "verificado",
+          "etapas.0": "verificado",
+          "etapas.1": "verificado",
+          "etapas.2": "verificado",
+          "etapas.3": "verificado"
+        },
         "violacoes": [
           "prazos.isencao: 2 cláusulas diferentes"
         ]
@@ -1262,11 +1323,17 @@
         "fonte": "fgv",
         "id": "tjrsjuiz26",
         "titulo": "Concurso Público para o Tribunal de Justiça do Estado do Rio Grande do Sul - Juiz Substituto",
-        "situacao": "encerrado",
+        "situacao": "so_revisao",
         "detalhe": "tribunal/estadual/RS",
-        "slug": null,
-        "campos": {},
-        "violacoes": []
+        "slug": "tj-rs-2026-juiz-substituto",
+        "campos": {
+          "prazos.isencao": "verificado",
+          "prazos.inscricao": "verificado",
+          "etapas.0": "revisao"
+        },
+        "violacoes": [
+          "G7 etapas.0: retificação posterior pode mudar esta etapa"
+        ]
       },
       {
         "fonte": "fgv",
@@ -1292,10 +1359,19 @@
         "fonte": "fgv",
         "id": "pms2026",
         "titulo": "Concurso Público para a Prefeitura Municipal do Salvador 2026",
-        "situacao": "encerrado",
+        "situacao": "publicado",
         "detalhe": "prefeitura/municipal/BA",
-        "slug": null,
-        "campos": {},
+        "slug": "prefeitura-salvador-2026",
+        "campos": {
+          "prazos.isencao": "verificado",
+          "prazos.inscricao": "verificado",
+          "etapas.0": "verificado",
+          "etapas.1": "verificado",
+          "etapas.2": "verificado",
+          "etapas.3": "verificado",
+          "etapas.4": "verificado",
+          "etapas.5": "verificado"
+        },
         "violacoes": []
       },
       {

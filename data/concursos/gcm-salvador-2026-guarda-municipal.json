@@ -1,0 +1,214 @@
+{
+  "schema_version": 2,
+  "slug": "gcm-salvador-2026-guarda-municipal",
+  "orgao": "Guarda Municipal de Salvador",
+  "categoria": "guarda",
+  "esfera": "municipal",
+  "banca": "fgv",
+  "uf": "BA",
+  "municipio": "Salvador",
+  "cargos": [],
+  "vagas_imediatas": null,
+  "porte": "indefinido",
+  "areas": [],
+  "taxa": null,
+  "prazos": {
+    "isencao": {
+      "status": "verificado",
+      "evidencia": "ev-1",
+      "inicio": "2026-09-21",
+      "fim": "2026-09-22"
+    },
+    "inscricao": {
+      "status": "revisao",
+      "evidencia": "ev-2",
+      "inicio": "2026-09-21",
+      "fim": "2026-10-30"
+    }
+  },
+  "etapas": [
+    {
+      "status": "verificado",
+      "evidencia": "ev-3",
+      "tipo": "prova_objetiva",
+      "nome": "Aplicação da Prova Objetiva",
+      "inicio": null,
+      "fim": "2027-01-17"
+    },
+    {
+      "status": "verificado",
+      "evidencia": "ev-4",
+      "tipo": "gabarito",
+      "nome": "Divulgação do Gabarito Preliminar da Prova Objetiva",
+      "inicio": null,
+      "fim": "2027-01-18"
+    },
+    {
+      "status": "verificado",
+      "evidencia": "ev-5",
+      "tipo": "resultado",
+      "nome": "Publicação do Resultado Definitivo da Prova Objetiva",
+      "inicio": null,
+      "fim": "2027-03-17"
+    },
+    {
+      "status": "verificado",
+      "evidencia": "ev-6",
+      "tipo": "taf",
+      "nome": "Realização do Teste de Aptidão Física",
+      "inicio": "2027-04-05",
+      "fim": "2027-04-07"
+    },
+    {
+      "status": "verificado",
+      "evidencia": "ev-7",
+      "tipo": "avaliacao_psicologica",
+      "nome": "Realização da Avaliação Psicológica",
+      "inicio": null,
+      "fim": "2027-05-30"
+    }
+  ],
+  "isencao_publicos": [],
+  "documentos": [
+    {
+      "id": "doc-1",
+      "tipo": "edital",
+      "url": "https://conhecimento.fgv.br/sites/default/files/concursos/edital-prefeitura-de-salvador-2026-guarda-retificado-1_1.pdf",
+      "url_final": "https://conhecimento.fgv.br/sites/default/files/concursos/edital-prefeitura-de-salvador-2026-guarda-retificado-1_1.pdf",
+      "sha256": "679a3ebc2ca0d8e63f4fa59e0150ecc57f6d861bc89d01445f44c47609cd3ba8",
+      "coletado_em": "2026-11-13T16:02:45-03:00",
+      "fonte": "fgv",
+      "publicado_em": "2026-09-28",
+      "titulo": "Edital (retificado em 28/09/2026)"
+    },
+    {
+      "id": "doc-2",
+      "tipo": "retificacao",
+      "url": "https://conhecimento.fgv.br/sites/default/files/concursos/1-retificacao-do-edital-n-02-de-2026.pdf",
+      "url_final": "https://conhecimento.fgv.br/sites/default/files/concursos/1-retificacao-do-edital-n-02-de-2026.pdf",
+      "sha256": "d264baab65354a6b1a3319daa25ca166b2fe2839230f589b448e3ae1537ac657",
+      "coletado_em": "2026-11-13T16:02:48-03:00",
+      "fonte": "fgv",
+      "publicado_em": "2026-09-28",
+      "titulo": "1ª Retificação"
+    },
+    {
+      "id": "doc-3",
+      "tipo": "retificacao",
+      "url": "https://conhecimento.fgv.br/sites/default/files/concursos/comunicado-prorrogacao-reimpressao-e-pagamento-dos-boletos-guarda-municipal-salvador-ajust.pdf",
+      "url_final": "https://conhecimento.fgv.br/sites/default/files/concursos/comunicado-prorrogacao-reimpressao-e-pagamento-dos-boletos-guarda-municipal-salvador-ajust.pdf",
+      "sha256": "314813f94c1d33ba8f508636abe987c9442fd7002175a6b474ca3bf6eed721da",
+      "coletado_em": "2026-11-13T16:02:50-03:00",
+      "fonte": "fgv",
+      "publicado_em": "2026-11-06",
+      "titulo": "COMUNICADO - Prorrogação do prazo para reimpressão e pagamento dos boletos"
+    }
+  ],
+  "evidencias": [
+    {
+      "id": "ev-1",
+      "campo": "prazos.isencao",
+      "documento": "doc-1",
+      "pagina": 7,
+      "trecho": "5.2 A isenção mencionada no subitem 5.1 poderá ser solicitada no período entre 16h do dia 21 de setembro de 2026 e 16h do dia 22 de setembro de 2026, no momento da inscrição, no endereço eletrônico https://conhecimento.fgv.br/concursos/pmsguarda2026, devendo o candidato, obrigatoriamente, cumprir os requisitos indicados neste Edital.",
+      "ancora": "isenção",
+      "metodo": "regex:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": null
+    },
+    {
+      "id": "ev-2",
+      "campo": "prazos.inscricao",
+      "documento": "doc-1",
+      "pagina": 5,
+      "trecho": "Para efetuar sua inscrição, o interessado deverá acessar, via Internet, o endereço eletrônico https://conhecimento.fgv.br/concursos/pmsguarda2026, observando o seguinte: a) acessar o endereço eletrônico, a partir das 16h do dia 21 de setembro de 2026 até as 16h do dia 30 de outubro de 2026.",
+      "ancora": "inscrição",
+      "metodo": "regex:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": null
+    },
+    {
+      "id": "ev-3",
+      "campo": "etapas.0",
+      "documento": "doc-1",
+      "pagina": 61,
+      "trecho": "Aplicação da Prova Objetiva — 17/01/2027",
+      "ancora": "prova_objetiva",
+      "metodo": "tabela:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": {
+        "atividade": "Aplicação da Prova Objetiva",
+        "datas": "17/01/2027"
+      }
+    },
+    {
+      "id": "ev-4",
+      "campo": "etapas.1",
+      "documento": "doc-1",
+      "pagina": 61,
+      "trecho": "Divulgação do Gabarito Preliminar da Prova Objetiva — 18/01/2027",
+      "ancora": "gabarito",
+      "metodo": "tabela:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": {
+        "atividade": "Divulgação do Gabarito Preliminar da Prova Objetiva",
+        "datas": "18/01/2027"
+      }
+    },
+    {
+      "id": "ev-5",
+      "campo": "etapas.2",
+      "documento": "doc-1",
+      "pagina": 62,
+      "trecho": "Publicação do Resultado Definitivo da Prova Objetiva — 17/03/2027",
+      "ancora": "resultado",
+      "metodo": "tabela:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": {
+        "atividade": "Publicação do Resultado Definitivo da Prova Objetiva",
+        "datas": "17/03/2027"
+      }
+    },
+    {
+      "id": "ev-6",
+      "campo": "etapas.3",
+      "documento": "doc-1",
+      "pagina": 62,
+      "trecho": "Realização do Teste de Aptidão Física — 05/04/2027 a 07/04/2027",
+      "ancora": "taf",
+      "metodo": "tabela:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": {
+        "atividade": "Realização do Teste de Aptidão Física",
+        "datas": "05/04/2027 a 07/04/2027"
+      }
+    },
+    {
+      "id": "ev-7",
+      "campo": "etapas.4",
+      "documento": "doc-1",
+      "pagina": 62,
+      "trecho": "Realização da Avaliação Psicológica — 30/05/2027",
+      "ancora": "avaliacao_psicologica",
+      "metodo": "tabela:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": {
+        "atividade": "Realização da Avaliação Psicológica",
+        "datas": "30/05/2027"
+      }
+    }
+  ],
+  "descoberto_via": {
+    "fonte": "fgv",
+    "url": "https://conhecimento.fgv.br/concursos/pmsguarda2026",
+    "data_dou": null
+  },
+  "conferido_em": "2026-11-13T16:02:50-03:00"
+}

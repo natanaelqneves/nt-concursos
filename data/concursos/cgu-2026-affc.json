@@ -1,0 +1,208 @@
+{
+  "schema_version": 2,
+  "slug": "cgu-2026-affc",
+  "orgao": "Controladoria-Geral da União",
+  "categoria": "controle",
+  "esfera": "federal",
+  "banca": "cebraspe",
+  "uf": "BR",
+  "municipio": null,
+  "cargos": [
+    {
+      "nome": "Auditor Federal de Finanças e Controle (AFFC) – Especialidade: Auditoria",
+      "vagas": null,
+      "remuneracao": null
+    },
+    {
+      "nome": "Auditor Federal de Finanças e Controle (AFFC) – Especialidade: Tecnologia da Informação – Ciência de Dados",
+      "vagas": null,
+      "remuneracao": null
+    },
+    {
+      "nome": "Auditor Federal de Finanças e Controle (AFFC) – Especialidade: Tecnologia da Informação – Infraestrutura de TI",
+      "vagas": null,
+      "remuneracao": null
+    },
+    {
+      "nome": "Auditor Federal de Finanças e Controle (AFFC) – Especialidade: Tecnologia da Informação – Desenvolvimento de Sistemas",
+      "vagas": null,
+      "remuneracao": null
+    }
+  ],
+  "vagas_imediatas": null,
+  "porte": "indefinido",
+  "areas": [
+    "ti"
+  ],
+  "taxa": null,
+  "prazos": {
+    "isencao": {
+      "status": "verificado",
+      "evidencia": "ev-1",
+      "inicio": "2026-10-10",
+      "fim": "2026-10-16"
+    },
+    "inscricao": {
+      "status": "verificado",
+      "evidencia": "ev-2",
+      "inicio": "2026-10-10",
+      "fim": "2026-11-04"
+    }
+  },
+  "etapas": [
+    {
+      "status": "verificado",
+      "evidencia": "ev-3",
+      "tipo": "prova_objetiva",
+      "nome": "Aplicação das provas objetivas e discursiva",
+      "inicio": null,
+      "fim": "2026-12-13"
+    },
+    {
+      "status": "verificado",
+      "evidencia": "ev-4",
+      "tipo": "prova_discursiva",
+      "nome": "Divulgação do padrão preliminar de respostas da prova discursiva",
+      "inicio": null,
+      "fim": "2026-12-15"
+    },
+    {
+      "status": "verificado",
+      "evidencia": "ev-5",
+      "tipo": "gabarito",
+      "nome": "Divulgação dos gabaritos oficiais preliminares das provas objetivas",
+      "inicio": null,
+      "fim": "2026-12-18"
+    }
+  ],
+  "isencao_publicos": [],
+  "documentos": [
+    {
+      "id": "doc-1",
+      "tipo": "edital",
+      "url": "https://cdn.cebraspe.org.br/concursos/CGU_26_AFFC/arquivos/9F208573B5EE30224B402D22562A44BD2F387D5E7FBD78CA8A15212F1DE98E7D.pdf",
+      "url_final": "https://cdn.cebraspe.org.br/concursos/CGU_26_AFFC/arquivos/9F208573B5EE30224B402D22562A44BD2F387D5E7FBD78CA8A15212F1DE98E7D.pdf",
+      "sha256": "41dde6ac2e23de65414386004cfd0b477d7fa68f71b05be1da3c399b09e777f0",
+      "coletado_em": "2026-11-13T16:00:23-03:00",
+      "fonte": "cebraspe",
+      "publicado_em": "2026-10-09",
+      "titulo": "Edital nº 1 - Abertura - Atualizado conforme retificações"
+    },
+    {
+      "id": "doc-2",
+      "tipo": "retificacao",
+      "url": "https://cdn.cebraspe.org.br/concursos/CGU_26_AFFC/arquivos/A26FBD902F8715F8D919268DB45102EEEED3469F579C9648BE65D97AE4CAE800.pdf",
+      "url_final": "https://cdn.cebraspe.org.br/concursos/CGU_26_AFFC/arquivos/A26FBD902F8715F8D919268DB45102EEEED3469F579C9648BE65D97AE4CAE800.pdf",
+      "sha256": "88ae1068d41aa4bf8fd64eb35404836920ac4a3b5b675f5b8d0d89b9f20b82a1",
+      "coletado_em": "2026-11-13T16:00:26-03:00",
+      "fonte": "cebraspe",
+      "publicado_em": "2026-10-09",
+      "titulo": "Comunicado – Pagamento da taxa de inscrição via Pix ficará temporariamente indisponível no dia 10 de outubro de 2026"
+    },
+    {
+      "id": "doc-3",
+      "tipo": "retificacao",
+      "url": "https://cdn.cebraspe.org.br/concursos/CGU_26_AFFC/arquivos/8CC969EF9F81DD9088CC93655FE2734C95419BE8A9285A887D96D915605D867C.pdf",
+      "url_final": "https://cdn.cebraspe.org.br/concursos/CGU_26_AFFC/arquivos/8CC969EF9F81DD9088CC93655FE2734C95419BE8A9285A887D96D915605D867C.pdf",
+      "sha256": "60b757ea292e19ba1bdbb7da06f9deed6d2c6d7db5abc607342b49ab7b98da77",
+      "coletado_em": "2026-11-13T16:00:27-03:00",
+      "fonte": "cebraspe",
+      "publicado_em": "2026-10-15",
+      "titulo": "Edital nº 2 – Retificação do subitem 6.2.4 e do Anexo I – Cronograma Previsto do Edital nº 1 "
+    },
+    {
+      "id": "doc-4",
+      "tipo": "retificacao",
+      "url": "https://cdn.cebraspe.org.br/concursos/CGU_26_AFFC/arquivos/73234D1D0E80CD1BBF1DCDDF568C6DE78C7CE7E6FDD42386520B685E49290810.pdf",
+      "url_final": "https://cdn.cebraspe.org.br/concursos/CGU_26_AFFC/arquivos/73234D1D0E80CD1BBF1DCDDF568C6DE78C7CE7E6FDD42386520B685E49290810.pdf",
+      "sha256": "2ff2932dd973b38aae8a22a9fb446db5d108afc87663585534869c7da257a594",
+      "coletado_em": "2026-11-13T16:00:30-03:00",
+      "fonte": "cebraspe",
+      "publicado_em": "2026-11-06",
+      "titulo": "Edital nº 3 – Retificação do subitem 13.14 do Edital nº 1"
+    }
+  ],
+  "evidencias": [
+    {
+      "id": "ev-1",
+      "campo": "prazos.isencao",
+      "documento": "doc-1",
+      "pagina": 56,
+      "trecho": "Período de solicitação de inscrições com isenção de taxa de inscrição — 10 a 16/10/2026",
+      "ancora": "isenção",
+      "metodo": "tabela:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": {
+        "atividade": "Período de solicitação de inscrições com isenção de taxa de inscrição",
+        "datas": "10 a 16/10/2026"
+      }
+    },
+    {
+      "id": "ev-2",
+      "campo": "prazos.inscricao",
+      "documento": "doc-1",
+      "pagina": 56,
+      "trecho": "Período de solicitação de inscrições — 10/10 a 4/11/2026",
+      "ancora": "inscrições",
+      "metodo": "tabela:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": {
+        "atividade": "Período de solicitação de inscrições",
+        "datas": "10/10 a 4/11/2026"
+      }
+    },
+    {
+      "id": "ev-3",
+      "campo": "etapas.0",
+      "documento": "doc-1",
+      "pagina": 56,
+      "trecho": "Aplicação das provas objetivas e discursiva — 13/12/2026",
+      "ancora": "prova_objetiva",
+      "metodo": "tabela:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": {
+        "atividade": "Aplicação das provas objetivas e discursiva",
+        "datas": "13/12/2026"
+      }
+    },
+    {
+      "id": "ev-4",
+      "campo": "etapas.1",
+      "documento": "doc-1",
+      "pagina": 56,
+      "trecho": "Divulgação do padrão preliminar de respostas da prova discursiva — 15/12/2026",
+      "ancora": "prova_discursiva",
+      "metodo": "tabela:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": {
+        "atividade": "Divulgação do padrão preliminar de respostas da prova discursiva",
+        "datas": "15/12/2026"
+      }
+    },
+    {
+      "id": "ev-5",
+      "campo": "etapas.2",
+      "documento": "doc-1",
+      "pagina": 56,
+      "trecho": "Divulgação dos gabaritos oficiais preliminares das provas objetivas — 18/12/2026",
+      "ancora": "gabarito",
+      "metodo": "tabela:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": {
+        "atividade": "Divulgação dos gabaritos oficiais preliminares das provas objetivas",
+        "datas": "18/12/2026"
+      }
+    }
+  ],
+  "descoberto_via": {
+    "fonte": "cebraspe",
+    "url": "https://www.cebraspe.org.br/concursos/CGU_26_AFFC",
+    "data_dou": null
+  },
+  "conferido_em": "2026-11-13T16:00:30-03:00"
+}

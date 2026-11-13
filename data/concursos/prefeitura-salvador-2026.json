@@ -1,0 +1,248 @@
+{
+  "schema_version": 2,
+  "slug": "prefeitura-salvador-2026",
+  "orgao": "Prefeitura de Salvador",
+  "categoria": "prefeitura",
+  "esfera": "municipal",
+  "banca": "fgv",
+  "uf": "BA",
+  "municipio": "Salvador",
+  "cargos": [],
+  "vagas_imediatas": null,
+  "porte": "indefinido",
+  "areas": [],
+  "taxa": null,
+  "prazos": {
+    "isencao": {
+      "status": "verificado",
+      "evidencia": "ev-1",
+      "inicio": "2026-07-09",
+      "fim": "2026-07-10"
+    },
+    "inscricao": {
+      "status": "verificado",
+      "evidencia": "ev-2",
+      "inicio": "2026-07-09",
+      "fim": "2026-08-07"
+    }
+  },
+  "etapas": [
+    {
+      "status": "verificado",
+      "evidencia": "ev-3",
+      "tipo": "prova_objetiva",
+      "nome": "Aplicação da Prova Objetiva e Discursiva",
+      "inicio": null,
+      "fim": "2026-09-27"
+    },
+    {
+      "status": "verificado",
+      "evidencia": "ev-4",
+      "tipo": "gabarito",
+      "nome": "Divulgação do Gabarito Preliminar da Prova Objetiva",
+      "inicio": null,
+      "fim": "2026-09-28"
+    },
+    {
+      "status": "verificado",
+      "evidencia": "ev-5",
+      "tipo": "heteroidentificacao",
+      "nome": "Realização da Heteroidentificação de Pessoas Pretas e Pardas (PPP)",
+      "inicio": "2027-01-25",
+      "fim": "2027-01-29"
+    },
+    {
+      "status": "verificado",
+      "evidencia": "ev-6",
+      "tipo": "avaliacao_psicologica",
+      "nome": "Realização da Avaliação Psicológica",
+      "inicio": null,
+      "fim": "2027-01-31"
+    },
+    {
+      "status": "verificado",
+      "evidencia": "ev-7",
+      "tipo": "resultado",
+      "nome": "Resultado Definitivo da Avaliação Psicológica",
+      "inicio": null,
+      "fim": "2027-03-19"
+    },
+    {
+      "status": "verificado",
+      "evidencia": "ev-8",
+      "tipo": "resultado_final",
+      "nome": "Resultado definitivo da Prova Prática e Resultado Final do Concurso",
+      "inicio": null,
+      "fim": "2027-04-28"
+    }
+  ],
+  "isencao_publicos": [],
+  "documentos": [
+    {
+      "id": "doc-1",
+      "tipo": "edital",
+      "url": "https://conhecimento.fgv.br/sites/default/files/concursos/edital-preliminar-pref-salvador-prof-e-coordenador-academico-01.2026-ret3.pdf",
+      "url_final": "https://conhecimento.fgv.br/sites/default/files/concursos/edital-preliminar-pref-salvador-prof-e-coordenador-academico-01.2026-ret3.pdf",
+      "sha256": "25d8978cde1bc3d4e5c2a461458b3c7eb2cd2a40460812775db62e58c11a1dd3",
+      "coletado_em": "2026-11-13T16:03:30-03:00",
+      "fonte": "fgv",
+      "publicado_em": "2026-09-14",
+      "titulo": "Edital (retificado em 14/09/2026)"
+    },
+    {
+      "id": "doc-2",
+      "tipo": "retificacao",
+      "url": "https://conhecimento.fgv.br/sites/default/files/concursos/3-retificacao-do-edital-n-01-de-2026.pdf",
+      "url_final": "https://conhecimento.fgv.br/sites/default/files/concursos/3-retificacao-do-edital-n-01-de-2026.pdf",
+      "sha256": "e74b17797985d8cb56c78f39dcd11e37aac796744c29a8b5f835211723962d24",
+      "coletado_em": "2026-11-13T16:03:33-03:00",
+      "fonte": "fgv",
+      "publicado_em": "2026-09-14",
+      "titulo": "3ª Retificação"
+    },
+    {
+      "id": "doc-3",
+      "tipo": "retificacao",
+      "url": "https://conhecimento.fgv.br/sites/default/files/concursos/comunicado-homologados.pdf",
+      "url_final": "https://conhecimento.fgv.br/sites/default/files/concursos/comunicado-homologados.pdf",
+      "sha256": "ed2ec98cd728de2c24838784c83e3705b2af246a19e2d89ccf76472eb495f3d6",
+      "coletado_em": "2026-11-13T16:03:34-03:00",
+      "fonte": "fgv",
+      "publicado_em": "2026-09-25",
+      "titulo": "COMUNICADO"
+    },
+    {
+      "id": "doc-4",
+      "tipo": "retificacao",
+      "url": "https://conhecimento.fgv.br/sites/default/files/concursos/comunicado-pcd.pdf",
+      "url_final": "https://conhecimento.fgv.br/sites/default/files/concursos/comunicado-pcd.pdf",
+      "sha256": "3083f3880329cb4c3860871a93fb4305b25d175e8d5aedfe91ec31c76678977e",
+      "coletado_em": "2026-11-13T16:03:37-03:00",
+      "fonte": "fgv",
+      "publicado_em": "2026-10-05",
+      "titulo": "COMUNICADO"
+    }
+  ],
+  "evidencias": [
+    {
+      "id": "ev-1",
+      "campo": "prazos.isencao",
+      "documento": "doc-1",
+      "pagina": 10,
+      "trecho": "5.2 A isenção mencionada no subitem 5.1 poderá ser solicitada no período entre 16h00min do dia 09 de julho de 2026 e 16h00min do dia 10 de julho de 2026, no momento da inscrição no endereço eletrônico www.conhecimento.fgv.br/concursos/pms2026, devendo o candidato, obrigatoriamente, cumprir os requisitos indicados neste Edital.",
+      "ancora": "isenção",
+      "metodo": "regex:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": null
+    },
+    {
+      "id": "ev-2",
+      "campo": "prazos.inscricao",
+      "documento": "doc-1",
+      "pagina": 7,
+      "trecho": "DAS INSCRIÇÕES 4.1 4.2 As inscrições para o Concurso Público encontrar-se-ão abertas no período de 16h00min do dia 09 de julho de 2026 até as 16h00min do dia 07 de agosto de 2026.",
+      "ancora": "INSCRIÇÕES",
+      "metodo": "regex:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": null
+    },
+    {
+      "id": "ev-3",
+      "campo": "etapas.0",
+      "documento": "doc-1",
+      "pagina": 71,
+      "trecho": "Aplicação da Prova Objetiva e Discursiva — 27/09/2026",
+      "ancora": "prova_objetiva",
+      "metodo": "tabela:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": {
+        "atividade": "Aplicação da Prova Objetiva e Discursiva",
+        "datas": "27/09/2026"
+      }
+    },
+    {
+      "id": "ev-4",
+      "campo": "etapas.1",
+      "documento": "doc-1",
+      "pagina": 71,
+      "trecho": "Divulgação do Gabarito Preliminar da Prova Objetiva — 28/09/2026",
+      "ancora": "gabarito",
+      "metodo": "tabela:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": {
+        "atividade": "Divulgação do Gabarito Preliminar da Prova Objetiva",
+        "datas": "28/09/2026"
+      }
+    },
+    {
+      "id": "ev-5",
+      "campo": "etapas.2",
+      "documento": "doc-1",
+      "pagina": 72,
+      "trecho": "Realização da Heteroidentificação de Pessoas Pretas e Pardas (PPP) — 25/01/2027 a 29/01/2027",
+      "ancora": "heteroidentificacao",
+      "metodo": "tabela:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": {
+        "atividade": "Realização da Heteroidentificação de Pessoas Pretas e Pardas (PPP)",
+        "datas": "25/01/2027 a 29/01/2027"
+      }
+    },
+    {
+      "id": "ev-6",
+      "campo": "etapas.3",
+      "documento": "doc-1",
+      "pagina": 72,
+      "trecho": "Realização da Avaliação Psicológica — 31/01/2027",
+      "ancora": "avaliacao_psicologica",
+      "metodo": "tabela:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": {
+        "atividade": "Realização da Avaliação Psicológica",
+        "datas": "31/01/2027"
+      }
+    },
+    {
+      "id": "ev-7",
+      "campo": "etapas.4",
+      "documento": "doc-1",
+      "pagina": 73,
+      "trecho": "Resultado Definitivo da Avaliação Psicológica — 19/03/2027",
+      "ancora": "resultado",
+      "metodo": "tabela:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": {
+        "atividade": "Resultado Definitivo da Avaliação Psicológica",
+        "datas": "19/03/2027"
+      }
+    },
+    {
+      "id": "ev-8",
+      "campo": "etapas.5",
+      "documento": "doc-1",
+      "pagina": 73,
+      "trecho": "Resultado definitivo da Prova Prática e Resultado Final do Concurso — 28/04/2027",
+      "ancora": "resultado_final",
+      "metodo": "tabela:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": {
+        "atividade": "Resultado definitivo da Prova Prática e Resultado Final do Concurso",
+        "datas": "28/04/2027"
+      }
+    }
+  ],
+  "descoberto_via": {
+    "fonte": "fgv",
+    "url": "https://conhecimento.fgv.br/concursos/pms2026",
+    "data_dou": null
+  },
+  "conferido_em": "2026-11-13T16:03:37-03:00"
+}
