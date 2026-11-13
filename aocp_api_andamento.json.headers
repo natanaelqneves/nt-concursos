@@ -1,0 +1,11 @@
+HTTP/2 200 
+date: Fri, 13 Nov 2026 02:07:55 GMT
+content-type: application/json
+cf-ray: a59a39c0f933a952-DTW
+cf-cache-status: DYNAMIC
+server: cloudflare
+vary: accept-encoding
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=uzfncnQf3vrBQnOK8BLkvCUgk79c9GXnxuzqXGKmXbhIfr%2F9BKQO%2FJI8WiY7J0H8QdRDzpsMUKdLx7BinyJ%2Fk73196Mhd7t%2BgBzHW1D%2Bi5VEd51YnAs8jWiY9hxiQUTVSZZ7OexL9Xi7zJU%3D"}]}
+x-matched-path: /api/concursos
+
