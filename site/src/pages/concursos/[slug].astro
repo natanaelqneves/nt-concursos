@@ -6,6 +6,9 @@ import type { Campo, Concurso, Prazo } from "../../lib/dados";
 import {
   NOME_CATEGORIA,
   encerrado,
+  emAndamento,
+  etapasVerificadas,
+  NOME_ETAPA,
   local,
   evidenciaDe,
   inscricaoAberta,
@@ -14,7 +17,7 @@ import {
   todos,
   verificado,
 } from "../../lib/dados";
-import { formatarData, formatarDataHora } from "../../lib/tempo";
+import { formatarData, formatarDataHora, hojeBRT } from "../../lib/tempo";
 import { SOBRE_CATEGORIA } from "../../lib/categorias";
 import { urlArea, urlEstado } from "../../lib/navegacao";
 import { orgaoRevisado, textoEsfera } from "../../lib/dados";
@@ -37,7 +40,12 @@ const moeda = (v: Campo) =>
 const linhaPrazo = (rotulo: string, p: Prazo) => ({ rotulo, p, ok: verificado(p) && !!p.fim });
 const prazos = [linhaPrazo("Isenção da taxa", c.prazos.isencao), linhaPrazo("Inscrições", c.prazos.inscricao)];
 
-const situacao = encerrado(c)
+const andamento = emAndamento(c);
+const etapas = etapasVerificadas(c);
+const hoje = hojeBRT();
+const situacao = andamento
+  ? { texto: "Em andamento · inscrições encerradas", classe: "selo-encerrado" }
+  : encerrado(c)
   ? { texto: "Inscrições encerradas", classe: "selo-encerrado" }
   : isencaoAberta(c)
     ? { texto: "Isenção aberta", classe: "selo-isencao" }
@@ -67,6 +75,12 @@ if (verificado(c.prazos.isencao) && c.prazos.isencao.fim) {
 if (verificado(c.vagas_imediatas)) {
   partesResumo.push(`O edital prevê ${Number(c.vagas_imediatas!.valor).toLocaleString("pt-BR")} vagas imediatas${c.porte === "grande" ? ", o que o coloca entre os concursos de grande porte" : ""}.`);
 }
+if (andamento) {
+  const prox = etapas.find((e) => (e.fim ?? "") >= hoje);
+  partesResumo.push(prox
+    ? `O concurso está em andamento: a próxima etapa prevista no cronograma é ${prox.nome.charAt(0).toLowerCase() + prox.nome.slice(1)}, em ${formatarData(prox.fim!)}.`
+    : `O concurso está em andamento; as etapas previstas no cronograma do edital já passaram. Acompanhe os resultados no site da banca.`);
+}
 if (c.cargos.length === 1) partesResumo.push(`O cargo é ${c.cargos[0].nome}.`);
 else if (c.cargos.length > 1) partesResumo.push(`São ${c.cargos.length} cargos, listados abaixo.`);
 const descricao = verificado(c.prazos.isencao) && c.prazos.isencao.fim
@@ -75,7 +89,8 @@ const descricao = verificado(c.prazos.isencao) && c.prazos.isencao.fim
 ---
 <Base
   titulo={nome}
-  descricao={descricao}
+  descricao={andamento ? `${nome}: etapas do concurso (provas, gabarito, resultado) conferidas no cronograma do edital.` : descricao}
+  noindex={encerrado(c) && !andamento}
   breadcrumbs={[{ nome: "Início", url: "/" }, { nome, url: `/concursos/${c.slug}/` }]}
 >
   <p class="meta">
@@ -120,6 +135,27 @@ const descricao = verificado(c.prazos.isencao) && c.prazos.isencao.fim
       </>
     )}
   </dl>
+
+  {etapas.length > 0 && (
+    <>
+      <h2 id="etapas">Etapas do concurso</h2>
+      <p class="meta">Datas do cronograma do edital. A banca pode mudá-las por retificação ou comunicado; confira sempre no site dela.</p>
+      <ol class="linha-tempo list-unstyled">
+        {etapas.map((e) => {
+          const ev = evidenciaDe(c, e);
+          const passou = (e.fim ?? "") < hoje;
+          return (
+            <li class={passou ? "etapa passou" : "etapa"}>
+              <strong>{e.inicio ? `${formatarData(e.inicio)} a ${formatarData(e.fim!)}` : formatarData(e.fim!)}</strong>
+              {" · "}{NOME_ETAPA[e.tipo]}{passou && <span class="meta"> (já ocorreu)</span>}
+              <div class="small">{e.nome}</div>
+              {ev && <EvidenciaBox ev={ev.ev} doc={ev.doc} />}
+            </li>
+          );
+        })}
+      </ol>
+    </>
+  )}
 
   {c.isencao_publicos.length > 0 && verificado(c.prazos.isencao) && (
     <>

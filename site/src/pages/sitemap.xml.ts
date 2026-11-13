@@ -1,12 +1,12 @@
 import type { APIRoute } from "astro";
 import { SITE } from "../config";
-import { substitutoDe, todasNoticias, todos } from "../lib/dados";
+import { emAndamento, encerrado, substitutoDe, todasNoticias, todos } from "../lib/dados";
 import { validadesNaPagina } from "../lib/validade";
 import { hojeBRT } from "../lib/tempo";
 import { AREAS, ESTADOS, porCategoria, porUf, total, urlArea, urlEstado } from "../lib/navegacao";
 import { RECORRENTES } from "../lib/recorrentes";
 
-const FIXAS = ["/", "/isencao-aberta/", "/podem-reabrir/", "/como-pedir-isencao/", "/noticias/", "/ti/", "/metodologia/", "/sobre/", "/contato/", "/privacidade/", "/termos/"];
+const FIXAS = ["/", "/isencao-aberta/", "/em-andamento/", "/podem-reabrir/", "/como-pedir-isencao/", "/guias/", "/guias/como-ler-um-edital/", "/guias/cadastro-de-reserva/", "/guias/etapas-do-concurso/", "/noticias/", "/ti/", "/metodologia/", "/sobre/", "/contato/", "/privacidade/", "/termos/"];
 
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
 
@@ -21,7 +21,8 @@ export const GET: APIRoute = () => {
     ...AREAS.filter((c) => total(porCategoria(c)) > 0 || RECORRENTES.some((r) => r.categoria === c)
       || validadesNaPagina().some((v) => v.categoria === c)).map((c) => ({ loc: new URL(urlArea(c), SITE.url).href, lastmod: null as string | null })),
     ...RECORRENTES.map((r) => ({ loc: new URL(`/recorrentes/${r.slug}/`, SITE.url).href, lastmod: r.conferido_em })),
-    ...todos().map((c) => ({
+    // encerrado sem etapa conferida fica com noindex e fora do sitemap
+    ...todos().filter((c) => !encerrado(c) || emAndamento(c)).map((c) => ({
       loc: new URL(`/concursos/${c.slug}/`, SITE.url).href,
       lastmod: c.conferido_em.slice(0, 10), // data real da última conferência
     })),

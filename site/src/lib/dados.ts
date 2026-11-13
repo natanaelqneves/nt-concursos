@@ -121,7 +121,7 @@ export function todos(): Concurso[] {
   return cache;
 }
 
-export const verificado = (p?: Prazo | Campo | null): boolean => p?.status === "verificado";
+export const verificado = (p?: Prazo | Campo | Etapa | null): boolean => p?.status === "verificado";
 
 function dentro(p: Prazo, hoje: string): boolean {
   if (!verificado(p) || !p.fim) return false;
@@ -134,6 +134,42 @@ export const inscricaoAberta = (c: Concurso, hoje = hojeBRT()) => dentro(c.prazo
 export function encerrado(c: Concurso, hoje = hojeBRT()): boolean {
   const fim = c.prazos.inscricao.fim;
   return verificado(c.prazos.inscricao) && !!fim && fim < hoje;
+}
+
+// "Em andamento" (Parte 1): inscrições encerradas há até ~6 meses e etapas conferidas no cronograma.
+export const JANELA_ANDAMENTO_DIAS = 183;
+
+export const NOME_ETAPA: Record<TipoEtapa, string> = {
+  prova_objetiva: "Prova objetiva", prova_discursiva: "Prova discursiva", prova_pratica: "Prova prática",
+  taf: "Teste de aptidão física", avaliacao_psicologica: "Avaliação psicológica", avaliacao_medica: "Avaliação médica",
+  investigacao_social: "Investigação social", titulos: "Avaliação de títulos", heteroidentificacao: "Heteroidentificação",
+  curso_formacao: "Curso de formação", gabarito: "Gabarito", resultado: "Resultado", resultado_final: "Resultado final",
+  homologacao: "Homologação", outra: "Etapa",
+};
+
+export function etapasVerificadas(c: Concurso): Etapa[] {
+  return (c.etapas ?? []).filter((e) => verificado(e) && !!e.fim);
+}
+
+function menosDias(dia: string, n: number): string {
+  const d = new Date(`${dia}T12:00:00Z`);
+  d.setUTCDate(d.getUTCDate() - n);
+  return d.toISOString().slice(0, 10);
+}
+
+export function emAndamento(c: Concurso, hoje = hojeBRT()): boolean {
+  return encerrado(c, hoje) && etapasVerificadas(c).length > 0
+    && (c.prazos.inscricao.fim ?? "") >= menosDias(hoje, JANELA_ANDAMENTO_DIAS);
+}
+
+export function proximaEtapa(c: Concurso, hoje = hojeBRT()): Etapa | undefined {
+  return etapasVerificadas(c).find((e) => (e.fim ?? "") >= hoje);
+}
+
+/** Em andamento, com a próxima etapa mais perto primeiro; os sem etapa futura vão ao fim. */
+export function concursosEmAndamento(hoje = hojeBRT()): Concurso[] {
+  return todos().filter((c) => emAndamento(c, hoje))
+    .sort(porFim((c) => proximaEtapa(c, hoje)?.fim));
 }
 
 const porFim = (sel: (c: Concurso) => string | null | undefined) => (a: Concurso, b: Concurso) =>
@@ -170,7 +206,7 @@ export function textoEsfera(x: { esfera: Esfera; municipio?: string | null }): s
   return x.esfera === "federal" ? "Federal" : "Estadual";
 }
 
-export function evidenciaDe(c: Concurso, campo?: Prazo | Campo | null) {
+export function evidenciaDe(c: Concurso, campo?: Prazo | Campo | Etapa | null) {
   if (!campo?.evidencia) return null;
   const ev = c.evidencias.find((e) => e.id === campo.evidencia);
   const doc = ev ? c.documentos.find((d) => d.id === ev.documento) : undefined;

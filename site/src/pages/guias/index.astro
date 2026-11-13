@@ -1,0 +1,27 @@
+---
+import Base from "../../layouts/Base.astro";
+
+const GUIAS = [
+  { url: "/como-pedir-isencao/", nome: "Como pedir isenção da taxa de inscrição", texto: "Quem tem direito (CadÚnico, doadores, mesários e outros), como fazer o pedido e quais leis valem." },
+  { url: "/guias/como-ler-um-edital/", nome: "Como ler um edital de concurso", texto: "O que conferir primeiro: requisitos, cronograma, vagas, isenção, etapas e retificações." },
+  { url: "/guias/cadastro-de-reserva/", nome: "Cadastro de reserva: o que é e quando chamam", texto: "A diferença entre vaga imediata e cadastro, a validade do concurso e quando há direito à nomeação." },
+  { url: "/guias/etapas-do-concurso/", nome: "Depois da inscrição: as etapas até a nomeação", texto: "Provas, gabarito, recursos, teste físico, resultado final, homologação e posse." },
+  { url: "/metodologia/", nome: "Como verificamos as informações", texto: "De onde vêm as datas do site e o que fazemos quando algo não pode ser conferido." },
+];
+---
+<Base
+  titulo="Guias sobre concursos públicos"
+  descricao="Guias do NT Concursos: isenção da taxa, como ler um edital, cadastro de reserva e as etapas do concurso até a nomeação."
+  breadcrumbs={[{ nome: "Início", url: "/" }, { nome: "Guias", url: "/guias/" }]}
+>
+  <h1>Guias</h1>
+  <p class="lead">Explicações curtas, com texto próprio, sobre as partes do concurso que mais geram dúvida.</p>
+  <ul class="lista-cartoes list-unstyled">
+    {GUIAS.map((g) => (
+      <li class="card mb-3"><div class="card-body">
+        <h2 class="h5"><a href={g.url}>{g.nome}</a></h2>
+        <p class="mb-0">{g.texto}</p>
+      </div></li>
+    ))}
+  </ul>
+</Base>

@@ -42,9 +42,10 @@ const MENU = [
   { nome: "Vagas de TI", url: "/ti/" },
 ];
 const MAIS = [
+  { nome: "Em andamento", url: "/em-andamento/" },
   { nome: "Podem reabrir", url: "/podem-reabrir/" },
   { nome: "Apuração na imprensa", url: "/noticias/" },
-  { nome: "Como pedir isenção", url: "/como-pedir-isencao/" },
+  { nome: "Guias", url: "/guias/" },
   { nome: "Como verificamos", url: "/metodologia/" },
   { nome: "Sobre o site", url: "/sobre/" },
 ];
@@ -136,6 +137,7 @@ const ativo = (url: string) => Astro.url.pathname.startsWith(url);
               <li><a href="/estados/">Por estado</a></li>
               <li><a href="/areas/">Por área</a></li>
               <li><a href="/recorrentes/">Concursos que se repetem</a></li>
+              <li><a href="/em-andamento/">Em andamento</a></li>
               <li><a href="/podem-reabrir/">Podem reabrir</a></li>
               <li><a href="/ti/">Vagas de TI</a></li>
             </ul>
@@ -144,6 +146,10 @@ const ativo = (url: string) => Astro.url.pathname.startsWith(url);
             <p class="fw-bold mb-1 text-body">Guias</p>
             <ul class="list-unstyled mb-0">
               <li><a href="/como-pedir-isencao/">Como pedir isenção</a></li>
+              <li><a href="/guias/como-ler-um-edital/">Como ler um edital</a></li>
+              <li><a href="/guias/cadastro-de-reserva/">Cadastro de reserva</a></li>
+              <li><a href="/guias/etapas-do-concurso/">Etapas do concurso</a></li>
+              <li><a href="/guias/">Todos os guias</a></li>
               <li><a href="/metodologia/">Como verificamos</a></li>
               <li><a href="/noticias/">Apuração na imprensa</a></li>
             </ul>
