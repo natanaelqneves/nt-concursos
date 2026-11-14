@@ -76,7 +76,7 @@
       "url": "https://conhecimento.fgv.br/sites/default/files/concursos/edital-preliminar-pref-salvador-prof-e-coordenador-academico-01.2026-ret3.pdf",
       "url_final": "https://conhecimento.fgv.br/sites/default/files/concursos/edital-preliminar-pref-salvador-prof-e-coordenador-academico-01.2026-ret3.pdf",
       "sha256": "25d8978cde1bc3d4e5c2a461458b3c7eb2cd2a40460812775db62e58c11a1dd3",
-      "coletado_em": "2026-11-13T22:11:49-03:00",
+      "coletado_em": "2026-11-14T09:30:33-03:00",
       "fonte": "fgv",
       "publicado_em": "2026-09-14",
       "titulo": "Edital (retificado em 14/09/2026)"
@@ -87,7 +87,7 @@
       "url": "https://conhecimento.fgv.br/sites/default/files/concursos/3-retificacao-do-edital-n-01-de-2026.pdf",
       "url_final": "https://conhecimento.fgv.br/sites/default/files/concursos/3-retificacao-do-edital-n-01-de-2026.pdf",
       "sha256": "e74b17797985d8cb56c78f39dcd11e37aac796744c29a8b5f835211723962d24",
-      "coletado_em": "2026-11-13T22:11:51-03:00",
+      "coletado_em": "2026-11-14T09:30:35-03:00",
       "fonte": "fgv",
       "publicado_em": "2026-09-14",
       "titulo": "3ª Retificação"
@@ -98,7 +98,7 @@
       "url": "https://conhecimento.fgv.br/sites/default/files/concursos/comunicado-homologados.pdf",
       "url_final": "https://conhecimento.fgv.br/sites/default/files/concursos/comunicado-homologados.pdf",
       "sha256": "ed2ec98cd728de2c24838784c83e3705b2af246a19e2d89ccf76472eb495f3d6",
-      "coletado_em": "2026-11-13T22:11:53-03:00",
+      "coletado_em": "2026-11-14T09:30:38-03:00",
       "fonte": "fgv",
       "publicado_em": "2026-09-25",
       "titulo": "COMUNICADO"
@@ -109,7 +109,7 @@
       "url": "https://conhecimento.fgv.br/sites/default/files/concursos/comunicado-pcd.pdf",
       "url_final": "https://conhecimento.fgv.br/sites/default/files/concursos/comunicado-pcd.pdf",
       "sha256": "3083f3880329cb4c3860871a93fb4305b25d175e8d5aedfe91ec31c76678977e",
-      "coletado_em": "2026-11-13T22:11:55-03:00",
+      "coletado_em": "2026-11-14T09:30:39-03:00",
       "fonte": "fgv",
       "publicado_em": "2026-10-05",
       "titulo": "COMUNICADO"
@@ -221,5 +221,5 @@
     "url": "https://conhecimento.fgv.br/concursos/pms2026",
     "data_dou": null
   },
-  "conferido_em": "2026-11-13T22:11:55-03:00"
+  "conferido_em": "2026-11-14T09:30:39-03:00"
 }

@@ -45,7 +45,7 @@
       "url": "https://conhecimento.fgv.br/sites/default/files/concursos/tjap.versao-final.13.11.pdf",
       "url_final": "https://conhecimento.fgv.br/sites/default/files/concursos/tjap.versao-final.13.11.pdf",
       "sha256": "2399c28a32da6894ff58e66d04149b5bd221300ed25756fccd0550495d2eda99",
-      "coletado_em": "2026-11-13T22:10:59-03:00",
+      "coletado_em": "2026-11-14T09:29:42-03:00",
       "fonte": "fgv",
       "publicado_em": "2026-11-13",
       "titulo": "Edital (retificado em 13/11/2026)"
@@ -56,7 +56,7 @@
       "url": "https://conhecimento.fgv.br/sites/default/files/concursos/retificacao-tjap.pdf",
       "url_final": "https://conhecimento.fgv.br/sites/default/files/concursos/retificacao-tjap.pdf",
       "sha256": "265515cc68611d573d487c8663ab895dbe6a392a689a9a501db922198a7f2765",
-      "coletado_em": "2026-11-13T22:11:01-03:00",
+      "coletado_em": "2026-11-14T09:29:45-03:00",
       "fonte": "fgv",
       "publicado_em": "2026-11-13",
       "titulo": "2ª Retificação"
@@ -105,5 +105,5 @@
     "url": "https://conhecimento.fgv.br/concursos/tjap26",
     "data_dou": null
   },
-  "conferido_em": "2026-11-13T22:11:01-03:00"
+  "conferido_em": "2026-11-14T09:29:45-03:00"
 }
