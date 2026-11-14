@@ -1,7 +1,7 @@
 {
   "aocp": {
-    "inicio": "2026-11-13T16:22:33-03:00",
-    "fim": "2026-11-13T16:23:12-03:00",
+    "inicio": "2026-11-13T22:16:42-03:00",
+    "fim": "2026-11-13T22:17:21-03:00",
     "erro_fonte": null,
     "contagem": {
       "fora_do_escopo": 8,
@@ -179,8 +179,8 @@
     ]
   },
   "avulsos": {
-    "inicio": "2026-11-13T16:23:13-03:00",
-    "fim": "2026-11-13T16:24:53-03:00",
+    "inicio": "2026-11-13T22:17:22-03:00",
+    "fim": "2026-11-13T22:19:02-03:00",
     "erro_fonte": null,
     "contagem": {
       "publicado": 8,
@@ -351,8 +351,8 @@
     ]
   },
   "cebraspe": {
-    "inicio": "2026-11-13T16:13:56-03:00",
-    "fim": "2026-11-13T16:16:46-03:00",
+    "inicio": "2026-11-13T22:07:52-03:00",
+    "fim": "2026-11-13T22:10:41-03:00",
     "erro_fonte": null,
     "contagem": {
       "fora_do_escopo": 24,
@@ -394,9 +394,7 @@
         "slug": "pc-pe-2026",
         "campos": {
           "prazos.isencao": "verificado",
-          "prazos.inscricao": "verificado",
-          "etapas.0": "verificado",
-          "etapas.1": "verificado"
+          "prazos.inscricao": "verificado"
         },
         "violacoes": []
       },
@@ -411,9 +409,7 @@
           "prazos.isencao": "verificado",
           "prazos.inscricao": "verificado",
           "etapas.0": "verificado",
-          "etapas.1": "verificado",
-          "etapas.2": "verificado",
-          "etapas.3": "verificado"
+          "etapas.1": "verificado"
         },
         "violacoes": []
       },
@@ -601,9 +597,7 @@
         "slug": "cgu-2026-affc",
         "campos": {
           "prazos.isencao": "verificado",
-          "prazos.inscricao": "verificado",
-          "etapas.0": "verificado",
-          "etapas.1": "verificado"
+          "prazos.inscricao": "verificado"
         },
         "violacoes": []
       },
@@ -626,9 +620,7 @@
         "slug": "detran-al-2026",
         "campos": {
           "prazos.isencao": "verificado",
-          "prazos.inscricao": "verificado",
-          "etapas.0": "verificado",
-          "etapas.1": "verificado"
+          "prazos.inscricao": "verificado"
         },
         "violacoes": []
       },
@@ -1031,17 +1023,10 @@
         "slug": "tcdf-2026-tc-analista",
         "campos": {
           "prazos.isencao": "verificado",
-          "prazos.inscricao": "revisao",
-          "etapas.0": "revisao",
-          "etapas.1": "revisao",
-          "etapas.2": "verificado",
-          "etapas.3": "revisao"
+          "prazos.inscricao": "revisao"
         },
         "violacoes": [
-          "G7 prazos.inscricao: retificação posterior menciona este prazo",
-          "G7 etapas.0: retificação posterior pode mudar esta etapa",
-          "G7 etapas.1: retificação posterior pode mudar esta etapa",
-          "G7 etapas.3: retificação posterior pode mudar esta etapa"
+          "G7 prazos.inscricao: retificação posterior menciona este prazo"
         ]
       },
       {
@@ -1184,8 +1169,8 @@
     ]
   },
   "fgv": {
-    "inicio": "2026-11-13T16:16:47-03:00",
-    "fim": "2026-11-13T16:22:32-03:00",
+    "inicio": "2026-11-13T22:10:41-03:00",
+    "fim": "2026-11-13T22:16:42-03:00",
     "erro_fonte": null,
     "contagem": {
       "fora_do_escopo": 25,
@@ -1279,8 +1264,7 @@
           "etapas.0": "verificado",
           "etapas.1": "verificado",
           "etapas.2": "verificado",
-          "etapas.3": "verificado",
-          "etapas.4": "verificado"
+          "etapas.3": "verificado"
         },
         "violacoes": [
           "G7 prazos.inscricao: retificação posterior menciona este prazo"
@@ -1365,8 +1349,7 @@
           "etapas.1": "verificado",
           "etapas.2": "verificado",
           "etapas.3": "verificado",
-          "etapas.4": "verificado",
-          "etapas.5": "verificado"
+          "etapas.4": "verificado"
         },
         "violacoes": []
       },

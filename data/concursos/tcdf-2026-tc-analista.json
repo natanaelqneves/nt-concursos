@@ -32,40 +32,7 @@
       "fim": "2026-09-17"
     }
   },
-  "etapas": [
-    {
-      "status": "revisao",
-      "evidencia": "ev-3",
-      "tipo": "prova_objetiva",
-      "nome": "Aplicação das provas objetivas e da prova discursiva",
-      "inicio": null,
-      "fim": "2026-11-22"
-    },
-    {
-      "status": "revisao",
-      "evidencia": "ev-4",
-      "tipo": "gabarito",
-      "nome": "Divulgação dos gabaritos preliminares das provas objetivas com justificativas",
-      "inicio": null,
-      "fim": "2026-11-24"
-    },
-    {
-      "status": "revisao",
-      "evidencia": "ev-5",
-      "tipo": "heteroidentificacao",
-      "nome": "Realização do procedimento de heteroidentificação",
-      "inicio": null,
-      "fim": "2027-02-21"
-    },
-    {
-      "status": "revisao",
-      "evidencia": "ev-6",
-      "tipo": "resultado",
-      "nome": "Divulgação do edital de resultado final na avaliação biopsicossocial e no procedimento de heteroidentificação e de resultado final no procedimento no concurso público",
-      "inicio": null,
-      "fim": "2027-03-24"
-    }
-  ],
+  "etapas": [],
   "isencao_publicos": [],
   "documentos": [
     {
@@ -74,7 +41,7 @@
       "url": "https://cdn.cebraspe.org.br/concursos/TC_DF_26_ANALISTA/arquivos/132841120D1767C91430042A81063E012CD5EDDBC11169982C8B711A9A932EBB.pdf",
       "url_final": "https://cdn.cebraspe.org.br/concursos/TC_DF_26_ANALISTA/arquivos/132841120D1767C91430042A81063E012CD5EDDBC11169982C8B711A9A932EBB.pdf",
       "sha256": "2874935266474c40c87592a83275d0a0de1a7c38b4ffc0675a657d575c8cd68f",
-      "coletado_em": "2026-11-13T16:16:14-03:00",
+      "coletado_em": "2026-11-13T22:10:10-03:00",
       "fonte": "cebraspe",
       "publicado_em": "2026-07-09",
       "titulo": "Edital nº 1 – Abertura – Atualizado conforme retificações"
@@ -85,7 +52,7 @@
       "url": "https://cdn.cebraspe.org.br/concursos/TC_DF_26_ANALISTA/arquivos/5CB46AAAA40D34A100FD4FC47162F1A1DE432F92456E8098F2FB11523DBA7876.pdf",
       "url_final": "https://cdn.cebraspe.org.br/concursos/TC_DF_26_ANALISTA/arquivos/5CB46AAAA40D34A100FD4FC47162F1A1DE432F92456E8098F2FB11523DBA7876.pdf",
       "sha256": "978629c489bf32072c272e89f4b342f8f1315c92a9823db05a4e61cfd9a05e25",
-      "coletado_em": "2026-11-13T16:16:16-03:00",
+      "coletado_em": "2026-11-13T22:10:12-03:00",
       "fonte": "cebraspe",
       "publicado_em": "2026-07-30",
       "titulo": "Edital nº 2 - Retificação da alínea “a” do subitem 10.1 do Edital nº 1, bem como a renumeração de tópicos de Direito Previdenciário, constantes dos conhecimentos específicos ao cargo"
@@ -96,7 +63,7 @@
       "url": "https://cdn.cebraspe.org.br/concursos/TC_DF_26_ANALISTA/arquivos/3FB457A3F427066638F6D2FBD1D822AE16C1893E3A252D38BDE88BB81EB9CB36.pdf",
       "url_final": "https://cdn.cebraspe.org.br/concursos/TC_DF_26_ANALISTA/arquivos/3FB457A3F427066638F6D2FBD1D822AE16C1893E3A252D38BDE88BB81EB9CB36.pdf",
       "sha256": "595d5c5c40afd8117d35e26250999e74000cb60f1ff206e22600542215c6524d",
-      "coletado_em": "2026-11-13T16:16:20-03:00",
+      "coletado_em": "2026-11-13T22:10:14-03:00",
       "fonte": "cebraspe",
       "publicado_em": "2026-10-13",
       "titulo": "Comunicado – Envio de documentação complementar à comprovação de que a sua inscrição possa ser deferida e retificação da relação provisória dos candidatos com a inscrição deferida"
@@ -107,7 +74,7 @@
       "url": "https://cdn.cebraspe.org.br/concursos/TC_DF_26_ANALISTA/arquivos/69746990F13A769980B604F1F62D796BA5673E6D790C3D51E125FD179BEAD698.pdf",
       "url_final": "https://cdn.cebraspe.org.br/concursos/TC_DF_26_ANALISTA/arquivos/69746990F13A769980B604F1F62D796BA5673E6D790C3D51E125FD179BEAD698.pdf",
       "sha256": "0f93ca61c706b3ece12c331bea8ca32cfb121048900b190cd19645e32615e134",
-      "coletado_em": "2026-11-13T16:16:21-03:00",
+      "coletado_em": "2026-11-13T22:10:16-03:00",
       "fonte": "cebraspe",
       "publicado_em": "2026-10-16",
       "titulo": "Comunicado - Prorrogação do prazo para interposição de recurso contra o indeferimento da inscrição e envio de documentos"
@@ -143,66 +110,6 @@
         "atividade": "Período de solicitação de inscrição",
         "datas": "26/8 a 17/9/2026"
       }
-    },
-    {
-      "id": "ev-3",
-      "campo": "etapas.0",
-      "documento": "doc-1",
-      "pagina": 44,
-      "trecho": "Aplicação das provas objetivas e da prova discursiva — 22/11/2026",
-      "ancora": "prova_objetiva",
-      "metodo": "tabela:v1",
-      "aprovado_por": null,
-      "aprovado_em": null,
-      "tabela": {
-        "atividade": "Aplicação das provas objetivas e da prova discursiva",
-        "datas": "22/11/2026"
-      }
-    },
-    {
-      "id": "ev-4",
-      "campo": "etapas.1",
-      "documento": "doc-1",
-      "pagina": 44,
-      "trecho": "Divulgação dos gabaritos preliminares das provas objetivas com justificativas — 24/11/2026",
-      "ancora": "gabarito",
-      "metodo": "tabela:v1",
-      "aprovado_por": null,
-      "aprovado_em": null,
-      "tabela": {
-        "atividade": "Divulgação dos gabaritos preliminares das provas objetivas com justificativas",
-        "datas": "24/11/2026"
-      }
-    },
-    {
-      "id": "ev-5",
-      "campo": "etapas.2",
-      "documento": "doc-1",
-      "pagina": 44,
-      "trecho": "Realização do procedimento de heteroidentificação — 21/2/2027",
-      "ancora": "heteroidentificacao",
-      "metodo": "tabela:v1",
-      "aprovado_por": null,
-      "aprovado_em": null,
-      "tabela": {
-        "atividade": "Realização do procedimento de heteroidentificação",
-        "datas": "21/2/2027"
-      }
-    },
-    {
-      "id": "ev-6",
-      "campo": "etapas.3",
-      "documento": "doc-1",
-      "pagina": 44,
-      "trecho": "Divulgação do edital de resultado final na avaliação biopsicossocial e no procedimento de heteroidentificação e de resultado final no procedimento no concurso público — 24/3/2027",
-      "ancora": "resultado",
-      "metodo": "tabela:v1",
-      "aprovado_por": null,
-      "aprovado_em": null,
-      "tabela": {
-        "atividade": "Divulgação do edital de resultado final na avaliação biopsicossocial e no procedimento de heteroidentificação e de resultado final no procedimento no concurso público",
-        "datas": "24/3/2027"
-      }
     }
   ],
   "descoberto_via": {
@@ -210,5 +117,5 @@
     "url": "https://www.cebraspe.org.br/concursos/TC_DF_26_ANALISTA",
     "data_dou": null
   },
-  "conferido_em": "2026-11-13T16:16:21-03:00"
+  "conferido_em": "2026-11-13T22:10:16-03:00"
 }

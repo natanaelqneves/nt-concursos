@@ -69,24 +69,7 @@
       "fim": "2026-06-29"
     }
   },
-  "etapas": [
-    {
-      "status": "revisao",
-      "evidencia": "ev-3",
-      "tipo": "prova_objetiva",
-      "nome": "Aplicação das provas objetivas e da prova discursiva",
-      "inicio": null,
-      "fim": "2026-09-20"
-    },
-    {
-      "status": "revisao",
-      "evidencia": "ev-4",
-      "tipo": "gabarito",
-      "nome": "Divulgação dos gabaritos oficiais preliminares das provas objetivas",
-      "inicio": null,
-      "fim": "2026-09-30"
-    }
-  ],
+  "etapas": [],
   "isencao_publicos": [],
   "documentos": [
     {
@@ -95,7 +78,7 @@
       "url": "https://cdn.cebraspe.org.br/concursos/DETRAN_AL_26/arquivos/54E5323713B64AB188F4FACC87ACBA1B83BDA9F8D4837CA716DA190E9038833E.pdf",
       "url_final": "https://cdn.cebraspe.org.br/concursos/DETRAN_AL_26/arquivos/54E5323713B64AB188F4FACC87ACBA1B83BDA9F8D4837CA716DA190E9038833E.pdf",
       "sha256": "ce7ecffbe75d0acef7944016e1e805b884cd2adb981c645a5a27b8ad073fda16",
-      "coletado_em": "2026-11-13T16:14:58-03:00",
+      "coletado_em": "2026-11-13T22:08:53-03:00",
       "fonte": "cebraspe",
       "publicado_em": "2026-04-27",
       "titulo": "Edital nº 1 - Abertura - Atualizado conforme retificações"
@@ -106,7 +89,7 @@
       "url": "https://cdn.cebraspe.org.br/concursos/DETRAN_AL_26/arquivos/2B485B91446701687CC8F9CC772DE754B7DF3B58F430B7D3A5327FF8D4CD2D3C.pdf",
       "url_final": "https://cdn.cebraspe.org.br/concursos/DETRAN_AL_26/arquivos/2B485B91446701687CC8F9CC772DE754B7DF3B58F430B7D3A5327FF8D4CD2D3C.pdf",
       "sha256": "f5828af46553fbd922b239814b2dda1f1e20f025dc56cff5ddb2feddf7bf357d",
-      "coletado_em": "2026-11-13T16:15:00-03:00",
+      "coletado_em": "2026-11-13T22:08:55-03:00",
       "fonte": "cebraspe",
       "publicado_em": "2026-05-04",
       "titulo": "Edital nº 2 - Retificação dos subitens 14.2.3 e 14.2.4 do Edital nº 1"
@@ -117,7 +100,7 @@
       "url": "https://cdn.cebraspe.org.br/concursos/DETRAN_AL_26/arquivos/A945CD6E785F5B5C4F43689787143E51012C2CF07E86F79725C746680F7AC3B1.pdf",
       "url_final": "https://cdn.cebraspe.org.br/concursos/DETRAN_AL_26/arquivos/A945CD6E785F5B5C4F43689787143E51012C2CF07E86F79725C746680F7AC3B1.pdf",
       "sha256": "6fcfbb4cbc1f02fc8b03b47935ae7e9ec97e1687435e96d61a058d27606a68f7",
-      "coletado_em": "2026-11-13T16:15:02-03:00",
+      "coletado_em": "2026-11-13T22:08:57-03:00",
       "fonte": "cebraspe",
       "publicado_em": "2026-05-18",
       "titulo": "Comunicado – Retificação do edital de abertura em atendimento à Lei Estadual nº 9.716/2025"
@@ -153,36 +136,6 @@
         "atividade": "Período de solicitação de inscrições",
         "datas": "6/5 a 29/6/2026"
       }
-    },
-    {
-      "id": "ev-3",
-      "campo": "etapas.0",
-      "documento": "doc-1",
-      "pagina": 48,
-      "trecho": "Aplicação das provas objetivas e da prova discursiva — 20/9/2026",
-      "ancora": "prova_objetiva",
-      "metodo": "tabela:v1",
-      "aprovado_por": null,
-      "aprovado_em": null,
-      "tabela": {
-        "atividade": "Aplicação das provas objetivas e da prova discursiva",
-        "datas": "20/9/2026"
-      }
-    },
-    {
-      "id": "ev-4",
-      "campo": "etapas.1",
-      "documento": "doc-1",
-      "pagina": 48,
-      "trecho": "Divulgação dos gabaritos oficiais preliminares das provas objetivas — 30/9/2026",
-      "ancora": "gabarito",
-      "metodo": "tabela:v1",
-      "aprovado_por": null,
-      "aprovado_em": null,
-      "tabela": {
-        "atividade": "Divulgação dos gabaritos oficiais preliminares das provas objetivas",
-        "datas": "30/9/2026"
-      }
     }
   ],
   "descoberto_via": {
@@ -190,5 +143,5 @@
     "url": "https://www.cebraspe.org.br/concursos/DETRAN_AL_26",
     "data_dou": null
   },
-  "conferido_em": "2026-11-13T16:15:02-03:00"
+  "conferido_em": "2026-11-13T22:08:57-03:00"
 }
