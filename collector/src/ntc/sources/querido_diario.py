@@ -39,6 +39,11 @@ def sonda(cliente: Cliente, dias: int = 30) -> dict:
     from ntc.municipios import PARAIBA
 
     saida: dict = {}
+    try:  # o que o robots.txt da API diz (ler o robots é sempre permitido)
+        r = cliente.sessao.get(f"{API}/robots.txt", timeout=20)
+        saida["robots"] = {"status": r.status_code, "texto": r.text[:600]}
+    except Exception as e:
+        saida["robots"] = f"{type(e).__name__}: {e}"[:300]
     try:
         todas = cidades(cliente, levels="3")
         if not todas:
