@@ -1,0 +1,73 @@
+{
+  "slug": "cristalandia-do-piaui-pi-2026",
+  "titulo": "Prefeitura de Cristalândia do Piauí (PI) abre concurso com 50 vagas",
+  "orgao": "Prefeitura Municipal de Cristalândia do Piauí",
+  "categoria": "prefeitura",
+  "esfera": "municipal",
+  "uf": "PI",
+  "municipio": "Cristalândia do Piauí",
+  "banca": "IBED",
+  "resumo": "A Prefeitura de Cristalândia do Piauí publicou o edital nº 1/2026 com 50 vagas imediatas e cadastro de reserva, em cargos de nível médio, técnico e superior, organizado pelo IBED.",
+  "cargos": [
+    "Fiscal de Tributos",
+    "Enfermeiro",
+    "Educador Físico"
+  ],
+  "fatos": [
+    {
+      "campo": "inscricao",
+      "texto": "De 26/10 a 23/11/2026, até as 19h, exclusivamente pelo site do IBED",
+      "inicio": "2026-10-26",
+      "fim": "2026-11-23",
+      "fontes": [
+        "f-1",
+        "f-2",
+        "f-3"
+      ]
+    },
+    {
+      "campo": "vagas",
+      "texto": "50 vagas imediatas e cadastro de reserva",
+      "fontes": [
+        "f-1",
+        "f-2",
+        "f-3"
+      ]
+    },
+    {
+      "campo": "prova",
+      "texto": "Prova objetiva prevista para 13/12/2026",
+      "inicio": "2026-12-13",
+      "fim": "2026-12-13",
+      "fontes": [
+        "f-1",
+        "f-2"
+      ]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "f-1",
+      "nome": "Aprova Concursos",
+      "url": "https://www.aprovaconcursos.com.br/noticias/?p=168057",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    },
+    {
+      "id": "f-2",
+      "nome": "Concursos no Brasil",
+      "url": "https://concursosnobrasil.com/concursos/pi/2026/10/21/concurso-prefeitura-de-cristalandia-do-piaui-pi-abre-50-vagas-em-edital/",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    },
+    {
+      "id": "f-3",
+      "nome": "Folha Dirigida (Qconcursos)",
+      "url": "https://folha.qconcursos.com/n/prefeitura-de-cristalandia-do-piaui-publica-concurso-com-50-vagas",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    }
+  ],
+  "apurado_em": "2026-11-15T13:30:00-03:00",
+  "expira_em": "2026-11-23"
+}
