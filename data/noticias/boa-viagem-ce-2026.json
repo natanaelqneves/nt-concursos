@@ -1,0 +1,83 @@
+{
+  "slug": "boa-viagem-ce-2026",
+  "titulo": "Prefeitura de Boa Viagem (CE) abre concurso com 1.001 vagas",
+  "orgao": "Prefeitura Municipal de Boa Viagem",
+  "categoria": "prefeitura",
+  "esfera": "municipal",
+  "uf": "CE",
+  "municipio": "Boa Viagem",
+  "banca": "Fundação CETREDE",
+  "resumo": "A Prefeitura de Boa Viagem publicou o edital nº 001/2026 com vagas imediatas em cargos de nível fundamental, médio e superior, organizado pela Fundação CETREDE. As inscrições são feitas pela internet até 7 de dezembro.",
+  "cargos": [
+    "Agente Fiscal de Tributos",
+    "Agente Municipal de Trânsito",
+    "Agente Sanitarista",
+    "Assistente Técnico - SAAE",
+    "Administrador",
+    "Advogado"
+  ],
+  "fatos": [
+    {
+      "campo": "inscricao",
+      "texto": "De 6/11 a 7/12/2026, pela internet, no site da Fundação CETREDE",
+      "inicio": "2026-11-06",
+      "fim": "2026-12-07",
+      "fontes": [
+        "f-1",
+        "f-3",
+        "f-4"
+      ]
+    },
+    {
+      "campo": "vagas",
+      "texto": "1.001 vagas imediatas e 2.002 para cadastro de reserva",
+      "fontes": [
+        "f-1",
+        "f-2",
+        "f-3"
+      ]
+    },
+    {
+      "campo": "prova",
+      "texto": "Provas previstas para 10/1/2027",
+      "inicio": "2027-01-10",
+      "fim": "2027-01-10",
+      "fontes": [
+        "f-1",
+        "f-3"
+      ]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "f-1",
+      "nome": "Folha Dirigida (Qconcursos)",
+      "url": "https://folha.qconcursos.com/n/prefeitura-de-boa-viagem-ce-abre-concurso-com-1-001-vagas",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    },
+    {
+      "id": "f-2",
+      "nome": "Concursos no Brasil",
+      "url": "https://concursosnobrasil.com/concursos/ce/2026/11/06/boa-viagem-ce-lanca-concurso-com-3-003-vagas-e-salarios-de-ate-r-147-mil/",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    },
+    {
+      "id": "f-3",
+      "nome": "Achê Concursos",
+      "url": "https://www.acheconcursos.com.br/concursos-ceara/concurso-prefeitura-de-boa-viagem-ce-sai-edital-com-1-001-vagas-94442",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    },
+    {
+      "id": "f-4",
+      "nome": "Edital nº 001/2026 (cópia)",
+      "url": "https://www.acheconcursos.com.br/imagens/anexo/65109/edital.pdf",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    }
+  ],
+  "apurado_em": "2026-11-15T13:30:00-03:00",
+  "expira_em": "2026-12-07"
+}

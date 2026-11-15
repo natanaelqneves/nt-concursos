@@ -1,0 +1,81 @@
+{
+  "slug": "camara-oliveira-de-fatima-to-2026",
+  "titulo": "Câmara de Oliveira de Fátima (TO) abre concurso com 5 vagas",
+  "orgao": "Câmara Municipal de Oliveira de Fátima",
+  "categoria": "legislativo",
+  "esfera": "municipal",
+  "uf": "TO",
+  "municipio": "Oliveira de Fátima",
+  "banca": "IDESC Assessoria",
+  "resumo": "A Câmara Municipal de Oliveira de Fátima publicou o edital nº 001/2026 do II Concurso Público, com 5 vagas imediatas em cargos de nível fundamental e médio. As inscrições são feitas no site do IDESC.",
+  "cargos": [
+    "Auxiliar de Serviços Gerais",
+    "Vigia",
+    "Assistente Administrativo"
+  ],
+  "fatos": [
+    {
+      "campo": "inscricao",
+      "texto": "Das 8h de 9/11 às 24h de 30/11/2026, pelo site do IDESC",
+      "inicio": "2026-11-09",
+      "fim": "2026-11-30",
+      "fontes": [
+        "f-1",
+        "f-2",
+        "f-3",
+        "f-4"
+      ]
+    },
+    {
+      "campo": "vagas",
+      "texto": "5 vagas imediatas e cadastro de reserva",
+      "fontes": [
+        "f-1",
+        "f-2",
+        "f-3"
+      ]
+    },
+    {
+      "campo": "prova",
+      "texto": "Prova objetiva prevista para 13/12/2026",
+      "inicio": "2026-12-13",
+      "fim": "2026-12-13",
+      "fontes": [
+        "f-1",
+        "f-2"
+      ]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "f-1",
+      "nome": "Folha Dirigida (Qconcursos)",
+      "url": "https://folha.qconcursos.com/n/camara-municipal-de-oliveira-de-fatima-to-abre-concurso-com-5-vagas",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    },
+    {
+      "id": "f-2",
+      "nome": "Aprova Concursos",
+      "url": "https://www.aprovaconcursos.com.br/noticias/?p=168643",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    },
+    {
+      "id": "f-3",
+      "nome": "Achê Concursos",
+      "url": "https://www.acheconcursos.com.br/concursos-tocantins/concurso-camara-oliveira-de-fatima-to-2026-edital-94423",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    },
+    {
+      "id": "f-4",
+      "nome": "Concursos no Brasil",
+      "url": "https://concursosnobrasil.com/concursos/to/2026/11/05/concurso-camara-de-oliveira-de-fatima-to-anuncia-vagas-efetivas/",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    }
+  ],
+  "apurado_em": "2026-11-15T13:30:00-03:00",
+  "expira_em": "2026-11-30"
+}

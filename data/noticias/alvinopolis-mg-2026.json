@@ -1,0 +1,83 @@
+{
+  "slug": "alvinopolis-mg-2026",
+  "titulo": "Prefeitura de Alvinópolis (MG) abre inscrições para 172 vagas",
+  "orgao": "Prefeitura Municipal de Alvinópolis",
+  "categoria": "prefeitura",
+  "esfera": "municipal",
+  "uf": "MG",
+  "municipio": "Alvinópolis",
+  "banca": "Instituto Consulplan",
+  "resumo": "A Prefeitura de Alvinópolis publicou o edital nº 01/2026 com 172 vagas imediatas e cadastro de reserva, em cargos dos níveis fundamental ao superior. As inscrições começam às 16h de 16 de novembro.",
+  "cargos": [
+    "Contador",
+    "Fiscal de Tributos Municipais",
+    "Assistente Social",
+    "Orientador Social",
+    "Advogado",
+    "Assistente Judiciário"
+  ],
+  "fatos": [
+    {
+      "campo": "inscricao",
+      "texto": "Das 16h de 16/11 às 16h de 15/12/2026, exclusivamente pelo site do Instituto Consulplan",
+      "inicio": "2026-11-16",
+      "fim": "2026-12-15",
+      "fontes": [
+        "f-1",
+        "f-2",
+        "f-3"
+      ]
+    },
+    {
+      "campo": "vagas",
+      "texto": "172 vagas imediatas, além de cadastro de reserva",
+      "fontes": [
+        "f-1",
+        "f-3",
+        "f-4"
+      ]
+    },
+    {
+      "campo": "prova",
+      "texto": "Prova objetiva prevista para 24/1/2027",
+      "inicio": "2027-01-24",
+      "fim": "2027-01-24",
+      "fontes": [
+        "f-1",
+        "f-4"
+      ]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "f-1",
+      "nome": "Aprova Concursos",
+      "url": "https://www.aprovaconcursos.com.br/noticias/?p=167900",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    },
+    {
+      "id": "f-2",
+      "nome": "Concursos no Brasil",
+      "url": "https://concursosnobrasil.com/concursos/mg/2026/09/10/concurso-prefeitura-de-alvinopolis-mg-abre-mais-de-170-vagas/",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    },
+    {
+      "id": "f-3",
+      "nome": "Folha Dirigida (retificação)",
+      "url": "https://folha.qconcursos.com/n/prefeitura-de-alvinopolis-mg-retifica-concurso-e-atualiza-cargos-e-vencimentos",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    },
+    {
+      "id": "f-4",
+      "nome": "Gran Cursos Online",
+      "url": "https://blog.grancursosonline.com.br/?p=79971015",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    }
+  ],
+  "apurado_em": "2026-11-15T13:30:00-03:00",
+  "expira_em": "2026-12-15"
+}

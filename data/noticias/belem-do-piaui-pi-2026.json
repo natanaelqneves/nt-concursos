@@ -1,0 +1,76 @@
+{
+  "slug": "belem-do-piaui-pi-2026",
+  "titulo": "Prefeitura de Belém do Piauí (PI) abre concurso com 49 vagas",
+  "orgao": "Prefeitura Municipal de Belém do Piauí",
+  "categoria": "prefeitura",
+  "esfera": "municipal",
+  "uf": "PI",
+  "municipio": "Belém do Piauí",
+  "banca": "IBED",
+  "resumo": "A Prefeitura de Belém do Piauí publicou concurso com 49 vagas e cadastro de reserva, em níveis fundamental, médio e superior, organizado pelo IBED. As inscrições são feitas pela internet.",
+  "cargos": [],
+  "fatos": [
+    {
+      "campo": "inscricao",
+      "texto": "De 30/10 a 25/11/2026, exclusivamente pela internet, no site do IBED",
+      "inicio": "2026-10-30",
+      "fim": "2026-11-25",
+      "fontes": [
+        "f-1",
+        "f-2",
+        "f-3",
+        "f-4"
+      ]
+    },
+    {
+      "campo": "vagas",
+      "texto": "49 vagas, além de cadastro de reserva",
+      "fontes": [
+        "f-1",
+        "f-2"
+      ]
+    },
+    {
+      "campo": "prova",
+      "texto": "Prova objetiva prevista para 13/12/2026",
+      "inicio": "2026-12-13",
+      "fim": "2026-12-13",
+      "fontes": [
+        "f-2",
+        "f-3"
+      ]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "f-1",
+      "nome": "Folha Dirigida (Qconcursos)",
+      "url": "https://folha.qconcursos.com/n/prefeitura-de-belem-do-piaui-abre-concurso-com-49-vagas",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    },
+    {
+      "id": "f-2",
+      "nome": "Apostilas Opção",
+      "url": "https://www.apostilasopcao.com.br/blog/?p=17388",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    },
+    {
+      "id": "f-3",
+      "nome": "Gran Cursos Online",
+      "url": "https://blog.grancursosonline.com.br/?p=79979644",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    },
+    {
+      "id": "f-4",
+      "nome": "Editora Solução",
+      "url": "https://www.editorasolucao.com.br/blog/concurso/concurso-prefeitura-de-belem-do-piaui-pi",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    }
+  ],
+  "apurado_em": "2026-11-15T13:30:00-03:00",
+  "expira_em": "2026-11-25"
+}

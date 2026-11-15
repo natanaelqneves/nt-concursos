@@ -1,0 +1,50 @@
+{
+  "slug": "campo-grande-do-piaui-pi-2026",
+  "titulo": "Prefeitura de Campo Grande do Piauí (PI) abre concurso com 90 vagas",
+  "orgao": "Prefeitura Municipal de Campo Grande do Piauí",
+  "categoria": "prefeitura",
+  "esfera": "municipal",
+  "uf": "PI",
+  "municipio": "Campo Grande do Piauí",
+  "banca": "IBED",
+  "resumo": "A Prefeitura de Campo Grande do Piauí publicou concurso com 90 vagas em diversas áreas, organizado pelo IBED. As inscrições são feitas pela internet até 25 de novembro.",
+  "cargos": [],
+  "fatos": [
+    {
+      "campo": "inscricao",
+      "texto": "De 30/10 a 25/11/2026, pelo site do IBED",
+      "inicio": "2026-10-30",
+      "fim": "2026-11-25",
+      "fontes": [
+        "f-1",
+        "f-2"
+      ]
+    },
+    {
+      "campo": "vagas",
+      "texto": "90 vagas em diversas áreas",
+      "fontes": [
+        "f-1",
+        "f-2"
+      ]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "f-1",
+      "nome": "Folha Dirigida (Qconcursos)",
+      "url": "https://folha.qconcursos.com/n/prefeitura-de-campo-grande-do-piaui-abre-concurso-com-90-vagas-em-diversas-areas",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    },
+    {
+      "id": "f-2",
+      "nome": "Concursos no Brasil",
+      "url": "https://concursosnobrasil.com/concursos/pi/2026/10/28/prefeitura-de-campo-grande-do-piaui-pi-abre-90-vagas-em-concurso/",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    }
+  ],
+  "apurado_em": "2026-11-15T13:30:00-03:00",
+  "expira_em": "2026-11-25"
+}
