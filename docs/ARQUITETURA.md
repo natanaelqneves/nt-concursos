@@ -215,6 +215,7 @@ revisa uma vez por milestone** (o dono cola o diff no Codex e devolve a crítica
 | M1.2 | notícias apuradas na imprensa (PR #6), Bootstrap (PR #7), escopo ampliado para empresas públicas, conselhos, TI em qualquer órgão (PRs #8–#10), fiscal, advocacia pública, executivo federal e legislativo (PRs #11–#12), página /admin/ fase 1 (PRs #11, #13, #15) e guia de isenção (PR #14): entregue em 12/11/2026. Câmara dos Deputados 2026 publicada como `legislativo` |
 | M1.3 | escopo ampliado em 13/11/2026: educação (universidades e institutos federais, secretarias estaduais), saúde estadual, Forças Armadas e gestão estadual no `executivo` (contrato no PR #20, classificador no PR #21) |
 | M1.4 | editais avulsos em 13/11/2026 (contrato no PR #25, código nos PRs #26–#30): concursos da apuração na imprensa entram com o edital achado fora das bancas coletadas, oficial ou em cópia de site de concursos. 7 dos 9 publicados no primeiro dia (PC-AC, TRF3, TRT4, PM-SP, CREF16/RN, PM-PE, CBM-PE) |
+| M1.5 | escopo ampliado em 15/11/2026: os 223 municípios da Paraíba (prefeitura e câmara, como as capitais), universidades estaduais em `educacao` e áreas dos cargos nos concursos municipais (`areas`: educação, saúde, assistência social, fiscal, advocacia, vigilância, trânsito, guarda). 7 concursos municipais paraibanos abertos entram pela apuração na imprensa; 3 deles com edital em cópia nos avulsos |
 | M2 | publicação automática: próximo |
 
 ### Decisões tomadas no M1 (12/11/2026)
@@ -266,7 +267,10 @@ revisa uma vez por milestone** (o dono cola o diff no Codex e devolve a crítica
 
 ## 11. Escopo e prioridade (decidido em 12/11/2026; Tribunais de Contas, Defensorias, Bombeiros e Polícias Legislativas incluídos no mesmo dia)
 
-**Escopo:** concursos de órgãos **federais e estaduais** destas áreas. Municipais ficam fora.
+**Escopo:** concursos de órgãos **federais e estaduais** destas áreas. Na esfera municipal (13/11 e
+15/11/2026): prefeituras e câmaras das capitais e dos 223 municípios da Paraíba; guarda, trânsito e
+vigilância também nas cidades com mais de 200 mil habitantes. Num concurso municipal, cada cargo conta
+também para a sua área (`areas`), e o concurso aparece na página dela.
 
 | Categoria | Exemplos |
 |---|---|

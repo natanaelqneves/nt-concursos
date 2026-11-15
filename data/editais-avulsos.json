@@ -1,6 +1,6 @@
 {
   "_leia": "Editais achados fora das bancas que o coletor alcança. Em cada documento, as URLs vêm em ordem de preferência (oficial primeiro, depois cópias). 'noticia' é a apuração na imprensa que o concurso substitui no site quando o prazo é conferido; as datas dela são comparadas com as do documento. 'pesquisa' aparece no fim da página do concurso.",
-  "conferido_em": "2026-11-13",
+  "conferido_em": "2026-11-15",
   "concursos": [
     {
       "slug": "pc-ac-2026",
@@ -313,6 +313,75 @@
         "Gazeta Municipal de Cuiabá nº 1.478, de 26/10/2026, citada pela imprensa",
         "Busca na web por \"edital Câmara de Cuiabá 2026\": PDF do edital em cópia do Qconcursos",
         "Datas conferidas com Direção Concursos e Nova Concursos"
+      ]
+    },
+    {
+      "slug": "camara-guarabira-2026",
+      "noticia": "camara-guarabira-2026",
+      "titulo": "Câmara Municipal de Guarabira - PB",
+      "banca": "cpcon",
+      "uf": "PB",
+      "pagina": "https://cpcon.uepb.edu.br/",
+      "cargos": ["Auxiliar de Serviços Diversos", "Vigilante", "Auxiliar Administrativo", "Arquivista"],
+      "documentos": [
+        {
+          "tipo": "edital",
+          "titulo": "Edital Normativo de Concurso Público nº 001/2026 – CMG/PB",
+          "publicado_em": "2026-09-30",
+          "urls": [
+            "https://www.editorasolucao.com.br/blog/wp-content/uploads/2026/10/edital-camara-de-guarabira.pdf"
+          ]
+        }
+      ],
+      "pesquisa": [
+        "Site da CPCon/UEPB (cpcon.uepb.edu.br): banca sem coletor automático no NT Concursos",
+        "Busca na web por \"edital Câmara de Guarabira 2026\": PDF do edital em cópia da Editora Solução"
+      ]
+    },
+    {
+      "slug": "camara-areia-2026",
+      "noticia": "camara-areia-2026",
+      "titulo": "Câmara Municipal de Areia - PB",
+      "banca": "cpcon",
+      "uf": "PB",
+      "pagina": "https://cpcon.uepb.edu.br/",
+      "cargos": ["Auxiliar de Serviços Gerais", "Auxiliar Administrativo"],
+      "documentos": [
+        {
+          "tipo": "edital",
+          "titulo": "Edital nº 001/2026 da Câmara Municipal de Areia",
+          "publicado_em": "2026-10-21",
+          "urls": [
+            "https://www.acheconcursos.com.br/imagens/anexo/64904/edital.pdf"
+          ]
+        }
+      ],
+      "pesquisa": [
+        "Site da CPCon/UEPB (cpcon.uepb.edu.br): banca sem coletor automático no NT Concursos",
+        "Busca na web por \"edital Câmara de Areia 2026\": PDF do edital em cópia do Ache Concursos"
+      ]
+    },
+    {
+      "slug": "prefeitura-itapororoca-2026",
+      "noticia": "prefeitura-itapororoca-2026",
+      "titulo": "Prefeitura Municipal de Itapororoca - PB",
+      "banca": "facet",
+      "uf": "PB",
+      "pagina": "https://www.facetconcursos.com.br/",
+      "cargos": ["Agente Administrativo", "Agente de Limpeza", "Analista Desenvolvedor", "Fiscal de Tributos", "Fisioterapeuta", "Médico", "Professor"],
+      "documentos": [
+        {
+          "tipo": "edital",
+          "titulo": "Edital do Concurso Público nº 01/2026",
+          "publicado_em": "2026-10-13",
+          "urls": [
+            "https://www.agrobase.com.br/concursos/wp-content/uploads/sites/4/2026/11/edital-01-2026-prefeitura-de-itapororoca-pb.pdf"
+          ]
+        }
+      ],
+      "pesquisa": [
+        "Site da FACET Concursos (facetconcursos.com.br): banca sem coletor automático no NT Concursos",
+        "Busca na web por \"edital Itapororoca 2026\": PDF do edital em cópia do portal Agrobase Concursos"
       ]
     }
   ]

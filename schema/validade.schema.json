@@ -240,7 +240,17 @@
     },
     "areas": {
       "items": {
-        "const": "ti",
+        "enum": [
+          "ti",
+          "educacao",
+          "saude",
+          "assistencia",
+          "fiscal",
+          "advocacia",
+          "vigilancia",
+          "transito",
+          "guarda"
+        ],
         "type": "string"
       },
       "title": "Areas",

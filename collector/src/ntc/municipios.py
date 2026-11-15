@@ -2,7 +2,9 @@
 o Distrito Federal não tem prefeitura e seus órgãos são da esfera estadual.
 
 - capitais: todos os concursos efetivos de prefeitura e câmara municipal;
-- capitais e municípios com mais de 200 mil habitantes: guarda municipal, trânsito e vigilância.
+- capitais e municípios com mais de 200 mil habitantes: guarda municipal, trânsito e vigilância;
+- Paraíba (decisão do dono, 15/11/2026): os 223 municípios, com todos os concursos efetivos de
+  prefeitura e câmara municipal, como nas capitais.
 
 Fonte da lista: estimativas de população do IBGE (2025), via a tabela "List of municipalities in
 Brazil by population" (Wikipedia), consultada em 13/11/2026. Revisar quando o IBGE publicar nova estimativa.
@@ -196,4 +198,60 @@ GRANDES: dict[str, str] = {
     "Araçatuba": "SP",
     "Nossa Senhora do Socorro": "SE",
     "Nova Friburgo": "RJ",
+}
+
+
+# Os 223 municípios da Paraíba (15/11/2026). Fonte: relação do IBGE, conferida na lista do portal
+# Caravela (caravela.info/municipios/pb, consultada em 15/11/2026), que soma os 223.
+PARAIBA: tuple[str, ...] = (
+    "Água Branca", "Aguiar", "Alagoa Grande", "Alagoa Nova", "Alagoinha", "Alcantil",
+    "Algodão de Jandaíra", "Alhandra", "Amparo", "Aparecida", "Araçagi", "Arara",
+    "Araruna", "Areia", "Areia de Baraúnas", "Areial", "Aroeiras", "Assunção",
+    "Baía da Traição", "Bananeiras", "Baraúna", "Barra de Santa Rosa", "Barra de Santana", "Barra de São Miguel",
+    "Bayeux", "Belém", "Belém do Brejo do Cruz", "Bernardino Batista", "Boa Ventura", "Boa Vista",
+    "Bom Jesus", "Bom Sucesso", "Bonito de Santa Fé", "Boqueirão", "Borborema", "Brejo do Cruz",
+    "Brejo dos Santos", "Caaporã", "Cabaceiras", "Cabedelo", "Cachoeira dos Índios", "Cacimba de Areia",
+    "Cacimba de Dentro", "Cacimbas", "Caiçara", "Cajazeiras", "Cajazeirinhas", "Caldas Brandão",
+    "Camalaú", "Campina Grande", "Capim", "Caraúbas", "Carrapateira", "Casserengue",
+    "Catingueira", "Catolé do Rocha", "Caturité", "Conceição", "Condado", "Conde",
+    "Congo", "Coremas", "Coxixola", "Cruz do Espírito Santo", "Cubati", "Cuité",
+    "Cuité de Mamanguape", "Cuitegi", "Curral de Cima", "Curral Velho", "Damião", "Desterro",
+    "Diamante", "Dona Inês", "Duas Estradas", "Emas", "Esperança", "Fagundes",
+    "Frei Martinho", "Gado Bravo", "Guarabira", "Gurinhém", "Gurjão", "Ibiara",
+    "Igaracy", "Imaculada", "Ingá", "Itabaiana", "Itaporanga", "Itapororoca",
+    "Itatuba", "Jacaraú", "Jericó", "João Pessoa", "Joca Claudino", "Juarez Távora",
+    "Juazeirinho", "Junco do Seridó", "Juripiranga", "Juru", "Lagoa", "Lagoa de Dentro",
+    "Lagoa Seca", "Lastro", "Livramento", "Logradouro", "Lucena", "Mãe d'Água",
+    "Malta", "Mamanguape", "Manaíra", "Marcação", "Mari", "Marizópolis",
+    "Massaranduba", "Mataraca", "Matinhas", "Mato Grosso", "Maturéia", "Mogeiro",
+    "Montadas", "Monte Horebe", "Monteiro", "Mulungu", "Natuba", "Nazarezinho",
+    "Nova Floresta", "Nova Olinda", "Nova Palmeira", "Olho d'Água", "Olivedos", "Ouro Velho",
+    "Parari", "Passagem", "Patos", "Paulista", "Pedra Branca", "Pedra Lavrada",
+    "Pedras de Fogo", "Pedro Régis", "Piancó", "Picuí", "Pilar", "Pilões",
+    "Pilõezinhos", "Pirpirituba", "Pitimbu", "Pocinhos", "Poço Dantas", "Poço de José de Moura",
+    "Pombal", "Prata", "Princesa Isabel", "Puxinanã", "Queimadas", "Quixaba",
+    "Remígio", "Riachão", "Riachão do Bacamarte", "Riachão do Poço", "Riacho de Santo Antônio", "Riacho dos Cavalos",
+    "Rio Tinto", "Salgadinho", "Salgado de São Félix", "Santa Cecília", "Santa Cruz", "Santa Helena",
+    "Santa Inês", "Santa Luzia", "Santa Rita", "Santa Teresinha", "Santana de Mangueira", "Santana dos Garrotes",
+    "Santo André", "São Bentinho", "São Bento", "São Domingos de Pombal", "São Domingos do Cariri", "São Francisco",
+    "São João do Cariri", "São João do Rio do Peixe", "São João do Tigre", "São José da Lagoa Tapada", "São José de Caiana", "São José de Espinharas",
+    "São José de Piranhas", "São José de Princesa", "São José do Bonfim", "São José do Brejo do Cruz", "São José do Sabugi", "São José dos Cordeiros",
+    "São José dos Ramos", "São Mamede", "São Miguel de Taipu", "São Sebastião de Lagoa de Roça", "São Sebastião do Umbuzeiro", "São Vicente do Seridó",
+    "Sapé", "Serra Branca", "Serra da Raiz", "Serra Grande", "Serra Redonda", "Serraria",
+    "Sertãozinho", "Sobrado", "Solânea", "Soledade", "Sossêgo", "Sousa",
+    "Sumé", "Tacima", "Taperoá", "Tavares", "Teixeira", "Tenório",
+    "Triunfo", "Uiraúna", "Umbuzeiro", "Várzea", "Vieirópolis", "Vista Serrana",
+    "Zabelê",
+)
+
+# Outros nomes pelos quais a imprensa e as bancas chamam alguns municípios.
+PARAIBA_OUTROS_NOMES: dict[str, str] = {
+    "São Domingos": "São Domingos de Pombal",
+    "Mãe d’Água": "Mãe d'Água",
+    "Mãe Dágua": "Mãe d'Água",
+    "Olho d’Água": "Olho d'Água",
+    "Sossego": "Sossêgo",
+    "Campo de Santana": "Tacima",
+    "Santarém": "Joca Claudino",
+    "Seridó": "São Vicente do Seridó",
 }

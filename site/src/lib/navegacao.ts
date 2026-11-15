@@ -53,10 +53,15 @@ export function porUf(uf: string, hoje = hojeBRT()): Grupo {
   };
 }
 
+/** Concursos da área: os do órgão dessa categoria e, nos municipais, os que têm cargos dela
+ * (uma prefeitura com professores aparece também em Educação). */
+const naArea = (cat: Categoria) => (x: { categoria: Categoria; areas?: string[] }) =>
+  x.categoria === cat || (x.areas ?? []).includes(cat);
+
 export function porCategoria(cat: Categoria, hoje = hojeBRT()): Grupo {
   return {
-    concursos: conferidos(hoje).filter((c) => c.categoria === cat),
-    noticias: noticiasAtivas(hoje).filter((n) => n.categoria === cat),
+    concursos: conferidos(hoje).filter(naArea(cat)),
+    noticias: noticiasAtivas(hoje).filter(naArea(cat)),
   };
 }
 

@@ -7,12 +7,13 @@ const areas = AREAS.map((c) => ({ c, nome: NOME_CATEGORIA[c], n: total(porCatego
 ---
 <Base
   titulo="Concursos abertos por área"
-  descricao="Concursos federais, estaduais e municipais com inscrições abertas por área: tribunais, segurança pública, guardas municipais, trânsito, fiscal, educação, saúde, empresas públicas, prefeituras das capitais e outras."
+  descricao="Concursos federais, estaduais e municipais com inscrições abertas por área: tribunais, segurança pública, guardas municipais, trânsito, fiscal, educação, saúde, empresas públicas, prefeituras, assistência social e outras."
   breadcrumbs={[{ nome: "Início", url: "/" }, { nome: "Por área", url: "/areas/" }]}
 >
   <h1>Concursos por área</h1>
   <p class="lead">
-    O site organiza os concursos pelo tipo de órgão que contrata. Cada área tem uma explicação de como
+    O site organiza os concursos pelo tipo de órgão que contrata. Nos concursos municipais, que reúnem
+    cargos de várias secretarias, cada cargo também conta para a sua área. Cada área tem uma explicação de como
     funcionam os concursos dela e a lista dos que estão com inscrições abertas.
   </p>
   <ul class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-2 list-unstyled">

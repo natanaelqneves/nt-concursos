@@ -47,7 +47,10 @@ FORA = [
     ["Prefeitura Municipal de Campinas"],  # cidade grande, mas não capital: só guarda/trânsito/vigilância
     ["Câmara Municipal de Campinas"],
     ["Prefeitura de Serra/RN"],
-    ["Prefeitura de Sapé - Agente de Trânsito"],  # cidade pequena
+    ["Prefeitura de Sapé - Agente de Trânsito"],  # cidade pequena sem "PB" no texto
+    ["Prefeitura de Triunfo"],  # homônimo (PB, PE, RS): sem a UF não entra
+    ["Prefeitura de Santa Luzia"],  # Santa Luzia (MG) é cidade grande, mas não capital
+    ["Prefeitura Municipal de Caruaru - PE"],  # interior de outro estado continua fora
     ["Prefeitura do Recife - processo seletivo simplificado"],
     ["Concurso Público para a Prefeitura de Macaé"],
     ["Exame Nacional da Magistratura - ENAM (2026.2)"],
@@ -65,7 +68,6 @@ FORA = [
     ["Serviço Militar Voluntário - Exército Brasileiro"],
     ["Processo Seletivo Simplificado para Professor Substituto da Universidade Federal do Pará"],
     ["IME Brasil"],
-    ["UDESC 26"],
     ["PREF PORTO ALEGRE RS 26"],
     ["PREF PORTO VELHO 26 PROCURADOR"],
     ["CAMARA MUNICIPAL BOAVISTA 25"],
@@ -226,3 +228,52 @@ def test_nomes_com_acento():
 def test_municipal_e_novas_areas(textos, esperado):
     r = classificar(*textos)
     assert r is not None and (r.categoria, r.esfera, r.uf, r.municipio, r.orgao) == esperado
+
+
+@pytest.mark.parametrize("textos,esperado", [
+    (["Prefeitura Municipal de Natuba - PB"], ("prefeitura", "municipal", "PB", "Natuba", "Prefeitura de Natuba", "prefeitura-natuba")),
+    (["Concurso Prefeitura de Parari, na Paraíba"], ("prefeitura", "municipal", "PB", "Parari", "Prefeitura de Parari", "prefeitura-parari")),
+    (["Câmara Municipal de Areia - PB"], ("legislativo", "municipal", "PB", "Areia", "Câmara Municipal de Areia", "camara-areia")),
+    (["Prefeitura de Campina Grande"], ("prefeitura", "municipal", "PB", "Campina Grande", "Prefeitura de Campina Grande", "prefeitura-campina-grande")),
+    (["Prefeitura de Belém - PB"], ("prefeitura", "municipal", "PB", "Belém", "Prefeitura de Belém", "prefeitura-belem-pb")),
+    (["Prefeitura de Belém"], ("prefeitura", "municipal", "PA", "Belém", "Prefeitura de Belém", "prefeitura-belem")),
+    (["Prefeitura de Santa Luzia - PB"], ("prefeitura", "municipal", "PB", "Santa Luzia", "Prefeitura de Santa Luzia", "prefeitura-santa-luzia-pb")),
+    (["Prefeitura Municipal de Mãe d’Água - PB"], ("prefeitura", "municipal", "PB", "Mãe d'Água", "Prefeitura de Mãe d'Água", "prefeitura-mae-d-agua")),
+    (["Prefeitura Municipal do Conde PB"], ("prefeitura", "municipal", "PB", "Conde", "Prefeitura do Conde", "prefeitura-conde")),
+    (["Prefeitura de São Domingos - PB"], ("prefeitura", "municipal", "PB", "São Domingos de Pombal", "Prefeitura de São Domingos de Pombal", "prefeitura-sao-domingos-de-pombal")),
+])
+def test_municipios_da_paraiba(textos, esperado):
+    r = classificar(*textos)
+    assert r is not None and (r.categoria, r.esfera, r.uf, r.municipio, r.orgao, r.sigla) == esperado
+
+
+def test_municipios_da_paraiba_sao_223():
+    from ntc.municipios import PARAIBA
+    assert len(PARAIBA) == len(set(PARAIBA)) == 223
+
+
+def test_areas_dos_cargos_no_municipal():
+    r = classificar("Prefeitura Municipal de Parari - PB", "Professor de Educação Básica", "Enfermeiro",
+                    "Assistente Social", "Fiscal de Tributos e Arrecadação", "Agente de Vigilância Sanitária",
+                    "Procurador Municipal")
+    assert r.areas == ("educacao", "saude", "assistencia", "fiscal", "advocacia", "vigilancia")
+    # a categoria do concurso não se repete nas áreas
+    r = classificar("Prefeitura de Fortaleza - Agente de Trânsito", "Agente de Trânsito", "Enfermeiro")
+    assert r.categoria == "transito" and r.areas == ("saude",)
+    # fora da esfera municipal, as áreas continuam só "ti"
+    assert classificar("SEFAZ AL 26", "Auditor Fiscal").areas == ()
+
+
+@pytest.mark.parametrize("textos,esperado", [
+    (["UEPB 2026"], ("PB", "Universidade Estadual da Paraíba", "uepb")),
+    (["Universidade Estadual da Paraíba - Técnico Administrativo"], ("PB", "Universidade Estadual da Paraíba", "uepb")),
+    (["UDESC 26"], ("SC", "Universidade do Estado de Santa Catarina", "udesc")),
+    (["Concurso Universidade Estadual de Campinas"], ("SP", "Universidade Estadual de Campinas", "unicamp")),
+    (["Universidade do Estado do Rio de Janeiro - UERJ"], ("RJ", "Universidade do Estado do Rio de Janeiro", "uerj")),
+    (["Universidade Estadual do Oeste do Paraná"], ("PR", "Universidade Estadual do Oeste do Paraná", "unioeste")),
+    (["USP 2026"], ("SP", "Universidade de São Paulo", "usp")),
+])
+def test_universidades_estaduais(textos, esperado):
+    r = classificar(*textos)
+    assert r is not None and (r.categoria, r.esfera) == ("educacao", "estadual")
+    assert (r.uf, r.orgao, r.sigla) == esperado

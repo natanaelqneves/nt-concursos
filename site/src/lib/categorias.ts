@@ -57,6 +57,7 @@ export const SOBRE_CATEGORIA: Record<Categoria, { titulo: string; paragrafos: st
     paragrafos: [
       "A Receita Federal, na União, e as secretarias de Fazenda (ou receitas estaduais), nos estados, cobram e fiscalizam os tributos: na esfera federal, impostos como o de renda e o IPI; nos estados, principalmente o ICMS e o IPVA. Também cuidam da arrecadação, do controle aduaneiro e, nos estados, de parte da gestão financeira.",
       "Os cargos mais disputados são de auditor fiscal, de nível superior, com provas longas que cobram direito tributário, contabilidade, auditoria, direito constitucional e administrativo e, em muitos editais, tecnologia da informação e legislação tributária do próprio estado. Há também cargos de analista e técnico fazendário.",
+      "Nos municípios, os fiscais de tributos cobram o ISS, o IPTU e as taxas municipais. Esses cargos aparecem aqui quando estão nos concursos das prefeituras que acompanhamos (capitais e municípios da Paraíba).",
     ],
   },
   advocacia: {
@@ -64,6 +65,7 @@ export const SOBRE_CATEGORIA: Record<Categoria, { titulo: string; paragrafos: st
     paragrafos: [
       "A advocacia pública defende a União, os estados e o Distrito Federal na Justiça e dá consultoria jurídica à administração. Na União, a Advocacia-Geral da União (AGU) reúne carreiras como advogado da União e procurador federal, e a Procuradoria-Geral da Fazenda Nacional (PGFN) cuida da cobrança da dívida ativa federal. Nos estados, esse papel é das procuradorias-gerais (PGEs).",
       "O cargo de procurador exige bacharelado em Direito e, em geral, inscrição na OAB; o concurso costuma ter provas objetivas, discursivas e orais, além de títulos. As procuradorias também fazem concursos para cargos de apoio, como analista e técnico.",
+      "Nos municípios, procuradores e advogados defendem a prefeitura ou a câmara. Esses cargos aparecem aqui quando estão nos concursos municipais que acompanhamos (capitais e municípios da Paraíba).",
     ],
   },
   executivo: {
@@ -78,21 +80,23 @@ export const SOBRE_CATEGORIA: Record<Categoria, { titulo: string; paragrafos: st
     paragrafos: [
       "O Legislativo faz as leis e fiscaliza o Executivo. Na União, é formado pela Câmara dos Deputados e pelo Senado Federal; nos estados, pelas assembleias legislativas; no Distrito Federal, pela Câmara Legislativa.",
       "Os concursos são para analistas e técnicos legislativos, consultores legislativos e de orçamento e, em algumas casas, policiais legislativos (que aparecem aqui em segurança pública). Os salários costumam estar entre os mais altos do serviço público, e as provas cobram o regimento interno da casa, além das matérias da especialidade.",
-      "Nos municípios, acompanhamos as câmaras municipais das capitais, que fazem concursos para técnicos e analistas legislativos, procuradores e cargos de apoio.",
+      "Nos municípios, acompanhamos as câmaras municipais das capitais e de todos os municípios da Paraíba, que fazem concursos para técnicos e analistas legislativos, procuradores e cargos de apoio.",
     ],
   },
   educacao: {
     titulo: "Concursos da educação pública",
     paragrafos: [
       "Na esfera federal, acompanhamos as universidades e os institutos federais de educação, ciência e tecnologia. Eles fazem concursos para professores (magistério superior e ensino básico, técnico e tecnológico) e para técnicos-administrativos em educação, cargos de nível médio e superior que trabalham na gestão, nos laboratórios, nas bibliotecas e no atendimento.",
-      "Nos estados, acompanhamos as secretarias de educação, que contratam professores da rede estadual e profissionais de apoio. Seleções temporárias, como as de professor substituto ou contratado, ficam de fora: aqui entram só concursos para cargos efetivos.",
+      "Nos estados, acompanhamos as secretarias de educação, que contratam professores da rede estadual e profissionais de apoio, e as universidades estaduais, como a UEPB, a UERN, a UNEB, a USP e a Unicamp, com concursos para professores e técnicos administrativos. Seleções temporárias, como as de professor substituto ou contratado, ficam de fora: aqui entram só concursos para cargos efetivos.",
+      "Também aparecem aqui os concursos das prefeituras que acompanhamos (capitais e municípios da Paraíba) quando têm cargos da educação, como professor, pedagogo, supervisor escolar e cuidador de alunos.",
     ],
   },
   saude: {
-    titulo: "Concursos da saúde pública estadual",
+    titulo: "Concursos da saúde pública",
     paragrafos: [
       "As secretarias estaduais de saúde e as fundações estaduais de saúde administram hospitais, hemocentros, laboratórios e a gestão do SUS em cada estado. Os concursos costumam ter muitos cargos ao mesmo tempo: médicos de várias especialidades, enfermeiros, técnicos de enfermagem, farmacêuticos, fisioterapeutas, psicólogos, assistentes sociais e cargos administrativos.",
       "Muitos cargos exigem registro no conselho profissional e, às vezes, residência ou especialização, e o concurso pode ter prova de títulos. Seleções temporárias e processos seletivos simplificados ficam de fora.",
+      "Também aparecem aqui os concursos das prefeituras que acompanhamos (capitais e municípios da Paraíba) com cargos da saúde, como médico, enfermeiro, técnico de enfermagem, dentista e agente comunitário de saúde.",
     ],
   },
   militar: {
@@ -106,28 +110,36 @@ export const SOBRE_CATEGORIA: Record<Categoria, { titulo: string; paragrafos: st
     titulo: "O que faz a guarda municipal",
     paragrafos: [
       "As guardas municipais protegem os bens, os serviços e as instalações do município, fazem patrulhamento preventivo em praças, escolas e prédios públicos e, em muitas cidades, ajudam na fiscalização do trânsito. O Estatuto Geral das Guardas Municipais (Lei 13.022/2014) define essas funções e permite que a guarda atue em conjunto com as polícias.",
-      "Acompanhamos as guardas das capitais e das cidades com mais de 200 mil habitantes. Os concursos costumam pedir ensino médio, carteira de habilitação e idade mínima, e além da prova escrita têm teste físico, avaliação psicológica, investigação social e curso de formação.",
+      "Acompanhamos as guardas das capitais, das cidades com mais de 200 mil habitantes e dos municípios da Paraíba. Os concursos costumam pedir ensino médio, carteira de habilitação e idade mínima, e além da prova escrita têm teste físico, avaliação psicológica, investigação social e curso de formação.",
     ],
   },
   transito: {
     titulo: "Concursos da área de trânsito",
     paragrafos: [
       "Nos estados, os departamentos estaduais de trânsito (Detrans) cuidam da habilitação de condutores, do registro e do licenciamento de veículos e da fiscalização. Os concursos são para cargos administrativos, de vistoria, de examinador de trânsito e de nível superior.",
-      "Nos municípios, os órgãos de trânsito e mobilidade urbana (superintendências, secretarias ou autarquias) contratam agentes de trânsito, que fiscalizam e orientam o tráfego, aplicam autuações e operam o trânsito em eventos e obras. Acompanhamos as capitais e as cidades com mais de 200 mil habitantes.",
+      "Nos municípios, os órgãos de trânsito e mobilidade urbana (superintendências, secretarias ou autarquias) contratam agentes de trânsito, que fiscalizam e orientam o tráfego, aplicam autuações e operam o trânsito em eventos e obras. Acompanhamos as capitais, as cidades com mais de 200 mil habitantes e os municípios da Paraíba.",
     ],
   },
   vigilancia: {
     titulo: "Concursos de vigilância",
     paragrafos: [
       "Aqui entram três tipos de concurso: vigilância sanitária e epidemiológica (fiscais e agentes que inspecionam estabelecimentos, alimentos e serviços de saúde e acompanham doenças), agentes de combate às endemias (que atuam contra a dengue e outras doenças transmitidas por vetores) e vigilantes de órgãos públicos.",
-      "Acompanhamos as agências estaduais de vigilância sanitária e, nos municípios, as capitais e as cidades com mais de 200 mil habitantes. Muitos cargos de vigilância sanitária pedem formação na área de saúde ou em áreas técnicas, e o edital diz quais cursos são aceitos.",
+      "Acompanhamos as agências estaduais de vigilância sanitária e, nos municípios, as capitais, as cidades com mais de 200 mil habitantes e os municípios da Paraíba, onde agente de vigilância sanitária e agente de endemias aparecem em quase todo concurso de prefeitura. Muitos cargos de vigilância sanitária pedem formação na área de saúde ou em áreas técnicas, e o edital diz quais cursos são aceitos.",
     ],
   },
   prefeitura: {
-    titulo: "Concursos das prefeituras das capitais",
+    titulo: "Concursos das prefeituras",
     paragrafos: [
-      "As prefeituras das capitais estão entre os maiores empregadores públicos de cada estado. Fazem concursos para professores da rede municipal, profissionais de saúde, fiscais de tributos e de obras, procuradores, analistas e técnicos de várias secretarias.",
-      "Acompanhamos as 26 capitais estaduais (Brasília fica de fora porque o Distrito Federal não tem prefeitura; os concursos do governo do DF aparecem nas outras áreas). Entram só concursos para cargos efetivos: seleções temporárias e processos seletivos simplificados ficam de fora.",
+      "As prefeituras estão entre os maiores empregadores públicos do país. Um mesmo edital costuma reunir cargos de várias secretarias: professores e cuidadores da rede municipal, médicos, enfermeiros e agentes de saúde, assistentes sociais, fiscais de tributos e de vigilância sanitária, procuradores, motoristas, agentes administrativos e auxiliares de serviços.",
+      "Acompanhamos as 26 capitais estaduais (Brasília fica de fora porque o Distrito Federal não tem prefeitura; os concursos do governo do DF aparecem nas outras áreas) e os 223 municípios da Paraíba. Em municípios pequenos, o concurso costuma ter poucas vagas por cargo, provas objetivas num domingo e, para alguns cargos, prova prática ou de títulos. Entram só concursos para cargos efetivos: seleções temporárias e processos seletivos simplificados ficam de fora.",
+      "Os cargos de cada edital também aparecem nas áreas correspondentes (Educação, Saúde, Assistência social, Fiscal e Receita, Advocacia pública e Vigilância).",
+    ],
+  },
+  assistencia: {
+    titulo: "Concursos da assistência social",
+    paragrafos: [
+      "A assistência social pública é organizada pelo Sistema Único de Assistência Social (SUAS). Nos municípios, ela funciona nos Centros de Referência de Assistência Social (CRAS), que acompanham famílias e cuidam do Cadastro Único e do Bolsa Família, e nos Centros de Referência Especializados (CREAS), que atendem pessoas em situação de violação de direitos.",
+      "Os cargos mais comuns são assistente social, psicólogo, educador e orientador social, cuidador social e entrevistador do Cadastro Único. Assistente social exige graduação em Serviço Social e registro no conselho regional (CRESS). Aqui aparecem os concursos das prefeituras que acompanhamos (capitais e municípios da Paraíba) com cargos da área.",
     ],
   },
   outro: {

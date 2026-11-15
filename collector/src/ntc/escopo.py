@@ -2,8 +2,10 @@
 
 Escopo (docs/ARQUITETURA.md, seção 11): órgãos federais e estaduais das categorias
 tribunal, controle, mp, defensoria, seguranca, fiscal, advocacia, executivo (federal e gestão
-estadual), legislativo, educacao, saude, militar, estatal e conselho; outros órgãos só com cargo de TI. Municipais, outorgas de
-cartório, exames e processos seletivos ficam fora.
+estadual), legislativo, educacao (inclui universidades estaduais desde 15/11/2026), saude, militar,
+estatal e conselho; outros órgãos só com cargo de TI. Na esfera municipal: capitais, cidades grandes
+(guarda, trânsito, vigilância) e os 223 municípios da Paraíba (15/11/2026). Outorgas de cartório,
+exames e processos seletivos ficam fora.
 
 A classificação usa só texto que a fonte publica sobre o concurso (título, nome
 abreviado da banca, cargos, hierarquia do DOU). Regras explícitas e testadas, sem
@@ -303,7 +305,8 @@ def classificar(*textos: str | None) -> Classificacao | None:
     areas = ("ti",) if tem_ti(*partes) else ()
     m = _municipal(partes, curtos)
     if m is not None:
-        return replace(m, areas=areas)
+        cargos = tuple(a for a in areas_de_cargo(*curtos_lista[1:]) if a != m.categoria)
+        return replace(m, areas=areas + cargos)
     if _MUNICIPAL.search(curtos) and not re.search(r"tribunal de contas dos municipios", curtos):
         return None
     e = _transito_vigilancia_estadual(curtos)
@@ -528,6 +531,71 @@ _FEDERAIS_EDUCACAO = {
     "ifrn": "RN", "ifro": "RO", "ifrr": "RR", "ifrs": "RS", "ifsul": "RS", "iffar": "RS", "ifsc": "SC",
     "ifc": "SC", "ifs": "SE", "ifsp": "SP", "ifto": "TO", "cefetmg": "MG", "cefetrj": "RJ", "cp2": "RJ",
 }
+# Universidades estaduais (15/11/2026): sigla -> (UF, nome oficial). Entram como educacao estadual.
+_ESTADUAIS_EDUCACAO: dict[str, tuple[str, str]] = {
+    "uepb": ("PB", "Universidade Estadual da Paraíba"),
+    "uern": ("RN", "Universidade do Estado do Rio Grande do Norte"),
+    "uece": ("CE", "Universidade Estadual do Ceará"),
+    "urca": ("CE", "Universidade Regional do Cariri"),
+    "uvace": ("CE", "Universidade Estadual Vale do Acaraú"),
+    "uema": ("MA", "Universidade Estadual do Maranhão"),
+    "uemasul": ("MA", "Universidade Estadual da Região Tocantina do Maranhão"),
+    "uespi": ("PI", "Universidade Estadual do Piauí"),
+    "upe": ("PE", "Universidade de Pernambuco"),
+    "uneal": ("AL", "Universidade Estadual de Alagoas"),
+    "uncisal": ("AL", "Universidade Estadual de Ciências da Saúde de Alagoas"),
+    "uneb": ("BA", "Universidade do Estado da Bahia"),
+    "uefs": ("BA", "Universidade Estadual de Feira de Santana"),
+    "uesb": ("BA", "Universidade Estadual do Sudoeste da Bahia"),
+    "uesc": ("BA", "Universidade Estadual de Santa Cruz"),
+    "uea": ("AM", "Universidade do Estado do Amazonas"),
+    "ueap": ("AP", "Universidade do Estado do Amapá"),
+    "uerr": ("RR", "Universidade Estadual de Roraima"),
+    "uepa": ("PA", "Universidade do Estado do Pará"),
+    "unitins": ("TO", "Universidade Estadual do Tocantins"),
+    "unemat": ("MT", "Universidade do Estado de Mato Grosso"),
+    "uems": ("MS", "Universidade Estadual de Mato Grosso do Sul"),
+    "ueg": ("GO", "Universidade Estadual de Goiás"),
+    "undf": ("DF", "Universidade do Distrito Federal"),
+    "uemg": ("MG", "Universidade do Estado de Minas Gerais"),
+    "unimontes": ("MG", "Universidade Estadual de Montes Claros"),
+    "uerj": ("RJ", "Universidade do Estado do Rio de Janeiro"),
+    "uenf": ("RJ", "Universidade Estadual do Norte Fluminense Darcy Ribeiro"),
+    "usp": ("SP", "Universidade de São Paulo"),
+    "unicamp": ("SP", "Universidade Estadual de Campinas"),
+    "unesp": ("SP", "Universidade Estadual Paulista"),
+    "uel": ("PR", "Universidade Estadual de Londrina"),
+    "uem": ("PR", "Universidade Estadual de Maringá"),
+    "uepg": ("PR", "Universidade Estadual de Ponta Grossa"),
+    "unioeste": ("PR", "Universidade Estadual do Oeste do Paraná"),
+    "unicentro": ("PR", "Universidade Estadual do Centro-Oeste"),
+    "uenp": ("PR", "Universidade Estadual do Norte do Paraná"),
+    "unespar": ("PR", "Universidade Estadual do Paraná"),
+    "udesc": ("SC", "Universidade do Estado de Santa Catarina"),
+    "uergs": ("RS", "Universidade Estadual do Rio Grande do Sul"),
+}
+# Ordem: nomes mais longos primeiro ("... do Paraná" não engole "... do Oeste do Paraná").
+_ESTADUAIS_POR_NOME = sorted(((sem_acento(n), sigla) for sigla, (_, n) in _ESTADUAIS_EDUCACAO.items()),
+                             key=lambda x: -len(x[0]))
+_UNIVERSIDADE_ESTADUAL = re.compile(r"universidade (?:estadual|do estado)\b")
+
+
+def _universidade_estadual(t: str) -> tuple[int, Classificacao] | None:
+    for nome, sigla in _ESTADUAIS_POR_NOME:
+        i = t.find(nome)
+        if i >= 0 and not re.match(r"[a-z]", t[i + len(nome):i + len(nome) + 1]):
+            uf, oficial = _ESTADUAIS_EDUCACAO[sigla]
+            return i, _c("educacao", "estadual", uf, oficial, sigla)
+    m = _UNIVERSIDADE_ESTADUAL.search(t)
+    if m:  # universidade estadual fora da lista: UF pelo nome do estado logo depois
+        uf = uf_por_nome(t, m.start())
+        if uf and uf_por_nome(t[m.start():m.start() + 60]) == uf:
+            nome, prep = ESTADOS[uf]
+            return m.start(), _c("educacao", "estadual", uf, f"Universidade Estadual {prep} {nome}",
+                                 f"universidade-estadual-{uf.lower()}")
+    return None
+
+
 # Secretarias estaduais por sigla (com a UF logo depois: "SEDUC AL 26", "SESAU AL 26").
 _SIGLAS_SETORIAIS = {
     "seduc": "educacao", "sedu": "educacao", "seed": "educacao", "see": "educacao", "sec": "educacao",
@@ -604,6 +672,10 @@ def _setorial_por_nome(t: str, orig: str) -> Classificacao | None:
                 nome = _nome_por_extenso(fonte, t, m.start())
                 sigla = slug_simples(nome)
             candidatos.append((m.start(), _c("educacao", "federal", uf or "BR", nome, sigla)))
+    # Universidades estaduais (15/11/2026)
+    u = _universidade_estadual(t)
+    if u:
+        candidatos.append(u)
     # Secretarias estaduais de educação e de saúde; fundações estaduais de saúde
     for categoria, padrao, rotulo, base in (
         ("educacao", r"secretaria (?:de estado )?(?:da |de )?educacao", "Secretaria de Educação", "seduc"),
@@ -681,6 +753,11 @@ def _setorial_por_sigla(titulo: str) -> Classificacao | None:
             if len(chave) <= 4 and a == chave and prox and not prox.isdigit():
                 return None
             return _c("militar", "federal", "BR", _SIGLAS_MILITARES[chave], chave)
+        if chave in _ESTADUAIS_EDUCACAO:
+            if len(chave) <= 3 and a == chave and prox and not (prox.isdigit() or prox in _UFS):
+                return None
+            uf, oficial = _ESTADUAIS_EDUCACAO[chave]
+            return _c("educacao", "estadual", uf, oficial, chave)
         if chave in _FEDERAIS_EDUCACAO:
             if len(chave) <= 3 and a == chave and prox and not (prox.isdigit() or prox in _UFS):
                 return None
@@ -724,6 +801,41 @@ def tem_ti(*textos: str | None) -> bool:
         if _TI.search(limpo):
             return True
     return False
+
+
+# ---------------------------------------------------------------- áreas dos cargos (15/11/2026)
+# Nos concursos municipais, que reúnem cargos de várias secretarias num só edital, as áreas dos
+# cargos entram em `areas` e o concurso aparece também na página de cada área.
+
+_AREAS_CARGO: tuple[tuple[str, re.Pattern[str]], ...] = (
+    ("educacao", re.compile(
+        r"professor|docente|magisterio|pedagog|supervisor escolar|orientador educacional|inspetor escolar|"
+        r"monitor escolar|cuidador (?:escolar|de alunos)|auxiliar de sala|interprete de libras|tradutor e interprete")),
+    ("saude", re.compile(
+        r"medic[oa]|enfermeir|tecnico (?:de|em) enfermagem|auxiliar de enfermagem|farmaceutic|fisioterapeut|"
+        r"fonoaudiolog|nutricionista|odontolog|dentista|cirurgiao[- ]dentista|auxiliar de saude bucal|psicolog[oa]|"
+        r"agente comunitario de saude|biomedic|terapeuta ocupacional|tecnico (?:de|em) laboratorio|radiolog|"
+        r"bioquimic|educador fisico|profissional de educacao fisica|tecnico (?:de|em) saude")),
+    ("assistencia", re.compile(
+        r"assistente social|assistencia social|educador social|orientador social|cuidador social|"
+        r"entrevistador social|visitador social|\bcras\b|\bcreas\b")),
+    ("fiscal", re.compile(
+        r"fiscal de tributos|fiscal tributario|agente fiscal|auditor fiscal|fiscal de rendas|agente de tributos|"
+        r"fiscal de arrecadacao")),
+    ("advocacia", re.compile(r"procurador|advogado|assessor juridico")),
+    ("vigilancia", re.compile(
+        r"vigilancia sanitaria|vigilancia epidemiologica|vigilancia em saude|vigilancia ambiental|"
+        r"agente (?:de )?(?:combate (?:a|as) )?endemias|fiscal sanitario|fiscal de vigilancia|\bvigilante\b")),
+    ("transito", re.compile(r"agente (?:municipal )?de (?:transito|mobilidade)|agente de fiscalizacao de transito")),
+    ("guarda", re.compile(r"guarda (?:civil )?municipal|guarda civil metropolitana|\bgcm\b")),
+)
+AREAS_CARGO = tuple(a for a, _ in _AREAS_CARGO)
+
+
+def areas_de_cargo(*textos: str | None) -> tuple[str, ...]:
+    """Áreas dos cargos citados (ordem fixa). "Noções de informática" e afins não contam."""
+    t = sem_acento(" | ".join(x for x in textos if x))
+    return tuple(a for a, r in _AREAS_CARGO if r.search(t))
 
 
 # ---------------------------------------------------------------- conselhos profissionais
@@ -927,9 +1039,25 @@ slugify_simples = slug_simples
 # Capitais: todos os concursos efetivos de prefeitura e câmara. Capitais e cidades com mais de
 # 200 mil habitantes: guarda municipal, trânsito e vigilância. Detrans e vigilância estaduais.
 
-from ntc.municipios import CAPITAIS, GRANDES  # noqa: E402
+from ntc.municipios import CAPITAIS, GRANDES, PARAIBA, PARAIBA_OUTROS_NOMES  # noqa: E402
 
-_CIDADES = sorted(((sem_acento(n), n, uf) for n, uf in GRANDES.items()), key=lambda x: -len(x[0]))
+
+def _chave_cidade(nome: str) -> str:
+    return sem_acento(nome).replace("’", "'")
+
+
+# (chave sem acento, nome oficial, UF, só com marca da Paraíba). Municípios pequenos da Paraíba
+# só casam quando o texto diz que são da Paraíba ("- PB", "na Paraíba"): muitos têm homônimos em
+# outros estados (Belém, Boa Vista, Santa Luzia, Triunfo, São Bento...).
+_CIDADES: list[tuple[str, str, str, bool]] = sorted(
+    [(_chave_cidade(n), n, uf, False) for n, uf in GRANDES.items()]
+    + [(_chave_cidade(n), n, "PB", True) for n in PARAIBA if GRANDES.get(n) != "PB"]
+    + [(_chave_cidade(a), n, "PB", True) for a, n in PARAIBA_OUTROS_NOMES.items()],
+    key=lambda x: -len(x[0]),
+)
+_MARCA_PB = re.compile(r"\bpb\b|paraiba")
+# Municípios da Paraíba com o mesmo nome de uma cidade grande de outro estado: o slug ganha "-pb".
+_HOMONIMOS_PB = {n for n in PARAIBA if GRANDES.get(n, "PB") != "PB"}
 _ANTES_CIDADE = re.compile(
     r"(?:prefeitura(?: municipal)?|camara municipal|camara de vereadores|municipio|guarda civil municipal|"
     r"guarda municipal|guarda civil metropolitana|superintendencia (?:municipal )?de transito[a-z ]*?|"
@@ -947,7 +1075,8 @@ _VIGILANCIA = re.compile(
 )
 _CAMARA = re.compile(r"camara municipal|camara de vereadores")
 # Cidades que se escrevem com artigo ("Prefeitura do Recife", "Câmara Municipal do Rio de Janeiro").
-_COM_ARTIGO = {"Rio de Janeiro": "do", "Recife": "do", "Natal": "do", "Guarujá": "do", "Rio Claro": "de"}
+_COM_ARTIGO = {"Rio de Janeiro": "do", "Recife": "do", "Natal": "do", "Guarujá": "do", "Rio Claro": "de",
+               "Conde": "do", "Congo": "do"}
 _ORGAO_MUNICIPAL = re.compile(r"(controladoria|procuradoria)[- ]geral do municipio")
 _NOME_TIPO = {
     "guarda": ("Guarda Municipal", "gcm"), "transito": ("Prefeitura", "transito"),
@@ -958,14 +1087,30 @@ _NOME_TIPO = {
 
 def _cidade(curtos: str) -> tuple[str, str] | None:
     """(nome, UF) da cidade nomeada logo depois de "prefeitura de", "câmara municipal de" etc."""
+    curtos = curtos.replace("’", "'")
+    marca_pb = bool(_MARCA_PB.search(curtos))
     for m in _ANTES_CIDADE.finditer(curtos):
         resto = curtos[m.end():]
-        for chave, nome, uf in _CIDADES:
-            if resto.startswith(chave) and _DEPOIS_CIDADE.match(resto[len(chave):]):
-                u = _UF_DEPOIS.match(resto[len(chave):])
-                if u and u.group(1) in _UFS and u.group(1) != uf.lower():
-                    continue  # homônimo em outro estado
-                return nome, uf
+        achados = [(chave, nome, uf, so_pb) for chave, nome, uf, so_pb in _CIDADES
+                   if resto.startswith(chave) and _DEPOIS_CIDADE.match(resto[len(chave):])]
+        if not achados:
+            continue
+        maior = len(achados[0][0])
+        achados = [a for a in achados if len(a[0]) == maior]  # o nome mais longo ganha
+        u = _UF_DEPOIS.match(resto[maior:])
+        uf_texto = u.group(1).upper() if u and u.group(1) in _UFS else None
+        if uf_texto:
+            certo = next((a for a in achados if a[2] == uf_texto), None)
+            if certo:
+                return certo[1], certo[2]
+            continue  # homônimo em outro estado
+        if marca_pb:
+            pb = next((a for a in achados if a[2] == "PB"), None)
+            if pb:
+                return pb[1], pb[2]
+        outro = next((a for a in achados if not a[3]), None)
+        if outro:
+            return outro[1], outro[2]
     return None
 
 
@@ -975,7 +1120,8 @@ def _municipal(partes: list[str], curtos: str) -> Classificacao | None:
         return None
     nome, uf = achada
     titulo = sem_acento(partes[0])
-    capital = nome in CAPITAIS
+    # Capitais e municípios da Paraíba: todos os concursos efetivos de prefeitura e câmara.
+    capital = nome in CAPITAIS or uf == "PB"
     if _CAMARA.search(titulo):
         categoria = "legislativo"
     elif _GUARDA.search(titulo):
@@ -1000,7 +1146,8 @@ def _municipal(partes: list[str], curtos: str) -> Classificacao | None:
     if categoria == "prefeitura" and o:
         orgao = f"{o.group(1).capitalize()}-Geral do Município {prep} {nome}"
         prefixo = f"{o.group(1)[:4]}geral"
-    return Classificacao(categoria, "municipal", uf, orgao, f"{prefixo}-{slug_simples(nome)}", municipio=nome)
+    sufixo = "-pb" if uf == "PB" and nome in _HOMONIMOS_PB else ""
+    return Classificacao(categoria, "municipal", uf, orgao, f"{prefixo}-{slug_simples(nome)}{sufixo}", municipio=nome)
 
 
 _DETRAN = re.compile(r"\bdetran\s*[-/ ]?\s*([a-z]{2})\b|departamento estadual de transito|departamento de transito d[eoa]s?")

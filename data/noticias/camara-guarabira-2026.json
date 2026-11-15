@@ -1,0 +1,107 @@
+{
+  "slug": "camara-guarabira-2026",
+  "titulo": "Câmara Municipal de Guarabira (PB) abre concurso com 5 vagas",
+  "orgao": "Câmara Municipal de Guarabira",
+  "categoria": "legislativo",
+  "esfera": "municipal",
+  "uf": "PB",
+  "municipio": "Guarabira",
+  "banca": "CPCon/UEPB",
+  "resumo": "A Câmara Municipal de Guarabira, no Brejo paraibano, faz o primeiro concurso em mais de três décadas, com 5 vagas imediatas e cadastro de reserva para cargos de nível fundamental, médio e superior, todos com jornada de 40 horas e regime estatutário. Os cargos são auxiliar de serviços diversos, vigilante, auxiliar administrativo e arquivista. A seleção tem uma única fase, com prova objetiva de 40 questões, e o concurso vale por dois anos.",
+  "cargos": [
+    "Auxiliar de Serviços Diversos",
+    "Vigilante",
+    "Auxiliar Administrativo",
+    "Arquivista"
+  ],
+  "areas": [
+    "vigilancia"
+  ],
+  "fatos": [
+    {
+      "campo": "inscricao",
+      "texto": "De 21/10 a 22/11/2026, pela internet, no site da CPCon/UEPB",
+      "inicio": "2026-10-21",
+      "fim": "2026-11-22",
+      "fontes": [
+        "f-1",
+        "f-2"
+      ]
+    },
+    {
+      "campo": "isencao",
+      "texto": "Pedidos de isenção da taxa em 21 e 22/10/2026 (encerrado)",
+      "inicio": "2026-10-21",
+      "fim": "2026-10-22",
+      "fontes": [
+        "f-3",
+        "f-4"
+      ]
+    },
+    {
+      "campo": "vagas",
+      "texto": "5 vagas imediatas em 4 cargos, mais cadastro de reserva",
+      "fontes": [
+        "f-1",
+        "f-3"
+      ]
+    },
+    {
+      "campo": "remuneracao",
+      "texto": "De R$ 1.696,99 a R$ 3.354,70",
+      "fontes": [
+        "f-4",
+        "f-5"
+      ]
+    },
+    {
+      "campo": "prova",
+      "texto": "Prova objetiva prevista para 14/2/2027",
+      "inicio": "2027-02-14",
+      "fim": "2027-02-14",
+      "fontes": [
+        "f-4",
+        "f-5"
+      ]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "f-1",
+      "nome": "Qconcursos Folha Dirigida",
+      "url": "https://folha.qconcursos.com/n/camara-municipal-de-guarabira-pb-abre-concurso-com-5-vagas",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    },
+    {
+      "id": "f-2",
+      "nome": "Concursos no Brasil",
+      "url": "https://concursosnobrasil.com/concursos/pb/2026/09/30/concurso-camara-de-guarabira-pb-oferece-salarios-de-ate-r-33-mil/",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    },
+    {
+      "id": "f-3",
+      "nome": "Aprova Concursos",
+      "url": "https://www.aprovaconcursos.com.br/noticias/?p=167553",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    },
+    {
+      "id": "f-4",
+      "nome": "Apostilas Opção",
+      "url": "https://www.apostilasopcao.com.br/blog/camara-de-guarabira-pb/",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    },
+    {
+      "id": "f-5",
+      "nome": "Jornal da Paraíba",
+      "url": "https://jornaldaparaiba.com.br/_/221870",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    }
+  ],
+  "apurado_em": "2026-11-15T01:10:00-03:00",
+  "expira_em": "2026-11-22"
+}
