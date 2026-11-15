@@ -15,7 +15,8 @@ from urllib.parse import urlencode
 
 from ntc.fetch.http import Cliente
 
-API = "https://api.queridodiario.ok.org.br"
+# A documentação cita api.queridodiario.ok.org.br, que não responde (falha de TLS em 15/11/2026).
+API = "https://queridodiario.ok.org.br/api"
 BUSCA = '"concurso público" edital'
 
 
@@ -39,15 +40,11 @@ def sonda(cliente: Cliente, dias: int = 30) -> dict:
     from ntc.municipios import PARAIBA
 
     saida: dict = {}
-    # Em qual endereço a API responde? (só robots.txt e a página de documentação de cada candidato)
-    saida["enderecos"] = {}
-    for base in (API, "https://queridodiario.ok.org.br/api", "https://queridodiario.ok.org.br"):
-        for caminho in ("/robots.txt", "/docs"):
-            try:
-                r = cliente.sessao.get(base + caminho, timeout=20)
-                saida["enderecos"][base + caminho] = {"status": r.status_code, "texto": " ".join(r.text[:300].split())}
-            except Exception as e:
-                saida["enderecos"][base + caminho] = f"{type(e).__name__}: {e}"[:160]
+    try:  # regras do robots.txt, sem os comentários (ler o robots é sempre permitido)
+        r = cliente.sessao.get("https://queridodiario.ok.org.br/robots.txt", timeout=20)
+        saida["robots"] = [x.strip() for x in r.text.splitlines() if x.strip() and not x.strip().startswith("#")][:60]
+    except Exception as e:
+        saida["robots"] = f"{type(e).__name__}: {e}"[:200]
     try:
         todas = cidades(cliente, levels="3")
         if not todas:
