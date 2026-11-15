@@ -15,8 +15,9 @@ from urllib.parse import urlencode
 
 from ntc.fetch.http import Cliente
 
-# A documentação cita api.queridodiario.ok.org.br, que não responde (falha de TLS em 15/11/2026).
-API = "https://queridodiario.ok.org.br/api"
+# A documentação cita api.queridodiario.ok.org.br, que não responde (falha de TLS em 15/11/2026);
+# queridodiario.ok.org.br/api redireciona para este endereço.
+API = "https://api.queridodiario.org.br"
 BUSCA = '"concurso público" edital'
 
 

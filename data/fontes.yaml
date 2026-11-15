@@ -18,7 +18,7 @@ fontes:
   querido-diario:
     nome: Querido Diário (Open Knowledge Brasil)
     papel: descoberta   # diários oficiais municipais; nunca sustenta prazo
-    dominios: [queridodiario.ok.org.br]
+    dominios: [queridodiario.org.br, queridodiario.ok.org.br]
   fgv:
     nome: FGV Conhecimento
     papel: banca
