@@ -1,0 +1,75 @@
+{
+  "slug": "camara-areia-2026",
+  "titulo": "Câmara Municipal de Areia (PB) abre concurso com 4 vagas",
+  "orgao": "Câmara Municipal de Areia",
+  "categoria": "legislativo",
+  "esfera": "municipal",
+  "uf": "PB",
+  "municipio": "Areia",
+  "banca": "CPCon/UEPB",
+  "resumo": "A Câmara Municipal de Areia, cidade histórica do Brejo paraibano, publicou concurso com 4 vagas efetivas para auxiliar de serviços gerais e auxiliar administrativo, cargos de nível fundamental e médio, em regime estatutário. Além do vencimento básico, o cargo pode ter gratificações e adicionais previstos em lei. O concurso vale por dois anos, prorrogáveis por igual período. Não confundir com o concurso da Prefeitura de Areia, cujas inscrições terminaram em outubro.",
+  "cargos": [
+    "Auxiliar de Serviços Gerais",
+    "Auxiliar Administrativo"
+  ],
+  "fatos": [
+    {
+      "campo": "inscricao",
+      "texto": "De 29/10 a 29/11/2026, pela internet",
+      "inicio": "2026-10-29",
+      "fim": "2026-11-29",
+      "fontes": [
+        "f-1",
+        "f-2"
+      ]
+    },
+    {
+      "campo": "vagas",
+      "texto": "4 vagas efetivas",
+      "fontes": [
+        "f-1",
+        "f-3"
+      ]
+    },
+    {
+      "campo": "remuneracao",
+      "texto": "Vencimento básico de R$ 1.621, mais vantagens previstas em lei",
+      "fontes": [
+        "f-3",
+        "f-4"
+      ]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "f-1",
+      "nome": "Qconcursos Folha Dirigida",
+      "url": "https://folha.qconcursos.com/n/camara-municipal-de-areia-pb-abre-concurso-com-quatro-vagas-para-varias-escolaridades",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    },
+    {
+      "id": "f-2",
+      "nome": "Folha Patoense",
+      "url": "https://folhapatoense.com/2026/11/02/paraiba-tem-cerca-de-550-vagas-abertas-em-concursos-e-selecao-no-mes-de-novembro/",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    },
+    {
+      "id": "f-3",
+      "nome": "Concursos no Brasil",
+      "url": "https://concursosnobrasil.com/concursos/pb/2026/10/21/concurso-camara-de-areia-pb-abre-novas-vagas-para-servidores-efetivos/",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    },
+    {
+      "id": "f-4",
+      "nome": "PCI Concursos",
+      "url": "https://www.pciconcursos.com.br/concursos/camara-de-areia-pb",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    }
+  ],
+  "apurado_em": "2026-11-15T01:10:00-03:00",
+  "expira_em": "2026-11-29"
+}

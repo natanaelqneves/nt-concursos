@@ -32,7 +32,10 @@ export interface Documento {
   titulo?: string | null;
 }
 
-export type Categoria = "tribunal" | "controle" | "mp" | "defensoria" | "seguranca" | "estatal" | "conselho" | "fiscal" | "advocacia" | "executivo" | "legislativo" | "educacao" | "saude" | "militar" | "guarda" | "transito" | "vigilancia" | "prefeitura" | "outro";
+export type Categoria = "tribunal" | "controle" | "mp" | "defensoria" | "seguranca" | "estatal" | "conselho" | "fiscal" | "advocacia" | "executivo" | "legislativo" | "educacao" | "saude" | "militar" | "guarda" | "transito" | "vigilancia" | "prefeitura" | "assistencia" | "outro";
+// "assistencia" (15/11/2026) só existe como área de cargo (`areas`), nunca como categoria de órgão.
+// Áreas dos cargos: "ti" em qualquer concurso; as demais nos concursos municipais (15/11/2026).
+export type Area = "ti" | "educacao" | "saude" | "assistencia" | "fiscal" | "advocacia" | "vigilancia" | "transito" | "guarda";
 export type Esfera = "federal" | "estadual" | "municipal";
 export type Porte = "grande" | "medio" | "pequeno" | "indefinido";
 
@@ -54,7 +57,8 @@ export const NOME_CATEGORIA: Record<Categoria, string> = {
   guarda: "Guardas municipais",
   transito: "Trânsito",
   vigilancia: "Vigilância",
-  prefeitura: "Prefeituras das capitais",
+  prefeitura: "Prefeituras",
+  assistencia: "Assistência social",
   outro: "Outros órgãos",
 };
 
@@ -97,7 +101,7 @@ export interface Concurso {
   cargos: { nome: string; vagas?: Campo | null; remuneracao?: Campo | null }[];
   vagas_imediatas?: Campo | null;
   porte: Porte;
-  areas?: "ti"[];
+  areas?: Area[];
   taxa?: Campo | null;
   prazos: { isencao: Prazo; inscricao: Prazo };
   etapas?: Etapa[];
@@ -273,7 +277,7 @@ export interface Noticia {
   banca: string;
   resumo: string;
   cargos: string[];
-  areas?: "ti"[];
+  areas?: Area[];
   fatos: FatoNoticia[];
   fontes: FonteNoticia[];
   apurado_em: string;

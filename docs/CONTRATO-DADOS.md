@@ -212,6 +212,18 @@ validade terminando.
 | Site | `/podem-reabrir/` lista as validades que terminam nos próximos 12 meses ou terminaram há até 6 meses. Nunca aparece como inscrição aberta nem entra nas listas conferidas no edital |
 | `editais-avulsos.json` | entrada sem notícia publicada pode trazer `imprensa`: `{"inscricao": {"inicio", "fim"}, "fontes": [URLs de 2 veículos]}`; essas datas fazem a mesma conferência das da notícia |
 
+## Municípios da Paraíba, universidades estaduais e áreas dos cargos (15/11/2026, compatível com a versão 2)
+
+Decisão do dono: entram todos os municípios da Paraíba, as universidades estaduais e as áreas dos
+cargos encontradas nos concursos municipais.
+
+| Campo / arquivo | Regra |
+|---|---|
+| Recorte de cidades | os 223 municípios da Paraíba (lista em `collector/src/ntc/municipios.py`) seguem a regra das capitais: todos os concursos efetivos de prefeitura (`prefeitura`) e câmara (`legislativo`). Município pequeno só é reconhecido quando o texto diz que é da Paraíba ("- PB", "na Paraíba"), por causa dos homônimos; os que têm o nome de uma cidade grande de outro estado ganham `-pb` no slug (`prefeitura-belem-pb`) |
+| `categoria` | `educacao` passa a aceitar universidades estaduais (UEPB, UERN, UNEB, USP, Unicamp etc.) na esfera estadual |
+| `areas` | além de `ti`, aceita `educacao`, `saude`, `assistencia`, `fiscal`, `advocacia`, `vigilancia`, `transito` e `guarda`. Nos concursos municipais, vêm dos cargos (professor, enfermeiro, assistente social, fiscal de tributos, procurador, agente de vigilância sanitária…); a categoria do próprio concurso não se repete. Vale também para `noticias/*.json` e `validade/*.json` |
+| Site | a página de cada área lista os concursos da categoria e os que têm a área entre os cargos. `assistencia` existe só como área de cargo (página "Assistência social"), nunca como categoria |
+
 ## Etapas e "Em andamento" (13/11/2026, compatível com a versão 2)
 
 Decisão do dono: o concurso não some do site quando as inscrições fecham. Ele passa para a seção

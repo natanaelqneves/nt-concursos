@@ -1,0 +1,97 @@
+{
+  "slug": "prefeitura-itapororoca-2026",
+  "titulo": "Prefeitura de Itapororoca (PB) abre concurso com 175 vagas",
+  "orgao": "Prefeitura de Itapororoca",
+  "categoria": "prefeitura",
+  "esfera": "municipal",
+  "uf": "PB",
+  "municipio": "Itapororoca",
+  "banca": "FACET Concursos",
+  "resumo": "Itapororoca, na Zona da Mata paraibana, abriu concurso com 175 vagas imediatas em 46 cargos efetivos, do nível fundamental ao superior, e cadastro de reserva. Há vagas na educação, com professores de várias especialidades, na saúde, com médicos e fisioterapeutas, além de fiscal de tributos, agentes administrativos e de limpeza e um cargo de analista desenvolvedor, na área de tecnologia. A seleção tem duas etapas, que variam conforme o cargo.",
+  "cargos": [
+    "Agente Administrativo",
+    "Agente de Limpeza",
+    "Analista Desenvolvedor",
+    "Fiscal de Tributos",
+    "Fisioterapeuta",
+    "Médico",
+    "Professor"
+  ],
+  "areas": [
+    "ti",
+    "educacao",
+    "saude",
+    "fiscal"
+  ],
+  "fatos": [
+    {
+      "campo": "inscricao",
+      "texto": "De 19/10 a 20/11/2026, pela internet, no site da FACET Concursos",
+      "inicio": "2026-10-19",
+      "fim": "2026-11-20",
+      "fontes": [
+        "f-1",
+        "f-2",
+        "f-3"
+      ]
+    },
+    {
+      "campo": "vagas",
+      "texto": "175 vagas imediatas em 46 cargos",
+      "fontes": [
+        "f-1",
+        "f-4"
+      ]
+    },
+    {
+      "campo": "remuneracao",
+      "texto": "De R$ 1.621 a R$ 10.000",
+      "fontes": [
+        "f-1",
+        "f-4"
+      ]
+    },
+    {
+      "campo": "prova",
+      "texto": "Provas objetivas previstas para 20/12/2026",
+      "inicio": "2026-12-20",
+      "fim": "2026-12-20",
+      "fontes": [
+        "f-1",
+        "f-2"
+      ]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "f-1",
+      "nome": "Jornal da Paraíba",
+      "url": "https://jornaldaparaiba.com.br/_/221781",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    },
+    {
+      "id": "f-2",
+      "nome": "Qconcursos Folha Dirigida",
+      "url": "https://folha.qconcursos.com/n/prefeitura-de-itapororoca-pb-abre-concurso-com-175-vagas",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    },
+    {
+      "id": "f-3",
+      "nome": "Concursos no Brasil",
+      "url": "https://concursosnobrasil.com/concursos/pe/2026/10/19/concurso-prefeitura-de-itapororoca-pb-abre-175-vagas-com-salarios-de-ate-r-10-mil/",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    },
+    {
+      "id": "f-4",
+      "nome": "Aprova Concursos",
+      "url": "https://www.aprovaconcursos.com.br/noticias/?p=168081",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    }
+  ],
+  "apurado_em": "2026-11-15T01:10:00-03:00",
+  "expira_em": "2026-11-20"
+}

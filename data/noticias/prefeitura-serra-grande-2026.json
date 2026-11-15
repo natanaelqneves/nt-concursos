@@ -1,0 +1,100 @@
+{
+  "slug": "prefeitura-serra-grande-2026",
+  "titulo": "Prefeitura de Serra Grande (PB) abre concurso com 41 vagas",
+  "orgao": "Prefeitura de Serra Grande",
+  "categoria": "prefeitura",
+  "esfera": "municipal",
+  "uf": "PB",
+  "municipio": "Serra Grande",
+  "banca": "CPCon/UEPB",
+  "resumo": "Serra Grande, no Sertão da Paraíba, publicou o primeiro concurso desde 2018, com 41 vagas em 23 cargos efetivos de todos os níveis e cadastro de reserva. A organização é da comissão de concursos da Universidade Estadual da Paraíba. Os cargos incluem agente administrativo, agente comunitário de saúde, técnico em enfermagem, odontólogo e agente de limpeza urbana, com jornadas de 30 a 40 horas semanais. O concurso tem duas etapas e vale por dois anos, prorrogáveis.",
+  "cargos": [
+    "Agente Administrativo",
+    "Agente Comunitário de Saúde",
+    "Técnico em Enfermagem",
+    "Odontólogo",
+    "Agente de Limpeza Urbana"
+  ],
+  "areas": [
+    "saude"
+  ],
+  "fatos": [
+    {
+      "campo": "inscricao",
+      "texto": "De 29/10 a 29/11/2026, pela internet, no site da CPCon/UEPB",
+      "inicio": "2026-10-29",
+      "fim": "2026-11-29",
+      "fontes": [
+        "f-1",
+        "f-2",
+        "f-3"
+      ]
+    },
+    {
+      "campo": "vagas",
+      "texto": "41 vagas em 23 cargos, uma delas reservada a pessoa com deficiência",
+      "fontes": [
+        "f-1",
+        "f-3",
+        "f-4"
+      ]
+    },
+    {
+      "campo": "remuneracao",
+      "texto": "De R$ 1.621 a R$ 3.651",
+      "fontes": [
+        "f-1",
+        "f-2"
+      ]
+    },
+    {
+      "campo": "prova",
+      "texto": "Prova objetiva prevista para 14/2/2027",
+      "inicio": "2027-02-14",
+      "fim": "2027-02-14",
+      "fontes": [
+        "f-1",
+        "f-5"
+      ]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "f-1",
+      "nome": "Qconcursos Folha Dirigida",
+      "url": "https://folha.qconcursos.com/n/prefeitura-de-serra-grande-pb-publica-concurso-com-41-vagas",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    },
+    {
+      "id": "f-2",
+      "nome": "Jornal da Paraíba",
+      "url": "https://jornaldaparaiba.com.br/_/221917",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    },
+    {
+      "id": "f-3",
+      "nome": "Ache Concursos",
+      "url": "https://www.acheconcursos.com.br/concursos-paraiba/concurso-prefeitura-de-serra-grande-pb-2026-edital-41-vagas",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    },
+    {
+      "id": "f-4",
+      "nome": "Aprova Concursos",
+      "url": "https://www.aprovaconcursos.com.br/noticias/concurso-prefeitura-serra-grande-pb/",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    },
+    {
+      "id": "f-5",
+      "nome": "Nova Concursos",
+      "url": "https://www.novaconcursos.com.br/concurso/prefeitura-de-serra-grande-pb/2026-001-geral-pref-serra-grande-pb",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    }
+  ],
+  "apurado_em": "2026-11-15T01:10:00-03:00",
+  "expira_em": "2026-11-29"
+}

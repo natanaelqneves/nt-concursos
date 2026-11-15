@@ -30,21 +30,25 @@ Categoria = Literal[
     "executivo",    # executivo federal (ministérios, autarquias, agências, INSS, IBGE, CNU) e gestão estadual
                     # (secretarias de administração/planejamento, concursos unificados estaduais, EPPGG)
     "legislativo",  # Câmara dos Deputados, Senado Federal e assembleias legislativas
-    "educacao",     # universidades e institutos federais (UF da sede) e secretarias estaduais de educação
+    "educacao",     # universidades e institutos federais (UF da sede), universidades estaduais (15/11/2026)
+                    # e secretarias estaduais de educação
     "saude",        # secretarias estaduais de saúde e fundações estaduais de saúde
     "militar",      # Forças Armadas: Exército, Marinha e Aeronáutica (carreira, não temporários)
     "guarda",       # guardas municipais (capitais e cidades grandes)
     "transito",     # Detrans estaduais e órgãos municipais de trânsito (capitais e cidades grandes)
     "vigilancia",   # vigilância sanitária/epidemiológica, agente de endemias e vigilante (estadual ou municipal)
-    "prefeitura",   # demais concursos das prefeituras das capitais
+    "prefeitura",   # demais concursos das prefeituras das capitais e dos municípios da Paraíba
     "outro",     # demais órgãos federais/estaduais: só entram com cargo de TI (areas contém "ti")
 ]
-Area = Literal["ti"]
+# "ti" vale para qualquer concurso; as demais (15/11/2026) são as áreas dos cargos dos concursos
+# municipais, que reúnem várias secretarias num só edital (o concurso aparece em cada área).
+Area = Literal["ti", "educacao", "saude", "assistencia", "fiscal", "advocacia", "vigilancia", "transito", "guarda"]
 # Categorias federais que podem ter UF própria (sede regional); as demais federais usam BR.
 FEDERAIS_COM_UF = {"tribunal", "conselho", "educacao"}
 Esfera = Literal["federal", "estadual", "municipal"]
 # Na esfera municipal (13/11/2026) entram as capitais (prefeitura e câmara) e, nas capitais e
-# cidades grandes, guarda municipal, trânsito e vigilância.
+# cidades grandes, guarda municipal, trânsito e vigilância. Desde 15/11/2026, também os 223
+# municípios da Paraíba (prefeitura e câmara, como as capitais).
 CATEGORIAS_MUNICIPAIS = {"guarda", "transito", "vigilancia", "prefeitura", "legislativo"}
 SO_MUNICIPAIS = {"guarda", "prefeitura"}
 SEM_FEDERAL = {"transito", "vigilancia"}

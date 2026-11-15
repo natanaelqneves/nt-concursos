@@ -88,6 +88,10 @@ fontes:
     nome: Ache Concursos (cópia)
     papel: copia
     dominios: [acheconcursos.com.br]
+  agrobase:
+    nome: Agrobase Concursos (cópia)
+    papel: copia
+    dominios: [agrobase.com.br]
   cdn-cloudfront:
     nome: CDN de portal de concursos (cópia)
     papel: copia

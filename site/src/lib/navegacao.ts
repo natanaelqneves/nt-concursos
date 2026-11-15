@@ -53,10 +53,15 @@ export function porUf(uf: string, hoje = hojeBRT()): Grupo {
   };
 }
 
+/** Concursos da área: os do órgão dessa categoria e, nos municipais, os que têm cargos dela
+ * (uma prefeitura com professores aparece também em Educação). */
+const naArea = (cat: Categoria) => (x: { categoria: Categoria; areas?: string[] }) =>
+  x.categoria === cat || (x.areas ?? []).includes(cat);
+
 export function porCategoria(cat: Categoria, hoje = hojeBRT()): Grupo {
   return {
-    concursos: conferidos(hoje).filter((c) => c.categoria === cat),
-    noticias: noticiasAtivas(hoje).filter((n) => n.categoria === cat),
+    concursos: conferidos(hoje).filter(naArea(cat)),
+    noticias: noticiasAtivas(hoje).filter(naArea(cat)),
   };
 }
 
@@ -119,6 +124,10 @@ export interface ItemBusca {
   k: string; // termos extras (sem acento)
 }
 
+/** Nomes das áreas dos cargos ("Educação Saúde"), para a busca achar a prefeitura pela área. */
+const nomesAreas = (x: { areas?: string[] }) =>
+  (x.areas ?? []).map((a) => (a === "ti" ? "TI tecnologia" : NOME_CATEGORIA[a as Categoria] ?? "")).join(" ");
+
 const semAcento = (s: string) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
 
 /** Índice pequeno, embutido na página: concursos, apuração, bancos recorrentes, estados e áreas. */
@@ -129,7 +138,7 @@ export function indiceBusca(hoje = hojeBRT()): ItemBusca[] {
     itens.push({
       t: titulo(c), u: `/concursos/${c.slug}/`,
       d: `Conferido no edital · ${NOME_CATEGORIA[c.categoria]} · ${c.uf === "BR" ? "Nacional" : c.uf} · ${c.banca.toUpperCase()}`,
-      k: semAcento(`${c.banca} ${uf} ${NOME_CATEGORIA[c.categoria]} ${c.cargos.map((x) => x.nome).join(" ")}`),
+      k: semAcento(`${c.banca} ${uf} ${c.municipio ?? ""} ${NOME_CATEGORIA[c.categoria]} ${nomesAreas(c)} ${c.cargos.map((x) => x.nome).join(" ")}`),
     });
   }
   for (const n of noticiasAtivas(hoje)) {
@@ -137,7 +146,7 @@ export function indiceBusca(hoje = hojeBRT()): ItemBusca[] {
     itens.push({
       t: n.titulo, u: `/noticias/${n.slug}/`,
       d: `Apuração na imprensa · ${NOME_CATEGORIA[n.categoria]} · ${n.uf === "BR" ? "Nacional" : n.uf} · ${n.banca}`,
-      k: semAcento(`${n.orgao} ${n.banca} ${uf} ${NOME_CATEGORIA[n.categoria]} ${n.cargos.join(" ")}`),
+      k: semAcento(`${n.orgao} ${n.banca} ${uf} ${n.municipio ?? ""} ${NOME_CATEGORIA[n.categoria]} ${nomesAreas(n)} ${n.cargos.join(" ")}`),
     });
   }
   for (const v of validadesNaPagina(hoje))

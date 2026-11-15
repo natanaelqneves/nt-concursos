@@ -19,7 +19,7 @@ from dataclasses import asdict, dataclass, field, replace
 from datetime import datetime, timedelta
 from typing import Callable
 
-from ntc.escopo import Classificacao, classificar, sem_acento
+from ntc.escopo import Classificacao, areas_de_cargo, classificar, sem_acento
 from ntc.fetch.allowlist import Allowlist
 from ntc.fetch.http import BRT, Cliente, ErroColeta
 from ntc.gate.evidencia import Gate, TextoDocumento
@@ -184,6 +184,10 @@ class Coletor:
                 return reg
             if cf.uf and cf.uf != cls.uf:
                 cls = replace(cls, uf=cf.uf)
+            if cls.esfera == "municipal" and cf.cargos:
+                # áreas dos cargos listados pela fonte (15/11/2026): prefeitura com professor aparece em Educação
+                extras = [a for a in areas_de_cargo(*cf.cargos) if a != cls.categoria and a not in cls.areas]
+                cls = replace(cls, areas=cls.areas + tuple(extras))
             reg.detalhe = f"{cls.categoria}/{cls.esfera}/{cls.uf}"
             if cf.edital is None:
                 reg.situacao = "sem_edital"
