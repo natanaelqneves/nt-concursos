@@ -1,0 +1,101 @@
+{
+  "slug": "tj-sp-2026-escrevente-e-oficial",
+  "titulo": "TJ-SP abre concursos para escrevente e oficial de justiça",
+  "orgao": "Tribunal de Justiça do Estado de São Paulo",
+  "categoria": "tribunal",
+  "esfera": "estadual",
+  "uf": "SP",
+  "banca": "Fundação Vunesp",
+  "resumo": "O Tribunal de Justiça de São Paulo publicou dois editais, com o mesmo calendário: um para oficial de justiça, de nível superior, com 132 vagas imediatas na capital e nas regiões administrativas do interior, e outro para escrevente técnico judiciário, de nível médio, só com cadastro de reserva. A inscrição é feita por região, no site da Vunesp, e o candidato escolhe o cargo no formulário. Além do salário, os dois cargos recebem auxílios de alimentação, saúde e transporte.",
+  "cargos": [
+    "Oficial de Justiça",
+    "Escrevente Técnico Judiciário"
+  ],
+  "fatos": [
+    {
+      "campo": "inscricao",
+      "texto": "De 28/10 a 10/12/2026, no site da Vunesp",
+      "inicio": "2026-10-28",
+      "fim": "2026-12-10",
+      "fontes": [
+        "f-1",
+        "f-2",
+        "f-3"
+      ]
+    },
+    {
+      "campo": "vagas",
+      "texto": "132 vagas imediatas para oficial de justiça; cadastro de reserva para os dois cargos",
+      "fontes": [
+        "f-2",
+        "f-3",
+        "f-4"
+      ]
+    },
+    {
+      "campo": "remuneracao",
+      "texto": "R$ 6.782,54 (escrevente) e R$ 9.856,95 (oficial de justiça), mais auxílios",
+      "fontes": [
+        "f-1",
+        "f-3"
+      ]
+    },
+    {
+      "campo": "taxa",
+      "texto": "R$ 81 (escrevente) e R$ 96 (oficial de justiça)",
+      "fontes": [
+        "f-1",
+        "f-3"
+      ]
+    },
+    {
+      "campo": "prova",
+      "texto": "Provas previstas para 14/3/2027",
+      "inicio": "2027-03-14",
+      "fim": "2027-03-14",
+      "fontes": [
+        "f-2",
+        "f-5"
+      ]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "f-1",
+      "nome": "Direção Concursos",
+      "url": "https://www.direcaoconcursos.com.br/noticias/concurso-publico-abertos-novembro-2026",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    },
+    {
+      "id": "f-2",
+      "nome": "Nova Concursos",
+      "url": "https://www.novaconcursos.com.br/portal/concursos/concurso-tj-sp",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    },
+    {
+      "id": "f-3",
+      "nome": "Qconcursos Folha Dirigida",
+      "url": "https://folha.qconcursos.com/n/concurso-tj-sp-inscricoes-abertas-2026",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    },
+    {
+      "id": "f-4",
+      "nome": "JC Concursos",
+      "url": "https://jcconcursos.com.br/noticia/concursos/concurso-do-tj-sp-abre-inscricoes-para-132-vagas-de-escrevente-e-oficial-146259",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    },
+    {
+      "id": "f-5",
+      "nome": "Diário do Grande ABC",
+      "url": "https://www.dgabc.com.br/Noticia/4354057/tj-sp-lanca-14-vagas-no-grande-abc-com-salario-de-r$-9-8-mil",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    }
+  ],
+  "apurado_em": "2026-11-15T02:10:00-03:00",
+  "expira_em": "2026-12-10"
+}

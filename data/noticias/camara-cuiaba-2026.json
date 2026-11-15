@@ -1,0 +1,62 @@
+{
+  "slug": "camara-cuiaba-2026",
+  "titulo": "Câmara Municipal de Cuiabá abre concurso com 26 vagas",
+  "orgao": "Câmara Municipal de Cuiabá",
+  "categoria": "legislativo",
+  "esfera": "municipal",
+  "uf": "MT",
+  "municipio": "Cuiabá",
+  "banca": "Selecon",
+  "resumo": "A Câmara Municipal de Cuiabá abriu concurso com 26 vagas imediatas e cadastro de reserva para cargos de nível médio e superior: técnico legislativo, analista legislativo, contador e controlador interno, em áreas como administração, comunicação, gestão pública e tecnologia da informação. Além do salário, os servidores recebem auxílios. As inscrições são feitas no site do Instituto Selecon, organizador do concurso.",
+  "cargos": [
+    "Técnico Legislativo",
+    "Analista Legislativo",
+    "Contador",
+    "Controlador Interno"
+  ],
+  "fatos": [
+    {
+      "campo": "inscricao",
+      "texto": "Até 30/11/2026, no site do Selecon",
+      "fim": "2026-11-30",
+      "fontes": [
+        "f-1",
+        "f-2"
+      ]
+    },
+    {
+      "campo": "vagas",
+      "texto": "26 vagas imediatas, mais cadastro de reserva",
+      "fontes": [
+        "f-1",
+        "f-2"
+      ]
+    },
+    {
+      "campo": "remuneracao",
+      "texto": "Até R$ 11.629,67, mais auxílios",
+      "fontes": [
+        "f-1",
+        "f-2"
+      ]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "f-1",
+      "nome": "Direção Concursos",
+      "url": "https://www.direcaoconcursos.com.br/noticias/concurso-publico-abertos-novembro-2026",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    },
+    {
+      "id": "f-2",
+      "nome": "Game Overdrive",
+      "url": "https://gameoverdrive.com.br/concursos-publicos-abertos-2-novembro-2026/",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    }
+  ],
+  "apurado_em": "2026-11-15T02:10:00-03:00",
+  "expira_em": "2026-11-30"
+}
