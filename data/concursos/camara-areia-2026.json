@@ -1,0 +1,148 @@
+{
+  "schema_version": 2,
+  "slug": "camara-areia-2026",
+  "orgao": "Câmara Municipal de Areia",
+  "categoria": "legislativo",
+  "esfera": "municipal",
+  "banca": "cpcon",
+  "uf": "PB",
+  "municipio": "Areia",
+  "cargos": [
+    {
+      "nome": "Auxiliar de Serviços Gerais",
+      "vagas": null,
+      "remuneracao": null
+    },
+    {
+      "nome": "Auxiliar Administrativo",
+      "vagas": null,
+      "remuneracao": null
+    }
+  ],
+  "vagas_imediatas": null,
+  "porte": "indefinido",
+  "areas": [],
+  "taxa": null,
+  "prazos": {
+    "isencao": {
+      "status": "revisao",
+      "evidencia": null,
+      "inicio": null,
+      "fim": null
+    },
+    "inscricao": {
+      "status": "verificado",
+      "evidencia": "ev-1",
+      "inicio": "2026-10-29",
+      "fim": "2026-11-29"
+    }
+  },
+  "etapas": [
+    {
+      "status": "verificado",
+      "evidencia": "ev-2",
+      "tipo": "gabarito",
+      "nome": "Publicação do gabarito provisório para todos os cargos",
+      "inicio": null,
+      "fim": "2027-02-01"
+    },
+    {
+      "status": "verificado",
+      "evidencia": "ev-3",
+      "tipo": "gabarito",
+      "nome": "Publicação do gabarito definitivo",
+      "inicio": null,
+      "fim": "2027-03-04"
+    },
+    {
+      "status": "verificado",
+      "evidencia": "ev-4",
+      "tipo": "resultado_final",
+      "nome": "Publicação do resultado final",
+      "inicio": null,
+      "fim": "2027-03-05"
+    }
+  ],
+  "isencao_publicos": [],
+  "documentos": [
+    {
+      "id": "doc-1",
+      "tipo": "edital",
+      "url": "https://www.acheconcursos.com.br/imagens/anexo/64904/edital.pdf",
+      "url_final": "https://www.acheconcursos.com.br/imagens/anexo/64904/edital.pdf",
+      "sha256": "9434af4194a460f5f1a20447bae0cbaaef8d8c6834f299677bf0de8fd65bdd77",
+      "coletado_em": "2026-11-15T10:06:12-03:00",
+      "fonte": "acheconcursos",
+      "publicado_em": "2026-10-21",
+      "titulo": "Edital nº 001/2026 da Câmara Municipal de Areia"
+    }
+  ],
+  "evidencias": [
+    {
+      "id": "ev-1",
+      "campo": "prazos.inscricao",
+      "documento": "doc-1",
+      "pagina": 13,
+      "trecho": "Período das inscrições — 29/10/2026 a 29/11/2026",
+      "ancora": "inscrições",
+      "metodo": "tabela:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": {
+        "atividade": "Período das inscrições",
+        "datas": "29/10/2026 a 29/11/2026"
+      }
+    },
+    {
+      "id": "ev-2",
+      "campo": "etapas.0",
+      "documento": "doc-1",
+      "pagina": 13,
+      "trecho": "Publicação do gabarito provisório para todos os cargos — 01/02/2027",
+      "ancora": "gabarito",
+      "metodo": "tabela:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": {
+        "atividade": "Publicação do gabarito provisório para todos os cargos",
+        "datas": "01/02/2027"
+      }
+    },
+    {
+      "id": "ev-3",
+      "campo": "etapas.1",
+      "documento": "doc-1",
+      "pagina": 13,
+      "trecho": "Publicação do gabarito definitivo — 04/03/2027",
+      "ancora": "gabarito",
+      "metodo": "tabela:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": {
+        "atividade": "Publicação do gabarito definitivo",
+        "datas": "04/03/2027"
+      }
+    },
+    {
+      "id": "ev-4",
+      "campo": "etapas.2",
+      "documento": "doc-1",
+      "pagina": 13,
+      "trecho": "Publicação do resultado final — 05/03/2027",
+      "ancora": "resultado_final",
+      "metodo": "tabela:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": {
+        "atividade": "Publicação do resultado final",
+        "datas": "05/03/2027"
+      }
+    }
+  ],
+  "descoberto_via": {
+    "fonte": "avulsos",
+    "url": "https://cpcon.uepb.edu.br/",
+    "data_dou": null
+  },
+  "conferido_em": "2026-11-15T10:06:13-03:00"
+}

@@ -1,0 +1,160 @@
+{
+  "schema_version": 2,
+  "slug": "camara-guarabira-2026",
+  "orgao": "Câmara Municipal de Guarabira",
+  "categoria": "legislativo",
+  "esfera": "municipal",
+  "banca": "cpcon",
+  "uf": "PB",
+  "municipio": "Guarabira",
+  "cargos": [
+    {
+      "nome": "Auxiliar de Serviços Diversos",
+      "vagas": null,
+      "remuneracao": null
+    },
+    {
+      "nome": "Vigilante",
+      "vagas": null,
+      "remuneracao": null
+    },
+    {
+      "nome": "Auxiliar Administrativo",
+      "vagas": null,
+      "remuneracao": null
+    },
+    {
+      "nome": "Arquivista",
+      "vagas": null,
+      "remuneracao": null
+    }
+  ],
+  "vagas_imediatas": null,
+  "porte": "indefinido",
+  "areas": [
+    "vigilancia"
+  ],
+  "taxa": null,
+  "prazos": {
+    "isencao": {
+      "status": "revisao",
+      "evidencia": null,
+      "inicio": null,
+      "fim": null
+    },
+    "inscricao": {
+      "status": "verificado",
+      "evidencia": "ev-1",
+      "inicio": "2026-10-21",
+      "fim": "2026-11-22"
+    }
+  },
+  "etapas": [
+    {
+      "status": "verificado",
+      "evidencia": "ev-2",
+      "tipo": "gabarito",
+      "nome": "Publicação do gabarito provisório para todos os cargos",
+      "inicio": null,
+      "fim": "2027-02-15"
+    },
+    {
+      "status": "verificado",
+      "evidencia": "ev-3",
+      "tipo": "gabarito",
+      "nome": "Publicação do gabarito definitivo",
+      "inicio": null,
+      "fim": "2027-03-11"
+    },
+    {
+      "status": "verificado",
+      "evidencia": "ev-4",
+      "tipo": "resultado_final",
+      "nome": "Publicação do resultado final",
+      "inicio": null,
+      "fim": "2027-03-12"
+    }
+  ],
+  "isencao_publicos": [],
+  "documentos": [
+    {
+      "id": "doc-1",
+      "tipo": "edital",
+      "url": "https://www.editorasolucao.com.br/blog/wp-content/uploads/2026/10/edital-camara-de-guarabira.pdf",
+      "url_final": "https://www.editorasolucao.com.br/blog/wp-content/uploads/2026/10/edital-camara-de-guarabira.pdf",
+      "sha256": "112af3df81f9d7d953adc3e7ba63cc7dc5425f99ceaa8f81e19f83fca0e0047e",
+      "coletado_em": "2026-11-15T10:06:11-03:00",
+      "fonte": "editorasolucao",
+      "publicado_em": "2026-09-30",
+      "titulo": "Edital Normativo de Concurso Público nº 001/2026 – CMG/PB"
+    }
+  ],
+  "evidencias": [
+    {
+      "id": "ev-1",
+      "campo": "prazos.inscricao",
+      "documento": "doc-1",
+      "pagina": 16,
+      "trecho": "Período das inscrições — 21/10/2026 a 22/11/2026",
+      "ancora": "inscrições",
+      "metodo": "tabela:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": {
+        "atividade": "Período das inscrições",
+        "datas": "21/10/2026 a 22/11/2026"
+      }
+    },
+    {
+      "id": "ev-2",
+      "campo": "etapas.0",
+      "documento": "doc-1",
+      "pagina": 16,
+      "trecho": "Publicação do gabarito provisório para todos os cargos — 15/02/2027",
+      "ancora": "gabarito",
+      "metodo": "tabela:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": {
+        "atividade": "Publicação do gabarito provisório para todos os cargos",
+        "datas": "15/02/2027"
+      }
+    },
+    {
+      "id": "ev-3",
+      "campo": "etapas.1",
+      "documento": "doc-1",
+      "pagina": 16,
+      "trecho": "Publicação do gabarito definitivo — 11/03/2027",
+      "ancora": "gabarito",
+      "metodo": "tabela:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": {
+        "atividade": "Publicação do gabarito definitivo",
+        "datas": "11/03/2027"
+      }
+    },
+    {
+      "id": "ev-4",
+      "campo": "etapas.2",
+      "documento": "doc-1",
+      "pagina": 16,
+      "trecho": "Publicação do resultado final — 12/03/2027",
+      "ancora": "resultado_final",
+      "metodo": "tabela:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": {
+        "atividade": "Publicação do resultado final",
+        "datas": "12/03/2027"
+      }
+    }
+  ],
+  "descoberto_via": {
+    "fonte": "avulsos",
+    "url": "https://cpcon.uepb.edu.br/",
+    "data_dou": null
+  },
+  "conferido_em": "2026-11-15T10:06:11-03:00"
+}

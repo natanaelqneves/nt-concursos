@@ -1,0 +1,104 @@
+{
+  "schema_version": 2,
+  "slug": "prefeitura-itapororoca-2026",
+  "orgao": "Prefeitura de Itapororoca",
+  "categoria": "prefeitura",
+  "esfera": "municipal",
+  "banca": "facet",
+  "uf": "PB",
+  "municipio": "Itapororoca",
+  "cargos": [
+    {
+      "nome": "Agente Administrativo",
+      "vagas": null,
+      "remuneracao": null
+    },
+    {
+      "nome": "Agente de Limpeza",
+      "vagas": null,
+      "remuneracao": null
+    },
+    {
+      "nome": "Analista Desenvolvedor",
+      "vagas": null,
+      "remuneracao": null
+    },
+    {
+      "nome": "Fiscal de Tributos",
+      "vagas": null,
+      "remuneracao": null
+    },
+    {
+      "nome": "Fisioterapeuta",
+      "vagas": null,
+      "remuneracao": null
+    },
+    {
+      "nome": "Médico",
+      "vagas": null,
+      "remuneracao": null
+    },
+    {
+      "nome": "Professor",
+      "vagas": null,
+      "remuneracao": null
+    }
+  ],
+  "vagas_imediatas": null,
+  "porte": "indefinido",
+  "areas": [
+    "educacao",
+    "saude",
+    "fiscal"
+  ],
+  "taxa": null,
+  "prazos": {
+    "isencao": {
+      "status": "ausente",
+      "evidencia": null,
+      "inicio": null,
+      "fim": null
+    },
+    "inscricao": {
+      "status": "verificado",
+      "evidencia": "ev-1",
+      "inicio": "2026-10-19",
+      "fim": "2026-11-20"
+    }
+  },
+  "etapas": [],
+  "isencao_publicos": [],
+  "documentos": [
+    {
+      "id": "doc-1",
+      "tipo": "edital",
+      "url": "https://www.agrobase.com.br/concursos/wp-content/uploads/sites/4/2026/11/edital-01-2026-prefeitura-de-itapororoca-pb.pdf",
+      "url_final": "https://www.agrobase.com.br/concursos/wp-content/uploads/sites/4/2026/11/edital-01-2026-prefeitura-de-itapororoca-pb.pdf",
+      "sha256": "f040cfd2a3e6e49d16b8e2b82ed10016e4f0dde1051b84074e824c016260843e",
+      "coletado_em": "2026-11-15T10:06:16-03:00",
+      "fonte": "agrobase",
+      "publicado_em": "2026-10-13",
+      "titulo": "Edital do Concurso Público nº 01/2026"
+    }
+  ],
+  "evidencias": [
+    {
+      "id": "ev-1",
+      "campo": "prazos.inscricao",
+      "documento": "doc-1",
+      "pagina": 1,
+      "trecho": "As inscrições para o Concurso Público serão realizadas de 19 de outubro a 20 de novembro de 2026, exclusivamente pela internet, no site da organizadora.",
+      "ancora": "inscrições",
+      "metodo": "regex:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": null
+    }
+  ],
+  "descoberto_via": {
+    "fonte": "avulsos",
+    "url": "https://www.facetconcursos.com.br/",
+    "data_dou": null
+  },
+  "conferido_em": "2026-11-15T10:06:18-03:00"
+}
