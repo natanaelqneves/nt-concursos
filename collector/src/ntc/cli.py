@@ -305,6 +305,16 @@ def cmd_inlabs_horario(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_qd_sonda(args: argparse.Namespace) -> int:
+    """Sonda do Querido Diário: cobertura na Paraíba e amostra da busca. Só imprime."""
+    from ntc.fetch.http import Cliente
+    from ntc.sources.querido_diario import sonda
+
+    cliente = Cliente(Allowlist.carregar(Path(args.data) / "fontes.yaml"), intervalo=2.0, tentativas=2)
+    print(json.dumps(sonda(cliente, args.dias), ensure_ascii=False, indent=1))
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="ntc")
     sub = parser.add_subparsers(dest="cmd", required=True)
@@ -333,6 +343,11 @@ def main(argv: list[str] | None = None) -> int:
     p_hor.add_argument("--data", default=str(RAIZ / "data"))
     p_hor.add_argument("--data-dou", default=None)
     p_hor.set_defaults(func=cmd_inlabs_horario)
+
+    p_qd = sub.add_parser("qd-sonda", help="sonda a API do Querido Diário (diários municipais)")
+    p_qd.add_argument("--data", default=str(RAIZ / "data"))
+    p_qd.add_argument("--dias", type=int, default=30)
+    p_qd.set_defaults(func=cmd_qd_sonda)
 
     p_sch = sub.add_parser("schema", help="gera o JSON Schema do contrato")
     p_sch.add_argument("--check", action="store_true")
