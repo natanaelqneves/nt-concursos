@@ -1,0 +1,102 @@
+{
+  "slug": "pm-mg-2026-cfo",
+  "titulo": "PM de Minas Gerais abre inscrições para o curso de oficiais com 90 vagas",
+  "orgao": "Polícia Militar do Estado de Minas Gerais",
+  "categoria": "seguranca",
+  "esfera": "estadual",
+  "uf": "MG",
+  "banca": "Centro de Recrutamento e Seleção da PMMG",
+  "resumo": "A Polícia Militar de Minas Gerais seleciona 90 candidatos, de ambos os sexos, para o Curso de Formação de Oficiais de 2027, em Belo Horizonte. É exigido bacharelado em Direito, além dos requisitos físicos do edital. O aprovado entra como cadete e, depois de formado, passa a segundo-tenente. A própria corporação organiza o concurso, e a inscrição é feita no site do centro de recrutamento. O prazo para pedir isenção da taxa foi curto e já terminou.",
+  "cargos": [
+    "Cadete do Curso de Formação de Oficiais"
+  ],
+  "fatos": [
+    {
+      "campo": "inscricao",
+      "texto": "De 10/11 a 10/12/2026, no site do CRS da PMMG",
+      "inicio": "2026-11-10",
+      "fim": "2026-12-10",
+      "fontes": [
+        "f-1",
+        "f-2",
+        "f-3"
+      ]
+    },
+    {
+      "campo": "isencao",
+      "texto": "Pedidos de isenção da taxa em 10 e 11/11/2026 (encerrado)",
+      "inicio": "2026-11-10",
+      "fim": "2026-11-11",
+      "fontes": [
+        "f-1",
+        "f-4"
+      ]
+    },
+    {
+      "campo": "vagas",
+      "texto": "90 vagas (72 de ampla concorrência e 18 para pessoas negras)",
+      "fontes": [
+        "f-1",
+        "f-2"
+      ]
+    },
+    {
+      "campo": "remuneracao",
+      "texto": "R$ 7.912,17 como cadete e R$ 12.170,61 como segundo-tenente",
+      "fontes": [
+        "f-1",
+        "f-3"
+      ]
+    },
+    {
+      "campo": "taxa",
+      "texto": "R$ 243",
+      "fontes": [
+        "f-1",
+        "f-3"
+      ]
+    },
+    {
+      "campo": "prova",
+      "texto": "Prova objetiva e redação previstas para 10/1/2027",
+      "inicio": "2027-01-10",
+      "fim": "2027-01-10",
+      "fontes": [
+        "f-1",
+        "f-3"
+      ]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "f-1",
+      "nome": "Aprova Concursos",
+      "url": "https://www.aprovaconcursos.com.br/noticias/?p=168721",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    },
+    {
+      "id": "f-2",
+      "nome": "Gran Cursos Online",
+      "url": "https://blog.grancursosonline.com.br/?p=79968783",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    },
+    {
+      "id": "f-3",
+      "nome": "Qconcursos Folha Dirigida",
+      "url": "https://folha.qconcursos.com/n/concurso-pm-mg-cfo-2027-edital",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    },
+    {
+      "id": "f-4",
+      "nome": "Estratégia Concursos",
+      "url": "https://www.estrategiaconcursos.com.br/blog/?p=141324",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    }
+  ],
+  "apurado_em": "2026-11-15T02:10:00-03:00",
+  "expira_em": "2026-12-10"
+}

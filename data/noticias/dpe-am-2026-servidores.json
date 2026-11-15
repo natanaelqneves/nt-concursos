@@ -1,0 +1,103 @@
+{
+  "slug": "dpe-am-2026-servidores",
+  "titulo": "Defensoria do Amazonas terá inscrições de 30/11 a 4/1 para analista e assistente",
+  "orgao": "Defensoria Pública do Estado do Amazonas",
+  "categoria": "defensoria",
+  "esfera": "estadual",
+  "uf": "AM",
+  "banca": "Fundação Carlos Chagas (FCC)",
+  "resumo": "A Defensoria Pública do Amazonas publicou o edital do sexto concurso para servidores, com 5 vagas imediatas e cadastro de reserva em Manaus e nos polos do interior. Os cargos de nível médio e técnico são de assistente técnico, nas áreas administrativa, de agrimensura e de tecnologia da informação (suporte e programador); os de nível superior são de analista jurídico, de gestão e social. As inscrições ainda não abriram, e o pedido de isenção da taxa cabe só nos primeiros dias do prazo.",
+  "cargos": [
+    "Analista Jurídico de Defensoria",
+    "Analista em Gestão Especializado de Defensoria",
+    "Analista Social de Defensoria",
+    "Assistente Técnico de Defensoria",
+    "Assistente Técnico em Tecnologia da Informação de Defensoria (Suporte e Programador)"
+  ],
+  "areas": [
+    "ti"
+  ],
+  "fatos": [
+    {
+      "campo": "inscricao",
+      "texto": "De 30/11/2026 a 4/1/2027, no site da FCC",
+      "inicio": "2026-11-30",
+      "fim": "2027-01-04",
+      "fontes": [
+        "f-1",
+        "f-2",
+        "f-3"
+      ]
+    },
+    {
+      "campo": "isencao",
+      "texto": "Pedidos de isenção da taxa de 30/11 a 4/12/2026, no site da FCC",
+      "inicio": "2026-11-30",
+      "fim": "2026-12-04",
+      "fontes": [
+        "f-1",
+        "f-2",
+        "f-3"
+      ]
+    },
+    {
+      "campo": "vagas",
+      "texto": "5 vagas imediatas, mais cadastro de reserva",
+      "fontes": [
+        "f-1",
+        "f-3"
+      ]
+    },
+    {
+      "campo": "remuneracao",
+      "texto": "R$ 4.713,02 (assistente técnico) a R$ 8.006,38 (analista jurídico)",
+      "fontes": [
+        "f-1",
+        "f-2"
+      ]
+    },
+    {
+      "campo": "taxa",
+      "texto": "R$ 100 (nível médio) e R$ 125 (nível superior)",
+      "fontes": [
+        "f-1",
+        "f-2"
+      ]
+    },
+    {
+      "campo": "prova",
+      "texto": "Prova objetiva prevista para 7/3/2027",
+      "inicio": "2027-03-07",
+      "fim": "2027-03-07",
+      "fontes": [
+        "f-1",
+        "f-3"
+      ]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "f-1",
+      "nome": "Direção Concursos",
+      "url": "https://www.direcaoconcursos.com.br/noticias/edital-concurso-dpe-am-publicado-2026",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    },
+    {
+      "id": "f-2",
+      "nome": "Gran Cursos Online",
+      "url": "https://blog.grancursosonline.com.br/concurso-dpe-am-edital-publicado-2026/",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    },
+    {
+      "id": "f-3",
+      "nome": "Qconcursos Folha Dirigida",
+      "url": "https://folha.qconcursos.com/n/concurso-dpe-am-edital-2026",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    }
+  ],
+  "apurado_em": "2026-11-15T02:10:00-03:00",
+  "expira_em": "2027-01-04"
+}
