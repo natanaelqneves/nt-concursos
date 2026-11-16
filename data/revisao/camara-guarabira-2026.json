@@ -1,0 +1,57 @@
+{
+  "schema_version": 2,
+  "slug": "camara-guarabira-2026",
+  "orgao": "Câmara Municipal de Guarabira",
+  "situacao": "publicado",
+  "categoria": "legislativo",
+  "esfera": "municipal",
+  "uf": "PB",
+  "cargos": [
+    "Auxiliar de Serviços Diversos",
+    "Vigilante",
+    "Auxiliar Administrativo",
+    "Arquivista"
+  ],
+  "fonte": "avulsos",
+  "url": "https://cpcon.uepb.edu.br/",
+  "edital": "https://www.editorasolucao.com.br/blog/wp-content/uploads/2026/10/edital-camara-de-guarabira.pdf",
+  "edital_sha256": "112af3df81f9d7d953adc3e7ba63cc7dc5425f99ceaa8f81e19f83fca0e0047e",
+  "campos_em_revisao": [
+    "prazos.isencao"
+  ],
+  "motivos": [
+    "prazos.isencao: 2 linhas de cronograma com datas diferentes"
+  ],
+  "opcoes": {
+    "prazos.isencao": [
+      {
+        "id": "o-1",
+        "origem": "tabela",
+        "pagina": 16,
+        "trecho": "Período de solicitação de isenção — 21/10/2026 a 22/10/2026",
+        "ancora": "isenção",
+        "inicio": "2026-10-21",
+        "fim": "2026-10-22",
+        "tabela": {
+          "atividade": "Período de solicitação de isenção",
+          "datas": "21/10/2026 a 22/10/2026"
+        }
+      },
+      {
+        "id": "o-2",
+        "origem": "tabela",
+        "pagina": 16,
+        "trecho": "Data limite para envio, via formulário eletrônico, da documentação referente à solicitação de isenção — 23/10/2026",
+        "ancora": "isenção",
+        "inicio": null,
+        "fim": "2026-10-23",
+        "tabela": {
+          "atividade": "Data limite para envio, via formulário eletrônico, da documentação referente à solicitação de isenção",
+          "datas": "23/10/2026"
+        }
+      }
+    ]
+  },
+  "mudancas": [],
+  "registrado_em": "2026-11-15T21:43:44-03:00"
+}

@@ -1,7 +1,7 @@
 {
   "aocp": {
-    "inicio": "2026-11-15T10:03:46-03:00",
-    "fim": "2026-11-15T10:04:26-03:00",
+    "inicio": "2026-11-15T21:41:28-03:00",
+    "fim": "2026-11-15T21:42:08-03:00",
     "erro_fonte": null,
     "contagem": {
       "fora_do_escopo": 8,
@@ -179,8 +179,8 @@
     ]
   },
   "avulsos": {
-    "inicio": "2026-11-15T10:04:26-03:00",
-    "fim": "2026-11-15T10:06:18-03:00",
+    "inicio": "2026-11-15T21:42:08-03:00",
+    "fim": "2026-11-15T21:43:50-03:00",
     "erro_fonte": null,
     "contagem": {
       "publicado": 11,
@@ -291,14 +291,13 @@
         "detalhe": "seguranca/estadual/PE",
         "slug": "cbm-pe-2026-soldado-e-oficial",
         "campos": {
-          "prazos.isencao": "revisao",
+          "prazos.isencao": "verificado",
           "prazos.inscricao": "verificado",
           "etapas.0": "revisao",
           "etapas.1": "revisao",
           "etapas.2": "revisao"
         },
         "violacoes": [
-          "G7 prazos.isencao: retificação posterior menciona este prazo",
           "G7 etapas.0: retificação posterior pode mudar esta etapa",
           "G7 etapas.1: retificação posterior pode mudar esta etapa",
           "G7 etapas.2: retificação posterior pode mudar esta etapa"
@@ -312,12 +311,10 @@
         "detalhe": "seguranca/estadual/PE",
         "slug": "pm-pe-2026-soldado-e-oficial",
         "campos": {
-          "prazos.isencao": "revisao",
+          "prazos.isencao": "verificado",
           "prazos.inscricao": "verificado"
         },
-        "violacoes": [
-          "G7 prazos.isencao: retificação posterior menciona este prazo"
-        ]
+        "violacoes": []
       },
       {
         "fonte": "avulsos",
@@ -400,8 +397,8 @@
     ]
   },
   "cebraspe": {
-    "inicio": "2026-11-15T09:55:10-03:00",
-    "fim": "2026-11-15T09:58:00-03:00",
+    "inicio": "2026-11-15T21:32:47-03:00",
+    "fim": "2026-11-15T21:35:37-03:00",
     "erro_fonte": null,
     "contagem": {
       "fora_do_escopo": 22,
@@ -1072,11 +1069,9 @@
         "slug": "tcdf-2026-tc-analista",
         "campos": {
           "prazos.isencao": "verificado",
-          "prazos.inscricao": "revisao"
+          "prazos.inscricao": "verificado"
         },
-        "violacoes": [
-          "G7 prazos.inscricao: retificação posterior menciona este prazo"
-        ]
+        "violacoes": []
       },
       {
         "fonte": "cebraspe",
@@ -1220,8 +1215,8 @@
     ]
   },
   "fgv": {
-    "inicio": "2026-11-15T09:58:00-03:00",
-    "fim": "2026-11-15T10:03:46-03:00",
+    "inicio": "2026-11-15T21:35:37-03:00",
+    "fim": "2026-11-15T21:41:27-03:00",
     "erro_fonte": null,
     "contagem": {
       "fora_do_escopo": 25,
@@ -1311,15 +1306,13 @@
         "slug": "gcm-salvador-2026-guarda-municipal",
         "campos": {
           "prazos.isencao": "verificado",
-          "prazos.inscricao": "revisao",
+          "prazos.inscricao": "verificado",
           "etapas.0": "verificado",
           "etapas.1": "verificado",
           "etapas.2": "verificado",
           "etapas.3": "verificado"
         },
-        "violacoes": [
-          "G7 prazos.inscricao: retificação posterior menciona este prazo"
-        ]
+        "violacoes": []
       },
       {
         "fonte": "fgv",

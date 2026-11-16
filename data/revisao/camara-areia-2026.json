@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "slug": "camara-areia-2026",
+  "orgao": "Câmara Municipal de Areia",
+  "situacao": "publicado",
+  "categoria": "legislativo",
+  "esfera": "municipal",
+  "uf": "PB",
+  "cargos": [
+    "Auxiliar de Serviços Gerais",
+    "Auxiliar Administrativo"
+  ],
+  "fonte": "avulsos",
+  "url": "https://cpcon.uepb.edu.br/",
+  "edital": "https://www.acheconcursos.com.br/imagens/anexo/64904/edital.pdf",
+  "edital_sha256": "9434af4194a460f5f1a20447bae0cbaaef8d8c6834f299677bf0de8fd65bdd77",
+  "campos_em_revisao": [
+    "prazos.isencao"
+  ],
+  "motivos": [
+    "prazos.isencao: 2 linhas de cronograma com datas diferentes"
+  ],
+  "opcoes": {
+    "prazos.isencao": [
+      {
+        "id": "o-1",
+        "origem": "tabela",
+        "pagina": 13,
+        "trecho": "Período de solicitação de isenção — 29/10/2026 a 30/10/2026",
+        "ancora": "isenção",
+        "inicio": "2026-10-29",
+        "fim": "2026-10-30",
+        "tabela": {
+          "atividade": "Período de solicitação de isenção",
+          "datas": "29/10/2026 a 30/10/2026"
+        }
+      },
+      {
+        "id": "o-2",
+        "origem": "tabela",
+        "pagina": 13,
+        "trecho": "Data limite para envio, via formulário eletrônico, da documentação referente à solicitação de isenção — 31/10/2026",
+        "ancora": "isenção",
+        "inicio": null,
+        "fim": "2026-10-31",
+        "tabela": {
+          "atividade": "Data limite para envio, via formulário eletrônico, da documentação referente à solicitação de isenção",
+          "datas": "31/10/2026"
+        }
+      }
+    ]
+  },
+  "mudancas": [],
+  "registrado_em": "2026-11-15T21:43:45-03:00"
+}

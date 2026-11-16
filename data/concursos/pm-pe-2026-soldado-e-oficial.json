@@ -35,7 +35,7 @@
   "taxa": null,
   "prazos": {
     "isencao": {
-      "status": "revisao",
+      "status": "verificado",
       "evidencia": "ev-1",
       "inicio": "2026-10-05",
       "fim": "2026-10-08"
@@ -56,7 +56,7 @@
       "url": "https://arquivos.qconcursos.com/regulamento/arquivo/102167/pm-pe-2026-edital-n-1-edital.pdf",
       "url_final": "https://arquivos.qconcursos.com/regulamento/arquivo/102167/pm-pe-2026-edital-n-1-edital.pdf",
       "sha256": "c2ec1676974aaeb17c944cf00b8aa6879784554982021b54d961b7bd0b19bdf6",
-      "coletado_em": "2026-11-15T10:06:01-03:00",
+      "coletado_em": "2026-11-15T21:43:37-03:00",
       "fonte": "qconcursos",
       "publicado_em": "2026-09-29",
       "titulo": "Edital de Abertura nº 001/2026 (Portaria Conjunta SAD/SDS nº 299)"
@@ -67,7 +67,7 @@
       "url": "https://dhg1h5j42swfq.cloudfront.net/2026/10/15005732/cronogramas-retificados-pm-e-cbm-pe.pdf",
       "url_final": "https://dhg1h5j42swfq.cloudfront.net/2026/10/15005732/cronogramas-retificados-pm-e-cbm-pe.pdf",
       "sha256": "380fce7123159aaaf4a101d1c2713a1a91eee186f2fdf61df409f0e0f881e7fc",
-      "coletado_em": "2026-11-15T10:06:04-03:00",
+      "coletado_em": "2026-11-15T21:43:40-03:00",
       "fonte": "cdn-cloudfront",
       "publicado_em": "2026-10-15",
       "titulo": "Portaria Conjunta SAD/SDS nº 310 (cronograma retificado, Diário Oficial de 15/10/2026)"
@@ -82,8 +82,8 @@
       "trecho": "Período para solicitação de Isenção da Taxa de Inscrição — 9h do dia 05/10 até às 13h do dia 08/10/2026",
       "ancora": "Isenção",
       "metodo": "tabela:v1",
-      "aprovado_por": null,
-      "aprovado_em": null,
+      "aprovado_por": "editor",
+      "aprovado_em": "2026-11-15T13:20:53-03:00",
       "tabela": {
         "atividade": "Período para solicitação de Isenção da Taxa de Inscrição",
         "datas": "9h do dia 05/10 até às 13h do dia 08/10/2026"
@@ -107,5 +107,5 @@
     "url": "https://www.institutoaocp.org.br/",
     "data_dou": null
   },
-  "conferido_em": "2026-11-15T10:06:05-03:00"
+  "conferido_em": "2026-11-15T21:43:41-03:00"
 }
