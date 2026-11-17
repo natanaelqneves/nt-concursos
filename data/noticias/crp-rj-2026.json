@@ -1,0 +1,69 @@
+{
+  "slug": "crp-rj-2026",
+  "titulo": "CRP-05 (RJ) abre concurso com 37 vagas imediatas; inscrições até 17/12",
+  "orgao": "Conselho Regional de Psicologia da 5ª Região (CRP-05/RJ)",
+  "categoria": "conselho",
+  "esfera": "federal",
+  "uf": "RJ",
+  "banca": "FGV",
+  "resumo": "O Conselho Regional de Psicologia da 5ª Região, que fiscaliza a profissão no Rio de Janeiro, publicou edital com 37 vagas imediatas em cargos de nível médio e superior, com formação de cadastro de reserva. A organização é da FGV. As inscrições começam às 16h de 16/11 e vão até as 16h de 17/12/2026, pelo site da banca. A prova está prevista para 28/02/2027.",
+  "cargos": [
+    "Psicólogo(a)",
+    "Técnico Administrativo",
+    "Contador",
+    "Jornalista",
+    "Técnico de Tecnologia da Informação",
+    "Agente Administrativo"
+  ],
+  "areas": [
+    "ti"
+  ],
+  "fatos": [
+    {
+      "campo": "inscricao",
+      "texto": "Das 16h de 16/11 às 16h de 17/12/2026, pelo site da FGV",
+      "inicio": "2026-11-16",
+      "fim": "2026-12-17",
+      "fontes": [
+        "f-1",
+        "f-2"
+      ]
+    },
+    {
+      "campo": "vagas",
+      "texto": "37 vagas imediatas, além de cadastro de reserva",
+      "fontes": [
+        "f-1",
+        "f-2"
+      ]
+    },
+    {
+      "campo": "prova",
+      "texto": "Provas previstas para 28/02/2027, no período da tarde",
+      "inicio": "2027-02-28",
+      "fim": "2027-02-28",
+      "fontes": [
+        "f-1",
+        "f-2"
+      ]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "f-1",
+      "nome": "Diário do Rio",
+      "url": "https://diariodorio.com/economia/mercado-de-trabalho/2026/11/12/conselhor-regional-de-psicologia-abre-concurso-com-37-vagas.html",
+      "oficial": false,
+      "consultado_em": "2026-11-17"
+    },
+    {
+      "id": "f-2",
+      "nome": "Concursos no Brasil",
+      "url": "https://concursosnobrasil.com/concursos/rj/2026/11/12/crp-rj-divulga-edital-de-concurso-publico-com-37-vagas-imediatas/",
+      "oficial": false,
+      "consultado_em": "2026-11-17"
+    }
+  ],
+  "apurado_em": "2026-11-17T14:45:00-03:00",
+  "expira_em": "2026-12-17"
+}
