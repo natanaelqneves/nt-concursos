@@ -26,3 +26,12 @@ Portal nacional de concursos públicos com foco em confiabilidade, cobertura, cl
 
 ## Diretriz arquitetural
 Manter Astro e Python como baseline, sujeito à auditoria. Evitar reescrita e serviços pagos desnecessários. Preferir execução local e baixo custo operacional.
+
+## Decisão arquitetural — PostgreSQL/Supabase (17/11/2026)
+- Supabase PostgreSQL é a opção preferencial para persistência da V2, condicionada à auditoria de custos, limites e integração.
+- Desenvolver e testar inicialmente em PostgreSQL local isolado; nunca conectar testes ao ambiente de produção.
+- Preservar os JSONs versionados e regras de evidência existentes até migração validada, reversível e com comparação de resultados.
+- Projetar tabelas de concursos, cargos, localidades, fontes, documentos, evidências, retificações, execuções e histórico; aplicar constraints, índices, idempotência e transações.
+- Separar permissões: coletor escreve via credencial de serviço restrita; portal público lê apenas registros publicados e verificados; RLS para dados acessíveis por APIs do Supabase.
+- Supabase Auth/Storage são possibilidades futuras, não dependências obrigatórias nem autorização para ativar serviços pagos.
+- Não provisionar projeto Supabase, usar credenciais reais ou migrar dados sem confirmação do ambiente isolado.
