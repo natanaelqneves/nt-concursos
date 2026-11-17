@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "slug": "prefeitura-aparecida-de-goiania-2026",
+  "titulo": "Prefeitura de Aparecida de Goiânia (GO) abre concurso com 2.956 vagas",
+  "orgao": "Prefeitura de Aparecida de Goiânia",
+  "categoria": "prefeitura",
+  "esfera": "municipal",
+  "uf": "GO",
+  "municipio": "Aparecida de Goiânia",
+  "banca": "Instituto Verbena/UFG",
+  "resumo": "A Prefeitura de Aparecida de Goiânia publicou o Edital de Abertura nº 01/2026 com 2.956 vagas imediatas e formação de cadastro de reserva de 14.780 oportunidades, em cargos de nível médio, técnico e superior. A organização é do Instituto Verbena, ligado à UFG, e as inscrições são só pela internet, de 9 de novembro a 9 de dezembro de 2026. A prova objetiva e de redação está prevista para 31 de janeiro de 2027.",
+  "cargos": [],
+  "areas": [],
+  "fatos": [
+    {
+      "campo": "inscricao",
+      "texto": "De 9/11 a 9/12/2026, exclusivamente pela internet, no site do Instituto Verbena",
+      "inicio": "2026-11-09",
+      "fim": "2026-12-09",
+      "fontes": ["f-1", "f-2", "f-3"]
+    },
+    {
+      "campo": "vagas",
+      "texto": "2.956 vagas imediatas e 14.780 em cadastro de reserva",
+      "fontes": ["f-1", "f-2"]
+    },
+    {
+      "campo": "remuneracao",
+      "texto": "Salário inicial de R$ 2.825,11 a R$ 4.508,28",
+      "fontes": ["f-2", "f-3"]
+    },
+    {
+      "campo": "prova",
+      "texto": "Prova objetiva e de redação prevista para 31/1/2027",
+      "inicio": "2027-01-31",
+      "fim": "2027-01-31",
+      "fontes": ["f-1", "f-3"]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "f-1",
+      "nome": "Focus Concursos",
+      "url": "https://noticias.focusconcursos.com.br/noticias/concurso-de-aparecida-de-goiania-oferece-2956-vagas-na-area-da-educacao",
+      "oficial": false,
+      "consultado_em": "2026-11-17"
+    },
+    {
+      "id": "f-2",
+      "nome": "Nova Concursos",
+      "url": "https://www.novaconcursos.com.br/portal/concursos/prefeitura-de-aparecida-de-goiania-go",
+      "oficial": false,
+      "consultado_em": "2026-11-17"
+    },
+    {
+      "id": "f-3",
+      "nome": "Apostilas Opção",
+      "url": "https://www.apostilasopcao.com.br/blog/?p=16729",
+      "oficial": false,
+      "consultado_em": "2026-11-17"
+    }
+  ],
+  "apurado_em": "2026-11-17T02:00:00-03:00",
+  "expira_em": "2026-12-09"
+}

@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "slug": "prefeitura-saquarema-2026",
+  "titulo": "Prefeitura de Saquarema (RJ) abre processo seletivo com 217 vagas para agente de saúde",
+  "orgao": "Prefeitura Municipal de Saquarema",
+  "categoria": "prefeitura",
+  "esfera": "municipal",
+  "uf": "RJ",
+  "municipio": "Saquarema",
+  "banca": "IBAM",
+  "resumo": "A Prefeitura de Saquarema publicou o edital nº 001/2026 com 217 vagas de nível médio para Agente Comunitário de Saúde e Agente de Combate às Endemias, com jornada de 40 horas semanais. As inscrições são feitas somente pela internet, no site do IBAM, de 17 de novembro a 22 de dezembro de 2026, com taxa de R$ 94. Para o cargo de ACS, morar na área de atuação é critério eliminatório.",
+  "cargos": ["Agente Comunitário de Saúde", "Agente de Combate às Endemias"],
+  "areas": ["saude"],
+  "fatos": [
+    {
+      "campo": "inscricao",
+      "texto": "De 17/11/2026 a 22/12/2026, somente pela internet, no site do IBAM; taxa de R$ 94",
+      "inicio": "2026-11-17",
+      "fim": "2026-12-22",
+      "fontes": ["f-1", "f-2", "f-3"]
+    },
+    {
+      "campo": "vagas",
+      "texto": "217 vagas de nível médio",
+      "fontes": ["f-1", "f-2", "f-3"]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "f-1",
+      "nome": "Folha Dirigida",
+      "url": "https://folha.qconcursos.com/n/prefeitura-de-saquarema-rj-publica-concurso-com-217-vagas-na-saude",
+      "oficial": false,
+      "consultado_em": "2026-11-17"
+    },
+    {
+      "id": "f-2",
+      "nome": "Concursos no Brasil",
+      "url": "https://concursosnobrasil.com/concursos/rj/2026/11/11/rj-prefeitura-de-saquarema-preenchera-217-vagas-em-processo-seletivo/",
+      "oficial": false,
+      "consultado_em": "2026-11-17"
+    },
+    {
+      "id": "f-3",
+      "nome": "Ache Concursos",
+      "url": "https://www.acheconcursos.com.br/concursos-rio-de-janeiro/edital-saquarema-rj-2026-abre-concurso-para-agente-de-saude-94572",
+      "oficial": false,
+      "consultado_em": "2026-11-17"
+    }
+  ],
+  "apurado_em": "2026-11-17T02:00:00-03:00",
+  "expira_em": "2026-12-22"
+}

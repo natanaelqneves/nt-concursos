@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "slug": "guarda-sao-roque-2026",
+  "titulo": "Estância Turística de São Roque (SP) reabre concurso com 30 vagas para Guarda Municipal",
+  "orgao": "Prefeitura da Estância Turística de São Roque",
+  "categoria": "guarda",
+  "esfera": "municipal",
+  "uf": "SP",
+  "municipio": "São Roque",
+  "banca": "ABCP",
+  "resumo": "A Prefeitura da Estância Turística de São Roque reabriu o concurso para a Guarda Civil Municipal, com 30 vagas imediatas e cadastro de reserva. As inscrições começaram em 19 de outubro e foram estendidas até 23 de novembro de 2026, pela internet, no site da ABCP Concursos Públicos. Uma reportagem anterior dava 19 de novembro como fim do prazo, mas a data posterior é a que consta nas fontes mais recentes.",
+  "cargos": ["Guarda Civil Municipal"],
+  "areas": [],
+  "fatos": [
+    {
+      "campo": "inscricao",
+      "texto": "De 19/10/2026 a 23/11/2026, pela internet, no site da ABCP; prazo estendido (antes 19/11)",
+      "inicio": "2026-10-19",
+      "fim": "2026-11-23",
+      "fontes": ["f-1", "f-2"]
+    },
+    {
+      "campo": "vagas",
+      "texto": "30 vagas imediatas, mais cadastro de reserva",
+      "fontes": ["f-1", "f-2"]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "f-1",
+      "nome": "Portal de Prefeitura",
+      "url": "https://portaldeprefeitura.com.br/oportunidades/estancia-turistica-sao-roque-reabre-concurso-guarda-municipal/635237/",
+      "oficial": false,
+      "consultado_em": "2026-11-17"
+    },
+    {
+      "id": "f-2",
+      "nome": "Prefeituras.org",
+      "url": "https://www.prefeituras.org/prefeitura-reabre-concurso-para-guarda-municipal-com-salario/",
+      "oficial": false,
+      "consultado_em": "2026-11-17"
+    }
+  ],
+  "apurado_em": "2026-11-17T02:00:00-03:00",
+  "expira_em": "2026-11-23"
+}

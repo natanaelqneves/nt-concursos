@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "slug": "guarda-maraba-2026",
+  "titulo": "Prefeitura de Marabá (PA) abre concurso com 127 vagas para Guarda Municipal",
+  "orgao": "Prefeitura de Marabá",
+  "categoria": "guarda",
+  "esfera": "municipal",
+  "uf": "PA",
+  "municipio": "Marabá",
+  "banca": "Fadesp",
+  "resumo": "A Prefeitura de Marabá publicou o edital 01/2026 com 127 vagas para Guarda Municipal, cargo de nível médio com jornada de 40 horas semanais. As inscrições são só pela internet, no portal da Fadesp, de 17 de novembro a 28 de dezembro de 2026, com taxa de R$ 115. A prova objetiva está prevista para 24 de janeiro de 2027.",
+  "cargos": ["Guarda Municipal"],
+  "areas": [],
+  "fatos": [
+    {
+      "campo": "inscricao",
+      "texto": "De 17/11 a 28/12/2026, pela internet, no portal da Fadesp",
+      "inicio": "2026-11-17",
+      "fim": "2026-12-28",
+      "fontes": ["f-1", "f-2", "f-3"]
+    },
+    {
+      "campo": "vagas",
+      "texto": "127 vagas para Guarda Municipal",
+      "fontes": ["f-2", "f-3", "f-4"]
+    },
+    {
+      "campo": "remuneracao",
+      "texto": "Salário-base de R$ 2.076,40, com jornada de 40 horas semanais",
+      "fontes": ["f-2", "f-3"]
+    },
+    {
+      "campo": "prova",
+      "texto": "Prova objetiva prevista para 24/1/2027",
+      "inicio": "2027-01-24",
+      "fim": "2027-01-24",
+      "fontes": ["f-3", "f-4"]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "f-1",
+      "nome": "Diário do Pará",
+      "url": "https://diariodopara.com.br/concursos-e-empregos/ensino-medio-e-salario-de-r-2-mil-veja-o-edital-da-guarda-municipal-de-maraba/",
+      "oficial": false,
+      "consultado_em": "2026-11-17"
+    },
+    {
+      "id": "f-2",
+      "nome": "Gran Cursos Online",
+      "url": "https://blog.grancursosonline.com.br/?p=79981394",
+      "oficial": false,
+      "consultado_em": "2026-11-17"
+    },
+    {
+      "id": "f-3",
+      "nome": "Aprova Concursos",
+      "url": "https://www.aprovaconcursos.com.br/concursos/prefeitura-municipal-de-maraba",
+      "oficial": false,
+      "consultado_em": "2026-11-17"
+    },
+    {
+      "id": "f-4",
+      "nome": "Nova Concursos",
+      "url": "https://www.novaconcursos.com.br/concurso/prefeitura-de-maraba-pa/2026-001-gcm-pref-maraba-pa",
+      "oficial": false,
+      "consultado_em": "2026-11-17"
+    }
+  ],
+  "apurado_em": "2026-11-17T02:00:00-03:00",
+  "expira_em": "2026-12-28"
+}
