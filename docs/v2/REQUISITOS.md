@@ -35,3 +35,12 @@ Manter Astro e Python como baseline, sujeito à auditoria. Evitar reescrita e se
 - Separar permissões: coletor escreve via credencial de serviço restrita; portal público lê apenas registros publicados e verificados; RLS para dados acessíveis por APIs do Supabase.
 - Supabase Auth/Storage são possibilidades futuras, não dependências obrigatórias nem autorização para ativar serviços pagos.
 - Não provisionar projeto Supabase, usar credenciais reais ou migrar dados sem confirmação do ambiente isolado.
+
+## Decisão de infraestrutura — Supabase Pro compartilhado (17/11/2026)
+- O proprietário determinou reutilizar o projeto Supabase Pro já utilizado pelo Pintar Arte, também destinado ao NT MOBILIDADE (SEMOB).
+- Schema exclusivo do NT Concursos: `nt_concursos`. Schema previsto para NT MOBILIDADE: `nt_mobilidade`; o schema atual do Pintar Arte deve ser identificado e preservado sem suposições.
+- Antes de qualquer DDL: obter conexão autorizada, inspecionar apenas metadados dos schemas, confirmar o projeto correto e fazer plano de migração reversível. Não criar outro projeto Supabase.
+- Manter todos os objetos de NT Concursos qualificados com `nt_concursos.` e evitar alterações em `public`, `auth`, `storage` ou schemas de terceiros.
+- Definir papéis de menor privilégio, RLS quando tabelas forem expostas por APIs, limites de conexão e segregação de credenciais por aplicação. Não expor service_role no frontend.
+- Considerar que schemas compartilham recursos, quotas, backups e disponibilidade. Não executar migrações destrutivas ou testes de carga no banco compartilhado.
+- Banco local isolado continua preferencial para testes automatizados e desenvolvimento.
