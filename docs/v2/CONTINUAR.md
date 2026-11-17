@@ -5,10 +5,10 @@
 - Produção: **não alterar**. Aguardar aprovação do AdSense e autorização expressa posterior para qualquer deploy da V2.
 - Arquitetura observada: `site/` Astro; `collector/` Python; `worker/` TypeScript; `data/`, `schema/` e GitHub Actions.
 - Workflows `publish.yml` (deploy Pages com `--branch=main`), `deploy-worker.yml` (push somente main) e coleta automatizada na main.
-- Atenção: a configuração externa do Cloudflare Pages, incluindo preview de branches, **não foi verificada**. Não disparar deploy/preview da V2 antes de confirmar.
+- Confirmação do proprietário em 17/11/2026: Cloudflare faz deploy **somente da main**. A configuração externa não foi inspecionada diretamente; manter essa premissa registrada e não mudar integrações de publicação.
 
 ## Próximos passos
-1. Auditar integração GitHub/Cloudflare, proteção da main, automações, segredos e isolamento do banco; não ler ou divulgar valores secretos.
+1. Auditar proteção da main, automações, segredos e isolamento de dados; não ler ou divulgar valores secretos. Deploy exclusivo da main informado pelo proprietário.
 2. Executar baseline local: testes Python, schema, validate, build Astro; registrar comandos e resultados reais.
 3. Auditar fontes, modelos, extratores, evidências, retificações e lógica de prazos.
 4. Implementar incrementalmente motor de coleta V2, UI, busca, SEO, acessibilidade e testes.
