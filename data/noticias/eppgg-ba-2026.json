@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "slug": "eppgg-ba-2026",
+  "titulo": "Bahia prorroga inscrições para concurso de EPPGG com 50 vagas até 18 de novembro",
+  "orgao": "Secretaria de Administração do Estado da Bahia",
+  "categoria": "executivo",
+  "esfera": "estadual",
+  "uf": "BA",
+  "banca": "Cesgranrio",
+  "resumo": "A Secretaria de Administração do Estado da Bahia tem concurso aberto para Especialista em Políticas Públicas e Gestão Governamental (EPPGG), com 50 vagas, organizado pela Fundação Cesgranrio. As inscrições começaram em 16 de outubro e estavam previstas até 11 de novembro, mas uma retificação publicada em 10 de novembro prorrogou o prazo até 18 de novembro, às 23h59, pela internet. Segundo a mesma retificação, a taxa pode ser paga até 19 de novembro.",
+  "cargos": [
+    "Especialista em Políticas Públicas e Gestão Governamental (EPPGG)"
+  ],
+  "fatos": [
+    {
+      "campo": "inscricao",
+      "texto": "De 16/10 a 18/11/2026, às 23h59, pela internet, com prazo prorrogado (o edital previa até 11/11)",
+      "inicio": "2026-10-16",
+      "fim": "2026-11-18",
+      "fontes": [
+        "f-1",
+        "f-2"
+      ]
+    },
+    {
+      "campo": "vagas",
+      "texto": "50 vagas para o cargo de EPPGG, além de cadastro de reserva",
+      "fontes": [
+        "f-1",
+        "f-2",
+        "f-3"
+      ]
+    },
+    {
+      "campo": "banca",
+      "texto": "Organização pela Fundação Cesgranrio",
+      "fontes": [
+        "f-2",
+        "f-3"
+      ]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "f-1",
+      "nome": "Folha Dirigida",
+      "url": "https://folha.qconcursos.com/n/secretaria-de-administracao-do-estado-da-bahia-retifica-concurso-e-prorroga-inscricoes-para-especialista-em-politicas-publicas-e-gestao-governamental",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    },
+    {
+      "id": "f-2",
+      "nome": "Gran Concursos",
+      "url": "https://blog.grancursosonline.com.br/?p=79981179",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    },
+    {
+      "id": "f-3",
+      "nome": "Concursos no Brasil",
+      "url": "https://concursosnobrasil.com/concursos/ba/2026/10/02/edital-eppgg-ba-abre-50-vagas-com-salario-de-r-108-mil-em-concurso/",
+      "oficial": false,
+      "consultado_em": "2026-11-15"
+    }
+  ],
+  "apurado_em": "2026-11-15T14:40:00-03:00",
+  "expira_em": "2026-11-18"
+}
