@@ -22,6 +22,7 @@ const pdf = (url: string, pagina: number) => `${url}#page=${pagina}`;
     Uma decisão só vale enquanto o edital for o mesmo e não sair retificação depois dela; se algo mudar,
     a pendência volta para cá. O trecho escolhido continua precisando estar, literalmente, no edital.
   </p>
+  <p class="small"><a href="/admin/edital/">Enviar um edital em PDF que falta no site, para conferência</a></p>
 
   {revisoes.length === 0 && <div class="alert alert-success">Nenhuma pendência. 🎉</div>}
 
