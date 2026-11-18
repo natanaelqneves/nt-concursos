@@ -1,7 +1,7 @@
 {
   "aocp": {
-    "inicio": "2026-11-17T11:58:14-03:00",
-    "fim": "2026-11-17T11:58:51-03:00",
+    "inicio": "2026-11-17T23:48:59-03:00",
+    "fim": "2026-11-17T23:49:36-03:00",
     "erro_fonte": null,
     "contagem": {
       "fora_do_escopo": 8,
@@ -171,8 +171,8 @@
     ]
   },
   "avulsos": {
-    "inicio": "2026-11-17T11:58:51-03:00",
-    "fim": "2026-11-17T12:00:51-03:00",
+    "inicio": "2026-11-17T23:49:36-03:00",
+    "fim": "2026-11-17T23:51:17-03:00",
     "erro_fonte": null,
     "contagem": {
       "publicado": 11,
@@ -389,8 +389,8 @@
     ]
   },
   "cebraspe": {
-    "inicio": "2026-11-17T11:49:13-03:00",
-    "fim": "2026-11-17T11:52:04-03:00",
+    "inicio": "2026-11-17T23:40:21-03:00",
+    "fim": "2026-11-17T23:43:09-03:00",
     "erro_fonte": null,
     "contagem": {
       "fora_do_escopo": 22,
@@ -408,19 +408,6 @@
         "detalhe": "",
         "slug": null,
         "campos": {},
-        "violacoes": []
-      },
-      {
-        "fonte": "cebraspe",
-        "id": "CD_26_ANALISTA",
-        "titulo": "CÂMARA DOS DEPUTADOS 26 ANALISTA",
-        "situacao": "publicado",
-        "detalhe": "legislativo/federal/BR",
-        "slug": "camara-dos-deputados-2026-cd-analista",
-        "campos": {
-          "prazos.isencao": "verificado",
-          "prazos.inscricao": "verificado"
-        },
         "violacoes": []
       },
       {
@@ -551,6 +538,19 @@
         "campos": {
           "prazos.isencao": "ausente",
           "prazos.inscricao": "ausente"
+        },
+        "violacoes": []
+      },
+      {
+        "fonte": "cebraspe",
+        "id": "CD_26_ANALISTA",
+        "titulo": "CÂMARA DOS DEPUTADOS 26 ANALISTA",
+        "situacao": "publicado",
+        "detalhe": "legislativo/federal/BR",
+        "slug": "camara-dos-deputados-2026-cd-analista",
+        "campos": {
+          "prazos.isencao": "verificado",
+          "prazos.inscricao": "verificado"
         },
         "violacoes": []
       },
@@ -1207,8 +1207,8 @@
     ]
   },
   "fgv": {
-    "inicio": "2026-11-17T11:52:05-03:00",
-    "fim": "2026-11-17T11:58:13-03:00",
+    "inicio": "2026-11-17T23:43:10-03:00",
+    "fim": "2026-11-17T23:48:59-03:00",
     "erro_fonte": null,
     "contagem": {
       "fora_do_escopo": 25,
