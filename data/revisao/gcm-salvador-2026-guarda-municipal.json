@@ -1,0 +1,37 @@
+{
+  "schema_version": 2,
+  "slug": "gcm-salvador-2026-guarda-municipal",
+  "orgao": "Guarda Municipal de Salvador",
+  "situacao": "publicado",
+  "categoria": "guarda",
+  "esfera": "municipal",
+  "uf": "BA",
+  "cargos": [],
+  "fonte": "fgv",
+  "url": "https://conhecimento.fgv.br/concursos/pmsguarda2026",
+  "edital": "https://conhecimento.fgv.br/sites/default/files/concursos/edital-prefeitura-de-salvador-2026-guarda-retificado-2.pdf",
+  "edital_sha256": "150a60db698d741df7fa3004c777839f8c96fd79ab6aa344931bf27e6964b81e",
+  "campos_em_revisao": [],
+  "motivos": [
+    "decisão anterior não vale mais: o edital mudou depois da decisão do editor"
+  ],
+  "opcoes": {},
+  "mudancas": [
+    {
+      "titulo": "1ª Retificação",
+      "url": "https://conhecimento.fgv.br/sites/default/files/concursos/1-retificacao-do-edital-n-02-de-2026.pdf",
+      "publicado_em": "2026-09-28"
+    },
+    {
+      "titulo": "COMUNICADO - Prorrogação do prazo para reimpressão e pagamento dos boletos",
+      "url": "https://conhecimento.fgv.br/sites/default/files/concursos/comunicado-prorrogacao-reimpressao-e-pagamento-dos-boletos-guarda-municipal-salvador-ajust.pdf",
+      "publicado_em": "2026-11-06"
+    },
+    {
+      "titulo": "2ª Retificação",
+      "url": "https://conhecimento.fgv.br/sites/default/files/concursos/2-retificacao-do-edital-n-02-de-2026.pdf",
+      "publicado_em": "2026-11-18"
+    }
+  ],
+  "registrado_em": "2026-11-18T23:11:28-03:00"
+}
