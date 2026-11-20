@@ -1,0 +1,47 @@
+{
+  "schema_version": 2,
+  "slug": "seduc-sp-2027",
+  "orgao": "Secretaria de Educação do Estado de São Paulo",
+  "situacao": "so_revisao",
+  "categoria": "educacao",
+  "esfera": "estadual",
+  "uf": "SP",
+  "cargos": [],
+  "fonte": "fgv",
+  "url": "https://conhecimento.fgv.br/concursos/concursoseducsp27",
+  "edital": "https://conhecimento.fgv.br/sites/default/files/concursos/edital-concurso-publico-pefm-2027.word_.pdf",
+  "edital_sha256": "1af31402a5f84008b6a2a89f38cfd710822490178d275619f9cb5b120303d176",
+  "campos_em_revisao": [
+    "prazos.inscricao",
+    "prazos.isencao"
+  ],
+  "motivos": [
+    "prazos.isencao: 1 cláusulas diferentes",
+    "prazos.inscricao: 2 cláusulas diferentes"
+  ],
+  "opcoes": {
+    "prazos.isencao": [],
+    "prazos.inscricao": [
+      {
+        "id": "o-1",
+        "origem": "texto",
+        "pagina": 8,
+        "trecho": "As inscrições serão realizadas exclusivamente pela internet, no endereço eletrônico https://conhecimento.fgv.br/concursos/concursoseducsp27, das 16h do dia 26 de novembro de 2026 às 16h do dia 15 de fevereiro de 2027.",
+        "ancora": "inscrições",
+        "inicio": "2026-11-26",
+        "fim": "2027-02-15"
+      },
+      {
+        "id": "o-2",
+        "origem": "texto",
+        "pagina": 12,
+        "trecho": "vembro de 2026 às 16h do dia 30 de novembro de 2026, no endereço eletrônico indicado no item 1 do Capítulo 4, após o preenchimento do requerimento de inscrição, mediante o envio, por meio de upload, de cópia digitalizada dos seguintes documentos originais: I – para comprovação da condição de estudante, certidão ou declaração expedida por instituição de ensino pública ou privada ou carteira de identidade estudantil expedida por instituição de ensino ou por entidade de representação estudantil; e",
+        "ancora": "inscrição",
+        "inicio": null,
+        "fim": "2026-11-30"
+      }
+    ]
+  },
+  "mudancas": [],
+  "registrado_em": "2026-11-19T23:00:21-03:00"
+}
