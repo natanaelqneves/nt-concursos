@@ -1,0 +1,80 @@
+{
+  "slug": "ifg-go-2026-tae",
+  "titulo": "IFG abre concurso com 36 vagas para técnico-administrativo; inscrições a partir de 24/11",
+  "orgao": "Instituto Federal de Educação, Ciência e Tecnologia de Goiás (IFG)",
+  "categoria": "educacao",
+  "esfera": "federal",
+  "uf": "GO",
+  "banca": "Instituto AOCP",
+  "resumo": "O Instituto Federal de Goiás publicou em 16/11 o edital do concurso para técnico-administrativo em educação, com 36 vagas em cargos de nível médio e superior, organizado pelo Instituto AOCP. As inscrições começam às 9h de 24/11 e vão até as 23h59 de 23/12/2026, pelo site da banca. A prova objetiva está marcada para 14/02/2027.",
+  "cargos": [
+    "Assistente em Administração",
+    "Assistente de Alunos",
+    "Técnico em Agropecuária",
+    "Técnico em Contabilidade",
+    "Técnico de Tecnologia da Informação",
+    "Técnico de Laboratório",
+    "Analista de Tecnologia da Informação",
+    "Auditor",
+    "Bibliotecário-Documentalista",
+    "Médico"
+  ],
+  "areas": [
+    "ti"
+  ],
+  "fatos": [
+    {
+      "campo": "inscricao",
+      "texto": "Das 9h de 24/11 às 23h59 de 23/12/2026, exclusivamente pelo site do Instituto AOCP",
+      "inicio": "2026-11-24",
+      "fim": "2026-12-23",
+      "fontes": [
+        "f-1",
+        "f-2"
+      ]
+    },
+    {
+      "campo": "vagas",
+      "texto": "36 vagas: 3 de nível C, 25 de nível D e 8 de nível E",
+      "fontes": [
+        "f-1",
+        "f-2"
+      ]
+    },
+    {
+      "campo": "taxa",
+      "texto": "R$ 140 (nível C), R$ 160 (nível D) e R$ 180 (nível E)",
+      "fontes": [
+        "f-1"
+      ]
+    },
+    {
+      "campo": "prova",
+      "texto": "Prova objetiva marcada para 14/02/2027",
+      "inicio": "2027-02-14",
+      "fim": "2027-02-14",
+      "fontes": [
+        "f-1",
+        "f-2"
+      ]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "f-1",
+      "nome": "Instituto Federal de Goiás (notícia oficial)",
+      "url": "https://www.ifg.edu.br/component/content/article/17-ifg/ultimas-noticias/48575-ifg-publica-edital-de-concurso-com-36-vagas-e-vencimentos-de-ate-r-5-2-mil",
+      "oficial": true,
+      "consultado_em": "2026-11-17"
+    },
+    {
+      "id": "f-2",
+      "nome": "Portal 6",
+      "url": "https://portal6.com.br/2026/11/16/edital-do-concurso-publico-do-ifg-com-vagas-para-nivel-medio-tecnico-e-superior-e-publicado-salario-chega-a-r-5-21539/",
+      "oficial": false,
+      "consultado_em": "2026-11-17"
+    }
+  ],
+  "apurado_em": "2026-11-17T14:45:00-03:00",
+  "expira_em": "2026-12-23"
+}
