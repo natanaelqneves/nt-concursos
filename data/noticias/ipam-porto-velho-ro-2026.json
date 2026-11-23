@@ -1,0 +1,71 @@
+{
+  "slug": "ipam-porto-velho-ro-2026",
+  "titulo": "IPAM de Porto Velho (RO) abre concurso com 71 vagas imediatas",
+  "orgao": "Instituto de Previdência e Assistência dos Municipais de Porto Velho (IPAM)",
+  "categoria": "prefeitura",
+  "esfera": "municipal",
+  "uf": "RO",
+  "municipio": "Porto Velho",
+  "banca": "IBADE",
+  "resumo": "O IPAM de Porto Velho publicou o Edital nº 01/2026, com 71 vagas imediatas (34 de nível médio e 37 de nível superior) mais cadastro de reserva, executado pelo IBADE. As inscrições começaram em 3 de novembro e vão até 7 de dezembro de 2026, às 23h59.",
+  "cargos": [
+    "Administrativa",
+    "Informática",
+    "Auditor Médico",
+    "Direito"
+  ],
+  "fatos": [
+    {
+      "campo": "inscricao",
+      "texto": "Das 10h de 3/11 às 23h59 de 7/12/2026, pelo portal do IBADE",
+      "inicio": "2026-11-03",
+      "fim": "2026-12-07",
+      "fontes": [
+        "f-1",
+        "f-2",
+        "f-3"
+      ]
+    },
+    {
+      "campo": "vagas",
+      "texto": "71 vagas imediatas (34 de nível médio e 37 de nível superior), além de cadastro de reserva",
+      "fontes": [
+        "f-1",
+        "f-2",
+        "f-4"
+      ]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "f-1",
+      "nome": "Direção Concursos",
+      "url": "https://www.direcaoconcursos.com.br/noticias/concurso-ipam-porto-velho-inscricoes-abertas",
+      "oficial": false,
+      "consultado_em": "2026-11-21"
+    },
+    {
+      "id": "f-2",
+      "nome": "Rondoniagora",
+      "url": "https://www.rondoniagora.com/concursos-e-empregos/comecam-as-inscricoes-para-o-concurso-do-ipam-com-34-vagas-de-nivel-medio-e-37-de-superior",
+      "oficial": false,
+      "consultado_em": "2026-11-21"
+    },
+    {
+      "id": "f-3",
+      "nome": "Rondoniaovivo",
+      "url": "https://www.rondoniaovivo.com/noticia/concursos/2026/11/18/rondonia-inscricoes-para-o-concurso-do-ipam-continua-abertas.html",
+      "oficial": false,
+      "consultado_em": "2026-11-21"
+    },
+    {
+      "id": "f-4",
+      "nome": "Diário Oficial dos Municípios de Rondônia (Edital nº 01/2026 - IPAM/RO)",
+      "url": "https://agencia.portovelho.ro.gov.br/uploads/arquivos/concurso%20-%20IPAM.pdf",
+      "oficial": true,
+      "consultado_em": "2026-11-21"
+    }
+  ],
+  "apurado_em": "2026-11-21T09:00:00-03:00",
+  "expira_em": "2026-12-07"
+}
