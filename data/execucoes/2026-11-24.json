@@ -1,43 +1,13 @@
 {
   "aocp": {
-    "inicio": "2026-11-24T02:13:10-03:00",
-    "fim": "2026-11-24T02:13:47-03:00",
+    "inicio": "2026-11-24T13:21:41-03:00",
+    "fim": "2026-11-24T13:22:19-03:00",
     "erro_fonte": null,
     "contagem": {
-      "fora_do_escopo": 8,
-      "erro": 8
+      "erro": 8,
+      "fora_do_escopo": 8
     },
     "registros": [
-      {
-        "fonte": "aocp",
-        "id": "693",
-        "titulo": "CBMERJ - CORPO DE BOMBEIROS MILITAR DO ESTADO DO RIO DE JANEIRO",
-        "situacao": "fora_do_escopo",
-        "detalhe": "",
-        "slug": null,
-        "campos": {},
-        "violacoes": []
-      },
-      {
-        "fonte": "aocp",
-        "id": "714",
-        "titulo": "PMPE - POLÍCIA MILITAR DE PERNAMBUCO",
-        "situacao": "erro",
-        "detalhe": "ErroColeta: https://arquivos-site.institutoaocp.org.br/publicacoes/2900b54e-fae0-462e-8a77-58784523dfa0.pdf: robots.txt não permite: https://arquivos-site.institutoaocp.org.br/publicacoes/2900b54e-fae0-462e-8a77-58784523dfa0.pdf",
-        "slug": null,
-        "campos": {},
-        "violacoes": []
-      },
-      {
-        "fonte": "aocp",
-        "id": "715",
-        "titulo": "CBMPE - CORPO DE BOMBEIROS MILITAR DE PERNAMBUCO",
-        "situacao": "erro",
-        "detalhe": "ErroColeta: https://arquivos-site.institutoaocp.org.br/publicacoes/af766320-b99c-4c1b-b803-12351ce250ed.pdf: robots.txt não permite: https://arquivos-site.institutoaocp.org.br/publicacoes/af766320-b99c-4c1b-b803-12351ce250ed.pdf",
-        "slug": null,
-        "campos": {},
-        "violacoes": []
-      },
       {
         "fonte": "aocp",
         "id": "724",
@@ -130,6 +100,26 @@
       },
       {
         "fonte": "aocp",
+        "id": "715",
+        "titulo": "CBMPE - CORPO DE BOMBEIROS MILITAR DE PERNAMBUCO",
+        "situacao": "erro",
+        "detalhe": "ErroColeta: https://arquivos-site.institutoaocp.org.br/publicacoes/af766320-b99c-4c1b-b803-12351ce250ed.pdf: robots.txt não permite: https://arquivos-site.institutoaocp.org.br/publicacoes/af766320-b99c-4c1b-b803-12351ce250ed.pdf",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "aocp",
+        "id": "714",
+        "titulo": "PMPE - POLÍCIA MILITAR DE PERNAMBUCO",
+        "situacao": "erro",
+        "detalhe": "ErroColeta: https://arquivos-site.institutoaocp.org.br/publicacoes/2900b54e-fae0-462e-8a77-58784523dfa0.pdf: robots.txt não permite: https://arquivos-site.institutoaocp.org.br/publicacoes/2900b54e-fae0-462e-8a77-58784523dfa0.pdf",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
+      {
+        "fonte": "aocp",
         "id": "713",
         "titulo": "SECRETARIA DE ESTADO DA ADMINISTRAÇÃO DO ESTADO DO AMAPÁ - AP",
         "situacao": "erro",
@@ -167,12 +157,22 @@
         "slug": null,
         "campos": {},
         "violacoes": []
+      },
+      {
+        "fonte": "aocp",
+        "id": "693",
+        "titulo": "CBMERJ - CORPO DE BOMBEIROS MILITAR DO ESTADO DO RIO DE JANEIRO",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
       }
     ]
   },
   "avulsos": {
-    "inicio": "2026-11-24T02:13:47-03:00",
-    "fim": "2026-11-24T02:15:43-03:00",
+    "inicio": "2026-11-24T13:22:20-03:00",
+    "fim": "2026-11-24T13:24:14-03:00",
     "erro_fonte": null,
     "contagem": {
       "publicado": 11,
@@ -384,8 +384,8 @@
     ]
   },
   "cebraspe": {
-    "inicio": "2026-11-24T02:04:18-03:00",
-    "fim": "2026-11-24T02:07:11-03:00",
+    "inicio": "2026-11-24T13:12:48-03:00",
+    "fim": "2026-11-24T13:15:40-03:00",
     "erro_fonte": null,
     "contagem": {
       "fora_do_escopo": 22,
@@ -1202,8 +1202,8 @@
     ]
   },
   "fgv": {
-    "inicio": "2026-11-24T02:07:11-03:00",
-    "fim": "2026-11-24T02:13:10-03:00",
+    "inicio": "2026-11-24T13:15:40-03:00",
+    "fim": "2026-11-24T13:21:41-03:00",
     "erro_fonte": null,
     "contagem": {
       "fora_do_escopo": 25,
