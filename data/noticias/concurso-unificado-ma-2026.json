@@ -1,0 +1,78 @@
+{
+  "slug": "concurso-unificado-ma-2026",
+  "titulo": "Concurso Unificado do Maranhão abre 2.317 vagas de níveis médio e superior",
+  "orgao": "Governo do Estado do Maranhão (concurso unificado)",
+  "categoria": "executivo",
+  "esfera": "estadual",
+  "uf": "MA",
+  "banca": "FCC",
+  "resumo": "O Governo do Maranhão publicou o Edital nº 01/2026 do Concurso Unificado, com 2.317 vagas imediatas de níveis médio e superior distribuídas entre Seduc, Sead, Seplan, STC e Imesc, além de cadastro de reserva. As inscrições pela internet, no site da FCC, começam em 14 de dezembro de 2026 e vão até 29 de janeiro de 2027. A taxa varia de R$ 60 a R$ 250, conforme o cargo.",
+  "cargos": [
+    "Professor",
+    "Pesquisador",
+    "Especialista em Educação",
+    "Técnico em Pesquisa",
+    "Assistente Técnico",
+    "Especialista em Gestão Pública",
+    "Analista de Planejamento e Finanças Públicas",
+    "Auditor"
+  ],
+  "fatos": [
+    {
+      "campo": "inscricao",
+      "texto": "Inscrições pela internet, no site da FCC, de 14/12/2026 às 10h a 29/01/2027 às 23h59 (horário de Brasília)",
+      "inicio": "2026-12-14",
+      "fim": "2027-01-29",
+      "fontes": ["f-1", "f-2", "f-3"]
+    },
+    {
+      "campo": "isencao",
+      "texto": "Pedidos de isenção da taxa de inscrição de 14 a 16/12/2026",
+      "inicio": "2026-12-14",
+      "fim": "2026-12-16",
+      "fontes": ["f-1", "f-2"]
+    },
+    {
+      "campo": "vagas",
+      "texto": "2.317 vagas imediatas de níveis médio e superior, além de cadastro de reserva",
+      "fontes": ["f-1", "f-2", "f-4"]
+    },
+    {
+      "campo": "taxa",
+      "texto": "Taxa de inscrição de R$ 60 a R$ 250, conforme o cargo",
+      "fontes": ["f-1", "f-2"]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "f-1",
+      "nome": "Focus Concursos",
+      "url": "https://noticias.focusconcursos.com.br/noticias/concurso-unificado-ma-edital-publicado-com-2317-vagas",
+      "oficial": false,
+      "consultado_em": "2026-11-24"
+    },
+    {
+      "id": "f-2",
+      "nome": "Meu Preparatório",
+      "url": "https://noticias.meupreparatorio.com.br/concursos/concurso-unificado-maranhao-2026-edital-2317-vagas-seduc-seplan-stc-imesc-sead",
+      "oficial": false,
+      "consultado_em": "2026-11-24"
+    },
+    {
+      "id": "f-3",
+      "nome": "Aprova Concursos",
+      "url": "https://www.aprovaconcursos.com.br/noticias/concurso-unificado-ma/",
+      "oficial": false,
+      "consultado_em": "2026-11-24"
+    },
+    {
+      "id": "f-4",
+      "nome": "Qconcursos",
+      "url": "https://folha.qconcursos.com/n/concurso-unificado-maranhao-2026-edital-1",
+      "oficial": false,
+      "consultado_em": "2026-11-24"
+    }
+  ],
+  "apurado_em": "2026-11-24T12:00:00-03:00",
+  "expira_em": "2027-01-29"
+}
