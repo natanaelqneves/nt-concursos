@@ -76,7 +76,7 @@
       "url": "https://conhecimento.fgv.br/sites/default/files/concursos/edital-prefeitura-de-salvador-2026-guarda-retificado-2.pdf",
       "url_final": "https://conhecimento.fgv.br/sites/default/files/concursos/edital-prefeitura-de-salvador-2026-guarda-retificado-2.pdf",
       "sha256": "150a60db698d741df7fa3004c777839f8c96fd79ab6aa344931bf27e6964b81e",
-      "coletado_em": "2026-11-23T13:26:21-03:00",
+      "coletado_em": "2026-11-24T02:07:43-03:00",
       "fonte": "fgv",
       "publicado_em": "2026-11-18",
       "titulo": "Edital (retificado em 18/11/2026)"
@@ -87,7 +87,7 @@
       "url": "https://conhecimento.fgv.br/sites/default/files/concursos/2-retificacao-do-edital-n-02-de-2026.pdf",
       "url_final": "https://conhecimento.fgv.br/sites/default/files/concursos/2-retificacao-do-edital-n-02-de-2026.pdf",
       "sha256": "c068a81a61b68a245433b66911f9855b4c9aeced3e4bc417253682c06b0db4c7",
-      "coletado_em": "2026-11-23T13:26:23-03:00",
+      "coletado_em": "2026-11-24T02:07:45-03:00",
       "fonte": "fgv",
       "publicado_em": "2026-11-18",
       "titulo": "2ª Retificação"
@@ -199,5 +199,5 @@
     "url": "https://conhecimento.fgv.br/concursos/pmsguarda2026",
     "data_dou": null
   },
-  "conferido_em": "2026-11-23T13:26:23-03:00"
+  "conferido_em": "2026-11-24T02:07:45-03:00"
 }

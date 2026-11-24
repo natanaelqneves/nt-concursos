@@ -9,8 +9,8 @@
   "cargos": [],
   "fonte": "fgv",
   "url": "https://conhecimento.fgv.br/concursos/concursoseducsp27",
-  "edital": "https://conhecimento.fgv.br/sites/default/files/concursos/edital-concurso-publico-pefm-2027.word_.pdf",
-  "edital_sha256": "1af31402a5f84008b6a2a89f38cfd710822490178d275619f9cb5b120303d176",
+  "edital": "https://conhecimento.fgv.br/sites/default/files/concursos/edital_pefm_2027_retificado.pdf",
+  "edital_sha256": "dc804c688be504be1be5dc60e12c102e34474866b188a8e9157c8b21d39c7500",
   "campos_em_revisao": [
     "prazos.inscricao",
     "prazos.isencao"
@@ -42,6 +42,12 @@
       }
     ]
   },
-  "mudancas": [],
-  "registrado_em": "2026-11-23T13:26:00-03:00"
+  "mudancas": [
+    {
+      "titulo": "1ª Retificação",
+      "url": "https://conhecimento.fgv.br/sites/default/files/concursos/edital-de-retificacao-de-publicacao-pefm-2.pdf",
+      "publicado_em": "2026-11-23"
+    }
+  ],
+  "registrado_em": "2026-11-24T02:07:23-03:00"
 }

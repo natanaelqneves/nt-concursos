@@ -1,0 +1,78 @@
+{
+  "schema_version": 2,
+  "slug": "conselho-regional-de-odontologia-do-parana-2026",
+  "orgao": "Conselho Regional de Odontologia do Paraná",
+  "categoria": "conselho",
+  "esfera": "federal",
+  "banca": "fgv",
+  "uf": "PR",
+  "municipio": null,
+  "cargos": [],
+  "vagas_imediatas": null,
+  "porte": "indefinido",
+  "areas": [
+    "ti"
+  ],
+  "taxa": null,
+  "prazos": {
+    "isencao": {
+      "status": "verificado",
+      "evidencia": "ev-1",
+      "inicio": "2026-11-30",
+      "fim": "2026-12-02"
+    },
+    "inscricao": {
+      "status": "verificado",
+      "evidencia": "ev-2",
+      "inicio": "2026-11-30",
+      "fim": "2026-12-29"
+    }
+  },
+  "etapas": [],
+  "isencao_publicos": [],
+  "documentos": [
+    {
+      "id": "doc-1",
+      "tipo": "edital",
+      "url": "https://conhecimento.fgv.br/sites/default/files/concursos/edital-cro-pr.pdf",
+      "url_final": "https://conhecimento.fgv.br/sites/default/files/concursos/edital-cro-pr.pdf",
+      "sha256": "fbc30c1cc379dbb154321aec8d721e77a2dd0d2b15f0462e405eac21bb629a30",
+      "coletado_em": "2026-11-24T02:07:17-03:00",
+      "fonte": "fgv",
+      "publicado_em": "2026-11-23",
+      "titulo": "Edital"
+    }
+  ],
+  "evidencias": [
+    {
+      "id": "ev-1",
+      "campo": "prazos.isencao",
+      "documento": "doc-1",
+      "pagina": 7,
+      "trecho": "5.2 5.3 A isenção mencionada no subitem 5.1 poderá ser solicitada no período entre 16h do dia 30 de novembro de 2026 e 16h de 02 de dezembro de 2026, no momento da inscrição, no endereço eletrônico https://conhecimento.fgv.br/concursos/cropr, devendo o candidato fazer o upload (imagem original) dos documentos comprobatórios para a obtenção da isenção.",
+      "ancora": "isenção",
+      "metodo": "regex:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": null
+    },
+    {
+      "id": "ev-2",
+      "campo": "prazos.inscricao",
+      "documento": "doc-1",
+      "pagina": 4,
+      "trecho": "DAS INSCRIÇÕES 4.1 As inscrições para o Concurso Público estarão abertas no período das 16h do dia 30 de novembro de 2026 até às 16h do dia 29 de dezembro de 2026.",
+      "ancora": "INSCRIÇÕES",
+      "metodo": "regex:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": null
+    }
+  ],
+  "descoberto_via": {
+    "fonte": "fgv",
+    "url": "https://conhecimento.fgv.br/concursos/cropr",
+    "data_dou": null
+  },
+  "conferido_em": "2026-11-24T02:07:17-03:00"
+}
