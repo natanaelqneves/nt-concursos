@@ -1,5 +1,6 @@
 ---
 import Base from "../../layouts/Base.astro";
+import BotaoBanca from "../../components/BotaoBanca.astro";
 import { NOME_CATEGORIA, NOME_FATO, substitutoDe, textoEsfera, todasNoticias, type Noticia } from "../../lib/dados";
 import { SOBRE_CATEGORIA } from "../../lib/categorias";
 import { formatarData, formatarDataHora, hojeBRT } from "../../lib/tempo";
@@ -37,6 +38,8 @@ const sobre = SOBRE_CATEGORIA[n.categoria];
       ? "As inscrições deste concurso já terminaram."
       : "Informação apurada em fontes de imprensa e cruzada entre elas, ainda não conferida por nós no edital. Confira o edital no site da banca antes de se inscrever."}
   </p>
+
+  {!n.fontes.some((f) => f.oficial) && <BotaoBanca banca={n.banca} />}
 
   <p class="resumo-concurso">{n.resumo}</p>
 

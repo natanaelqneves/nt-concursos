@@ -2,6 +2,7 @@
 import Base from "../../layouts/Base.astro";
 import AdSlot from "../../components/AdSlot.astro";
 import EvidenciaBox from "../../components/Evidencia.astro";
+import BotaoBanca from "../../components/BotaoBanca.astro";
 import type { Campo, Concurso, Prazo } from "../../lib/dados";
 import {
   NOME_CATEGORIA,
@@ -220,6 +221,12 @@ const descricao = verificado(c.prazos.isencao) && c.prazos.isencao.fim
         imprensa publicou; se houvesse diferença, a data não apareceria aqui. Antes de se inscrever, confira no
         site da banca.
       </p>
+    )}
+    {c.documentos.length === 0 && (
+      <>
+        <p class="meta">Não encontramos o edital num site oficial que o nosso coletor alcance. Consulte a banca diretamente.</p>
+        <BotaoBanca banca={c.banca} />
+      </>
     )}
     {avulso ? (
       <>
