@@ -1,0 +1,75 @@
+{
+  "schema_version": 2,
+  "slug": "seduc-sp-2027",
+  "orgao": "Secretaria de Educação do Estado de São Paulo",
+  "categoria": "educacao",
+  "esfera": "estadual",
+  "banca": "fgv",
+  "uf": "SP",
+  "municipio": null,
+  "cargos": [],
+  "vagas_imediatas": null,
+  "porte": "indefinido",
+  "areas": [],
+  "taxa": null,
+  "prazos": {
+    "isencao": {
+      "status": "verificado",
+      "evidencia": "ev-1",
+      "inicio": "2026-11-26",
+      "fim": "2026-11-30"
+    },
+    "inscricao": {
+      "status": "revisao",
+      "evidencia": null,
+      "inicio": null,
+      "fim": null
+    }
+  },
+  "etapas": [],
+  "isencao_publicos": [],
+  "documentos": [
+    {
+      "id": "doc-1",
+      "tipo": "edital",
+      "url": "https://conhecimento.fgv.br/sites/default/files/concursos/edital_pefm_2027_retificado_02-25.11.2026.pdf",
+      "url_final": "https://conhecimento.fgv.br/sites/default/files/concursos/edital_pefm_2027_retificado_02-25.11.2026.pdf",
+      "sha256": "c4d67ce9e703482b12c16865959c73b5da9827c5e0fc82b21f9b06ebe928ff20",
+      "coletado_em": "2026-11-25T12:59:37-03:00",
+      "fonte": "fgv",
+      "publicado_em": "2026-11-25",
+      "titulo": "Edital (retificado em 25/11/2026)"
+    },
+    {
+      "id": "doc-2",
+      "tipo": "retificacao",
+      "url": "https://conhecimento.fgv.br/sites/default/files/concursos/edital-de-retificacao-de-publicacao-n-2-pefm.pdf",
+      "url_final": "https://conhecimento.fgv.br/sites/default/files/concursos/edital-de-retificacao-de-publicacao-n-2-pefm.pdf",
+      "sha256": "51ab2e2f6a79ce2c1cd97cd465e43e93f48fb5c3560148f0fb59fc41b4eaf89d",
+      "coletado_em": "2026-11-25T12:59:39-03:00",
+      "fonte": "fgv",
+      "publicado_em": "2026-11-25",
+      "titulo": "2ª Retificação"
+    }
+  ],
+  "evidencias": [
+    {
+      "id": "ev-1",
+      "campo": "prazos.isencao",
+      "documento": "doc-1",
+      "pagina": 12,
+      "trecho": "A isenção poderá ser solicitada das 16h do dia 26 de novembro de 2026 às 16h do dia 30 de novembro de 2026, no endereço eletrônico indicado no item 1 do Capítulo 4, após o preenchimento do requerimento de inscrição, mediante o envio, por meio de upload, de cópia digitalizada dos documentos originais que comprovem a hipótese declarada, nos termos dos itens 2.1 a 2.3.",
+      "ancora": "isenção",
+      "metodo": "regex:v1",
+      "aprovado_por": null,
+      "aprovado_em": null,
+      "tabela": null
+    }
+  ],
+  "descoberto_via": {
+    "fonte": "fgv",
+    "url": "https://conhecimento.fgv.br/concursos/concursoseducsp27",
+    "data_dou": null
+  },
+  "conferido_em": "2026-11-25T12:59:40-03:00"
+}

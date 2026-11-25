@@ -1,7 +1,7 @@
 {
   "aocp": {
-    "inicio": "2026-11-25T01:01:33-03:00",
-    "fim": "2026-11-25T01:02:10-03:00",
+    "inicio": "2026-11-25T13:07:18-03:00",
+    "fim": "2026-11-25T13:07:57-03:00",
     "erro_fonte": null,
     "contagem": {
       "erro": 8,
@@ -171,8 +171,8 @@
     ]
   },
   "avulsos": {
-    "inicio": "2026-11-25T01:02:10-03:00",
-    "fim": "2026-11-25T01:03:52-03:00",
+    "inicio": "2026-11-25T13:07:57-03:00",
+    "fim": "2026-11-25T13:10:03-03:00",
     "erro_fonte": null,
     "contagem": {
       "publicado": 11,
@@ -384,8 +384,8 @@
     ]
   },
   "cebraspe": {
-    "inicio": "2026-11-25T00:52:46-03:00",
-    "fim": "2026-11-25T00:55:36-03:00",
+    "inicio": "2026-11-25T12:56:35-03:00",
+    "fim": "2026-11-25T12:59:27-03:00",
     "erro_fonte": null,
     "contagem": {
       "fora_do_escopo": 22,
@@ -1202,14 +1202,14 @@
     ]
   },
   "fgv": {
-    "inicio": "2026-11-25T00:55:37-03:00",
-    "fim": "2026-11-25T01:01:32-03:00",
+    "inicio": "2026-11-25T12:59:27-03:00",
+    "fim": "2026-11-25T13:07:18-03:00",
     "erro_fonte": null,
     "contagem": {
       "fora_do_escopo": 25,
-      "publicado": 7,
-      "so_revisao": 24,
+      "publicado": 8,
       "encerrado": 40,
+      "so_revisao": 23,
       "sem_edital": 7
     },
     "registros": [
@@ -1240,15 +1240,14 @@
         "fonte": "fgv",
         "id": "concursoseducsp27",
         "titulo": "Concurso Público para a Secretaria da Educação do Estado de São Paulo",
-        "situacao": "so_revisao",
+        "situacao": "publicado",
         "detalhe": "educacao/estadual/SP",
         "slug": "seduc-sp-2027",
         "campos": {
-          "prazos.isencao": "revisao",
+          "prazos.isencao": "verificado",
           "prazos.inscricao": "revisao"
         },
         "violacoes": [
-          "prazos.isencao: 1 cláusulas diferentes",
           "prazos.inscricao: 2 cláusulas diferentes"
         ]
       },
