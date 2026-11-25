@@ -42,25 +42,17 @@ const L = "lista row row-cols-1 row-cols-md-2 g-3 list-unstyled";
 
       <AdSlot formato="topo" slot={import.meta.env.PUBLIC_ADSENSE_SLOT_TOPO} />
 
-      <h2>Inscrições abertas ({abertas.length})</h2>
-      {abertas.length ? (
-        <ul class={L}>{abertas.map((c) => <CartaoConcurso c={c} />)}</ul>
+      <h2>Inscrições abertas ({abertas.length + noticias.length})</h2>
+      {abertas.length + noticias.length ? (
+        <ul class={L}>
+          {abertas.map((c) => <CartaoConcurso c={c} />)}
+          {noticias.map((n) => <CartaoNoticia n={n} />)}
+        </ul>
       ) : (
-        <p class="vazio alert alert-light border">Nenhuma outra inscrição aberta e conferida nesta edição.</p>
+        <p class="vazio alert alert-light border">Nenhuma outra inscrição aberta nesta edição.</p>
       )}
 
       <AdSlot formato="meio" slot={import.meta.env.PUBLIC_ADSENSE_SLOT_MEIO} />
-
-      {noticias.length > 0 && (
-        <section aria-labelledby="apuracao">
-          <h2 id="apuracao">Apuração na imprensa ({noticias.length})</h2>
-          <p class="meta">
-            Ainda não conferidos por nós no edital. Cada informação foi cruzada em pelo menos duas fontes;
-            confira o edital antes de se inscrever. <a href="/noticias/">Ver todos</a>
-          </p>
-          <ul class={L}>{noticias.map((n) => <CartaoNoticia n={n} />)}</ul>
-        </section>
-      )}
     </div>
 
     <aside class="col-lg-4">
