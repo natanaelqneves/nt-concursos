@@ -39,7 +39,7 @@ const sobre = SOBRE_CATEGORIA[n.categoria];
       : "Informação apurada em fontes de imprensa e cruzada entre elas, ainda não conferida por nós no edital. Confira o edital no site da banca antes de se inscrever."}
   </p>
 
-  {!n.fontes.some((f) => f.oficial) && <BotaoBanca banca={n.banca} />}
+  <BotaoBanca banca={n.banca} />
 
   <p class="resumo-concurso">{n.resumo}</p>
 
