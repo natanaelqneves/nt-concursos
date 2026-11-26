@@ -267,7 +267,7 @@
       "items": {
         "$ref": "#/$defs/Fonte"
       },
-      "minItems": 2,
+      "minItems": 1,
       "title": "Fontes",
       "type": "array"
     },
