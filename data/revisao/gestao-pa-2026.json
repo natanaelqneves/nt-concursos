@@ -9,8 +9,8 @@
   "cargos": [],
   "fonte": "fgv",
   "url": "https://conhecimento.fgv.br/concursos/seducpa26",
-  "edital": "https://conhecimento.fgv.br/sites/default/files/concursos/edital-consolidado-01.10-minuta.pdf",
-  "edital_sha256": "bd30f562442e808a1ec788f10cc7adae51cee796e2dfd52932d35c54663712ac",
+  "edital": "https://conhecimento.fgv.br/sites/default/files/concursos/portaria-no-6-de-11-de-janeiro-de-2024-eiro-de-2024-dou-imprensa-nacional.pdf",
+  "edital_sha256": "31ef4cdcdd572097a9206d0a736b36fbef3e0b9e85062fa8fc439d960f36a1f4",
   "campos_em_revisao": [
     "prazos.isencao"
   ],
@@ -40,7 +40,12 @@
       "titulo": "Demanda de candidato por vaga (retificado em 10/11/2026)",
       "url": "https://conhecimento.fgv.br/sites/default/files/concursos/relacao-candidato_vaga-seduc-pa_0.pdf",
       "publicado_em": "2026-11-03"
+    },
+    {
+      "titulo": "2ª Retificação",
+      "url": "https://conhecimento.fgv.br/sites/default/files/concursos/edital-no-009-de-24.11.2026-doe-no-36.852-de-25.11.2026-retificacao-do-edital-001-abertura.pdf",
+      "publicado_em": "2026-11-25"
     }
   ],
-  "registrado_em": "2026-11-24T13:16:27-03:00"
+  "registrado_em": "2026-11-26T12:42:33-03:00"
 }

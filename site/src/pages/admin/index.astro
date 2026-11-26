@@ -9,6 +9,16 @@ import { NOME_CAMPO, REPO, dataBR, intervalo, todasRevisoes, ultimaDecisao } fro
 const revisoes = todasRevisoes().map((r) => ({ r, decisao: ultimaDecisao(r.slug) }));
 const DECIDIVEIS = new Set(["prazos.isencao", "prazos.inscricao"]);
 const pdf = (url: string, pagina: number) => `${url}#page=${pagina}`;
+// Sugestão (só marca a opção; quem decide é o editor): período de solicitação/inscrição vale mais
+// que a linha de envio de documentos. Empate: a primeira opção.
+const SINAIS_BOM = /per[ií]odo|solicita|inscri/i;
+const SINAIS_RUIM = /documenta|envio|comprova|formul/i;
+const pontos = (o: { trecho: string }) => (SINAIS_BOM.test(o.trecho) ? 2 : 0) - (SINAIS_RUIM.test(o.trecho) ? 2 : 0);
+function sugerida<T extends { trecho: string }>(ops: T[] | undefined): T | undefined {
+  if (!ops || ops.length === 0) return undefined;
+  return ops.reduce((a, b) => (pontos(b) > pontos(a) ? b : a));
+}
+const pendencias = revisoes.length;
 ---
 <Base titulo="Pendências da coleta" noindex semAnuncios>
   <h1 class="h3">Pendências da coleta</h1>
@@ -25,6 +35,7 @@ const pdf = (url: string, pagina: number) => `${url}#page=${pagina}`;
   <p class="small"><a href="/admin/edital/">Enviar um edital em PDF que falta no site, para conferência</a></p>
 
   {revisoes.length === 0 && <div class="alert alert-success">Nenhuma pendência. 🎉</div>}
+  {pendencias > 0 && <p class="fw-semibold mt-3 mb-0">{pendencias} pendência(s). A leitura mais provável já vem marcada: confira e clique em <em>Gerar decisão</em>.</p>}
 
   <div class="d-flex flex-column gap-4 mt-3">
     {revisoes.map(({ r, decisao }) => (
@@ -64,18 +75,22 @@ const pdf = (url: string, pagina: number) => `${url}#page=${pagina}`;
                 {DECIDIVEIS.has(campo) && !r.opcoes && (
                   <p class="small text-secondary">As opções aparecem depois da próxima coleta (revisão no formato antigo).</p>
                 )}
-                {DECIDIVEIS.has(campo) && r.opcoes && (
+                {DECIDIVEIS.has(campo) && r.opcoes && (() => {
+                  const ops = r.opcoes[campo] ?? [];
+                  const sug = sugerida(ops);
+                  return (
                   <div class="d-flex flex-column gap-2" data-campo={campo}>
-                    {(r.opcoes[campo] ?? []).map((o) => (
+                    {ops.map((o) => (
                       <label class="border rounded p-2 d-flex gap-2">
                         <input class="form-check-input flex-shrink-0 mt-1" type="radio" name={`${r.slug}:${campo}`}
-                               value="usar" data-opcao={JSON.stringify({ origem: o.origem, pagina: o.pagina, trecho: o.trecho, inicio: o.inicio, fim: o.fim })} />
+                               value="usar" checked={o === sug} data-opcao={JSON.stringify({ origem: o.origem, pagina: o.pagina, trecho: o.trecho, inicio: o.inicio, fim: o.fim })} />
                         <span>
                           <strong>{intervalo(o)}</strong>
                           <span class="small text-secondary">
                             {" "}· {o.origem === "tabela" ? "linha do cronograma" : "texto do edital"} ·
                             {" "}<a href={pdf(r.edital, o.pagina)} rel="noopener" target="_blank">página {o.pagina}</a>
                           </span>
+                          {o === sug && <span class="badge text-bg-success ms-1">sugerida</span>}
                           <span class="d-block small fst-italic">“{o.trecho}”</span>
                         </span>
                       </label>
@@ -85,11 +100,12 @@ const pdf = (url: string, pagina: number) => `${url}#page=${pagina}`;
                       <span>Nenhuma está certa: deixar sem data no site</span>
                     </label>
                     <label class="d-flex gap-2 small text-secondary">
-                      <input class="form-check-input flex-shrink-0" type="radio" name={`${r.slug}:${campo}`} value="" checked />
+                      <input class="form-check-input flex-shrink-0" type="radio" name={`${r.slug}:${campo}`} value="" checked={!sug} />
                       <span>Não decidir agora</span>
                     </label>
                   </div>
-                )}
+                  );
+                })()}
               </fieldset>
             ))}
             {r.mudancas && r.mudancas.length > 0 && (

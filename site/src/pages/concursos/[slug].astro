@@ -2,6 +2,7 @@
 import Base from "../../layouts/Base.astro";
 import AdSlot from "../../components/AdSlot.astro";
 import EvidenciaBox from "../../components/Evidencia.astro";
+import BotaoBanca from "../../components/BotaoBanca.astro";
 import type { Campo, Concurso, Prazo } from "../../lib/dados";
 import {
   NOME_CATEGORIA,
@@ -221,6 +222,11 @@ const descricao = verificado(c.prazos.isencao) && c.prazos.isencao.fim
         site da banca.
       </p>
     )}
+    {c.documentos.length === 0 && (
+      <>
+        <p class="meta">Não encontramos o edital num site oficial que o nosso coletor alcance. Consulte a banca diretamente.</p>
+      </>
+    )}
     {avulso ? (
       <>
         <h3>Onde pesquisamos</h3>
@@ -229,6 +235,7 @@ const descricao = verificado(c.prazos.isencao) && c.prazos.isencao.fim
     ) : (
       <p class="meta">Edital encontrado automaticamente pelo nosso coletor, que consulta todos os dias as páginas das bancas e o Diário Oficial da União.</p>
     )}
+    <BotaoBanca banca={c.banca} />
     <p class="meta">
       Cada data foi conferida contra o texto do documento.
       <a href="/metodologia/">Veja como verificamos</a>. Encontrou um erro? <a href="/contato/">Avise-nos</a>.

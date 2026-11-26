@@ -1,5 +1,6 @@
 ---
 import Base from "../../layouts/Base.astro";
+import BotaoBanca from "../../components/BotaoBanca.astro";
 import { NOME_CATEGORIA, NOME_FATO, substitutoDe, textoEsfera, todasNoticias, type Noticia } from "../../lib/dados";
 import { SOBRE_CATEGORIA } from "../../lib/categorias";
 import { formatarData, formatarDataHora, hojeBRT } from "../../lib/tempo";
@@ -37,6 +38,8 @@ const sobre = SOBRE_CATEGORIA[n.categoria];
       ? "As inscrições deste concurso já terminaram."
       : "Informação apurada em fontes de imprensa e cruzada entre elas, ainda não conferida por nós no edital. Confira o edital no site da banca antes de se inscrever."}
   </p>
+
+  <BotaoBanca banca={n.banca} />
 
   <p class="resumo-concurso">{n.resumo}</p>
 
@@ -83,5 +86,9 @@ const sobre = SOBRE_CATEGORIA[n.categoria];
   </ul>
   <p class="meta">
     Apuração de {formatarDataHora(n.apurado_em)}. Encontrou um erro? <a href="/contato/">Avise-nos</a>.
+  </p>
+  <p class="selo-apuracao mt-4 mb-0">
+    <span class="selo badge rounded-pill text-bg-warning">Apurado na imprensa</span>
+    <a class="small ms-2" href="/metodologia/">como verificamos</a>
   </p>
 </Base>

@@ -1,0 +1,50 @@
+{
+  "slug": "parari-pb-2026",
+  "titulo": "Prefeitura de Parári (PB) abre concurso com 29 vagas",
+  "orgao": "Prefeitura Municipal de Parári",
+  "categoria": "prefeitura",
+  "esfera": "municipal",
+  "uf": "PB",
+  "municipio": "Parári",
+  "banca": "Ápice Consultoria",
+  "resumo": "A Prefeitura de Parári publicou o edital nº 001/2026 com 29 vagas efetivas em cargos de níveis fundamental, médio, técnico e superior. As inscrições são feitas pela internet, no portal da Ápice Consultoria, de 9 de novembro a 9 de dezembro de 2026. Os dados vieram da imprensa e ainda não foram conferidos no edital.",
+  "cargos": [],
+  "fatos": [
+    {
+      "campo": "inscricao",
+      "texto": "De 9/11 a 9/12/2026, pela internet, no portal da Ápice Consultoria",
+      "inicio": "2026-11-09",
+      "fim": "2026-12-09",
+      "fontes": [
+        "f-1",
+        "f-2"
+      ]
+    },
+    {
+      "campo": "vagas",
+      "texto": "29 vagas efetivas, em níveis fundamental, médio, técnico e superior",
+      "fontes": [
+        "f-1",
+        "f-2"
+      ]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "f-1",
+      "nome": "Concursos no Brasil",
+      "url": "https://concursosnobrasil.com/concursos/pb/2026/11/09/concurso-prefeitura-de-parari-pb-abre-29-vagas-com-salarios-de-ate-r-10-mil/",
+      "oficial": false,
+      "consultado_em": "2026-11-25"
+    },
+    {
+      "id": "f-2",
+      "nome": "Folha Dirigida",
+      "url": "https://folha.qconcursos.com/n/prefeitura-de-parari-pb-publica-concurso-com-29-vagas-em-diversas-areas",
+      "oficial": false,
+      "consultado_em": "2026-11-25"
+    }
+  ],
+  "apurado_em": "2026-11-25T22:45:00-03:00",
+  "expira_em": "2026-12-09"
+}

@@ -2,30 +2,27 @@
   "schema_version": 2,
   "slug": "seduc-sp-2027",
   "orgao": "Secretaria de Educação do Estado de São Paulo",
-  "situacao": "so_revisao",
+  "situacao": "publicado",
   "categoria": "educacao",
   "esfera": "estadual",
   "uf": "SP",
   "cargos": [],
   "fonte": "fgv",
   "url": "https://conhecimento.fgv.br/concursos/concursoseducsp27",
-  "edital": "https://conhecimento.fgv.br/sites/default/files/concursos/edital_pefm_2027_retificado.pdf",
-  "edital_sha256": "dc804c688be504be1be5dc60e12c102e34474866b188a8e9157c8b21d39c7500",
+  "edital": "https://conhecimento.fgv.br/sites/default/files/concursos/edital_pefm_2027_retificado_02-25.11.2026.pdf",
+  "edital_sha256": "c4d67ce9e703482b12c16865959c73b5da9827c5e0fc82b21f9b06ebe928ff20",
   "campos_em_revisao": [
-    "prazos.inscricao",
-    "prazos.isencao"
+    "prazos.inscricao"
   ],
   "motivos": [
-    "prazos.isencao: 1 cláusulas diferentes",
     "prazos.inscricao: 2 cláusulas diferentes"
   ],
   "opcoes": {
-    "prazos.isencao": [],
     "prazos.inscricao": [
       {
         "id": "o-1",
         "origem": "texto",
-        "pagina": 8,
+        "pagina": 9,
         "trecho": "As inscrições serão realizadas exclusivamente pela internet, no endereço eletrônico https://conhecimento.fgv.br/concursos/concursoseducsp27, das 16h do dia 26 de novembro de 2026 às 16h do dia 15 de fevereiro de 2027.",
         "ancora": "inscrições",
         "inicio": "2026-11-26",
@@ -47,7 +44,12 @@
       "titulo": "1ª Retificação",
       "url": "https://conhecimento.fgv.br/sites/default/files/concursos/edital-de-retificacao-de-publicacao-pefm-2.pdf",
       "publicado_em": "2026-11-23"
+    },
+    {
+      "titulo": "2ª Retificação",
+      "url": "https://conhecimento.fgv.br/sites/default/files/concursos/edital-de-retificacao-de-publicacao-n-2-pefm.pdf",
+      "publicado_em": "2026-11-25"
     }
   ],
-  "registrado_em": "2026-11-24T13:15:52-03:00"
+  "registrado_em": "2026-11-26T12:41:59-03:00"
 }
