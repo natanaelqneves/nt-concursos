@@ -11,6 +11,7 @@ const DOMINIO_BANCA: Record<string, string> = {
   comperve: "comperve.ufrn.br",
   access: "access.org.br",
   selecon: "selecon.org.br",
+  ibade: "ibade.org.br",
 };
 
 // Nome livre (como aparece na notícia ou no concurso) -> chave de DOMINIO_BANCA.
@@ -24,6 +25,7 @@ const APELIDOS: [RegExp, string][] = [
   [/comperve/i, "comperve"],
   [/instituto access/i, "access"],
   [/selecon/i, "selecon"],
+  [/ibade/i, "ibade"],
 ];
 
 /** URL do site oficial da banca, ou undefined se a banca não estiver mapeada. */
