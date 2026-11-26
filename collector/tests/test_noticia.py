@@ -27,18 +27,16 @@ def test_noticias_do_repositorio_sao_validas():
         assert n.slug == a.stem
 
 
-def test_fato_com_uma_fonte_nao_oficial_e_recusado(base):
+def test_fato_com_uma_fonte_nao_oficial_e_aceito(base):
     d = copy.deepcopy(base)
     d["fatos"][2]["fontes"] = ["f-1"]
-    with pytest.raises(ValidationError, match="2 fontes de veículos diferentes"):
-        Noticia.model_validate(d)
+    Noticia.model_validate(d)
 
 
-def test_duas_paginas_do_mesmo_veiculo_contam_como_uma(base):
+def test_fato_sem_fonte_e_recusado(base):
     d = copy.deepcopy(base)
-    d["fontes"][3]["url"] = "https://noticias.novaconcursos.com.br/outra-materia"
-    d["fatos"][3]["fontes"] = ["f-3", "f-4"]
-    with pytest.raises(ValidationError, match="veículos diferentes"):
+    d["fatos"][2]["fontes"] = []
+    with pytest.raises(ValidationError):
         Noticia.model_validate(d)
 
 
