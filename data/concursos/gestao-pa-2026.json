@@ -30,14 +30,6 @@
     {
       "status": "verificado",
       "evidencia": "ev-2",
-      "tipo": "prova_objetiva",
-      "nome": "Aplicação da Prova Objetiva e da Prova Discursiva (turno matutino – área meio; turno vespertino – área fim)",
-      "inicio": null,
-      "fim": "2026-11-29"
-    },
-    {
-      "status": "verificado",
-      "evidencia": "ev-3",
       "tipo": "gabarito",
       "nome": "Divulgação do gabarito preliminar da Prova Objetiva",
       "inicio": null,
@@ -45,7 +37,7 @@
     },
     {
       "status": "verificado",
-      "evidencia": "ev-4",
+      "evidencia": "ev-3",
       "tipo": "gabarito",
       "nome": "Publicação do gabarito definitivo da Prova Objetiva",
       "inicio": null,
@@ -53,7 +45,7 @@
     },
     {
       "status": "verificado",
-      "evidencia": "ev-5",
+      "evidencia": "ev-4",
       "tipo": "resultado",
       "nome": "Publicação do resultado definitivo da Prova Objetiva",
       "inicio": null,
@@ -65,35 +57,24 @@
     {
       "id": "doc-1",
       "tipo": "edital",
-      "url": "https://conhecimento.fgv.br/sites/default/files/concursos/edital-consolidado-01.10-minuta.pdf",
-      "url_final": "https://conhecimento.fgv.br/sites/default/files/concursos/edital-consolidado-01.10-minuta.pdf",
-      "sha256": "bd30f562442e808a1ec788f10cc7adae51cee796e2dfd52932d35c54663712ac",
-      "coletado_em": "2026-11-25T13:00:13-03:00",
+      "url": "https://conhecimento.fgv.br/sites/default/files/concursos/portaria-no-6-de-11-de-janeiro-de-2024-eiro-de-2024-dou-imprensa-nacional.pdf",
+      "url_final": "https://conhecimento.fgv.br/sites/default/files/concursos/portaria-no-6-de-11-de-janeiro-de-2024-eiro-de-2024-dou-imprensa-nacional.pdf",
+      "sha256": "31ef4cdcdd572097a9206d0a736b36fbef3e0b9e85062fa8fc439d960f36a1f4",
+      "coletado_em": "2026-11-26T00:21:36-03:00",
       "fonte": "fgv",
-      "publicado_em": "2026-10-02",
-      "titulo": "Edital (retificado em 02/10/2026)"
+      "publicado_em": "2026-11-25",
+      "titulo": "Edital (retificado em 25/11/2026)"
     },
     {
       "id": "doc-2",
       "tipo": "retificacao",
-      "url": "https://conhecimento.fgv.br/sites/default/files/concursos/edital-n-004-de-01.10.2026-doe-n-36.789-de-02.10.2026-retificacao-do-cronograma-e-de-subitens.pdf",
-      "url_final": "https://conhecimento.fgv.br/sites/default/files/concursos/edital-n-004-de-01.10.2026-doe-n-36.789-de-02.10.2026-retificacao-do-cronograma-e-de-subitens.pdf",
-      "sha256": "2f84971b0c26fd98808f10dfed6e3505d85109d25f79f73636dc2d939217a9fc",
-      "coletado_em": "2026-11-25T13:00:16-03:00",
+      "url": "https://conhecimento.fgv.br/sites/default/files/concursos/edital-no-009-de-24.11.2026-doe-no-36.852-de-25.11.2026-retificacao-do-edital-001-abertura.pdf",
+      "url_final": "https://conhecimento.fgv.br/sites/default/files/concursos/edital-no-009-de-24.11.2026-doe-no-36.852-de-25.11.2026-retificacao-do-edital-001-abertura.pdf",
+      "sha256": "66cb697faf238677ab4ef1ec2ff01e28497123fd5dc673e271eed32857730af9",
+      "coletado_em": "2026-11-26T00:21:38-03:00",
       "fonte": "fgv",
-      "publicado_em": "2026-10-02",
+      "publicado_em": "2026-11-25",
       "titulo": "2ª Retificação"
-    },
-    {
-      "id": "doc-3",
-      "tipo": "retificacao",
-      "url": "https://conhecimento.fgv.br/sites/default/files/concursos/relacao-candidato_vaga-seduc-pa_0.pdf",
-      "url_final": "https://conhecimento.fgv.br/sites/default/files/concursos/relacao-candidato_vaga-seduc-pa_0.pdf",
-      "sha256": "96144185d57c229f49712d35e08abec9306c05b1e498aa31744f38e79ee14fe6",
-      "coletado_em": "2026-11-25T13:00:18-03:00",
-      "fonte": "fgv",
-      "publicado_em": "2026-11-03",
-      "titulo": "Demanda de candidato por vaga (retificado em 10/11/2026)"
     }
   ],
   "evidencias": [
@@ -114,21 +95,6 @@
       "campo": "etapas.0",
       "documento": "doc-1",
       "pagina": 60,
-      "trecho": "Aplicação da Prova Objetiva e da Prova Discursiva (turno matutino – área meio; turno vespertino – área fim) — 29/11/2026",
-      "ancora": "prova_objetiva",
-      "metodo": "tabela:v1",
-      "aprovado_por": null,
-      "aprovado_em": null,
-      "tabela": {
-        "atividade": "Aplicação da Prova Objetiva e da Prova Discursiva (turno matutino – área meio; turno vespertino – área fim)",
-        "datas": "29/11/2026"
-      }
-    },
-    {
-      "id": "ev-3",
-      "campo": "etapas.1",
-      "documento": "doc-1",
-      "pagina": 60,
       "trecho": "Divulgação do gabarito preliminar da Prova Objetiva — 30/11/2026",
       "ancora": "gabarito",
       "metodo": "tabela:v1",
@@ -140,8 +106,8 @@
       }
     },
     {
-      "id": "ev-4",
-      "campo": "etapas.2",
+      "id": "ev-3",
+      "campo": "etapas.1",
       "documento": "doc-1",
       "pagina": 60,
       "trecho": "Publicação do gabarito definitivo da Prova Objetiva — 08/01/2027",
@@ -155,8 +121,8 @@
       }
     },
     {
-      "id": "ev-5",
-      "campo": "etapas.3",
+      "id": "ev-4",
+      "campo": "etapas.2",
       "documento": "doc-1",
       "pagina": 60,
       "trecho": "Publicação do resultado definitivo da Prova Objetiva — 28/01/2027",
@@ -175,5 +141,5 @@
     "url": "https://conhecimento.fgv.br/concursos/seducpa26",
     "data_dou": null
   },
-  "conferido_em": "2026-11-25T13:00:18-03:00"
+  "conferido_em": "2026-11-26T00:21:38-03:00"
 }
