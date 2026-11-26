@@ -1,13 +1,23 @@
 {
   "aocp": {
-    "inicio": "2026-11-26T00:26:46-03:00",
-    "fim": "2026-11-26T00:27:23-03:00",
+    "inicio": "2026-11-26T12:47:42-03:00",
+    "fim": "2026-11-26T12:48:22-03:00",
     "erro_fonte": null,
     "contagem": {
-      "erro": 8,
-      "fora_do_escopo": 8
+      "fora_do_escopo": 9,
+      "erro": 8
     },
     "registros": [
+      {
+        "fonte": "aocp",
+        "id": "729",
+        "titulo": "IFG - Instituto Federal de Educação, Ciência e Tecnologia de Goiás - GO",
+        "situacao": "fora_do_escopo",
+        "detalhe": "",
+        "slug": null,
+        "campos": {},
+        "violacoes": []
+      },
       {
         "fonte": "aocp",
         "id": "724",
@@ -171,8 +181,8 @@
     ]
   },
   "avulsos": {
-    "inicio": "2026-11-26T00:27:24-03:00",
-    "fim": "2026-11-26T00:29:08-03:00",
+    "inicio": "2026-11-26T12:48:22-03:00",
+    "fim": "2026-11-26T12:50:03-03:00",
     "erro_fonte": null,
     "contagem": {
       "publicado": 11,
@@ -384,8 +394,8 @@
     ]
   },
   "cebraspe": {
-    "inicio": "2026-11-26T00:18:01-03:00",
-    "fim": "2026-11-26T00:20:51-03:00",
+    "inicio": "2026-11-26T12:38:55-03:00",
+    "fim": "2026-11-26T12:41:47-03:00",
     "erro_fonte": null,
     "contagem": {
       "fora_do_escopo": 22,
@@ -1202,8 +1212,8 @@
     ]
   },
   "fgv": {
-    "inicio": "2026-11-26T00:20:52-03:00",
-    "fim": "2026-11-26T00:26:46-03:00",
+    "inicio": "2026-11-26T12:41:47-03:00",
+    "fim": "2026-11-26T12:47:41-03:00",
     "erro_fonte": null,
     "contagem": {
       "fora_do_escopo": 25,
