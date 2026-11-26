@@ -5,8 +5,8 @@ pode mostrar concursos apurados em fontes de imprensa, numa seção separada e r
 Nada daqui entra nas listas de dados verificados.
 
 Regras (conferidas pelo schema):
-- todo fato cita fontes; precisa de 2 fontes de domínios diferentes, ou de 1 fonte oficial
-  (órgão, banca ou diário oficial) que tenha sido consultada;
+- todo fato cita pelo menos uma fonte consultada (decisão do dono, 25/11/2026: uma fonte
+  basta; a página mostra quantas fontes e o selo de apuração na imprensa);
 - o texto é escrito pelo site, com as próprias palavras; nada copiado das fontes;
 - `expira_em` é o fim das inscrições: depois dele a notícia sai das inscrições abertas e passa a
   "em andamento", com as etapas apuradas (prova, gabarito, resultado, homologação).
@@ -78,7 +78,7 @@ class Noticia(_Base):
     cargos: list[str] = Field(default_factory=list)
     areas: list[Area] = Field(default_factory=list)
     fatos: list[Fato] = Field(min_length=2)
-    fontes: list[Fonte] = Field(min_length=2)
+    fontes: list[Fonte] = Field(min_length=1)
     apurado_em: AwareDatetime
     expira_em: date  # fim das inscrições: depois dele, a notícia fica em "em andamento"
 
@@ -94,10 +94,6 @@ class Noticia(_Base):
                 raise ValueError(f"{fato.campo}: fonte inexistente {faltando}")
             fontes = [por_id[i] for i in fato.fontes]
             usadas |= set(fato.fontes)
-            if not any(f.oficial for f in fontes) and len({f.dominio for f in fontes}) < 2:
-                raise ValueError(
-                    f"{fato.campo}: precisa de 2 fontes de veículos diferentes ou de 1 fonte oficial"
-                )
         sobrando = set(por_id) - usadas
         if sobrando:
             raise ValueError(f"fontes listadas sem fato: {sorted(sobrando)}")
