@@ -1,11 +1,12 @@
 ---
 import Base from "../../layouts/Base.astro";
-import { NOME_CATEGORIA, NOME_ETAPA, concursosEmAndamento, proximaEtapa, textoEsfera, titulo, local } from "../../lib/dados";
+import { NOME_CATEGORIA, NOME_ETAPA, concursosEmAndamento, noticiasEncerradas, proximaEtapa, textoEsfera, titulo, local } from "../../lib/dados";
 import { formatarData } from "../../lib/tempo";
 
 const lista = concursosEmAndamento();
 const comProxima = lista.filter((c) => proximaEtapa(c));
 const semProxima = lista.filter((c) => !proximaEtapa(c));
+const encerradas = noticiasEncerradas();
 ---
 <Base
   titulo="Concursos em andamento: próximas provas e resultados"
@@ -46,6 +47,15 @@ const semProxima = lista.filter((c) => !proximaEtapa(c));
       <p>O cronograma do edital não traz etapa futura; os próximos passos (resultado, homologação, convocação) saem no site da banca.</p>
       <ul>
         {semProxima.map((c) => <li><a href={`/concursos/${c.slug}/#etapas`}>{titulo(c)}</a> <span class="meta">· {local(c)}</span></li>)}
+      </ul>
+    </>
+  )}
+  {encerradas.length > 0 && (
+    <>
+      <h2>Inscrições encerradas, acompanhe na notícia ({encerradas.length})</h2>
+      <p>Concursos apurados na imprensa cujas inscrições já fecharam. O cronograma do edital ainda não foi conferido aqui.</p>
+      <ul>
+        {encerradas.map((n) => <li><a href={`/noticias/${n.slug}/`}>{n.titulo}</a> <span class="meta">· inscrições até {n.expira_em.split("-").reverse().join("/")}</span></li>)}
       </ul>
     </>
   )}

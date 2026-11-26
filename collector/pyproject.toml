@@ -8,7 +8,9 @@ version = "0.1.0"
 description = "Coletor e verificador de concursos públicos do ntconcursos.com.br"
 requires-python = ">=3.12"
 dependencies = [
-    "pydantic>=2.7,<3",
+    # Fixado: o schema versionado foi gerado com esta versão. Versões novas do pydantic
+    # mudam a saída de model_json_schema e fazem `ntc schema --check` falhar no CI.
+    "pydantic==2.13.5",
     "pyyaml>=6",
     "requests>=2.31",
     "pdfplumber>=0.11",

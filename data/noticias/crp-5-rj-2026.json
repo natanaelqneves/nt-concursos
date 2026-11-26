@@ -1,0 +1,48 @@
+{
+  "slug": "crp-5-rj-2026",
+  "titulo": "CRP-5 RJ abre concurso com 37 vagas imediatas e inscrições até 17 de dezembro",
+  "orgao": "Conselho Regional de Psicologia da 5ª Região (CRP-5 RJ)",
+  "categoria": "conselho",
+  "esfera": "federal",
+  "uf": "RJ",
+  "banca": "FGV",
+  "resumo": "O Conselho Regional de Psicologia da 5ª Região publicou o Edital nº 01/2026 com 37 vagas imediatas e formação de cadastro de reserva, para cargos de nível superior, médio e técnico, como psicólogo, agente administrativo, técnico administrativo, contador, técnico de TI e jornalista. A seleção é organizada pela FGV, e as inscrições são feitas pelo site da banca, de 16 de novembro às 16h a 17 de dezembro de 2026 às 16h. As provas objetiva e discursiva estão previstas para 28 de fevereiro de 2027.",
+  "cargos": [
+    "Psicólogo",
+    "Agente Administrativo",
+    "Técnico Administrativo",
+    "Contador",
+    "Técnico de Tecnologia da Informação",
+    "Jornalista"
+  ],
+  "areas": ["ti"],
+  "fatos": [
+    {
+      "campo": "inscricao",
+      "texto": "De 16/11/2026, às 16h, a 17/12/2026, às 16h, pelo site da FGV",
+      "inicio": "2026-11-16",
+      "fim": "2026-12-17",
+      "fontes": ["f-1", "f-2", "f-3", "f-4"]
+    },
+    {
+      "campo": "vagas",
+      "texto": "37 vagas imediatas e cadastro de reserva",
+      "fontes": ["f-1", "f-2"]
+    },
+    {
+      "campo": "prova",
+      "texto": "Provas objetiva e discursiva em 28/02/2027",
+      "inicio": "2027-02-28",
+      "fim": "2027-02-28",
+      "fontes": ["f-1", "f-2"]
+    }
+  ],
+  "fontes": [
+    {"id": "f-1", "nome": "Concursos no Brasil", "url": "https://concursosnobrasil.com/concursos/rj/2026/11/12/crp-rj-divulga-edital-de-concurso-publico-com-37-vagas-imediatas/", "oficial": false, "consultado_em": "2026-11-26"},
+    {"id": "f-2", "nome": "Aprova Concursos", "url": "https://www.aprovaconcursos.com.br/concursos/crp-5-rj", "oficial": false, "consultado_em": "2026-11-26"},
+    {"id": "f-3", "nome": "Diário do Rio", "url": "https://diariodorio.com/economia/mercado-de-trabalho/2026/11/12/conselhor-regional-de-psicologia-abre-concurso-com-37-vagas.html", "oficial": false, "consultado_em": "2026-11-26"},
+    {"id": "f-4", "nome": "Qconcursos Folha Dirigida", "url": "https://folha.qconcursos.com/n/conselho-regional-de-psicologia-da-5-regiao-abre-concurso-com-37-vagas-em-diversas-localidades-do-rio-de-janeiro", "oficial": false, "consultado_em": "2026-11-26"}
+  ],
+  "apurado_em": "2026-11-26T10:00:00-03:00",
+  "expira_em": "2026-12-17"
+}

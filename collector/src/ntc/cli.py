@@ -50,6 +50,15 @@ def cmd_schema(args: argparse.Namespace) -> int:
         velhos = [p for p, atual in schemas.items() if not p.exists() or p.read_text(encoding="utf-8") != atual]
         for p in velhos:
             print(f"{p.relative_to(RAIZ)} desatualizado: rode `ntc schema`", file=sys.stderr)
+            if p.exists():
+                import difflib
+
+                atual = schemas[p]
+                linhas = difflib.unified_diff(
+                    p.read_text(encoding="utf-8").splitlines(), atual.splitlines(),
+                    "versionado", "gerado", lineterm="", n=1,
+                )
+                print("\n".join(list(linhas)[:80]), file=sys.stderr)
         if velhos:
             return 1
         print("schema em dia")

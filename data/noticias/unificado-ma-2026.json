@@ -1,0 +1,65 @@
+{
+  "slug": "unificado-ma-2026",
+  "titulo": "Concurso Unificado do Maranhão tem 2.317 vagas imediatas e inscrições a partir de 14 de dezembro",
+  "orgao": "Governo do Estado do Maranhão (Concurso Unificado)",
+  "categoria": "executivo",
+  "esfera": "estadual",
+  "uf": "MA",
+  "banca": "FCC",
+  "resumo": "O Concurso Unificado do Maranhão teve publicado o primeiro edital, com 2.317 vagas imediatas e cadastro de reserva, em cargos de níveis médio e superior de diferentes órgãos estaduais. A Fundação Carlos Chagas organiza a seleção. As inscrições ainda não começaram: vão de 14 de dezembro de 2026, às 10h, a 29 de janeiro de 2027, com pedidos de isenção de taxa entre 14 e 16 de dezembro. Este edital é o primeiro de quatro previstos no programa.",
+  "cargos": [],
+  "fatos": [
+    {
+      "campo": "inscricao",
+      "texto": "De 14/12/2026, às 10h, a 29/01/2027, pelo site da FCC",
+      "inicio": "2026-12-14",
+      "fim": "2027-01-29",
+      "fontes": [
+        "f-1",
+        "f-2",
+        "f-3",
+        "f-4"
+      ]
+    },
+    {
+      "campo": "vagas",
+      "texto": "2.317 vagas imediatas e cadastro de reserva, no primeiro edital",
+      "fontes": [
+        "f-1",
+        "f-2"
+      ]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "f-1",
+      "nome": "Aprova Concursos",
+      "url": "https://www.aprovaconcursos.com.br/noticias/concurso-unificado-ma/",
+      "oficial": false,
+      "consultado_em": "2026-11-26"
+    },
+    {
+      "id": "f-2",
+      "nome": "Focus Concursos",
+      "url": "https://noticias.focusconcursos.com.br/noticias/concurso-unificado-ma-edital-publicado-com-2317-vagas",
+      "oficial": false,
+      "consultado_em": "2026-11-26"
+    },
+    {
+      "id": "f-3",
+      "nome": "Ache Concursos",
+      "url": "https://www.acheconcursos.com.br/concursos-maranhao/concurso-unificado-maranhao-cnu-ma-2026-edital-inscricao-94732",
+      "oficial": false,
+      "consultado_em": "2026-11-26"
+    },
+    {
+      "id": "f-4",
+      "nome": "Meu Preparatório",
+      "url": "https://noticias.meupreparatorio.com.br/concursos/concurso-unificado-maranhao-2026-edital-2317-vagas-seduc-seplan-stc-imesc-sead",
+      "oficial": false,
+      "consultado_em": "2026-11-26"
+    }
+  ],
+  "apurado_em": "2026-11-26T10:00:00-03:00",
+  "expira_em": "2027-01-29"
+}
