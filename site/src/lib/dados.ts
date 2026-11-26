@@ -182,6 +182,20 @@ export function concursosEmAndamento(hoje = hojeBRT()): Concurso[] {
     .sort(porFim((c) => proximaEtapa(c, hoje)?.fim));
 }
 
+/** Notícias cujas inscrições já encerraram (até a janela de "em andamento") e que não têm concurso
+ *  conferido em aberto nem em andamento no mesmo órgão: vão para a lista "Em andamento" como histórico. */
+export function noticiasEncerradas(hoje = hojeBRT()): Noticia[] {
+  const emAnd = concursosEmAndamento(hoje);
+  const orgaosVivos = new Set([
+    ...todos().filter((c) => !encerrado(c, hoje)).map((c) => c.orgao),
+    ...emAnd.map((c) => c.orgao),
+  ]);
+  const limite = menosDias(hoje, JANELA_ANDAMENTO_DIAS);
+  return todasNoticias()
+    .filter((n) => n.expira_em < hoje && n.expira_em >= limite && !orgaosVivos.has(n.orgao) && !substitutoDe(n))
+    .sort((a, b) => b.expira_em.localeCompare(a.expira_em));
+}
+
 const porFim = (sel: (c: Concurso) => string | null | undefined) => (a: Concurso, b: Concurso) =>
   (sel(a) ?? "9999").localeCompare(sel(b) ?? "9999");
 
