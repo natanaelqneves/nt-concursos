@@ -1,0 +1,43 @@
+{
+  "slug": "prefeitura-curitiba-2026",
+  "titulo": "Prefeitura de Curitiba abre concurso com 348 vagas em 10 cargos; inscrições encerraram em 5 de novembro",
+  "orgao": "Prefeitura Municipal de Curitiba",
+  "categoria": "prefeitura",
+  "esfera": "municipal",
+  "uf": "PR",
+  "municipio": "Curitiba",
+  "banca": "Fafipa",
+  "resumo": "A Prefeitura de Curitiba abriu concurso unificado com 348 vagas em 10 cargos, de níveis médio e superior, incluindo agente administrativo, fiscal, analista, engenheiro civil e procurador do município. As inscrições foram feitas pelo site da Fafipa entre 7 de outubro e 5 de novembro de 2026. O concurso já está encerrado e aparece na seção de concursos em andamento, para acompanhamento das próximas etapas.",
+  "cargos": [
+    "Agente administrativo",
+    "Fiscal",
+    "Fiscal de obras e posturas",
+    "Analista administrativo",
+    "Analista de finanças",
+    "Assistente social",
+    "Auditor fiscal de tributos municipais",
+    "Contador",
+    "Engenheiro civil",
+    "Procurador do Município"
+  ],
+  "fatos": [
+    {
+      "campo": "inscricao",
+      "texto": "De 07/10/2026, às 8h, a 05/11/2026, às 23h59, pelo site da Fafipa",
+      "inicio": "2026-10-07",
+      "fim": "2026-11-05",
+      "fontes": ["f-1", "f-2"]
+    },
+    {
+      "campo": "vagas",
+      "texto": "348 vagas em 10 cargos, de níveis médio e superior",
+      "fontes": ["f-1", "f-2"]
+    }
+  ],
+  "fontes": [
+    {"id": "f-1", "nome": "Prefeitura de Curitiba", "url": "https://www.curitiba.pr.gov.br/noticias/quer-fazer-concurso-da-prefeitura-de-curitiba-inscricoes-estao-abertas/85332", "oficial": true, "consultado_em": "2026-11-27"},
+    {"id": "f-2", "nome": "Qconcursos", "url": "https://folha.qconcursos.com/n/concurso-curitiba-pr-editais-2026", "oficial": false, "consultado_em": "2026-11-27"}
+  ],
+  "apurado_em": "2026-11-27T14:05:00-03:00",
+  "expira_em": "2026-11-05"
+}
