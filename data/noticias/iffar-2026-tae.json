@@ -1,0 +1,51 @@
+{
+  "slug": "iffar-2026-tae",
+  "titulo": "IFFar abre concurso com 30 vagas para técnicos administrativos com inscrições até 21 de dezembro",
+  "orgao": "Instituto Federal de Educação, Ciência e Tecnologia Farroupilha (IFFar)",
+  "categoria": "educacao",
+  "esfera": "federal",
+  "uf": "RS",
+  "banca": "Fundatec",
+  "resumo": "O Instituto Federal Farroupilha publicou o Edital nº 406/2026 com 30 vagas imediatas em áreas administrativas, tecnológicas e da saúde, para cargos de técnico-administrativo em educação. A Fundatec organiza a seleção. As inscrições pela internet vão de 19 de novembro a 21 de dezembro de 2026, com taxas de R$ 100 a R$ 120, conforme o cargo.",
+  "cargos": [
+    "Técnico-Administrativo em Educação (TAE)"
+  ],
+  "fatos": [
+    {
+      "campo": "inscricao",
+      "texto": "De 19/11/2026 a 21/12/2026, pela internet",
+      "inicio": "2026-11-19",
+      "fim": "2026-12-21",
+      "fontes": [
+        "f-1",
+        "f-2"
+      ]
+    },
+    {
+      "campo": "vagas",
+      "texto": "30 vagas imediatas em áreas administrativas, tecnológicas e da saúde",
+      "fontes": [
+        "f-1",
+        "f-2"
+      ]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "f-1",
+      "nome": "Concursos no Brasil",
+      "url": "https://concursosnobrasil.com/concursos/rs/2026/11/12/iffar-abre-concurso-com-30-vagas-e-salarios-de-ate-r-52-mil-no-rs/",
+      "oficial": false,
+      "consultado_em": "2026-11-27"
+    },
+    {
+      "id": "f-2",
+      "nome": "Qconcursos Folha Dirigida",
+      "url": "https://folha.qconcursos.com/n/instituto-federal-farroupilha-abre-concurso-com-30-vagas-em-diversas-areas",
+      "oficial": false,
+      "consultado_em": "2026-11-27"
+    }
+  ],
+  "apurado_em": "2026-11-27T10:00:00-03:00",
+  "expira_em": "2026-12-21"
+}

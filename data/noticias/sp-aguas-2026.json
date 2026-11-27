@@ -1,0 +1,52 @@
+{
+  "slug": "sp-aguas-2026",
+  "titulo": "SP Águas abre concurso com 190 vagas de nível superior com inscrições até 17 de dezembro",
+  "orgao": "Agência de Águas do Estado de São Paulo (SP Águas)",
+  "categoria": "executivo",
+  "esfera": "estadual",
+  "uf": "SP",
+  "banca": "FGV",
+  "resumo": "A Agência de Águas do Estado de São Paulo publicou o edital do primeiro concurso público do órgão, com 190 vagas imediatas de nível superior, para Analista de Suporte à Regulação de Recursos Hídricos e Especialista em Regulação e Fiscalização de Recursos Hídricos, além de cadastro de reserva. A FGV organiza a seleção. As inscrições vão de 17 de novembro a 17 de dezembro de 2026, com taxa de R$ 110.",
+  "cargos": [
+    "Analista de Suporte à Regulação de Recursos Hídricos",
+    "Especialista em Regulação e Fiscalização de Recursos Hídricos"
+  ],
+  "fatos": [
+    {
+      "campo": "inscricao",
+      "texto": "De 17/11/2026 a 17/12/2026, pela internet",
+      "inicio": "2026-11-17",
+      "fim": "2026-12-17",
+      "fontes": [
+        "f-1",
+        "f-2"
+      ]
+    },
+    {
+      "campo": "vagas",
+      "texto": "190 vagas imediatas de nível superior",
+      "fontes": [
+        "f-1",
+        "f-2"
+      ]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "f-1",
+      "nome": "Concursos no Brasil",
+      "url": "https://concursosnobrasil.com/concursos/sp/2026/11/10/concurso-sp-aguas-tem-edital-aberto-com-190-vagas-imediatas/",
+      "oficial": false,
+      "consultado_em": "2026-11-27"
+    },
+    {
+      "id": "f-2",
+      "nome": "Qconcursos Folha Dirigida",
+      "url": "https://folha.qconcursos.com/n/concurso-sp-aguas-edital-publicado-2026",
+      "oficial": false,
+      "consultado_em": "2026-11-27"
+    }
+  ],
+  "apurado_em": "2026-11-27T10:00:00-03:00",
+  "expira_em": "2026-12-17"
+}
