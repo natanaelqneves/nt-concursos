@@ -1,0 +1,60 @@
+{
+  "slug": "seduc-sp-2026",
+  "titulo": "Seduc-SP abre concurso com 5 mil vagas para professores com inscrições até 15 de fevereiro de 2027",
+  "orgao": "Secretaria da Educação do Estado de São Paulo (Seduc-SP)",
+  "categoria": "educacao",
+  "esfera": "estadual",
+  "uf": "SP",
+  "banca": "FGV",
+  "resumo": "A Secretaria da Educação de São Paulo publicou o Edital nº 01/2026 com 5 mil vagas efetivas de Professor de Ensino Fundamental e Médio, além de cadastro para contratação temporária. A seleção é organizada pela FGV. As inscrições começam às 16h de 26 de novembro de 2026 e vão até as 16h de 15 de fevereiro de 2027, com taxa de R$ 64.",
+  "cargos": [
+    "Professor de Ensino Fundamental e Médio"
+  ],
+  "fatos": [
+    {
+      "campo": "inscricao",
+      "texto": "De 26/11/2026 a 15/02/2027, pela internet",
+      "inicio": "2026-11-26",
+      "fim": "2027-02-15",
+      "fontes": [
+        "f-1",
+        "f-2",
+        "f-3"
+      ]
+    },
+    {
+      "campo": "vagas",
+      "texto": "5.000 vagas efetivas de professor",
+      "fontes": [
+        "f-1",
+        "f-2",
+        "f-3"
+      ]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "f-1",
+      "nome": "Concursos no Brasil",
+      "url": "https://concursosnobrasil.com/concursos/sp/2026/11/19/concurso-seduc-sp-abre-5-000-vagas-com-salarios-de-ate-r-55-mil/",
+      "oficial": false,
+      "consultado_em": "2026-11-27"
+    },
+    {
+      "id": "f-2",
+      "nome": "Focus Concursos",
+      "url": "https://noticias.focusconcursos.com.br/noticias/concurso-see-sp-edital-publicado-com-5-mil-vagas-e-salarios-de-ate-r-55-mil",
+      "oficial": false,
+      "consultado_em": "2026-11-27"
+    },
+    {
+      "id": "f-3",
+      "nome": "Tribuna de Jundiaí",
+      "url": "https://tribunadejundiai.com.br/economia/concursos/concurso-professores-sp-5000-vagas/",
+      "oficial": false,
+      "consultado_em": "2026-11-27"
+    }
+  ],
+  "apurado_em": "2026-11-27T10:00:00-03:00",
+  "expira_em": "2027-02-15"
+}

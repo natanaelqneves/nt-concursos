@@ -1,0 +1,49 @@
+{
+  "slug": "cetesb-sp-2026",
+  "titulo": "Cetesb abre concurso com 107 vagas em 12 regiões de São Paulo com inscrições até 14 de dezembro",
+  "orgao": "Companhia Ambiental do Estado de São Paulo (Cetesb)",
+  "categoria": "estatal",
+  "esfera": "estadual",
+  "uf": "SP",
+  "banca": "FCC",
+  "resumo": "A Cetesb publicou dois editais com 107 vagas imediatas para profissionais de 12 regiões paulistas: 84 de nível superior e 23 de nível médio e técnico, além de cadastro de reserva. A Fundação Carlos Chagas organiza a seleção. As inscrições pela internet vão de 12 de novembro a 14 de dezembro de 2026, com taxas de R$ 60 (médio e técnico) e R$ 90 (superior).",
+  "cargos": [],
+  "fatos": [
+    {
+      "campo": "inscricao",
+      "texto": "De 12/11/2026 a 14/12/2026, pela internet",
+      "inicio": "2026-11-12",
+      "fim": "2026-12-14",
+      "fontes": [
+        "f-1",
+        "f-2"
+      ]
+    },
+    {
+      "campo": "vagas",
+      "texto": "107 vagas imediatas, 84 de nível superior e 23 de nível médio",
+      "fontes": [
+        "f-1",
+        "f-2"
+      ]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "f-1",
+      "nome": "Concursos no Brasil",
+      "url": "https://concursosnobrasil.com/concursos/sp/2026/11/10/cetesb-anuncia-concurso-com-107-vagas-em-12-regioes-de-sao-paulo/",
+      "oficial": false,
+      "consultado_em": "2026-11-27"
+    },
+    {
+      "id": "f-2",
+      "nome": "DCI",
+      "url": "https://www.dci.com.br/servicos/concursos-e-empregos/concurso-cetesb-2026-abre-107-vagas-com-salarios-de-ate-r-12-mil/",
+      "oficial": false,
+      "consultado_em": "2026-11-27"
+    }
+  ],
+  "apurado_em": "2026-11-27T10:00:00-03:00",
+  "expira_em": "2026-12-14"
+}
