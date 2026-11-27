@@ -27,6 +27,14 @@ def test_noticias_do_repositorio_sao_validas():
         assert n.slug == a.stem
 
 
+def test_mesmo_orgao_com_grafia_diferente_e_duplicata():
+    from ntc.cli import chave_duplicata_noticia
+
+    a = Noticia.model_validate_json((DADOS / "prefeitura-parari-2026.json").read_text(encoding="utf-8"))
+    b = a.model_copy(update={"municipio": "Parári", "orgao": "Prefeitura Municipal de Parári"})
+    assert chave_duplicata_noticia(a) == chave_duplicata_noticia(b)
+
+
 def test_fato_com_uma_fonte_nao_oficial_e_aceito(base):
     d = copy.deepcopy(base)
     d["fatos"][2]["fontes"] = ["f-1"]
