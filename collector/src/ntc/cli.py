@@ -122,10 +122,11 @@ def _validar_validades(data: Path) -> tuple[int, int]:
 def _avisar_decisoes(data: Path) -> int:
     """data/decisoes: arquivo inválido gera só aviso (não bloqueia a publicação); a coleta o ignora
     e a pendência continua na página /admin/."""
-    from ntc.model.decisao import Decisao
+    from ntc.model.decisao import Decisao, Lote
 
     pasta = data / "decisoes"
-    arquivos = sorted(pasta.glob("*/*.json")) if pasta.exists() else []
+    arquivos = sorted(p for p in pasta.glob("*/*.json") if p.parent.name != "lotes") if pasta.exists() else []
+    total = 0
     for caminho in arquivos:
         try:
             d = Decisao.model_validate_json(caminho.read_text(encoding="utf-8"))
@@ -134,7 +135,13 @@ def _avisar_decisoes(data: Path) -> int:
             continue
         if d.slug != caminho.parent.name:
             print(f"AVISO decisoes/{caminho.parent.name}/{caminho.name}: slug difere da pasta", file=sys.stderr)
-    return len(arquivos)
+        total += 1
+    for caminho in sorted((pasta / "lotes").glob("*.json")) if pasta.exists() and (pasta / "lotes").exists() else []:
+        try:
+            total += len(Lote.model_validate_json(caminho.read_text(encoding="utf-8")).decisoes)
+        except ValidationError as e:
+            print(f"AVISO decisoes/lotes/{caminho.name}: inválido, ignorado\n{e}", file=sys.stderr)
+    return total
 
 
 def _concursos_validos(arquivos: list[Path]) -> list[Concurso]:

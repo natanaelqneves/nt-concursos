@@ -202,6 +202,33 @@ def test_revisao_traz_opcoes_e_decisao_publica_com_aprovacao(dados, extrair_fals
     assert main(["validate", "--data", str(dados)]) == 0
 
 
+def test_decisao_em_lote_vale(dados, extrair_falso, paginas_tjpb):
+    extrair_falso[b"%PDF-edital"] = paginas_tjpb | {50: CONFLITO}
+    reg = _coletar(dados)
+    rev = json.loads((dados / "revisao" / "tj-pb-2026.json").read_text(encoding="utf-8"))
+    certa = next(o for o in rev["opcoes"]["prazos.inscricao"] if o["fim"] == "2026-11-18")
+    lote = {"schema_version": 1, "decisoes": [{
+        "schema_version": 1, "slug": "tj-pb-2026", "decidido_em": "2026-11-12T19:00:00-03:00",
+        "edital_sha256": rev["edital_sha256"], "acao": "decidir",
+        "campos": {"prazos.inscricao": {"acao": "usar", "opcao": {
+            k: certa[k] for k in ("origem", "pagina", "trecho", "inicio", "fim")}}}}]}
+    (dados / "decisoes" / "lotes").mkdir(parents=True)
+    (dados / "decisoes" / "lotes" / "20261112-190000.json").write_text(json.dumps(lote), encoding="utf-8")
+    reg = _coletar(dados)
+    assert reg.campos["prazos.inscricao"] == "verificado", reg
+    assert not (dados / "revisao" / "tj-pb-2026.json").exists()
+
+
+def test_lote_com_slug_repetido_e_recusado():
+    from pydantic import ValidationError as PV
+
+    from ntc.model.decisao import Lote
+    d = {"schema_version": 1, "slug": "tj-pb-2026", "decidido_em": "2026-11-12T19:00:00-03:00",
+         "acao": "descartar"}
+    with pytest.raises(PV, match="slug repetido"):
+        Lote.model_validate({"decisoes": [d, d]})
+
+
 def test_decisao_com_outro_edital_nao_vale(dados, extrair_falso, paginas_tjpb):
     extrair_falso[b"%PDF-edital"] = paginas_tjpb | {50: CONFLITO}
     _coletar(dados)

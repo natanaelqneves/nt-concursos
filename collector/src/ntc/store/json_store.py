@@ -10,7 +10,7 @@ import json
 from pathlib import Path
 
 from ntc.gate.evidencia import TextoDocumento
-from ntc.model.decisao import Decisao
+from ntc.model.decisao import Decisao, Lote
 from ntc.model.schema import Concurso
 
 
@@ -28,13 +28,19 @@ class JsonStore:
         self.dir_decisoes = raiz / "decisoes"
 
     def decisao(self, slug: str) -> Decisao | None:
-        """A decisão mais recente do editor para o concurso (o nome do arquivo ordena)."""
+        """A decisão mais recente do editor para o concurso, em arquivo próprio ou em lote."""
+        candidatas: list[Decisao] = []
         pasta = self.dir_decisoes / slug
-        arquivos = sorted(pasta.glob("*.json")) if pasta.exists() else []
-        if not arquivos:
+        for arq in sorted(pasta.glob("*.json")) if pasta.exists() else []:
+            d = Decisao.model_validate_json(arq.read_text(encoding="utf-8"))
+            if d.slug == slug:
+                candidatas.append(d)
+        for arq in sorted((self.dir_decisoes / "lotes").glob("*.json")) if (self.dir_decisoes / "lotes").exists() else []:
+            candidatas += [d for d in Lote.model_validate_json(arq.read_text(encoding="utf-8")).decisoes if d.slug == slug]
+        if not candidatas:
             return None
-        d = Decisao.model_validate_json(arquivos[-1].read_text(encoding="utf-8"))
-        return d if d.slug == slug else None
+        candidatas.sort(key=lambda d: d.decidido_em)  # estável: empate vale o que veio depois
+        return candidatas[-1]
 
     def concursos(self) -> list[tuple[Path, Concurso]]:
         if not self.dir_concursos.exists():
