@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -147,14 +148,28 @@ def _concursos_validos(arquivos: list[Path]) -> list[Concurso]:
     return saida
 
 
+def chave_duplicata_noticia(n) -> tuple[str, str, str]:
+    """Mesmo órgão com grafia diferente (acento, "Prefeitura de" x "Prefeitura Municipal de")
+    cai na mesma chave: (UF, município ou órgão normalizado, categoria)."""
+    import unicodedata
+
+    def norm(texto: str) -> str:
+        t = unicodedata.normalize("NFKD", texto).encode("ascii", "ignore").decode().lower()
+        t = re.sub(r"\bprefeitura (municipal )?de\b|\bcamara municipal de\b", "", t)
+        return re.sub(r"[^a-z0-9]", "", t)
+
+    return (n.uf, norm(n.municipio or n.orgao), n.categoria)
+
+
 def _validar_noticias(data: Path, orgaos_verificados: set[str]) -> tuple[int, int]:
-    """data/noticias: schema, nome do arquivo e aviso (não erro) quando o órgão já tem
-    concurso verificado, caso em que a notícia é redundante e pode sair."""
+    """data/noticias: schema, nome do arquivo, duplicata (erro) e aviso (não erro) quando o
+    órgão já tem concurso verificado, caso em que a notícia é redundante e pode sair."""
     from ntc.model.noticia import Noticia
 
     pasta = data / "noticias"
     arquivos = sorted(pasta.glob("*.json")) if pasta.exists() else []
     erros = 0
+    vistos: dict[tuple[str, str, str], str] = {}
     for caminho in arquivos:
         try:
             n = Noticia.model_validate_json(caminho.read_text(encoding="utf-8"))
@@ -165,6 +180,12 @@ def _validar_noticias(data: Path, orgaos_verificados: set[str]) -> tuple[int, in
         if caminho.stem != n.slug:
             erros += 1
             print(f"ERRO noticias/{caminho.name}: nome do arquivo difere do slug", file=sys.stderr)
+        chave = chave_duplicata_noticia(n)
+        if chave in vistos:
+            erros += 1
+            print(f"ERRO noticias/{caminho.name}: duplica noticias/{vistos[chave]} (mesmo órgão)", file=sys.stderr)
+        else:
+            vistos[chave] = caminho.name
         if n.orgao in orgaos_verificados:
             print(f"AVISO noticias/{caminho.name}: {n.orgao} já tem concurso verificado", file=sys.stderr)
     return erros, len(arquivos)
