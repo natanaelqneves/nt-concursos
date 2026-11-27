@@ -1,6 +1,7 @@
 """Decisão do editor sobre uma pendência de revisão (docs/CONTRATO-DADOS.md).
 
 Um arquivo por decisão em data/decisoes/<slug>/<AAAAMMDD-HHMMSS>.json; o mais recente vale.
+Ou um lote em data/decisoes/lotes/<AAAAMMDD-HHMMSS>.json, com várias decisões de slugs diferentes.
 A página /admin/ do site gera o arquivo; a coleta seguinte aplica.
 """
 
@@ -56,4 +57,18 @@ class Decisao(_Base):
             raise ValueError("decisão sem campos")
         if self.acao == "decidir" and not self.edital_sha256:
             raise ValueError("decisão de campos precisa do edital_sha256")
+        return self
+
+
+class Lote(_Base):
+    """Várias decisões num arquivo só (data/decisoes/lotes/), para o editor confirmar de uma vez."""
+
+    schema_version: Literal[1] = DECISAO_SCHEMA_VERSION
+    decisoes: list[Decisao] = Field(min_length=1)
+
+    @model_validator(mode="after")
+    def _slugs_unicos(self) -> Lote:
+        slugs = [d.slug for d in self.decisoes]
+        if len(set(slugs)) != len(slugs):
+            raise ValueError("slug repetido no lote")
         return self

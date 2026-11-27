@@ -24,8 +24,8 @@ const pendencias = revisoes.length;
   <h1 class="h3">Pendências da coleta</h1>
   <p class="text-secondary">
     Concursos em que o coletor achou leituras diferentes no edital e não publicou o campo sozinho.
-    Escolha a leitura certa (confira no PDF, na página indicada) e toque em <strong>Gerar decisão</strong>:
-    o GitHub abre com o arquivo pronto; é só confirmar em <em>Commit changes</em>. A próxima coleta
+    Escolha a leitura certa (confira no PDF, na página indicada) e toque em <strong>Adicionar ao lote</strong>.
+    Quando o lote estiver pronto, <strong>Abrir lote no GitHub</strong> cria um arquivo só com todas as decisões: é um commit. A próxima coleta
     (18h e 2h30, horário de Brasília, ou rodando "Coletar bancas" à mão) aplica a decisão.
   </p>
   <p class="small text-secondary">
@@ -35,7 +35,17 @@ const pendencias = revisoes.length;
   <p class="small"><a href="/admin/edital/">Enviar um edital em PDF que falta no site, para conferência</a></p>
 
   {revisoes.length === 0 && <div class="alert alert-success">Nenhuma pendência. 🎉</div>}
-  {pendencias > 0 && <p class="fw-semibold mt-3 mb-0">{pendencias} pendência(s). A leitura mais provável já vem marcada: confira e clique em <em>Gerar decisão</em>.</p>}
+  {pendencias > 0 && <p class="fw-semibold mt-3 mb-0">{pendencias} pendência(s). A leitura mais provável já vem marcada: confira e clique em <em>Adicionar ao lote</em>.</p>}
+
+  <div class="card border-primary mt-3 sticky-top">
+    <div class="card-body d-flex flex-wrap align-items-center gap-2">
+      <strong>Lote: <span id="lote-n">0</span> decisão(ões)</strong>
+      <button type="button" id="lote-abrir" class="btn btn-primary btn-sm" disabled>Abrir lote no GitHub</button>
+      <button type="button" id="lote-limpar" class="btn btn-outline-secondary btn-sm" disabled>Limpar lote</button>
+      <span id="lote-aviso" class="small text-danger" hidden>Lote grande: se o GitHub não abrir, divida em dois.</span>
+      <span class="small text-secondary">Cada "Adicionar ao lote" guarda a decisão; o envio é um commit só.</span>
+    </div>
+  </div>
 
   <div class="d-flex flex-column gap-4 mt-3">
     {revisoes.map(({ r, decisao }) => (
@@ -119,7 +129,8 @@ const pendencias = revisoes.length;
               </details>
             )}
             <div class="d-flex flex-wrap gap-2">
-              <button type="submit" class="btn btn-primary" disabled={!r.opcoes || !r.edital_sha256}>Gerar decisão</button>
+              <button type="submit" class="btn btn-primary" disabled={!r.opcoes || !r.edital_sha256}>Adicionar ao lote</button>
+              <span class="badge text-bg-success align-self-center" data-na-lote={r.slug} hidden>no lote</span>
               {r.situacao !== "publicado" && (
                 <button type="button" class="btn btn-outline-danger descartar">Descartar este concurso</button>
               )}
@@ -132,6 +143,9 @@ const pendencias = revisoes.length;
   </div>
 
   <script is:inline define:vars={{ REPO }}>
+    const CHAVE = "ntc-lote";
+    const lerLote = () => JSON.parse(sessionStorage.getItem(CHAVE) || "{}");
+    const gravarLote = (lote) => { sessionStorage.setItem(CHAVE, JSON.stringify(lote)); atualizarPainel(); };
     function agoraBRT() {
       // Brasília sem horário de verão: UTC-3
       const d = new Date(Date.now() - 3 * 3600 * 1000);
@@ -140,14 +154,30 @@ const pendencias = revisoes.length;
       const hora = `${p(d.getUTCHours())}:${p(d.getUTCMinutes())}:${p(d.getUTCSeconds())}`;
       return { iso: `${data}T${hora}-03:00`, arquivo: `${data.replaceAll("-", "")}-${hora.replaceAll(":", "")}` };
     }
-    function abrir(slug, corpo, mensagem) {
+    function atualizarPainel() {
+      const lote = lerLote();
+      const n = Object.keys(lote).length;
+      document.getElementById("lote-n").textContent = String(n);
+      document.getElementById("lote-abrir").disabled = n === 0;
+      document.getElementById("lote-limpar").disabled = n === 0;
+      document.querySelectorAll("[data-na-lote]").forEach((el) => { el.hidden = !(el.dataset.naLote in lote); });
+      document.getElementById("lote-aviso").hidden = n <= 20;
+    }
+    function abrirLote() {
+      const lote = lerLote();
+      const decisoes = Object.values(lote);
+      if (!decisoes.length) return;
       const { arquivo } = agoraBRT();
       const url = new URL(`https://github.com/${REPO}/new/main`);
-      url.searchParams.set("filename", `data/decisoes/${slug}/${arquivo}.json`);
-      url.searchParams.set("value", JSON.stringify(corpo, null, 2) + "\n");
-      url.searchParams.set("message", mensagem);
+      url.searchParams.set("filename", `data/decisoes/lotes/${arquivo}.json`);
+      url.searchParams.set("value", JSON.stringify({ schema_version: 1, decisoes }, null, 2) + "\n");
+      url.searchParams.set("message", `decisões do editor: ${decisoes.length} concurso(s)`);
       window.open(url.toString(), "_blank", "noopener");
     }
+    document.getElementById("lote-abrir").addEventListener("click", abrirLote);
+    document.getElementById("lote-limpar").addEventListener("click", () => {
+      if (confirm("Limpar o lote? As decisões ainda não enviadas ao GitHub serão perdidas.")) gravarLote({});
+    });
     document.querySelectorAll("form.decisao").forEach((form) => {
       const slug = form.dataset.slug;
       const erro = form.querySelector(".erro");
@@ -169,13 +199,17 @@ const pendencias = revisoes.length;
         erro.hidden = true;
         const corpo = { schema_version: 1, slug, decidido_em: agoraBRT().iso, edital_sha256: form.dataset.sha,
                         acao: "decidir", campos };
-        abrir(slug, corpo, `decisão do editor: ${slug}`);
+        const lote = lerLote();
+        lote[slug] = corpo;
+        gravarLote(lote);
       });
       form.querySelector(".descartar")?.addEventListener("click", () => {
         if (!confirm("Descartar este concurso? Ele deixa de ser coletado e some desta lista.")) return;
-        abrir(slug, { schema_version: 1, slug, decidido_em: agoraBRT().iso, acao: "descartar" },
-              `decisão do editor: descartar ${slug}`);
+        const lote = lerLote();
+        lote[slug] = { schema_version: 1, slug, decidido_em: agoraBRT().iso, acao: "descartar" };
+        gravarLote(lote);
       });
     });
+    atualizarPainel();
   </script>
 </Base>
