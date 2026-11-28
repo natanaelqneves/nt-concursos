@@ -1,0 +1,33 @@
+{
+  "slug": "tj-ap-2026-juiz",
+  "titulo": "TJAP encerra inscrições do concurso para juiz substituto com 15 vagas imediatas",
+  "orgao": "Tribunal de Justiça do Estado do Amapá (TJAP)",
+  "categoria": "tribunal",
+  "esfera": "estadual",
+  "uf": "AP",
+  "banca": "FGV",
+  "resumo": "O Tribunal de Justiça do Amapá abriu concurso para o cargo de Juiz de Direito Substituto, com 15 vagas imediatas e formação de cadastro de reserva. A seleção é organizada pela Fundação Getulio Vargas (FGV). As inscrições foram feitas pelo site da banca de 13 de outubro, às 16h, a 13 de novembro de 2026, às 16h, e a remuneração informada é de R$ 35.877,27.",
+  "cargos": [
+    "Juiz de Direito Substituto"
+  ],
+  "fatos": [
+    {
+      "campo": "inscricao",
+      "texto": "Das 16h de 13/10/2026 às 16h de 13/11/2026",
+      "inicio": "2026-10-13",
+      "fim": "2026-11-13",
+      "fontes": ["f-1", "f-2"]
+    },
+    {
+      "campo": "vagas",
+      "texto": "15 vagas imediatas e formação de cadastro de reserva",
+      "fontes": ["f-1", "f-2"]
+    }
+  ],
+  "fontes": [
+    {"id": "f-1", "nome": "Cursos do Portal", "url": "https://cursosdoportal.com.br/noticias/concurso-tjap-2026-inscricoes-abertas-para-15-vagas-de-juiz", "oficial": false, "consultado_em": "2026-11-28"},
+    {"id": "f-2", "nome": "Gran Cursos Online", "url": "https://blog.grancursosonline.com.br/concurso-tj-ap-juiz/", "oficial": false, "consultado_em": "2026-11-28"}
+  ],
+  "apurado_em": "2026-11-28T02:00:00-03:00",
+  "expira_em": "2026-11-13"
+}
