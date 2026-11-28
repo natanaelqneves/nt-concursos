@@ -1,7 +1,7 @@
 {
   "aocp": {
-    "inicio": "2026-11-28T00:09:21-03:00",
-    "fim": "2026-11-28T00:10:02-03:00",
+    "inicio": "2026-11-28T11:36:29-03:00",
+    "fim": "2026-11-28T11:37:08-03:00",
     "erro_fonte": null,
     "contagem": {
       "fora_do_escopo": 9,
@@ -181,8 +181,8 @@
     ]
   },
   "avulsos": {
-    "inicio": "2026-11-28T00:10:02-03:00",
-    "fim": "2026-11-28T00:12:01-03:00",
+    "inicio": "2026-11-28T11:37:09-03:00",
+    "fim": "2026-11-28T11:39:08-03:00",
     "erro_fonte": null,
     "contagem": {
       "publicado": 11,
@@ -394,8 +394,8 @@
     ]
   },
   "cebraspe": {
-    "inicio": "2026-11-28T00:00:01-03:00",
-    "fim": "2026-11-28T00:02:47-03:00",
+    "inicio": "2026-11-28T11:27:29-03:00",
+    "fim": "2026-11-28T11:30:14-03:00",
     "erro_fonte": null,
     "contagem": {
       "fora_do_escopo": 22,
@@ -1182,14 +1182,14 @@
     ]
   },
   "fgv": {
-    "inicio": "2026-11-28T00:02:47-03:00",
-    "fim": "2026-11-28T00:09:21-03:00",
+    "inicio": "2026-11-28T11:30:15-03:00",
+    "fim": "2026-11-28T11:36:29-03:00",
     "erro_fonte": null,
     "contagem": {
       "fora_do_escopo": 25,
       "publicado": 7,
-      "erro": 1,
-      "encerrado": 40,
+      "erro": 2,
+      "encerrado": 39,
       "so_revisao": 23,
       "sem_edital": 7
     },
@@ -1677,13 +1677,11 @@
         "fonte": "fgv",
         "id": "mpgo25",
         "titulo": "Concurso Público para o Ministério Público do Estado de Goiás",
-        "situacao": "encerrado",
-        "detalhe": "mp/estadual/GO",
+        "situacao": "erro",
+        "detalhe": "NaoEhPdf: edital não é PDF: https://conhecimento.fgv.br/sites/default/files/concursos/edital-retificado-publicado.pdf",
         "slug": null,
         "campos": {},
-        "violacoes": [
-          "prazos.inscricao: 2 cláusulas diferentes"
-        ]
+        "violacoes": []
       },
       {
         "fonte": "fgv",
